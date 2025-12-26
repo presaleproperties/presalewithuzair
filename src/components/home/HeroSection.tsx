@@ -99,30 +99,6 @@ export const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
 
-              {/* Floating badges */}
-              <div className="absolute -left-4 top-1/4 bg-card/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl animate-fade-up delay-500">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <Building2 className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Presale Expert</p>
-                    <p className="font-semibold text-foreground">4+ Years</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -right-4 bottom-1/4 bg-card/95 backdrop-blur-sm border border-border rounded-xl p-4 shadow-xl animate-fade-up delay-600">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    <TrendingUp className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Close Rate</p>
-                    <p className="font-semibold text-foreground">99%</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

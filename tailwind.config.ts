@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'serif'],
-        sans: ['"Inter"', 'sans-serif'],
+        display: ['"Raleway"', 'sans-serif'],
+        sans: ['"Source Sans 3"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

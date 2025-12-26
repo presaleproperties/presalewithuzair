@@ -2,10 +2,21 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Calendar, ArrowRight } from "lucide-react";
-import { blogPosts } from "@/data/blogPosts";
+import { Calendar, ArrowRight, Loader2 } from "lucide-react";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 const Blog = () => {
+  const { data: posts, isLoading, error } = useBlogPosts();
+
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return "";
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -37,48 +48,70 @@ const Blog = () => {
         {/* Blog Grid */}
         <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post, index) => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border hover-lift animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {/* Image */}
-                  <div className="aspect-[16/10] image-reveal">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+            {isLoading ? (
+              <div className="flex justify-center py-12">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              </div>
+            ) : error ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Failed to load blog posts.</p>
+              </div>
+            ) : !posts || posts.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No blog posts yet. Check back soon!</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {posts.map((post, index) => (
+                  <Link
+                    key={post.slug}
+                    to={`/blog/${post.slug}`}
+                    className="group bg-card rounded-2xl overflow-hidden border border-border hover-lift animate-fade-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {/* Image */}
+                    <div className="aspect-[16/10] image-reveal bg-muted">
+                      {post.image_url ? (
+                        <img
+                          src={post.image_url}
+                          alt={post.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                          No image
+                        </div>
+                      )}
+                    </div>
 
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                        {post.category}
-                      </span>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        {post.date}
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="flex items-center gap-4 mb-3">
+                        {post.category && (
+                          <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                            {post.category.name}
+                          </span>
+                        )}
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <Calendar className="h-4 w-4" />
+                          {formatDate(post.published_at)}
+                        </div>
+                      </div>
+                      <h2 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-3">
+                        {post.title}
+                      </h2>
+                      <p className="text-sm text-foreground/70 line-clamp-3 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
+                        Read more
+                        <ArrowRight className="h-4 w-4" />
                       </div>
                     </div>
-                    <h2 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2 mb-3">
-                      {post.title}
-                    </h2>
-                    <p className="text-sm text-foreground/70 line-clamp-3 mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
-                      Read more
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       </main>

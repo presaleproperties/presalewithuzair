@@ -9,8 +9,8 @@ import portraitImage from "@/assets/uzair-portrait.jpg";
 import expoImage from "@/assets/expo.jpg";
 
 const stats = [
-  { value: "$150M+", label: "Sold in Presales" },
-  { value: "$26M+", label: "Sold in Assignments" },
+  { value: "$200M+", label: "In Volume" },
+  { value: "$26M+", label: "In Assignments" },
   { value: "$500K+", label: "Buyers Credit" },
   { value: "$60M+", label: "Portfolio Management" },
 ];

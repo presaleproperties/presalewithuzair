@@ -5,7 +5,9 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { AboutSection } from "@/components/home/AboutSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { InvestmentSection } from "@/components/home/InvestmentSection";
+import { ClientInvestmentsSection } from "@/components/home/ClientInvestmentsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { WebinarCTASection } from "@/components/home/WebinarCTASection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { CTASection } from "@/components/home/CTASection";
 
@@ -16,7 +18,7 @@ const Index = () => {
         <title>Uzair Muhammad | Vancouver's Top Presale Expert - Presale Condos & New Construction</title>
         <meta
           name="description"
-          content="Uzair Muhammad is Vancouver's premier presale real estate expert. Specializing in presale condos, assignments, and new construction investments. Over $150M in sales and 300+ units sold."
+          content="Uzair Muhammad is Vancouver's premier presale real estate expert. Specializing in presale condos, assignments, and new construction investments. Over $200M in volume and 300+ units sold."
         />
         <meta name="keywords" content="presale condos Vancouver, presale expert, new construction Vancouver, real estate investment Vancouver, Uzair Muhammad, presale assignments" />
         <link rel="canonical" href="https://presalewithuzair.com" />
@@ -28,7 +30,9 @@ const Index = () => {
         <AboutSection />
         <ServicesSection />
         <InvestmentSection />
+        <ClientInvestmentsSection />
         <TestimonialsSection />
+        <WebinarCTASection />
         <BlogPreviewSection />
         <CTASection />
       </main>

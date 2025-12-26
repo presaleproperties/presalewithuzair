@@ -118,8 +118,8 @@ export const HeroSection = () => {
                     <TrendingUp className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">Success Rate</p>
-                    <p className="font-semibold text-foreground">98%</p>
+                    <p className="text-xs text-muted-foreground">Completion Rate</p>
+                    <p className="font-semibold text-foreground">99%</p>
                   </div>
                 </div>
               </div>

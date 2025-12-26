@@ -3,24 +3,46 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowLeft, Phone } from "lucide-react";
-import { blogPosts } from "@/data/blogPosts";
+import { Calendar, ArrowLeft, Phone, Loader2 } from "lucide-react";
+import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = blogPosts.find((p) => p.slug === slug);
+  const { data: post, isLoading, error } = useBlogPost(slug || "");
+  const { data: allPosts } = useBlogPosts();
 
-  if (!post) {
-    return <Navigate to="/blog" replace />;
+  const relatedPosts = allPosts?.filter((p) => p.slug !== slug).slice(0, 2) || [];
+
+  const formatDate = (dateString: string | null) => {
+    if (!dateString) return "";
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  if (isLoading) {
+    return (
+      <>
+        <Navbar />
+        <div className="min-h-screen flex items-center justify-center bg-background">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+        <Footer />
+      </>
+    );
   }
 
-  const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 2);
+  if (error || !post) {
+    return <Navigate to="/blog" replace />;
+  }
 
   return (
     <>
       <Helmet>
         <title>{post.title} | Uzair Muhammad</title>
-        <meta name="description" content={post.excerpt} />
+        <meta name="description" content={post.excerpt || ""} />
       </Helmet>
 
       <Navbar />
@@ -38,12 +60,14 @@ const BlogPost = () => {
 
             <div className="max-w-3xl">
               <div className="flex items-center gap-4 mb-4">
-                <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                  {post.category}
-                </span>
+                {post.category && (
+                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
+                    {post.category.name}
+                  </span>
+                )}
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Calendar className="h-4 w-4" />
-                  {post.date}
+                  {formatDate(post.published_at)}
                 </div>
               </div>
               <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
@@ -54,19 +78,21 @@ const BlogPost = () => {
         </section>
 
         {/* Featured Image */}
-        <section className="py-8 bg-card">
-          <div className="container-xl">
-            <div className="max-w-4xl mx-auto">
-              <div className="rounded-2xl overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-full h-[400px] object-cover"
-                />
+        {post.image_url && (
+          <section className="py-8 bg-card">
+            <div className="container-xl">
+              <div className="max-w-4xl mx-auto">
+                <div className="rounded-2xl overflow-hidden">
+                  <img
+                    src={post.image_url}
+                    alt={post.title}
+                    className="w-full h-[400px] object-cover"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* Content */}
         <section className="py-16 bg-background">
@@ -141,15 +167,23 @@ const BlogPost = () => {
                     to={`/blog/${relatedPost.slug}`}
                     className="group flex gap-6 bg-background rounded-xl p-4 border border-border hover-lift"
                   >
-                    <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-                      <img
-                        src={relatedPost.image}
-                        alt={relatedPost.title}
-                        className="w-full h-full object-cover"
-                      />
+                    <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
+                      {relatedPost.image_url ? (
+                        <img
+                          src={relatedPost.image_url}
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
+                          No image
+                        </div>
+                      )}
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm text-muted-foreground mb-2">{relatedPost.date}</p>
+                      <p className="text-sm text-muted-foreground mb-2">
+                        {formatDate(relatedPost.published_at)}
+                      </p>
                       <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                         {relatedPost.title}
                       </h3>

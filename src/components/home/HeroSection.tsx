@@ -58,18 +58,22 @@ export const HeroSection = () => {
             </div>
 
             {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-border/50 animate-fade-up delay-400">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-border/50 animate-fade-up delay-400">
               <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-display font-bold text-gradient">300+</p>
-                <p className="text-sm text-muted-foreground mt-1">Units Sold</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">300+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presale Units Sold</p>
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-display font-bold text-gradient">$150M+</p>
-                <p className="text-sm text-muted-foreground mt-1">In Sales</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$200M+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">In Volume</p>
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-display font-bold text-gradient">$500K+</p>
-                <p className="text-sm text-muted-foreground mt-1">Buyer's Credit</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$500K+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Buyer's Credit</p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$26M+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">In Assignments</p>
               </div>
             </div>
           </div>

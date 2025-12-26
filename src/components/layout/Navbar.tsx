@@ -41,7 +41,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Presale with Uzair" className="h-10 w-auto" />
+            <img src={logo} alt="Presale with Uzair" className="h-10 w-auto brightness-0" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -68,7 +68,7 @@ export const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="hero" size="lg" className="gap-2">
+              <Button size="lg" className="gap-2">
                 <Phone className="h-4 w-4" />
                 Book A Call
               </Button>
@@ -113,7 +113,7 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             className="block pt-4"
           >
-            <Button variant="hero" size="lg" className="w-full gap-2">
+            <Button size="lg" className="w-full gap-2">
               <Phone className="h-4 w-4" />
               Book A Call
             </Button>

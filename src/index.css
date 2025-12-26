@@ -6,64 +6,60 @@
 
 @layer base {
   :root {
-    /* Luxurious dark real estate palette */
-    --background: 220 15% 8%;
-    --foreground: 40 20% 95%;
+    /* Light & clean modern professional palette */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 15%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 40 20% 95%;
+    --card: 220 20% 97%;
+    --card-foreground: 220 20% 15%;
 
-    --popover: 220 15% 10%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
 
-    /* Warm amber/gold primary - authority & luxury */
-    --primary: 32 95% 52%;
-    --primary-foreground: 220 15% 8%;
+    /* Professional deep blue primary */
+    --primary: 220 65% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Subtle warm secondary */
-    --secondary: 220 12% 18%;
-    --secondary-foreground: 40 15% 85%;
+    /* Light gray secondary */
+    --secondary: 220 15% 94%;
+    --secondary-foreground: 220 20% 25%;
 
     /* Muted tones */
-    --muted: 220 12% 20%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 220 15% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Accent with gold undertone */
-    --accent: 35 85% 45%;
-    --accent-foreground: 220 15% 8%;
+    /* Subtle blue accent */
+    --accent: 220 50% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 12% 20%;
-    --input: 220 12% 18%;
-    --ring: 32 95% 52%;
+    --border: 220 15% 88%;
+    --input: 220 15% 92%;
+    --ring: 220 65% 35%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens for real estate site */
-    --hero-gradient: linear-gradient(135deg, hsl(220 15% 6%) 0%, hsl(220 15% 12%) 100%);
-    --card-gradient: linear-gradient(180deg, hsl(220 15% 14%) 0%, hsl(220 15% 10%) 100%);
-    --text-gradient: linear-gradient(135deg, hsl(32 95% 52%) 0%, hsl(40 90% 60%) 100%);
-    --overlay-dark: linear-gradient(180deg, hsla(220, 15%, 6%, 0.7) 0%, hsla(220, 15%, 6%, 0.95) 100%);
-    --overlay-hero: linear-gradient(90deg, hsla(220, 15%, 6%, 0.9) 0%, hsla(220, 15%, 6%, 0.4) 60%, transparent 100%);
+    /* Custom tokens for light theme */
+    --hero-gradient: linear-gradient(135deg, hsl(220 20% 98%) 0%, hsl(220 15% 94%) 100%);
+    --card-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 15% 97%) 100%);
+    --text-gradient: linear-gradient(135deg, hsl(220 65% 35%) 0%, hsl(220 50% 45%) 100%);
+    --overlay-soft: linear-gradient(180deg, hsla(220, 15%, 98%, 0.9) 0%, hsla(220, 15%, 98%, 0.7) 100%);
     
-    /* Gold shimmer for luxury feel */
-    --gold-shimmer: linear-gradient(90deg, hsl(32 95% 52%) 0%, hsl(45 100% 65%) 50%, hsl(32 95% 52%) 100%);
-    
-    /* Shadows */
-    --shadow-soft: 0 4px 24px -8px hsla(32, 95%, 52%, 0.15);
-    --shadow-glow: 0 0 40px hsla(32, 95%, 52%, 0.2);
-    --shadow-card: 0 8px 32px -12px hsla(0, 0%, 0%, 0.4);
+    /* Professional shadows */
+    --shadow-soft: 0 4px 24px -8px hsla(220, 20%, 20%, 0.08);
+    --shadow-medium: 0 8px 32px -12px hsla(220, 20%, 20%, 0.12);
+    --shadow-card: 0 2px 16px -4px hsla(220, 20%, 20%, 0.06);
 
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 40 20% 95%;
-    --sidebar-primary: 32 95% 52%;
-    --sidebar-primary-foreground: 220 15% 8%;
-    --sidebar-accent: 220 12% 18%;
-    --sidebar-accent-foreground: 40 15% 85%;
-    --sidebar-border: 220 12% 20%;
-    --sidebar-ring: 32 95% 52%;
+    --sidebar-background: 220 20% 97%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 220 65% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 15% 92%;
+    --sidebar-accent-foreground: 220 20% 25%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 65% 35%;
   }
 }
 
@@ -92,16 +88,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-
-  .gold-shimmer {
-    background: var(--gold-shimmer);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  .hero-overlay {
-    background: var(--overlay-hero);
   }
 
   .card-gradient {
@@ -141,13 +127,12 @@
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: var(--shadow-medium);
   }
 
   .stat-card {
-    @apply relative overflow-hidden rounded-xl p-6;
-    background: var(--card-gradient);
-    border: 1px solid hsl(var(--border));
+    @apply relative overflow-hidden rounded-xl p-6 bg-card border border-border;
+    box-shadow: var(--shadow-card);
   }
 
   .stat-card::before {
@@ -156,10 +141,8 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: var(--gold-shimmer);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
   }
 
   .image-reveal {
@@ -213,14 +196,5 @@
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes shimmer {
-  0%, 100% {
-    background-position: -200% 0;
-  }
-  50% {
-    background-position: 200% 0;
   }
 }

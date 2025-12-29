@@ -2,25 +2,28 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { AboutSection } from "@/components/home/AboutSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
+import { AudienceSegmentSection } from "@/components/home/AudienceSegmentSection";
+import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
+import { DifferentiationSection } from "@/components/home/DifferentiationSection";
+import { ProcessSection } from "@/components/home/ProcessSection";
 import { InvestmentSection } from "@/components/home/InvestmentSection";
-
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CommunityLeaderSection } from "@/components/home/CommunityLeaderSection";
+import { RiskRealitySection } from "@/components/home/RiskRealitySection";
+import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
-import { CTASection } from "@/components/home/CTASection";
+import { FinalCTASection } from "@/components/home/FinalCTASection";
 
 const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Uzair Muhammad | Vancouver's Top Presale Expert - Presale Condos & New Construction</title>
+        <title>Presale Expert in Vancouver & Fraser Valley | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Uzair Muhammad is Vancouver's premier presale real estate expert. Specializing in presale condos, assignments, and new construction investments. Over $200M in volume and 300+ units sold."
+          content="Uzair Muhammad is Vancouver's premier presale advisor and strategist. Specializing in presale condos, assignments, and new construction. $150M+ in presales, 220+ units. Expert guidance for buyers, investors, and developers."
         />
-        <meta name="keywords" content="presale condos Vancouver, presale expert, new construction Vancouver, real estate investment Vancouver, Uzair Muhammad, presale assignments" />
+        <meta name="keywords" content="presale expert Vancouver, presale advisor, presale strategist, presale consultant, presale assignments expert, presale condos Vancouver, new construction Vancouver, presale advisor for developers, Fraser Valley presales" />
         <link rel="canonical" href="https://presalewithuzair.com" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -30,39 +33,40 @@ const Index = () => {
                 "@type": "Person",
                 "@id": "https://presalewithuzair.com/#person",
                 "name": "Uzair Muhammad",
-                "jobTitle": "Presale Real Estate Expert",
-                "description": "Vancouver's premier presale real estate expert specializing in presale condos, assignments, and new construction investments.",
+                "jobTitle": "Presale Expert & Strategist",
+                "description": "Vancouver's premier presale expert and strategist specializing in presale condos, assignments, and advisory services for buyers, investors, and developers.",
                 "url": "https://presalewithuzair.com",
                 "sameAs": [
                   "https://www.instagram.com/presalewithuzair",
                   "https://www.linkedin.com/in/uzairmuhammad"
                 ],
-                "knowsAbout": ["Presale Condos", "Real Estate Investment", "New Construction", "Assignment Sales"],
+                "knowsAbout": ["Presale Condos", "Presale Strategy", "Assignment Sales", "Developer Advisory", "Real Estate Investment", "New Construction"],
                 "worksFor": {
                   "@type": "RealEstateAgent",
-                  "name": "Presale With Uzair"
+                  "@id": "https://presalewithuzair.com/#business"
                 }
               },
               {
                 "@type": "RealEstateAgent",
                 "@id": "https://presalewithuzair.com/#business",
                 "name": "Presale With Uzair",
-                "description": "Vancouver's leading presale real estate service specializing in presale condos, assignments, and new construction investments.",
+                "description": "Vancouver's leading presale advisory service. Specializing in presale strategy, assignments, and developer consulting across Metro Vancouver and Fraser Valley.",
                 "url": "https://presalewithuzair.com",
-                "telephone": "+1-604-000-0000",
+                "email": "info@meetuzair.com",
                 "address": {
                   "@type": "PostalAddress",
                   "addressLocality": "Vancouver",
                   "addressRegion": "BC",
                   "addressCountry": "CA"
                 },
-                "areaServed": {
-                  "@type": "City",
-                  "name": "Vancouver"
-                },
-                "founder": {
-                  "@id": "https://presalewithuzair.com/#person"
-                },
+                "areaServed": [
+                  { "@type": "City", "name": "Vancouver" },
+                  { "@type": "City", "name": "Burnaby" },
+                  { "@type": "City", "name": "Surrey" },
+                  { "@type": "City", "name": "Langley" },
+                  { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+                ],
+                "founder": { "@id": "https://presalewithuzair.com/#person" },
                 "priceRange": "$$$$"
               },
               {
@@ -70,9 +74,36 @@ const Index = () => {
                 "@id": "https://presalewithuzair.com/#website",
                 "url": "https://presalewithuzair.com",
                 "name": "Presale With Uzair",
-                "publisher": {
-                  "@id": "https://presalewithuzair.com/#person"
-                }
+                "publisher": { "@id": "https://presalewithuzair.com/#person" }
+              },
+              {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is a presale condo?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A presale condo is a property purchased before construction is complete, typically offering lower prices and deposit structures that allow for capital appreciation before completion."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Does working with a presale expert cost extra?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "No. Working with a presale expert like Uzair costs buyers $0 — the developer pays the commission, not you."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What is an assignment sale?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "An assignment sale is when the original buyer of a presale contract sells their purchase agreement to another buyer before the property is completed."
+                    }
+                  }
+                ]
               }
             ]
           })}
@@ -82,14 +113,17 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <AboutSection />
-        <ServicesSection />
+        <AudienceSegmentSection />
+        <DifferentiationSection />
+        <ProcessSection />
+        <CaseStudiesSection />
         <InvestmentSection />
-        
         <TestimonialsSection />
         <CommunityLeaderSection />
+        <RiskRealitySection />
+        <BookingContextSection />
         <BlogPreviewSection />
-        <CTASection />
+        <FinalCTASection />
       </main>
       <Footer />
     </>

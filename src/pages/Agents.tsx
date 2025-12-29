@@ -122,48 +122,68 @@ const Agents = () => {
 
       <Navbar />
       <main>
-        {/* Hero Section */}
-        <section className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-br from-background via-background to-secondary/30">
-          <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `linear-gradient(hsl(var(--primary) / 0.3) 1px, transparent 1px),
-                              linear-gradient(90deg, hsl(var(--primary) / 0.3) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }} />
+        {/* Hero Section - Dan Martell Style */}
+        <section className="relative min-h-[85vh] overflow-hidden flex items-center">
+          {/* Background with gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
+          
+          {/* Colorful bokeh/light effects at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none">
+            <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-pink-500/30 blur-3xl" />
+            <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-pink-400/40 blur-2xl" />
+            <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-fuchsia-500/30 blur-xl" />
+            <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-purple-500/25 blur-3xl" />
+            <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-violet-400/30 blur-2xl" />
+            <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-cyan-500/25 blur-3xl" />
+            <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-teal-400/30 blur-2xl" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-cyan-500/10 via-transparent to-transparent" />
+          </div>
 
-          <div className="container-xl relative z-10 px-4 sm:px-6">
+          <div className="container-xl relative z-10 px-4 sm:px-6 py-20">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-primary/30 bg-primary/5 mb-4 sm:mb-6">
-                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs sm:text-sm font-medium text-primary">Vancouver Presale Academy</span>
-              </div>
+              <p className="text-primary font-bold tracking-[0.15em] text-sm mb-4 animate-fade-up">
+                VANCOUVER PRESALE ACADEMY
+              </p>
 
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.1] mb-4 sm:mb-6">
-                <span className="text-foreground">Where Agents Master</span>{" "}
-                <span className="text-gradient">The Art of Selling Presales</span>
+              <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl font-black leading-[1.05] mb-6 animate-fade-up">
+                <span className="text-foreground block">MASTER THE ART OF</span>
+                <span className="text-foreground block">SELLING PRESALES</span>
+                <span className="text-muted-foreground block">IN ANY MARKET</span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-3 sm:mb-4">
-                Presale Immersion Program for Real Estate Agents in Vancouver
+              <p className="text-base sm:text-lg text-muted-foreground mb-4 animate-fade-up">
+                <span className="text-foreground font-semibold">The immersion program for agents</span>
+                {" "}who want to GROW their business and sell more presale units without losing resale business.
               </p>
 
-              <p className="text-sm sm:text-base text-foreground/70 mb-6 sm:mb-8">
-                This program is for agents who want to GROW their business and sell more presale units without losing resale business. Whether you're experienced or just getting started — this is a high-level, step-by-step process for selling presales in any market.
+              <p className="text-sm text-muted-foreground mb-8 animate-fade-up">
+                Whether you're experienced or just getting started — this is a high-level, step-by-step process for selling presales.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <Button variant="hero" size="lg" className="gap-2 w-full sm:w-auto" asChild>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 animate-fade-up">
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold gap-2"
+                  asChild
+                >
                   <a href="https://vancouverpresaleacademy.com/#tickets-1" target="_blank" rel="noopener noreferrer">
                     <Mail className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="text-sm sm:text-base">Join the Waitlist</span>
+                    Join the Waitlist
                   </a>
                 </Button>
-                <Button variant="outline" size="lg" className="gap-2 w-full sm:w-auto" onClick={openCalendly}>
+                <Button 
+                  variant="ghost" 
+                  size="lg" 
+                  className="rounded-full text-muted-foreground hover:text-foreground px-8 py-6 text-base font-semibold gap-2"
+                  onClick={openCalendly}
+                >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
-                  <span className="text-sm sm:text-base">Talk to Uzair First</span>
+                  Talk to Uzair First
                 </Button>
               </div>
 
-              <p className="text-xs sm:text-sm text-primary mt-3 sm:mt-4">Coming Fall 2025</p>
+              <p className="text-sm text-primary animate-fade-up">Coming Fall 2025</p>
             </div>
           </div>
         </section>

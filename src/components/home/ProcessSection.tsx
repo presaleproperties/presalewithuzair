@@ -1,4 +1,5 @@
 import { MessageSquare, Search, FileText, Home, TrendingUp, Headphones } from "lucide-react";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import presaleBuilding from "@/assets/presale-building.jpg";
 import brochureReviewImage from "@/assets/uzair-brochure-review.jpg";
@@ -73,10 +74,10 @@ export const ProcessSection = () => {
             >
               {/* Image */}
               <div className="relative h-40 sm:h-48 overflow-hidden">
-                <img 
+                <OptimizedImage 
                   src={item.image} 
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
                 

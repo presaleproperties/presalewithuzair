@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
@@ -65,10 +66,11 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <div className="image-reveal rounded-2xl overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={heroImage}
                     alt="Uzair Muhammad"
-                    className="w-full h-[600px] object-cover"
+                    className="w-full h-[600px]"
+                    priority
                   />
                 </div>
                 {/* Stats overlay */}
@@ -145,45 +147,45 @@ const About = () => {
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={clientMeetingImage}
                   alt="Uzair consulting with clients"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={showroomTourImage}
                   alt="Uzair guiding showroom tour"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={brochureReviewImage}
                   alt="Uzair reviewing project details"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={officeWideImage}
                   alt="Uzair in strategy meeting"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={showroomEntranceImage}
                   alt="Uzair welcoming clients"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <OptimizedImage
                   src={floorplanImage}
                   alt="Uzair explaining floor plans"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

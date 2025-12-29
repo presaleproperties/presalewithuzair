@@ -1,4 +1,5 @@
 import { CheckCircle, XCircle } from "lucide-react";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import floorplanImage from "@/assets/uzair-floorplan.jpg";
 import clientsImage from "@/assets/uzair-clients.jpg";
 const comparisons = [
@@ -77,19 +78,19 @@ export const DifferentiationSection = () => {
           <div className="sm:hidden mb-6">
             <div className="grid grid-cols-2 gap-3 mb-6">
               <div className="relative rounded-xl overflow-hidden">
-                <img 
+                <OptimizedImage 
                   src={floorplanImage} 
                   alt="Reviewing presale floorplans" 
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Floorplan Analysis</p>
               </div>
               <div className="relative rounded-xl overflow-hidden">
-                <img 
+                <OptimizedImage 
                   src={clientsImage} 
                   alt="Consulting with presale clients" 
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
                 <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Client Consultations</p>
@@ -112,10 +113,10 @@ export const DifferentiationSection = () => {
           {/* Desktop: Side images */}
           <div className="hidden sm:grid sm:grid-cols-2 gap-6 mt-8">
             <div className="relative rounded-xl overflow-hidden">
-              <img 
+              <OptimizedImage 
                 src={floorplanImage} 
                 alt="Reviewing presale floorplans with clients" 
-                className="w-full aspect-video object-cover"
+                className="w-full aspect-video"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
               <div className="absolute bottom-4 left-4">
@@ -124,10 +125,10 @@ export const DifferentiationSection = () => {
               </div>
             </div>
             <div className="relative rounded-xl overflow-hidden">
-              <img 
+              <OptimizedImage 
                 src={clientsImage} 
                 alt="Consulting with presale clients" 
-                className="w-full aspect-video object-cover"
+                className="w-full aspect-video"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
               <div className="absolute bottom-4 left-4">

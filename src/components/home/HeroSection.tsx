@@ -62,7 +62,7 @@ export const HeroSection = () => {
           </p>
 
           {/* CTA Button - Outlined style like Dan Martell */}
-          <div className="mb-8 animate-fade-up">
+          <div className="mb-4 animate-fade-up">
             <Button 
               variant="outline"
               size="lg"
@@ -77,6 +77,11 @@ export const HeroSection = () => {
               {heroContent.cta}
             </Button>
           </div>
+
+          {/* Micro-trust - Mobile */}
+          <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
+            {heroContent.microTrust}
+          </p>
 
           {/* Hero Photos Grid - Mobile (After the fold like Dan Martell) */}
           <div className="relative mb-8 animate-fade-up">

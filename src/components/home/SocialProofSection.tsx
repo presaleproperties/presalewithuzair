@@ -141,6 +141,8 @@ const testimonials: Testimonial[] = [
   },
 ];
 
+const GOOGLE_BUSINESS_URL = "https://www.google.com/maps/place/Uzair+Muhammad+-+Real+Broker/@49.0423758,-122.3118827,17z/data=!4m8!3m7!1s0x5485dac8d830b90d:0x94df51afb2f2cdbc!8m2!3d49.0423758!4d-122.3093078!9m1!1b1!16s%2Fg%2F11t3cq9h1y";
+
 const clientTypeColors: Record<ClientType, string> = {
   "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",
   "Investor": "bg-amber-500/20 text-amber-400 border-amber-500/30",
@@ -182,9 +184,14 @@ export const SocialProofSection = () => {
                 <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <span className="text-muted-foreground text-xs md:text-sm">
-              5.0 (15+ reviews)
-            </span>
+            <a 
+              href={GOOGLE_BUSINESS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors underline underline-offset-2"
+            >
+              5.0 (31+ reviews) → See all on Google
+            </a>
           </div>
         </div>
 
@@ -194,10 +201,13 @@ export const SocialProofSection = () => {
           <div className="sm:hidden">
             <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
               {testimonials.map((testimonial, index) => (
-                <div
+                <a
                   key={index}
-                  className={`flex-shrink-0 w-[300px] rounded-xl p-5 snap-center ${
-                    testimonial.highlight 
+                  href={GOOGLE_BUSINESS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex-shrink-0 w-[300px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg ${
+                    testimonial.highlight
                       ? 'bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20' 
                       : 'bg-card border border-border'
                   }`}
@@ -231,7 +241,8 @@ export const SocialProofSection = () => {
                   <p className="text-sm text-foreground/90 leading-relaxed line-clamp-5">
                     "{testimonial.quote}"
                   </p>
-                </div>
+                  <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
+                </a>
               ))}
             </div>
           </div>
@@ -239,9 +250,12 @@ export const SocialProofSection = () => {
           {/* Desktop: Masonry-style Grid */}
           <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {testimonials.map((testimonial, index) => (
-              <div
+              <a
                 key={index}
-                className={`rounded-xl p-6 transition-transform hover:scale-[1.02] ${
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`rounded-xl p-6 transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer block ${
                   testimonial.highlight 
                     ? 'bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20' 
                     : 'bg-card border border-border'
@@ -278,7 +292,8 @@ export const SocialProofSection = () => {
                 <p className="text-sm lg:text-base text-foreground/90 leading-relaxed">
                   "{testimonial.quote}"
                 </p>
-              </div>
+                <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
+              </a>
             ))}
           </div>
         </div>

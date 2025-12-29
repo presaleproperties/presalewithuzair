@@ -295,6 +295,22 @@ export const LeadCaptureSection = () => {
                 )}
               </Button>
 
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-5 pt-4 border-t border-border/30">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <CheckCircle className="h-3.5 w-3.5 text-primary" />
+                  <span>300+ clients helped</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <CheckCircle className="h-3.5 w-3.5 text-primary" />
+                  <span>5-star reviews</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <CheckCircle className="h-3.5 w-3.5 text-primary" />
+                  <span>No obligation</span>
+                </div>
+              </div>
+
               <p className="text-xs text-muted-foreground text-center mt-3">
                 By submitting, you agree to receive communications from us. We respect your privacy.
               </p>

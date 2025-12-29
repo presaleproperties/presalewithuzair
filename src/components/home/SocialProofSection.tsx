@@ -141,7 +141,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-const GOOGLE_BUSINESS_URL = "https://www.google.com/maps/place/Uzair+Muhammad+-+Real+Broker/@49.0423758,-122.3118827,17z/data=!4m8!3m7!1s0x5485dac8d830b90d:0x94df51afb2f2cdbc!8m2!3d49.0423758!4d-122.3093078!9m1!1b1!16s%2Fg%2F11t3cq9h1y";
+const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 
 const clientTypeColors: Record<ClientType, string> = {
   "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",

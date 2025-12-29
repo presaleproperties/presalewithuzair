@@ -1,9 +1,9 @@
 import { MessageSquare, Search, FileText, Home, TrendingUp, Headphones } from "lucide-react";
-import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
+import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import presaleBuilding from "@/assets/presale-building.jpg";
-import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
-import showroomImage from "@/assets/uzair-showroom-tour.jpg";
-import expoImage from "@/assets/uzair-expo-crowd.jpg";
+import brochureReviewImage from "@/assets/uzair-brochure-review.jpg";
+import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
+import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import clientsImage from "@/assets/uzair-clients.jpg";
 
 const steps = [
@@ -12,7 +12,7 @@ const steps = [
     step: "01",
     title: "Understand Your Goals",
     description: "We start with a strategy call to understand your timeline, budget, risk tolerance, and whether you're buying for investment, personal use, or both.",
-    image: clientMeetingImage,
+    image: officeWideImage,
   },
   {
     icon: Search,
@@ -26,21 +26,21 @@ const steps = [
     step: "03",
     title: "Review Disclosure & Pricing",
     description: "Every disclosure document is reviewed line-by-line. Pricing is analyzed against comparables. Red flags are identified before you commit.",
-    image: floorplanImage,
+    image: brochureReviewImage,
   },
   {
     icon: Home,
     step: "04",
     title: "Secure Your Unit",
     description: "With VIP access and developer relationships, we secure your preferred unit — often before public launch or with negotiated terms.",
-    image: showroomImage,
+    image: showroomEntranceImage,
   },
   {
     icon: TrendingUp,
     step: "05",
-    title: "Plan Your Exit",
-    description: "Whether you're holding to completion or planning an assignment, we establish your exit strategy from day one — including market triggers and timing.",
-    image: expoImage,
+    title: "Project Walkthrough",
+    description: "We visit the showroom together to review finishes, floor plans, and amenities — ensuring every detail aligns with your expectations.",
+    image: showroomTourImage,
   },
   {
     icon: Headphones,

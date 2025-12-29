@@ -85,6 +85,42 @@ export type Database = {
           },
         ]
       }
+      leads: {
+        Row: {
+          buyer_type: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          lead_source: string
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          buyer_type: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          lead_source: string
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          buyer_type?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          lead_source?: string
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

@@ -21,9 +21,9 @@ const Index = () => {
         <title>Presale Expert in Vancouver & Fraser Valley | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Uzair Muhammad is Vancouver's premier presale advisor and strategist. Specializing in presale condos, assignments, and new construction. $150M+ in presales, 220+ units. Expert guidance for buyers, investors, and developers."
+          content="Uzair Muhammad is Vancouver's premier presale advisor and strategist. Specializing in presale condos, assignments, and new construction. $200M+ in presales, 300+ units. Expert guidance for buyers and investors."
         />
-        <meta name="keywords" content="presale expert Vancouver, presale advisor, presale strategist, presale consultant, presale assignments expert, presale condos Vancouver, new construction Vancouver, presale advisor for developers, Fraser Valley presales" />
+        <meta name="keywords" content="presale expert Vancouver, presale advisor, presale strategist, presale consultant, presale assignments expert, presale condos Vancouver, new construction Vancouver, Fraser Valley presales, first-time buyer presale" />
         <link rel="canonical" href="https://presalewithuzair.com" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -34,7 +34,7 @@ const Index = () => {
                 "@id": "https://presalewithuzair.com/#person",
                 "name": "Uzair Muhammad",
                 "jobTitle": "Presale Expert & Strategist",
-                "description": "Vancouver's premier presale expert and strategist specializing in presale condos, assignments, and advisory services for buyers, investors, and developers.",
+                "description": "Vancouver's premier presale expert and strategist. $200M+ in presales, 300+ units. Specializing in presale condos and assignments for buyers and investors.",
                 "url": "https://presalewithuzair.com",
                 "sameAs": [
                   "https://www.instagram.com/presalewithuzair",
@@ -50,7 +50,7 @@ const Index = () => {
                 "@type": "RealEstateAgent",
                 "@id": "https://presalewithuzair.com/#business",
                 "name": "Presale With Uzair",
-                "description": "Vancouver's leading presale advisory service. Specializing in presale strategy, assignments, and developer consulting across Metro Vancouver and Fraser Valley.",
+                "description": "Vancouver's leading presale advisory service. $200M+ in presales, 300+ units. Specializing in presale strategy and assignments across Metro Vancouver and Fraser Valley.",
                 "url": "https://presalewithuzair.com",
                 "email": "info@meetuzair.com",
                 "address": {

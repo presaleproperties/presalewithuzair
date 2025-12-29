@@ -9,10 +9,10 @@ import portraitImage from "@/assets/uzair-portrait.jpg";
 import expoImage from "@/assets/expo.jpg";
 
 const stats = [
+  { value: "300+", label: "Units Sold" },
   { value: "$200M+", label: "In Volume" },
-  { value: "$26M+", label: "In Assignments" },
   { value: "$500K+", label: "Buyers Credit" },
-  { value: "$60M+", label: "Portfolio Management" },
+  { value: "$26M+", label: "In Assignments" },
 ];
 
 const values = [
@@ -81,9 +81,8 @@ const About = () => {
                     lucrative presale investments in undervalued projects.
                   </p>
                   <p>
-                    He is a Portfolio Manager with a track record of $100M+ in condos, townhomes, 
-                    and detached properties. Uzair is dedicated to building long-term relationships 
-                    to deliver a lifetime of Real Estate Services.
+                    With over $200M+ in volume and 300+ units sold, Uzair has facilitated $26M+ in 
+                    assignment sales and secured over $500K in buyer credits for his clients.
                   </p>
                   <p>
                     Working primarily with investors and first-time buyers, Uzair provides insider 
@@ -92,15 +91,16 @@ const About = () => {
                   </p>
                 </div>
 
-                <div className="mt-8">
-                  <a
-                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a href="mailto:info@meetuzair.com">
                     <Button variant="hero" size="lg" className="gap-2">
                       <Phone className="h-4 w-4" />
-                      Chat with Uzair
+                      Schedule a Call
+                    </Button>
+                  </a>
+                  <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" size="lg" className="gap-2">
+                      Search Presale Projects
                     </Button>
                   </a>
                 </div>
@@ -217,16 +217,19 @@ const About = () => {
                 Ready to explore presale opportunities? Schedule a consultation to discuss your 
                 investment goals and discover exclusive projects.
               </p>
-              <a
-                href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="hero" size="xl" className="gap-2">
-                  <Phone className="h-5 w-5" />
-                  Book A Call
-                </Button>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:info@meetuzair.com">
+                  <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
+                    <Phone className="h-5 w-5" />
+                    Schedule a Call
+                  </Button>
+                </a>
+                <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
+                    Search Presale Projects
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>

@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -78,7 +78,7 @@ const Contact = () => {
 
                   {/* Email */}
                   <a
-                    href="mailto:uzair@presalewithuzair.com"
+                    href="mailto:info@meetuzair.com"
                     className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-colors group"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
@@ -87,7 +87,7 @@ const Contact = () => {
                     <div>
                       <p className="font-semibold text-foreground mb-1">Email</p>
                       <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry</p>
-                      <p className="text-primary font-medium">uzair@presalewithuzair.com</p>
+                      <p className="text-primary font-medium">info@meetuzair.com</p>
                     </div>
                   </a>
 
@@ -130,21 +130,16 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <a
-                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
+                  <a href="mailto:info@meetuzair.com" className="block">
                     <Button variant="hero" size="xl" className="w-full gap-2">
-                      <MessageCircle className="h-5 w-5" />
-                      Chat on WhatsApp
+                      <Mail className="h-5 w-5" />
+                      Schedule a Call
                     </Button>
                   </a>
-                  <a href="tel:+17782313592" className="block">
+                  <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">
-                      <Phone className="h-5 w-5" />
-                      Call Now
+                      <Search className="h-5 w-5" />
+                      Search Presale Projects
                     </Button>
                   </a>
                 </div>
@@ -157,8 +152,8 @@ const Contact = () => {
                       <p className="text-xs text-muted-foreground">Units Sold</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">$150M+</p>
-                      <p className="text-xs text-muted-foreground">In Sales</p>
+                      <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
+                      <p className="text-xs text-muted-foreground">In Volume</p>
                     </div>
                     <div>
                       <p className="text-2xl font-display font-bold text-gradient">5★</p>

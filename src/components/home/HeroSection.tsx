@@ -39,19 +39,15 @@ export const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-300">
-              <a
-                href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="mailto:info@meetuzair.com">
                 <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
                   <Phone className="h-5 w-5" />
-                  Book A Call
+                  Schedule a Call
                 </Button>
               </a>
               <Button variant="outline" size="xl" className="w-full sm:w-auto gap-2 group" asChild>
-                <a href="#about">
-                  Learn More
+                <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
+                  Search Presale Projects
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>

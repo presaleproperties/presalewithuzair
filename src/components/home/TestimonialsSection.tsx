@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useGoogleReviews, GoogleReview } from "@/hooks/useGoogleReviews";
@@ -45,6 +45,8 @@ const StarRating = ({ rating }: { rating: number }) => {
 export const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { data: googleData, isLoading, error } = useGoogleReviews();
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   // Use Google reviews if available, otherwise fallback
   const hasGoogleReviews = googleData?.reviews && googleData.reviews.length > 0;
@@ -64,6 +66,32 @@ export const TestimonialsSection = () => {
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const diff = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(diff) > minSwipeDistance) {
+      if (diff > 0) {
+        nextTestimonial();
+      } else {
+        prevTestimonial();
+      }
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   return (
@@ -91,7 +119,12 @@ export const TestimonialsSection = () => {
 
         <div className="max-w-4xl mx-auto">
           {/* Main Testimonial */}
-          <div className="relative bg-background rounded-xl md:rounded-2xl p-5 md:p-8 lg:p-12 border border-border">
+          <div 
+            className="relative bg-background rounded-xl md:rounded-2xl p-5 md:p-8 lg:p-12 border border-border touch-pan-y"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <Quote className="h-8 w-8 md:h-12 md:w-12 text-primary/20 absolute top-4 left-4 md:top-8 md:left-8" />
             
             <div className="relative z-10 pt-6 md:pt-8">

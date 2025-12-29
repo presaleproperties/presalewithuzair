@@ -1,5 +1,4 @@
 import { Quote, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 // Import AI-generated client photos
 import michellePhoto from "@/assets/testimonials/michelle.jpg";
@@ -153,13 +152,6 @@ const clientTypeColors: Record<ClientType, string> = {
 };
 
 export const SocialProofSection = () => {
-  const scrollToForm = () => {
-    document.getElementById("lead-form")?.scrollIntoView({ 
-      behavior: "smooth",
-      block: "start"
-    });
-  };
-
   return (
     <section className="py-16 sm:py-24 bg-gradient-to-b from-background via-card/50 to-background">
       <div className="container-xl px-4 sm:px-6">
@@ -295,41 +287,6 @@ export const SocialProofSection = () => {
                 <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
               </a>
             ))}
-          </div>
-        </div>
-
-        {/* Mid-section CTA */}
-        <div className="text-center mb-12 sm:mb-16">
-          <p className="text-base sm:text-lg text-foreground/80 italic mb-5 max-w-xl mx-auto">
-            "Uzair's expertise in presales is unmatched..."
-          </p>
-          <Button 
-            variant="outline"
-            size="lg"
-            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
-            onClick={scrollToForm}
-          >
-            Work With Uzair
-          </Button>
-        </div>
-
-        {/* Stats Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-border/30">
-          <div className="text-center p-4">
-            <p className="text-2xl sm:text-4xl font-display font-black text-gradient">$200M+</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presales Closed</p>
-          </div>
-          <div className="text-center p-4">
-            <p className="text-2xl sm:text-4xl font-display font-black text-gradient">300+</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Units Sold</p>
-          </div>
-          <div className="text-center p-4">
-            <p className="text-2xl sm:text-4xl font-display font-black text-gradient">$26M+</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Assignments</p>
-          </div>
-          <div className="text-center p-4">
-            <p className="text-2xl sm:text-4xl font-display font-black text-gradient">99%</p>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">Close Rate</p>
           </div>
         </div>
       </div>

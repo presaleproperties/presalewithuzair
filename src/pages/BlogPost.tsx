@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, Navigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -102,30 +103,45 @@ const BlogPost = () => {
                 <div
                   className="text-foreground/90 leading-relaxed space-y-6"
                   dangerouslySetInnerHTML={{
-                    __html: post.content
-                      .split("\n")
-                      .map((line) => {
-                        if (line.startsWith("# ")) {
-                          return `<h1 class="font-display text-4xl font-bold text-foreground mt-8 mb-6">${line.slice(2)}</h1>`;
-                        }
-                        if (line.startsWith("## ")) {
-                          return `<h2 class="font-display text-2xl font-bold text-foreground mt-8 mb-4">${line.slice(3)}</h2>`;
-                        }
-                        if (line.startsWith("### ")) {
-                          return `<h3 class="font-display text-xl font-semibold text-foreground mt-6 mb-3">${line.slice(4)}</h3>`;
-                        }
-                        if (line.startsWith("- ")) {
-                          return `<li class="text-foreground/80 ml-4">${line.slice(2)}</li>`;
-                        }
-                        if (line.match(/^\d+\./)) {
-                          return `<li class="text-foreground/80 ml-4">${line.slice(line.indexOf(" ") + 1)}</li>`;
-                        }
-                        if (line.trim() === "") {
-                          return "";
-                        }
-                        return `<p class="text-foreground/80">${line}</p>`;
-                      })
-                      .join(""),
+                    __html: DOMPurify.sanitize(
+                      post.content
+                        .split("\n")
+                        .map((line) => {
+                          // Escape HTML entities in content to prevent XSS
+                          const escapeHtml = (text: string) =>
+                            text
+                              .replace(/&/g, "&amp;")
+                              .replace(/</g, "&lt;")
+                              .replace(/>/g, "&gt;")
+                              .replace(/"/g, "&quot;")
+                              .replace(/'/g, "&#039;");
+                          
+                          if (line.startsWith("# ")) {
+                            return `<h1 class="font-display text-4xl font-bold text-foreground mt-8 mb-6">${escapeHtml(line.slice(2))}</h1>`;
+                          }
+                          if (line.startsWith("## ")) {
+                            return `<h2 class="font-display text-2xl font-bold text-foreground mt-8 mb-4">${escapeHtml(line.slice(3))}</h2>`;
+                          }
+                          if (line.startsWith("### ")) {
+                            return `<h3 class="font-display text-xl font-semibold text-foreground mt-6 mb-3">${escapeHtml(line.slice(4))}</h3>`;
+                          }
+                          if (line.startsWith("- ")) {
+                            return `<li class="text-foreground/80 ml-4">${escapeHtml(line.slice(2))}</li>`;
+                          }
+                          if (line.match(/^\d+\./)) {
+                            return `<li class="text-foreground/80 ml-4">${escapeHtml(line.slice(line.indexOf(" ") + 1))}</li>`;
+                          }
+                          if (line.trim() === "") {
+                            return "";
+                          }
+                          return `<p class="text-foreground/80">${escapeHtml(line)}</p>`;
+                        })
+                        .join(""),
+                      {
+                        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'ul', 'ol', 'strong', 'em', 'a', 'blockquote', 'code', 'pre'],
+                        ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
+                      }
+                    ),
                   }}
                 />
               </article>

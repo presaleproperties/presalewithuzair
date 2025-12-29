@@ -7,7 +7,7 @@ export const BlogPreviewSection = () => {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section className="py-16 sm:py-24 bg-background">
+    <section className="hidden sm:block py-16 sm:py-24 bg-background">
       <div className="container-xl px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-10 sm:mb-16">
           <div>

@@ -44,7 +44,7 @@ export const Navbar = () => {
             <img 
               src={logo} 
               alt="Presale with Uzair" 
-              className="h-10 w-auto brightness-0 opacity-80" 
+              className="h-10 w-auto" 
             />
           </Link>
 

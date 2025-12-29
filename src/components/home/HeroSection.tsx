@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, Building2, TrendingUp, Award } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/uzair-hero.jpeg";
+import { useCalendly } from "@/hooks/useCalendly";
 
 export const HeroSection = () => {
+  const { openCalendly } = useCalendly();
   return (
     <section className="relative min-h-screen">
       {/* Background with gradient */}
@@ -39,12 +41,15 @@ export const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-300">
-              <a href="mailto:info@meetuzair.com">
-                <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                  <Phone className="h-5 w-5" />
-                  Schedule a Call
-                </Button>
-              </a>
+              <Button 
+                variant="hero" 
+                size="xl" 
+                className="gap-2 w-full sm:w-auto"
+                onClick={openCalendly}
+              >
+                <Phone className="h-5 w-5" />
+                Schedule a Call
+              </Button>
               <Button variant="outline" size="xl" className="w-full sm:w-auto gap-2 group" asChild>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   Search Presale Projects

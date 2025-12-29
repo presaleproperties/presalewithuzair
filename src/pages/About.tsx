@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/uzair-hero.jpeg";
 import portraitImage from "@/assets/uzair-portrait.jpg";
 import expoImage from "@/assets/expo.jpg";
+import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
   { value: "300+", label: "Units Sold" },
@@ -23,6 +24,8 @@ const values = [
 ];
 
 const About = () => {
+  const { openCalendly } = useCalendly();
+
   return (
     <>
       <Helmet>
@@ -92,12 +95,15 @@ const About = () => {
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a href="mailto:info@meetuzair.com">
-                    <Button variant="hero" size="lg" className="gap-2">
-                      <Phone className="h-4 w-4" />
-                      Schedule a Call
-                    </Button>
-                  </a>
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="gap-2"
+                    onClick={openCalendly}
+                  >
+                    <Phone className="h-4 w-4" />
+                    Schedule a Call
+                  </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg" className="gap-2">
                       Search Presale Projects
@@ -218,12 +224,15 @@ const About = () => {
                 investment goals and discover exclusive projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:info@meetuzair.com">
-                  <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                    <Phone className="h-5 w-5" />
-                    Schedule a Call
-                  </Button>
-                </a>
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="gap-2 w-full sm:w-auto"
+                  onClick={openCalendly}
+                >
+                  <Phone className="h-5 w-5" />
+                  Schedule a Call
+                </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
                     Search Presale Projects

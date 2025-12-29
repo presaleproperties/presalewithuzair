@@ -6,6 +6,7 @@ import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
 import presaleImage from "@/assets/presale-building.jpg";
 import assignmentImage from "@/assets/assignments-building.jpg";
 import meetingImage from "@/assets/business-meeting.jpeg";
+import { useCalendly } from "@/hooks/useCalendly";
 
 const services = [
   {
@@ -56,6 +57,8 @@ const services = [
 ];
 
 const Services = () => {
+  const { openCalendly } = useCalendly();
+
   return (
     <>
       <Helmet>
@@ -112,12 +115,15 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <a href="mailto:info@meetuzair.com">
-                    <Button variant="hero" size="lg" className="gap-2">
-                      Schedule a Call
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </a>
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="gap-2"
+                    onClick={openCalendly}
+                  >
+                    Schedule a Call
+                    <ArrowRight className="h-4 w-4" />
+                  </Button>
                 </div>
 
                 <div className={`image-reveal rounded-2xl overflow-hidden ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>
@@ -144,12 +150,15 @@ const Services = () => {
                 Uzair is here to help you make informed decisions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:info@meetuzair.com">
-                  <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                    <Mail className="h-5 w-5" />
-                    Schedule a Call
-                  </Button>
-                </a>
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="gap-2 w-full sm:w-auto"
+                  onClick={openCalendly}
+                >
+                  <Mail className="h-5 w-5" />
+                  Schedule a Call
+                </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
                     <Search className="h-5 w-5" />

@@ -3,8 +3,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
+import { useCalendly } from "@/hooks/useCalendly";
 
 const Contact = () => {
+  const { openCalendly } = useCalendly();
+
   return (
     <>
       <Helmet>
@@ -130,12 +133,15 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <a href="mailto:info@meetuzair.com" className="block">
-                    <Button variant="hero" size="xl" className="w-full gap-2">
-                      <Mail className="h-5 w-5" />
-                      Schedule a Call
-                    </Button>
-                  </a>
+                  <Button 
+                    variant="hero" 
+                    size="xl" 
+                    className="w-full gap-2"
+                    onClick={openCalendly}
+                  >
+                    <Mail className="h-5 w-5" />
+                    Schedule a Call
+                  </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">
                       <Search className="h-5 w-5" />

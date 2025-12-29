@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import consultingImage from "@/assets/uzair-brochure-review.jpg";
 
 export const AboutSection = () => {
@@ -10,10 +11,10 @@ export const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
           <div className="relative image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
-            <img
+            <OptimizedImage
               src={consultingImage}
               alt="Uzair Muhammad consulting with clients"
-              className="w-full h-[500px] object-cover"
+              className="w-full h-[500px]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
 import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -87,10 +88,11 @@ export const HeroSection = () => {
           <div className="relative mb-8 animate-fade-up">
             {/* Main hero image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
-              <img
+              <OptimizedImage
                 src={heroImage}
                 alt="Uzair Muhammad - Vancouver's Top Presale Expert"
-                className="w-full aspect-[4/5] object-cover object-top"
+                className="w-full aspect-[4/5]"
+                priority
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
@@ -107,19 +109,19 @@ export const HeroSection = () => {
             {/* Photo grid - 2 photos side by side */}
             <div className="grid grid-cols-2 gap-3">
               <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img
+                <OptimizedImage
                   src={showroomImage}
                   alt="Uzair guiding clients through presale showroom"
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                 <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Showroom Tours</p>
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-lg">
-                <img
+                <OptimizedImage
                   src={clientMeetingImage}
                   alt="Uzair consulting with clients in office"
-                  className="w-full aspect-square object-cover"
+                  className="w-full aspect-square"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                 <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Client Consultations</p>
@@ -128,10 +130,10 @@ export const HeroSection = () => {
 
             {/* Speaking/Authority image */}
             <div className="relative rounded-xl overflow-hidden shadow-lg mt-3">
-              <img
+              <OptimizedImage
                 src={expoImage}
                 alt="Uzair speaking at Vancouver Presale Expo"
-                className="w-full aspect-[16/9] object-cover object-center"
+                className="w-full aspect-[16/9]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-3 left-3">
@@ -240,10 +242,11 @@ export const HeroSection = () => {
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-4 translate-y-4" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <OptimizedImage
                   src={heroImage}
                   alt="Uzair Muhammad - Vancouver's Top Presale Expert"
-                  className="w-full aspect-[4/5] object-cover object-center"
+                  className="w-full aspect-[4/5]"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>

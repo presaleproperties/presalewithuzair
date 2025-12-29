@@ -1,4 +1,10 @@
 import { MessageSquare, Search, FileText, Home, TrendingUp, Headphones } from "lucide-react";
+import consultingImage from "@/assets/uzair-consulting.jpeg";
+import presaleBuilding from "@/assets/presale-building.jpg";
+import floorplanImage from "@/assets/uzair-floorplan.jpg";
+import showroomImage from "@/assets/uzair-showroom.jpg";
+import investmentMeeting from "@/assets/investment-meeting.jpeg";
+import clientsImage from "@/assets/uzair-clients.jpg";
 
 const steps = [
   {
@@ -6,36 +12,42 @@ const steps = [
     step: "01",
     title: "Understand Your Goals",
     description: "We start with a strategy call to understand your timeline, budget, risk tolerance, and whether you're buying for investment, personal use, or both.",
+    image: consultingImage,
   },
   {
     icon: Search,
     step: "02",
     title: "Shortlist Projects",
     description: "Based on your criteria, Uzair identifies projects that meet strict value and risk standards — filtering out the 80% that don't qualify.",
+    image: presaleBuilding,
   },
   {
     icon: FileText,
     step: "03",
     title: "Review Disclosure & Pricing",
     description: "Every disclosure document is reviewed line-by-line. Pricing is analyzed against comparables. Red flags are identified before you commit.",
+    image: floorplanImage,
   },
   {
     icon: Home,
     step: "04",
     title: "Secure Your Unit",
     description: "With VIP access and developer relationships, we secure your preferred unit — often before public launch or with negotiated terms.",
+    image: showroomImage,
   },
   {
     icon: TrendingUp,
     step: "05",
     title: "Plan Your Exit",
     description: "Whether you're holding to completion or planning an assignment, we establish your exit strategy from day one — including market triggers and timing.",
+    image: investmentMeeting,
   },
   {
     icon: Headphones,
     step: "06",
     title: "Ongoing Advisory",
     description: "From contract to keys (or assignment), Uzair remains your advisor. Market updates, milestone reminders, and strategic guidance throughout the process.",
+    image: clientsImage,
   },
 ];
 
@@ -57,20 +69,32 @@ export const ProcessSection = () => {
           {steps.map((item, index) => (
             <div
               key={index}
-              className="relative bg-background rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8 hover:border-primary/30 transition-all duration-300"
+              className="relative bg-background rounded-xl sm:rounded-2xl border border-border overflow-hidden hover:border-primary/30 transition-all duration-300 group"
             >
-              {/* Step Number */}
-              <div className="absolute -top-3 sm:-top-4 left-5 sm:left-8 px-2.5 sm:px-3 py-0.5 sm:py-1 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full">
-                {item.step}
+              {/* Image */}
+              <div className="relative h-40 sm:h-48 overflow-hidden">
+                <img 
+                  src={item.image} 
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                
+                {/* Step Number Badge */}
+                <div className="absolute top-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full">
+                  {item.step}
+                </div>
               </div>
 
-              <div className="pt-3 sm:pt-4">
-                <div className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 w-fit mb-3 sm:mb-4">
-                  <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <div className="p-5 sm:p-6">
+                <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <item.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                  </div>
+                  <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
+                    {item.title}
+                  </h3>
                 </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
-                  {item.title}
-                </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>

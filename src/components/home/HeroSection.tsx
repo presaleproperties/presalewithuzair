@@ -6,15 +6,13 @@ import speakingImage from "@/assets/uzair-speaking.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
-  headlinePart1: "BUY A PRESALE",
-  headlinePart2: "CONDO",
-  headlineAccent: "WITHOUT GETTING",
-  headlineAccent2: "BURNED",
-  subheadlineBold: "My presale advisory for buyers and investors",
-  subheadlineNormal: " who want VIP access, exclusive incentives, and expert guidance — without the pressure or hidden surprises.",
-  description: "Get the exact strategies and frameworks that protect your investment, while surrounding yourself with an elite network of developers and presale experts.",
+  headlinePart1: "NO PRESSURE.",
+  headlinePart2: "NO HYPE.",
+  headlineAccent: "JUST HONEST",
+  headlineAccent2: "ADVICE.",
+  subheadline: "Buying a presale or new home shouldn't feel confusing or risky. I simplify the process, explain what to buy and what to avoid, and protect you with the right strategy — even if that means telling you not to buy.",
   cta: "Work With Uzair",
-  microTrust: "Free • No obligation • 100% presale-focused",
+  microTrust: "Trusted by 300+ first-time buyers and investors • Presale & new-construction specialist • 5-star Google reviews",
 };
 
 export const HeroSection = () => {
@@ -58,15 +56,9 @@ export const HeroSection = () => {
             <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
           </h1>
 
-          {/* Subheadline with bold start */}
-          <p className="text-base text-muted-foreground mb-4 animate-fade-up">
-            <span className="text-foreground font-semibold">{heroContent.subheadlineBold}</span>
-            {heroContent.subheadlineNormal}
-          </p>
-
-          {/* Description */}
-          <p className="text-sm text-muted-foreground mb-8 animate-fade-up">
-            {heroContent.description}
+          {/* Subheadline */}
+          <p className="text-base text-muted-foreground mb-8 animate-fade-up">
+            {heroContent.subheadline}
           </p>
 
           {/* CTA Button - Outlined style like Dan Martell */}
@@ -185,8 +177,7 @@ export const HeroSection = () => {
 
               {/* Sub-headline */}
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
-                <span className="text-foreground font-semibold">{heroContent.subheadlineBold}</span>
-                {heroContent.subheadlineNormal}
+                {heroContent.subheadline}
               </p>
             </div>
 

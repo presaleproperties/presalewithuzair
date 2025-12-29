@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Search } from "lucide-react";
 import expoImage from "@/assets/expo.jpg";
+import { useCalendly } from "@/hooks/useCalendly";
 
 export const CTASection = () => {
+  const { openCalendly } = useCalendly();
+
   return (
     <section className="py-24 bg-card relative overflow-hidden">
       {/* Background Image */}
@@ -26,12 +29,15 @@ export const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:info@meetuzair.com">
-              <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                <Mail className="h-5 w-5" />
-                Schedule a Call
-              </Button>
-            </a>
+            <Button 
+              variant="hero" 
+              size="xl" 
+              className="gap-2 w-full sm:w-auto"
+              onClick={openCalendly}
+            >
+              <Mail className="h-5 w-5" />
+              Schedule a Call
+            </Button>
             <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
                 <Search className="h-5 w-5" />

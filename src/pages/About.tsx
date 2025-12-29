@@ -4,9 +4,14 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/uzair-hero.jpeg";
-import portraitImage from "@/assets/uzair-portrait.jpg";
-import expoImage from "@/assets/expo.jpg";
+import heroImage from "@/assets/uzair-walking.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
+import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
+import brochureReviewImage from "@/assets/uzair-brochure-review.jpg";
+import officeWideImage from "@/assets/uzair-office-wide.jpg";
+import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
+import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
+import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
@@ -129,8 +134,64 @@ const About = () => {
           </div>
         </section>
 
+        {/* Photo Gallery */}
+        <section className="py-16 bg-background">
+          <div className="container-xl">
+            <div className="text-center mb-10">
+              <p className="section-label mb-3">Working With Clients</p>
+              <h2 className="font-display text-3xl font-bold text-foreground">
+                Real <span className="text-gradient">Results</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={clientMeetingImage}
+                  alt="Uzair consulting with clients"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={showroomTourImage}
+                  alt="Uzair guiding showroom tour"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={brochureReviewImage}
+                  alt="Uzair reviewing project details"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={officeWideImage}
+                  alt="Uzair in strategy meeting"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={showroomEntranceImage}
+                  alt="Uzair welcoming clients"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <img
+                  src={floorplanImage}
+                  alt="Uzair explaining floor plans"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Values & Approach */}
-        <section className="py-24 bg-background">
+        <section className="py-24 bg-card">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-16">
               <div>

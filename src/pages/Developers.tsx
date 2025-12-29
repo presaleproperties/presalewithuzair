@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Target, Users, TrendingUp, BarChart3, Lightbulb, CheckCircle, Building2, DollarSign, Clock, Megaphone } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
+import { DeveloperContactForm } from "@/components/forms/DeveloperContactForm";
 
 const advisoryServices = [
   {
@@ -476,15 +477,20 @@ const Developers = () => {
                 </div>
               </div>
 
-              <div className="text-center">
-                <p className="text-foreground/70 mb-8 max-w-2xl mx-auto">
+              <div className="text-center mb-12">
+                <p className="text-foreground/70 max-w-2xl mx-auto">
                   Uzair doesn't just market units — he provides strategic insight that shapes pricing, positioning, and launch execution. This is advisory work, not sales work.
                 </p>
-                <Button variant="hero" size="xl" className="gap-2" onClick={openCalendly}>
-                  <Phone className="h-5 w-5" />
-                  Discuss a Presale Advisory Engagement
-                </Button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form */}
+        <section className="py-24 bg-card">
+          <div className="container-xl">
+            <div className="max-w-2xl mx-auto">
+              <DeveloperContactForm />
             </div>
           </div>
         </section>

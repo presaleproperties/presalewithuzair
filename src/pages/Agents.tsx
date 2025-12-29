@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, TrendingUp, Users, Target, Mail, Megaphone, Settings, Calendar, CheckCircle, ArrowRight } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
+import { AgentContactForm } from "@/components/forms/AgentContactForm";
 
 const day1Modules = [
   {
@@ -300,6 +301,15 @@ const Agents = () => {
                   </Button>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Form */}
+        <section className="py-24 bg-background">
+          <div className="container-xl">
+            <div className="max-w-2xl mx-auto">
+              <AgentContactForm />
             </div>
           </div>
         </section>

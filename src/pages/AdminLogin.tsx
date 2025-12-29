@@ -12,7 +12,8 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signIn } = useAuth();
+  const [isSignUp, setIsSignUp] = useState(false);
+  const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -20,23 +21,41 @@ const AdminLogin = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    const { error } = await signIn(email, password);
-
-    if (error) {
+    if (isSignUp) {
+      const { error } = await signUp(email, password);
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
       toast({
-        title: "Error",
-        description: error.message,
-        variant: "destructive",
+        title: "Account created",
+        description: "Your account has been created. Please contact the admin to get access.",
       });
-      setIsLoading(false);
-      return;
+      setIsSignUp(false);
+    } else {
+      const { error } = await signIn(email, password);
+      if (error) {
+        toast({
+          title: "Error",
+          description: error.message,
+          variant: "destructive",
+        });
+        setIsLoading(false);
+        return;
+      }
+      toast({
+        title: "Success",
+        description: "Logged in successfully",
+      });
+      navigate("/admin");
     }
-
-    toast({
-      title: "Success",
-      description: "Logged in successfully",
-    });
-    navigate("/admin");
+    
+    setIsLoading(false);
   };
 
   return (
@@ -53,10 +72,10 @@ const AdminLogin = () => {
                 <Lock className="h-8 w-8 text-primary" />
               </div>
               <h1 className="font-display text-2xl font-bold text-foreground">
-                Admin Login
+                {isSignUp ? "Create Account" : "Admin Login"}
               </h1>
               <p className="text-muted-foreground mt-2">
-                Sign in to manage blog posts
+                {isSignUp ? "Sign up to request admin access" : "Sign in to manage blog posts"}
               </p>
             </div>
 
@@ -82,6 +101,7 @@ const AdminLogin = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
+                  minLength={6}
                 />
               </div>
 
@@ -93,13 +113,23 @@ const AdminLogin = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Signing in...
+                    {isSignUp ? "Creating account..." : "Signing in..."}
                   </>
                 ) : (
-                  "Sign In"
+                  isSignUp ? "Sign Up" : "Sign In"
                 )}
               </Button>
             </form>
+
+            <div className="mt-6 text-center">
+              <button
+                type="button"
+                onClick={() => setIsSignUp(!isSignUp)}
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                {isSignUp ? "Already have an account? Sign in" : "Need an account? Sign up"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

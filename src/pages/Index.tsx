@@ -2,15 +2,13 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { AudienceSegmentSection } from "@/components/home/AudienceSegmentSection";
+import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
-import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { DifferentiationSection } from "@/components/home/DifferentiationSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
-import { InvestmentSection } from "@/components/home/InvestmentSection";
+import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
+import { MidPageCTA } from "@/components/home/MidPageCTA";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
-
-
 import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
@@ -113,18 +111,40 @@ const Index = () => {
 
       <Navbar />
       <main>
+        {/* Hero - Bold headline with colorful bokeh */}
         <HeroSection />
+        
+        {/* Social Proof - "But don't listen to me..." + scrolling testimonials */}
+        <SocialProofSection />
+        
+        {/* Lead Capture Form */}
         <LeadCaptureSection />
-        <AudienceSegmentSection />
+        
+        {/* Mid-page CTA */}
+        <MidPageCTA quote="Uzair's expertise in presales is unmatched. He knows every developer, every project, every angle." />
+        
+        {/* Why Work With a Presale Expert */}
         <DifferentiationSection />
+        
+        {/* Process Steps */}
         <ProcessSection />
+        
+        {/* Mid-page CTA */}
+        <MidPageCTA />
+        
+        {/* Case Studies */}
         <CaseStudiesSection />
-        <InvestmentSection />
+        
+        {/* Google Reviews */}
         <TestimonialsSection />
         
-        
+        {/* Who This Is For */}
         <BookingContextSection />
+        
+        {/* Blog Preview (desktop only) */}
         <BlogPreviewSection />
+        
+        {/* Final CTA */}
         <FinalCTASection />
       </main>
       <Footer />

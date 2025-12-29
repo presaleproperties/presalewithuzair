@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, CheckCircle, XCircle, Clock, FileText } from "lucide-react";
+import { Phone, CheckCircle, XCircle } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const forYou = [
@@ -14,20 +14,6 @@ const notForYou = [
   "You're looking for resale properties only",
   "You want someone to tell you what to buy without discussion",
   "You're not ready to have an honest conversation about budget and goals",
-];
-
-const covered = [
-  "Your specific goals, timeline, and budget range",
-  "Current market conditions and opportunities",
-  "Which presale projects might fit your criteria",
-  "Next steps if we're a good fit to work together",
-];
-
-const preparation = [
-  "Know your approximate budget and timeline",
-  "Have a sense of your investment goals (personal use vs. investment)",
-  "Be ready to discuss your risk tolerance honestly",
-  "Come with any specific questions about presales",
 ];
 
 export const BookingContextSection = () => {
@@ -89,47 +75,6 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-5 sm:gap-8 mb-8 sm:mb-12">
-            {/* What's Covered */}
-            <div className="bg-card rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8">
-              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
-                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
-                  What we'll cover (30 min)
-                </h3>
-              </div>
-              <ul className="space-y-2.5 sm:space-y-3">
-                {covered.map((item, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Preparation */}
-            <div className="bg-card rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8">
-              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
-                  <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                </div>
-                <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
-                  How to prepare
-                </h3>
-              </div>
-              <ul className="space-y-2.5 sm:space-y-3">
-                {preparation.map((item, index) => (
-                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-xs sm:text-sm text-foreground/80">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 sm:mt-2 flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
 
           {/* CTA */}
           <div className="text-center">

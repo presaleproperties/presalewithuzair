@@ -3,9 +3,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
-import presaleImage from "@/assets/presale-building.jpg";
-import assignmentImage from "@/assets/assignments-building.jpg";
-import meetingImage from "@/assets/business-meeting.jpeg";
+import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
+import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const services = [
@@ -14,7 +14,7 @@ const services = [
     title: "Presale Condos",
     subtitle: "New Construction Investments",
     description: "Thinking of buying a presale condo for investment or personal use? Get insider access to the best projects before they go public.",
-    image: presaleImage,
+    image: showroomTourImage,
     benefits: [
       "Early access to new developments",
       "Priority unit selection",
@@ -29,7 +29,7 @@ const services = [
     title: "Presale Assignments",
     subtitle: "Sell Before Completion",
     description: "Bought a presale and looking to assign it before completion? We specialize in maximizing your returns on assignment sales.",
-    image: assignmentImage,
+    image: floorplanImage,
     benefits: [
       "Expert valuation of your contract",
       "Marketing to qualified buyers",
@@ -44,7 +44,7 @@ const services = [
     title: "Resale Properties",
     subtitle: "Buy & Sell",
     description: "Thinking of buying or selling a resale property? We help our clients with complete real estate transactions. Ultimately, all presale units turn to resale properties.",
-    image: meetingImage,
+    image: clientMeetingImage,
     benefits: [
       "Comprehensive market analysis",
       "Strategic pricing for sellers",

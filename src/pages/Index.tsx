@@ -6,7 +6,6 @@ import { SocialProofSection } from "@/components/home/SocialProofSection";
 import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { DifferentiationSection } from "@/components/home/DifferentiationSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
-import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { MidPageCTA } from "@/components/home/MidPageCTA";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { BookingContextSection } from "@/components/home/BookingContextSection";
@@ -131,9 +130,6 @@ const Index = () => {
         
         {/* Mid-page CTA */}
         <MidPageCTA />
-        
-        {/* Case Studies */}
-        <CaseStudiesSection />
         
         {/* Google Reviews */}
         <TestimonialsSection />

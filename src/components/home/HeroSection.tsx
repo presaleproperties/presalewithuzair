@@ -34,14 +34,14 @@ export const HeroSection = () => {
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl animate-fade-up delay-200">
-                $150M+ in presales | 220+ units | Presale-only specialist across Metro Vancouver & Fraser Valley.
+                $200M+ in presales | 300+ units | Presale-only specialist across Metro Vancouver & Fraser Valley.
               </p>
 
               {/* Trust Bullets */}
               <ul className="space-y-2 animate-fade-up delay-250">
                 <li className="flex items-center gap-2 text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span>Presale-only focus (not resale)</span>
+                  <span>100% presale-focused expertise</span>
                 </li>
                 <li className="flex items-center gap-2 text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -76,11 +76,11 @@ export const HeroSection = () => {
             {/* Stats Row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-border/50 animate-fade-up delay-400">
               <div className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">220+</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">300+</p>
                 <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presale Units</p>
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$150M+</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$200M+</p>
                 <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presales Closed</p>
               </div>
               <div className="text-center sm:text-left">

@@ -1,5 +1,6 @@
 import { CheckCircle, XCircle } from "lucide-react";
-
+import floorplanImage from "@/assets/uzair-floorplan.jpg";
+import clientsImage from "@/assets/uzair-clients.jpg";
 const comparisons = [
   {
     category: "Transaction Type",
@@ -66,11 +67,36 @@ export const DifferentiationSection = () => {
           </p>
         </div>
 
-        {/* Why Presales Are Different */}
+        {/* Why Presales Are Different - with images */}
         <div className="mb-10 sm:mb-16">
           <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center uppercase tracking-tight">
             Why Presales Require Specialized Expertise
           </h3>
+          
+          {/* Image + Content Grid on Mobile */}
+          <div className="sm:hidden mb-6">
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="relative rounded-xl overflow-hidden">
+                <img 
+                  src={floorplanImage} 
+                  alt="Reviewing presale floorplans" 
+                  className="w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Floorplan Analysis</p>
+              </div>
+              <div className="relative rounded-xl overflow-hidden">
+                <img 
+                  src={clientsImage} 
+                  alt="Consulting with presale clients" 
+                  className="w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Client Consultations</p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {whyPresalesAreDifferent.map((item, index) => (
               <div
@@ -81,6 +107,34 @@ export const DifferentiationSection = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">{item.description}</p>
               </div>
             ))}
+          </div>
+          
+          {/* Desktop: Side images */}
+          <div className="hidden sm:grid sm:grid-cols-2 gap-6 mt-8">
+            <div className="relative rounded-xl overflow-hidden">
+              <img 
+                src={floorplanImage} 
+                alt="Reviewing presale floorplans with clients" 
+                className="w-full aspect-video object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-0.5">Hands-On</p>
+                <p className="text-sm font-bold text-foreground">Floorplan & Layout Analysis</p>
+              </div>
+            </div>
+            <div className="relative rounded-xl overflow-hidden">
+              <img 
+                src={clientsImage} 
+                alt="Consulting with presale clients" 
+                className="w-full aspect-video object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-0.5">Personalized</p>
+                <p className="text-sm font-bold text-foreground">One-on-One Consultations</p>
+              </div>
+            </div>
           </div>
         </div>
 

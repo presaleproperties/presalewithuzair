@@ -99,7 +99,7 @@ export const TestimonialsSection = () => {
       <div className="container-xl px-4 md:px-6">
         <div className="text-center mb-8 md:mb-16">
           <p className="section-label mb-2 md:mb-4">Client Reviews</p>
-          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
             What's Everyone <span className="text-gradient">Saying</span>
           </h2>
           {hasGoogleReviews && googleData && (

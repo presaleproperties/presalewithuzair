@@ -19,7 +19,7 @@ export const InvestmentSection = () => {
           {/* Content */}
           <div>
             <p className="section-label mb-3 sm:mb-4">Uzair's Investment Approach</p>
-            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-tight">
               Value <span className="text-gradient">Investments</span>
             </h2>
             

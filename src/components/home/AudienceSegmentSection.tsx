@@ -41,10 +41,10 @@ export const AudienceSegmentSection = () => {
       <div className="container-xl px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">Who This Is For</p>
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
             Presale Guidance for <span className="text-gradient">Buyers & Investors</span>
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
             Whether you're buying your first home or building an investment portfolio — presales require specialized expertise.
           </p>
         </div>

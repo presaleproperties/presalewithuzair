@@ -29,27 +29,32 @@ export const HeroSection = () => {
               </div>
               
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.15] sm:leading-[1.1] animate-fade-up delay-100">
-                <span className="text-foreground">I help first-time buyers and investors secure presale condos & townhomes in BC</span>{" "}
-                <span className="text-gradient">— strategically and safely.</span>
+                <span className="text-foreground">Don't Buy a Presale Until You Know the Real Numbers.</span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up delay-200">
-                $200M+ in presales | 300+ units | Presale-only specialist across Metro Vancouver & Fraser Valley.
+                Most buyers overpay because they follow hype, hire resale agents, or buy direct from developers. I help you avoid costly mistakes and get insider pricing — <span className="text-primary font-semibold">at $0 cost to you.</span>
               </p>
 
-              {/* Trust Bullets */}
-              <ul className="space-y-1.5 sm:space-y-2 animate-fade-up delay-250">
-                <li className="flex items-center gap-2 text-sm sm:text-base text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>100% presale-focused expertise</span>
+              {/* Value Props - Conversion Focused */}
+              <ul className="space-y-2.5 sm:space-y-3 animate-fade-up delay-250">
+                <li className="flex items-start gap-3 text-sm sm:text-base">
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
+                  <span className="text-foreground"><strong className="text-primary">VIP Access</strong> — Get presale units & pricing before public launch</span>
                 </li>
-                <li className="flex items-center gap-2 text-sm sm:text-base text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>Early access + off-market inventory</span>
+                <li className="flex items-start gap-3 text-sm sm:text-base">
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
+                  <span className="text-foreground"><strong className="text-primary">Exclusive Incentives</strong> — Negotiate credits, upgrades & deposit terms</span>
                 </li>
-                <li className="flex items-center gap-2 text-sm sm:text-base text-foreground/80">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>Risk mitigation: deposits, disclosure, assignments</span>
+                <li className="flex items-start gap-3 text-sm sm:text-base">
+                  <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                  </span>
+                  <span className="text-foreground"><strong className="text-primary">Expert Guidance</strong> — Avoid the 80% of projects that aren't worth it</span>
                 </li>
               </ul>
             </div>

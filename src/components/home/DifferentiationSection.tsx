@@ -84,50 +84,87 @@ export const DifferentiationSection = () => {
           </div>
         </div>
 
-        {/* Comparison Table - Mobile optimized with horizontal scroll */}
-        <div className="bg-card rounded-xl sm:rounded-2xl border border-border overflow-hidden">
-          <div className="overflow-x-auto">
-            <div className="min-w-[600px]">
-              <div className="grid grid-cols-3 bg-background border-b border-border">
-                <div className="p-3 sm:p-4 lg:p-6">
-                  <p className="font-semibold text-xs sm:text-sm text-foreground">Comparison</p>
+        {/* Comparison - Mobile Cards / Desktop Table */}
+        {/* Mobile: Stacked Cards */}
+        <div className="sm:hidden space-y-4">
+          {comparisons.map((row, index) => (
+            <div
+              key={index}
+              className="bg-card rounded-xl border border-border overflow-hidden"
+            >
+              {/* Category Header */}
+              <div className="px-4 py-3 bg-background border-b border-border">
+                <p className="text-sm font-semibold text-foreground">{row.category}</p>
+              </div>
+              
+              {/* Comparison Content */}
+              <div className="divide-y divide-border">
+                {/* Presale Expert */}
+                <div className="p-4 bg-primary/5">
+                  <div className="flex items-start gap-3">
+                    <div className="p-1.5 rounded-full bg-primary/20 flex-shrink-0">
+                      <CheckCircle className="h-4 w-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-primary mb-1">Presale Expert</p>
+                      <p className="text-sm text-foreground">{row.presaleExpert}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-3 sm:p-4 lg:p-6 border-l border-border bg-primary/5">
-                  <p className="font-semibold text-xs sm:text-sm text-primary">Presale Expert (Uzair)</p>
-                </div>
-                <div className="p-3 sm:p-4 lg:p-6 border-l border-border">
-                  <p className="font-semibold text-xs sm:text-sm text-muted-foreground">Typical Realtor</p>
+                
+                {/* Typical Realtor */}
+                <div className="p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="p-1.5 rounded-full bg-muted flex-shrink-0">
+                      <XCircle className="h-4 w-4 text-muted-foreground/60" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground mb-1">Typical Realtor</p>
+                      <p className="text-sm text-muted-foreground">{row.regularRealtor}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
 
-              {comparisons.map((row, index) => (
-                <div
-                  key={index}
-                  className={`grid grid-cols-3 ${index !== comparisons.length - 1 ? 'border-b border-border' : ''}`}
-                >
-                  <div className="p-3 sm:p-4 lg:p-6">
-                    <p className="text-xs sm:text-sm font-medium text-foreground">{row.category}</p>
-                  </div>
-                  <div className="p-3 sm:p-4 lg:p-6 border-l border-border bg-primary/5">
-                    <div className="flex items-start gap-1.5 sm:gap-2">
-                      <CheckCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-xs sm:text-sm text-foreground/80">{row.presaleExpert}</p>
-                    </div>
-                  </div>
-                  <div className="p-3 sm:p-4 lg:p-6 border-l border-border">
-                    <div className="flex items-start gap-1.5 sm:gap-2">
-                      <XCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
-                      <p className="text-xs sm:text-sm text-muted-foreground">{row.regularRealtor}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        {/* Desktop: Table */}
+        <div className="hidden sm:block bg-card rounded-2xl border border-border overflow-hidden">
+          <div className="grid grid-cols-3 bg-background border-b border-border">
+            <div className="p-4 lg:p-6">
+              <p className="font-semibold text-sm text-foreground">Comparison</p>
+            </div>
+            <div className="p-4 lg:p-6 border-l border-border bg-primary/5">
+              <p className="font-semibold text-sm text-primary">Presale Expert (Uzair)</p>
+            </div>
+            <div className="p-4 lg:p-6 border-l border-border">
+              <p className="font-semibold text-sm text-muted-foreground">Typical Realtor</p>
             </div>
           </div>
-          {/* Scroll hint for mobile */}
-          <div className="sm:hidden text-center py-2 border-t border-border">
-            <p className="text-xs text-muted-foreground">← Scroll to see full comparison →</p>
-          </div>
+
+          {comparisons.map((row, index) => (
+            <div
+              key={index}
+              className={`grid grid-cols-3 ${index !== comparisons.length - 1 ? 'border-b border-border' : ''}`}
+            >
+              <div className="p-4 lg:p-6">
+                <p className="text-sm font-medium text-foreground">{row.category}</p>
+              </div>
+              <div className="p-4 lg:p-6 border-l border-border bg-primary/5">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-foreground/80">{row.presaleExpert}</p>
+                </div>
+              </div>
+              <div className="p-4 lg:p-6 border-l border-border">
+                <div className="flex items-start gap-2">
+                  <XCircle className="h-4 w-4 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-muted-foreground">{row.regularRealtor}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Educational Note */}

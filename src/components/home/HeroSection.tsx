@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/uzair-hero.jpeg";
+import showroomImage from "@/assets/uzair-showroom.jpg";
+import modelImage from "@/assets/uzair-model.jpg";
+import speakingImage from "@/assets/uzair-speaking.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
@@ -83,9 +86,10 @@ export const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Hero Photo - Mobile (After the fold like Dan Martell) */}
+          {/* Hero Photos Grid - Mobile (After the fold like Dan Martell) */}
           <div className="relative mb-8 animate-fade-up">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            {/* Main hero image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
               <img
                 src={heroImage}
                 alt="Uzair Muhammad - Vancouver's Top Presale Expert"
@@ -100,6 +104,42 @@ export const HeroSection = () => {
                   <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
                   <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Photo grid - 2 photos side by side */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src={showroomImage}
+                  alt="Uzair consulting clients at presale showroom"
+                  className="w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Showroom Tours</p>
+              </div>
+              <div className="relative rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src={modelImage}
+                  alt="Uzair explaining development models to clients"
+                  className="w-full aspect-square object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Project Walkthroughs</p>
+              </div>
+            </div>
+
+            {/* Speaking/Authority image */}
+            <div className="relative rounded-xl overflow-hidden shadow-lg mt-3">
+              <img
+                src={speakingImage}
+                alt="Uzair speaking at Vancouver Presale Expo"
+                className="w-full aspect-[16/9] object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-0.5">Industry Speaker</p>
+                <p className="text-sm font-bold text-foreground">Vancouver Presale Expo</p>
               </div>
             </div>
           </div>

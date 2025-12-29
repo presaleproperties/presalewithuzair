@@ -1,4 +1,4 @@
-import { TrendingUp, Home, Building2 } from "lucide-react";
+import { TrendingUp, Home } from "lucide-react";
 
 const caseStudies = [
   {
@@ -17,7 +17,7 @@ const caseStudies = [
   },
   {
     icon: Home,
-    type: "Downsizer Buyer",
+    type: "First-Time Buyer",
     title: "Empty nesters secured premium floor at launch",
     situation: "Retired couple looking to downsize into a presale condo. Overwhelmed by options and confused by disclosure documents.",
     strategy: "Uzair identified a quality developer project, secured VIP access, and negotiated a premium corner unit before public launch.",
@@ -56,20 +56,6 @@ const caseStudies = [
     },
     outcome: "Clean exit with significant profit, avoiding completion obligations and mortgage qualification requirements.",
     riskAvoided: "Forced completion, cash flow strain, rushed sale at discount.",
-  },
-  {
-    icon: Building2,
-    type: "Developer Advisory",
-    title: "Launch strategy accelerated absorption by 40%",
-    situation: "Developer launching 180-unit project struggling with initial sales velocity. Realtors weren't bringing qualified buyers.",
-    strategy: "Uzair consulted on pricing adjustments, created realtor education sessions, and brought qualified investor network to the table.",
-    numbers: {
-      unitsLaunched: "180 units",
-      absorptionBefore: "15 units/month",
-      absorptionAfter: "21 units/month",
-    },
-    outcome: "Project achieved 40% faster absorption, reducing carrying costs and improving project economics.",
-    riskAvoided: "Stalled launch, price reductions, negative market perception.",
   },
 ];
 

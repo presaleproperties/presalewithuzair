@@ -44,6 +44,8 @@ export const Footer = () => {
             <Link to="/services" className="text-muted-foreground hover:text-primary">Services</Link>
             <Link to="/blog" className="text-muted-foreground hover:text-primary">Blog</Link>
             <Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
+            <Link to="/developers" className="text-muted-foreground hover:text-primary">Developers</Link>
+            <Link to="/agents" className="text-muted-foreground hover:text-primary">Agents</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -123,20 +125,26 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* Services */}
+            {/* For Professionals */}
             <div>
-              <h4 className="font-display text-lg font-semibold mb-6 text-foreground">Services</h4>
+              <h4 className="font-display text-lg font-semibold mb-6 text-foreground">For Professionals</h4>
               <ul className="space-y-3">
-                {[
-                  "Presale Condos",
-                  "Presale Assignments",
-                  "Resale Properties",
-                  "Portfolio Management",
-                ].map((service) => (
-                  <li key={service}>
-                    <span className="text-muted-foreground text-sm">{service}</span>
-                  </li>
-                ))}
+                <li>
+                  <Link
+                    to="/developers"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    Developer Advisory
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/agents"
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                  >
+                    Agent Education
+                  </Link>
+                </li>
               </ul>
             </div>
 

@@ -11,6 +11,8 @@ import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
+import Developers from "./pages/Developers";
+import Agents from "./pages/Agents";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPostEditor from "./pages/AdminPostEditor";
@@ -35,6 +37,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/developers" element={<Developers />} />
+              <Route path="/agents" element={<Agents />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />

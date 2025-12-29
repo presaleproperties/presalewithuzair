@@ -1,63 +1,35 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Home, TrendingUp, Building2, Users } from "lucide-react";
+import { ArrowRight, Home, TrendingUp } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const segments = [
   {
     icon: Home,
-    title: "For Buyers & First-Time Buyers",
-    description: "Buying a presale without expert guidance is like signing a contract you don't fully understand.",
+    title: "First-Time Buyers",
+    description: "Buying your first presale condo is exciting — but without expert guidance, it's easy to make costly mistakes.",
     problems: [
-      "Overpaying for units in projects that won't appreciate",
+      "Buying with 5–10% deposit without understanding the risks",
       "Missing critical disclosure red flags",
+      "Not understanding contracts, GST, and timelines",
       "Getting locked into unfavorable deposit structures",
-      "Not understanding assignment restrictions",
     ],
-    solution: "Uzair reviews every disclosure document, negotiates deposits, and ensures you're buying into a project with real value potential.",
-    cta: "Book a Buyer Strategy Call",
+    solution: "Uzair reviews every disclosure document, negotiates deposits, and ensures you're buying into a project with real value potential — at no cost to you.",
+    cta: "See How I Help First-Time Buyers",
     note: "Working with a presale expert costs you $0 — the developer pays the commission.",
   },
   {
     icon: TrendingUp,
-    title: "For Investors",
+    title: "Investors",
     description: "Presales can be highly profitable — but only with the right strategy and risk management.",
     problems: [
       "Overleveraging with high deposit requirements",
       "No exit strategy if markets shift",
       "Buying projects with poor assignment terms",
-      "Timing the market without data",
+      "Treating assignment as a guarantee (it's not)",
     ],
     solution: "Uzair helps you maximize deposit leverage, plan assignment strategies as Plan B, and time entries based on market cycles — not hype.",
-    cta: "Book an Investor Strategy Call",
-    note: "Average ROI of 50%+ on strategically selected investments before completion.",
-  },
-  {
-    icon: Building2,
-    title: "For Developers",
-    description: "Launching a presale project requires more than marketing — it requires buyer psychology and strategic positioning.",
-    problems: [
-      "Slow absorption rates on new launches",
-      "Pricing misalignment with market expectations",
-      "Lack of realtor engagement and buy-in",
-      "No feedback loop from end buyers",
-    ],
-    solution: "Uzair provides launch strategy consulting, pricing guidance based on investor criteria, and direct access to a network of qualified buyers.",
-    cta: "Discuss Developer Advisory",
-    note: "Founder of Vancouver's Largest Presale Expo — 1,000+ realtors trained.",
-  },
-  {
-    icon: Users,
-    title: "For Realtors & Agents",
-    description: "Most agents don't fully understand presales — and it's costing them deals and credibility.",
-    problems: [
-      "Clients asking questions you can't answer",
-      "Missing out on presale inventory access",
-      "Not understanding disclosure documents",
-      "Losing investors to presale specialists",
-    ],
-    solution: "Uzair offers mentorship, education, and strategic exposure to presale inventory through the Vancouver Presale Expo and ongoing training.",
-    cta: "Learn About Agent Training",
-    note: "Founder of Vancouver Presale Expo — the largest presale training event for agents.",
+    cta: "See How I Help Investors",
+    note: "Deposit leverage strategies + assignment planning for risk-managed investing.",
   },
 ];
 
@@ -68,12 +40,12 @@ export const AudienceSegmentSection = () => {
     <section className="py-24 bg-background">
       <div className="container-xl">
         <div className="text-center mb-16">
-          <p className="section-label mb-4">Who Uzair Helps</p>
+          <p className="section-label mb-4">Who This Is For</p>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-            Presale Guidance for <span className="text-gradient">Every Stakeholder</span>
+            Presale Guidance for <span className="text-gradient">Buyers & Investors</span>
           </h2>
           <p className="mt-4 text-foreground/70 max-w-2xl mx-auto">
-            Whether you're buying your first home, building a portfolio, launching a project, or advising clients — presales require specialized expertise.
+            Whether you're buying your first home or building an investment portfolio — presales require specialized expertise.
           </p>
         </div>
 
@@ -96,7 +68,7 @@ export const AudienceSegmentSection = () => {
               </div>
 
               <div className="mb-6">
-                <p className="text-sm font-medium text-foreground/80 mb-3">Common problems:</p>
+                <p className="text-sm font-medium text-foreground/80 mb-3">Common challenges:</p>
                 <ul className="space-y-2">
                   {segment.problems.map((problem, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">

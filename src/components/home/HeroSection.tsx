@@ -29,23 +29,23 @@ export const HeroSection = () => {
               </div>
               
               <h1 className="font-display text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] animate-fade-up delay-100">
-                <span className="text-foreground">I help buyers, investors & developers navigate presales</span>{" "}
+                <span className="text-foreground">I help first-time buyers and investors secure presale condos & townhomes in BC</span>{" "}
                 <span className="text-gradient">— strategically and safely.</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl animate-fade-up delay-200">
-                $150M+ in presales closed. 220+ units. Presale-only focus across Metro Vancouver & Fraser Valley.
+                $150M+ in presales | 220+ units | Presale-only specialist across Metro Vancouver & Fraser Valley.
               </p>
 
               {/* Trust Bullets */}
               <ul className="space-y-2 animate-fade-up delay-250">
                 <li className="flex items-center gap-2 text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span>Presale-only specialization (not resale)</span>
+                  <span>Presale-only focus (not resale)</span>
                 </li>
                 <li className="flex items-center gap-2 text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span>Access to off-market and early launches</span>
+                  <span>Early access + off-market inventory</span>
                 </li>
                 <li className="flex items-center gap-2 text-foreground/80">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />

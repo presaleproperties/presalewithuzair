@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 import uzairImage from "@/assets/uzair-hero.jpeg";
 
 const formSchema = z.object({
@@ -13,9 +14,19 @@ const formSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
   buyerType: z.string().min(1, "Please select an option"),
+  leadSource: z.string().min(1, "Please let us know how you found us"),
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const leadSources = [
+  { value: "instagram", label: "Instagram" },
+  { value: "tiktok", label: "TikTok" },
+  { value: "youtube", label: "YouTube" },
+  { value: "referral", label: "Referral / Friend" },
+  { value: "google", label: "Google Search" },
+  { value: "other", label: "Other" },
+];
 
 export const LeadCaptureSection = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -24,6 +35,7 @@ export const LeadCaptureSection = () => {
     email: "",
     phone: "",
     buyerType: "",
+    leadSource: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -44,16 +56,30 @@ export const LeadCaptureSection = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call - replace with actual lead capture integration
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    
-    toast({
-      title: "Thanks for reaching out!",
-      description: "We'll be in touch soon.",
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke('capture-lead', {
+        body: formData,
+      });
+
+      if (error) {
+        throw new Error(error.message || 'Failed to submit');
+      }
+
+      setIsSuccess(true);
+      toast({
+        title: "Thanks for reaching out!",
+        description: "We'll be in touch soon.",
+      });
+    } catch (err) {
+      console.error("Form submission error:", err);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSuccess) {
@@ -111,93 +137,94 @@ export const LeadCaptureSection = () => {
 
           {/* Right - Form */}
           <div className="max-w-md mx-auto lg:mx-0 w-full">
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground uppercase tracking-tight mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground uppercase tracking-tight mb-3">
               READY TO BUY PRESALE?
             </h2>
             
-            <p className="text-base sm:text-lg text-muted-foreground mb-2">
-              <span className="text-foreground font-semibold">If you're looking to buy a presale condo</span> with VIP access, expert guidance, and zero pressure — let's connect!
-            </p>
-            
-            <p className="text-sm sm:text-base text-muted-foreground mb-8">
-              Fill out the form below, and we'll reach out to see if we're a fit.
+            <p className="text-sm sm:text-base text-muted-foreground mb-6">
+              <span className="text-foreground font-semibold">Get VIP access, expert guidance, and zero pressure.</span>{" "}
+              Fill out the form and we'll reach out to see if we're a fit.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* First Name */}
-              <div>
-                <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-1.5">
-                  First Name *
-                </label>
-                <Input
-                  id="firstName"
-                  type="text"
-                  placeholder="First Name"
-                  value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary"
-                  required
-                />
-              </div>
-
-              {/* Last Name */}
-              <div>
-                <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-1.5">
-                  Last Name *
-                </label>
-                <Input
-                  id="lastName"
-                  type="text"
-                  placeholder="Last Name"
-                  value={formData.lastName}
-                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary"
-                  required
-                />
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              {/* Name Row - Side by side on mobile */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label htmlFor="firstName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
+                    First Name *
+                  </label>
+                  <Input
+                    id="firstName"
+                    type="text"
+                    placeholder="First"
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                    autoComplete="given-name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
+                    Last Name *
+                  </label>
+                  <Input
+                    id="lastName"
+                    type="text"
+                    placeholder="Last"
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                    autoComplete="family-name"
+                    required
+                  />
+                </div>
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
                   Email *
                 </label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Email"
+                  placeholder="you@email.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary"
+                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                  autoComplete="email"
                   required
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1.5">
+                <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
                   Phone *
                 </label>
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder="Phone"
+                  placeholder="(604) 555-1234"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary"
+                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                  autoComplete="tel"
                   required
                 />
               </div>
 
               {/* Buyer Type */}
               <div>
-                <label htmlFor="buyerType" className="block text-sm font-medium text-foreground mb-1.5">
+                <label htmlFor="buyerType" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
                   I am a... *
                 </label>
                 <Select
                   value={formData.buyerType}
                   onValueChange={(value) => setFormData({ ...formData, buyerType: value })}
                 >
-                  <SelectTrigger className="h-12 text-base bg-card/50 border-border/50 focus:border-primary">
+                  <SelectTrigger className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation">
                     <SelectValue placeholder="Select one" />
                   </SelectTrigger>
                   <SelectContent>
@@ -210,12 +237,34 @@ export const LeadCaptureSection = () => {
                 </Select>
               </div>
 
+              {/* Lead Source - How did you find me */}
+              <div>
+                <label htmlFor="leadSource" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
+                  How did you find me? *
+                </label>
+                <Select
+                  value={formData.leadSource}
+                  onValueChange={(value) => setFormData({ ...formData, leadSource: value })}
+                >
+                  <SelectTrigger className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation">
+                    <SelectValue placeholder="Select one" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {leadSources.map((source) => (
+                      <SelectItem key={source.value} value={source.value}>
+                        {source.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
               {/* Submit Button */}
               <Button
                 type="submit"
                 variant="hero"
                 size="xl"
-                className="w-full h-14 text-base font-semibold rounded-lg mt-6"
+                className="w-full h-14 text-base font-semibold rounded-lg mt-4"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -228,7 +277,7 @@ export const LeadCaptureSection = () => {
                 )}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center mt-4">
+              <p className="text-xs text-muted-foreground text-center mt-3">
                 By submitting, you agree to receive communications from us. We respect your privacy.
               </p>
             </form>

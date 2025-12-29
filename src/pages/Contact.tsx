@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
+import uzairImage from "@/assets/uzair-expo-profile.jpg";
 
 const Contact = () => {
   const { openCalendly } = useCalendly();
@@ -112,7 +113,15 @@ const Contact = () => {
               </div>
 
               {/* Quick Actions */}
-              <div className="bg-card rounded-2xl p-8 lg:p-12 border border-border">
+              <div className="bg-card rounded-2xl overflow-hidden border border-border">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={uzairImage} 
+                    alt="Uzair Muhammad" 
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="p-8 lg:p-12">
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6">
                   Book a Consultation
                 </h3>
@@ -166,6 +175,7 @@ const Contact = () => {
                       <p className="text-xs text-muted-foreground">Rating</p>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

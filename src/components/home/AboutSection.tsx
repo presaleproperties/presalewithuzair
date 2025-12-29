@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import consultingImage from "@/assets/uzair-floorplan-consultation.jpg";
+import consultingImage from "@/assets/uzair-brochure-review.jpg";
 
 export const AboutSection = () => {
   return (

@@ -202,8 +202,8 @@ const Agents = () => {
                   <p className="text-sm text-muted-foreground">Realtors Trained</p>
                 </div>
                 <div className="p-6 bg-card rounded-xl border border-border text-center">
-                  <p className="text-3xl font-display font-bold text-gradient">20+</p>
-                  <p className="text-sm text-muted-foreground">Developer Partners</p>
+                  <p className="text-3xl font-display font-bold text-gradient">$200M+</p>
+                  <p className="text-sm text-muted-foreground">Presales Closed</p>
                 </div>
                 <div className="p-6 bg-card rounded-xl border border-border text-center">
                   <p className="text-3xl font-display font-bold text-gradient">#1</p>

@@ -40,7 +40,7 @@ const outcomes = [
     description: "Through Vancouver Presale Expo — the largest presale education event in BC.",
   },
   {
-    metric: "$150M+",
+    metric: "$200M+",
     label: "Presales Closed",
     description: "Direct experience with buyer behavior across Vancouver, Surrey, Langley, and Fraser Valley.",
   },

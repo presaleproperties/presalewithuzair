@@ -129,9 +129,6 @@ const Index = () => {
         {/* Process Steps */}
         <ProcessSection />
         
-        {/* Mid-page CTA */}
-        <MidPageCTA />
-        
         {/* Who This Is For */}
         <BookingContextSection />
         

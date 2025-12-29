@@ -9,7 +9,7 @@ import { ProcessSection } from "@/components/home/ProcessSection";
 import { InvestmentSection } from "@/components/home/InvestmentSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 
-import { RiskRealitySection } from "@/components/home/RiskRealitySection";
+
 import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
@@ -120,7 +120,7 @@ const Index = () => {
         <InvestmentSection />
         <TestimonialsSection />
         
-        <RiskRealitySection />
+        
         <BookingContextSection />
         <BlogPreviewSection />
         <FinalCTASection />

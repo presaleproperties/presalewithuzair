@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -16,6 +16,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +29,20 @@ export const Navbar = () => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
+
+  const scrollToForm = () => {
+    // If not on homepage, navigate there first
+    if (location.pathname !== "/") {
+      navigate("/#lead-form");
+      return;
+    }
+    
+    document.getElementById("lead-form")?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "start"
+    });
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <nav
@@ -50,15 +65,14 @@ export const Navbar = () => {
 
           {/* Mobile CTA + Menu */}
           <div className="flex lg:hidden items-center gap-3">
-            <a
-              href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button 
+              variant="hero" 
+              size="sm" 
+              className="rounded-full px-4 py-2 text-sm font-semibold"
+              onClick={scrollToForm}
             >
-              <Button variant="hero" size="sm" className="rounded-full px-4 py-2 text-sm font-semibold">
-                Work with Me
-              </Button>
-            </a>
+              Work with Me
+            </Button>
             <button
               className="p-2 text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -86,16 +100,14 @@ export const Navbar = () => {
 
           {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="rounded-full"
+              onClick={scrollToForm}
             >
-              <Button variant="hero" size="lg" className="gap-2 rounded-full">
-                <Phone className="h-4 w-4" />
-                Book A Call
-              </Button>
-            </a>
+              Work with Me
+            </Button>
           </div>
         </div>
       </div>
@@ -122,17 +134,16 @@ export const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <a
-            href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block pt-4"
-          >
-            <Button variant="hero" size="lg" className="w-full gap-2 rounded-full">
-              <Phone className="h-4 w-4" />
-              Book A Call
+          <div className="pt-4">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="w-full rounded-full"
+              onClick={scrollToForm}
+            >
+              Work with Me
             </Button>
-          </a>
+          </div>
         </div>
       </div>
     </nav>

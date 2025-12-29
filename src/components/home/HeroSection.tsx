@@ -94,12 +94,15 @@ export const HeroSection = () => {
                 variant="hero" 
                 size="xl" 
                 className="gap-2 w-full sm:w-auto text-sm sm:text-base h-12 sm:h-14"
-                asChild
+                onClick={() => {
+                  document.getElementById("lead-form")?.scrollIntoView({ 
+                    behavior: "smooth",
+                    block: "start"
+                  });
+                }}
               >
-                <a href="#lead-form">
-                  {content.cta}
-                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                </a>
+                {content.cta}
+                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
               
               {/* Micro-trust */}

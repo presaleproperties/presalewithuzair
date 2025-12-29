@@ -1,12 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Send, CheckCircle } from "lucide-react";
+import { Calendar, CheckCircle } from "lucide-react";
 import { z } from "zod";
+
+declare global {
+  interface Window {
+    Calendly?: {
+      initPopupWidget: (options: {
+        url: string;
+        prefill?: {
+          name?: string;
+          email?: string;
+          customAnswers?: Record<string, string>;
+        };
+        pageSettings?: {
+          backgroundColor?: string;
+          hideEventTypeDetails?: boolean;
+          hideLandingPageDetails?: boolean;
+          primaryColor?: string;
+          textColor?: string;
+          hideGdprBanner?: boolean;
+        };
+      }) => void;
+    };
+  }
+}
+
+const CALENDLY_URL = "https://calendly.com/meetuzair/30min";
 
 const agentFormSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -21,12 +46,64 @@ const agentFormSchema = z.object({
 
 type AgentFormData = z.infer<typeof agentFormSchema>;
 
+const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  ) || window.innerWidth < 768;
+};
+
 export const AgentContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState<Partial<AgentFormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof AgentFormData, string>>>({});
+
+  useEffect(() => {
+    // Load Calendly CSS
+    const existingLink = document.querySelector('link[href*="calendly.com/assets/external/widget.css"]');
+    if (!existingLink) {
+      const link = document.createElement("link");
+      link.href = "https://assets.calendly.com/assets/external/widget.css";
+      link.rel = "stylesheet";
+      document.head.appendChild(link);
+    }
+
+    // Load Calendly JS
+    const existingScript = document.querySelector('script[src*="calendly.com/assets/external/widget.js"]');
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  const openCalendlyWithPrefill = useCallback((data: AgentFormData) => {
+    const isMobile = isMobileDevice();
+    
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: CALENDLY_URL,
+        prefill: {
+          name: data.name,
+          email: data.email,
+          customAnswers: {
+            a1: data.phone,
+            a2: `Brokerage: ${data.brokerage || "Not specified"} | Experience: ${data.experience} | Presale Experience: ${data.presaleExperience} | Interest: ${data.interest}${data.message ? ` | Message: ${data.message}` : ""}`,
+          },
+        },
+        pageSettings: {
+          backgroundColor: "0c0a09",
+          primaryColor: "d4a853",
+          textColor: "fafaf9",
+          hideGdprBanner: true,
+          hideEventTypeDetails: isMobile,
+          hideLandingPageDetails: isMobile,
+        },
+      });
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,31 +124,17 @@ export const AgentContactForm = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Brief delay for UX
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // Build WhatsApp message
-    const message = `Hi Uzair, I'm interested in learning about presales.
-
-Name: ${result.data.name}
-Email: ${result.data.email}
-Phone: ${result.data.phone}
-Brokerage: ${result.data.brokerage || "Not specified"}
-Experience: ${result.data.experience}
-Presale Experience: ${result.data.presaleExperience}
-Interest: ${result.data.interest}
-${result.data.message ? `\nMessage: ${result.data.message}` : ""}`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/17782313592?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, "_blank");
+    // Open Calendly with prefilled data
+    openCalendlyWithPrefill(result.data);
 
     setIsSubmitting(false);
     setIsSubmitted(true);
     toast({
       title: "Form submitted!",
-      description: "Redirecting you to WhatsApp to connect with Uzair.",
+      description: "Schedule your call with Uzair.",
     });
   };
 
@@ -223,12 +286,12 @@ ${result.data.message ? `\nMessage: ${result.data.message}` : ""}`;
       </div>
 
       <Button type="submit" variant="hero" size="lg" className="w-full gap-2" disabled={isSubmitting}>
-        <Send className="h-4 w-4" />
-        {isSubmitting ? "Submitting..." : "Submit & Connect on WhatsApp"}
+        <Calendar className="h-4 w-4" />
+        {isSubmitting ? "Submitting..." : "Submit & Schedule a Call"}
       </Button>
 
       <p className="text-xs text-muted-foreground text-center">
-        By submitting, you'll be redirected to WhatsApp to continue the conversation with Uzair.
+        After submitting, you'll be able to schedule a call with Uzair.
       </p>
     </form>
   );

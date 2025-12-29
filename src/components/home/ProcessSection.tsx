@@ -1,9 +1,9 @@
 import { MessageSquare, Search, FileText, Home, TrendingUp, Headphones } from "lucide-react";
-import consultingImage from "@/assets/uzair-consulting.jpeg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import presaleBuilding from "@/assets/presale-building.jpg";
-import floorplanImage from "@/assets/uzair-floorplan.jpg";
-import showroomImage from "@/assets/uzair-showroom.jpg";
-import investmentMeeting from "@/assets/investment-meeting.jpeg";
+import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
+import showroomImage from "@/assets/uzair-showroom-tour.jpg";
+import expoImage from "@/assets/uzair-expo-crowd.jpg";
 import clientsImage from "@/assets/uzair-clients.jpg";
 
 const steps = [
@@ -12,7 +12,7 @@ const steps = [
     step: "01",
     title: "Understand Your Goals",
     description: "We start with a strategy call to understand your timeline, budget, risk tolerance, and whether you're buying for investment, personal use, or both.",
-    image: consultingImage,
+    image: clientMeetingImage,
   },
   {
     icon: Search,
@@ -40,7 +40,7 @@ const steps = [
     step: "05",
     title: "Plan Your Exit",
     description: "Whether you're holding to completion or planning an assignment, we establish your exit strategy from day one — including market triggers and timing.",
-    image: investmentMeeting,
+    image: expoImage,
   },
   {
     icon: Headphones,

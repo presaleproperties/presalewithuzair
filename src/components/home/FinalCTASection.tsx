@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import uzairImage from "@/assets/uzair-hero.jpeg";
+import uzairImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
   const scrollToForm = () => {

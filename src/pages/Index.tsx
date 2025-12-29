@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { AudienceSegmentSection } from "@/components/home/AudienceSegmentSection";
+import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { CaseStudiesSection } from "@/components/home/CaseStudiesSection";
 import { DifferentiationSection } from "@/components/home/DifferentiationSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
@@ -113,6 +114,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <LeadCaptureSection />
         <AudienceSegmentSection />
         <DifferentiationSection />
         <ProcessSection />

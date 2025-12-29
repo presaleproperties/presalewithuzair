@@ -65,10 +65,10 @@ export const CaseStudiesSection = () => {
       <div className="container-xl px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">Real Results</p>
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
             Case <span className="text-gradient">Studies</span>
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
             Real scenarios, real strategies, real outcomes. Names withheld for privacy — numbers speak for themselves.
           </p>
         </div>

@@ -58,17 +58,17 @@ export const DifferentiationSection = () => {
       <div className="container-xl px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">Why Expertise Matters</p>
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
             Presale Expert vs. <span className="text-gradient">Regular Realtor</span>
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
             Presales are fundamentally different from resale transactions. Most agents treat them the same — and their clients pay the price.
           </p>
         </div>
 
         {/* Why Presales Are Different */}
         <div className="mb-10 sm:mb-16">
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center">
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8 text-center uppercase tracking-tight">
             Why Presales Require Specialized Expertise
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">

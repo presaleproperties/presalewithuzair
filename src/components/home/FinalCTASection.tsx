@@ -12,7 +12,7 @@ export const FinalCTASection = () => {
       
       <div className="container-xl relative z-10 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 uppercase tracking-tight">
             Talk to a Presale Specialist <span className="text-gradient">Before You Commit.</span>
           </h2>
           <p className="text-base sm:text-xl text-foreground/80 mb-6 sm:mb-8 max-w-2xl mx-auto">

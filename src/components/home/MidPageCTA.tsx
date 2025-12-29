@@ -1,0 +1,34 @@
+import { Button } from "@/components/ui/button";
+
+interface MidPageCTAProps {
+  quote?: string;
+}
+
+export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
+  const scrollToForm = () => {
+    document.getElementById("lead-form")?.scrollIntoView({ 
+      behavior: "smooth",
+      block: "start"
+    });
+  };
+
+  return (
+    <section className="py-12 sm:py-16 bg-card">
+      <div className="container-xl px-4 sm:px-6 text-center">
+        {quote && (
+          <p className="text-lg sm:text-xl text-foreground/80 italic mb-6 max-w-2xl mx-auto">
+            "{quote}"
+          </p>
+        )}
+        <Button 
+          variant="outline"
+          size="lg"
+          className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
+          onClick={scrollToForm}
+        >
+          Work With Me
+        </Button>
+      </div>
+    </section>
+  );
+};

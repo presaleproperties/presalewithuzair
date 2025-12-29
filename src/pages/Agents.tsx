@@ -2,38 +2,90 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Phone, GraduationCap, FileText, Users, TrendingUp, AlertTriangle, CheckCircle } from "lucide-react";
+import { Phone, FileText, TrendingUp, Users, Target, Mail, Megaphone, Settings, Calendar, CheckCircle, ArrowRight } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
 
-const learningAreas = [
+const day1Modules = [
   {
     icon: FileText,
-    title: "Disclosure Documents",
-    description: "How to read and interpret presale disclosure statements, identify red flags, and protect your clients.",
+    title: "Presale Contracts",
+    items: [
+      "Review a presale contract — full breakdown",
+      "Add addendums properly",
+      "Cancel presale contracts when needed",
+      "Get extensions from developers",
+      "Protect your client's best interest",
+    ],
+  },
+  {
+    icon: Megaphone,
+    title: "Marketing & Lead Generation",
+    items: [
+      "Generate free leads consistently",
+      "Run paid ads (Facebook, YouTube)",
+      "Pull deals from past clients",
+      "Create content that attracts presale buyers",
+    ],
+  },
+  {
+    icon: Settings,
+    title: "Systems & Automations",
+    items: [
+      "Set up your CRM for presale projects",
+      "Smart plans based on project timelines",
+      "Email marketing + templates",
+      "Virtually sell presale units",
+      "Prepare for first access and sell in bulk",
+    ],
   },
   {
     icon: TrendingUp,
-    title: "Assignment Strategy",
-    description: "Understanding assignment clauses, timing, marketing, and how to guide clients through the process.",
-  },
-  {
-    icon: Users,
-    title: "Investor Psychology",
-    description: "What investors look for in presales — deposit structures, ROI expectations, and exit strategies.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Contract & GST Knowledge",
-    description: "The specifics of presale contracts, deposit structures, GST rebates, and closing timelines.",
+    title: "Assignment Contracts",
+    items: [
+      "Get developer approvals",
+      "Market assignments on and off market",
+      "Draft assignment contracts",
+      "Move funds in an assignment",
+      "Structure deals to maximize client returns",
+      "Negotiate commissions & payouts",
+    ],
   },
 ];
 
-const blindSpots = [
-  "Clients asking questions you can't confidently answer",
-  "Missing out on presale inventory access",
-  "Losing investors to presale specialists",
-  "Not understanding disclosure documents",
-  "Guessing on assignment rules and timelines",
+const day2Modules = [
+  {
+    icon: Target,
+    title: "Deals & Negotiations",
+    items: [
+      "Pick the right projects",
+      "Structure deals for different buyer types",
+      "Negotiate with developers",
+      "Earn more commission",
+      "Wholesale units strategically",
+    ],
+  },
+  {
+    icon: Users,
+    title: "Showhome Preview (In Person)",
+    items: [
+      "Prepare for a preview properly",
+      "Investor presentation techniques",
+      "First-time buyer presentation",
+      "Step-by-step process",
+      "Follow-up with clients after preview",
+    ],
+  },
+  {
+    icon: Calendar,
+    title: "Follow-Up Strategy Session (VIP)",
+    items: [
+      "Systems & CRM automation review",
+      "Lead generation optimization",
+      "Implementing your presale business plan",
+      "1-on-1 strategy session with Uzair",
+      "Q&A and ongoing support",
+    ],
+  },
 ];
 
 const Agents = () => {
@@ -42,20 +94,20 @@ const Agents = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Education & Training for Realtors | Uzair Muhammad</title>
+        <title>Vancouver Presale Academy | Presale Training for Realtors | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Presale education and mentorship for realtors in BC. Learn disclosure documents, assignment strategy, and investor psychology. Founder of Vancouver Presale Expo."
+          content="Vancouver Presale Academy — the immersion program for real estate agents. Learn presale contracts, assignments, lead generation, and negotiation. Founded by Uzair Muhammad, $200M+ in presales."
         />
-        <meta name="keywords" content="presale training for realtors, presale education BC, presale mentor for agents, realtor presale course, presale certification, Vancouver Presale Expo" />
+        <meta name="keywords" content="presale training for realtors, presale education BC, presale mentor for agents, Vancouver Presale Academy, presale course for agents, assignment training, presale certification" />
         <link rel="canonical" href="https://presalewithuzair.com/agents" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
-            "name": "Presale Education by Uzair Muhammad",
-            "description": "Presale education and mentorship for real estate agents in British Columbia.",
-            "founder": {
+            "@type": "Course",
+            "name": "Vancouver Presale Academy",
+            "description": "Presale immersion program for real estate agents in Vancouver. Learn contracts, assignments, lead generation, and negotiation strategies.",
+            "provider": {
               "@type": "Person",
               "name": "Uzair Muhammad"
             },
@@ -81,133 +133,171 @@ const Agents = () => {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-medium text-primary">For Realtors</span>
+                <span className="text-sm font-medium text-primary">Vancouver Presale Academy</span>
               </div>
 
               <h1 className="font-display text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] mb-6">
-                <span className="text-foreground">Presale Education & Strategy</span>{" "}
-                <span className="text-gradient">for Realtors</span>
+                <span className="text-foreground">Where Agents Master</span>{" "}
+                <span className="text-gradient">The Art of Selling Presales</span>
               </h1>
 
-              <p className="text-xl text-muted-foreground mb-8">
-                Most agents don't fully understand presales — and it's costing them deals and credibility. Learn from the founder of Vancouver's largest presale event.
+              <p className="text-xl text-muted-foreground mb-4">
+                Presale Immersion Program for Real Estate Agents in Vancouver
               </p>
 
-              <Button variant="hero" size="xl" className="gap-2" onClick={openCalendly}>
-                <Phone className="h-5 w-5" />
-                Learn Presales the Right Way
-              </Button>
+              <p className="text-foreground/70 mb-8">
+                This program is for agents who want to GROW their business and sell more presale units without losing resale business. Whether you're experienced or just getting started — this is a high-level, step-by-step process for selling presales in any market.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="hero" size="xl" className="gap-2" asChild>
+                  <a href="https://vancouverpresaleacademy.com/#tickets-1" target="_blank" rel="noopener noreferrer">
+                    <Mail className="h-5 w-5" />
+                    Join the Waitlist
+                  </a>
+                </Button>
+                <Button variant="outline" size="xl" className="gap-2" onClick={openCalendly}>
+                  <Phone className="h-5 w-5" />
+                  Talk to Uzair First
+                </Button>
+              </div>
+
+              <p className="text-sm text-primary mt-4">Coming Fall 2025</p>
             </div>
           </div>
         </section>
 
-        {/* The Blind Spot */}
+        {/* Proof Stats */}
+        <section className="py-16 bg-card border-y border-border">
+          <div className="container-xl">
+            <div className="grid sm:grid-cols-4 gap-8 text-center">
+              <div>
+                <p className="text-3xl font-display font-bold text-gradient">$200M+</p>
+                <p className="text-sm text-muted-foreground">Sold in Presales</p>
+              </div>
+              <div>
+                <p className="text-3xl font-display font-bold text-gradient">300+</p>
+                <p className="text-sm text-muted-foreground">Units Sold</p>
+              </div>
+              <div>
+                <p className="text-3xl font-display font-bold text-gradient">$26M+</p>
+                <p className="text-sm text-muted-foreground">In Assignments</p>
+              </div>
+              <div>
+                <p className="text-3xl font-display font-bold text-gradient">$2M+</p>
+                <p className="text-sm text-muted-foreground">GCI as Solo Agent</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Day 1 Curriculum */}
         <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <p className="section-label mb-4">The Reality</p>
-                <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                  Why Presales Are a <span className="text-gradient">Blind Spot</span>
-                </h2>
-                <p className="text-foreground/70 mb-8">
-                  Presales are fundamentally different from resale transactions. Different contracts, different timelines, different risks. Most agents learn this the hard way — or lose deals to specialists who understand the nuances.
-                </p>
-
-                <div className="p-6 bg-card rounded-xl border border-border">
-                  <div className="flex items-center gap-2 mb-4">
-                    <AlertTriangle className="h-5 w-5 text-destructive" />
-                    <p className="font-medium text-foreground">Common Agent Challenges</p>
-                  </div>
-                  <ul className="space-y-3">
-                    {blindSpots.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-muted-foreground">
-                        <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 mt-2 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="p-8 bg-primary/5 rounded-2xl border border-primary/10">
-                <p className="section-label mb-4">The Solution</p>
-                <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                  Presale Knowledge = Competitive Edge
-                </h3>
-                <p className="text-foreground/70 mb-6">
-                  Uzair has trained over 1,000 realtors through the Vancouver Presale Expo — the largest presale education event in BC. This isn't theory — it's practical, deal-focused knowledge.
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    "Confidently answer client questions",
-                    "Access presale inventory and launches",
-                    "Win investor clients from specialists",
-                    "Understand contracts and protect clients",
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-foreground/80">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* What You'll Learn */}
-        <section className="py-24 bg-card">
-          <div className="container-xl">
             <div className="text-center mb-16">
-              <p className="section-label mb-4">Presale Education</p>
+              <p className="section-label mb-4">Day 1 Curriculum</p>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-                What <span className="text-gradient">You'll Learn</span>
+                What You'll <span className="text-gradient">Learn</span>
               </h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {learningAreas.map((area) => (
+              {day1Modules.map((module) => (
                 <div
-                  key={area.title}
-                  className="bg-background rounded-2xl border border-border p-8 hover:border-primary/30 transition-all duration-300"
+                  key={module.title}
+                  className="bg-card rounded-2xl border border-border p-8 hover:border-primary/30 transition-all duration-300"
                 >
-                  <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4">
-                    <area.icon className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-primary/10">
+                      <module.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-xl font-bold text-foreground">
+                      {module.title}
+                    </h3>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                    {area.title}
-                  </h3>
-                  <p className="text-muted-foreground">{area.description}</p>
+                  <ul className="space-y-3">
+                    {module.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-foreground/80">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Vancouver Presale Expo */}
+        {/* Day 2 Curriculum */}
+        <section className="py-24 bg-card">
+          <div className="container-xl">
+            <div className="text-center mb-16">
+              <p className="section-label mb-4">Day 2 Curriculum</p>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+                Advanced <span className="text-gradient">Training</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {day2Modules.map((module) => (
+                <div
+                  key={module.title}
+                  className="bg-background rounded-2xl border border-border p-8 hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="p-3 rounded-xl bg-primary/10">
+                      <module.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-display text-lg font-bold text-foreground">
+                      {module.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {module.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About Uzair */}
         <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="section-label mb-4">Vancouver Presale Expo</p>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                BC's Largest <span className="text-gradient">Presale Event</span>
+            <div className="max-w-3xl mx-auto">
+              <p className="section-label mb-4 text-center">Founder & Coach</p>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-8 text-center">
+                Learn From <span className="text-gradient">Uzair Muhammad</span>
               </h2>
-              <p className="text-foreground/70 mb-8">
-                Uzair founded the Vancouver Presale Expo — bringing together developers, investors, and realtors for education, networking, and deal flow. Over 1,000 realtors trained and counting.
-              </p>
-              <div className="grid sm:grid-cols-3 gap-6 mb-8">
-                <div className="p-6 bg-card rounded-xl border border-border text-center">
-                  <p className="text-3xl font-display font-bold text-gradient">1,000+</p>
-                  <p className="text-sm text-muted-foreground">Realtors Trained</p>
-                </div>
-                <div className="p-6 bg-card rounded-xl border border-border text-center">
-                  <p className="text-3xl font-display font-bold text-gradient">$200M+</p>
-                  <p className="text-sm text-muted-foreground">Presales Closed</p>
-                </div>
-                <div className="p-6 bg-card rounded-xl border border-border text-center">
-                  <p className="text-3xl font-display font-bold text-gradient">#1</p>
-                  <p className="text-sm text-muted-foreground">Presale Event in BC</p>
+              
+              <div className="bg-card rounded-2xl border border-border p-8">
+                <p className="text-foreground/80 mb-6">
+                  As a leading Presale Expert in Vancouver, Uzair has achieved remarkable success — selling over $200M in presales as a solo agent.
+                </p>
+                <p className="text-foreground/80 mb-6">
+                  In less than 3 years, Uzair built his business from the ground up — selling 300+ units without a team, generating over $2M in GCI. The secret? His systems, processes, automations, and tailored marketing strategy.
+                </p>
+                <p className="text-foreground/80 mb-8">
+                  Vancouver Presale Academy is designed to empower fellow agents with the strategies and insights needed to excel in the lucrative presale market.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button variant="outline" className="gap-2" asChild>
+                    <a href="https://www.instagram.com/presalewithuzair" target="_blank" rel="noopener noreferrer">
+                      Follow on Instagram
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" className="gap-2" onClick={openCalendly}>
+                    <Phone className="h-4 w-4" />
+                    Book a Call
+                  </Button>
                 </div>
               </div>
             </div>
@@ -219,14 +309,16 @@ const Agents = () => {
           <div className="container-xl">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Ready to Master <span className="text-gradient">Presales?</span>
+                Are You <span className="text-gradient">Ready?</span>
               </h2>
               <p className="text-foreground/70 mb-8">
-                Whether you're looking for one-on-one mentorship, workshop training, or access to presale inventory — start the conversation.
+                Join the waitlist for Vancouver Presale Academy. Limited spots available for Fall 2025.
               </p>
-              <Button variant="hero" size="xl" className="gap-2" onClick={openCalendly}>
-                <Phone className="h-5 w-5" />
-                Learn Presales the Right Way
+              <Button variant="hero" size="xl" className="gap-2" asChild>
+                <a href="https://vancouverpresaleacademy.com/#tickets-1" target="_blank" rel="noopener noreferrer">
+                  <Mail className="h-5 w-5" />
+                  Join the Waitlist
+                </a>
               </Button>
             </div>
           </div>

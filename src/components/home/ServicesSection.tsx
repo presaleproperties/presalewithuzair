@@ -1,26 +1,26 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import presaleImage from "@/assets/presale-building.jpg";
-import assignmentImage from "@/assets/assignments-building.jpg";
-import meetingImage from "@/assets/business-meeting.jpeg";
+import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
+import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 
 const services = [
   {
     title: "Presales",
     description: "Thinking of buying a presale condo for investment or personal use? Get insider access to the best projects before they go public.",
-    image: presaleImage,
+    image: showroomTourImage,
     link: "/services",
   },
   {
     title: "Assignments",
     description: "Bought a presale and looking to assign it before completion? We specialize in maximizing your returns on assignment sales.",
-    image: assignmentImage,
+    image: floorplanImage,
     link: "/services",
   },
   {
     title: "Resale",
     description: "Thinking of buying or selling a resale property? We help our clients with complete real estate transactions.",
-    image: meetingImage,
+    image: clientMeetingImage,
     link: "/services",
   },
 ];

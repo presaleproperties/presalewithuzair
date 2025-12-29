@@ -61,50 +61,50 @@ const caseStudies = [
 
 export const CaseStudiesSection = () => {
   return (
-    <section className="py-24 bg-card">
-      <div className="container-xl">
-        <div className="text-center mb-16">
-          <p className="section-label mb-4">Real Results</p>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+    <section className="py-16 sm:py-24 bg-card">
+      <div className="container-xl px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="section-label mb-3 sm:mb-4">Real Results</p>
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Case <span className="text-gradient">Studies</span>
           </h2>
-          <p className="mt-4 text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
             Real scenarios, real strategies, real outcomes. Names withheld for privacy — numbers speak for themselves.
           </p>
         </div>
 
-        <div className="grid gap-8">
+        <div className="grid gap-5 sm:gap-8">
           {caseStudies.map((study, index) => (
             <div
               key={index}
-              className="bg-background rounded-2xl border border-border p-8 hover:border-primary/20 transition-all duration-300"
+              className="bg-background rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8 hover:border-primary/20 transition-all duration-300"
             >
-              <div className="flex flex-col lg:flex-row gap-8">
+              <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:gap-8">
                 {/* Header */}
                 <div className="lg:w-1/3">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <study.icon className="h-5 w-5 text-primary" />
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10">
+                      <study.icon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                     </div>
-                    <span className="text-sm font-medium text-primary">{study.type}</span>
+                    <span className="text-xs sm:text-sm font-medium text-primary">{study.type}</span>
                   </div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-4">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-4">
                     {study.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{study.situation}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{study.situation}</p>
                 </div>
 
                 {/* Strategy & Numbers */}
-                <div className="lg:w-1/3 space-y-4">
+                <div className="lg:w-1/3 space-y-3 sm:space-y-4">
                   <div>
-                    <p className="text-xs font-medium text-foreground/60 uppercase tracking-wider mb-2">Strategy</p>
-                    <p className="text-sm text-foreground/80">{study.strategy}</p>
+                    <p className="text-xs font-medium text-foreground/60 uppercase tracking-wider mb-1.5 sm:mb-2">Strategy</p>
+                    <p className="text-xs sm:text-sm text-foreground/80">{study.strategy}</p>
                   </div>
-                  <div className="p-4 bg-card rounded-xl border border-border">
-                    <p className="text-xs font-medium text-foreground/60 uppercase tracking-wider mb-3">Key Numbers</p>
-                    <div className="space-y-2">
+                  <div className="p-3 sm:p-4 bg-card rounded-lg sm:rounded-xl border border-border">
+                    <p className="text-xs font-medium text-foreground/60 uppercase tracking-wider mb-2 sm:mb-3">Key Numbers</p>
+                    <div className="space-y-1.5 sm:space-y-2">
                       {Object.entries(study.numbers).map(([key, value]) => (
-                        <div key={key} className="flex justify-between text-sm">
+                        <div key={key} className="flex justify-between text-xs sm:text-sm">
                           <span className="text-muted-foreground capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
                           <span className="font-semibold text-foreground">{value}</span>
                         </div>
@@ -114,14 +114,14 @@ export const CaseStudiesSection = () => {
                 </div>
 
                 {/* Outcome */}
-                <div className="lg:w-1/3 space-y-4">
-                  <div className="p-4 bg-primary/5 rounded-xl border border-primary/10">
-                    <p className="text-xs font-medium text-primary uppercase tracking-wider mb-2">Outcome</p>
-                    <p className="text-sm text-foreground/90">{study.outcome}</p>
+                <div className="lg:w-1/3 space-y-3 sm:space-y-4">
+                  <div className="p-3 sm:p-4 bg-primary/5 rounded-lg sm:rounded-xl border border-primary/10">
+                    <p className="text-xs font-medium text-primary uppercase tracking-wider mb-1.5 sm:mb-2">Outcome</p>
+                    <p className="text-xs sm:text-sm text-foreground/90">{study.outcome}</p>
                   </div>
-                  <div className="p-4 bg-destructive/5 rounded-xl border border-destructive/10">
-                    <p className="text-xs font-medium text-destructive uppercase tracking-wider mb-2">Risk Avoided</p>
-                    <p className="text-sm text-foreground/70">{study.riskAvoided}</p>
+                  <div className="p-3 sm:p-4 bg-destructive/5 rounded-lg sm:rounded-xl border border-destructive/10">
+                    <p className="text-xs font-medium text-destructive uppercase tracking-wider mb-1.5 sm:mb-2">Risk Avoided</p>
+                    <p className="text-xs sm:text-sm text-foreground/70">{study.riskAvoided}</p>
                   </div>
                 </div>
               </div>

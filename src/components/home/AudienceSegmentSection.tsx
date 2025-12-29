@@ -37,59 +37,59 @@ export const AudienceSegmentSection = () => {
   const { openCalendly } = useCalendly();
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container-xl">
-        <div className="text-center mb-16">
-          <p className="section-label mb-4">Who This Is For</p>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+    <section className="py-16 sm:py-24 bg-background">
+      <div className="container-xl px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="section-label mb-3 sm:mb-4">Who This Is For</p>
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             Presale Guidance for <span className="text-gradient">Buyers & Investors</span>
           </h2>
-          <p className="mt-4 text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
             Whether you're buying your first home or building an investment portfolio — presales require specialized expertise.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {segments.map((segment) => (
             <div
               key={segment.title}
-              className="bg-card rounded-2xl border border-border p-8 hover:border-primary/30 transition-all duration-300"
+              className="bg-card rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8 hover:border-primary/30 transition-all duration-300"
             >
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 rounded-xl bg-primary/10">
-                  <segment.icon className="h-6 w-6 text-primary" />
+              <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 flex-shrink-0">
+                  <segment.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-foreground">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-foreground">
                     {segment.title}
                   </h3>
-                  <p className="text-muted-foreground mt-1">{segment.description}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground mt-1">{segment.description}</p>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <p className="text-sm font-medium text-foreground/80 mb-3">Common challenges:</p>
-                <ul className="space-y-2">
+              <div className="mb-4 sm:mb-6">
+                <p className="text-xs sm:text-sm font-medium text-foreground/80 mb-2 sm:mb-3">Common challenges:</p>
+                <ul className="space-y-1.5 sm:space-y-2">
                   {segment.problems.map((problem, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 mt-2 flex-shrink-0" />
+                    <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-destructive/60 mt-1.5 sm:mt-2 flex-shrink-0" />
                       {problem}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mb-6 p-4 bg-primary/5 rounded-xl border border-primary/10">
-                <p className="text-sm text-foreground/90">{segment.solution}</p>
+              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-primary/5 rounded-lg sm:rounded-xl border border-primary/10">
+                <p className="text-xs sm:text-sm text-foreground/90">{segment.solution}</p>
               </div>
 
               {segment.note && (
-                <p className="text-xs text-primary mb-4">{segment.note}</p>
+                <p className="text-xs text-primary mb-3 sm:mb-4">{segment.note}</p>
               )}
 
               <Button
                 variant="outline"
-                className="gap-2 group"
+                className="gap-2 group w-full sm:w-auto text-sm h-11 sm:h-10"
                 onClick={openCalendly}
               >
                 {segment.cta}

@@ -41,37 +41,37 @@ const steps = [
 
 export const ProcessSection = () => {
   return (
-    <section className="py-24 bg-card">
-      <div className="container-xl">
-        <div className="text-center mb-16">
-          <p className="section-label mb-4">The Process</p>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+    <section className="py-16 sm:py-24 bg-card">
+      <div className="container-xl px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <p className="section-label mb-3 sm:mb-4">The Process</p>
+          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground">
             How We <span className="text-gradient">Work Together</span>
           </h2>
-          <p className="mt-4 text-foreground/70 max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto">
             A structured, transparent approach that protects your interests and maximizes your outcomes.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {steps.map((item, index) => (
             <div
               key={index}
-              className="relative bg-background rounded-2xl border border-border p-8 hover:border-primary/30 transition-all duration-300"
+              className="relative bg-background rounded-xl sm:rounded-2xl border border-border p-5 sm:p-8 hover:border-primary/30 transition-all duration-300"
             >
               {/* Step Number */}
-              <div className="absolute -top-4 left-8 px-3 py-1 bg-primary text-primary-foreground text-sm font-bold rounded-full">
+              <div className="absolute -top-3 sm:-top-4 left-5 sm:left-8 px-2.5 sm:px-3 py-0.5 sm:py-1 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full">
                 {item.step}
               </div>
 
-              <div className="pt-4">
-                <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4">
-                  <item.icon className="h-6 w-6 text-primary" />
+              <div className="pt-3 sm:pt-4">
+                <div className="p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-primary/10 w-fit mb-3 sm:mb-4">
+                  <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-foreground mb-3">
+                <h3 className="font-display text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -80,8 +80,8 @@ export const ProcessSection = () => {
         </div>
 
         {/* Timeline Note */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
+        <div className="mt-8 sm:mt-12 text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             Typical presale investment timeline: 3-5 years from contract to completion. Ongoing support throughout.
           </p>
         </div>

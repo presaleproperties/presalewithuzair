@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Phone } from "lucide-react";
+import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
 import presaleImage from "@/assets/presale-building.jpg";
 import assignmentImage from "@/assets/assignments-building.jpg";
 import meetingImage from "@/assets/business-meeting.jpeg";
@@ -112,13 +112,9 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <a
-                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="mailto:info@meetuzair.com">
                     <Button variant="hero" size="lg" className="gap-2">
-                      Get Started
+                      Schedule a Call
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   </a>
@@ -147,16 +143,20 @@ const Services = () => {
                 Whether you're buying your first presale, looking to assign, or exploring resale options, 
                 Uzair is here to help you make informed decisions.
               </p>
-              <a
-                href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button variant="hero" size="xl" className="gap-2">
-                  <Phone className="h-5 w-5" />
-                  Book A Call
-                </Button>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:info@meetuzair.com">
+                  <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
+                    <Mail className="h-5 w-5" />
+                    Schedule a Call
+                  </Button>
+                </a>
+                <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
+                    <Search className="h-5 w-5" />
+                    Search Presale Projects
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>

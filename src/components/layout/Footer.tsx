@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
+import realBrokerLogo from "@/assets/real-broker-logo.avif";
 
 export const Footer = () => {
   return (
@@ -12,9 +13,11 @@ export const Footer = () => {
             <Link to="/">
               <img src={logo} alt="Presale with Uzair" className="h-10 w-auto mb-6" />
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-4">
               Vancouver's Top Presale Expert. Specializing in presale condos, assignments, and new construction investments.
             </p>
+            <p className="text-muted-foreground text-xs mb-4">Brokered by Real Broker</p>
+            <img src={realBrokerLogo} alt="Real Broker" className="h-8 w-auto mb-6" />
             <div className="flex items-center gap-4">
               <a
                 href="https://wa.me/17782313592"
@@ -46,6 +49,16 @@ export const Footer = () => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://presaleproperties.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Search Presale Projects
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -83,8 +96,8 @@ export const Footer = () => {
                 <Mail className="h-5 w-5 text-primary mt-0.5" />
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <a href="mailto:uzair@presalewithuzair.com" className="text-foreground hover:text-primary transition-colors">
-                    uzair@presalewithuzair.com
+                  <a href="mailto:info@meetuzair.com" className="text-foreground hover:text-primary transition-colors">
+                    info@meetuzair.com
                   </a>
                 </div>
               </li>
@@ -105,7 +118,7 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Uzair Muhammad PREC | Real Broker. All rights reserved.
+            © {new Date().getFullYear()} Uzair Muhammad PREC | Brokered by Real Broker. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
             Vancouver's Premier Presale Expert

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, MessageCircle } from "lucide-react";
+import { Mail, Search } from "lucide-react";
 import expoImage from "@/assets/expo.jpg";
 
 export const CTASection = () => {
@@ -26,20 +26,16 @@ export const CTASection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="mailto:info@meetuzair.com">
               <Button variant="hero" size="xl" className="gap-2 w-full sm:w-auto">
-                <MessageCircle className="h-5 w-5" />
-                Chat on WhatsApp
+                <Mail className="h-5 w-5" />
+                Schedule a Call
               </Button>
             </a>
-            <a href="tel:+17782313592">
+            <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
-                <Phone className="h-5 w-5" />
-                Call Now
+                <Search className="h-5 w-5" />
+                Search Presale Projects
               </Button>
             </a>
           </div>

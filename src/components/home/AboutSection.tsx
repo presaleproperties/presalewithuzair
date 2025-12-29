@@ -20,7 +20,7 @@ export const AboutSection = () => {
             {/* Floating Card */}
             <div className="absolute bottom-6 left-6 right-6 bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border">
               <p className="text-sm text-primary font-medium mb-2">Investment Track Record</p>
-              <p className="font-display text-2xl font-bold text-foreground">$100M+ Portfolio Managed</p>
+              <p className="font-display text-2xl font-bold text-foreground">$200M+ In Volume</p>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ export const AboutSection = () => {
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
                 Uzair is an investor-focused Real Estate Agent and Presale Expert specializing in 
-                Vancouver's new construction condo market. With over $150 million in condo sales, 
+                Vancouver's new construction condo market. With over $200 million in volume and 300+ units sold, 
                 Uzair has built a reputation for delivering exceptional results and unparalleled client service.
               </p>
               <p>
@@ -42,9 +42,8 @@ export const AboutSection = () => {
                 to presale projects, market trends, and exclusive opportunities before they become publicly available.
               </p>
               <p>
-                He is a Portfolio Manager with a track record of over $100 million in condos, townhomes, 
-                and detached properties. Uzair is dedicated to building long-term relationships to deliver 
-                a lifetime of real estate services.
+                He has facilitated $26M+ in assignment sales and secured over $500K in buyer credits for his clients. 
+                Uzair is dedicated to building long-term relationships to deliver a lifetime of real estate services.
               </p>
             </div>
 

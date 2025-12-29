@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -81,6 +81,24 @@ export const LeadCaptureSection = () => {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setIsSuccess(false);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          buyerType: "",
+          leadSource: "",
+        });
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
 
   if (isSuccess) {
     return (

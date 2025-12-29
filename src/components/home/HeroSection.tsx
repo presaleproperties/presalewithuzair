@@ -83,6 +83,27 @@ export const HeroSection = () => {
             </Button>
           </div>
 
+          {/* Hero Photo - Mobile (After the fold like Dan Martell) */}
+          <div className="relative mb-8 animate-fade-up">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={heroImage}
+                alt="Uzair Muhammad - Vancouver's Top Presale Expert"
+                className="w-full aspect-[4/5] object-cover object-top"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+              
+              {/* Floating badge on image */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border/50">
+                  <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
+                  <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Stats Row - Mobile */}
           <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border/30 mt-auto animate-fade-up">
             <div className="text-center">

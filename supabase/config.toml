@@ -2,3 +2,6 @@ project_id = "ubbogklasownognviobh"
 
 [functions.fetch-google-reviews]
 verify_jwt = false
+
+[functions.import-blogs]
+verify_jwt = false

@@ -7,7 +7,7 @@ import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { DifferentiationSection } from "@/components/home/DifferentiationSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { MidPageCTA } from "@/components/home/MidPageCTA";
-import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+
 import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
@@ -130,9 +130,6 @@ const Index = () => {
         
         {/* Mid-page CTA */}
         <MidPageCTA />
-        
-        {/* Google Reviews */}
-        <TestimonialsSection />
         
         {/* Who This Is For */}
         <BookingContextSection />

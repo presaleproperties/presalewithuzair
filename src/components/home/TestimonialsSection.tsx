@@ -67,22 +67,22 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-24 bg-card">
-      <div className="container-xl">
-        <div className="text-center mb-16">
-          <p className="section-label mb-4">Client Reviews</p>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
+    <section className="py-12 md:py-24 bg-card">
+      <div className="container-xl px-4 md:px-6">
+        <div className="text-center mb-8 md:mb-16">
+          <p className="section-label mb-2 md:mb-4">Client Reviews</p>
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold text-foreground">
             What's Everyone <span className="text-gradient">Saying</span>
           </h2>
           {hasGoogleReviews && googleData && (
-            <div className="flex items-center justify-center gap-2 mt-4">
+            <div className="flex flex-wrap items-center justify-center gap-2 mt-3 md:mt-4">
               <img
                 src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
                 alt="Google"
-                className="h-5"
+                className="h-4 md:h-5"
               />
               <StarRating rating={Math.round(googleData.overallRating)} />
-              <span className="text-muted-foreground text-sm">
+              <span className="text-muted-foreground text-xs md:text-sm">
                 {googleData.overallRating.toFixed(1)} ({googleData.totalReviews} reviews)
               </span>
             </div>
@@ -91,10 +91,10 @@ export const TestimonialsSection = () => {
 
         <div className="max-w-4xl mx-auto">
           {/* Main Testimonial */}
-          <div className="relative bg-background rounded-2xl p-8 lg:p-12 border border-border">
-            <Quote className="h-12 w-12 text-primary/20 absolute top-8 left-8" />
+          <div className="relative bg-background rounded-xl md:rounded-2xl p-5 md:p-8 lg:p-12 border border-border">
+            <Quote className="h-8 w-8 md:h-12 md:w-12 text-primary/20 absolute top-4 left-4 md:top-8 md:left-8" />
             
-            <div className="relative z-10 pt-8">
+            <div className="relative z-10 pt-6 md:pt-8">
               {isLoading ? (
                 <div className="animate-pulse">
                   <div className="h-6 bg-muted rounded w-3/4 mb-4"></div>
@@ -102,44 +102,44 @@ export const TestimonialsSection = () => {
                 </div>
               ) : (
                 <>
-                  <div className="mb-4">
+                  <div className="mb-3 md:mb-4">
                     <StarRating rating={testimonials[currentIndex].rating} />
                   </div>
-                  <blockquote className="font-display text-xl lg:text-2xl text-foreground leading-relaxed mb-8">
+                  <blockquote className="font-display text-base md:text-xl lg:text-2xl text-foreground leading-relaxed mb-6 md:mb-8">
                     "{testimonials[currentIndex].quote}"
                   </blockquote>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="flex items-center gap-3">
                       {testimonials[currentIndex].photo && (
                         <img
                           src={testimonials[currentIndex].photo}
                           alt={testimonials[currentIndex].name}
-                          className="w-10 h-10 rounded-full object-cover"
+                          className="w-9 h-9 md:w-10 md:h-10 rounded-full object-cover flex-shrink-0"
                         />
                       )}
-                      <div>
-                        <p className="font-semibold text-foreground">{testimonials[currentIndex].name}</p>
-                        <p className="text-sm text-muted-foreground">{testimonials[currentIndex].title}</p>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-foreground text-sm md:text-base truncate">{testimonials[currentIndex].name}</p>
+                        <p className="text-xs md:text-sm text-muted-foreground truncate">{testimonials[currentIndex].title}</p>
                       </div>
                     </div>
                     
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 self-end md:self-auto">
                       <Button
                         variant="outline"
                         size="icon"
                         onClick={prevTestimonial}
-                        className="rounded-full"
+                        className="rounded-full h-9 w-9 md:h-10 md:w-10"
                       >
-                        <ChevronLeft className="h-5 w-5" />
+                        <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
                       </Button>
                       <Button
                         variant="outline"
                         size="icon"
                         onClick={nextTestimonial}
-                        className="rounded-full"
+                        className="rounded-full h-9 w-9 md:h-10 md:w-10"
                       >
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
                       </Button>
                     </div>
                   </div>
@@ -149,13 +149,13 @@ export const TestimonialsSection = () => {
           </div>
 
           {/* Dots */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-6 md:mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? "w-8 bg-primary" : "bg-foreground/20"
+                className={`h-2 rounded-full transition-all ${
+                  index === currentIndex ? "w-6 md:w-8 bg-primary" : "w-2 bg-foreground/20"
                 }`}
               />
             ))}

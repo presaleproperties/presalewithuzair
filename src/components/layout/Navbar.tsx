@@ -41,7 +41,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Presale with Uzair" className="h-10 w-auto" />
+            <img 
+              src={logo} 
+              alt="Presale with Uzair" 
+              className="h-10 w-auto brightness-0 opacity-80" 
+            />
           </Link>
 
           {/* Desktop Navigation */}

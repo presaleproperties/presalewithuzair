@@ -11,16 +11,16 @@ const emailSchema = z.string().trim().email({ message: "Please enter a valid ema
 
 const benefits = {
   buyer: [
-    "Simple presale buying checklist",
-    "5 red flags that cost buyers $50K+",
-    "How to pick the right deposit structure",
-    "Questions to ask before you sign",
+    "Step-by-step presale buying checklist",
+    "Red flags to watch for in disclosure documents",
+    "How to avoid the #1 first-time buyer mistake",
+    "Deposit structure guide (5% vs 10% vs 20%)",
   ],
   investor: [
-    "How to calculate real ROI on presales",
-    "Assignment clause cheat sheet",
-    "When to buy (and when to wait)",
-    "Low-deposit strategies that work",
+    "ROI calculation framework for presales",
+    "Assignment clause analysis checklist",
+    "Market timing indicators for BC presales",
+    "Deposit leverage strategies for maximum returns",
   ],
 };
 
@@ -70,7 +70,7 @@ export const LeadCaptureSection = () => {
               Check Your <span className="text-gradient">Inbox</span>
             </h2>
             <p className="text-foreground/70 mb-6">
-              Your free guide is on its way.
+              Your free {audience === "buyer" ? "Presale Buyer" : "Presale Investment"} Guide is on its way.
             </p>
             <p className="text-sm text-muted-foreground">
               Didn't receive it? Check your spam folder or contact us at info@meetuzair.com
@@ -89,12 +89,12 @@ export const LeadCaptureSection = () => {
       <div className="container-xl px-4 sm:px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 sm:mb-12">
-            <p className="section-label mb-3 sm:mb-4">Free Download</p>
+            <p className="section-label mb-3 sm:mb-4">Free Resource</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight mb-4">
-              Get the <span className="text-gradient">Free Guide</span>
+              Get Your Free <span className="text-gradient">Presale Guide</span>
             </h2>
             <p className="text-foreground/70 max-w-xl mx-auto">
-              The same checklist I use with my clients. Yours free.
+              Download the exact checklist Uzair uses with clients to evaluate presale opportunities.
             </p>
           </div>
 
@@ -134,7 +134,7 @@ export const LeadCaptureSection = () => {
               {/* Benefits */}
               <div>
                 <h3 className="font-display text-lg sm:text-xl font-bold text-foreground mb-4 uppercase tracking-tight">
-                  What You Get
+                  What's Inside
                 </h3>
                 <ul className="space-y-3">
                   {benefits[audience].map((benefit, index) => (
@@ -145,7 +145,7 @@ export const LeadCaptureSection = () => {
                   ))}
                 </ul>
                 <p className="mt-6 text-xs text-muted-foreground">
-                  No spam. Unsubscribe anytime.
+                  No spam. Unsubscribe anytime. Your privacy is protected.
                 </p>
               </div>
 

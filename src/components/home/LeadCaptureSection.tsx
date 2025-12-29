@@ -152,13 +152,16 @@ export const LeadCaptureSection = () => {
 
           {/* Right - Form */}
           <div className="max-w-md mx-auto lg:mx-0 w-full">
+            <p className="text-primary font-bold tracking-[0.15em] text-xs sm:text-sm mb-3">
+              START HERE
+            </p>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground uppercase tracking-tight mb-3">
-              READY TO BUY PRESALE?
+              GET HONEST ADVICE <span className="text-muted-foreground">BEFORE YOU BUY</span>
             </h2>
             
             <p className="text-sm sm:text-base text-muted-foreground mb-6">
-              <span className="text-foreground font-semibold">Get VIP access, expert guidance, and zero pressure.</span>{" "}
-              Fill out the form and we'll reach out to see if we're a fit.
+              <span className="text-foreground font-semibold">No pressure. No hype.</span>{" "}
+              Just a quick conversation to see if we're a fit — and to make sure you don't buy something you'll regret.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">

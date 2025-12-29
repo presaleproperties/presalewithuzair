@@ -8,7 +8,7 @@ import { DifferentiationSection } from "@/components/home/DifferentiationSection
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { InvestmentSection } from "@/components/home/InvestmentSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
-import { CommunityLeaderSection } from "@/components/home/CommunityLeaderSection";
+
 import { RiskRealitySection } from "@/components/home/RiskRealitySection";
 import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
@@ -119,7 +119,7 @@ const Index = () => {
         <CaseStudiesSection />
         <InvestmentSection />
         <TestimonialsSection />
-        <CommunityLeaderSection />
+        
         <RiskRealitySection />
         <BookingContextSection />
         <BlogPreviewSection />

@@ -20,4 +20,12 @@
     <loc>https://presalewithuzair.com/contact</loc>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://presalewithuzair.com/developers</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/agents</loc>
+    <priority>0.8</priority>
+  </url>
 </urlset>

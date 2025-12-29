@@ -1,41 +1,20 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/uzair-hero.jpeg";
 
-type AudienceType = "buyer" | "investor";
-
 const heroContent = {
-  buyer: {
-    label: "PRESALE EXPERT",
-    headlinePart1: "BUY YOUR FIRST",
-    headlinePart2: "PRESALE CONDO",
-    headlineAccent: "WITHOUT GETTING",
-    headlineAccent2: "BURNED",
-    subheadlineBold: "My presale advisory for first-time buyers",
-    subheadlineNormal: " who want to secure the right condo with VIP access, low deposits, and zero pressure.",
-    description: "Get expert guidance on pricing, deposits, and developer reputation — so you never overpay or miss critical red flags in disclosure documents.",
-    cta: "Work With Me",
-    microTrust: "Free • No obligation • Built for first-time buyers",
-  },
-  investor: {
-    label: "PRESALE EXPERT",
-    headlinePart1: "SECURE THE",
-    headlinePart2: "RIGHT PRESALE",
-    headlineAccent: "BEFORE THE",
-    headlineAccent2: "PUBLIC",
-    subheadlineBold: "My presale advisory for investors",
-    subheadlineNormal: " who want early access, insider pricing, and a clear exit strategy.",
-    description: "Get the exact strategies and frameworks that drive smart presale investment decisions, while surrounding yourself with an elite network of developers and buyers.",
-    cta: "Work With Me",
-    microTrust: "Free • Data-driven • Investor-focused",
-  },
+  label: "PRESALE EXPERT",
+  headlinePart1: "BUY A PRESALE",
+  headlinePart2: "CONDO",
+  headlineAccent: "WITHOUT GETTING",
+  headlineAccent2: "BURNED",
+  subheadlineBold: "My presale advisory for buyers and investors",
+  subheadlineNormal: " who want VIP access, exclusive incentives, and expert guidance — without the pressure or hidden surprises.",
+  description: "Get the exact strategies and frameworks that protect your investment, while surrounding yourself with an elite network of developers and presale experts.",
+  cta: "Work With Me",
+  microTrust: "Free • No obligation • 100% presale-focused",
 };
 
 export const HeroSection = () => {
-  const [audience, setAudience] = useState<AudienceType>("buyer");
-  const content = heroContent[audience];
-
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background with gradient */}
@@ -63,65 +42,33 @@ export const HeroSection = () => {
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
-          {/* Toggle Selector - Mobile */}
-          <div className="flex justify-center mb-6 animate-fade-up">
-            <div className="inline-flex rounded-full p-1 bg-secondary/50 border border-border/50">
-              <button
-                onClick={() => setAudience("buyer")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  audience === "buyer"
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Home className="h-4 w-4" />
-                <span>Buyer</span>
-              </button>
-              <button
-                onClick={() => setAudience("investor")}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  audience === "investor"
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <TrendingUp className="h-4 w-4" />
-                <span>Investor</span>
-              </button>
-            </div>
-          </div>
-
           {/* Label - Cyan like Dan Martell */}
           <p className="text-primary font-bold tracking-[0.15em] text-sm mb-4 animate-fade-up">
-            {content.label}
+            {heroContent.label}
           </p>
           
           {/* Large Bold Headline - Mobile */}
-          <h1 
-            key={audience + "-headline"}
-            className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up"
-          >
-            <span className="text-foreground block">{content.headlinePart1}</span>
-            <span className="text-foreground block">{content.headlinePart2}</span>
-            <span className="text-muted-foreground block">{content.headlineAccent}</span>
-            <span className="text-muted-foreground block">{content.headlineAccent2}</span>
+          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up">
+            <span className="text-foreground block">{heroContent.headlinePart1}</span>
+            <span className="text-foreground block">{heroContent.headlinePart2}</span>
+            <span className="text-muted-foreground block">{heroContent.headlineAccent}</span>
+            <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
           </h1>
 
           {/* Subheadline with bold start */}
           <p className="text-base text-muted-foreground mb-4 animate-fade-up">
-            <span className="text-foreground font-semibold">{content.subheadlineBold}</span>
-            {content.subheadlineNormal}
+            <span className="text-foreground font-semibold">{heroContent.subheadlineBold}</span>
+            {heroContent.subheadlineNormal}
           </p>
 
           {/* Description */}
           <p className="text-sm text-muted-foreground mb-8 animate-fade-up">
-            {content.description}
+            {heroContent.description}
           </p>
 
           {/* CTA Button - Outlined style like Dan Martell */}
           <div className="mb-8 animate-fade-up">
             <Button 
-              key={audience + "-cta"}
               variant="outline"
               size="lg"
               className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
@@ -132,7 +79,7 @@ export const HeroSection = () => {
                 });
               }}
             >
-              {content.cta}
+              {heroContent.cta}
             </Button>
           </div>
 
@@ -162,62 +109,29 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              {/* Toggle Selector */}
-              <div className="inline-flex rounded-full p-1 bg-secondary/50 border border-border/50 animate-fade-up">
-                <button
-                  onClick={() => setAudience("buyer")}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                    audience === "buyer"
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Home className="h-4 w-4" />
-                  <span>First-Time Buyer</span>
-                </button>
-                <button
-                  onClick={() => setAudience("investor")}
-                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                    audience === "investor"
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <TrendingUp className="h-4 w-4" />
-                  <span>Investor</span>
-                </button>
-              </div>
-
               {/* Label */}
               <p className="text-primary font-bold tracking-[0.15em] text-sm animate-fade-up">
-                {content.label}
+                {heroContent.label}
               </p>
               
-              {/* Dynamic Headline */}
-              <h1 
-                key={audience + "-headline-desktop"}
-                className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up"
-              >
-                <span className="text-foreground">{content.headlinePart1} </span>
-                <span className="text-foreground">{content.headlinePart2} </span>
-                <span className="text-muted-foreground">{content.headlineAccent} </span>
-                <span className="text-muted-foreground">{content.headlineAccent2}</span>
+              {/* Headline */}
+              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up">
+                <span className="text-foreground">{heroContent.headlinePart1} </span>
+                <span className="text-foreground">{heroContent.headlinePart2} </span>
+                <span className="text-muted-foreground">{heroContent.headlineAccent} </span>
+                <span className="text-muted-foreground">{heroContent.headlineAccent2}</span>
               </h1>
 
-              {/* Dynamic Sub-headline */}
-              <p 
-                key={audience + "-subheadline-desktop"}
-                className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up"
-              >
-                <span className="text-foreground font-semibold">{content.subheadlineBold}</span>
-                {content.subheadlineNormal}
+              {/* Sub-headline */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+                <span className="text-foreground font-semibold">{heroContent.subheadlineBold}</span>
+                {heroContent.subheadlineNormal}
               </p>
             </div>
 
             {/* CTA Section */}
             <div className="space-y-3 animate-fade-up">
               <Button 
-                key={audience + "-cta-desktop"}
                 variant="outline"
                 size="xl"
                 className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold"
@@ -228,15 +142,12 @@ export const HeroSection = () => {
                   });
                 }}
               >
-                {content.cta}
+                {heroContent.cta}
               </Button>
               
               {/* Micro-trust */}
-              <p 
-                key={audience + "-trust-desktop"}
-                className="text-sm text-muted-foreground"
-              >
-                {content.microTrust}
+              <p className="text-sm text-muted-foreground">
+                {heroContent.microTrust}
               </p>
             </div>
 

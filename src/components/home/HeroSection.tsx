@@ -25,18 +25,33 @@ export const HeroSection = () => {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 animate-fade-up">
                 <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <span className="text-sm font-medium text-primary">Vancouver's Top Presale Expert</span>
+                <span className="text-sm font-medium text-primary">Presale Expert | Vancouver & Fraser Valley</span>
               </div>
               
-              <h1 className="font-display text-5xl sm:text-6xl xl:text-7xl font-bold leading-[1.05] animate-fade-up delay-100">
-                <span className="text-foreground">UZAIR</span><br />
-                <span className="text-gradient">MUHAMMAD</span>
+              <h1 className="font-display text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] animate-fade-up delay-100">
+                <span className="text-foreground">I help buyers, investors & developers navigate presales</span>{" "}
+                <span className="text-gradient">— strategically and safely.</span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-lg animate-fade-up delay-200">
-                Specializing in presale condos and new construction in Vancouver. 
-                Your trusted partner for smart real estate investments.
+              <p className="text-lg sm:text-xl text-muted-foreground max-w-xl animate-fade-up delay-200">
+                $150M+ in presales closed. 220+ units. Presale-only focus across Metro Vancouver & Fraser Valley.
               </p>
+
+              {/* Trust Bullets */}
+              <ul className="space-y-2 animate-fade-up delay-250">
+                <li className="flex items-center gap-2 text-foreground/80">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span>Presale-only specialization (not resale)</span>
+                </li>
+                <li className="flex items-center gap-2 text-foreground/80">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span>Access to off-market and early launches</span>
+                </li>
+                <li className="flex items-center gap-2 text-foreground/80">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span>Risk mitigation: deposits, disclosure, assignments</span>
+                </li>
+              </ul>
             </div>
 
             {/* CTA Buttons */}
@@ -48,7 +63,7 @@ export const HeroSection = () => {
                 onClick={openCalendly}
               >
                 <Phone className="h-5 w-5" />
-                Schedule a Call
+                Book a Presale Strategy Call
               </Button>
               <Button variant="outline" size="xl" className="w-full sm:w-auto gap-2 group" asChild>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
@@ -61,20 +76,20 @@ export const HeroSection = () => {
             {/* Stats Row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-border/50 animate-fade-up delay-400">
               <div className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">300+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presale Units Sold</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">220+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presale Units</p>
               </div>
               <div className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$200M+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-1">In Volume</p>
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$500K+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Buyer's Credit</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$150M+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presales Closed</p>
               </div>
               <div className="text-center sm:text-left">
                 <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$26M+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-1">In Assignments</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Assignments</p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">4+ Yrs</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">Presale Focus</p>
               </div>
             </div>
           </div>

@@ -6,7 +6,7 @@ import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import uzairImage from "@/assets/uzair-hero.jpeg";
+import uzairImage from "@/assets/uzair-walking.jpg";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(50),

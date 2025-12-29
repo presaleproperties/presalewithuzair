@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/uzair-hero.jpeg";
-import showroomImage from "@/assets/uzair-showroom.jpg";
-import modelImage from "@/assets/uzair-model.jpg";
-import speakingImage from "@/assets/uzair-speaking.jpg";
+import heroImage from "@/assets/uzair-walking.jpg";
+import showroomImage from "@/assets/uzair-showroom-tour.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
+import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
@@ -109,7 +109,7 @@ export const HeroSection = () => {
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <img
                   src={showroomImage}
-                  alt="Uzair consulting clients at presale showroom"
+                  alt="Uzair guiding clients through presale showroom"
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
@@ -117,19 +117,19 @@ export const HeroSection = () => {
               </div>
               <div className="relative rounded-xl overflow-hidden shadow-lg">
                 <img
-                  src={modelImage}
-                  alt="Uzair explaining development models to clients"
+                  src={clientMeetingImage}
+                  alt="Uzair consulting with clients in office"
                   className="w-full aspect-square object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Project Walkthroughs</p>
+                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Client Consultations</p>
               </div>
             </div>
 
             {/* Speaking/Authority image */}
             <div className="relative rounded-xl overflow-hidden shadow-lg mt-3">
               <img
-                src={speakingImage}
+                src={expoImage}
                 alt="Uzair speaking at Vancouver Presale Expo"
                 className="w-full aspect-[16/9] object-cover object-center"
               />

@@ -94,13 +94,10 @@ export const LeadCaptureSection = () => {
               <CheckCircle className="h-10 w-10 text-primary" />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground uppercase tracking-tight mb-4">
-              YOU'RE IN!
+              ALL SET!
             </h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Thanks for reaching out. We'll review your information and get back to you within 24 hours.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              In the meantime, check out our presale resources below.
+            <p className="text-lg text-muted-foreground">
+              You will hear from us soon.
             </p>
           </div>
         </div>

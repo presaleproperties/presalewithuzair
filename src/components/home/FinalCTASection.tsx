@@ -43,7 +43,7 @@ export const FinalCTASection = () => {
             className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-8"
             onClick={scrollToForm}
           >
-            Work With Me
+            Work With Uzair
           </Button>
 
           {/* Uzair Image */}

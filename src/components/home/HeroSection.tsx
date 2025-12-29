@@ -13,7 +13,7 @@ const heroContent = {
   subheadlineBold: "My presale advisory for buyers and investors",
   subheadlineNormal: " who want VIP access, exclusive incentives, and expert guidance — without the pressure or hidden surprises.",
   description: "Get the exact strategies and frameworks that protect your investment, while surrounding yourself with an elite network of developers and presale experts.",
-  cta: "Work With Me",
+  cta: "Work With Uzair",
   microTrust: "Free • No obligation • 100% presale-focused",
 };
 

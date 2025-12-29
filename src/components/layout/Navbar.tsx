@@ -71,7 +71,7 @@ export const Navbar = () => {
               className="rounded-full px-4 py-2 text-sm font-semibold"
               onClick={scrollToForm}
             >
-              Work with Me
+              Work With Uzair
             </Button>
             <button
               className="p-2 text-foreground"
@@ -106,7 +106,7 @@ export const Navbar = () => {
               className="rounded-full"
               onClick={scrollToForm}
             >
-              Work with Me
+              Work With Uzair
             </Button>
           </div>
         </div>
@@ -141,7 +141,7 @@ export const Navbar = () => {
               className="w-full rounded-full"
               onClick={scrollToForm}
             >
-              Work with Me
+              Work With Uzair
             </Button>
           </div>
         </div>

@@ -7,16 +7,16 @@ type AudienceType = "buyer" | "investor";
 
 const heroContent = {
   buyer: {
-    headline: "Buy Your First Presale Condo — Without Overpaying or Getting Burned",
-    subheadline: "I help first-time buyers in BC secure the right presale condo with low deposits, clear guidance, and zero pressure — so you don't make costly mistakes.",
-    cta: "Get the Free Presale Buyer Guide",
-    microTrust: "Free • No obligation • Built for first-time buyers",
+    headline: "Buy Smart. Save Big. Skip the Mistakes.",
+    subheadline: "Get insider access to presale condos before they go public — and pay $0 for my help.",
+    cta: "Get the Free Buyer Guide",
+    microTrust: "Free • No spam • Takes 30 seconds",
   },
   investor: {
-    headline: "Secure the Right Presale Condo Before the Public Gets Access",
-    subheadline: "I help investors identify under-market presale opportunities with early access, pricing strategy, and a clear long-term exit plan — not hype.",
-    cta: "Get the Presale Investment Guide",
-    microTrust: "Free • Data-driven • Investor-focused",
+    headline: "Early Access. Better Deals. Real Strategy.",
+    subheadline: "Find undervalued presales before the public. Build wealth with a clear plan — not hype.",
+    cta: "Get the Free Investor Guide",
+    microTrust: "Free • Data-backed • For serious investors",
   },
 };
 

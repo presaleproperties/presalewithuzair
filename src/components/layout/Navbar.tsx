@@ -38,15 +38,34 @@ export const Navbar = () => {
       }`}
     >
       <div className="container-xl">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
               src={logo} 
               alt="Presale with Uzair" 
-              className="h-10 w-auto" 
+              className="h-8 md:h-10 w-auto" 
             />
           </Link>
+
+          {/* Mobile CTA + Menu */}
+          <div className="flex lg:hidden items-center gap-3">
+            <a
+              href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="hero" size="sm" className="rounded-full px-4 py-2 text-sm font-semibold">
+                Work with Me
+              </Button>
+            </a>
+            <button
+              className="p-2 text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -65,27 +84,19 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button variant="hero" size="lg" className="gap-2">
+              <Button variant="hero" size="lg" className="gap-2 rounded-full">
                 <Phone className="h-4 w-4" />
                 Book A Call
               </Button>
             </a>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
       </div>
 
@@ -117,7 +128,7 @@ export const Navbar = () => {
             rel="noopener noreferrer"
             className="block pt-4"
           >
-            <Button variant="hero" size="lg" className="w-full gap-2">
+            <Button variant="hero" size="lg" className="w-full gap-2 rounded-full">
               <Phone className="h-4 w-4" />
               Book A Call
             </Button>

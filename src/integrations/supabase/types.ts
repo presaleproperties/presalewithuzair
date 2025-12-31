@@ -98,6 +98,8 @@ export type Database = {
           lead_source: string | null
           payment_intent_id: string | null
           phone: string
+          preferred_call_date: string | null
+          preferred_call_time: string | null
           status: string
           timeline: string | null
           updated_at: string
@@ -114,6 +116,8 @@ export type Database = {
           lead_source?: string | null
           payment_intent_id?: string | null
           phone: string
+          preferred_call_date?: string | null
+          preferred_call_time?: string | null
           status?: string
           timeline?: string | null
           updated_at?: string
@@ -130,6 +134,8 @@ export type Database = {
           lead_source?: string | null
           payment_intent_id?: string | null
           phone?: string
+          preferred_call_date?: string | null
+          preferred_call_time?: string | null
           status?: string
           timeline?: string | null
           updated_at?: string

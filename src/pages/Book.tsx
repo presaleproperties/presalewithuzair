@@ -55,9 +55,9 @@ const leadTypeOptions = [
   },
   { 
     value: "paid-advice" as LeadType, 
-    label: "I need expert advice", 
-    subtext: "30-min strategy call",
-    emoji: "💡",
+    label: "I already bought a Presale", 
+    subtext: "Need help with my contract",
+    emoji: "📋",
     isFree: false,
     price: "$250" 
   },
@@ -71,16 +71,16 @@ const testimonials = [
 
 const buyTimelineOptions = [
   { value: "ready-now", label: "Ready to buy now", emoji: "🚀" },
+  { value: "within-1-month", label: "Within 1 month", emoji: "📆" },
   { value: "within-3-months", label: "Within 3 months", emoji: "📅" },
-  { value: "within-6-months", label: "Within 6 months", emoji: "🗓️" },
-  { value: "just-exploring", label: "Just exploring options", emoji: "🔍" },
+  { value: "just-browsing", label: "Just browsing for now", emoji: "🔍", isDisqualifying: true },
 ];
 
 const sellTimelineOptions = [
   { value: "asap", label: "As soon as possible", emoji: "⚡" },
   { value: "within-1-month", label: "Within 1 month", emoji: "📆" },
   { value: "within-3-months", label: "Within 3 months", emoji: "📅" },
-  { value: "flexible", label: "Flexible timeline", emoji: "🔄" },
+  { value: "just-browsing", label: "Just browsing for now", emoji: "🔍", isDisqualifying: true },
 ];
 
 const buyBudgetOptions = [
@@ -142,6 +142,7 @@ const Book = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isDisqualified, setIsDisqualified] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
@@ -380,6 +381,61 @@ const Book = () => {
     );
   }
 
+  // Disqualification screen for browsers
+  if (isDisqualified) {
+    return (
+      <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
+        <Helmet>
+          <title>Not a Fit Right Now | Presale with Uzair</title>
+        </Helmet>
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          className="text-center max-w-md"
+        >
+          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
+            <span className="text-4xl">🤝</span>
+          </div>
+          <h1 className="text-2xl font-bold text-foreground mb-3">
+            Thanks for your honesty!
+          </h1>
+          <p className="text-muted-foreground mb-6 leading-relaxed">
+            I work best with clients who are ready to take action within the next 3 months. 
+            When you're ready to get serious about buying or selling, I'd love to help.
+          </p>
+          <div className="bg-card border border-border rounded-xl p-4 mb-6">
+            <p className="text-sm text-foreground font-medium mb-2">In the meantime:</p>
+            <p className="text-sm text-muted-foreground">
+              Follow me on social media for presale tips, market updates, and insights to help you prepare for when the time is right.
+            </p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => {
+              setIsDisqualified(false);
+              setStep(0);
+              setFormData({
+                firstName: "",
+                phone: "",
+                email: "",
+                leadType: "",
+                timeline: "",
+                budget: "",
+                problemDescription: "",
+                selectedDate: "",
+                selectedTime: "",
+              });
+            }}
+            className="w-full h-12"
+          >
+            Start Over
+          </Button>
+        </motion.div>
+      </div>
+    );
+  }
+
   const slideVariants = {
     enter: (dir: number) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
     center: { x: 0, opacity: 1 },
@@ -427,7 +483,7 @@ const Book = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       {option.isFree ? (
-                        <span className="text-xs bg-green-500/20 text-green-600 px-2.5 py-1 rounded-full font-medium">FREE</span>
+                        <span className="text-xs bg-green-500/20 text-green-600 px-2.5 py-1 rounded-full font-medium">Complimentary</span>
                       ) : (
                         <span className="text-xs bg-primary/20 text-primary px-2.5 py-1 rounded-full font-medium">{option.price}</span>
                       )}
@@ -466,7 +522,13 @@ const Book = () => {
               {timelineOpts.map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => handleOptionSelect("timeline", option.value)}
+                  onClick={() => {
+                    if (option.isDisqualifying) {
+                      setIsDisqualified(true);
+                    } else {
+                      handleOptionSelect("timeline", option.value);
+                    }
+                  }}
                   className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
                     formData.timeline === option.value
                       ? "border-primary bg-primary/10 scale-[0.98]"
@@ -540,12 +602,12 @@ const Book = () => {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <MessageSquare className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">What do you need advice on?</h2>
-              <p className="text-muted-foreground mt-1">Describe your situation so I can prepare</p>
+              <h2 className="text-2xl font-bold text-foreground">Tell me about your contract</h2>
+              <p className="text-muted-foreground mt-1">What do you need help with?</p>
             </div>
             <div ref={formRef}>
               <Textarea
-                placeholder="Tell me about your situation... What questions do you have? What challenges are you facing?"
+                placeholder="Describe your situation... Are you reviewing your contract? Do you have questions about deposits, closing dates, or assignment clauses?"
                 value={formData.problemDescription}
                 onChange={(e) => setFormData({ ...formData, problemDescription: e.target.value })}
                 onFocus={handleInputFocus}

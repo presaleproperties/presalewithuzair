@@ -11,7 +11,7 @@ import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
-import { StickyMobileCTA } from "@/components/home/StickyMobileCTA";
+
 
 const Index = () => {
   return (
@@ -142,9 +142,6 @@ const Index = () => {
         <FinalCTASection />
       </main>
       <Footer />
-      
-      {/* Sticky Mobile CTA */}
-      <StickyMobileCTA />
     </>
   );
 };

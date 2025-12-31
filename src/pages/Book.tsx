@@ -44,22 +44,22 @@ const leadTypeOptions = [
     label: "I want to buy a Presale", 
     subtext: "Condos, townhomes & more",
     emoji: "🏠",
-    isFree: true 
+    showBadge: false 
   },
   { 
     value: "sell-assignment" as LeadType, 
     label: "I want to sell an Assignment", 
     subtext: "Get help assigning your contract",
     emoji: "🔄",
-    isFree: true 
+    showBadge: false 
   },
   { 
     value: "paid-advice" as LeadType, 
     label: "I already bought a Presale", 
-    subtext: "Need help with my contract",
+    subtext: "1 hour advisory call",
     emoji: "📋",
-    isFree: false,
-    price: "$250" 
+    showBadge: true,
+    price: "$500" 
   },
 ];
 
@@ -482,9 +482,7 @@ const Book = () => {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      {option.isFree ? (
-                        <span className="text-xs bg-green-500/20 text-green-600 px-2.5 py-1 rounded-full font-medium">Complimentary</span>
-                      ) : (
+                      {option.showBadge && option.price && (
                         <span className="text-xs bg-primary/20 text-primary px-2.5 py-1 rounded-full font-medium">{option.price}</span>
                       )}
                       <ChevronRight className="w-5 h-5 text-muted-foreground" />
@@ -680,14 +678,14 @@ const Book = () => {
               <div className="bg-muted/50 rounded-xl p-4 mt-4">
                 <div className="flex items-center gap-3 mb-2">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-foreground">30-Minute Strategy Call</span>
+                  <span className="font-semibold text-foreground">1 Hour Advisory Call</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   Next: Choose your preferred date & time
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Consultation Fee</span>
-                  <span className="text-foreground font-bold text-lg">$250 CAD</span>
+                  <span className="text-foreground font-bold text-lg">$500 CAD</span>
                 </div>
               </div>
             )}

@@ -27,7 +27,6 @@ type LeadType = "buy-presale" | "sell-assignment" | "paid-advice";
 
 type FormData = {
   firstName: string;
-  lastName: string;
   phone: string;
   email: string;
   leadType: LeadType | "";
@@ -39,23 +38,23 @@ type FormData = {
 const leadTypeOptions = [
   { 
     value: "buy-presale" as LeadType, 
-    label: "Buy a Presale", 
-    description: "Condos, townhomes & more", 
+    label: "I want to buy a Presale", 
+    subtext: "Condos, townhomes & more",
     emoji: "🏠",
     isFree: true 
   },
   { 
     value: "sell-assignment" as LeadType, 
-    label: "Sell My Assignment", 
-    description: "Assign your presale contract", 
+    label: "I want to sell an Assignment", 
+    subtext: "Get help assigning your contract",
     emoji: "🔄",
     isFree: true 
   },
   { 
     value: "paid-advice" as LeadType, 
-    label: "Get Expert Advice", 
-    description: "30-min paid consultation", 
-    emoji: "💬",
+    label: "I need expert advice", 
+    subtext: "30-min strategy call",
+    emoji: "💡",
     isFree: false,
     price: "$250" 
   },
@@ -94,7 +93,6 @@ const Book = () => {
   const [direction, setDirection] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
-    lastName: "",
     phone: "",
     email: "",
     leadType: "",
@@ -132,13 +130,13 @@ const Book = () => {
   }, [toast]);
 
   // Steps vary based on lead type
-  // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Name(3) → Phone(4) → Email(5) → Time(6)
-  // Paid Advice: Intent(0) → Name(1) → Phone(2) → Email(3) → Payment
+  // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Name(3) → Contact(4) → Time(5)
+  // Paid Advice: Intent(0) → Name(1) → Contact(2) → Payment
   const getStepConfig = () => {
     if (formData.leadType === "paid-advice") {
-      return { totalSteps: 4, steps: ["intent", "name", "phone", "email"] };
+      return { totalSteps: 3, steps: ["intent", "name", "contact"] };
     }
-    return { totalSteps: 7, steps: ["intent", "timeline", "budget", "name", "phone", "email", "time"] };
+    return { totalSteps: 6, steps: ["intent", "timeline", "budget", "name", "contact", "time"] };
   };
 
   const { totalSteps, steps } = getStepConfig();
@@ -161,11 +159,11 @@ const Book = () => {
       case "budget":
         return formData.budget !== "";
       case "name":
-        return formData.firstName.trim().length >= 2 && formData.lastName.trim().length >= 2;
-      case "phone":
-        return /^\d{10,}$/.test(formData.phone.replace(/\D/g, ''));
-      case "email":
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+        return formData.firstName.trim().length >= 2;
+      case "contact":
+        const validPhone = /^\d{10,}$/.test(formData.phone.replace(/\D/g, ''));
+        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+        return validPhone && validEmail;
       case "time":
         return formData.preferredTime !== "";
       default:
@@ -245,7 +243,7 @@ const Book = () => {
         const { data, error } = await supabase.functions.invoke('create-advice-payment', {
           body: {
             firstName: formData.firstName.trim(),
-            lastName: formData.lastName.trim(),
+            lastName: "", // No longer collecting
             email: formData.email.trim(),
             phone: formData.phone.trim(),
             timeline: formData.timeline,
@@ -263,7 +261,7 @@ const Book = () => {
         const { error } = await supabase.functions.invoke('capture-lead', {
           body: {
             firstName: formData.firstName.trim(),
-            lastName: formData.lastName.trim(),
+            lastName: "", // No longer collecting
             email: formData.email.trim(),
             phone: formData.phone.trim(),
             buyerType: formData.leadType,
@@ -375,33 +373,37 @@ const Book = () => {
             className="space-y-4"
           >
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-foreground mb-2">How can I help you today?</h2>
-              <p className="text-muted-foreground">Select what you're looking for</p>
+              <h2 className="text-2xl font-bold text-foreground mb-2">How can I help?</h2>
+              <p className="text-muted-foreground">Select what best describes you</p>
             </div>
             <div className="space-y-3">
               {leadTypeOptions.map((option) => (
                 <button
                   key={option.value}
                   onClick={() => handleLeadTypeSelect(option.value)}
-                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
+                  className={`w-full p-5 rounded-xl border-2 transition-all duration-200 text-left ${
                     formData.leadType === option.value
                       ? "border-primary bg-primary/10 scale-[0.98]"
                       : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
                   }`}
                 >
-                  <span className="text-3xl">{option.emoji}</span>
-                  <div className="text-left flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-foreground font-semibold">{option.label}</span>
-                      {option.isFree ? (
-                        <span className="text-xs bg-green-500/20 text-green-600 px-2 py-0.5 rounded-full font-medium">FREE</span>
-                      ) : (
-                        <span className="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">{option.price}</span>
-                      )}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className="text-3xl">{option.emoji}</span>
+                      <div>
+                        <span className="text-foreground font-semibold text-lg block">{option.label}</span>
+                        <span className="text-muted-foreground text-sm">{option.subtext}</span>
+                      </div>
                     </div>
-                    <span className="text-muted-foreground text-sm">{option.description}</span>
+                    <div className="flex items-center gap-2">
+                      {option.isFree ? (
+                        <span className="text-xs bg-green-500/20 text-green-600 px-2.5 py-1 rounded-full font-medium">FREE</span>
+                      ) : (
+                        <span className="text-xs bg-primary/20 text-primary px-2.5 py-1 rounded-full font-medium">{option.price}</span>
+                      )}
+                      <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                    </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
                 </button>
               ))}
             </div>
@@ -505,74 +507,29 @@ const Book = () => {
                 <User className="w-7 h-7 text-primary" />
               </div>
               <h2 className="text-2xl font-bold text-foreground">Nice to meet you!</h2>
-              <p className="text-muted-foreground mt-1">What's your name?</p>
+              <p className="text-muted-foreground mt-1">What should I call you?</p>
             </div>
-            <div className="space-y-3" ref={formRef}>
+            <div ref={formRef}>
               <Input
                 type="text"
-                placeholder="First name"
+                placeholder="Your first name"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 onKeyDown={handleKeyDown}
                 onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
+                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground text-center"
                 autoFocus
                 autoComplete="given-name"
               />
-              <Input
-                type="text"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                onKeyDown={handleKeyDown}
-                onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoComplete="family-name"
-              />
             </div>
           </motion.div>
         );
 
-      case "phone":
-        return (
-          <motion.div
-            key="phone"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <Phone className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">Great, {formData.firstName}!</h2>
-              <p className="text-muted-foreground mt-1">What's the best number to reach you?</p>
-            </div>
-            <div ref={formRef}>
-              <Input
-                type="tel"
-                placeholder="(604) 123-4567"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                onKeyDown={handleKeyDown}
-                onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoFocus
-                autoComplete="tel"
-              />
-            </div>
-          </motion.div>
-        );
-
-      case "email":
+      case "contact":
         const isPaidPath = formData.leadType === "paid-advice";
         return (
           <motion.div
-            key="email"
+            key="contact"
             custom={direction}
             variants={slideVariants}
             initial="enter"
@@ -585,21 +542,29 @@ const Book = () => {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <Mail className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">Almost there!</h2>
-              <p className="text-muted-foreground mt-1">
-                {isPaidPath ? "Where should I send your confirmation?" : "For appointment confirmation"}
-              </p>
+              <h2 className="text-2xl font-bold text-foreground">Great, {formData.firstName}!</h2>
+              <p className="text-muted-foreground mt-1">How can I reach you?</p>
             </div>
-            <div ref={formRef}>
+            <div className="space-y-3" ref={formRef}>
+              <Input
+                type="tel"
+                placeholder="Phone number"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onKeyDown={handleKeyDown}
+                onFocus={handleInputFocus}
+                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
+                autoFocus
+                autoComplete="tel"
+              />
               <Input
                 type="email"
-                placeholder="you@example.com"
+                placeholder="Email address"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onKeyDown={handleKeyDown}
                 onFocus={handleInputFocus}
                 className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoFocus
                 autoComplete="email"
               />
             </div>
@@ -607,10 +572,10 @@ const Book = () => {
               <div className="bg-muted/50 rounded-xl p-4 mt-4">
                 <div className="flex items-center gap-3 mb-2">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-foreground">30-Minute Expert Consultation</span>
+                  <span className="font-semibold text-foreground">30-Minute Strategy Call</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-3">
-                  You'll be redirected to secure payment after submitting.
+                  You'll be redirected to secure payment after this step.
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Consultation Fee</span>
@@ -667,12 +632,12 @@ const Book = () => {
 
   // Determine if we need a Continue button (input steps only)
   const currentStepType = steps[step];
-  const isInputStep = currentStepType === "name" || currentStepType === "phone" || currentStepType === "email";
+  const isInputStep = currentStepType === "name" || currentStepType === "contact";
   const showContinueButton = isInputStep;
 
   // Custom button text for paid advice path
   const getButtonText = () => {
-    if (formData.leadType === "paid-advice" && currentStepType === "email") {
+    if (formData.leadType === "paid-advice" && currentStepType === "contact") {
       return "Continue to Payment";
     }
     return "Continue";

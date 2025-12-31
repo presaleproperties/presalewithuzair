@@ -29,6 +29,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import logo from "@/assets/logo.png";
+import uzairPhoto from "@/assets/uzair-expo-profile.jpg";
 import { format, addDays } from "date-fns";
 import confetti from "canvas-confetti";
 
@@ -604,7 +605,14 @@ const Book = () => {
             transition={{ duration: 0.3 }}
             className="space-y-3"
           >
-            <div className="text-center mb-4">
+            <div className="text-center mb-3">
+              <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/30 shadow-lg shadow-primary/20">
+                <img 
+                  src={uzairPhoto} 
+                  alt="Uzair - Presale Expert" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h2 className="text-xl font-bold text-foreground mb-1">Book a One-on-One Call</h2>
               <p className="text-muted-foreground text-sm">Select what best describes you</p>
             </div>

@@ -606,12 +606,27 @@ const Book = () => {
             className="space-y-3"
           >
             <div className="text-center mb-3">
-              <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden border-2 border-primary/30 shadow-lg shadow-primary/20">
-                <img 
-                  src={uzairPhoto} 
-                  alt="Uzair - Presale Expert" 
-                  className="w-full h-full object-cover"
+              <div className="relative w-20 h-20 mx-auto mb-3">
+                {/* Pulsing glow ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-primary/40 blur-md"
+                  animate={{
+                    scale: [1, 1.15, 1],
+                    opacity: [0.4, 0.7, 0.4],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                 />
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/30">
+                  <img 
+                    src={uzairPhoto} 
+                    alt="Uzair - Presale Expert" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
               <h2 className="text-xl font-bold text-foreground mb-1">Book a One-on-One Call</h2>
               <p className="text-muted-foreground text-sm">Select what best describes you</p>

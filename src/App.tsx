@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPostEditor from "./pages/AdminPostEditor";
 import NotFound from "./pages/NotFound";
+import Book from "./pages/Book";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />
+              <Route path="/book" element={<Book />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

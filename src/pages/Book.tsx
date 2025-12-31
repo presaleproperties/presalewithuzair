@@ -8,7 +8,6 @@ import {
   User, 
   Phone, 
   Mail, 
-  Clock, 
   Star, 
   Quote,
   DollarSign,
@@ -19,8 +18,7 @@ import {
   Home,
   House,
   Castle,
-  LucideIcon,
-  Sparkles
+  LucideIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,7 +29,6 @@ import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import logo from "@/assets/logo.png";
 import uzairPhoto from "@/assets/uzair-headshot.jpeg";
 import { format, addDays } from "date-fns";
-import confetti from "canvas-confetti";
 
 type LeadType = "buy-presale" | "sell-assignment" | "paid-advice";
 
@@ -200,6 +197,8 @@ const Book = () => {
     switch (currentStep) {
       case "intent":
         return formData.leadType !== "";
+      case "fee-explanation":
+        return true; // Always valid, user just needs to click continue
       case "timeline":
         return formData.timeline !== "";
       case "budget":
@@ -335,7 +334,7 @@ const Book = () => {
 
         if (error) throw error;
 
-        // Create Google Calendar event (non-blocking)
+        // Create Google Calendar event (non-blocking, silent fail)
         supabase.functions.invoke('create-calendar-event', {
           body: {
             leadId: leadData?.leadId || "",
@@ -346,12 +345,8 @@ const Book = () => {
             preferredDate: payload.selectedDate,
             preferredTime: payload.selectedTime,
           }
-        }).then(({ error: calError }) => {
-          if (calError) {
-            console.warn("Calendar event creation failed (non-blocking):", calError);
-          } else {
-            console.log("Calendar event created successfully");
-          }
+        }).catch(() => {
+          // Silently ignore calendar errors - not critical for booking
         });
 
         haptic.success();

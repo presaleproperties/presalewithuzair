@@ -19,6 +19,7 @@ import AdminPostEditor from "./pages/AdminPostEditor";
 import AdminLeads from "./pages/AdminLeads";
 import NotFound from "./pages/NotFound";
 import Book from "./pages/Book";
+import PaymentSuccess from "./pages/PaymentSuccess";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/admin/leads" element={<AdminLeads />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />
               <Route path="/book" element={<Book />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

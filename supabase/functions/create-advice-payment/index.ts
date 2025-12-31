@@ -24,11 +24,11 @@ serve(async (req) => {
     if (!stripeKey) throw new Error("STRIPE_SECRET_KEY is not set");
     logStep("Stripe key verified");
 
-    const { email, firstName, lastName, phone, timeline, budget } = await req.json();
-    logStep("Received lead data", { email, firstName, lastName });
+    const { email, firstName, lastName, phone, problemDescription, selectedDate, selectedTime } = await req.json();
+    logStep("Received lead data", { email, firstName, selectedDate, selectedTime });
 
-    if (!email || !firstName || !lastName) {
-      throw new Error("Missing required fields: email, firstName, lastName");
+    if (!email || !firstName) {
+      throw new Error("Missing required fields: email, firstName");
     }
 
     const stripe = new Stripe(stripeKey, { apiVersion: "2025-08-27.basil" });
@@ -44,19 +44,27 @@ serve(async (req) => {
       // Create new customer with metadata
       const newCustomer = await stripe.customers.create({
         email,
-        name: `${firstName} ${lastName}`,
+        name: firstName,
         phone,
         metadata: {
           firstName,
-          lastName,
-          timeline: timeline || '',
-          budget: budget || '',
+          problemDescription: problemDescription || '',
+          selectedDate: selectedDate || '',
+          selectedTime: selectedTime || '',
           leadSource: 'paid-advice-booking',
         }
       });
       customerId = newCustomer.id;
       logStep("Created new customer", { customerId });
     }
+
+    // Build success URL with booking details
+    const successParams = new URLSearchParams({
+      name: firstName,
+      date: selectedDate || '',
+      time: selectedTime || '',
+      email: email,
+    });
 
     // Create checkout session for paid advice
     const session = await stripe.checkout.sessions.create({
@@ -68,15 +76,15 @@ serve(async (req) => {
         },
       ],
       mode: "payment",
-      success_url: `${req.headers.get("origin")}/book?success=true`,
+      success_url: `${req.headers.get("origin")}/payment-success?${successParams.toString()}`,
       cancel_url: `${req.headers.get("origin")}/book?canceled=true`,
       metadata: {
         firstName,
-        lastName,
         phone,
         email,
-        timeline: timeline || '',
-        budget: budget || '',
+        problemDescription: problemDescription || '',
+        selectedDate: selectedDate || '',
+        selectedTime: selectedTime || '',
         leadType: 'paid-advice',
       }
     });

@@ -15,27 +15,12 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hideNavCTA, setHideNavCTA] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Hide nav CTA on mobile when sticky CTA would be visible (past hero, but not at form)
-      const scrollThreshold = window.innerHeight * 0.8;
-      const pastHero = window.scrollY > scrollThreshold;
-      
-      const leadForm = document.getElementById("lead-form");
-      let formInView = false;
-      if (leadForm) {
-        const rect = leadForm.getBoundingClientRect();
-        formInView = rect.top < window.innerHeight - 100 && rect.bottom > 100;
-      }
-      
-      // Hide when sticky CTA is visible (past hero AND form not in view)
-      setHideNavCTA(pastHero && !formInView);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -84,9 +69,7 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="sm" 
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition-opacity duration-300 ${
-                hideNavCTA ? "opacity-0 pointer-events-none" : "opacity-100"
-              }`}
+              className="rounded-full px-4 py-2 text-sm font-semibold"
               onClick={scrollToForm}
             >
               Work With Uzair

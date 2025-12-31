@@ -71,16 +71,14 @@ const testimonials = [
 
 const buyTimelineOptions = [
   { value: "ready-now", label: "Ready to buy now", emoji: "🚀" },
-  { value: "within-1-month", label: "Within 1 month", emoji: "📆" },
-  { value: "within-3-months", label: "Within 3 months", emoji: "📅" },
-  { value: "just-browsing", label: "Just browsing for now", emoji: "🔍", isDisqualifying: true },
+  { value: "within-3-months", label: "Under 3 months", emoji: "📅" },
+  { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
 ];
 
 const sellTimelineOptions = [
-  { value: "asap", label: "As soon as possible", emoji: "⚡" },
-  { value: "within-1-month", label: "Within 1 month", emoji: "📆" },
-  { value: "within-3-months", label: "Within 3 months", emoji: "📅" },
-  { value: "just-browsing", label: "Just browsing for now", emoji: "🔍", isDisqualifying: true },
+  { value: "ready-now", label: "Ready to sell now", emoji: "🚀" },
+  { value: "within-3-months", label: "Under 3 months", emoji: "📅" },
+  { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
 ];
 
 const buyBudgetOptions = [
@@ -645,6 +643,7 @@ const Book = () => {
               <Input
                 type="text"
                 placeholder="First name"
+                name="given-name"
                 value={formData.firstName}
                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                 onKeyDown={handleKeyDown}
@@ -656,6 +655,7 @@ const Book = () => {
               <Input
                 type="tel"
                 placeholder="Phone number"
+                name="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 onKeyDown={handleKeyDown}
@@ -666,6 +666,7 @@ const Book = () => {
               <Input
                 type="email"
                 placeholder="Email address"
+                name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 onKeyDown={handleKeyDown}

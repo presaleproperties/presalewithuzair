@@ -14,7 +14,12 @@ import {
   DollarSign,
   Calendar,
   MessageSquare,
-  CalendarDays
+  CalendarDays,
+  Building2,
+  Home,
+  House,
+  Castle,
+  LucideIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -82,18 +87,18 @@ const sellTimelineOptions = [
   { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
 ];
 
-const buyBudgetOptions = [
-  { value: "under-500k", label: "Under $500K", emoji: "🏠" },
-  { value: "500k-750k", label: "$500K - $750K", emoji: "🏢" },
-  { value: "750k-1m", label: "$750K - $1M", emoji: "🏰" },
-  { value: "1m-plus", label: "$1M+", emoji: "✨" },
+const buyBudgetOptions: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "under-500k", label: "Under $500K", Icon: Building2 },
+  { value: "500k-750k", label: "$500K - $750K", Icon: Home },
+  { value: "750k-1m", label: "$750K - $1M", Icon: House },
+  { value: "1m-plus", label: "$1M+", Icon: Castle },
 ];
 
-const sellBudgetOptions = [
-  { value: "under-500k", label: "Under $500K", emoji: "🏠" },
-  { value: "500k-750k", label: "$500K - $750K", emoji: "🏢" },
-  { value: "750k-1m", label: "$750K - $1M", emoji: "🏰" },
-  { value: "1m-plus", label: "$1M+", emoji: "✨" },
+const sellBudgetOptions: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "under-500k", label: "Under $500K", Icon: Building2 },
+  { value: "500k-750k", label: "$500K - $750K", Icon: Home },
+  { value: "750k-1m", label: "$750K - $1M", Icon: House },
+  { value: "1m-plus", label: "$1M+", Icon: Castle },
 ];
 
 const timeSlots = [
@@ -570,20 +575,23 @@ const Book = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3">
-              {budgetOpts.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => handleOptionSelect("budget", option.value)}
-                  className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
-                    formData.budget === option.value
-                      ? "border-primary bg-primary/10"
-                      : "border-border bg-card hover:border-primary/50"
-                  }`}
-                >
-                  <span className="text-2xl mb-1 block">{option.emoji}</span>
-                  <span className="text-foreground font-medium text-sm">{option.label}</span>
-                </button>
-              ))}
+              {budgetOpts.map((option) => {
+                const IconComponent = option.Icon;
+                return (
+                  <button
+                    key={option.value}
+                    onClick={() => handleOptionSelect("budget", option.value)}
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
+                      formData.budget === option.value
+                        ? "border-primary bg-primary/10"
+                        : "border-border bg-card hover:border-primary/50"
+                    }`}
+                  >
+                    <IconComponent className="w-8 h-8 mx-auto mb-2 text-primary" />
+                    <span className="text-foreground font-medium text-sm">{option.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </motion.div>
         );

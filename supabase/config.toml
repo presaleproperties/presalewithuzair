@@ -1,5 +1,8 @@
 project_id = "ubbogklasownognviobh"
 
+[functions.create-advice-payment]
+verify_jwt = false
+
 [functions.fetch-google-reviews]
 verify_jwt = false
 

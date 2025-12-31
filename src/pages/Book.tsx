@@ -488,28 +488,28 @@ const Book = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.3 }}
-            className="space-y-4"
+            className="space-y-3"
           >
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-foreground mb-2">Book a One-on-One Call</h2>
-              <p className="text-muted-foreground">Select what best describes you</p>
+            <div className="text-center mb-4">
+              <h2 className="text-xl font-bold text-foreground mb-1">Book a One-on-One Call</h2>
+              <p className="text-muted-foreground text-sm">Select what best describes you</p>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {leadTypeOptions.map((option) => (
                 <button
                   key={option.value}
                   onClick={() => handleLeadTypeSelect(option.value)}
-                  className={`w-full p-5 rounded-xl border-2 transition-all duration-200 text-left ${
+                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                     formData.leadType === option.value
                       ? "border-primary bg-primary/10 scale-[0.98]"
                       : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <span className="text-3xl">{option.emoji}</span>
+                    <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{option.emoji}</span>
                       <div>
-                        <span className="text-foreground font-semibold text-lg block">{option.label}</span>
+                        <span className="text-foreground font-semibold block">{option.label}</span>
                         <span className="text-muted-foreground text-sm">{option.subtext}</span>
                       </div>
                     </div>
@@ -910,9 +910,9 @@ const Book = () => {
       </Helmet>
 
       {/* Header */}
-      <div className="pt-4 pb-2 px-6 relative z-10">
-        <div className="flex items-center justify-center mb-4">
-          <img src={logo} alt="Presale with Uzair" className="h-8" />
+      <div className="pt-3 pb-1 px-6 relative z-10">
+        <div className="flex items-center justify-center mb-2">
+          <img src={logo} alt="Presale with Uzair" className="h-7" />
         </div>
         {step === 0 && (
           <motion.div 
@@ -921,15 +921,15 @@ const Book = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <p className="text-primary font-semibold text-sm uppercase tracking-wide mb-1">No Hype. No Pressure.</p>
-            <h1 className="text-xl font-bold text-foreground">Just Honest Advice</h1>
+            <p className="text-primary font-semibold text-xs uppercase tracking-wide mb-0.5">No Hype. No Pressure.</p>
+            <h1 className="text-lg font-bold text-foreground">Just Honest Advice</h1>
           </motion.div>
         )}
       </div>
 
       {/* Testimonial - Only show on first step */}
       {step === 0 && (
-        <div className="px-6 mb-2 relative z-10">
+        <div className="px-6 mb-1 relative z-10">
           <a 
             href={GOOGLE_REVIEWS_URL}
             target="_blank"
@@ -937,14 +937,14 @@ const Book = () => {
             className="block"
           >
             <motion.div 
-              className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4 active:scale-[0.98] transition-transform"
+              className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-3 active:scale-[0.98] transition-transform"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Quote className="w-4 h-4 text-primary" />
+              <div className="flex items-start gap-2">
+                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Quote className="w-3.5 h-3.5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <AnimatePresence mode="wait">
@@ -955,10 +955,10 @@ const Book = () => {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <p className="text-sm text-foreground leading-relaxed">
+                      <p className="text-xs text-foreground leading-relaxed">
                         "{testimonials[testimonialIndex].quote}"
                       </p>
-                      <div className="flex items-center gap-2 mt-2">
+                      <div className="flex items-center gap-2 mt-1">
                         <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
                         <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
                       </div>
@@ -966,15 +966,15 @@ const Book = () => {
                   </AnimatePresence>
                 </div>
               </div>
-              <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t border-border">
+              <div className="flex items-center justify-center gap-3 mt-2 pt-2 border-t border-border">
                 <div className="flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
-                  <span className="text-xs text-muted-foreground">31+ 5-star reviews</span>
+                  <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                  <span className="text-xs text-muted-foreground">31+ reviews</span>
                 </div>
                 <div className="w-px h-3 bg-border" />
                 <span className="text-xs text-muted-foreground">300+ clients</span>
                 <div className="w-px h-3 bg-border" />
-                <span className="text-xs text-primary font-medium">View on Google →</span>
+                <span className="text-xs text-primary font-medium">Google →</span>
               </div>
             </motion.div>
           </a>
@@ -1001,7 +1001,7 @@ const Book = () => {
 
       {/* Form Content */}
       <div 
-        className="flex-1 px-6 py-4 touch-pan-y relative z-10 overflow-y-auto"
+        className="flex-1 px-6 py-2 touch-pan-y relative z-10 overflow-y-auto"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}

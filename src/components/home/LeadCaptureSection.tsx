@@ -41,6 +41,26 @@ export const LeadCaptureSection = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
 
+  // Check for pre-selected buyer type from URL hash
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = window.location.hash;
+      if (hash === '#lead-form-first-time-buyer') {
+        setFormData(prev => ({ ...prev, buyerType: 'first-time-buyer' }));
+      } else if (hash === '#lead-form-investor') {
+        setFormData(prev => ({ ...prev, buyerType: 'investor' }));
+      }
+      // Clear hash after processing to keep URL clean
+      if (hash.startsWith('#lead-form-')) {
+        window.history.replaceState(null, '', window.location.pathname + '#lead-form');
+      }
+    };
+    
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     

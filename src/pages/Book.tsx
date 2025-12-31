@@ -621,6 +621,11 @@ const Book = () => {
 
       case "contact":
         const isPaidPath = formData.leadType === "paid-advice";
+        const isNameFilled = formData.firstName.trim().length >= 2;
+        const isPhoneFilled = /^\d{10,}$/.test(formData.phone.replace(/\D/g, ''));
+        const isEmailFilled = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+        const filledCount = [isNameFilled, isPhoneFilled, isEmailFilled].filter(Boolean).length;
+        
         return (
           <motion.div
             key="contact"
@@ -638,42 +643,87 @@ const Book = () => {
               </div>
               <h2 className="text-2xl font-bold text-foreground">Let's connect!</h2>
               <p className="text-muted-foreground mt-1">How can I reach you?</p>
+              
+              {/* Progress indicator */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {[
+                  { filled: isNameFilled, label: "Name" },
+                  { filled: isPhoneFilled, label: "Phone" },
+                  { filled: isEmailFilled, label: "Email" },
+                ].map((field, idx) => (
+                  <div key={idx} className="flex items-center gap-1.5">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      field.filled 
+                        ? "bg-primary text-primary-foreground" 
+                        : "bg-muted text-muted-foreground"
+                    }`}>
+                      {field.filled ? (
+                        <CheckCircle className="w-4 h-4" />
+                      ) : (
+                        <span className="text-xs font-medium">{idx + 1}</span>
+                      )}
+                    </div>
+                    <span className={`text-xs transition-colors ${field.filled ? "text-primary font-medium" : "text-muted-foreground"}`}>
+                      {field.label}
+                    </span>
+                    {idx < 2 && <div className="w-4 h-px bg-border mx-1" />}
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                {filledCount === 3 ? "✓ All set!" : `${filledCount}/3 complete`}
+              </p>
             </div>
             <div className="space-y-3" ref={formRef}>
-              <Input
-                type="text"
-                placeholder="First name"
-                name="given-name"
-                value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                onKeyDown={handleKeyDown}
-                onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoFocus
-                autoComplete="given-name"
-              />
-              <Input
-                type="tel"
-                placeholder="Phone number"
-                name="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                onKeyDown={handleKeyDown}
-                onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoComplete="tel"
-              />
-              <Input
-                type="email"
-                placeholder="Email address"
-                name="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                onKeyDown={handleKeyDown}
-                onFocus={handleInputFocus}
-                className="h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground"
-                autoComplete="email"
-              />
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder="First name"
+                  name="given-name"
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  onKeyDown={handleKeyDown}
+                  onFocus={handleInputFocus}
+                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isNameFilled ? "border-primary/50" : ""}`}
+                  autoFocus
+                  autoComplete="given-name"
+                />
+                {isNameFilled && (
+                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                )}
+              </div>
+              <div className="relative">
+                <Input
+                  type="tel"
+                  placeholder="Phone number"
+                  name="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onKeyDown={handleKeyDown}
+                  onFocus={handleInputFocus}
+                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isPhoneFilled ? "border-primary/50" : ""}`}
+                  autoComplete="tel"
+                />
+                {isPhoneFilled && (
+                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                )}
+              </div>
+              <div className="relative">
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  name="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onKeyDown={handleKeyDown}
+                  onFocus={handleInputFocus}
+                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isEmailFilled ? "border-primary/50" : ""}`}
+                  autoComplete="email"
+                />
+                {isEmailFilled && (
+                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
+                )}
+              </div>
             </div>
             {isPaidPath && (
               <div className="bg-muted/50 rounded-xl p-4 mt-4">

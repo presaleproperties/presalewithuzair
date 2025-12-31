@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Calendar, CheckCircle, User, Phone, Mail, Clock, Star } from "lucide-react";
+import { ChevronRight, ChevronLeft, Calendar, CheckCircle, User, Phone, Mail, Clock, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -20,8 +20,12 @@ type FormData = {
 const intentOptions = [
   { value: "first-time-buyer", label: "First-Time Buyer", description: "Looking to buy my first home", emoji: "🏠" },
   { value: "investor", label: "Investor", description: "Building my portfolio", emoji: "📈" },
-  { value: "upgrading", label: "Upgrading", description: "Moving to something bigger", emoji: "⬆️" },
-  { value: "exploring", label: "Just Exploring", description: "Seeing what's out there", emoji: "🔍" },
+];
+
+const testimonials = [
+  { name: "Michelle K.", quote: "Uzair made my first presale purchase completely stress-free!", type: "First-Time Buyer" },
+  { name: "Ray S.", quote: "His market knowledge saved me from a bad investment.", type: "Investor" },
+  { name: "Anish P.", quote: "Honest advice that actually helped me make the right decision.", type: "First-Time Buyer" },
 ];
 
 const timeOptions = [
@@ -46,6 +50,7 @@ const Book = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
 
@@ -53,6 +58,14 @@ const Book = () => {
   const touchEndX = useRef(0);
 
   const totalSteps = 5;
+
+  // Rotate testimonials every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   // New step order: Intent(0) → Name(1) → Phone(2) → Email(3) → Time(4)
   const validateStep = (): boolean => {
@@ -453,21 +466,47 @@ const Book = () => {
         )}
       </div>
 
-      {/* Trust Badge - Only show on first step */}
+      {/* Floating Testimonial - Only show on first step */}
       {step === 0 && (
-        <div className="px-6 py-3 relative z-10">
+        <div className="px-6 mb-2 relative z-10">
           <motion.div 
-            className="flex items-center justify-center gap-4 text-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="flex items-center gap-1.5">
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-              <span className="text-muted-foreground">31+ 5-star reviews</span>
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <Quote className="w-4 h-4 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={testimonialIndex}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <p className="text-sm text-foreground leading-relaxed">
+                      "{testimonials[testimonialIndex].quote}"
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
+                      <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
-            <div className="w-px h-4 bg-border" />
-            <span className="text-muted-foreground">300+ clients</span>
+            <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t border-border">
+              <div className="flex items-center gap-1">
+                <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                <span className="text-xs text-muted-foreground">31+ 5-star reviews</span>
+              </div>
+              <div className="w-px h-3 bg-border" />
+              <span className="text-xs text-muted-foreground">300+ clients</span>
+            </div>
           </motion.div>
         </div>
       )}

@@ -29,7 +29,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import logo from "@/assets/logo.png";
-import uzairPhoto from "@/assets/uzair-expo-profile.jpg";
+import uzairPhoto from "@/assets/uzair-headshot.jpeg";
 import { format, addDays } from "date-fns";
 import confetti from "canvas-confetti";
 

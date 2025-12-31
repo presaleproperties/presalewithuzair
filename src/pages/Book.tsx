@@ -462,7 +462,7 @@ const Book = () => {
             className="space-y-4"
           >
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-foreground mb-2">How can I help?</h2>
+              <h2 className="text-2xl font-bold text-foreground mb-2">Book a One-on-One Call</h2>
               <p className="text-muted-foreground">Select what best describes you</p>
             </div>
             <div className="space-y-3">

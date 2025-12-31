@@ -56,10 +56,10 @@ const leadTypeOptions = [
   { 
     value: "paid-advice" as LeadType, 
     label: "I already bought a Presale", 
-    subtext: "1 hour advisory call",
+    subtext: "30-min advisory call",
     emoji: "📋",
     showBadge: true,
-    price: "$500" 
+    price: "$250" 
   },
 ];
 
@@ -678,14 +678,14 @@ const Book = () => {
               <div className="bg-muted/50 rounded-xl p-4 mt-4">
                 <div className="flex items-center gap-3 mb-2">
                   <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-foreground">1 Hour Advisory Call</span>
+                  <span className="font-semibold text-foreground">30-Minute Advisory Call</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
                   Next: Choose your preferred date & time
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-muted-foreground text-sm">Consultation Fee</span>
-                  <span className="text-foreground font-bold text-lg">$500 CAD</span>
+                  <span className="text-foreground font-bold text-lg">$250 CAD</span>
                 </div>
               </div>
             )}

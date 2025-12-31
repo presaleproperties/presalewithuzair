@@ -46,6 +46,7 @@ export const Footer = () => {
             <Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
             <Link to="/developers" className="text-muted-foreground hover:text-primary">Developers</Link>
             <Link to="/agents" className="text-muted-foreground hover:text-primary">Agents</Link>
+            <Link to="/book" className="text-primary hover:text-primary/80">Book a Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -102,11 +103,16 @@ export const Footer = () => {
                   { href: "/services", label: "Services" },
                   { href: "/blog", label: "Blog" },
                   { href: "/contact", label: "Contact" },
+                  { href: "/book", label: "Book a Call", highlight: true },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                      className={`transition-colors text-sm ${
+                        'highlight' in link && link.highlight 
+                          ? "text-primary hover:text-primary/80" 
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
                     >
                       {link.label}
                     </Link>

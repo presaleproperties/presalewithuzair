@@ -63,9 +63,9 @@ const leadTypeOptions = [
   },
   { 
     value: "paid-advice" as LeadType, 
-    label: "I already bought a Presale", 
-    subtext: "30-min advisory call",
-    emoji: "📋",
+    label: "I need Expert Advice", 
+    subtext: "Investment or contract help",
+    emoji: "💡",
     showBadge: true,
     price: "$250" 
   },
@@ -176,10 +176,10 @@ const Book = () => {
 
   // Steps vary based on lead type
   // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Contact(3) → Schedule(4)
-  // Paid Advice: Intent(0) → Problem(1) → Contact(2) → Schedule(3) → Payment
+  // Paid Advice: Intent(0) → Fee Explanation(1) → Problem(2) → Contact(3) → Schedule(4) → Payment
   const getStepConfig = () => {
     if (formData.leadType === "paid-advice") {
-      return { totalSteps: 4, steps: ["intent", "problem", "contact", "schedule"] };
+      return { totalSteps: 5, steps: ["intent", "fee-explanation", "problem", "contact", "schedule"] };
     }
     return { totalSteps: 5, steps: ["intent", "timeline", "budget", "contact", "schedule"] };
   };
@@ -734,6 +734,62 @@ const Book = () => {
           </motion.div>
         );
 
+      case "fee-explanation":
+        return (
+          <motion.div
+            key="fee-explanation"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+            className="space-y-5"
+          >
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
+                <span className="text-3xl">🤝</span>
+              </div>
+              <h2 className="text-xl font-bold text-foreground mb-2">Happy to Help!</h2>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                I love helping buyers navigate presales and investments.
+              </p>
+            </div>
+            
+            <div className="bg-card border border-border rounded-xl p-4 space-y-3">
+              <p className="text-foreground text-sm leading-relaxed">
+                For personalized advice on <span className="text-primary font-medium">investment strategy</span> or <span className="text-primary font-medium">existing presale purchases</span>, I charge a small consulting fee.
+              </p>
+              <div className="flex items-center justify-between py-3 px-4 bg-primary/10 rounded-lg">
+                <div>
+                  <p className="text-foreground font-semibold">30-Minute Advisory Call</p>
+                  <p className="text-muted-foreground text-xs">One-on-one expert guidance</p>
+                </div>
+                <span className="text-2xl font-bold text-primary">$250</span>
+              </div>
+              <p className="text-muted-foreground text-xs text-center">
+                This ensures I can dedicate focused time to your specific situation.
+              </p>
+            </div>
+            
+            <Button
+              onClick={() => {
+                haptic.medium();
+                setDirection(1);
+                setStep(step + 1);
+              }}
+              className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+            >
+              Sounds Good – Let's Continue
+              <ChevronRight className="w-5 h-5 ml-1" />
+            </Button>
+            
+            <p className="text-center text-xs text-muted-foreground">
+              Looking to buy or sell instead? <button onClick={() => { setStep(0); setFormData({ ...formData, leadType: "" }); }} className="text-primary underline">Go back</button>
+            </p>
+          </motion.div>
+        );
+
       case "problem":
         return (
           <motion.div
@@ -744,22 +800,22 @@ const Book = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.3 }}
-            className="space-y-6"
+            className="space-y-5"
           >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+            <div className="text-center mb-4">
+              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
                 <MessageSquare className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">Tell me about your contract</h2>
-              <p className="text-muted-foreground mt-1">What do you need help with?</p>
+              <h2 className="text-xl font-bold text-foreground">How can I help?</h2>
+              <p className="text-muted-foreground text-sm mt-1">Tell me about your situation</p>
             </div>
             <div ref={formRef}>
               <Textarea
-                placeholder="Describe your situation... Are you reviewing your contract? Do you have questions about deposits, closing dates, or assignment clauses?"
+                placeholder="Examples: I'm reviewing my presale contract and have questions about the deposit structure... I bought a presale last year and want advice on whether to assign or close... I'm considering a presale investment and need guidance..."
                 value={formData.problemDescription}
                 onChange={(e) => setFormData({ ...formData, problemDescription: e.target.value })}
                 onFocus={handleInputFocus}
-                className="min-h-[150px] text-base bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground resize-none"
+                className="min-h-[130px] text-base bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground resize-none"
                 autoFocus
               />
               <p className="text-xs text-muted-foreground mt-2">

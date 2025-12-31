@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import logo from "@/assets/logo.png";
 import { format, addDays } from "date-fns";
 
@@ -143,6 +144,7 @@ const Book = () => {
   const [isDisqualified, setIsDisqualified] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
+  const haptic = useHapticFeedback();
   const formRef = useRef<HTMLDivElement>(null);
 
   const touchStartX = useRef(0);
@@ -228,6 +230,7 @@ const Book = () => {
 
   // Auto-advance for selection steps
   const handleOptionSelect = (field: keyof FormData, value: string, autoAdvance = true) => {
+    haptic.light();
     setFormData({ ...formData, [field]: value });
     if (autoAdvance) {
       setTimeout(() => {
@@ -242,6 +245,7 @@ const Book = () => {
   };
 
   const handleLeadTypeSelect = (value: LeadType) => {
+    haptic.medium();
     setFormData({ 
       ...formData, 
       leadType: value, 
@@ -318,6 +322,7 @@ const Book = () => {
         });
 
         if (error) throw error;
+        haptic.success();
         setIsSuccess(true);
       }
     } catch (error) {
@@ -520,6 +525,7 @@ const Book = () => {
                   key={option.value}
                   onClick={() => {
                     if (option.isDisqualifying) {
+                      haptic.error();
                       setIsDisqualified(true);
                     } else {
                       handleOptionSelect("timeline", option.value);

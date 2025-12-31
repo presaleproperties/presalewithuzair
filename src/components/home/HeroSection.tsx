@@ -109,47 +109,64 @@ export const HeroSection = () => {
             {/* Who I Help Grid */}
             <div className="grid grid-cols-2 gap-3">
               {/* First-Time Buyers */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <button 
+                onClick={() => {
+                  window.location.hash = 'lead-form-first-time-buyer';
+                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
+              >
                 <OptimizedImage
                   src={showroomImage}
                   alt="First-time home buyers touring presale showroom"
                   className="w-full aspect-square"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
-              </div>
+              </button>
               
               {/* Investors */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg group">
+              <button 
+                onClick={() => {
+                  window.location.hash = 'lead-form-investor';
+                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
+              >
                 <OptimizedImage
                   src={clientMeetingImage}
                   alt="Real estate investor consultation"
                   className="w-full aspect-square"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
-              </div>
+              </button>
             </div>
 
             {/* Community Leader */}
-            <div className="relative rounded-xl overflow-hidden shadow-lg mt-3">
+            <a 
+              href="https://vancouverpresaleexpo.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative rounded-xl overflow-hidden shadow-lg mt-3 block group hover:scale-[1.02] transition-transform duration-300"
+            >
               <OptimizedImage
                 src={expoImage}
                 alt="Uzair speaking at Vancouver Presale Expo"
                 className="w-full aspect-[16/9]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
                 <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
                 <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Stats Row - Mobile */}
@@ -264,46 +281,63 @@ export const HeroSection = () => {
             {/* Who I Help Grid - Desktop */}
             <div className="relative grid grid-cols-3 gap-4">
               {/* First-Time Buyers */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300">
+              <button 
+                onClick={() => {
+                  window.location.hash = 'lead-form-first-time-buyer';
+                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
+              >
                 <OptimizedImage
                   src={showroomImage}
                   alt="First-time home buyers touring presale showroom"
                   className="w-full aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
-              </div>
+              </button>
               
               {/* Investors */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300">
+              <button 
+                onClick={() => {
+                  window.location.hash = 'lead-form-investor';
+                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
+              >
                 <OptimizedImage
                   src={clientMeetingImage}
                   alt="Real estate investor consultation"
                   className="w-full aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
-              </div>
+              </button>
 
               {/* Community Leader */}
-              <div className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300">
+              <a 
+                href="https://vancouverpresaleexpo.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300"
+              >
                 <OptimizedImage
                   src={expoImage}
                   alt="Uzair at Vancouver Presale Expo"
                   className="w-full aspect-[4/3]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community</p>
                   <p className="text-sm font-bold text-foreground">Leader</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>

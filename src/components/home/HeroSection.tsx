@@ -106,39 +106,48 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Photo grid - 2 photos side by side */}
+            {/* Who I Help Grid */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              {/* First-Time Buyers */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <OptimizedImage
                   src={showroomImage}
-                  alt="Uzair guiding clients through presale showroom"
+                  alt="First-time home buyers touring presale showroom"
                   className="w-full aspect-square"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Showroom Tours</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
+                </div>
               </div>
-              <div className="relative rounded-xl overflow-hidden shadow-lg">
+              
+              {/* Investors */}
+              <div className="relative rounded-xl overflow-hidden shadow-lg group">
                 <OptimizedImage
                   src={clientMeetingImage}
-                  alt="Uzair consulting with clients in office"
+                  alt="Real estate investor consultation"
                   className="w-full aspect-square"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                <p className="absolute bottom-2 left-2 text-xs text-foreground font-medium">Client Consultations</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3">
+                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-sm font-bold text-foreground">Investors</p>
+                </div>
               </div>
             </div>
 
-            {/* Speaking/Authority image */}
+            {/* Community Leader */}
             <div className="relative rounded-xl overflow-hidden shadow-lg mt-3">
               <OptimizedImage
                 src={expoImage}
                 alt="Uzair speaking at Vancouver Presale Expo"
                 className="w-full aspect-[16/9]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3">
-                <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-0.5">Industry Speaker</p>
-                <p className="text-sm font-bold text-foreground">Vancouver Presale Expo</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
+                <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
               </div>
             </div>
           </div>

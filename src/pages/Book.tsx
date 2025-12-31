@@ -166,13 +166,13 @@ const Book = () => {
   }, [toast]);
 
   // Steps vary based on lead type
-  // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Contact(3) → BookCall(4)
+  // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Contact(3) → Schedule(4)
   // Paid Advice: Intent(0) → Problem(1) → Contact(2) → Schedule(3) → Payment
   const getStepConfig = () => {
     if (formData.leadType === "paid-advice") {
       return { totalSteps: 4, steps: ["intent", "problem", "contact", "schedule"] };
     }
-    return { totalSteps: 5, steps: ["intent", "timeline", "budget", "contact", "bookcall"] };
+    return { totalSteps: 5, steps: ["intent", "timeline", "budget", "contact", "schedule"] };
   };
 
   const { totalSteps, steps } = getStepConfig();
@@ -203,8 +203,6 @@ const Book = () => {
         return validPhone && validEmail && validName;
       case "schedule":
         return formData.selectedDate !== "" && formData.selectedTime !== "";
-      case "bookcall":
-        return true; // Always valid, user chooses to book or submit
       default:
         return false;
     }
@@ -307,7 +305,7 @@ const Book = () => {
           return;
         }
       } else {
-        // Free lead capture
+        // Free lead capture with schedule info
         const { error } = await supabase.functions.invoke('capture-lead', {
           body: {
             firstName: formData.firstName.trim(),
@@ -318,6 +316,8 @@ const Book = () => {
             leadSource: "social-media-booking",
             timeline: formData.timeline,
             budget: formData.budget,
+            selectedDate: formData.selectedDate,
+            selectedTime: formData.selectedTime,
           }
         });
 
@@ -750,6 +750,7 @@ const Book = () => {
         );
 
       case "schedule":
+        const isPaidSchedule = formData.leadType === "paid-advice";
         return (
           <motion.div
             key="schedule"
@@ -765,8 +766,12 @@ const Book = () => {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <CalendarDays className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">Pick a date & time</h2>
-              <p className="text-muted-foreground mt-1">Select when works best for our call</p>
+              <h2 className="text-2xl font-bold text-foreground">
+                {isPaidSchedule ? "Pick a date & time" : `Almost done, ${formData.firstName}!`}
+              </h2>
+              <p className="text-muted-foreground mt-1">
+                {isPaidSchedule ? "Select when works best for our call" : "When would you like me to call?"}
+              </p>
             </div>
             
             {/* Date Selection */}
@@ -776,7 +781,10 @@ const Book = () => {
                 {next7Days.map((day) => (
                   <button
                     key={day.value}
-                    onClick={() => setFormData({ ...formData, selectedDate: day.value })}
+                    onClick={() => {
+                      haptic.light();
+                      setFormData({ ...formData, selectedDate: day.value, selectedTime: "" });
+                    }}
                     className={`p-2 rounded-lg border-2 transition-all duration-200 text-center ${
                       formData.selectedDate === day.value
                         ? "border-primary bg-primary/10"
@@ -803,8 +811,15 @@ const Book = () => {
                   {timeSlots.map((slot) => (
                     <button
                       key={slot.value}
-                      onClick={() => setFormData({ ...formData, selectedTime: slot.value })}
-                      className={`p-3 rounded-lg border-2 transition-all duration-200 text-center ${
+                      onClick={() => {
+                        haptic.medium();
+                        setFormData({ ...formData, selectedTime: slot.value });
+                        // Auto-submit after selecting time
+                        setTimeout(() => {
+                          handleSubmit();
+                        }, 400);
+                      }}
+                      className={`p-3 rounded-lg border-2 transition-all duration-200 text-center active:scale-[0.97] ${
                         formData.selectedTime === slot.value
                           ? "border-primary bg-primary/10"
                           : "border-border bg-card hover:border-primary/50"
@@ -817,82 +832,21 @@ const Book = () => {
               </motion.div>
             )}
 
-            {formData.selectedDate && formData.selectedTime && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="bg-muted/50 rounded-xl p-4"
-              >
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <div>
-                    <span className="text-sm text-muted-foreground">Your consultation:</span>
-                    <p className="font-semibold text-foreground">
-                      {format(new Date(formData.selectedDate), "EEEE, MMMM d")} at {formData.selectedTime}
-                    </p>
+            {/* Price indicator for paid path */}
+            {isPaidSchedule && (
+              <div className="bg-muted/50 rounded-xl p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <DollarSign className="w-5 h-5 text-primary" />
+                    <span className="font-medium text-foreground">30-Min Advisory</span>
                   </div>
+                  <span className="text-foreground font-bold">$250 CAD</span>
                 </div>
-              </motion.div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Select a time to continue to secure payment
+                </p>
+              </div>
             )}
-          </motion.div>
-        );
-
-      case "bookcall":
-        return (
-          <motion.div
-            key="bookcall"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <Phone className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                Almost done, {formData.firstName}!
-              </h2>
-              <p className="text-muted-foreground mt-1">
-                Would you like to schedule a call now?
-              </p>
-            </div>
-            
-            <div className="bg-muted/50 rounded-xl p-4 mb-4">
-              <p className="text-sm text-muted-foreground mb-2">Summary:</p>
-              <div className="space-y-1">
-                <p className="text-foreground">
-                  <span className="font-medium">Goal:</span> {formData.leadType === "buy-presale" ? "Buy a Presale" : "Sell an Assignment"}
-                </p>
-                <p className="text-foreground">
-                  <span className="font-medium">Timeline:</span> {
-                    (formData.leadType === "buy-presale" ? buyTimelineOptions : sellTimelineOptions)
-                      .find(t => t.value === formData.timeline)?.label
-                  }
-                </p>
-                <p className="text-foreground">
-                  <span className="font-medium">Budget:</span> {
-                    buyBudgetOptions.find(b => b.value === formData.budget)?.label
-                  }
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-3">
-              <Button
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-                className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                {isSubmitting ? "Submitting..." : "Submit & I'll Call You"}
-              </Button>
-              <p className="text-center text-sm text-muted-foreground">
-                I'll reach out within 24 hours to discuss your needs
-              </p>
-            </div>
           </motion.div>
         );
 
@@ -901,20 +855,10 @@ const Book = () => {
     }
   };
 
-  // Determine if we need a Continue button
+  // Determine if we need a Continue button (only for contact and problem steps)
   const currentStepType = steps[step];
   const isInputStep = currentStepType === "contact" || currentStepType === "problem";
-  const isScheduleStep = currentStepType === "schedule";
-  const isBookCallStep = currentStepType === "bookcall";
-  const showContinueButton = isInputStep || isScheduleStep;
-
-  // Custom button text
-  const getButtonText = () => {
-    if (formData.leadType === "paid-advice" && currentStepType === "schedule") {
-      return "Continue to Payment";
-    }
-    return "Continue";
-  };
+  const showContinueButton = isInputStep; // Schedule step auto-submits on time selection
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col relative overflow-hidden">
@@ -1024,7 +968,7 @@ const Book = () => {
         </AnimatePresence>
       </div>
 
-      {/* Navigation - Only show for input/schedule steps */}
+      {/* Navigation - Only show for input steps (contact/problem) */}
       {showContinueButton && (
         <div className="px-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] space-y-2 relative z-10 bg-gradient-to-t from-background via-background to-transparent">
           <Button
@@ -1033,7 +977,7 @@ const Book = () => {
             className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
           >
             <span className="flex items-center gap-2">
-              {isSubmitting ? "Processing..." : getButtonText()}
+              {isSubmitting ? "Processing..." : "Continue"}
               {!isSubmitting && <ChevronRight className="w-5 h-5" />}
             </span>
           </Button>
@@ -1051,22 +995,8 @@ const Book = () => {
         </div>
       )}
 
-      {/* Back button for selection steps (not first step, not bookcall) */}
-      {!showContinueButton && !isBookCallStep && step > 0 && (
-        <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
-          <Button
-            variant="ghost"
-            onClick={handleBack}
-            className="w-full h-10 text-muted-foreground hover:text-foreground"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back
-          </Button>
-        </div>
-      )}
-
-      {/* Back button for bookcall step */}
-      {isBookCallStep && (
+      {/* Back button for selection and schedule steps */}
+      {!showContinueButton && step > 0 && (
         <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
           <Button
             variant="ghost"

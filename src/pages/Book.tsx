@@ -19,7 +19,8 @@ import {
   Home,
   House,
   Castle,
-  LucideIcon
+  LucideIcon,
+  Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,6 +30,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 import logo from "@/assets/logo.png";
 import { format, addDays } from "date-fns";
+import confetti from "canvas-confetti";
 
 type LeadType = "buy-presale" | "sell-assignment" | "paid-advice";
 
@@ -388,26 +390,138 @@ const Book = () => {
     }
   }, [isSuccess]);
 
+  // Trigger confetti on success
+  useEffect(() => {
+    if (isSuccess) {
+      // Fire confetti from multiple angles
+      const fireConfetti = () => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#00d4d4', '#00b8b8', '#ffffff', '#ffd700'],
+        });
+        
+        setTimeout(() => {
+          confetti({
+            particleCount: 50,
+            angle: 60,
+            spread: 55,
+            origin: { x: 0 },
+            colors: ['#00d4d4', '#00b8b8', '#ffffff'],
+          });
+        }, 250);
+        
+        setTimeout(() => {
+          confetti({
+            particleCount: 50,
+            angle: 120,
+            spread: 55,
+            origin: { x: 1 },
+            colors: ['#00d4d4', '#00b8b8', '#ffffff'],
+          });
+        }, 400);
+      };
+      
+      fireConfetti();
+    }
+  }, [isSuccess]);
+
   // Success screen (only for free leads, paid goes to /payment-success)
   if (isSuccess) {
     return (
-      <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
+      <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6 overflow-hidden">
         <Helmet>
           <title>Booking Confirmed | Presale with Uzair</title>
         </Helmet>
+        
+        {/* Animated background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div
+            className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              opacity: [0.5, 0.3, 0.5],
+            }}
+            transition={{ duration: 3, repeat: Infinity }}
+          />
+        </div>
+        
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="text-center"
+          initial={{ scale: 0, y: 50 }}
+          animate={{ scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.1 }}
+          className="text-center relative z-10"
         >
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-            <CheckCircle className="w-12 h-12 text-primary" />
-          </div>
-          <h1 className="text-3xl font-bold text-foreground mb-3">You're All Set!</h1>
-          <p className="text-muted-foreground text-lg mb-2">
+          {/* Animated checkmark */}
+          <motion.div 
+            className="w-28 h-28 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center relative"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.3 }}
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.6, type: "spring", stiffness: 300 }}
+            >
+              <CheckCircle className="w-14 h-14 text-primary" />
+            </motion.div>
+            
+            {/* Sparkle effects */}
+            <motion.div
+              className="absolute -top-2 -right-2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.8 }}
+            >
+              <Sparkles className="w-6 h-6 text-yellow-400" />
+            </motion.div>
+            <motion.div
+              className="absolute -bottom-1 -left-3"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.9 }}
+            >
+              <Sparkles className="w-5 h-5 text-primary" />
+            </motion.div>
+          </motion.div>
+          
+          <motion.h1 
+            className="text-3xl font-bold text-foreground mb-3"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            You're All Set!
+          </motion.h1>
+          
+          <motion.p 
+            className="text-muted-foreground text-lg mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
             I'll reach out within 24 hours to discuss your {formData.leadType === "buy-presale" ? "presale search" : "assignment"}.
-          </p>
+          </motion.p>
+          
+          <motion.div
+            className="flex items-center justify-center gap-2 text-sm text-primary"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <CalendarDays className="w-4 h-4" />
+            <span>Check your calendar for the scheduled time</span>
+          </motion.div>
         </motion.div>
       </div>
     );

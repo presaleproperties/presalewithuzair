@@ -11,7 +11,9 @@ interface LeadData {
   email: string;
   phone: string;
   buyerType: string;
-  leadSource: string;
+  leadSource?: string;
+  timeline?: string;
+  budget?: string;
   zapierWebhookUrl?: string;
 }
 
@@ -56,7 +58,7 @@ function isValidName(name: string): boolean {
 }
 
 function isValidBuyerType(buyerType: string): boolean {
-  const validTypes = ['first-time', 'investor', 'end-user'];
+  const validTypes = ['first-time', 'investor', 'end-user', 'first-time-buyer', 'buy-presale', 'sell-assignment', 'paid-advice'];
   return validTypes.includes(buyerType);
 }
 
@@ -90,8 +92,8 @@ Deno.serve(async (req) => {
 
     const leadData: LeadData = await req.json();
 
-    // Validate required fields exist
-    if (!leadData.firstName || !leadData.lastName || !leadData.email || !leadData.phone || !leadData.buyerType || !leadData.leadSource) {
+    // Validate required fields exist (leadSource is now optional)
+    if (!leadData.firstName || !leadData.lastName || !leadData.email || !leadData.phone || !leadData.buyerType) {
       console.error("Missing required fields");
       return new Response(
         JSON.stringify({ error: "All fields are required" }),
@@ -105,7 +107,9 @@ Deno.serve(async (req) => {
     const email = leadData.email.trim().toLowerCase();
     const phone = leadData.phone.trim();
     const buyerType = leadData.buyerType.trim();
-    const leadSource = leadData.leadSource.trim();
+    const leadSource = leadData.leadSource?.trim() || 'website';
+    const timeline = leadData.timeline?.trim() || null;
+    const budget = leadData.budget?.trim() || null;
 
     // Validate input formats
     if (!isValidName(firstName)) {
@@ -148,7 +152,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    if (!isValidLeadSource(leadSource)) {
+    if (leadSource && !isValidLeadSource(leadSource)) {
       console.error("Invalid lead source:", leadSource);
       return new Response(
         JSON.stringify({ error: "Invalid lead source" }),
@@ -156,7 +160,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    console.log("Capturing lead:", email);
+    console.log("Capturing lead:", email, "Type:", buyerType);
 
     // Insert lead into database
     const { data: lead, error: dbError } = await supabase
@@ -168,6 +172,8 @@ Deno.serve(async (req) => {
         phone: phone,
         buyer_type: buyerType,
         lead_source: leadSource,
+        timeline: timeline,
+        budget: budget,
       })
       .select()
       .single();
@@ -202,6 +208,8 @@ Deno.serve(async (req) => {
             phone: lead.phone,
             buyer_type: lead.buyer_type,
             lead_source: lead.lead_source,
+            timeline: lead.timeline,
+            budget: lead.budget,
             created_at: lead.created_at,
             source: "presalewithuzair.com",
           }),

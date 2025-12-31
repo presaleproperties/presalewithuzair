@@ -82,17 +82,17 @@ const sellTimelineOptions = [
 ];
 
 const buyBudgetOptions = [
-  { value: "under-500k", label: "Under $500K", emoji: "💰" },
-  { value: "500k-750k", label: "$500K - $750K", emoji: "💎" },
-  { value: "750k-1m", label: "$750K - $1M", emoji: "🏆" },
-  { value: "1m-plus", label: "$1M+", emoji: "👑" },
+  { value: "under-500k", label: "Under $500K", emoji: "🏠" },
+  { value: "500k-750k", label: "$500K - $750K", emoji: "🏢" },
+  { value: "750k-1m", label: "$750K - $1M", emoji: "🏰" },
+  { value: "1m-plus", label: "$1M+", emoji: "✨" },
 ];
 
 const sellBudgetOptions = [
-  { value: "under-500k", label: "Under $500K", emoji: "💰" },
-  { value: "500k-750k", label: "$500K - $750K", emoji: "💎" },
-  { value: "750k-1m", label: "$750K - $1M", emoji: "🏆" },
-  { value: "1m-plus", label: "$1M+", emoji: "👑" },
+  { value: "under-500k", label: "Under $500K", emoji: "🏠" },
+  { value: "500k-750k", label: "$500K - $750K", emoji: "🏢" },
+  { value: "750k-1m", label: "$750K - $1M", emoji: "🏰" },
+  { value: "1m-plus", label: "$1M+", emoji: "✨" },
 ];
 
 const timeSlots = [
@@ -1020,11 +1020,11 @@ const Book = () => {
 
       {/* Navigation - Only show for input/schedule steps */}
       {showContinueButton && (
-        <div className="p-6 pb-8 space-y-3 relative z-10 bg-gradient-to-t from-background via-background to-transparent">
+        <div className="px-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] space-y-2 relative z-10 bg-gradient-to-t from-background via-background to-transparent">
           <Button
             onClick={handleNext}
             disabled={!validateStep() || isSubmitting}
-            className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
           >
             <span className="flex items-center gap-2">
               {isSubmitting ? "Processing..." : getButtonText()}
@@ -1047,7 +1047,7 @@ const Book = () => {
 
       {/* Back button for selection steps (not first step, not bookcall) */}
       {!showContinueButton && !isBookCallStep && step > 0 && (
-        <div className="p-6 pb-8 relative z-10">
+        <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
           <Button
             variant="ghost"
             onClick={handleBack}
@@ -1061,7 +1061,7 @@ const Book = () => {
 
       {/* Back button for bookcall step */}
       {isBookCallStep && (
-        <div className="px-6 pb-8 relative z-10">
+        <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
           <Button
             variant="ghost"
             onClick={handleBack}

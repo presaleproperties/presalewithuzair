@@ -69,6 +69,8 @@ const leadTypeOptions = [
   },
 ];
 
+const GOOGLE_REVIEWS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
+
 const testimonials = [
   { name: "Michelle K.", quote: "Uzair made my first presale purchase completely stress-free!", type: "Buyer" },
   { name: "Ray S.", quote: "His market knowledge saved me from a bad investment.", type: "Investor" },
@@ -313,7 +315,7 @@ const Book = () => {
         }
       } else {
         // Free lead capture with schedule info
-        const { error } = await supabase.functions.invoke('capture-lead', {
+        const { data: leadData, error } = await supabase.functions.invoke('capture-lead', {
           body: {
             firstName: payload.firstName.trim(),
             lastName: "",
@@ -329,6 +331,26 @@ const Book = () => {
         });
 
         if (error) throw error;
+
+        // Create Google Calendar event (non-blocking)
+        supabase.functions.invoke('create-calendar-event', {
+          body: {
+            leadId: leadData?.leadId || "",
+            firstName: payload.firstName.trim(),
+            email: payload.email.trim(),
+            phone: payload.phone.trim(),
+            leadType: payload.leadType,
+            preferredDate: payload.selectedDate,
+            preferredTime: payload.selectedTime,
+          }
+        }).then(({ error: calError }) => {
+          if (calError) {
+            console.warn("Calendar event creation failed (non-blocking):", calError);
+          } else {
+            console.log("Calendar event created successfully");
+          }
+        });
+
         haptic.success();
         setIsSuccess(true);
       }
@@ -908,45 +930,54 @@ const Book = () => {
       {/* Testimonial - Only show on first step */}
       {step === 0 && (
         <div className="px-6 mb-2 relative z-10">
-          <motion.div 
-            className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+          <a 
+            href={GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
           >
-            <div className="flex items-start gap-3">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                <Quote className="w-4 h-4 text-primary" />
+            <motion.div 
+              className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4 active:scale-[0.98] transition-transform"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Quote className="w-4 h-4 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={testimonialIndex}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="text-sm text-foreground leading-relaxed">
+                        "{testimonials[testimonialIndex].quote}"
+                      </p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
+                        <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={testimonialIndex}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="text-sm text-foreground leading-relaxed">
-                      "{testimonials[testimonialIndex].quote}"
-                    </p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
-                      <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+              <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t border-border">
+                <div className="flex items-center gap-1">
+                  <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                  <span className="text-xs text-muted-foreground">31+ 5-star reviews</span>
+                </div>
+                <div className="w-px h-3 bg-border" />
+                <span className="text-xs text-muted-foreground">300+ clients</span>
+                <div className="w-px h-3 bg-border" />
+                <span className="text-xs text-primary font-medium">View on Google →</span>
               </div>
-            </div>
-            <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t border-border">
-              <div className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
-                <span className="text-xs text-muted-foreground">31+ 5-star reviews</span>
-              </div>
-              <div className="w-px h-3 bg-border" />
-              <span className="text-xs text-muted-foreground">300+ clients</span>
-            </div>
-          </motion.div>
+            </motion.div>
+          </a>
         </div>
       )}
 

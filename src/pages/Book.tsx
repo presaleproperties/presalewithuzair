@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight, ChevronLeft, Calendar, CheckCircle, User, Phone, Mail, Target, Clock } from "lucide-react";
@@ -31,8 +31,11 @@ const timeOptions = [
   { value: "weekend", label: "Weekend", sub: "Flexible", emoji: "📅" },
 ];
 
+const SWIPE_THRESHOLD = 50;
+
 const Book = () => {
   const [step, setStep] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -44,6 +47,9 @@ const Book = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const totalSteps = 5;
 
@@ -67,6 +73,7 @@ const Book = () => {
   const handleNext = () => {
     if (validateStep()) {
       if (step < totalSteps - 1) {
+        setDirection(1);
         setStep(step + 1);
       } else {
         handleSubmit();
@@ -76,8 +83,34 @@ const Book = () => {
 
   const handleBack = () => {
     if (step > 0) {
+      setDirection(-1);
       setStep(step - 1);
     }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    
+    if (Math.abs(diff) > SWIPE_THRESHOLD) {
+      if (diff > 0 && validateStep()) {
+        // Swipe left - go next
+        handleNext();
+      } else if (diff < 0 && step > 0) {
+        // Swipe right - go back
+        handleBack();
+      }
+    }
+    
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   const handleSubmit = async () => {
@@ -153,9 +186,9 @@ const Book = () => {
 
   const renderStepContent = () => {
     const slideVariants = {
-      enter: { x: 50, opacity: 0 },
+      enter: (dir: number) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
       center: { x: 0, opacity: 1 },
-      exit: { x: -50, opacity: 0 },
+      exit: (dir: number) => ({ x: dir > 0 ? -100 : 100, opacity: 0 }),
     };
 
     switch (step) {
@@ -163,6 +196,7 @@ const Book = () => {
         return (
           <motion.div
             key="name"
+            custom={direction}
             variants={slideVariants}
             initial="enter"
             animate="center"
@@ -203,6 +237,7 @@ const Book = () => {
         return (
           <motion.div
             key="phone"
+            custom={direction}
             variants={slideVariants}
             initial="enter"
             animate="center"
@@ -233,6 +268,7 @@ const Book = () => {
         return (
           <motion.div
             key="email"
+            custom={direction}
             variants={slideVariants}
             initial="enter"
             animate="center"
@@ -263,6 +299,7 @@ const Book = () => {
         return (
           <motion.div
             key="intent"
+            custom={direction}
             variants={slideVariants}
             initial="enter"
             animate="center"
@@ -300,6 +337,7 @@ const Book = () => {
         return (
           <motion.div
             key="time"
+            custom={direction}
             variants={slideVariants}
             initial="enter"
             animate="center"
@@ -375,8 +413,13 @@ const Book = () => {
       </div>
 
       {/* Form Content */}
-      <div className="flex-1 px-6">
-        <AnimatePresence mode="wait">
+      <div 
+        className="flex-1 px-6 touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <AnimatePresence mode="wait" custom={direction}>
           {renderStepContent()}
         </AnimatePresence>
       </div>

@@ -87,36 +87,48 @@ export type Database = {
       }
       leads: {
         Row: {
+          budget: string | null
           buyer_type: string
           created_at: string
           email: string
           first_name: string
           id: string
+          is_paid: boolean | null
           last_name: string
-          lead_source: string
+          lead_source: string | null
+          payment_intent_id: string | null
           phone: string
+          timeline: string | null
           updated_at: string
         }
         Insert: {
+          budget?: string | null
           buyer_type: string
           created_at?: string
           email: string
           first_name: string
           id?: string
+          is_paid?: boolean | null
           last_name: string
-          lead_source: string
+          lead_source?: string | null
+          payment_intent_id?: string | null
           phone: string
+          timeline?: string | null
           updated_at?: string
         }
         Update: {
+          budget?: string | null
           buyer_type?: string
           created_at?: string
           email?: string
           first_name?: string
           id?: string
+          is_paid?: boolean | null
           last_name?: string
-          lead_source?: string
+          lead_source?: string | null
+          payment_intent_id?: string | null
           phone?: string
+          timeline?: string | null
           updated_at?: string
         }
         Relationships: []

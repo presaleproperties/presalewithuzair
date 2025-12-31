@@ -5,16 +5,27 @@ export const StickyMobileCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Show after scrolling past ~80% of viewport height (past hero)
+    const checkVisibility = () => {
       const scrollThreshold = window.innerHeight * 0.8;
-      setIsVisible(window.scrollY > scrollThreshold);
+      const pastHero = window.scrollY > scrollThreshold;
+
+      // Check if lead form is in viewport
+      const leadForm = document.getElementById("lead-form");
+      let formInView = false;
+      
+      if (leadForm) {
+        const rect = leadForm.getBoundingClientRect();
+        // Hide when form is visible (with some padding)
+        formInView = rect.top < window.innerHeight - 100 && rect.bottom > 100;
+      }
+
+      setIsVisible(pastHero && !formInView);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Check initial position
+    window.addEventListener("scroll", checkVisibility, { passive: true });
+    checkVisibility(); // Check initial position
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", checkVisibility);
   }, []);
 
   const scrollToForm = () => {

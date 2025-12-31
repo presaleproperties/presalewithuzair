@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Calendar, CheckCircle, User, Phone, Mail, Target, Clock } from "lucide-react";
+import { motion, AnimatePresence, useAnimationFrame } from "framer-motion";
+import { ChevronRight, ChevronLeft, Calendar, CheckCircle, User, Phone, Mail, Target, Clock, Star, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,6 +33,12 @@ const timeOptions = [
 
 const SWIPE_THRESHOLD = 50;
 
+const testimonials = [
+  { name: "Michelle K.", quote: "Uzair made my first presale purchase completely stress-free!", type: "First-Time Buyer" },
+  { name: "Ray S.", quote: "His market knowledge saved me from a bad investment.", type: "Investor" },
+  { name: "Anish P.", quote: "Honest advice that actually helped me make the right decision.", type: "First-Time Buyer" },
+];
+
 const Book = () => {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -46,12 +52,21 @@ const Book = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
   const totalSteps = 5;
+
+  // Rotate testimonials every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const validateStep = (): boolean => {
     switch (step) {
@@ -392,8 +407,51 @@ const Book = () => {
       </Helmet>
 
       {/* Header */}
-      <div className="p-4 flex items-center justify-center">
+      <div className="p-4 flex items-center justify-center relative z-10">
         <img src={logo} alt="Presale with Uzair" className="h-10" />
+      </div>
+
+      {/* Floating Social Proof Badge */}
+      <div className="px-6 mb-4 relative z-10">
+        <motion.div 
+          className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-4"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <div className="flex items-start gap-3">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <Quote className="w-4 h-4 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={testimonialIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="text-sm text-foreground leading-relaxed">
+                    "{testimonials[testimonialIndex].quote}"
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
+                    <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+          <div className="flex items-center justify-center gap-4 mt-3 pt-3 border-t border-border">
+            <div className="flex items-center gap-1">
+              <Star className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+              <span className="text-xs text-muted-foreground">31+ 5-star reviews</span>
+            </div>
+            <div className="w-px h-3 bg-border" />
+            <span className="text-xs text-muted-foreground">300+ clients</span>
+          </div>
+        </motion.div>
       </div>
 
       {/* Progress Bar */}

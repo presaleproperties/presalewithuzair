@@ -142,7 +142,6 @@ const Book = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isPaidSuccess, setIsPaidSuccess] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
@@ -152,14 +151,9 @@ const Book = () => {
 
   const next7Days = getNext7Days();
 
-  // Check for payment success/cancel in URL
+  // Check for payment cancel in URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('success') === 'true') {
-      setIsPaidSuccess(true);
-      setIsSuccess(true);
-      window.history.replaceState({}, '', '/book');
-    }
     if (params.get('canceled') === 'true') {
       toast({
         title: "Payment Cancelled",
@@ -361,12 +355,12 @@ const Book = () => {
     }
   }, [isSuccess]);
 
-  // Success screen
+  // Success screen (only for free leads, paid goes to /payment-success)
   if (isSuccess) {
     return (
       <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
         <Helmet>
-          <title>{isPaidSuccess ? "Payment Confirmed" : "Booking Confirmed"} | Presale with Uzair</title>
+          <title>Booking Confirmed | Presale with Uzair</title>
         </Helmet>
         <motion.div
           initial={{ scale: 0 }}
@@ -377,24 +371,10 @@ const Book = () => {
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
             <CheckCircle className="w-12 h-12 text-primary" />
           </div>
-          {isPaidSuccess ? (
-            <>
-              <h1 className="text-3xl font-bold text-foreground mb-3">Payment Confirmed!</h1>
-              <p className="text-muted-foreground text-lg mb-2">
-                Your consultation is booked.
-              </p>
-              <p className="text-muted-foreground text-sm">
-                I'll reach out within 24 hours to confirm our call.
-              </p>
-            </>
-          ) : (
-            <>
-              <h1 className="text-3xl font-bold text-foreground mb-3">You're All Set!</h1>
-              <p className="text-muted-foreground text-lg mb-2">
-                I'll reach out within 24 hours to discuss your {formData.leadType === "buy-presale" ? "presale search" : "assignment"}.
-              </p>
-            </>
-          )}
+          <h1 className="text-3xl font-bold text-foreground mb-3">You're All Set!</h1>
+          <p className="text-muted-foreground text-lg mb-2">
+            I'll reach out within 24 hours to discuss your {formData.leadType === "buy-presale" ? "presale search" : "assignment"}.
+          </p>
         </motion.div>
       </div>
     );

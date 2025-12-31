@@ -90,7 +90,7 @@ const PaymentSuccess = () => {
       
       // Create start date
       const startDate = new Date(`${dateStr}T${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:00`);
-      const endDate = new Date(startDate.getTime() + 30 * 60 * 1000); // 30 min later
+      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour later
       
       const formatForCalendar = (d: Date) => {
         return d.toISOString().replace(/-|:|\.\d{3}/g, '').slice(0, 15) + 'Z';
@@ -100,7 +100,7 @@ const PaymentSuccess = () => {
       calendarUrl.searchParams.set('action', 'TEMPLATE');
       calendarUrl.searchParams.set('text', 'Presale Consultation with Uzair');
       calendarUrl.searchParams.set('dates', `${formatForCalendar(startDate)}/${formatForCalendar(endDate)}`);
-      calendarUrl.searchParams.set('details', 'Your 30-minute presale strategy consultation. Uzair will call you at the scheduled time.');
+      calendarUrl.searchParams.set('details', 'Your 1-hour presale advisory consultation. Uzair will call you at the scheduled time.');
       
       return calendarUrl.toString();
     } catch {
@@ -173,7 +173,7 @@ const PaymentSuccess = () => {
                   {bookingDetails.time || "Time to be confirmed"}
                 </p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  30-minute strategy call
+                  1-hour advisory call
                 </p>
               </div>
             </div>

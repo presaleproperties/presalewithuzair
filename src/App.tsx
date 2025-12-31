@@ -16,6 +16,7 @@ import Agents from "./pages/Agents";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPostEditor from "./pages/AdminPostEditor";
+import AdminLeads from "./pages/AdminLeads";
 import NotFound from "./pages/NotFound";
 import Book from "./pages/Book";
 
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/agents" element={<Agents />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin/leads" element={<AdminLeads />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />
               <Route path="/book" element={<Book />} />
               <Route path="*" element={<NotFound />} />

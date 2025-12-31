@@ -167,10 +167,16 @@ const Admin = () => {
                 <ArrowLeft className="h-5 w-5" />
               </Link>
               <h1 className="font-display text-xl font-bold text-foreground">
-                Blog Admin
+                Admin Dashboard
               </h1>
             </div>
             <div className="flex items-center gap-4">
+              <Link to="/admin/leads">
+                <Button variant="outline" className="gap-2">
+                  <Eye className="h-4 w-4" />
+                  Leads
+                </Button>
+              </Link>
               <Link to="/admin/post/new">
                 <Button className="gap-2">
                   <Plus className="h-4 w-4" />

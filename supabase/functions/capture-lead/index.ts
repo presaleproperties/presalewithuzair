@@ -7,13 +7,15 @@ const corsHeaders = {
 
 interface LeadData {
   firstName: string;
-  lastName: string;
+  lastName?: string;
   email: string;
   phone: string;
   buyerType: string;
   leadSource?: string;
   timeline?: string;
   budget?: string;
+  preferredCallDate?: string;
+  preferredCallTime?: string;
   zapierWebhookUrl?: string;
 }
 
@@ -92,24 +94,26 @@ Deno.serve(async (req) => {
 
     const leadData: LeadData = await req.json();
 
-    // Validate required fields exist (leadSource is now optional)
-    if (!leadData.firstName || !leadData.lastName || !leadData.email || !leadData.phone || !leadData.buyerType) {
+    // Validate required fields exist (lastName optional)
+    if (!leadData.firstName || !leadData.email || !leadData.phone || !leadData.buyerType) {
       console.error("Missing required fields");
       return new Response(
-        JSON.stringify({ error: "All fields are required" }),
+        JSON.stringify({ error: "Missing required fields" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     // Sanitize inputs
     const firstName = leadData.firstName.trim();
-    const lastName = leadData.lastName.trim();
+    const lastName = (leadData.lastName ?? "").trim();
     const email = leadData.email.trim().toLowerCase();
     const phone = leadData.phone.trim();
     const buyerType = leadData.buyerType.trim();
     const leadSource = leadData.leadSource?.trim() || 'website';
     const timeline = leadData.timeline?.trim() || null;
     const budget = leadData.budget?.trim() || null;
+    const preferredCallDate = leadData.preferredCallDate?.trim() || null;
+    const preferredCallTime = leadData.preferredCallTime?.trim() || null;
 
     // Validate input formats
     if (!isValidName(firstName)) {
@@ -120,7 +124,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    if (!isValidName(lastName)) {
+    if (lastName && !isValidName(lastName)) {
       console.error("Invalid last name format:", lastName);
       return new Response(
         JSON.stringify({ error: "Invalid last name format" }),
@@ -174,6 +178,8 @@ Deno.serve(async (req) => {
         lead_source: leadSource,
         timeline: timeline,
         budget: budget,
+        preferred_call_date: preferredCallDate,
+        preferred_call_time: preferredCallTime,
       })
       .select()
       .single();
@@ -203,13 +209,15 @@ Deno.serve(async (req) => {
             id: lead.id,
             first_name: lead.first_name,
             last_name: lead.last_name,
-            full_name: `${lead.first_name} ${lead.last_name}`,
+            full_name: `${lead.first_name} ${lead.last_name}`.trim(),
             email: lead.email,
             phone: lead.phone,
             buyer_type: lead.buyer_type,
             lead_source: lead.lead_source,
             timeline: lead.timeline,
             budget: lead.budget,
+            preferred_call_date: lead.preferred_call_date,
+            preferred_call_time: lead.preferred_call_time,
             created_at: lead.created_at,
             source: "presalewithuzair.com",
           }),

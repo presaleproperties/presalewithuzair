@@ -102,22 +102,22 @@ const sellBudgetOptions: { value: string; label: string; Icon: LucideIcon }[] = 
 ];
 
 const timeSlots = [
-  { value: "9:00 AM", label: "9:00 AM" },
-  { value: "10:00 AM", label: "10:00 AM" },
   { value: "11:00 AM", label: "11:00 AM" },
-  { value: "12:00 PM", label: "12:00 PM" },
   { value: "1:00 PM", label: "1:00 PM" },
-  { value: "2:00 PM", label: "2:00 PM" },
   { value: "3:00 PM", label: "3:00 PM" },
   { value: "4:00 PM", label: "4:00 PM" },
-  { value: "5:00 PM", label: "5:00 PM" },
 ];
 
-// Generate next 7 days
-const getNext7Days = () => {
-  const days = [];
-  for (let i = 1; i <= 7; i++) {
+// Only show days that have availability: Sun(0), Mon(1), Wed(3), Fri(5)
+const AVAILABLE_WEEKDAYS = new Set([0, 1, 3, 5]);
+
+// Generate upcoming available days (next ~3 weeks, take first 8 matches)
+const getUpcomingAvailableDays = (count = 8) => {
+  const days: { value: string; dayName: string; dayNum: string; month: string }[] = [];
+  for (let i = 1; i <= 21 && days.length < count; i++) {
     const date = addDays(new Date(), i);
+    if (!AVAILABLE_WEEKDAYS.has(date.getDay())) continue;
+
     days.push({
       value: format(date, "yyyy-MM-dd"),
       dayName: format(date, "EEE"),
@@ -155,7 +155,7 @@ const Book = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const next7Days = getNext7Days();
+  const nextDays = getUpcomingAvailableDays();
 
   // Check for payment cancel in URL
   useEffect(() => {
@@ -287,20 +287,22 @@ const Book = () => {
     touchEndX.current = 0;
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (override?: Partial<FormData>) => {
+    const payload = { ...formData, ...override };
+
     setIsSubmitting(true);
     try {
-      if (formData.leadType === "paid-advice") {
+      if (payload.leadType === "paid-advice") {
         // Redirect to Stripe checkout with schedule info
         const { data, error } = await supabase.functions.invoke('create-advice-payment', {
           body: {
-            firstName: formData.firstName.trim(),
+            firstName: payload.firstName.trim(),
             lastName: "",
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            problemDescription: formData.problemDescription.trim(),
-            selectedDate: formData.selectedDate,
-            selectedTime: formData.selectedTime,
+            email: payload.email.trim(),
+            phone: payload.phone.trim(),
+            problemDescription: payload.problemDescription.trim(),
+            selectedDate: payload.selectedDate,
+            selectedTime: payload.selectedTime,
           }
         });
 
@@ -313,16 +315,16 @@ const Book = () => {
         // Free lead capture with schedule info
         const { error } = await supabase.functions.invoke('capture-lead', {
           body: {
-            firstName: formData.firstName.trim(),
+            firstName: payload.firstName.trim(),
             lastName: "",
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            buyerType: formData.leadType,
+            email: payload.email.trim(),
+            phone: payload.phone.trim(),
+            buyerType: payload.leadType,
             leadSource: "social-media-booking",
-            timeline: formData.timeline,
-            budget: formData.budget,
-            selectedDate: formData.selectedDate,
-            selectedTime: formData.selectedTime,
+            timeline: payload.timeline,
+            budget: payload.budget,
+            preferredCallDate: payload.selectedDate,
+            preferredCallTime: payload.selectedTime,
           }
         });
 
@@ -785,26 +787,27 @@ const Book = () => {
             {/* Date Selection */}
             <div>
               <p className="text-sm font-medium text-foreground mb-3">Select a date</p>
-              <div className="grid grid-cols-7 gap-1">
-                {next7Days.map((day) => (
+              <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 snap-x snap-mandatory">
+                {nextDays.map((day) => (
                   <button
                     key={day.value}
                     onClick={() => {
                       haptic.light();
                       setFormData({ ...formData, selectedDate: day.value, selectedTime: "" });
                     }}
-                    className={`p-2 rounded-lg border-2 transition-all duration-200 text-center ${
+                    className={`min-w-[76px] snap-start p-3 rounded-xl border-2 transition-all duration-200 text-center ${
                       formData.selectedDate === day.value
                         ? "border-primary bg-primary/10"
                         : "border-border bg-card hover:border-primary/50"
                     }`}
                   >
                     <span className="text-xs text-muted-foreground block">{day.dayName}</span>
-                    <span className="text-lg font-bold text-foreground block">{day.dayNum}</span>
+                    <span className="text-xl font-bold text-foreground block">{day.dayNum}</span>
                     <span className="text-xs text-muted-foreground block">{day.month}</span>
                   </button>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground mt-1">Available: Sun, Mon, Wed, Fri</p>
             </div>
 
             {/* Time Selection */}
@@ -815,25 +818,26 @@ const Book = () => {
                 transition={{ duration: 0.3 }}
               >
                 <p className="text-sm font-medium text-foreground mb-3">Select a time</p>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {timeSlots.map((slot) => (
                     <button
                       key={slot.value}
                       onClick={() => {
+                        const nextTime = slot.value;
                         haptic.medium();
-                        setFormData({ ...formData, selectedTime: slot.value });
-                        // Auto-submit after selecting time
+                        setFormData({ ...formData, selectedTime: nextTime });
+                        // Auto-submit after selecting time (use fresh values)
                         setTimeout(() => {
-                          handleSubmit();
-                        }, 400);
+                          handleSubmit({ selectedTime: nextTime });
+                        }, 250);
                       }}
-                      className={`p-3 rounded-lg border-2 transition-all duration-200 text-center active:scale-[0.97] ${
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
                         formData.selectedTime === slot.value
                           ? "border-primary bg-primary/10"
                           : "border-border bg-card hover:border-primary/50"
                       }`}
                     >
-                      <span className="text-sm font-medium text-foreground">{slot.label}</span>
+                      <span className="text-base font-semibold text-foreground">{slot.label}</span>
                     </button>
                   ))}
                 </div>

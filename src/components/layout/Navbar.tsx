@@ -72,7 +72,7 @@ export const Navbar = () => {
               className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
               onClick={scrollToForm}
             >
-              Work With Uzair
+              Book a Discovery Call
             </Button>
             <button
               className="p-2 text-foreground"
@@ -107,7 +107,7 @@ export const Navbar = () => {
               className="rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
               onClick={scrollToForm}
             >
-              Work With Uzair
+              Book a Discovery Call
             </Button>
           </div>
         </div>
@@ -142,7 +142,7 @@ export const Navbar = () => {
               className="w-full rounded-full"
               onClick={scrollToForm}
             >
-              Work With Uzair
+              Book a Discovery Call
             </Button>
           </div>
         </div>

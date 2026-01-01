@@ -83,7 +83,7 @@ export const BookingContextSection = () => {
               onClick={openCalendly}
             >
               <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
-              Book a Presale Strategy Call
+              Book a Discovery Call
             </Button>
             <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4">
               Limited weekly availability. Serious inquiries only.

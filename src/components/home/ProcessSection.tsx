@@ -11,43 +11,43 @@ const steps = [
   {
     icon: MessageSquare,
     step: "01",
-    title: "Understand Your Goals",
-    description: "We start with a strategy call to understand your timeline, budget, risk tolerance, and whether you're buying for investment, personal use, or both.",
+    title: "Discovery Call",
+    description: "We start by understanding your goals, timeline, and concerns. No sales pitch — just an honest conversation about whether presales make sense for you.",
     image: officeWideImage,
   },
   {
     icon: Search,
     step: "02",
-    title: "Shortlist Projects",
-    description: "Based on your criteria, Uzair identifies projects that meet strict value and risk standards — filtering out the 80% that don't qualify.",
+    title: "Education & Research",
+    description: "Learn how presales work, what risks to watch for, and which projects meet strict quality standards. Most projects don't make the cut.",
     image: presaleBuilding,
   },
   {
     icon: FileText,
     step: "03",
-    title: "Review Disclosure & Pricing",
-    description: "Every disclosure document is reviewed line-by-line. Pricing is analyzed against comparables. Red flags are identified before you commit.",
+    title: "Contract Review",
+    description: "Every disclosure document is reviewed line-by-line. I explain what each clause means and identify red flags before you commit to anything.",
     image: brochureReviewImage,
   },
   {
     icon: Home,
     step: "04",
-    title: "Secure Your Unit",
-    description: "With VIP access and developer relationships, we secure your preferred unit — often before public launch or with negotiated terms.",
+    title: "Guided Decision",
+    description: "With clear information in hand, you make the decision. If I think a project isn't right for you, I'll tell you — even if it means walking away.",
     image: showroomEntranceImage,
   },
   {
     icon: TrendingUp,
     step: "05",
-    title: "Project Walkthrough",
-    description: "We visit the showroom together to review finishes, floor plans, and amenities — ensuring every detail aligns with your expectations.",
+    title: "Showroom Walkthrough",
+    description: "We visit together to review finishes, floor plans, and details. No pressure — just making sure everything aligns with your expectations.",
     image: showroomTourImage,
   },
   {
     icon: Headphones,
     step: "06",
-    title: "Ongoing Advisory",
-    description: "From contract to keys (or assignment), Uzair remains your advisor. Market updates, milestone reminders, and strategic guidance throughout the process.",
+    title: "Ongoing Support",
+    description: "From contract to keys (or assignment), I remain your advisor. Questions, updates, and guidance whenever you need it throughout the process.",
     image: clientsImage,
   },
 ];
@@ -59,10 +59,10 @@ export const ProcessSection = () => {
         <div className="text-center mb-10 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">The Process</p>
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-            How We <span className="text-gradient">Work Together</span>
+            Education <span className="text-gradient">Before Commitment</span>
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
-            A structured, transparent approach that protects your interests and maximizes your outcomes.
+            A transparent, no-pressure approach focused on helping you make informed decisions.
           </p>
         </div>
 

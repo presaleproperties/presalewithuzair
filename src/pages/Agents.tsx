@@ -317,7 +317,7 @@ const Agents = () => {
                   </Button>
                   <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={openCalendly}>
                     <Phone className="h-4 w-4" />
-                    Book a Call
+                    Book a Discovery Call
                   </Button>
                 </div>
               </div>

@@ -13,7 +13,7 @@ const heroContent = {
   headlineAccent2: "GUIDANCE.",
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "Independent, buyer-first guidance • No developer pressure",
-  cta: "Book a Strategy Call",
+  cta: "Book a Discovery Call",
   microTrust: "330+ presale homes advised on • $100M+ in new construction experience • Focused on Metro Vancouver presales",
 };
 

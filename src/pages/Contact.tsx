@@ -149,7 +149,7 @@ const Contact = () => {
                     onClick={openCalendly}
                   >
                     <Mail className="h-5 w-5" />
-                    Schedule a Call
+                    Book a Discovery Call
                   </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">

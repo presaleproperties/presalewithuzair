@@ -109,7 +109,7 @@ const About = () => {
                     onClick={openCalendly}
                   >
                     <Phone className="h-4 w-4" />
-                    Schedule a Call
+                    Book a Discovery Call
                   </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg" className="gap-2">
@@ -293,7 +293,7 @@ const About = () => {
                   onClick={openCalendly}
                 >
                   <Phone className="h-5 w-5" />
-                  Schedule a Call
+                  Book a Discovery Call
                 </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">

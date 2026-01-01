@@ -26,7 +26,7 @@ export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
           className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
           onClick={scrollToForm}
         >
-          Work With Uzair
+          Book a Discovery Call
         </Button>
       </div>
     </section>

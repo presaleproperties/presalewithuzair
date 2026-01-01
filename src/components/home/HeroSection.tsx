@@ -249,14 +249,14 @@ export const HeroSection = () => {
           </div>
 
           {/* Right Column - Image + Who I Help */}
-          <div className="relative animate-fade-up delay-200 space-y-6">
+          <div className="relative animate-fade-up delay-200 space-y-6 flex flex-col items-center">
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-accent/10 rounded-full blur-2xl" />
             
             {/* Main image container */}
-            <div className="relative">
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-4 translate-y-4" />
+            <div className="relative w-full max-w-md mx-auto">
+              <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-2 translate-y-2" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <OptimizedImage

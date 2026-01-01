@@ -43,7 +43,7 @@ export const AboutSection = () => {
                 to presale projects, market trends, and exclusive opportunities before they become publicly available.
               </p>
               <p>
-                He has facilitated $26M+ in assignment sales and secured over $500K in buyer credits for his clients. 
+                He has helped clients save over $1M+ in negotiated credits from developers. 
                 Uzair is dedicated to building long-term relationships to deliver a lifetime of real estate services.
               </p>
             </div>

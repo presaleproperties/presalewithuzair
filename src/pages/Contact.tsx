@@ -12,10 +12,10 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Uzair Muhammad | Vancouver Presale Expert</title>
+        <title>Contact Uzair Muhammad | Vancouver Presale Guidance</title>
         <meta
           name="description"
-          content="Get in touch with Uzair Muhammad, Vancouver's top presale expert. Book a consultation to discuss presale condos, assignments, and investment opportunities."
+          content="Have questions about presales? Get in touch with Uzair for honest, buyer-first guidance. No pressure, no sales pitch — just clear advice."
         />
       </Helmet>
 
@@ -27,11 +27,11 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Contact <span className="text-gradient">Uzair</span>
+                Have <span className="text-gradient">Questions</span>?
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Ready to explore presale opportunities? Get in touch to schedule a consultation 
-                and discover exclusive investment options in Vancouver.
+                Not sure if a presale is right for you? Have concerns about a specific project? 
+                Reach out for honest, no-pressure guidance.
               </p>
             </div>
           </div>
@@ -44,7 +44,7 @@ const Contact = () => {
               {/* Contact Info */}
               <div>
                 <h2 className="font-display text-3xl font-bold text-foreground mb-8">
-                  Let's <span className="text-gradient">Connect</span>
+                  Reach <span className="text-gradient">Out</span>
                 </h2>
 
                 <div className="space-y-6">
@@ -123,11 +123,11 @@ const Contact = () => {
                 </div>
                 <div className="p-8 lg:p-12">
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6">
-                  Book a Consultation
+                  Get Clear Guidance
                 </h3>
                 <p className="text-foreground/70 mb-8">
-                  Whether you're a first-time buyer, seasoned investor, or looking to sell your presale, 
-                  Uzair is here to help you navigate the Vancouver real estate market.
+                  Whether you're exploring your first presale or have questions about a specific project, 
+                  I'm here to provide honest advice — not a sales pitch.
                 </p>
 
                 <div className="space-y-4 mb-8">
@@ -137,7 +137,7 @@ const Contact = () => {
                   </div>
                   <div className="flex items-center gap-3 text-foreground/80">
                     <MessageCircle className="h-5 w-5 text-primary" />
-                    <span>Free consultation with no obligation</span>
+                    <span>No obligation — just honest conversation</span>
                   </div>
                 </div>
 
@@ -163,16 +163,16 @@ const Contact = () => {
                 <div className="mt-10 pt-8 border-t border-border">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">300+</p>
-                      <p className="text-xs text-muted-foreground">Units Sold</p>
+                      <p className="text-2xl font-display font-bold text-gradient">330+</p>
+                      <p className="text-xs text-muted-foreground">Presales Advised</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
-                      <p className="text-xs text-muted-foreground">In Volume</p>
+                      <p className="text-2xl font-display font-bold text-gradient">$1M+</p>
+                      <p className="text-xs text-muted-foreground">Saved for Clients</p>
                     </div>
                     <div>
                       <p className="text-2xl font-display font-bold text-gradient">5★</p>
-                      <p className="text-xs text-muted-foreground">Rating</p>
+                      <p className="text-xs text-muted-foreground">Reviews</p>
                     </div>
                   </div>
                 </div>

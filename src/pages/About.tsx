@@ -18,7 +18,7 @@ import { useCalendly } from "@/hooks/useCalendly";
 const stats = [
   { value: "330+", label: "Presales Advised" },
   { value: "$100M+", label: "In Experience" },
-  { value: "$500K+", label: "Buyers Credit" },
+  { value: "$1M+", label: "Saved for Clients" },
   { value: "100%", label: "Buyer-First" },
 ];
 

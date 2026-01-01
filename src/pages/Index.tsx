@@ -121,7 +121,7 @@ const Index = () => {
         <LeadCaptureSection />
         
         {/* Mid-page CTA */}
-        <MidPageCTA quote="Uzair's expertise in presales is unmatched. He knows every developer, every project, every angle." />
+        <MidPageCTA quote="Uzair told me not to buy two projects I was excited about — and saved me from major issues. That's the kind of honesty you need." />
         
         {/* Why Work With a Presale Expert */}
         <DifferentiationSection />

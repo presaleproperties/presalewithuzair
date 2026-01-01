@@ -7,10 +7,10 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
-  headlinePart1: "NAVIGATE THE",
-  headlinePart2: "PRESALE MARKET",
-  headlineAccent: "WITH CLEAR",
-  headlineAccent2: "GUIDANCE.",
+  headlinePart1: "NO HYPE.",
+  headlinePart2: "NO PRESSURE.",
+  headlineAccent: "JUST HONEST",
+  headlineAccent2: "ADVICE.",
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "Independent, buyer-first guidance • No developer pressure",
   cta: "Book a Discovery Call",

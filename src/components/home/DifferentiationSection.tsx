@@ -2,9 +2,9 @@ import { Check, X } from "lucide-react";
 
 const comparisons = [
   {
-    category: "Specialization",
-    presaleExpert: "100% presale-focused",
-    regularRealtor: "Mostly resale transactions",
+    category: "Approach",
+    presaleExpert: "Buyer-first, independent guidance",
+    regularRealtor: "Sales-driven approach",
   },
   {
     category: "Disclosure Review",
@@ -12,24 +12,24 @@ const comparisons = [
     regularRealtor: "Quick overview at best",
   },
   {
-    category: "Developer Access",
-    presaleExpert: "VIP pricing & early access",
-    regularRealtor: "No special access",
+    category: "Honest Advice",
+    presaleExpert: "Will advise against bad deals",
+    regularRealtor: "Pushes to close any deal",
   },
   {
-    category: "Assignment Knowledge",
+    category: "Developer Knowledge",
+    presaleExpert: "Knows which developers to trust",
+    regularRealtor: "Limited developer insight",
+  },
+  {
+    category: "Education Focus",
+    presaleExpert: "Teaches before commitment",
+    regularRealtor: "Rushes to contract",
+  },
+  {
+    category: "Assignment Strategy",
     presaleExpert: "Exit strategies built in",
     regularRealtor: "Limited understanding",
-  },
-  {
-    category: "Market Timing",
-    presaleExpert: "Data-driven cycle analysis",
-    regularRealtor: "Reactive approach",
-  },
-  {
-    category: "Investment Analysis",
-    presaleExpert: "ROI projections & leverage",
-    regularRealtor: "Basic price comparisons",
   },
 ];
 
@@ -113,7 +113,7 @@ export const DifferentiationSection = () => {
           {/* Bottom Insight */}
           <div className="mt-8 sm:mt-12 text-center">
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-              Presales aren't resales. You need someone who understands disclosures, deposits, and developer games.
+              Presales require specialized knowledge. You deserve someone focused on your interests — not the developer's.
             </p>
           </div>
         </div>

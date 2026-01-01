@@ -176,12 +176,12 @@ export const LeadCaptureSection = () => {
               START HERE
             </p>
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground uppercase tracking-tight mb-3">
-              GET HONEST ADVICE <span className="text-muted-foreground">BEFORE YOU BUY</span>
+              GET CLEAR GUIDANCE <span className="text-muted-foreground">BEFORE YOU BUY</span>
             </h2>
             
             <p className="text-sm sm:text-base text-muted-foreground mb-6">
-              <span className="text-foreground font-semibold">No pressure. No hype.</span>{" "}
-              Just a quick conversation to see if we're a fit — and to make sure you don't buy something you'll regret.
+              <span className="text-foreground font-semibold">Independent, buyer-first advice.</span>{" "}
+              A quick conversation to understand your goals — and ensure you don't make a costly mistake.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">

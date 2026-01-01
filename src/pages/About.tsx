@@ -16,17 +16,17 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
-  { value: "300+", label: "Units Sold" },
-  { value: "$200M+", label: "In Volume" },
+  { value: "330+", label: "Presales Advised" },
+  { value: "$100M+", label: "In Experience" },
   { value: "$500K+", label: "Buyers Credit" },
-  { value: "$26M+", label: "In Assignments" },
+  { value: "100%", label: "Buyer-First" },
 ];
 
 const values = [
-  "Identifies undervalued projects with substantial returns",
-  "Advocates for minimal deposits to maintain financial flexibility",
-  "Chooses projects with extended completion timelines",
-  "Prioritizes your financial growth and interests",
+  "Provides honest advice — even when it means saying no",
+  "Educates before asking for commitment",
+  "Reviews every contract line-by-line for red flags",
+  "Prioritizes your interests over any sale",
 ];
 
 const About = () => {
@@ -50,11 +50,11 @@ const About = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">About Uzair</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Meet <span className="text-gradient">Uzair</span>
+                Buyer-First <span className="text-gradient">Guidance</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Vancouver's premier presale expert dedicated to helping investors and first-time buyers 
-                navigate the new construction market with confidence.
+                Independent presale advice focused on education, transparency, and protecting your interests — 
+                not pushing sales.
               </p>
             </div>
           </div>
@@ -82,22 +82,22 @@ const About = () => {
 
               <div>
                 <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                  Presale <span className="text-gradient">Expert</span>
+                  Clear <span className="text-gradient">Guidance</span>
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    Uzair is a Real Estate Agent and Presale Expert in Vancouver, BC. With a focus 
-                    on the Lower Mainland Presale Market, Uzair has helped hundreds of clients make 
-                    lucrative presale investments in undervalued projects.
+                    Uzair is a presale specialist in Vancouver, BC who believes buyers deserve honest, 
+                    independent advice — not sales pressure. His approach is simple: educate first, 
+                    then help you decide if a presale makes sense for your situation.
                   </p>
                   <p>
-                    With over $200M+ in volume and 300+ units sold, Uzair has facilitated $26M+ in 
-                    assignment sales and secured over $500K in buyer credits for his clients.
+                    With experience advising on 330+ presale homes, Uzair has learned which developers 
+                    to trust, which contracts have hidden risks, and when to walk away from a deal.
                   </p>
                   <p>
-                    Working primarily with investors and first-time buyers, Uzair provides insider 
-                    access to presale projects, market trends, and exclusive opportunities before 
-                    they become publicly available.
+                    Working primarily with first-time buyers and investors, Uzair provides clear 
+                    explanations of complex presale contracts, identifies red flags before you commit, 
+                    and ensures you understand exactly what you're signing.
                   </p>
                 </div>
 
@@ -198,11 +198,11 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-16">
               <div>
                 <h2 className="font-display text-3xl font-bold text-foreground mb-6">
-                  Uzair's <span className="text-gradient">Values</span>
+                  My <span className="text-gradient">Principles</span>
                 </h2>
                 <p className="text-foreground/80 leading-relaxed mb-8">
-                  Uzair believes that successful real estate investment goes beyond finding the right deal. 
-                  It's about making strategic choices for long-term growth and security.
+                  Presale purchases are significant decisions. My role is to ensure you have the 
+                  information and guidance needed to make the right choice — even if that choice is to wait.
                 </p>
                 <ul className="space-y-4">
                   {values.map((value) => (
@@ -216,22 +216,21 @@ const About = () => {
 
               <div>
                 <h2 className="font-display text-3xl font-bold text-foreground mb-6">
-                  Uzair's <span className="text-gradient">Approach</span>
+                  My <span className="text-gradient">Approach</span>
                 </h2>
                 <p className="text-foreground/80 leading-relaxed">
-                  Uzair's real estate investment approach is meticulous and client-centered. He understands 
-                  that selecting the right project, price, and terms is crucial for maximizing presale 
-                  investment returns.
+                  I take a buyer-first approach to presales. Before recommending any project, I review 
+                  disclosures, assess developer track records, and evaluate whether the deal genuinely 
+                  serves your interests.
                 </p>
                 <p className="text-foreground/80 leading-relaxed mt-4">
-                  Uzair's clients see impressive returns even before project completion. He specializes 
-                  in undervalued projects with significant appreciation potential, ensuring clients 
-                  maintain liquidity with minimal deposits.
+                  If a project has concerning clauses, questionable pricing, or a developer I don't trust, 
+                  I'll tell you directly. My job isn't to close deals — it's to help you avoid bad ones 
+                  and find the right opportunities.
                 </p>
                 <p className="text-foreground/80 leading-relaxed mt-4">
-                  Prioritizing projects with longer completion timelines allows for extended holding 
-                  periods, enhancing investment returns. Uzair's commitment is to help you build a 
-                  robust real estate portfolio.
+                  This means some conversations end with "this isn't the right fit for you." That's not 
+                  a failure — that's honest guidance doing its job.
                 </p>
               </div>
             </div>
@@ -280,11 +279,11 @@ const About = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Book a 1-on-1 Call with Uzair
+                Get Clear Guidance Before You Buy
               </h2>
               <p className="text-foreground/80 mb-8">
-                Ready to explore presale opportunities? Schedule a consultation to discuss your 
-                investment goals and discover exclusive projects.
+                Have questions about a presale? Want to understand if it's the right move for you? 
+                Let's have an honest conversation — no pressure, no sales pitch.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 

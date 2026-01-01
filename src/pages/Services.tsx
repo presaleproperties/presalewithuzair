@@ -11,47 +11,47 @@ import { useCalendly } from "@/hooks/useCalendly";
 const services = [
   {
     id: "presales",
-    title: "Presale Condos",
-    subtitle: "New Construction Investments",
-    description: "Thinking of buying a presale condo for investment or personal use? Get insider access to the best projects before they go public.",
+    title: "Presale Guidance",
+    subtitle: "New Construction Advisory",
+    description: "Considering a presale condo? Before you commit, get clear guidance on contracts, developers, and whether the deal truly makes sense for your situation.",
     image: showroomTourImage,
     benefits: [
-      "Early access to new developments",
-      "Priority unit selection",
-      "Negotiated pricing and incentives",
-      "Lower upfront deposit requirements",
-      "Time to save while building completes",
-      "Brand new with full warranty",
+      "Honest assessment of each project",
+      "Line-by-line contract review",
+      "Developer reputation analysis",
+      "Red flag identification",
+      "Education before commitment",
+      "Advice to walk away when needed",
     ],
   },
   {
     id: "assignments",
-    title: "Presale Assignments",
+    title: "Assignment Support",
     subtitle: "Sell Before Completion",
-    description: "Bought a presale and looking to assign it before completion? We specialize in maximizing your returns on assignment sales.",
+    description: "Looking to assign your presale contract? Get clear guidance on your options, realistic valuations, and the process — without the sales pressure.",
     image: floorplanImage,
     benefits: [
-      "Expert valuation of your contract",
-      "Marketing to qualified buyers",
-      "Negotiation to maximize profit",
+      "Honest valuation of your contract",
+      "Clear explanation of your options",
       "Navigate assignment restrictions",
-      "Handle developer approvals",
-      "Complete transaction management",
+      "Understand tax implications",
+      "Developer approval guidance",
+      "Transparent process management",
     ],
   },
   {
     id: "resale",
     title: "Resale Properties",
     subtitle: "Buy & Sell",
-    description: "Thinking of buying or selling a resale property? We help our clients with complete real estate transactions. Ultimately, all presale units turn to resale properties.",
+    description: "Need help with a resale property? Whether buying or selling, get the same buyer-first approach with clear guidance throughout the transaction.",
     image: clientMeetingImage,
     benefits: [
-      "Comprehensive market analysis",
-      "Strategic pricing for sellers",
-      "Negotiation expertise",
-      "Full transaction support",
-      "Network of qualified buyers",
-      "Seamless closing process",
+      "Honest market analysis",
+      "Realistic pricing guidance",
+      "Transparent process",
+      "Clear communication",
+      "Education at every step",
+      "Your interests first",
     ],
   },
 ];
@@ -62,10 +62,10 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Services | Presale Condos, Assignments & Resale | Uzair Muhammad</title>
+        <title>Services | Presale Guidance, Assignments & Resale | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Explore our real estate services: presale condos, assignment sales, and resale properties. Vancouver's premier presale expert helping investors maximize returns."
+          content="Get clear, buyer-first guidance on presale condos, assignment sales, and resale properties. Independent advice focused on education and protecting your interests."
         />
       </Helmet>
 
@@ -75,13 +75,13 @@ const Services = () => {
         <section className="relative pt-32 pb-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">How We Can Help</p>
+              <p className="section-label mb-4 animate-fade-up">How I Can Help</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Our <span className="text-gradient">Services</span>
+                Clear <span className="text-gradient">Guidance</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Being a specialist in presales allows Uzair to stay ahead of new projects, 
-                gain first access to developments, and negotiate the best deals for his clients.
+                Whether you're buying a presale, assigning a contract, or exploring resale — 
+                get honest, buyer-first advice focused on education and protecting your interests.
               </p>
             </div>
           </div>
@@ -143,11 +143,11 @@ const Services = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Ready to Get <span className="text-gradient">Started</span>?
+                Have <span className="text-gradient">Questions</span>?
               </h2>
               <p className="text-foreground/80 mb-8">
-                Whether you're buying your first presale, looking to assign, or exploring resale options, 
-                Uzair is here to help you make informed decisions.
+                Not sure where to start? Let's have an honest conversation about your situation. 
+                No pressure, no sales pitch — just clear guidance to help you decide your next step.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 

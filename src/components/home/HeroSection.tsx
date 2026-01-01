@@ -175,24 +175,14 @@ export const HeroSection = () => {
             </a>
           </div>
 
-          {/* Stats Row - Mobile */}
-          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-border/30 mt-auto animate-fade-up">
-            <div className="text-center">
-              <p className="text-2xl font-display font-bold text-gradient">300+</p>
-              <p className="text-xs text-muted-foreground mt-1">Presale Units</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
-              <p className="text-xs text-muted-foreground mt-1">Presales Closed</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-display font-bold text-gradient">$26M+</p>
-              <p className="text-xs text-muted-foreground mt-1">Assignments</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-display font-bold text-gradient">4+ Yrs</p>
-              <p className="text-xs text-muted-foreground mt-1">Presale Focus</p>
-            </div>
+          {/* Trust Badge - Mobile */}
+          <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
+            <p className="text-lg font-display font-bold text-foreground">
+              Trusted by <span className="text-gradient">300+</span> First-Time Buyers & Investors
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              $200M+ in presales closed • 4+ years presale focus
+            </p>
           </div>
         </div>
 
@@ -247,24 +237,14 @@ export const HeroSection = () => {
               </p>
             </div>
 
-            {/* Stats Row */}
-            <div className="grid grid-cols-4 gap-4 pt-8 border-t border-border/50 animate-fade-up">
-              <div>
-                <p className="text-2xl md:text-3xl font-display font-bold text-gradient">300+</p>
-                <p className="text-xs text-muted-foreground mt-1">Presale Units</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-display font-bold text-gradient">$200M+</p>
-                <p className="text-xs text-muted-foreground mt-1">Presales Closed</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-display font-bold text-gradient">$26M+</p>
-                <p className="text-xs text-muted-foreground mt-1">Assignments</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-display font-bold text-gradient">4+ Yrs</p>
-                <p className="text-xs text-muted-foreground mt-1">Presale Focus</p>
-              </div>
+            {/* Trust Badge */}
+            <div className="pt-8 border-t border-border/50 animate-fade-up">
+              <p className="text-xl font-display font-bold text-foreground">
+                Trusted by <span className="text-gradient">300+</span> First-Time Buyers & Investors
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                $200M+ in presales closed • 4+ years presale focus
+              </p>
             </div>
           </div>
 

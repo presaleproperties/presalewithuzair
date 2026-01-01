@@ -3,17 +3,15 @@ import { Phone, CheckCircle, XCircle } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const forYou = [
-  "You're serious about buying a presale in the next 6-12 months",
-  "You're an investor looking to add presales to your portfolio",
-  "You're a developer seeking launch or advisory support",
-  "You're a realtor wanting to better serve presale clients",
+  "Are seriously considering a presale purchase",
+  "Want clear guidance on risks, pricing, and contracts",
+  "Prefer honest advice over sales pressure",
 ];
 
 const notForYou = [
-  "You're just casually browsing with no timeline",
-  "You're looking for resale properties only",
-  "You want someone to tell you what to buy without discussion",
-  "You're not ready to have an honest conversation about budget and goals",
+  "Are just browsing or early-stage researching",
+  "Are looking only for the cheapest option",
+  "Expect developer-style incentives or promotions",
 ];
 
 export const BookingContextSection = () => {
@@ -24,12 +22,12 @@ export const BookingContextSection = () => {
       <div className="container-xl px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10 sm:mb-16">
-            <p className="section-label mb-3 sm:mb-4">Schedule a Call</p>
+            <p className="section-label mb-3 sm:mb-4">Is This Right For You?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-              Before You <span className="text-gradient">Book</span>
+              Before You <span className="text-gradient">Book a Call</span>
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
-              Strategy calls are limited. Please review this information to ensure we're a good fit.
+              I work with a select number of buyers to ensure proper guidance. Please review to see if we're a good fit.
             </p>
           </div>
 
@@ -41,7 +39,7 @@ export const BookingContextSection = () => {
                   <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
-                  This call is for you if...
+                  This is a good fit if you...
                 </h3>
               </div>
               <ul className="space-y-2.5 sm:space-y-3">
@@ -61,7 +59,7 @@ export const BookingContextSection = () => {
                   <XCircle className="h-4 w-4 sm:h-5 sm:w-5 text-destructive" />
                 </div>
                 <h3 className="font-display text-base sm:text-lg font-bold text-foreground">
-                  This call is NOT for you if...
+                  This may not be a fit if you...
                 </h3>
               </div>
               <ul className="space-y-2.5 sm:space-y-3">

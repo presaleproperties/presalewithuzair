@@ -7,13 +7,14 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
-  headlinePart1: "NO PRESSURE.",
-  headlinePart2: "NO HYPE.",
-  headlineAccent: "JUST HONEST",
-  headlineAccent2: "ADVICE.",
-  subheadline: "Buying a presale or new home shouldn't feel confusing or risky. I simplify the process, explain what to buy and what to avoid, and protect you with the right strategy — even if that means telling you not to buy.",
-  cta: "Work With Uzair",
-  microTrust: "Trusted by 300+ first-time buyers and investors • Presale & new-construction specialist • 5-star Google reviews",
+  headlinePart1: "NAVIGATE THE",
+  headlinePart2: "PRESALE MARKET",
+  headlineAccent: "WITH CLEAR",
+  headlineAccent2: "GUIDANCE.",
+  subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
+  supportingLine: "Independent, buyer-first guidance • No developer pressure",
+  cta: "Book a Strategy Call",
+  microTrust: "330+ presale homes advised on • $100M+ in new construction experience • Focused on Metro Vancouver presales",
 };
 
 export const HeroSection = () => {
@@ -58,8 +59,13 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base text-muted-foreground mb-8 animate-fade-up">
+          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
             {heroContent.subheadline}
+          </p>
+          
+          {/* Supporting Line */}
+          <p className="text-xs text-primary/80 mb-8 animate-fade-up font-medium">
+            {heroContent.supportingLine}
           </p>
 
           {/* CTA Button - Outlined style like Dan Martell */}
@@ -211,6 +217,11 @@ export const HeroSection = () => {
               {/* Sub-headline */}
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
                 {heroContent.subheadline}
+              </p>
+              
+              {/* Supporting Line */}
+              <p className="text-sm text-primary/80 animate-fade-up font-medium">
+                {heroContent.supportingLine}
               </p>
             </div>
 

@@ -32,9 +32,13 @@ export const FinalCTASection = () => {
             <span className="text-muted-foreground">PRESALE STRATEGY</span>
           </h2>
           
-          <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
             Get expert guidance on pricing, deposits, developer reputation, and timing. 
             Stop guessing and start investing with confidence.
+          </p>
+          
+          <p className="text-sm text-muted-foreground/70 mb-8 max-w-xl mx-auto italic">
+            I work with a limited number of buyers to ensure proper guidance.
           </p>
 
           <Button 

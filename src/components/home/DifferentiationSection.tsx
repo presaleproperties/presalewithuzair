@@ -2,19 +2,24 @@ import { Check, X } from "lucide-react";
 
 const comparisons = [
   {
-    category: "Approach",
-    presaleExpert: "Buyer-first, independent guidance",
-    regularRealtor: "Sales-driven approach",
+    category: "Skin in the Game",
+    presaleExpert: "7+ personal presale investments",
+    regularRealtor: "Sells but doesn't buy presales",
   },
   {
-    category: "Disclosure Review",
-    presaleExpert: "Line-by-line red flag analysis",
-    regularRealtor: "Quick overview at best",
+    category: "No Hype",
+    presaleExpert: "Never pumps up projects — 4+ years consistent",
+    regularRealtor: "Hypes every new launch",
   },
   {
     category: "Honest Advice",
     presaleExpert: "Will advise against bad deals",
     regularRealtor: "Pushes to close any deal",
+  },
+  {
+    category: "Disclosure Review",
+    presaleExpert: "Line-by-line red flag analysis",
+    regularRealtor: "Quick overview at best",
   },
   {
     category: "Developer Knowledge",
@@ -25,11 +30,6 @@ const comparisons = [
     category: "Education Focus",
     presaleExpert: "Teaches before commitment",
     regularRealtor: "Rushes to contract",
-  },
-  {
-    category: "Assignment Strategy",
-    presaleExpert: "Exit strategies built in",
-    regularRealtor: "Limited understanding",
   },
 ];
 

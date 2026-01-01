@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import uzairImage from "@/assets/uzair-expo-speaking.jpg?w=300&format=webp";
+import uzairImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
   const scrollToForm = () => {
@@ -56,10 +56,6 @@ export const FinalCTASection = () => {
               <img
                 src={uzairImage}
                 alt="Uzair Muhammad - Presale Expert"
-                width={300}
-                height={300}
-                loading="lazy"
-                decoding="async"
                 className="w-full h-full object-cover object-top"
               />
             </div>

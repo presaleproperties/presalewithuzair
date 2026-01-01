@@ -1,31 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ResponsiveImage } from "@/components/ui/responsive-image";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-
-// Hero image - multiple sizes for srcset
-import heroImageSm from "@/assets/uzair-walking.jpg?w=400&format=webp";
-import heroImageMd from "@/assets/uzair-walking.jpg?w=600&format=webp";
-import heroImageLg from "@/assets/uzair-walking.jpg?w=800&format=webp";
-import heroImageFallback from "@/assets/uzair-walking.jpg?w=800&format=webp";
-
-// Supporting images
-import showroomImageSm from "@/assets/uzair-showroom-tour.jpg?w=300&format=webp";
-import showroomImageMd from "@/assets/uzair-showroom-tour.jpg?w=400&format=webp";
-import showroomImageFallback from "@/assets/uzair-showroom-tour.jpg?w=400&format=webp";
-
-import clientMeetingImageSm from "@/assets/uzair-client-meeting.jpg?w=300&format=webp";
-import clientMeetingImageMd from "@/assets/uzair-client-meeting.jpg?w=400&format=webp";
-import clientMeetingImageFallback from "@/assets/uzair-client-meeting.jpg?w=400&format=webp";
-
-import expoImageSm from "@/assets/uzair-expo-wide.jpg?w=400&format=webp";
-import expoImageMd from "@/assets/uzair-expo-wide.jpg?w=600&format=webp";
-import expoImageFallback from "@/assets/uzair-expo-wide.jpg?w=600&format=webp";
-
-// Build srcset strings
-const heroSrcSet = `${heroImageSm} 400w, ${heroImageMd} 600w, ${heroImageLg} 800w`;
-const showroomSrcSet = `${showroomImageSm} 300w, ${showroomImageMd} 400w`;
-const clientMeetingSrcSet = `${clientMeetingImageSm} 300w, ${clientMeetingImageMd} 400w`;
-const expoSrcSet = `${expoImageSm} 400w, ${expoImageMd} 600w`;
+import heroImage from "@/assets/uzair-walking.jpg";
+import showroomImage from "@/assets/uzair-showroom-tour.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
+import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const heroContent = {
   label: "PRESALE EXPERT",
@@ -116,14 +94,10 @@ export const HeroSection = () => {
           <div className="relative mb-8 animate-fade-up">
             {/* Main hero image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
-              <ResponsiveImage
-                src={heroImageFallback}
-                srcSet={heroSrcSet}
-                sizes="(max-width: 768px) 100vw, 400px"
+              <OptimizedImage
+                src={heroImage}
                 alt="Uzair Muhammad - Vancouver's Top Presale Expert"
                 className="w-full aspect-[4/5]"
-                width={400}
-                height={500}
                 priority
               />
               {/* Gradient overlay */}
@@ -148,14 +122,10 @@ export const HeroSection = () => {
                 }}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
-                <ResponsiveImage
-                  src={showroomImageFallback}
-                  srcSet={showroomSrcSet}
-                  sizes="(max-width: 768px) 50vw, 200px"
+                <OptimizedImage
+                  src={showroomImage}
                   alt="First-time home buyers touring presale showroom"
                   className="w-full aspect-square"
-                  width={200}
-                  height={200}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
@@ -172,14 +142,10 @@ export const HeroSection = () => {
                 }}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
-                <ResponsiveImage
-                  src={clientMeetingImageFallback}
-                  srcSet={clientMeetingSrcSet}
-                  sizes="(max-width: 768px) 50vw, 200px"
+                <OptimizedImage
+                  src={clientMeetingImage}
                   alt="Real estate investor consultation"
                   className="w-full aspect-square"
-                  width={200}
-                  height={200}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
@@ -196,14 +162,10 @@ export const HeroSection = () => {
               rel="noopener noreferrer"
               className="relative rounded-xl overflow-hidden shadow-lg mt-3 block group hover:scale-[1.02] transition-transform duration-300"
             >
-              <ResponsiveImage
-                src={expoImageFallback}
-                srcSet={expoSrcSet}
-                sizes="(max-width: 768px) 100vw, 400px"
+              <OptimizedImage
+                src={expoImage}
                 alt="Uzair speaking at Vancouver Presale Expo"
                 className="w-full aspect-[16/9]"
-                width={400}
-                height={225}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
@@ -317,14 +279,10 @@ export const HeroSection = () => {
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-4 translate-y-4" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <ResponsiveImage
-                  src={heroImageFallback}
-                  srcSet={heroSrcSet}
-                  sizes="(max-width: 1024px) 50vw, 600px"
+                <OptimizedImage
+                  src={heroImage}
                   alt="Uzair Muhammad - Vancouver's Top Presale Expert"
                   className="w-full aspect-[3/4]"
-                  width={600}
-                  height={800}
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
@@ -341,14 +299,10 @@ export const HeroSection = () => {
                 }}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
-                <ResponsiveImage
-                  src={showroomImageFallback}
-                  srcSet={showroomSrcSet}
-                  sizes="(max-width: 1024px) 33vw, 200px"
+                <OptimizedImage
+                  src={showroomImage}
                   alt="First-time home buyers touring presale showroom"
                   className="w-full aspect-[4/3]"
-                  width={200}
-                  height={150}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
@@ -365,14 +319,10 @@ export const HeroSection = () => {
                 }}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
-                <ResponsiveImage
-                  src={clientMeetingImageFallback}
-                  srcSet={clientMeetingSrcSet}
-                  sizes="(max-width: 1024px) 33vw, 200px"
+                <OptimizedImage
+                  src={clientMeetingImage}
                   alt="Real estate investor consultation"
                   className="w-full aspect-[4/3]"
-                  width={200}
-                  height={150}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
@@ -388,14 +338,10 @@ export const HeroSection = () => {
                 rel="noopener noreferrer"
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300"
               >
-                <ResponsiveImage
-                  src={expoImageFallback}
-                  srcSet={expoSrcSet}
-                  sizes="(max-width: 1024px) 33vw, 200px"
+                <OptimizedImage
+                  src={expoImage}
                   alt="Uzair at Vancouver Presale Expo"
                   className="w-full aspect-[4/3]"
-                  width={200}
-                  height={150}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">

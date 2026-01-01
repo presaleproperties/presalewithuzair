@@ -6,7 +6,7 @@ import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
-import uzairImage from "@/assets/uzair-walking.jpg?w=600&format=webp";
+import uzairImage from "@/assets/uzair-walking.jpg";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(50),
@@ -164,10 +164,6 @@ export const LeadCaptureSection = () => {
               <img
                 src={uzairImage}
                 alt="Uzair Muhammad - Presale Expert"
-                width={600}
-                height={750}
-                loading="lazy"
-                decoding="async"
                 className="w-full aspect-[4/5] object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />

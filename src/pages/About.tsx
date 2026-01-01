@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import heroImage from "@/assets/uzair-walking.jpg?w=600&format=webp";
-import clientMeetingImage from "@/assets/uzair-client-meeting.jpg?w=400&format=webp";
-import showroomTourImage from "@/assets/uzair-showroom-tour.jpg?w=400&format=webp";
-import brochureReviewImage from "@/assets/uzair-brochure-review.jpg?w=400&format=webp";
-import officeWideImage from "@/assets/uzair-office-wide.jpg?w=600&format=webp";
-import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg?w=400&format=webp";
-import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg?w=400&format=webp";
-import expoImage from "@/assets/uzair-expo-wide.jpg?w=800&format=webp";
+import heroImage from "@/assets/uzair-walking.jpg";
+import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
+import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
+import brochureReviewImage from "@/assets/uzair-brochure-review.jpg";
+import officeWideImage from "@/assets/uzair-office-wide.jpg";
+import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
+import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
+import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [

@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPostEditor from "./pages/AdminPostEditor";
 import AdminLeads from "./pages/AdminLeads";
+import AdminTrafficAnalytics from "./pages/AdminTrafficAnalytics";
 import NotFound from "./pages/NotFound";
 import Book from "./pages/Book";
 import PaymentSuccess from "./pages/PaymentSuccess";
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/leads" element={<AdminLeads />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />
+              <Route path="/admin/analytics" element={<AdminTrafficAnalytics />} />
               <Route path="/book" element={<Book />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="*" element={<NotFound />} />

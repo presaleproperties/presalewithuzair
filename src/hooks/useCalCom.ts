@@ -1,10 +1,12 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
 const CAL_USERNAME = "uzair-muhammad-fcjyok";
 const CAL_EVENT_SLUG = "quick-call";
 
 export const useCalCom = () => {
+  const [isCalLoading, setIsCalLoading] = useState(false);
+
   useEffect(() => {
     (async function () {
       const cal = await getCalApi();
@@ -17,19 +19,27 @@ export const useCalCom = () => {
   }, []);
 
   const openCalCom = useCallback(async (prefill?: { name?: string; email?: string }) => {
-    const cal = await getCalApi();
-    cal("modal", {
-      calLink: `${CAL_USERNAME}/${CAL_EVENT_SLUG}`,
-      config: {
-        layout: "month_view",
-        theme: "dark",
-        ...(prefill?.name && { name: prefill.name }),
-        ...(prefill?.email && { email: prefill.email }),
-      },
-    });
+    setIsCalLoading(true);
+    try {
+      const cal = await getCalApi();
+      cal("modal", {
+        calLink: `${CAL_USERNAME}/${CAL_EVENT_SLUG}`,
+        config: {
+          layout: "month_view",
+          theme: "dark",
+          ...(prefill?.name && { name: prefill.name }),
+          ...(prefill?.email && { email: prefill.email }),
+        },
+      });
+      // Give modal time to render before hiding loading
+      setTimeout(() => setIsCalLoading(false), 1000);
+    } catch (error) {
+      console.error("Error opening Cal.com:", error);
+      setIsCalLoading(false);
+    }
   }, []);
 
-  return { openCalCom, calLink: `${CAL_USERNAME}/${CAL_EVENT_SLUG}`, Cal };
+  return { openCalCom, isCalLoading, calLink: `${CAL_USERNAME}/${CAL_EVENT_SLUG}`, Cal };
 };
 
 export { Cal };

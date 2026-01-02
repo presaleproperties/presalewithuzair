@@ -99,7 +99,7 @@ const Book = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const haptic = useHapticFeedback();
-  const { openCalCom } = useCalCom();
+  const { openCalCom, isCalLoading } = useCalCom();
   const formRef = useRef<HTMLDivElement>(null);
 
   const touchStartX = useRef(0);
@@ -355,10 +355,24 @@ const Book = () => {
           <div className="space-y-3">
             <Button
               onClick={() => openCalCom({ name: formData.firstName.trim(), email: formData.email.trim() })}
+              disabled={isCalLoading}
               className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
-              <Calendar className="w-5 h-5 mr-2" />
-              Pick a time
+              {isCalLoading ? (
+                <>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-5 h-5 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
+                  />
+                  Opening calendar...
+                </>
+              ) : (
+                <>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Pick a time
+                </>
+              )}
             </Button>
             
             <a

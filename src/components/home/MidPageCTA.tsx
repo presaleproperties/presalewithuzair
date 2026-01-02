@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface MidPageCTAProps {
   quote?: string;
 }
 
 export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
-  const scrollToForm = () => {
-    document.getElementById("lead-form")?.scrollIntoView({ 
-      behavior: "smooth",
-      block: "start"
-    });
+  const navigate = useNavigate();
+  
+  const handleBookClick = () => {
+    navigate("/book");
   };
 
   return (
@@ -24,7 +24,7 @@ export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
           variant="outline"
           size="lg"
           className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
-          onClick={scrollToForm}
+          onClick={handleBookClick}
         >
           Book a Discovery Call
         </Button>

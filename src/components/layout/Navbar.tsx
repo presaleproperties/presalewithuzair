@@ -31,17 +31,8 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const scrollToForm = () => {
-    // If not on homepage, navigate there first
-    if (location.pathname !== "/") {
-      navigate("/#lead-form");
-      return;
-    }
-    
-    document.getElementById("lead-form")?.scrollIntoView({ 
-      behavior: "smooth",
-      block: "start"
-    });
+  const handleBookClick = () => {
+    navigate("/book");
     setIsMobileMenuOpen(false);
   };
 
@@ -70,7 +61,7 @@ export const Navbar = () => {
               variant="hero" 
               size="sm" 
               className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
-              onClick={scrollToForm}
+              onClick={handleBookClick}
             >
               Book a Discovery Call
             </Button>
@@ -105,7 +96,7 @@ export const Navbar = () => {
               variant="hero" 
               size="lg" 
               className="rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
-              onClick={scrollToForm}
+              onClick={handleBookClick}
             >
               Book a Discovery Call
             </Button>
@@ -140,7 +131,7 @@ export const Navbar = () => {
               variant="hero" 
               size="lg" 
               className="w-full rounded-full"
-              onClick={scrollToForm}
+              onClick={handleBookClick}
             >
               Book a Discovery Call
             </Button>

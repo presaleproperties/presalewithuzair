@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import uzairImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
-  const scrollToForm = () => {
-    document.getElementById("lead-form")?.scrollIntoView({ 
-      behavior: "smooth",
-      block: "start"
-    });
+  const navigate = useNavigate();
+  
+  const handleBookClick = () => {
+    navigate("/book");
   };
 
   return (
@@ -45,7 +45,7 @@ export const FinalCTASection = () => {
             variant="outline"
             size="xl"
             className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-8"
-            onClick={scrollToForm}
+            onClick={handleBookClick}
           >
             Book a Discovery Call
           </Button>

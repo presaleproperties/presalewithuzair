@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle, XCircle } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 
 const forYou = [
   "Are seriously considering a presale purchase",
@@ -15,7 +15,8 @@ const notForYou = [
 ];
 
 export const BookingContextSection = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleBookClick = () => navigate("/book");
 
   return (
     <section className="py-16 sm:py-24 bg-background">
@@ -80,7 +81,7 @@ export const BookingContextSection = () => {
               variant="hero"
               size="xl"
               className="gap-2 w-full sm:w-auto text-sm sm:text-base h-12 sm:h-14"
-              onClick={openCalendly}
+              onClick={handleBookClick}
             >
               <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
               Book a Discovery Call

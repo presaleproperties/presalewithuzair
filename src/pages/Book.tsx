@@ -358,7 +358,7 @@ const Book = () => {
               className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
               <Calendar className="w-5 h-5 mr-2" />
-              Schedule Your Call
+              Pick a time
             </Button>
             
             <a

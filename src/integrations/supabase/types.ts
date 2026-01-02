@@ -92,6 +92,7 @@ export type Database = {
           created_at: string
           email: string
           first_name: string
+          has_agent: string | null
           id: string
           is_paid: boolean | null
           landing_page: string | null
@@ -117,6 +118,7 @@ export type Database = {
           created_at?: string
           email: string
           first_name: string
+          has_agent?: string | null
           id?: string
           is_paid?: boolean | null
           landing_page?: string | null
@@ -142,6 +144,7 @@ export type Database = {
           created_at?: string
           email?: string
           first_name?: string
+          has_agent?: string | null
           id?: string
           is_paid?: boolean | null
           landing_page?: string | null

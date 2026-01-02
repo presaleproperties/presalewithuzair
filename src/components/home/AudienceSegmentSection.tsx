@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Home, TrendingUp } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 
 const segments = [
   {
@@ -34,7 +34,8 @@ const segments = [
 ];
 
 export const AudienceSegmentSection = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleBookClick = () => navigate("/book");
 
   return (
     <section className="py-16 sm:py-24 bg-background">
@@ -90,7 +91,7 @@ export const AudienceSegmentSection = () => {
               <Button
                 variant="outline"
                 className="gap-2 group w-full sm:w-auto text-sm h-11 sm:h-10"
-                onClick={openCalendly}
+                onClick={handleBookClick}
               >
                 {segment.cta}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

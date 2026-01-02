@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/uzair-walking.jpg";
 import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -18,6 +19,9 @@ const heroContent = {
 };
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+  const handleBookClick = () => navigate("/book");
+
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background with gradient */}
@@ -74,12 +78,7 @@ export const HeroSection = () => {
               variant="outline"
               size="lg"
               className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
-              onClick={() => {
-                document.getElementById("lead-form")?.scrollIntoView({ 
-                  behavior: "smooth",
-                  block: "start"
-                });
-              }}
+              onClick={handleBookClick}
             >
               {heroContent.cta}
             </Button>
@@ -221,12 +220,7 @@ export const HeroSection = () => {
                 variant="outline"
                 size="xl"
                 className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold"
-                onClick={() => {
-                  document.getElementById("lead-form")?.scrollIntoView({ 
-                    behavior: "smooth",
-                    block: "start"
-                  });
-                }}
+                onClick={handleBookClick}
               >
                 {heroContent.cta}
               </Button>

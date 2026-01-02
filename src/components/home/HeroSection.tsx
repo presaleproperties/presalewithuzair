@@ -115,10 +115,7 @@ export const HeroSection = () => {
             <div className="grid grid-cols-2 gap-3">
               {/* First-Time Buyers */}
               <button 
-                onClick={() => {
-                  window.location.hash = 'lead-form-first-time-buyer';
-                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={handleBookClick}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
                 <OptimizedImage
@@ -135,10 +132,7 @@ export const HeroSection = () => {
               
               {/* Investors */}
               <button 
-                onClick={() => {
-                  window.location.hash = 'lead-form-investor';
-                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={handleBookClick}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
                 <OptimizedImage
@@ -267,10 +261,7 @@ export const HeroSection = () => {
             <div className="relative grid grid-cols-3 gap-4">
               {/* First-Time Buyers */}
               <button 
-                onClick={() => {
-                  window.location.hash = 'lead-form-first-time-buyer';
-                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={handleBookClick}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
                 <OptimizedImage
@@ -287,10 +278,7 @@ export const HeroSection = () => {
               
               {/* Investors */}
               <button 
-                onClick={() => {
-                  window.location.hash = 'lead-form-investor';
-                  document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
+                onClick={handleBookClick}
                 className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
               >
                 <OptimizedImage

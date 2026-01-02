@@ -89,17 +89,39 @@ const sellTimelineOptions = [
 
 const SWIPE_THRESHOLD = 50;
 
+const STORAGE_KEY = "booking_user_details";
+
 const Book = () => {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    phone: "",
-    email: "",
-    leadType: "",
-    timeline: "",
-    problemDescription: "",
-    hasAgent: "",
+  const [formData, setFormData] = useState<FormData>(() => {
+    // Load saved user details from localStorage on mount
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          firstName: parsed.firstName || "",
+          phone: parsed.phone || "",
+          email: parsed.email || "",
+          leadType: "",
+          timeline: "",
+          problemDescription: "",
+          hasAgent: "",
+        };
+      }
+    } catch (e) {
+      // Ignore parsing errors
+    }
+    return {
+      firstName: "",
+      phone: "",
+      email: "",
+      leadType: "",
+      timeline: "",
+      problemDescription: "",
+      hasAgent: "",
+    };
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -113,6 +135,17 @@ const Book = () => {
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+
+  // Save user details to localStorage when they change
+  useEffect(() => {
+    if (formData.firstName || formData.phone || formData.email) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        firstName: formData.firstName,
+        phone: formData.phone,
+        email: formData.email,
+      }));
+    }
+  }, [formData.firstName, formData.phone, formData.email]);
 
   // Check for payment cancel in URL
   useEffect(() => {

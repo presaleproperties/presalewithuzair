@@ -13,14 +13,6 @@ import {
   DollarSign,
   Calendar,
   MessageSquare,
-  CalendarDays,
-  Building2,
-  Home,
-  House,
-  Castle,
-  LucideIcon,
-  Clock,
-  MapPin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,9 +20,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
+import { useCalendly } from "@/hooks/useCalendly";
 import logo from "@/assets/logo.png";
 import uzairPhoto from "@/assets/uzair-headshot.jpeg";
-import { format, addDays } from "date-fns";
 
 type LeadType = "buy-presale" | "sell-assignment" | "paid-advice";
 
@@ -40,10 +32,7 @@ type FormData = {
   email: string;
   leadType: LeadType | "";
   timeline: string;
-  budget: string;
   problemDescription: string;
-  selectedDate: string;
-  selectedTime: string;
 };
 
 const leadTypeOptions = [
@@ -91,47 +80,6 @@ const sellTimelineOptions = [
   { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
 ];
 
-const buyBudgetOptions: { value: string; label: string; Icon: LucideIcon }[] = [
-  { value: "under-500k", label: "Under $500K", Icon: Building2 },
-  { value: "500k-750k", label: "$500K - $750K", Icon: Home },
-  { value: "750k-1m", label: "$750K - $1M", Icon: House },
-  { value: "1m-plus", label: "$1M+", Icon: Castle },
-];
-
-const sellBudgetOptions: { value: string; label: string; Icon: LucideIcon }[] = [
-  { value: "under-500k", label: "Under $500K", Icon: Building2 },
-  { value: "500k-750k", label: "$500K - $750K", Icon: Home },
-  { value: "750k-1m", label: "$750K - $1M", Icon: House },
-  { value: "1m-plus", label: "$1M+", Icon: Castle },
-];
-
-const timeSlots = [
-  { value: "11:00 AM", label: "11:00 AM" },
-  { value: "1:00 PM", label: "1:00 PM" },
-  { value: "3:00 PM", label: "3:00 PM" },
-  { value: "4:00 PM", label: "4:00 PM" },
-];
-
-// Only show days that have availability: Sun(0), Mon(1), Wed(3), Fri(5)
-const AVAILABLE_WEEKDAYS = new Set([0, 1, 3, 5]);
-
-// Generate upcoming available days (next ~3 weeks, take first 8 matches)
-const getUpcomingAvailableDays = (count = 8) => {
-  const days: { value: string; dayName: string; dayNum: string; month: string }[] = [];
-  for (let i = 1; i <= 21 && days.length < count; i++) {
-    const date = addDays(new Date(), i);
-    if (!AVAILABLE_WEEKDAYS.has(date.getDay())) continue;
-
-    days.push({
-      value: format(date, "yyyy-MM-dd"),
-      dayName: format(date, "EEE"),
-      dayNum: format(date, "d"),
-      month: format(date, "MMM"),
-    });
-  }
-  return days;
-};
-
 const SWIPE_THRESHOLD = 50;
 
 const Book = () => {
@@ -143,10 +91,7 @@ const Book = () => {
     email: "",
     leadType: "",
     timeline: "",
-    budget: "",
     problemDescription: "",
-    selectedDate: "",
-    selectedTime: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -154,12 +99,11 @@ const Book = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const haptic = useHapticFeedback();
+  const { openCalendly } = useCalendly();
   const formRef = useRef<HTMLDivElement>(null);
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
-
-  const nextDays = getUpcomingAvailableDays();
 
   // Check for payment cancel in URL
   useEffect(() => {
@@ -175,13 +119,13 @@ const Book = () => {
   }, [toast]);
 
   // Steps vary based on lead type
-  // Buy/Sell: Intent(0) → Timeline(1) → Budget(2) → Contact(3) → Schedule(4)
-  // Paid Advice: Intent(0) → Fee Explanation(1) → Problem(2) → Contact(3) → Schedule(4) → Payment
+  // Buy/Sell: Intent(0) → Timeline(1) → Contact(2)
+  // Paid Advice: Intent(0) → Fee Explanation(1) → Problem(2) → Contact(3)
   const getStepConfig = () => {
     if (formData.leadType === "paid-advice") {
-      return { totalSteps: 6, steps: ["intent", "fee-explanation", "problem", "contact", "schedule", "confirm"] };
+      return { totalSteps: 4, steps: ["intent", "fee-explanation", "problem", "contact"] };
     }
-    return { totalSteps: 6, steps: ["intent", "timeline", "budget", "contact", "schedule", "confirm"] };
+    return { totalSteps: 3, steps: ["intent", "timeline", "contact"] };
   };
 
   const { totalSteps, steps } = getStepConfig();
@@ -203,8 +147,6 @@ const Book = () => {
         return true; // Always valid, user just needs to click continue
       case "timeline":
         return formData.timeline !== "";
-      case "budget":
-        return formData.budget !== "";
       case "problem":
         return formData.problemDescription.trim().length >= 10;
       case "contact":
@@ -212,10 +154,6 @@ const Book = () => {
         const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
         const validName = formData.firstName.trim().length >= 2;
         return validPhone && validEmail && validName;
-      case "schedule":
-        return formData.selectedDate !== "" && formData.selectedTime !== "";
-      case "confirm":
-        return true; // Always valid, ready to submit
       default:
         return false;
     }
@@ -261,10 +199,7 @@ const Book = () => {
       ...formData, 
       leadType: value, 
       timeline: "", 
-      budget: "", 
       problemDescription: "",
-      selectedDate: "",
-      selectedTime: "",
     });
     setTimeout(() => {
       setDirection(1);
@@ -295,22 +230,18 @@ const Book = () => {
     touchEndX.current = 0;
   };
 
-  const handleSubmit = async (override?: Partial<FormData>) => {
-    const payload = { ...formData, ...override };
-
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      if (payload.leadType === "paid-advice") {
-        // Redirect to Stripe checkout with schedule info
+      if (formData.leadType === "paid-advice") {
+        // Redirect to Stripe checkout
         const { data, error } = await supabase.functions.invoke('create-advice-payment', {
           body: {
-            firstName: payload.firstName.trim(),
+            firstName: formData.firstName.trim(),
             lastName: "",
-            email: payload.email.trim(),
-            phone: payload.phone.trim(),
-            problemDescription: payload.problemDescription.trim(),
-            selectedDate: payload.selectedDate,
-            selectedTime: payload.selectedTime,
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            problemDescription: formData.problemDescription.trim(),
           }
         });
 
@@ -320,41 +251,28 @@ const Book = () => {
           return;
         }
       } else {
-        // Free lead capture with schedule info
-        const { data: leadData, error } = await supabase.functions.invoke('capture-lead', {
+        // Free lead capture → then open Calendly
+        const { error } = await supabase.functions.invoke('capture-lead', {
           body: {
-            firstName: payload.firstName.trim(),
+            firstName: formData.firstName.trim(),
             lastName: "",
-            email: payload.email.trim(),
-            phone: payload.phone.trim(),
-            buyerType: payload.leadType,
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            buyerType: formData.leadType,
             leadSource: "social-media-booking",
-            timeline: payload.timeline,
-            budget: payload.budget,
-            preferredCallDate: payload.selectedDate,
-            preferredCallTime: payload.selectedTime,
+            timeline: formData.timeline,
           }
         });
 
         if (error) throw error;
 
-        // Create Google Calendar event (non-blocking, silent fail)
-        supabase.functions.invoke('create-calendar-event', {
-          body: {
-            leadId: leadData?.leadId || "",
-            firstName: payload.firstName.trim(),
-            email: payload.email.trim(),
-            phone: payload.phone.trim(),
-            leadType: payload.leadType,
-            preferredDate: payload.selectedDate,
-            preferredTime: payload.selectedTime,
-          }
-        }).catch(() => {
-          // Silently ignore calendar errors - not critical for booking
-        });
-
         haptic.success();
         setIsSuccess(true);
+        
+        // Open Calendly popup after short delay
+        setTimeout(() => {
+          openCalendly();
+        }, 500);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -423,11 +341,23 @@ const Book = () => {
           
           <h1 className="text-2xl font-bold text-foreground mb-3">You're All Set!</h1>
           
-          <p className="text-muted-foreground text-lg mb-6">
+          <p className="text-muted-foreground text-lg mb-2">
             I look forward to speaking with you.
           </p>
           
+          <p className="text-sm text-muted-foreground mb-6">
+            Pick a time in the Calendly popup, or use the button below if it didn't open.
+          </p>
+          
           <div className="space-y-3">
+            <Button
+              onClick={openCalendly}
+              className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Schedule Your Call
+            </Button>
+            
             <a
               href={whatsappUrl}
               target="_blank"
@@ -489,10 +419,7 @@ const Book = () => {
                 email: "",
                 leadType: "",
                 timeline: "",
-                budget: "",
                 problemDescription: "",
-                selectedDate: "",
-                selectedTime: "",
               });
             }}
             className="w-full h-12"
@@ -632,52 +559,6 @@ const Book = () => {
           </motion.div>
         );
 
-      case "budget":
-        const budgetOpts = formData.leadType === "buy-presale" ? buyBudgetOptions : sellBudgetOptions;
-        return (
-          <motion.div
-            key="budget"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <DollarSign className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                {formData.leadType === "buy-presale" ? "What's your budget?" : "What's your assignment worth?"}
-              </h2>
-              <p className="text-muted-foreground mt-1">
-                {formData.leadType === "buy-presale" ? "Helps me find the right projects" : "Helps me market it effectively"}
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {budgetOpts.map((option) => {
-                const IconComponent = option.Icon;
-                return (
-                  <button
-                    key={option.value}
-                    onClick={() => handleOptionSelect("budget", option.value)}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
-                      formData.budget === option.value
-                        ? "border-primary bg-primary/10"
-                        : "border-border bg-card hover:border-primary/50"
-                    }`}
-                  >
-                    <IconComponent className="w-8 h-8 mx-auto mb-2 text-primary" />
-                    <span className="text-foreground font-medium text-sm">{option.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
-        );
-
       case "fee-explanation":
         return (
           <motion.div
@@ -793,8 +674,10 @@ const Book = () => {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
                 <User className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">Let's connect!</h2>
-              <p className="text-muted-foreground mt-1">How can I reach you?</p>
+              <h2 className="text-2xl font-bold text-foreground">Almost there!</h2>
+              <p className="text-muted-foreground mt-1">
+                {isPaidPath ? "Enter your details to continue" : "Enter your details to schedule"}
+              </p>
               
               {/* Progress indicator */}
               <div className="flex items-center justify-center gap-2 mt-4">
@@ -877,6 +760,7 @@ const Book = () => {
                 )}
               </div>
             </div>
+            
             {isPaidPath && (
               <div className="bg-muted/50 rounded-xl p-4 mt-4">
                 <div className="flex items-center gap-3 mb-2">
@@ -884,232 +768,25 @@ const Book = () => {
                   <span className="font-semibold text-foreground">30-Minute Advisory Call</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Next: Choose your preferred date & time
+                  Next: Secure payment via Stripe
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground text-sm">Consultation Fee</span>
-                  <span className="text-foreground font-bold text-lg">$250 CAD</span>
+                  <span className="text-sm text-muted-foreground">Total:</span>
+                  <span className="text-xl font-bold text-primary">$250 CAD</span>
                 </div>
               </div>
             )}
-          </motion.div>
-        );
-
-      case "schedule":
-        return (
-          <motion.div
-            key="schedule"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-5"
-          >
-            <div className="text-center mb-2">
-              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
-                <CalendarDays className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-xl font-bold text-foreground">
-                Pick your preferred time
-              </h2>
-              <p className="text-muted-foreground text-sm mt-1">
-                Choose a day and time that works for you
-              </p>
-              {/* Timezone indicator */}
-              <div className="flex items-center justify-center gap-1.5 mt-2 text-xs text-muted-foreground">
-                <MapPin className="w-3 h-3" />
-                <span>Pacific Time (Vancouver)</span>
-              </div>
-            </div>
             
-            {/* Date Selection - Grid Layout */}
-            <div>
-              <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-primary" />
-                Select a date
-              </p>
-              <div className="grid grid-cols-4 gap-2">
-                {nextDays.map((day) => (
-                  <button
-                    key={day.value}
-                    onClick={() => {
-                      haptic.light();
-                      setFormData({ ...formData, selectedDate: day.value, selectedTime: "" });
-                    }}
-                    className={`p-3 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
-                      formData.selectedDate === day.value
-                        ? "border-primary bg-primary/15 shadow-md shadow-primary/20"
-                        : "border-border bg-card hover:border-primary/50 hover:bg-card/80"
-                    }`}
-                  >
-                    <span className={`text-[10px] uppercase tracking-wider block mb-0.5 ${
-                      formData.selectedDate === day.value ? "text-primary font-semibold" : "text-muted-foreground"
-                    }`}>{day.dayName}</span>
-                    <span className={`text-2xl font-bold block ${
-                      formData.selectedDate === day.value ? "text-primary" : "text-foreground"
-                    }`}>{day.dayNum}</span>
-                    <span className={`text-[10px] block ${
-                      formData.selectedDate === day.value ? "text-primary/80" : "text-muted-foreground"
-                    }`}>{day.month}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Time Selection */}
-            {formData.selectedDate && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-primary" />
-                  Select a time
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  {timeSlots.map((slot) => (
-                    <button
-                      key={slot.value}
-                      onClick={() => {
-                        haptic.medium();
-                        setFormData({ ...formData, selectedTime: slot.value });
-                      }}
-                      className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
-                        formData.selectedTime === slot.value
-                          ? "border-primary bg-primary/15 shadow-md shadow-primary/20"
-                          : "border-border bg-card hover:border-primary/50"
-                      }`}
-                    >
-                      <Clock className={`w-5 h-5 mx-auto mb-1 ${
-                        formData.selectedTime === slot.value ? "text-primary" : "text-muted-foreground"
-                      }`} />
-                      <span className={`text-base font-semibold block ${
-                        formData.selectedTime === slot.value ? "text-primary" : "text-foreground"
-                      }`}>{slot.label}</span>
-                    </button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
-        );
-
-      case "confirm":
-        const isPaidConfirm = formData.leadType === "paid-advice";
-        const selectedDateFormatted = formData.selectedDate 
-          ? format(new Date(formData.selectedDate + "T12:00:00"), "EEEE, MMMM d, yyyy")
-          : "";
-        
-        return (
-          <motion.div
-            key="confirm"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-5"
-          >
-            <div className="text-center mb-2">
-              <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
-                <CheckCircle className="w-8 h-8 text-primary" />
-              </div>
-              <h2 className="text-xl font-bold text-foreground">
-                Confirm your booking
-              </h2>
-              <p className="text-muted-foreground text-sm mt-1">
-                Review your details before we finalize
-              </p>
-            </div>
-
-            {/* Booking Summary Card */}
-            <div className="bg-card border border-border rounded-2xl overflow-hidden">
-              {/* Date & Time Header */}
-              <div className="bg-primary/10 p-4 border-b border-border">
+            {!isPaidPath && (
+              <div className="bg-muted/50 rounded-xl p-4 mt-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <CalendarDays className="w-6 h-6 text-primary" />
-                  </div>
+                  <Calendar className="w-5 h-5 text-primary" />
                   <div>
-                    <p className="text-foreground font-bold text-lg">{formData.selectedTime}</p>
-                    <p className="text-muted-foreground text-sm">{selectedDateFormatted}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
-                  <MapPin className="w-3 h-3" />
-                  <span>Pacific Time (Vancouver)</span>
-                </div>
-              </div>
-
-              {/* Contact Details */}
-              <div className="p-4 space-y-3">
-                <div className="flex items-center gap-3">
-                  <User className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-foreground">{formData.firstName}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-foreground">{formData.phone}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-foreground text-sm">{formData.email}</span>
-                </div>
-              </div>
-
-              {/* Call Type */}
-              <div className="px-4 pb-4">
-                <div className={`p-3 rounded-xl ${isPaidConfirm ? "bg-primary/10 border border-primary/20" : "bg-muted/50"}`}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg">
-                        {formData.leadType === "buy-presale" ? "🏠" : formData.leadType === "sell-assignment" ? "🔄" : "💡"}
-                      </span>
-                      <span className="text-foreground font-medium text-sm">
-                        {formData.leadType === "buy-presale" 
-                          ? "Presale Buyer Call" 
-                          : formData.leadType === "sell-assignment" 
-                          ? "Assignment Seller Call"
-                          : "30-Min Advisory Call"}
-                      </span>
-                    </div>
-                    {isPaidConfirm && (
-                      <span className="text-primary font-bold">$250</span>
-                    )}
+                    <span className="font-semibold text-foreground block">Free Discovery Call</span>
+                    <span className="text-sm text-muted-foreground">Pick your time in Calendly next</span>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Confirm Button */}
-            <Button
-              onClick={() => handleSubmit()}
-              disabled={isSubmitting}
-              className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
-            >
-              {isSubmitting ? (
-                "Processing..."
-              ) : isPaidConfirm ? (
-                <>
-                  <DollarSign className="w-5 h-5 mr-1" />
-                  Continue to Payment
-                </>
-              ) : (
-                <>
-                  <CheckCircle className="w-5 h-5 mr-1" />
-                  Confirm Booking
-                </>
-              )}
-            </Button>
-
-            {isPaidConfirm && (
-              <p className="text-center text-xs text-muted-foreground">
-                You'll be redirected to secure payment
-              </p>
             )}
           </motion.div>
         );
@@ -1119,11 +796,10 @@ const Book = () => {
     }
   };
 
-  // Determine if we need a Continue button (only for contact, problem, and schedule steps)
+  // Determine if we need a Continue button
   const currentStepType = steps[step];
   const isInputStep = currentStepType === "contact" || currentStepType === "problem";
-  const isScheduleStep = currentStepType === "schedule";
-  const showContinueButton = isInputStep || isScheduleStep; // Confirm step has its own button
+  const showContinueButton = isInputStep;
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col relative overflow-hidden">
@@ -1251,7 +927,7 @@ const Book = () => {
             className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
           >
             <span className="flex items-center gap-2">
-              {isSubmitting ? "Processing..." : "Continue"}
+              {isSubmitting ? "Processing..." : currentStepType === "contact" ? (formData.leadType === "paid-advice" ? "Continue to Payment" : "Schedule Your Call") : "Continue"}
               {!isSubmitting && <ChevronRight className="w-5 h-5" />}
             </span>
           </Button>
@@ -1269,7 +945,7 @@ const Book = () => {
         </div>
       )}
 
-      {/* Back button for selection and schedule steps */}
+      {/* Back button for selection steps */}
       {!showContinueButton && step > 0 && (
         <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
           <Button

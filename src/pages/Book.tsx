@@ -20,7 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useCalCom } from "@/hooks/useCalCom";
 import logo from "@/assets/logo.png";
 import uzairPhoto from "@/assets/uzair-headshot.jpeg";
 
@@ -99,7 +99,7 @@ const Book = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const haptic = useHapticFeedback();
-  const { openCalendly } = useCalendly();
+  const { openCalCom } = useCalCom();
   const formRef = useRef<HTMLDivElement>(null);
 
   const touchStartX = useRef(0);
@@ -269,9 +269,12 @@ const Book = () => {
         haptic.success();
         setIsSuccess(true);
         
-        // Open Calendly popup after short delay
+        // Open Cal.com popup with prefilled data
         setTimeout(() => {
-          openCalendly();
+          openCalCom({ 
+            name: formData.firstName.trim(), 
+            email: formData.email.trim() 
+          });
         }, 500);
       }
     } catch (error) {
@@ -346,12 +349,12 @@ const Book = () => {
           </p>
           
           <p className="text-sm text-muted-foreground mb-6">
-            Pick a time in the Calendly popup, or use the button below if it didn't open.
+            Pick a time in the Cal.com popup, or use the button below if it didn't open.
           </p>
           
           <div className="space-y-3">
             <Button
-              onClick={openCalendly}
+              onClick={() => openCalCom({ name: formData.firstName.trim(), email: formData.email.trim() })}
               className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
               <Calendar className="w-5 h-5 mr-2" />

@@ -17,6 +17,14 @@ interface LeadData {
   preferredCallDate?: string;
   preferredCallTime?: string;
   zapierWebhookUrl?: string;
+  // Traffic tracking fields
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
+  referrer?: string;
+  landingPage?: string;
 }
 
 // Simple in-memory rate limiter (resets on function cold start)
@@ -114,6 +122,15 @@ Deno.serve(async (req) => {
     const budget = leadData.budget?.trim() || null;
     const preferredCallDate = leadData.preferredCallDate?.trim() || null;
     const preferredCallTime = leadData.preferredCallTime?.trim() || null;
+    
+    // Traffic tracking data
+    const utmSource = leadData.utmSource?.trim() || null;
+    const utmMedium = leadData.utmMedium?.trim() || null;
+    const utmCampaign = leadData.utmCampaign?.trim() || null;
+    const utmTerm = leadData.utmTerm?.trim() || null;
+    const utmContent = leadData.utmContent?.trim() || null;
+    const referrer = leadData.referrer?.trim() || null;
+    const landingPage = leadData.landingPage?.trim() || null;
 
     // Validate input formats
     if (!isValidName(firstName)) {
@@ -180,6 +197,13 @@ Deno.serve(async (req) => {
         budget: budget,
         preferred_call_date: preferredCallDate,
         preferred_call_time: preferredCallTime,
+        utm_source: utmSource,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign,
+        utm_term: utmTerm,
+        utm_content: utmContent,
+        referrer: referrer,
+        landing_page: landingPage,
       })
       .select()
       .single();
@@ -218,6 +242,13 @@ Deno.serve(async (req) => {
             budget: lead.budget,
             preferred_call_date: lead.preferred_call_date,
             preferred_call_time: lead.preferred_call_time,
+            utm_source: lead.utm_source,
+            utm_medium: lead.utm_medium,
+            utm_campaign: lead.utm_campaign,
+            utm_term: lead.utm_term,
+            utm_content: lead.utm_content,
+            referrer: lead.referrer,
+            landing_page: lead.landing_page,
             created_at: lead.created_at,
             source: "presalewithuzair.com",
           }),

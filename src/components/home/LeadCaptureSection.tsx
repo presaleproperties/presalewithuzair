@@ -19,6 +19,16 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+interface TrackingData {
+  utmSource: string | null;
+  utmMedium: string | null;
+  utmCampaign: string | null;
+  utmTerm: string | null;
+  utmContent: string | null;
+  referrer: string | null;
+  landingPage: string | null;
+}
+
 const leadSources = [
   { value: "instagram", label: "Instagram" },
   { value: "tiktok", label: "TikTok" },
@@ -27,6 +37,20 @@ const leadSources = [
   { value: "google", label: "Google Search" },
   { value: "other", label: "Other" },
 ];
+
+// Helper to get UTM parameters from URL
+const getTrackingData = (): TrackingData => {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utmSource: params.get('utm_source'),
+    utmMedium: params.get('utm_medium'),
+    utmCampaign: params.get('utm_campaign'),
+    utmTerm: params.get('utm_term'),
+    utmContent: params.get('utm_content'),
+    referrer: document.referrer || null,
+    landingPage: window.location.pathname,
+  };
+};
 
 export const LeadCaptureSection = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -37,12 +61,24 @@ export const LeadCaptureSection = () => {
     buyerType: "",
     leadSource: "",
   });
+  const [trackingData, setTrackingData] = useState<TrackingData>({
+    utmSource: null,
+    utmMedium: null,
+    utmCampaign: null,
+    utmTerm: null,
+    utmContent: null,
+    referrer: null,
+    landingPage: null,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
 
-  // Check for pre-selected buyer type from URL hash
+  // Check for pre-selected buyer type from URL hash and capture tracking data
   useEffect(() => {
+    // Capture tracking data on mount
+    setTrackingData(getTrackingData());
+    
     const checkHash = () => {
       const hash = window.location.hash;
       if (hash === '#lead-form-first-time-buyer') {
@@ -52,7 +88,7 @@ export const LeadCaptureSection = () => {
       }
       // Clear hash after processing to keep URL clean
       if (hash.startsWith('#lead-form-')) {
-        window.history.replaceState(null, '', window.location.pathname + '#lead-form');
+        window.history.replaceState(null, '', window.location.pathname + window.location.search + '#lead-form');
       }
     };
     
@@ -78,7 +114,10 @@ export const LeadCaptureSection = () => {
     
     try {
       const { data, error } = await supabase.functions.invoke('capture-lead', {
-        body: formData,
+        body: {
+          ...formData,
+          ...trackingData,
+        },
       });
 
       if (error) {

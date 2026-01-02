@@ -94,15 +94,22 @@ export type Database = {
           first_name: string
           id: string
           is_paid: boolean | null
+          landing_page: string | null
           last_name: string
           lead_source: string | null
           payment_intent_id: string | null
           phone: string
           preferred_call_date: string | null
           preferred_call_time: string | null
+          referrer: string | null
           status: string
           timeline: string | null
           updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
         }
         Insert: {
           budget?: string | null
@@ -112,15 +119,22 @@ export type Database = {
           first_name: string
           id?: string
           is_paid?: boolean | null
+          landing_page?: string | null
           last_name: string
           lead_source?: string | null
           payment_intent_id?: string | null
           phone: string
           preferred_call_date?: string | null
           preferred_call_time?: string | null
+          referrer?: string | null
           status?: string
           timeline?: string | null
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
         }
         Update: {
           budget?: string | null
@@ -130,15 +144,22 @@ export type Database = {
           first_name?: string
           id?: string
           is_paid?: boolean | null
+          landing_page?: string | null
           last_name?: string
           lead_source?: string | null
           payment_intent_id?: string | null
           phone?: string
           preferred_call_date?: string | null
           preferred_call_time?: string | null
+          referrer?: string | null
           status?: string
           timeline?: string | null
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
         }
         Relationships: []
       }

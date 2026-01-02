@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Target, Users, TrendingUp, BarChart3, Lightbulb, CheckCircle, Building2, DollarSign, Clock, Megaphone } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useCalCom } from "@/hooks/useCalCom";
 import { DeveloperContactForm } from "@/components/forms/DeveloperContactForm";
 
 const advisoryServices = [
@@ -144,7 +144,7 @@ const processSteps = [
 ];
 
 const Developers = () => {
-  const { openCalendly } = useCalendly();
+  const { openCalCom } = useCalCom();
 
   return (
     <>
@@ -219,7 +219,7 @@ const Developers = () => {
                   variant="outline"
                   size="lg"
                   className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold gap-2"
-                  onClick={openCalendly}
+                  onClick={() => openCalCom()}
                 >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                   Discuss Advisory Engagement

@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useCalCom } from "@/hooks/useCalCom";
 
 const services = [
   {
@@ -57,7 +57,7 @@ const services = [
 ];
 
 const Services = () => {
-  const { openCalendly } = useCalendly();
+  const { openCalCom } = useCalCom();
 
   return (
     <>
@@ -119,7 +119,7 @@ const Services = () => {
                     variant="hero" 
                     size="lg" 
                     className="gap-2"
-                    onClick={openCalendly}
+                    onClick={() => openCalCom()}
                   >
                     Book a Discovery Call
                     <ArrowRight className="h-4 w-4" />
@@ -154,7 +154,7 @@ const Services = () => {
                   variant="hero" 
                   size="xl" 
                   className="gap-2 w-full sm:w-auto"
-                  onClick={openCalendly}
+                  onClick={() => openCalCom()}
                 >
                   <Mail className="h-5 w-5" />
                   Book a Discovery Call

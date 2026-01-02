@@ -40,7 +40,7 @@ type FormData = {
 const agentOptions = [
   { value: "no", label: "No, I'm not working with anyone", emoji: "👋" },
   { value: "yes-not-committed", label: "Yes, but not committed", emoji: "🤔" },
-  { value: "yes-committed", label: "Yes, I have an agent", emoji: "🤝" },
+  { value: "yes-committed", label: "Yes, I have an agent", emoji: "🤝", isDisqualifying: true },
 ];
 
 const sourceOptions = [
@@ -114,6 +114,7 @@ const Book = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isDisqualified, setIsDisqualified] = useState(false);
+  const [disqualifyReason, setDisqualifyReason] = useState<"timeline" | "agent" | null>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const { toast } = useToast();
   const haptic = useHapticFeedback();
@@ -403,8 +404,10 @@ const Book = () => {
     );
   }
 
-  // Disqualification screen for browsers
+  // Disqualification screen
   if (isDisqualified) {
+    const isAgentDisqualify = disqualifyReason === "agent";
+    
     return (
       <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
         <Helmet>
@@ -417,25 +420,31 @@ const Book = () => {
           className="text-center max-w-md"
         >
           <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
-            <span className="text-4xl">🤝</span>
+            <span className="text-4xl">{isAgentDisqualify ? "🙏" : "🤝"}</span>
           </div>
           <h1 className="text-2xl font-bold text-foreground mb-3">
-            Thanks for your honesty!
+            {isAgentDisqualify ? "I appreciate your honesty!" : "Thanks for your honesty!"}
           </h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">
-            I work best with clients who are ready to take action within the next 3 months. 
-            When you're ready to get serious about buying or selling, I'd love to help.
+            {isAgentDisqualify 
+              ? "I don't work with clients who already have an agent—it's important to honor that relationship. I wish you the best with your current agent!"
+              : "I work best with clients who are ready to take action within the next 3 months. When you're ready to get serious about buying or selling, I'd love to help."
+            }
           </p>
           <div className="bg-card border border-border rounded-xl p-4 mb-6">
             <p className="text-sm text-foreground font-medium mb-2">In the meantime:</p>
             <p className="text-sm text-muted-foreground">
-              Follow me on social media for presale tips, market updates, and insights to help you prepare for when the time is right.
+              {isAgentDisqualify
+                ? "Feel free to follow me on social media for presale tips and market insights that might help you and your agent."
+                : "Follow me on social media for presale tips, market updates, and insights to help you prepare for when the time is right."
+              }
             </p>
           </div>
           <Button
             variant="outline"
             onClick={() => {
               setIsDisqualified(false);
+              setDisqualifyReason(null);
               setStep(0);
               setFormData({
                 firstName: "",
@@ -566,6 +575,7 @@ const Book = () => {
                   onClick={() => {
                     if (option.isDisqualifying) {
                       haptic.error();
+                      setDisqualifyReason("timeline");
                       setIsDisqualified(true);
                     } else {
                       handleOptionSelect("timeline", option.value);
@@ -608,7 +618,15 @@ const Book = () => {
               {agentOptions.map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => handleOptionSelect("hasAgent", option.value)}
+                  onClick={() => {
+                    if (option.isDisqualifying) {
+                      haptic.error();
+                      setDisqualifyReason("agent");
+                      setIsDisqualified(true);
+                    } else {
+                      handleOptionSelect("hasAgent", option.value);
+                    }
+                  }}
                   className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
                     formData.hasAgent === option.value
                       ? "border-primary bg-primary/10 scale-[0.98]"

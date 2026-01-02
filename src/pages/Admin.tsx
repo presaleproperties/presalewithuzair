@@ -14,6 +14,7 @@ import {
   EyeOff,
   Loader2,
   ArrowLeft,
+  BarChart3,
 } from "lucide-react";
 import {
   AlertDialog,
@@ -170,9 +171,21 @@ const Admin = () => {
                 Admin Dashboard
               </h1>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Link to="/admin/analytics">
+                <Button variant="outline" size="icon" className="sm:hidden">
+                  <BarChart3 className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" className="gap-2 hidden sm:flex">
+                  <BarChart3 className="h-4 w-4" />
+                  Analytics
+                </Button>
+              </Link>
               <Link to="/admin/leads">
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" size="icon" className="sm:hidden">
+                  <Eye className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" className="gap-2 hidden sm:flex">
                   <Eye className="h-4 w-4" />
                   Leads
                 </Button>

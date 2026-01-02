@@ -18,7 +18,9 @@ import {
   Home,
   House,
   Castle,
-  LucideIcon
+  LucideIcon,
+  Clock,
+  MapPin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -177,9 +179,9 @@ const Book = () => {
   // Paid Advice: Intent(0) → Fee Explanation(1) → Problem(2) → Contact(3) → Schedule(4) → Payment
   const getStepConfig = () => {
     if (formData.leadType === "paid-advice") {
-      return { totalSteps: 5, steps: ["intent", "fee-explanation", "problem", "contact", "schedule"] };
+      return { totalSteps: 6, steps: ["intent", "fee-explanation", "problem", "contact", "schedule", "confirm"] };
     }
-    return { totalSteps: 5, steps: ["intent", "timeline", "budget", "contact", "schedule"] };
+    return { totalSteps: 6, steps: ["intent", "timeline", "budget", "contact", "schedule", "confirm"] };
   };
 
   const { totalSteps, steps } = getStepConfig();
@@ -212,6 +214,8 @@ const Book = () => {
         return validPhone && validEmail && validName;
       case "schedule":
         return formData.selectedDate !== "" && formData.selectedTime !== "";
+      case "confirm":
+        return true; // Always valid, ready to submit
       default:
         return false;
     }
@@ -892,7 +896,6 @@ const Book = () => {
         );
 
       case "schedule":
-        const isPaidSchedule = formData.leadType === "paid-advice";
         return (
           <motion.div
             key="schedule"
@@ -902,24 +905,32 @@ const Book = () => {
             animate="center"
             exit="exit"
             transition={{ duration: 0.3 }}
-            className="space-y-6"
+            className="space-y-5"
           >
-            <div className="text-center mb-4">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+            <div className="text-center mb-2">
+              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
                 <CalendarDays className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                {isPaidSchedule ? "Pick a date & time" : `Almost done, ${formData.firstName}!`}
+              <h2 className="text-xl font-bold text-foreground">
+                Pick your preferred time
               </h2>
-              <p className="text-muted-foreground mt-1">
-                {isPaidSchedule ? "Select when works best for our call" : "When would you like me to call?"}
+              <p className="text-muted-foreground text-sm mt-1">
+                Choose a day and time that works for you
               </p>
+              {/* Timezone indicator */}
+              <div className="flex items-center justify-center gap-1.5 mt-2 text-xs text-muted-foreground">
+                <MapPin className="w-3 h-3" />
+                <span>Pacific Time (Vancouver)</span>
+              </div>
             </div>
             
-            {/* Date Selection */}
+            {/* Date Selection - Grid Layout */}
             <div>
-              <p className="text-sm font-medium text-foreground mb-3">Select a date</p>
-              <div className="flex gap-2 overflow-x-auto pb-2 -mx-2 px-2 snap-x snap-mandatory">
+              <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-primary" />
+                Select a date
+              </p>
+              <div className="grid grid-cols-4 gap-2">
                 {nextDays.map((day) => (
                   <button
                     key={day.value}
@@ -927,19 +938,24 @@ const Book = () => {
                       haptic.light();
                       setFormData({ ...formData, selectedDate: day.value, selectedTime: "" });
                     }}
-                    className={`min-w-[76px] snap-start p-3 rounded-xl border-2 transition-all duration-200 text-center ${
+                    className={`p-3 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
                       formData.selectedDate === day.value
-                        ? "border-primary bg-primary/10"
-                        : "border-border bg-card hover:border-primary/50"
+                        ? "border-primary bg-primary/15 shadow-md shadow-primary/20"
+                        : "border-border bg-card hover:border-primary/50 hover:bg-card/80"
                     }`}
                   >
-                    <span className="text-xs text-muted-foreground block">{day.dayName}</span>
-                    <span className="text-xl font-bold text-foreground block">{day.dayNum}</span>
-                    <span className="text-xs text-muted-foreground block">{day.month}</span>
+                    <span className={`text-[10px] uppercase tracking-wider block mb-0.5 ${
+                      formData.selectedDate === day.value ? "text-primary font-semibold" : "text-muted-foreground"
+                    }`}>{day.dayName}</span>
+                    <span className={`text-2xl font-bold block ${
+                      formData.selectedDate === day.value ? "text-primary" : "text-foreground"
+                    }`}>{day.dayNum}</span>
+                    <span className={`text-[10px] block ${
+                      formData.selectedDate === day.value ? "text-primary/80" : "text-muted-foreground"
+                    }`}>{day.month}</span>
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground mt-1">Available: Sun, Mon, Wed, Fri</p>
             </div>
 
             {/* Time Selection */}
@@ -949,47 +965,151 @@ const Book = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
               >
-                <p className="text-sm font-medium text-foreground mb-3">Select a time</p>
-                <div className="grid grid-cols-2 gap-2">
+                <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-primary" />
+                  Select a time
+                </p>
+                <div className="grid grid-cols-2 gap-3">
                   {timeSlots.map((slot) => (
                     <button
                       key={slot.value}
                       onClick={() => {
-                        const nextTime = slot.value;
                         haptic.medium();
-                        setFormData({ ...formData, selectedTime: nextTime });
-                        // Auto-submit after selecting time (use fresh values)
-                        setTimeout(() => {
-                          handleSubmit({ selectedTime: nextTime });
-                        }, 250);
+                        setFormData({ ...formData, selectedTime: slot.value });
                       }}
                       className={`p-4 rounded-xl border-2 transition-all duration-200 text-center active:scale-[0.97] ${
                         formData.selectedTime === slot.value
-                          ? "border-primary bg-primary/10"
+                          ? "border-primary bg-primary/15 shadow-md shadow-primary/20"
                           : "border-border bg-card hover:border-primary/50"
                       }`}
                     >
-                      <span className="text-base font-semibold text-foreground">{slot.label}</span>
+                      <Clock className={`w-5 h-5 mx-auto mb-1 ${
+                        formData.selectedTime === slot.value ? "text-primary" : "text-muted-foreground"
+                      }`} />
+                      <span className={`text-base font-semibold block ${
+                        formData.selectedTime === slot.value ? "text-primary" : "text-foreground"
+                      }`}>{slot.label}</span>
                     </button>
                   ))}
                 </div>
               </motion.div>
             )}
+          </motion.div>
+        );
 
-            {/* Price indicator for paid path */}
-            {isPaidSchedule && (
-              <div className="bg-muted/50 rounded-xl p-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <DollarSign className="w-5 h-5 text-primary" />
-                    <span className="font-medium text-foreground">30-Min Advisory</span>
-                  </div>
-                  <span className="text-foreground font-bold">$250 CAD</span>
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Select a time to continue to secure payment
-                </p>
+      case "confirm":
+        const isPaidConfirm = formData.leadType === "paid-advice";
+        const selectedDateFormatted = formData.selectedDate 
+          ? format(new Date(formData.selectedDate + "T12:00:00"), "EEEE, MMMM d, yyyy")
+          : "";
+        
+        return (
+          <motion.div
+            key="confirm"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+            className="space-y-5"
+          >
+            <div className="text-center mb-2">
+              <div className="w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-primary" />
               </div>
+              <h2 className="text-xl font-bold text-foreground">
+                Confirm your booking
+              </h2>
+              <p className="text-muted-foreground text-sm mt-1">
+                Review your details before we finalize
+              </p>
+            </div>
+
+            {/* Booking Summary Card */}
+            <div className="bg-card border border-border rounded-2xl overflow-hidden">
+              {/* Date & Time Header */}
+              <div className="bg-primary/10 p-4 border-b border-border">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+                    <CalendarDays className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-foreground font-bold text-lg">{formData.selectedTime}</p>
+                    <p className="text-muted-foreground text-sm">{selectedDateFormatted}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 mt-2 text-xs text-muted-foreground">
+                  <MapPin className="w-3 h-3" />
+                  <span>Pacific Time (Vancouver)</span>
+                </div>
+              </div>
+
+              {/* Contact Details */}
+              <div className="p-4 space-y-3">
+                <div className="flex items-center gap-3">
+                  <User className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-foreground">{formData.firstName}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-foreground">{formData.phone}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-foreground text-sm">{formData.email}</span>
+                </div>
+              </div>
+
+              {/* Call Type */}
+              <div className="px-4 pb-4">
+                <div className={`p-3 rounded-xl ${isPaidConfirm ? "bg-primary/10 border border-primary/20" : "bg-muted/50"}`}>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">
+                        {formData.leadType === "buy-presale" ? "🏠" : formData.leadType === "sell-assignment" ? "🔄" : "💡"}
+                      </span>
+                      <span className="text-foreground font-medium text-sm">
+                        {formData.leadType === "buy-presale" 
+                          ? "Presale Buyer Call" 
+                          : formData.leadType === "sell-assignment" 
+                          ? "Assignment Seller Call"
+                          : "30-Min Advisory Call"}
+                      </span>
+                    </div>
+                    {isPaidConfirm && (
+                      <span className="text-primary font-bold">$250</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Confirm Button */}
+            <Button
+              onClick={() => handleSubmit()}
+              disabled={isSubmitting}
+              className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
+            >
+              {isSubmitting ? (
+                "Processing..."
+              ) : isPaidConfirm ? (
+                <>
+                  <DollarSign className="w-5 h-5 mr-1" />
+                  Continue to Payment
+                </>
+              ) : (
+                <>
+                  <CheckCircle className="w-5 h-5 mr-1" />
+                  Confirm Booking
+                </>
+              )}
+            </Button>
+
+            {isPaidConfirm && (
+              <p className="text-center text-xs text-muted-foreground">
+                You'll be redirected to secure payment
+              </p>
             )}
           </motion.div>
         );
@@ -999,10 +1119,11 @@ const Book = () => {
     }
   };
 
-  // Determine if we need a Continue button (only for contact and problem steps)
+  // Determine if we need a Continue button (only for contact, problem, and schedule steps)
   const currentStepType = steps[step];
   const isInputStep = currentStepType === "contact" || currentStepType === "problem";
-  const showContinueButton = isInputStep; // Schedule step auto-submits on time selection
+  const isScheduleStep = currentStepType === "schedule";
+  const showContinueButton = isInputStep || isScheduleStep; // Confirm step has its own button
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col relative overflow-hidden">

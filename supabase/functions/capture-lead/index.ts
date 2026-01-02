@@ -17,6 +17,7 @@ interface LeadData {
   preferredCallDate?: string;
   preferredCallTime?: string;
   zapierWebhookUrl?: string;
+  hasAgent?: string;
   // Traffic tracking fields
   utmSource?: string;
   utmMedium?: string;
@@ -122,6 +123,7 @@ Deno.serve(async (req) => {
     const budget = leadData.budget?.trim() || null;
     const preferredCallDate = leadData.preferredCallDate?.trim() || null;
     const preferredCallTime = leadData.preferredCallTime?.trim() || null;
+    const hasAgent = leadData.hasAgent?.trim() || null;
     
     // Traffic tracking data
     const utmSource = leadData.utmSource?.trim() || null;
@@ -197,6 +199,7 @@ Deno.serve(async (req) => {
         budget: budget,
         preferred_call_date: preferredCallDate,
         preferred_call_time: preferredCallTime,
+        has_agent: hasAgent,
         utm_source: utmSource,
         utm_medium: utmMedium,
         utm_campaign: utmCampaign,
@@ -242,6 +245,7 @@ Deno.serve(async (req) => {
             budget: lead.budget,
             preferred_call_date: lead.preferred_call_date,
             preferred_call_time: lead.preferred_call_time,
+            has_agent: lead.has_agent,
             utm_source: lead.utm_source,
             utm_medium: lead.utm_medium,
             utm_campaign: lead.utm_campaign,

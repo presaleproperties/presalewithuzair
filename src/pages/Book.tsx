@@ -33,7 +33,23 @@ type FormData = {
   leadType: LeadType | "";
   timeline: string;
   problemDescription: string;
+  hasAgent: string;
+  leadSource: string;
 };
+
+const agentOptions = [
+  { value: "no", label: "No, I'm not working with anyone", emoji: "👋" },
+  { value: "yes-not-committed", label: "Yes, but not committed", emoji: "🤔" },
+  { value: "yes-committed", label: "Yes, I have an agent", emoji: "🤝" },
+];
+
+const sourceOptions = [
+  { value: "tiktok", label: "TikTok", emoji: "🎵" },
+  { value: "instagram", label: "Instagram", emoji: "📸" },
+  { value: "youtube", label: "YouTube", emoji: "🎬" },
+  { value: "referral", label: "Referral", emoji: "👥" },
+  { value: "other", label: "Other", emoji: "🔍" },
+];
 
 const leadTypeOptions = [
   { 
@@ -92,6 +108,8 @@ const Book = () => {
     leadType: "",
     timeline: "",
     problemDescription: "",
+    hasAgent: "",
+    leadSource: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -125,7 +143,7 @@ const Book = () => {
     if (formData.leadType === "paid-advice") {
       return { totalSteps: 4, steps: ["intent", "fee-explanation", "problem", "contact"] };
     }
-    return { totalSteps: 3, steps: ["intent", "timeline", "contact"] };
+    return { totalSteps: 5, steps: ["intent", "timeline", "agent", "source", "contact"] };
   };
 
   const { totalSteps, steps } = getStepConfig();
@@ -147,6 +165,10 @@ const Book = () => {
         return true; // Always valid, user just needs to click continue
       case "timeline":
         return formData.timeline !== "";
+      case "agent":
+        return formData.hasAgent !== "";
+      case "source":
+        return formData.leadSource !== "";
       case "problem":
         return formData.problemDescription.trim().length >= 10;
       case "contact":
@@ -200,6 +222,8 @@ const Book = () => {
       leadType: value, 
       timeline: "", 
       problemDescription: "",
+      hasAgent: "",
+      leadSource: "",
     });
     setTimeout(() => {
       setDirection(1);
@@ -251,7 +275,7 @@ const Book = () => {
           return;
         }
       } else {
-        // Free lead capture → then open Calendly
+        // Free lead capture → then open Cal.com
         const { error } = await supabase.functions.invoke('capture-lead', {
           body: {
             firstName: formData.firstName.trim(),
@@ -259,8 +283,9 @@ const Book = () => {
             email: formData.email.trim(),
             phone: formData.phone.trim(),
             buyerType: formData.leadType,
-            leadSource: "social-media-booking",
+            leadSource: formData.leadSource,
             timeline: formData.timeline,
+            hasAgent: formData.hasAgent,
           }
         });
 
@@ -419,6 +444,8 @@ const Book = () => {
                 leadType: "",
                 timeline: "",
                 problemDescription: "",
+                hasAgent: "",
+                leadSource: "",
               });
             }}
             className="w-full h-12"
@@ -546,6 +573,82 @@ const Book = () => {
                   }}
                   className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
                     formData.timeline === option.value
+                      ? "border-primary bg-primary/10 scale-[0.98]"
+                      : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
+                  }`}
+                >
+                  <span className="text-2xl">{option.emoji}</span>
+                  <span className="text-foreground font-medium">{option.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        );
+
+      case "agent":
+        return (
+          <motion.div
+            key="agent"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <User className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-2xl font-bold text-foreground">Are you working with an agent?</h2>
+              <p className="text-muted-foreground mt-1">Just so I know how to best help you</p>
+            </div>
+            <div className="space-y-3">
+              {agentOptions.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => handleOptionSelect("hasAgent", option.value)}
+                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
+                    formData.hasAgent === option.value
+                      ? "border-primary bg-primary/10 scale-[0.98]"
+                      : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
+                  }`}
+                >
+                  <span className="text-2xl">{option.emoji}</span>
+                  <span className="text-foreground font-medium">{option.label}</span>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        );
+
+      case "source":
+        return (
+          <motion.div
+            key="source"
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.3 }}
+            className="space-y-6"
+          >
+            <div className="text-center mb-6">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <span className="text-2xl">📍</span>
+              </div>
+              <h2 className="text-2xl font-bold text-foreground">Where did you find me?</h2>
+              <p className="text-muted-foreground mt-1">I'd love to know how you discovered me</p>
+            </div>
+            <div className="space-y-3">
+              {sourceOptions.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => handleOptionSelect("leadSource", option.value)}
+                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
+                    formData.leadSource === option.value
                       ? "border-primary bg-primary/10 scale-[0.98]"
                       : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
                   }`}

@@ -184,7 +184,7 @@ export const LeadCaptureSection = () => {
               A quick conversation to understand your goals — and ensure you don't make a costly mistake.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="on">
               {/* Name Row - Side by side on mobile */}
               <div className="grid grid-cols-2 gap-3">
                 <div>
@@ -193,6 +193,7 @@ export const LeadCaptureSection = () => {
                   </label>
                   <Input
                     id="firstName"
+                    name="firstName"
                     type="text"
                     placeholder="First"
                     value={formData.firstName}
@@ -208,6 +209,7 @@ export const LeadCaptureSection = () => {
                   </label>
                   <Input
                     id="lastName"
+                    name="lastName"
                     type="text"
                     placeholder="Last"
                     value={formData.lastName}
@@ -226,6 +228,7 @@ export const LeadCaptureSection = () => {
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="you@email.com"
                   value={formData.email}
@@ -243,6 +246,7 @@ export const LeadCaptureSection = () => {
                 </label>
                 <Input
                   id="phone"
+                  name="phone"
                   type="tel"
                   placeholder="(604) 555-1234"
                   value={formData.phone}

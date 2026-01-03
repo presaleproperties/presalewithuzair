@@ -2,34 +2,44 @@ import { Check, X } from "lucide-react";
 
 const comparisons = [
   {
-    category: "Skin in the Game",
-    presaleExpert: "5 personal presale investments",
-    regularRealtor: "Sells but doesn't buy presales",
+    category: "Business Focus",
+    presaleExpert: "80%+ of business is presales",
+    regularRealtor: "Does the odd presale deal",
   },
   {
-    category: "No Hype",
-    presaleExpert: "Never pumps up projects — 4+ years consistent",
-    regularRealtor: "Hypes every new launch",
+    category: "Market Knowledge",
+    presaleExpert: "In-depth presale market expertise",
+    regularRealtor: "Surface-level understanding",
   },
   {
-    category: "Honest Advice",
-    presaleExpert: "Will advise against bad deals",
-    regularRealtor: "Pushes to close any deal",
-  },
-  {
-    category: "Disclosure Review",
-    presaleExpert: "Line-by-line red flag analysis",
-    regularRealtor: "Quick overview at best",
-  },
-  {
-    category: "Developer Knowledge",
-    presaleExpert: "Knows which developers to trust",
+    category: "Developer Connections",
+    presaleExpert: "Strong relationships, early access",
     regularRealtor: "Limited developer insight",
   },
   {
-    category: "Education Focus",
-    presaleExpert: "Teaches before commitment",
-    regularRealtor: "Rushes to contract",
+    category: "Project Selectivity",
+    presaleExpert: "Avoids 8/10 projects — not great investments",
+    regularRealtor: "Sells whatever is available",
+  },
+  {
+    category: "Ongoing Service",
+    presaleExpert: "Monitors projects from day 1 to completion",
+    regularRealtor: "Set it and forget it",
+  },
+  {
+    category: "Skin in the Game",
+    presaleExpert: "Owns multiple units in the same projects",
+    regularRealtor: "Rarely invests in what they sell",
+  },
+  {
+    category: "Portfolio Management",
+    presaleExpert: "Strategic guidance on building wealth",
+    regularRealtor: "Transaction-focused only",
+  },
+  {
+    category: "Market Timing",
+    presaleExpert: "Knows when to act and when to wait",
+    regularRealtor: "Pushes to close any deal",
   },
 ];
 

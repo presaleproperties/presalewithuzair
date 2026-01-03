@@ -24,7 +24,7 @@ const stats = [
 
 const values = [
   "Never hypes or pumps up presale projects — consistent for 4+ years",
-  "Buys the same products I sell — 7+ personal presale investments",
+  "Buys the same products I sell — 5 personal presale investments",
   "Provides honest advice — even when it means saying no",
   "Reviews every contract line-by-line for red flags",
 ];

@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 const comparisons = [
   {
     category: "Skin in the Game",
-    presaleExpert: "7+ personal presale investments",
+    presaleExpert: "5 personal presale investments",
     regularRealtor: "Sells but doesn't buy presales",
   },
   {

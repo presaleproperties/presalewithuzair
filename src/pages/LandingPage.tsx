@@ -117,10 +117,10 @@ const LandingPage = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-b from-sky-100 via-white to-orange-50">
+      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
 
         {/* Minimal Header */}
-        <header className="py-6 px-4">
+        <header className="py-6 px-4 border-b border-white/5">
           <div className="max-w-6xl mx-auto flex justify-center">
             <img src={logoImage} alt="Uzair Presales" className="h-10" />
           </div>
@@ -133,7 +133,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               {content.headline}
@@ -145,7 +145,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xl md:text-2xl text-gray-600 mb-10"
+              className="text-xl md:text-2xl text-slate-300 mb-10"
             >
               {content.subheadline}
             </motion.p>
@@ -158,7 +158,7 @@ const LandingPage = () => {
               <Button
                 size="lg"
                 onClick={() => setIsFormOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
               >
                 {content.ctaPrimary} <ArrowRight className="ml-2" />
               </Button>
@@ -168,7 +168,7 @@ const LandingPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-gray-500 text-sm"
+              className="mt-6 text-slate-400 text-sm"
             >
               330+ Presales Advised • $1M+ Saved for Clients • 7+ Personal Investments
             </motion.p>
@@ -176,15 +176,15 @@ const LandingPage = () => {
         </section>
 
         {/* Benefits Section */}
-        <section className="px-4 py-16 bg-white/50">
+        <section className="px-4 py-16 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-6xl mx-auto">
             <h2
-              className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-4"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               Why Work With a Presale Specialist?
             </h2>
-            <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+            <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
               Presales are complex. The right guidance can save you tens of thousands.
             </p>
 
@@ -196,13 +196,13 @@ const LandingPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-primary/30 transition-colors"
                 >
-                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-primary/20 rounded-xl flex items-center justify-center mb-6">
                     <benefit.icon className="w-7 h-7 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+                  <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                  <p className="text-slate-400">{benefit.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -213,7 +213,7 @@ const LandingPage = () => {
         <section className="px-4 py-16">
           <div className="max-w-6xl mx-auto">
             <h2
-              className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               What My Clients Say
@@ -227,15 +227,15 @@ const LandingPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-sm"
+                  className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
                 >
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-700 mb-4">"{testimonial.text}"</p>
-                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-slate-300 mb-4">"{testimonial.text}"</p>
+                  <p className="font-semibold text-white">{testimonial.name}</p>
                 </motion.div>
               ))}
             </div>
@@ -243,10 +243,10 @@ const LandingPage = () => {
         </section>
 
         {/* Process Section */}
-        <section className="px-4 py-16 bg-white/50">
+        <section className="px-4 py-16 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
             <h2
-              className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               How It Works
@@ -266,12 +266,12 @@ const LandingPage = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex gap-6 items-start"
                 >
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl flex-shrink-0 shadow-lg shadow-primary/25">
                     {item.step}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                    <p className="text-slate-400">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -280,21 +280,21 @@ const LandingPage = () => {
         </section>
 
         {/* Final CTA Section */}
-        <section className="px-4 py-20 bg-gradient-to-b from-orange-50 to-orange-100">
+        <section className="px-4 py-20 bg-gradient-to-b from-slate-900 to-slate-950">
           <div className="max-w-4xl mx-auto text-center">
             <h2
-              className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
+              className="text-3xl md:text-5xl font-bold text-white mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               Ready to Find Your Perfect Presale?
             </h2>
-            <p className="text-xl text-gray-600 mb-10">
+            <p className="text-xl text-slate-300 mb-10">
               Book your free strategy session today. No pressure, just expert advice.
             </p>
             <Button
               size="lg"
               onClick={() => setIsFormOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
             >
               {content.ctaSecondary} <ArrowRight className="ml-2" />
             </Button>
@@ -302,18 +302,17 @@ const LandingPage = () => {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 px-4 bg-gray-900 text-center">
-          <p className="text-gray-400 text-sm">
+        <footer className="py-8 px-4 bg-slate-950 border-t border-white/5 text-center">
+          <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} Uzair Presales • Vancouver's Presale Expert
           </p>
         </footer>
       </div>
 
-      {/* Lead Capture Dialog */}
       <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="sm:max-w-md bg-white">
+        <DialogContent className="sm:max-w-md bg-slate-900 border-white/10">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-gray-900 text-center">
+            <DialogTitle className="text-2xl font-bold text-white text-center">
               {isSuccess ? "You're All Set! 🎉" : "Book Your Free Session"}
             </DialogTitle>
           </DialogHeader>
@@ -321,10 +320,10 @@ const LandingPage = () => {
           {isSuccess ? (
             <div className="text-center py-6">
               <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <p className="text-gray-600 mb-6">
+              <p className="text-slate-300 mb-6">
                 We'll reach out within 24 hours to schedule your strategy session.
               </p>
-              <Button onClick={() => setIsFormOpen(false)} variant="outline">
+              <Button onClick={() => setIsFormOpen(false)} variant="outline" className="border-white/20 text-white hover:bg-white/10">
                 Close
               </Button>
             </div>
@@ -332,31 +331,31 @@ const LandingPage = () => {
             <form onSubmit={handleSubmit} className="space-y-4 pt-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName" className="text-gray-700">First Name</Label>
+                  <Label htmlFor="firstName" className="text-slate-300">First Name</Label>
                   <Input
                     id="firstName"
                     required
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                     placeholder="John"
-                    className="mt-1 bg-gray-50 border-gray-200"
+                    className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="text-gray-700">Last Name</Label>
+                  <Label htmlFor="lastName" className="text-slate-300">Last Name</Label>
                   <Input
                     id="lastName"
                     required
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                     placeholder="Doe"
-                    className="mt-1 bg-gray-50 border-gray-200"
+                    className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
                   />
                 </div>
               </div>
 
               <div>
-                <Label htmlFor="email" className="text-gray-700">Email</Label>
+                <Label htmlFor="email" className="text-slate-300">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -364,12 +363,12 @@ const LandingPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="john@example.com"
-                  className="mt-1 bg-gray-50 border-gray-200"
+                  className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
                 />
               </div>
 
               <div>
-                <Label htmlFor="phone" className="text-gray-700">Phone</Label>
+                <Label htmlFor="phone" className="text-slate-300">Phone</Label>
                 <Input
                   id="phone"
                   type="tel"
@@ -377,28 +376,28 @@ const LandingPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="(604) 555-0123"
-                  className="mt-1 bg-gray-50 border-gray-200"
+                  className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
                 />
               </div>
 
               <div>
-                <Label className="text-gray-700 mb-3 block">I am a...</Label>
+                <Label className="text-slate-300 mb-3 block">I am a...</Label>
                 <RadioGroup
                   value={formData.buyerType}
                   onValueChange={(value) => setFormData({ ...formData, buyerType: value })}
                   className="flex flex-col gap-3"
                 >
-                  <div className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg border border-gray-200">
-                    <RadioGroupItem value="first-time-buyer" id="first-time" />
-                    <Label htmlFor="first-time" className="cursor-pointer flex-1">First-Time Buyer</Label>
+                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
+                    <RadioGroupItem value="first-time-buyer" id="first-time" className="border-white/30 text-primary" />
+                    <Label htmlFor="first-time" className="cursor-pointer flex-1 text-white">First-Time Buyer</Label>
                   </div>
-                  <div className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg border border-gray-200">
-                    <RadioGroupItem value="investor" id="investor" />
-                    <Label htmlFor="investor" className="cursor-pointer flex-1">Investor</Label>
+                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
+                    <RadioGroupItem value="investor" id="investor" className="border-white/30 text-primary" />
+                    <Label htmlFor="investor" className="cursor-pointer flex-1 text-white">Investor</Label>
                   </div>
-                  <div className="flex items-center space-x-3 bg-gray-50 p-3 rounded-lg border border-gray-200">
-                    <RadioGroupItem value="other" id="other" />
-                    <Label htmlFor="other" className="cursor-pointer flex-1">Other</Label>
+                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
+                    <RadioGroupItem value="other" id="other" className="border-white/30 text-primary" />
+                    <Label htmlFor="other" className="cursor-pointer flex-1 text-white">Other</Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -406,12 +405,12 @@ const LandingPage = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg shadow-lg shadow-primary/25"
               >
                 {isSubmitting ? "Submitting..." : "Book My Free Session"}
               </Button>
 
-              <p className="text-xs text-gray-500 text-center">
+              <p className="text-xs text-slate-500 text-center">
                 No spam. We respect your privacy.
               </p>
             </form>

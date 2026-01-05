@@ -1,8 +1,8 @@
 import { useEffect, useCallback, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 
-const CAL_USERNAME = "uzair-muhammad-fcjyok";
-const CAL_EVENT_SLUG = "quick-call";
+const CAL_USERNAME = "presalewithuzair";
+const CAL_EVENT_SLUG = "meeting";
 
 export const useCalCom = () => {
   const [isCalLoading, setIsCalLoading] = useState(false);

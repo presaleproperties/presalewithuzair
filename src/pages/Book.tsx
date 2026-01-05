@@ -266,7 +266,7 @@ const Book = () => {
 
           {/* Mobile: Viewport-based height like homepage */}
           <div className="lg:hidden">
-            <div className="rounded-xl overflow-hidden bg-card h-[calc(100dvh-170px)] min-h-[620px]">
+            <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100dvh-170px)] min-h-[620px]">
               <iframe
                 src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                 width="100%"
@@ -287,7 +287,7 @@ const Book = () => {
 
           {/* Desktop: Full-width calendar */}
           <div className="hidden lg:block">
-            <div className="w-full rounded-xl overflow-hidden bg-card h-[800px] xl:h-[850px]">
+            <div className="w-full rounded-xl overflow-hidden border border-border bg-card h-[800px] xl:h-[850px]">
               <iframe
                 src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                 width="100%"

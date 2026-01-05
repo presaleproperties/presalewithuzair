@@ -62,7 +62,7 @@ const StarRating = () => (
 
 const Book = () => {
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-background">
+    <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col">
       <Helmet>
         <title>Book a Call | Presale with Uzair</title>
         <meta name="description" content="Schedule a one-on-one call with Uzair to discuss your presale real estate needs." />
@@ -229,23 +229,20 @@ const Book = () => {
         </div>
       </section>
 
-      {/* Calendar Section */}
-      <section className="py-4 sm:py-8 lg:py-12">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
-          <div className="text-center mb-3 sm:mb-4 lg:mb-6">
+      {/* Calendar Section - Full viewport like mobile homepage */}
+      <section className="flex-1 flex flex-col">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 flex flex-col flex-1">
+          <div className="text-center mb-3 sm:mb-4">
             <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1">
               Pick a Time That Works
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground mb-2">
-              Select a date and time below
-            </p>
             <p className="text-xs sm:text-sm text-foreground/70">
               Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
             </p>
           </div>
 
-          {/* Embedded Calendly Calendar */}
-          <div className="w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-250px)] min-h-[550px]">
+          {/* Embedded Calendly Calendar - fills remaining space */}
+          <div className="flex-1 w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card min-h-[500px]">
             <iframe
               src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
               width="100%"

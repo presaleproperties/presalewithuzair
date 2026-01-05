@@ -228,14 +228,14 @@ const Book = () => {
       </section>
 
       {/* Calendar Section */}
-      <section className="py-8 md:py-12">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-6">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Pick a Time That Works for You
+      <section className="py-4 md:py-12">
+        <div className="container mx-auto px-2 md:px-4">
+          <div className="text-center mb-3 md:mb-6">
+            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-1">
+              Pick a Time That Works
             </h2>
-            <p className="text-sm text-muted-foreground">
-              Select a date and time below to schedule our call
+            <p className="text-xs md:text-sm text-muted-foreground">
+              Select a date and time below
             </p>
           </div>
 

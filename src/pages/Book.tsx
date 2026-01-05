@@ -240,7 +240,7 @@ const Book = () => {
           </div>
 
           {/* Embedded Cal.com Calendar */}
-          <div className="max-w-5xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-200px)] sm:h-[calc(100vh-220px)] lg:h-[600px] min-h-[500px]">
+          <div className="max-w-5xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-280px)] min-h-[550px]">
             <Cal
               calLink="presalewithuzair/meeting"
               style={{ width: "100%", height: "100%", overflow: "scroll" }}

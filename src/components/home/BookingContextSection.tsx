@@ -1,3 +1,4 @@
+import { Quote } from "lucide-react";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
 export const BookingContextSection = () => {
@@ -12,8 +13,24 @@ export const BookingContextSection = () => {
 
       <div className="container-xl px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
+          {/* Testimonial Quote */}
+          <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8">
+              <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
+              <blockquote className="relative z-10 text-center">
+                <p className="text-base sm:text-lg lg:text-xl text-foreground/90 italic leading-relaxed">
+                  "Uzair told me not to buy two projects I was excited about — and saved me from major issues. That kind of honesty is rare. He genuinely cares about getting you the right deal, not just any deal."
+                </p>
+                <footer className="mt-4 sm:mt-6">
+                  <p className="text-sm sm:text-base font-semibold text-foreground">Anish K.</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">First-Time Buyer, Surrey</p>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+
           {/* Header */}
-          <div className="text-center mb-10 sm:mb-16">
+          <div className="text-center mb-10 sm:mb-12">
             <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
               Book a <span className="text-gradient">Discovery Call</span>

@@ -139,7 +139,7 @@ export const BookingContextSection = () => {
 
           {/* Desktop: Full-width calendar - no scroll needed */}
           <div className="hidden lg:block">
-            <div className="max-w-6xl mx-auto rounded-xl overflow-hidden border border-border bg-card h-[750px]">
+            <div className="w-full rounded-xl overflow-hidden border border-border bg-card h-[750px]">
               <iframe
                 src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                 width="100%"

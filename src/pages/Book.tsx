@@ -133,8 +133,8 @@ const Book = () => {
         </div>
       </section>
 
-      {/* Testimonials Section - Compact on mobile */}
-      <section className="py-2 sm:py-4 lg:py-6 border-b border-border/30 bg-card/30">
+      {/* Testimonials Section - Hidden on mobile for cleaner booking flow */}
+      <section className="hidden sm:block py-4 lg:py-6 border-b border-border/30 bg-card/30">
         <div className="container mx-auto px-4">
           {/* Google badge - desktop only (mobile has it in header) */}
           <div className="hidden sm:flex items-center justify-center gap-2 mb-3 sm:mb-4">
@@ -306,8 +306,8 @@ const Book = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-4 sm:py-6 border-t border-border/50 bg-card/30">
+      {/* Footer - Hidden on mobile for cleaner booking flow */}
+      <footer className="hidden sm:block py-4 sm:py-6 border-t border-border/50 bg-card/30">
         <div className="container mx-auto px-4 text-center">
           <p className="text-xs sm:text-sm text-muted-foreground">
             © {new Date().getFullYear()} Presale with Uzair. All rights reserved.

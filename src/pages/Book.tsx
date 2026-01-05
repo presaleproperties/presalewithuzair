@@ -132,19 +132,19 @@ const Book = () => {
             </a>
           </div>
 
-          {/* Mobile: Horizontal scroll */}
+          {/* Mobile: Horizontal scroll - compact */}
           <div className="lg:hidden">
-            <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-              {testimonials.map((testimonial, index) => (
+            <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+              {testimonials.slice(0, 4).map((testimonial, index) => (
                 <a
                   key={index}
                   href={GOOGLE_REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-[260px] sm:w-[300px] snap-center bg-card border border-border rounded-xl p-3 sm:p-4 hover:border-primary/50 transition-all"
+                  className="flex-shrink-0 w-[220px] snap-center bg-card border border-border rounded-lg p-2.5 hover:border-primary/50 transition-all"
                 >
-                  <div className="flex items-start gap-2.5 sm:gap-3 mb-2">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden flex-shrink-0 border border-border">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-6 h-6 rounded-full overflow-hidden flex-shrink-0 border border-border">
                       <img 
                         src={testimonial.photo} 
                         alt={testimonial.name}
@@ -152,20 +152,23 @@ const Book = () => {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-medium text-foreground text-sm truncate">{testimonial.name}</h3>
-                        <StarRating />
+                      <div className="flex items-center gap-1.5">
+                        <h3 className="font-medium text-foreground text-xs truncate">{testimonial.name}</h3>
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
+                          ))}
+                        </div>
                       </div>
-                      <span className="text-xs text-primary/80">{testimonial.type}</span>
                     </div>
                   </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
+                  <p className="text-xs text-muted-foreground line-clamp-2">
                     "{testimonial.quote}"
                   </p>
                 </a>
               ))}
             </div>
-            <div className="text-center mt-2">
+            <div className="text-center mt-1">
               <a 
                 href={GOOGLE_REVIEWS_URL}
                 target="_blank"

@@ -306,7 +306,7 @@ const LandingPage = () => {
               className="text-3xl md:text-5xl font-bold text-white mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Ready to Find Your Perfect Presale?
+              Ready to Take the Next Step?
             </h2>
             <p className="text-xl text-slate-300 mb-10">
               Book your free strategy session today. No pressure, just expert advice.

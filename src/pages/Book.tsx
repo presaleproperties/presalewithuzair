@@ -242,7 +242,7 @@ const Book = () => {
           {/* Embedded Cal.com Calendar */}
           <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card">
             <Cal
-              calLink="uzair-muhammad-fcjyok/quick-call"
+              calLink="presalewithuzair/meeting"
               style={{ width: "100%", height: "100%", overflow: "scroll" }}
               config={{
                 layout: "month_view",

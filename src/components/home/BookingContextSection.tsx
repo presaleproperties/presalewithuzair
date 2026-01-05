@@ -36,11 +36,79 @@ export const BookingContextSection = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          {/* Mobile: Calendar first, then fit criteria */}
+          <div className="lg:hidden space-y-6">
+            {/* Calendly Calendar - Full viewport height on mobile */}
+            <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-120px)] min-h-[500px]">
+              <iframe
+                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=d4a853"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Schedule a meeting with Uzair"
+                style={{ border: 'none' }}
+              />
+            </div>
+            
+            <div className="text-center">
+              <p className="text-xs text-foreground/70">
+                Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Limited weekly availability. Serious inquiries only.
+              </p>
+            </div>
+
+            {/* Fit Criteria */}
+            <div className="grid grid-cols-2 gap-3">
+              {/* For You */}
+              <div className="bg-card rounded-xl border border-border p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="p-1 rounded-lg bg-primary/10">
+                    <CheckCircle className="h-3.5 w-3.5 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xs font-bold text-foreground">
+                    Good fit if you...
+                  </h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {forYou.map((item, index) => (
+                    <li key={index} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                      <CheckCircle className="h-3 w-3 text-primary flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Not For You */}
+              <div className="bg-card rounded-xl border border-border p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="p-1 rounded-lg bg-destructive/10">
+                    <XCircle className="h-3.5 w-3.5 text-destructive" />
+                  </div>
+                  <h3 className="font-display text-xs font-bold text-foreground">
+                    Not a fit if you...
+                  </h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {notForYou.map((item, index) => (
+                    <li key={index} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
+                      <XCircle className="h-3 w-3 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop: Side by side layout */}
+          <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Image + Fit Criteria */}
             <div className="space-y-6">
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl hidden sm:block">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src={uzairImage}
                   alt="Uzair Muhammad - Presale Expert"
@@ -49,8 +117,8 @@ export const BookingContextSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
 
-              {/* Fit Criteria - Side by side on desktop, stacked on mobile */}
-              <div className="grid sm:grid-cols-2 gap-4">
+              {/* Fit Criteria */}
+              <div className="grid grid-cols-2 gap-4">
                 {/* For You */}
                 <div className="bg-card rounded-xl border border-border p-5">
                   <div className="flex items-center gap-2 mb-4">
@@ -95,7 +163,7 @@ export const BookingContextSection = () => {
 
             {/* Right Column - Calendly Calendar */}
             <div className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-border bg-card h-[500px] sm:h-[600px] lg:h-[700px]">
+              <div className="rounded-xl overflow-hidden border border-border bg-card h-[700px]">
                 <iframe
                   src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=d4a853"
                   width="100%"
@@ -107,10 +175,10 @@ export const BookingContextSection = () => {
               </div>
               
               <div className="text-center">
-                <p className="text-xs sm:text-sm text-foreground/70">
+                <p className="text-sm text-foreground/70">
                   Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
                 </p>
-                <p className="text-xs sm:text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground mt-2">
                   Limited weekly availability. Serious inquiries only.
                 </p>
               </div>

@@ -113,9 +113,9 @@ const Book = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-8 border-b border-border/30 bg-card/30">
+      <section className="py-6 border-b border-border/30 bg-card/30">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-6">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -133,8 +133,53 @@ const Book = () => {
             </a>
           </div>
 
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Mobile: Horizontal scroll | Desktop: Grid */}
+          <div className="md:hidden">
+            <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
+              {testimonials.map((testimonial, index) => (
+                <a
+                  key={index}
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 w-[280px] snap-center bg-card border border-border rounded-xl p-4 hover:border-primary/50 transition-all"
+                >
+                  <div className="flex items-start gap-3 mb-2">
+                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-border">
+                      <img 
+                        src={testimonial.photo} 
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className="font-medium text-foreground text-sm truncate">{testimonial.name}</h3>
+                        <StarRating />
+                      </div>
+                      <span className="text-xs text-primary/80">{testimonial.type}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-3">
+                    "{testimonial.quote}"
+                  </p>
+                </a>
+              ))}
+            </div>
+            <div className="text-center mt-2">
+              <a 
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-primary hover:text-primary/80 transition-colors"
+              >
+                View all on Google →
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {testimonials.map((testimonial, index) => (
               <a
                 key={index}
@@ -169,7 +214,7 @@ const Book = () => {
             ))}
           </div>
 
-          <div className="text-center mt-4">
+          <div className="hidden md:block text-center mt-4">
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"

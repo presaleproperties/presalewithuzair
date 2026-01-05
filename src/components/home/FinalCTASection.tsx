@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import uzairImage from "@/assets/uzair-expo-speaking.jpg";
+import { Users } from "lucide-react";
+import uzairExpoImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
   const navigate = useNavigate();
@@ -23,39 +24,41 @@ export const FinalCTASection = () => {
       
       <div className="container-xl relative z-10 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-primary font-bold tracking-[0.15em] text-sm mb-6 uppercase">
-            Ready for Your Next Level Game Plan?
-          </p>
+          {/* Community Leader Badge */}
+          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
+            <Users className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium text-primary">Community Leader</span>
+          </div>
           
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
-            <span className="text-foreground">LET'S TALK</span>{" "}
-            <span className="text-muted-foreground">PRESALE STRATEGY</span>
+            <span className="text-foreground">FOUNDER,</span>{" "}
+            <span className="text-gradient">VANCOUVER PRESALE EXPO</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
-            Get expert guidance on pricing, deposits, developer reputation, and timing. 
-            Stop guessing and start investing with confidence.
+            The Vancouver Presale Expo is the largest annual gathering for real estate agents and developers 
+            in the presale space — a launchpad for groundbreaking projects and invaluable training for 1,000+ realtors.
           </p>
           
           <p className="text-sm text-muted-foreground/70 mb-8 max-w-xl mx-auto italic">
-            I work with a limited number of buyers to ensure proper guidance.
+            Get guidance from the same expert who educates the industry.
           </p>
 
           <Button 
             variant="outline"
             size="xl"
-            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-8"
+            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-10"
             onClick={handleBookClick}
           >
             Book a Discovery Call
           </Button>
 
-          {/* Uzair Image */}
-          <div className="relative mx-auto max-w-xs">
+          {/* Uzair Expo Image */}
+          <div className="relative mx-auto max-w-sm sm:max-w-md">
             <div className="aspect-square rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
               <img
-                src={uzairImage}
-                alt="Uzair Muhammad - Presale Expert"
+                src={uzairExpoImage}
+                alt="Uzair Muhammad speaking at Vancouver Presale Expo"
                 className="w-full h-full object-cover object-top"
               />
             </div>

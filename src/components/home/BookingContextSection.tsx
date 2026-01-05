@@ -1,17 +1,4 @@
-import { CheckCircle, XCircle } from "lucide-react";
 import uzairImage from "@/assets/uzair-walking.jpg";
-
-const forYou = [
-  "Are seriously considering a presale purchase",
-  "Want clear guidance on risks, pricing, and contracts",
-  "Prefer honest advice over sales pressure",
-];
-
-const notForYou = [
-  "Are just browsing or early-stage researching",
-  "Are looking only for the cheapest option",
-  "Expect developer-style incentives or promotions",
-];
 
 export const BookingContextSection = () => {
   return (
@@ -27,17 +14,17 @@ export const BookingContextSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10 sm:mb-16">
-            <p className="section-label mb-3 sm:mb-4">Is This Right For You?</p>
+            <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-              Before You <span className="text-gradient">Book a Call</span>
+              Book a <span className="text-gradient">Discovery Call</span>
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
-              I work with a select number of buyers to ensure proper guidance. Please review to see if we're a good fit.
+              A quick conversation to understand your goals and see if we're a good fit.
             </p>
           </div>
 
-          {/* Mobile: Calendar first, then fit criteria */}
-          <div className="lg:hidden space-y-6">
+          {/* Mobile: Calendar only */}
+          <div className="lg:hidden space-y-4">
             {/* Calendly Calendar - Full viewport height on mobile */}
             <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-120px)] min-h-[500px]">
               <iframe
@@ -58,107 +45,18 @@ export const BookingContextSection = () => {
                 Limited weekly availability. Serious inquiries only.
               </p>
             </div>
-
-            {/* Fit Criteria */}
-            <div className="grid grid-cols-2 gap-3">
-              {/* For You */}
-              <div className="bg-card rounded-xl border border-border p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1 rounded-lg bg-primary/10">
-                    <CheckCircle className="h-3.5 w-3.5 text-primary" />
-                  </div>
-                  <h3 className="font-display text-xs font-bold text-foreground">
-                    Good fit if you...
-                  </h3>
-                </div>
-                <ul className="space-y-1.5">
-                  {forYou.map((item, index) => (
-                    <li key={index} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
-                      <CheckCircle className="h-3 w-3 text-primary flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Not For You */}
-              <div className="bg-card rounded-xl border border-border p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="p-1 rounded-lg bg-destructive/10">
-                    <XCircle className="h-3.5 w-3.5 text-destructive" />
-                  </div>
-                  <h3 className="font-display text-xs font-bold text-foreground">
-                    Not a fit if you...
-                  </h3>
-                </div>
-                <ul className="space-y-1.5">
-                  {notForYou.map((item, index) => (
-                    <li key={index} className="flex items-start gap-1.5 text-[11px] text-foreground/80">
-                      <XCircle className="h-3 w-3 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
 
           {/* Desktop: Side by side layout */}
           <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Column - Image + Fit Criteria */}
-            <div className="space-y-6">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src={uzairImage}
-                  alt="Uzair Muhammad - Presale Expert"
-                  className="w-full aspect-[4/5] object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-              </div>
-
-              {/* Fit Criteria */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* For You */}
-                <div className="bg-card rounded-xl border border-border p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="p-1.5 rounded-lg bg-primary/10">
-                      <CheckCircle className="h-4 w-4 text-primary" />
-                    </div>
-                    <h3 className="font-display text-sm font-bold text-foreground">
-                      Good fit if you...
-                    </h3>
-                  </div>
-                  <ul className="space-y-2">
-                    {forYou.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-xs text-foreground/80">
-                        <CheckCircle className="h-3.5 w-3.5 text-primary flex-shrink-0 mt-0.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Not For You */}
-                <div className="bg-card rounded-xl border border-border p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="p-1.5 rounded-lg bg-destructive/10">
-                      <XCircle className="h-4 w-4 text-destructive" />
-                    </div>
-                    <h3 className="font-display text-sm font-bold text-foreground">
-                      Not a fit if you...
-                    </h3>
-                  </div>
-                  <ul className="space-y-2">
-                    {notForYou.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-xs text-foreground/80">
-                        <XCircle className="h-3.5 w-3.5 text-muted-foreground/50 flex-shrink-0 mt-0.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            {/* Left Column - Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={uzairImage}
+                alt="Uzair Muhammad - Presale Expert"
+                className="w-full aspect-[4/5] object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
 
             {/* Right Column - Calendly Calendar */}

@@ -122,7 +122,8 @@ const Book = () => {
       {/* Testimonials Section - Compact on mobile */}
       <section className="py-2 sm:py-4 lg:py-6 border-b border-border/30 bg-card/30">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
+          {/* Google badge - desktop only (mobile has it in header) */}
+          <div className="hidden sm:flex items-center justify-center gap-2 mb-3 sm:mb-4">
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"

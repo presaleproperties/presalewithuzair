@@ -92,10 +92,10 @@ const Book = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-8 md:py-12 border-b border-border/30">
+      <section className="py-6 sm:py-8 lg:py-12 border-b border-border/30">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
+          <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
               <img 
                 src={uzairPhoto} 
                 alt="Uzair" 
@@ -103,19 +103,19 @@ const Book = () => {
               />
             </div>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
             Book a One-on-One Call
           </h1>
-          <p className="text-muted-foreground max-w-md mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
             Let's discuss your presale goals and how I can help you make smarter investment decisions.
           </p>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-6 border-b border-border/30 bg-card/30">
+      <section className="py-4 sm:py-6 border-b border-border/30 bg-card/30">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -133,8 +133,8 @@ const Book = () => {
             </a>
           </div>
 
-          {/* Mobile: Horizontal scroll | Desktop: Grid */}
-          <div className="md:hidden">
+          {/* Mobile: Horizontal scroll */}
+          <div className="lg:hidden">
             <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
               {testimonials.map((testimonial, index) => (
                 <a
@@ -142,10 +142,10 @@ const Book = () => {
                   href={GOOGLE_REVIEWS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 w-[280px] snap-center bg-card border border-border rounded-xl p-4 hover:border-primary/50 transition-all"
+                  className="flex-shrink-0 w-[260px] sm:w-[300px] snap-center bg-card border border-border rounded-xl p-3 sm:p-4 hover:border-primary/50 transition-all"
                 >
-                  <div className="flex items-start gap-3 mb-2">
-                    <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-border">
+                  <div className="flex items-start gap-2.5 sm:gap-3 mb-2">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden flex-shrink-0 border border-border">
                       <img 
                         src={testimonial.photo} 
                         alt={testimonial.name}
@@ -160,7 +160,7 @@ const Book = () => {
                       <span className="text-xs text-primary/80">{testimonial.type}</span>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground line-clamp-3">
+                  <p className="text-xs sm:text-sm text-muted-foreground line-clamp-3">
                     "{testimonial.quote}"
                   </p>
                 </a>
@@ -179,7 +179,7 @@ const Book = () => {
           </div>
 
           {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="hidden lg:grid lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <a
                 key={index}
@@ -214,7 +214,7 @@ const Book = () => {
             ))}
           </div>
 
-          <div className="hidden md:block text-center mt-4">
+          <div className="hidden lg:block text-center mt-4">
             <a 
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
@@ -228,19 +228,19 @@ const Book = () => {
       </section>
 
       {/* Calendar Section */}
-      <section className="py-4 md:py-12">
-        <div className="container mx-auto px-2 md:px-4">
-          <div className="text-center mb-3 md:mb-6">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-1">
+      <section className="py-4 sm:py-8 lg:py-12">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="text-center mb-3 sm:mb-4 lg:mb-6">
+            <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1">
               Pick a Time That Works
             </h2>
-            <p className="text-xs md:text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Select a date and time below
             </p>
           </div>
 
           {/* Embedded Cal.com Calendar */}
-          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card">
+          <div className="max-w-5xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[420px] sm:h-[500px] lg:h-[600px]">
             <Cal
               calLink="presalewithuzair/meeting"
               style={{ width: "100%", height: "100%", overflow: "scroll" }}
@@ -251,8 +251,8 @@ const Book = () => {
             />
           </div>
           
-          <div className="text-center mt-4 md:mt-6">
-            <p className="text-xs md:text-sm text-foreground/70">
+          <div className="text-center mt-3 sm:mt-4 lg:mt-6">
+            <p className="text-xs sm:text-sm text-foreground/70">
               Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
             </p>
           </div>
@@ -260,9 +260,9 @@ const Book = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 border-t border-border/50 bg-card/30">
+      <footer className="py-4 sm:py-6 border-t border-border/50 bg-card/30">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs sm:text-sm text-muted-foreground">
             © {new Date().getFullYear()} Presale with Uzair. All rights reserved.
           </p>
         </div>

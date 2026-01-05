@@ -32,7 +32,13 @@ export const Navbar = () => {
   }, [location]);
 
   const handleBookClick = () => {
-    navigate("/book");
+    if (location.pathname === '/') {
+      // On homepage, scroll to booking section
+      document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // On other pages, navigate to /book
+      navigate('/book');
+    }
     setIsMobileMenuOpen(false);
   };
 

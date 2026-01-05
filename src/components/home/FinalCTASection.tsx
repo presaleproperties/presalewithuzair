@@ -1,13 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { Users } from "lucide-react";
 import uzairExpoImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
-  const navigate = useNavigate();
-  
   const handleBookClick = () => {
-    navigate("/book");
+    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

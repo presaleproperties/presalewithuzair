@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/uzair-walking.jpg";
 import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -19,8 +18,9 @@ const heroContent = {
 };
 
 export const HeroSection = () => {
-  const navigate = useNavigate();
-  const handleBookClick = () => navigate("/book");
+  const handleBookClick = () => {
+    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="relative min-h-screen overflow-hidden">

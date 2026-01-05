@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Shield, TrendingUp, Users, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, Shield, TrendingUp, Users, Star, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -10,14 +10,15 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import logoImage from "@/assets/logo.png";
+import headshotImage from "@/assets/uzair-headshot.jpeg";
 
 // Landing Page Content
 const content = {
   headline: "Buy Your Presale",
   headlineAccent: "With Confidence.",
   subheadline: "Expert guidance for first-time buyers and investors.",
-  ctaPrimary: "Book Free Strategy Session",
-  ctaSecondary: "Get Started",
+  ctaPrimary: "Request A Call",
+  ctaSecondary: "Request A Call",
 };
 
 const LandingPage = () => {
@@ -26,12 +27,15 @@ const LandingPage = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
   
+  // Parse URL params for form prefill
+  const urlParams = new URLSearchParams(window.location.search);
+  
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    buyerType: "first-time-buyer",
+    firstName: urlParams.get("firstName") || urlParams.get("name")?.split(" ")[0] || "",
+    lastName: urlParams.get("lastName") || urlParams.get("name")?.split(" ").slice(1).join(" ") || "",
+    email: urlParams.get("email") || "",
+    phone: urlParams.get("phone") || "",
+    buyerType: urlParams.get("type") || "first-time-buyer",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -129,6 +133,20 @@ const LandingPage = () => {
         {/* Hero Section */}
         <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
           <div className="max-w-4xl mx-auto text-center">
+            {/* Headshot */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
+            >
+              <img 
+                src={headshotImage} 
+                alt="Uzair - Presale Specialist" 
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full mx-auto object-cover border-4 border-primary/30 shadow-lg shadow-primary/20"
+              />
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -154,21 +172,23 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col items-center gap-3"
             >
               <Button
                 size="lg"
                 onClick={() => setIsFormOpen(true)}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
               >
-                {content.ctaPrimary} <ArrowRight className="ml-2" />
+                <Phone className="mr-2 w-5 h-5" /> {content.ctaPrimary} <ArrowRight className="ml-2" />
               </Button>
+              <span className="text-primary text-sm font-medium">Same-day callbacks available</span>
             </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-slate-400 text-sm"
+              className="mt-8 text-slate-400 text-sm"
             >
               330+ Presales Advised • $1M+ Saved for Clients • 7+ Personal Investments
             </motion.p>
@@ -396,8 +416,8 @@ const LandingPage = () => {
                     <Label htmlFor="investor" className="cursor-pointer flex-1 text-white">Investor</Label>
                   </div>
                   <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="other" id="other" className="border-white/30 text-primary" />
-                    <Label htmlFor="other" className="cursor-pointer flex-1 text-white">Other</Label>
+                    <RadioGroupItem value="assignment-seller" id="assignment-seller" className="border-white/30 text-primary" />
+                    <Label htmlFor="assignment-seller" className="cursor-pointer flex-1 text-white">Sell My Presale Assignment</Label>
                   </div>
                 </RadioGroup>
               </div>

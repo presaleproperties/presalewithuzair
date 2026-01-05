@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, CheckCircle } from "lucide-react";
 import { z } from "zod";
-import { useCalCom } from "@/hooks/useCalCom";
+import { useCalendly } from "@/hooks/useCalendly";
 
 const developerFormSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -27,7 +27,7 @@ type DeveloperFormData = z.infer<typeof developerFormSchema>;
 
 export const DeveloperContactForm = () => {
   const { toast } = useToast();
-  const { openCalCom } = useCalCom();
+  const { openCalendly } = useCalendly();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState<Partial<DeveloperFormData>>({});
@@ -55,8 +55,8 @@ export const DeveloperContactForm = () => {
     // Brief delay for UX
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    // Open Cal.com with prefilled data
-    openCalCom({ name: result.data.name, email: result.data.email });
+    // Open Calendly with prefilled data
+    openCalendly({ name: result.data.name, email: result.data.email });
 
     setIsSubmitting(false);
     setIsSubmitted(true);

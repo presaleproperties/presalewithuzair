@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, TrendingUp, Users, Target, Mail, Megaphone, Settings, Calendar, CheckCircle, ArrowRight } from "lucide-react";
-import { useCalCom } from "@/hooks/useCalCom";
+import { useCalendly } from "@/hooks/useCalendly";
 import { AgentContactForm } from "@/components/forms/AgentContactForm";
 
 const day1Modules = [
@@ -90,7 +90,7 @@ const day2Modules = [
 ];
 
 const Agents = () => {
-  const { openCalCom } = useCalCom();
+  const { openCalendly } = useCalendly();
 
   return (
     <>
@@ -176,7 +176,7 @@ const Agents = () => {
                   variant="ghost" 
                   size="lg" 
                   className="rounded-full text-muted-foreground hover:text-foreground px-8 py-6 text-base font-semibold gap-2"
-                  onClick={() => openCalCom()}
+                  onClick={() => openCalendly()}
                 >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                   Talk to Uzair First
@@ -315,7 +315,7 @@ const Agents = () => {
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>
-                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={() => openCalCom()}>
+                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={() => openCalendly()}>
                     <Phone className="h-4 w-4" />
                     Book a Discovery Call
                   </Button>

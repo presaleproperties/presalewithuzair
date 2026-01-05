@@ -245,7 +245,7 @@ const Book = () => {
           </div>
 
           {/* Embedded Calendly Calendar */}
-          <div className="max-w-5xl mx-auto rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-280px)] min-h-[550px]">
+          <div className="w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-180px)] sm:h-[calc(100vh-200px)] lg:h-[calc(100vh-250px)] min-h-[550px]">
             <iframe
               src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
               width="100%"

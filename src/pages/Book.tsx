@@ -230,7 +230,7 @@ const Book = () => {
       </section>
 
       {/* Calendar Section */}
-      <section className="flex-1 pb-4">
+      <section className="flex-1 pb-16 lg:pb-4">
         <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <div className="text-center mb-3 sm:mb-4">
             <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1 uppercase tracking-tight">
@@ -243,7 +243,7 @@ const Book = () => {
 
           {/* Mobile: Viewport-based height like homepage */}
           <div className="lg:hidden">
-            <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-200px)] min-h-[500px]">
+            <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100dvh-170px)] min-h-[620px]">
               <iframe
                 src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                 width="100%"
@@ -258,6 +258,8 @@ const Book = () => {
                 Limited weekly availability. Serious inquiries only.
               </p>
             </div>
+            {/* Extra space so Safari bottom bar doesn’t cover the final CTA */}
+            <div className="h-20" />
           </div>
 
           {/* Desktop: Full-width calendar */}

@@ -54,15 +54,23 @@ export const FinalCTASection = () => {
           </Button>
 
           {/* Uzair Expo Image */}
-          <div className="relative mx-auto max-w-sm sm:max-w-md">
-            <div className="aspect-square rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl">
+          <a 
+            href="https://vancouverpresaleexpo.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="relative mx-auto max-w-sm sm:max-w-md block group"
+          >
+            <div className="aspect-square rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl transition-all duration-300 group-hover:border-primary group-hover:scale-105">
               <img
                 src={uzairExpoImage}
                 alt="Uzair Muhammad speaking at Vancouver Presale Expo"
                 className="w-full h-full object-cover object-top"
               />
             </div>
-          </div>
+            <p className="text-xs text-primary mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+              Visit vancouverpresaleexpo.com →
+            </p>
+          </a>
         </div>
       </div>
     </section>

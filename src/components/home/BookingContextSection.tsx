@@ -122,7 +122,7 @@ export const BookingContextSection = () => {
             {/* Calendly Calendar - Full viewport height on mobile */}
             <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-120px)] min-h-[500px]">
               <iframe
-                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=d4a853"
+                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -154,7 +154,7 @@ export const BookingContextSection = () => {
             <div className="space-y-4">
               <div className="rounded-xl overflow-hidden border border-border bg-card h-[700px]">
                 <iframe
-                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=d4a853"
+                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
                   width="100%"
                   height="100%"
                   frameBorder="0"

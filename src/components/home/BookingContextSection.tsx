@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Phone, CheckCircle, XCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle, XCircle } from "lucide-react";
+import Cal from "@calcom/embed-react";
 
 const forYou = [
   "Are seriously considering a presale purchase",
@@ -15,13 +14,10 @@ const notForYou = [
 ];
 
 export const BookingContextSection = () => {
-  const navigate = useNavigate();
-  const handleBookClick = () => navigate("/book");
-
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container-xl px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10 sm:mb-16">
             <p className="section-label mb-3 sm:mb-4">Is This Right For You?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
@@ -74,22 +70,21 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-
-          {/* CTA */}
-          <div className="text-center">
-            <Button
-              variant="hero"
-              size="xl"
-              className="gap-2 w-full sm:w-auto text-sm sm:text-base h-12 sm:h-14"
-              onClick={handleBookClick}
-            >
-              <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
-              Book a Discovery Call
-            </Button>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4">
-              Limited weekly availability. Serious inquiries only.
-            </p>
+          {/* Embedded Cal.com Calendar */}
+          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card">
+            <Cal
+              calLink="presalewithuzair/meeting"
+              style={{ width: "100%", height: "100%", overflow: "scroll" }}
+              config={{
+                layout: "month_view",
+                theme: "dark",
+              }}
+            />
           </div>
+          
+          <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
+            Limited weekly availability. Serious inquiries only.
+          </p>
         </div>
       </div>
     </section>

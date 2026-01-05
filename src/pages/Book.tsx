@@ -233,8 +233,11 @@ const Book = () => {
             <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1">
               Pick a Time That Works
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mb-2">
               Select a date and time below
+            </p>
+            <p className="text-xs sm:text-sm text-foreground/70">
+              Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
             </p>
           </div>
 
@@ -250,11 +253,6 @@ const Book = () => {
             />
           </div>
           
-          <div className="text-center mt-3 sm:mt-4 lg:mt-6">
-            <p className="text-xs sm:text-sm text-foreground/70">
-              Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
-            </p>
-          </div>
         </div>
       </section>
 

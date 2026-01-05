@@ -21,6 +21,7 @@ import AdminTrafficAnalytics from "./pages/AdminTrafficAnalytics";
 import NotFound from "./pages/NotFound";
 import Book from "./pages/Book";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import LandingPage from "./pages/LandingPage";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
               <Route path="/admin/analytics" element={<AdminTrafficAnalytics />} />
               <Route path="/book" element={<Book />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/lp" element={<LandingPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

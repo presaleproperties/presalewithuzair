@@ -250,6 +250,12 @@ const Book = () => {
               }}
             />
           </div>
+          
+          <div className="text-center mt-4 md:mt-6">
+            <p className="text-xs md:text-sm text-foreground/70">
+              Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
+            </p>
+          </div>
         </div>
       </section>
 

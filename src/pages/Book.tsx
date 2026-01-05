@@ -10,6 +10,8 @@ import anishPhoto from "@/assets/testimonials/anish.jpg";
 import michellePhoto from "@/assets/testimonials/michelle.jpg";
 import rayPhoto from "@/assets/testimonials/ray.jpg";
 import monaPhoto from "@/assets/testimonials/mona.jpg";
+import bryantPhoto from "@/assets/testimonials/bryant.jpg";
+import jamilaPhoto from "@/assets/testimonials/jamila.jpg";
 
 const GOOGLE_REVIEWS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 
@@ -49,6 +51,18 @@ const testimonials = [
     quote: "Best decision I made was booking that first call. Uzair helped me understand exactly what to look for.", 
     type: "First-Time Buyer",
     photo: monaPhoto
+  },
+  { 
+    name: "Bryant L.", 
+    quote: "Uzair's knowledge of the presale market is unmatched. He helped me secure a unit at the right price with the best deposit structure.", 
+    type: "Investor",
+    photo: bryantPhoto
+  },
+  { 
+    name: "Jamila H.", 
+    quote: "Professional, knowledgeable, and genuinely cares about his clients. Couldn't have asked for a better experience.", 
+    type: "First-Time Buyer",
+    photo: jamilaPhoto
   },
 ];
 
@@ -144,7 +158,7 @@ const Book = () => {
           {/* Mobile: Horizontal scroll - compact */}
           <div className="lg:hidden">
             <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
-              {testimonials.slice(0, 4).map((testimonial, index) => (
+              {testimonials.map((testimonial, index) => (
                 <a
                   key={index}
                   href={GOOGLE_REVIEWS_URL}

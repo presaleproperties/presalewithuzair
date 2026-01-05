@@ -36,6 +36,7 @@ const LandingPage = () => {
     email: urlParams.get("email") || "",
     phone: urlParams.get("phone") || "",
     buyerType: urlParams.get("type") || "first-time-buyer",
+    hasAgent: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,6 +51,7 @@ const LandingPage = () => {
           email: formData.email,
           phone: formData.phone,
           buyerType: formData.buyerType,
+          hasAgent: formData.hasAgent,
           leadSource: "landing-page",
           utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
           utmMedium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
@@ -333,8 +335,9 @@ const LandingPage = () => {
         <DialogContent className="sm:max-w-md bg-slate-900 border-white/10">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-white text-center">
-              {isSuccess ? "You're All Set! 🎉" : "Book Your Free Session"}
+              {isSuccess ? "You're All Set! 🎉" : "Request A Callback"}
             </DialogTitle>
+            <p className="text-slate-400 text-center text-sm mt-1">Available in English, Punjabi, Urdu & Hindi</p>
           </DialogHeader>
 
           {isSuccess ? (
@@ -422,12 +425,30 @@ const LandingPage = () => {
                 </RadioGroup>
               </div>
 
+              <div>
+                <Label className="text-slate-300 mb-3 block">Are you currently working with a realtor?</Label>
+                <RadioGroup
+                  value={formData.hasAgent}
+                  onValueChange={(value) => setFormData({ ...formData, hasAgent: value })}
+                  className="flex flex-col gap-3"
+                >
+                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
+                    <RadioGroupItem value="no" id="no-agent" className="border-white/30 text-primary" />
+                    <Label htmlFor="no-agent" className="cursor-pointer flex-1 text-white">No</Label>
+                  </div>
+                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
+                    <RadioGroupItem value="yes" id="has-agent" className="border-white/30 text-primary" />
+                    <Label htmlFor="has-agent" className="cursor-pointer flex-1 text-white">Yes</Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
               <Button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg shadow-lg shadow-primary/25"
               >
-                {isSubmitting ? "Submitting..." : "Book My Free Session"}
+                {isSubmitting ? "Submitting..." : "Request A Callback"}
               </Button>
 
               <p className="text-xs text-slate-500 text-center">

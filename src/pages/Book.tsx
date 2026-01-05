@@ -229,11 +229,11 @@ const Book = () => {
         </div>
       </section>
 
-      {/* Calendar Section - Full viewport like mobile homepage */}
-      <section className="flex-1 flex flex-col">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 flex flex-col flex-1">
+      {/* Calendar Section */}
+      <section className="py-4 sm:py-6 lg:py-8 flex-1">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 h-full flex flex-col">
           <div className="text-center mb-3 sm:mb-4">
-            <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1">
+            <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1 uppercase tracking-tight">
               Pick a Time That Works
             </h2>
             <p className="text-xs sm:text-sm text-foreground/70">
@@ -241,8 +241,8 @@ const Book = () => {
             </p>
           </div>
 
-          {/* Embedded Calendly Calendar - fills remaining space */}
-          <div className="flex-1 w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card min-h-[500px]">
+          {/* Embedded Calendly Calendar */}
+          <div className="w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[600px] sm:h-[650px] lg:h-[700px]">
             <iframe
               src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
               width="100%"
@@ -252,7 +252,6 @@ const Book = () => {
               style={{ border: 'none' }}
             />
           </div>
-          
         </div>
       </section>
 

@@ -1,22 +1,28 @@
 import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 import uzairImage from "@/assets/uzair-walking.jpg";
+import anishPhoto from "@/assets/testimonials/anish.jpg";
+import adamPhoto from "@/assets/testimonials/adam.jpg";
+import rayPhoto from "@/assets/testimonials/ray.jpg";
 
 const testimonials = [
   {
-    quote: "Uzair told me not to buy two projects I was excited about — and saved me from major issues. That kind of honesty is rare. He genuinely cares about getting you the right deal, not just any deal.",
-    name: "Anish K.",
-    type: "First-Time Buyer, Surrey",
+    quote: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free. He took the time to understand what we wanted, explained every step thoroughly, and never once rushed us.",
+    name: "Anish",
+    type: "First-Time Buyer",
+    photo: anishPhoto,
   },
   {
-    quote: "I was ready to sign on a presale that looked great on paper. Uzair walked me through the contract and found red flags I never would have caught. Saved me from a huge mistake.",
-    name: "Michelle T.",
-    type: "Investor, Burnaby",
+    quote: "Uzair helped me with my investment property and made sure I got the best deal. He's straightforward, knows the market, and will tell you directly if a project isn't right. No fluff, no hype — just honesty and expertise.",
+    name: "Adam",
+    type: "Investor",
+    photo: adamPhoto,
   },
   {
-    quote: "Finally, an agent who tells you what NOT to buy. Uzair's advice helped me avoid two bad deals before finding the right one. Worth every conversation.",
-    name: "Ray P.",
-    type: "First-Time Buyer, Vancouver",
+    quote: "Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks.",
+    name: "Ray",
+    type: "First-Time Buyer",
+    photo: rayPhoto,
   },
 ];
 
@@ -51,11 +57,19 @@ export const BookingContextSection = () => {
         <div className="max-w-6xl mx-auto">
           {/* Rotating Testimonial Quotes */}
           <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8 min-h-[200px] sm:min-h-[220px]">
+            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8 min-h-[220px] sm:min-h-[240px]">
               <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
               <blockquote 
                 className={`relative z-10 text-center transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
               >
+                {/* Client Photo */}
+                <div className="flex justify-center mb-4">
+                  <img 
+                    src={currentTestimonial.photo} 
+                    alt={currentTestimonial.name}
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary/30"
+                  />
+                </div>
                 <p className="text-base sm:text-lg lg:text-xl text-foreground/90 italic leading-relaxed">
                   "{currentTestimonial.quote}"
                 </p>

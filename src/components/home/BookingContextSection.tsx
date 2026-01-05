@@ -1,5 +1,4 @@
 import { CheckCircle, XCircle } from "lucide-react";
-import Cal from "@calcom/embed-react";
 
 const forYou = [
   "Are seriously considering a presale purchase",
@@ -70,15 +69,15 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-          {/* Embedded Cal.com Calendar */}
+          {/* Embedded Calendly Calendar */}
           <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card h-[450px] sm:h-[600px]">
-            <Cal
-              calLink="presalewithuzair/meeting"
-              style={{ width: "100%", height: "100%", overflow: "scroll" }}
-              config={{
-                layout: "month_view",
-                theme: "dark",
-              }}
+            <iframe
+              src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0a0a0a&text_color=ffffff&primary_color=d4a853"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              title="Schedule a meeting with Uzair"
+              style={{ border: 'none' }}
             />
           </div>
           

@@ -51,7 +51,7 @@ const App = () => (
               <Route path="/admin/analytics" element={<AdminTrafficAnalytics />} />
               <Route path="/book" element={<Book />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
-              <Route path="/lp" element={<LandingPage />} />
+              <Route path="/requestacall" element={<LandingPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

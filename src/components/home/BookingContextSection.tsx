@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
-import uzairImage from "@/assets/uzair-walking.jpg";
 import anishPhoto from "@/assets/testimonials/anish.jpg";
 import adamPhoto from "@/assets/testimonials/adam.jpg";
 import rayPhoto from "@/assets/testimonials/ray.jpg";
@@ -138,36 +137,23 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Side by side layout */}
-          <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Column - Image */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src={uzairImage}
-                alt="Uzair Muhammad - Presale Expert"
-                className="w-full aspect-[4/5] object-cover object-center"
+          {/* Desktop: Full-width calendar */}
+          <div className="hidden lg:block">
+            <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card h-[700px]">
+              <iframe
+                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Schedule a meeting with Uzair"
+                style={{ border: 'none' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
-
-            {/* Right Column - Calendly Calendar */}
-            <div className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-border bg-card h-[700px]">
-                <iframe
-                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
-                  width="100%"
-                  height="100%"
-                  frameBorder="0"
-                  title="Schedule a meeting with Uzair"
-                  style={{ border: 'none' }}
-                />
-              </div>
-              
-              <div className="text-center">
-                <p className="text-sm text-muted-foreground">
-                  Limited weekly availability. Serious inquiries only.
-                </p>
-              </div>
+            
+            <div className="text-center mt-4">
+              <p className="text-sm text-muted-foreground">
+                Limited weekly availability. Serious inquiries only.
+              </p>
             </div>
           </div>
         </div>

@@ -82,9 +82,14 @@ export const BookingContextSection = () => {
             />
           </div>
           
-          <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
-            Limited weekly availability. Serious inquiries only.
-          </p>
+          <div className="text-center mt-6 sm:mt-8">
+            <p className="text-xs sm:text-sm text-foreground/70">
+              Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
+            </p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-2">
+              Limited weekly availability. Serious inquiries only.
+            </p>
+          </div>
         </div>
       </div>
     </section>

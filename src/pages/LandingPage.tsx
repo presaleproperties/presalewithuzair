@@ -14,7 +14,7 @@ import headshotImage from "@/assets/uzair-headshot.jpeg";
 
 // Landing Page Content
 const content = {
-  headline: "Buy Your Presale",
+  headline: "Buy a New Condo or Townhome",
   headlineAccent: "With Confidence.",
   subheadline: "Expert guidance for first-time buyers and investors.",
   ctaPrimary: "Request A Call",

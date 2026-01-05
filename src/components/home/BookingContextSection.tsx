@@ -104,13 +104,16 @@ export const BookingContextSection = () => {
           </div>
 
           {/* Header */}
-          <div className="text-center mb-10 sm:mb-12">
+          <div className="text-center mb-6 sm:mb-8">
             <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
               Book a <span className="text-gradient">Discovery Call</span>
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
               A quick conversation to understand your goals and see if we're a good fit.
+            </p>
+            <p className="mt-3 text-xs sm:text-sm text-foreground/70">
+              Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
             </p>
           </div>
 
@@ -129,10 +132,7 @@ export const BookingContextSection = () => {
             </div>
             
             <div className="text-center">
-              <p className="text-xs text-foreground/70">
-                Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground">
                 Limited weekly availability. Serious inquiries only.
               </p>
             </div>
@@ -164,10 +164,7 @@ export const BookingContextSection = () => {
               </div>
               
               <div className="text-center">
-                <p className="text-sm text-foreground/70">
-                  Consultations available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground">
                   Limited weekly availability. Serious inquiries only.
                 </p>
               </div>

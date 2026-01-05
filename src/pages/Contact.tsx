@@ -3,11 +3,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
-import { useCalCom } from "@/hooks/useCalCom";
+import { useCalendly } from "@/hooks/useCalendly";
 import uzairImage from "@/assets/uzair-expo-profile.jpg";
 
 const Contact = () => {
-  const { openCalCom } = useCalCom();
+  const { openCalendly } = useCalendly();
 
   return (
     <>
@@ -146,7 +146,7 @@ const Contact = () => {
                     variant="hero" 
                     size="xl" 
                     className="w-full gap-2"
-                    onClick={() => openCalCom()}
+                    onClick={() => openCalendly()}
                   >
                     <Mail className="h-5 w-5" />
                     Book a Discovery Call

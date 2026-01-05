@@ -13,7 +13,7 @@ import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
-import { useCalCom } from "@/hooks/useCalCom";
+import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
   { value: "330+", label: "Presales Advised" },
@@ -30,7 +30,7 @@ const values = [
 ];
 
 const About = () => {
-  const { openCalCom } = useCalCom();
+  const { openCalendly } = useCalendly();
 
   return (
     <>
@@ -106,7 +106,7 @@ const About = () => {
                     variant="hero" 
                     size="lg" 
                     className="gap-2"
-                    onClick={() => openCalCom()}
+                    onClick={() => openCalendly()}
                   >
                     <Phone className="h-4 w-4" />
                     Book a Discovery Call
@@ -290,7 +290,7 @@ const About = () => {
                   variant="hero" 
                   size="xl" 
                   className="gap-2 w-full sm:w-auto"
-                  onClick={() => openCalCom()}
+                  onClick={() => openCalendly()}
                 >
                   <Phone className="h-5 w-5" />
                   Book a Discovery Call

@@ -49,9 +49,9 @@ export const DifferentiationSection = () => {
       <div className="container-xl px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <p className="section-label mb-3 sm:mb-4">Why Expertise Matters</p>
+          <p className="section-label mb-3 sm:mb-4">The Difference</p>
           <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-            Not All Agents Are <span className="text-gradient">Created Equal</span>
+            Why You Need a <span className="text-gradient">Presale Expert</span>
           </h2>
         </div>
 

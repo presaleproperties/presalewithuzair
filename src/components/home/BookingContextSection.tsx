@@ -1,7 +1,43 @@
+import { useState, useEffect } from "react";
 import { Quote } from "lucide-react";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
+const testimonials = [
+  {
+    quote: "Uzair told me not to buy two projects I was excited about — and saved me from major issues. That kind of honesty is rare. He genuinely cares about getting you the right deal, not just any deal.",
+    name: "Anish K.",
+    type: "First-Time Buyer, Surrey",
+  },
+  {
+    quote: "I was ready to sign on a presale that looked great on paper. Uzair walked me through the contract and found red flags I never would have caught. Saved me from a huge mistake.",
+    name: "Michelle T.",
+    type: "Investor, Burnaby",
+  },
+  {
+    quote: "Finally, an agent who tells you what NOT to buy. Uzair's advice helped me avoid two bad deals before finding the right one. Worth every conversation.",
+    name: "Ray P.",
+    type: "First-Time Buyer, Vancouver",
+  },
+];
+
 export const BookingContextSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+        setIsAnimating(false);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentTestimonial = testimonials[currentIndex];
+
   return (
     <section id="book-section" className="py-16 sm:py-24 bg-background relative overflow-hidden">
       {/* Colorful bokeh effects */}
@@ -13,19 +49,43 @@ export const BookingContextSection = () => {
 
       <div className="container-xl px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Testimonial Quote */}
+          {/* Rotating Testimonial Quotes */}
           <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8">
+            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8 min-h-[200px] sm:min-h-[220px]">
               <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
-              <blockquote className="relative z-10 text-center">
+              <blockquote 
+                className={`relative z-10 text-center transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+              >
                 <p className="text-base sm:text-lg lg:text-xl text-foreground/90 italic leading-relaxed">
-                  "Uzair told me not to buy two projects I was excited about — and saved me from major issues. That kind of honesty is rare. He genuinely cares about getting you the right deal, not just any deal."
+                  "{currentTestimonial.quote}"
                 </p>
                 <footer className="mt-4 sm:mt-6">
-                  <p className="text-sm sm:text-base font-semibold text-foreground">Anish K.</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground">First-Time Buyer, Surrey</p>
+                  <p className="text-sm sm:text-base font-semibold text-foreground">{currentTestimonial.name}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{currentTestimonial.type}</p>
                 </footer>
               </blockquote>
+              
+              {/* Dots indicator */}
+              <div className="flex justify-center gap-2 mt-4 sm:mt-6">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setIsAnimating(true);
+                      setTimeout(() => {
+                        setCurrentIndex(index);
+                        setIsAnimating(false);
+                      }, 300);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? 'bg-primary w-6' 
+                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                    }`}
+                    aria-label={`View testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

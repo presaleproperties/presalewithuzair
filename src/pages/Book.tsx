@@ -90,29 +90,37 @@ const Book = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-6 sm:py-8 lg:py-12 border-b border-border/30">
+      {/* Hero Section - Compact on mobile */}
+      <section className="py-3 sm:py-6 lg:py-12 border-b border-border/30">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex items-center justify-center gap-3 mb-3 sm:mb-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
+          <div className="flex items-center justify-center gap-2 mb-2 sm:mb-4">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 lg:w-20 lg:h-20 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
               <img 
                 src={uzairPhoto} 
                 alt="Uzair" 
                 className="w-full h-full object-cover"
               />
             </div>
+            <div className="text-left sm:hidden">
+              <h1 className="text-base font-bold text-foreground">
+                Book a Call
+              </h1>
+              <p className="text-xs text-muted-foreground">
+                Discuss your presale goals
+              </p>
+            </div>
           </div>
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-2">
+          <h1 className="hidden sm:block text-2xl lg:text-3xl font-bold text-foreground mb-2">
             Book a One-on-One Call
           </h1>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-md mx-auto">
+          <p className="hidden sm:block text-base text-muted-foreground max-w-md mx-auto">
             Let's discuss your presale goals and how I can help you make smarter investment decisions.
           </p>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-4 sm:py-6 border-b border-border/30 bg-card/30">
+      {/* Testimonials Section - Compact on mobile */}
+      <section className="py-2 sm:py-4 lg:py-6 border-b border-border/30 bg-card/30">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-2 mb-3 sm:mb-4">
             <a 

@@ -1,15 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 
 interface MidPageCTAProps {
   quote?: string;
 }
 
 export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
-  const navigate = useNavigate();
-  
   const handleBookClick = () => {
-    navigate("/book");
+    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

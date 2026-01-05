@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Home, TrendingUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 const segments = [
   {
@@ -34,8 +33,9 @@ const segments = [
 ];
 
 export const AudienceSegmentSection = () => {
-  const navigate = useNavigate();
-  const handleBookClick = () => navigate("/book");
+  const handleBookClick = () => {
+    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="py-16 sm:py-24 bg-background">

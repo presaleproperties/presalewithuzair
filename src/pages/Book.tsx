@@ -230,8 +230,8 @@ const Book = () => {
       </section>
 
       {/* Calendar Section */}
-      <section className="py-4 sm:py-6 lg:py-8 flex-1">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-6 h-full flex flex-col">
+      <section className="flex-1 pb-4">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
           <div className="text-center mb-3 sm:mb-4">
             <h2 className="text-base sm:text-lg lg:text-xl font-semibold text-foreground mb-1 uppercase tracking-tight">
               Pick a Time That Works
@@ -241,16 +241,42 @@ const Book = () => {
             </p>
           </div>
 
-          {/* Embedded Calendly Calendar */}
-          <div className="w-full rounded-lg sm:rounded-xl overflow-hidden border border-border bg-card h-[850px] sm:h-[800px] lg:h-[800px] xl:h-[850px]">
-            <iframe
-              src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              title="Schedule a meeting with Uzair"
-              style={{ border: 'none' }}
-            />
+          {/* Mobile: Viewport-based height like homepage */}
+          <div className="lg:hidden">
+            <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-200px)] min-h-[500px]">
+              <iframe
+                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Schedule a meeting with Uzair"
+                style={{ border: 'none' }}
+              />
+            </div>
+            <div className="text-center mt-2">
+              <p className="text-xs text-muted-foreground">
+                Limited weekly availability. Serious inquiries only.
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop: Full-width calendar */}
+          <div className="hidden lg:block">
+            <div className="w-full rounded-xl overflow-hidden border border-border bg-card h-[800px] xl:h-[850px]">
+              <iframe
+                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                title="Schedule a meeting with Uzair"
+                style={{ border: 'none' }}
+              />
+            </div>
+            <div className="text-center mt-4">
+              <p className="text-sm text-muted-foreground">
+                Limited weekly availability. Serious inquiries only.
+              </p>
+            </div>
           </div>
         </div>
       </section>

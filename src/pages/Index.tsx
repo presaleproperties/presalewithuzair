@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
 import { SocialProofSection } from "@/components/home/SocialProofSection";
-import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
+
 import { DifferentiationSection } from "@/components/home/DifferentiationSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { MidPageCTA } from "@/components/home/MidPageCTA";
@@ -116,9 +116,6 @@ const Index = () => {
         
         {/* Social Proof - "But don't listen to me..." + scrolling testimonials */}
         <SocialProofSection />
-        
-        {/* Lead Capture Form */}
-        <LeadCaptureSection />
         
         {/* Mid-page CTA */}
         <MidPageCTA quote="Uzair told me not to buy two projects I was excited about — and saved me from major issues. That's the kind of honesty you need." />

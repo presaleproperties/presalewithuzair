@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Shield, TrendingUp, Users, Star } from "lucide-react";
@@ -11,54 +11,16 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import logoImage from "@/assets/logo.png";
 
-// A/B Test Variants
-const variants = {
-  A: {
-    headline: "Buy Your Presale",
-    headlineAccent: "With Confidence.",
-    subheadline: "Expert guidance for first-time buyers and investors.",
-    ctaPrimary: "Book Free Strategy Session",
-    ctaSecondary: "Get Started",
-  },
-  B: {
-    headline: "Stop Overpaying",
-    headlineAccent: "For Your Presale.",
-    subheadline: "I've saved clients over $1M. Let me show you how.",
-    ctaPrimary: "Claim Your Free Consultation",
-    ctaSecondary: "Talk to Uzair",
-  },
-  C: {
-    headline: "Your First Presale",
-    headlineAccent: "Done Right.",
-    subheadline: "330+ presales advised. Zero regrets.",
-    ctaPrimary: "Get Expert Help Free",
-    ctaSecondary: "Book Now",
-  },
-};
-
-type VariantKey = keyof typeof variants;
-
-const getVariant = (): VariantKey => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const forceVariant = urlParams.get("variant")?.toUpperCase() as VariantKey;
-  
-  if (forceVariant && variants[forceVariant]) {
-    return forceVariant;
-  }
-
-  const stored = localStorage.getItem("lp_variant") as VariantKey;
-  if (stored && variants[stored]) {
-    return stored;
-  }
-
-  const variantKeys = Object.keys(variants) as VariantKey[];
-  const randomVariant = variantKeys[Math.floor(Math.random() * variantKeys.length)];
-  localStorage.setItem("lp_variant", randomVariant);
-  return randomVariant;
+// Landing Page Content
+const content = {
+  headline: "Buy Your Presale",
+  headlineAccent: "With Confidence.",
+  subheadline: "Expert guidance for first-time buyers and investors.",
+  ctaPrimary: "Book Free Strategy Session",
+  ctaSecondary: "Get Started",
 };
 
 const LandingPage = () => {
-  const [variant, setVariant] = useState<VariantKey>("A");
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -72,12 +34,6 @@ const LandingPage = () => {
     buyerType: "first-time-buyer",
   });
 
-  useEffect(() => {
-    setVariant(getVariant());
-  }, []);
-
-  const currentVariant = variants[variant];
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -90,11 +46,10 @@ const LandingPage = () => {
           email: formData.email,
           phone: formData.phone,
           buyerType: formData.buyerType,
-          leadSource: `landing-page-${variant}`,
+          leadSource: "landing-page",
           utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
           utmMedium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
           utmCampaign: new URLSearchParams(window.location.search).get("utm_campaign") || undefined,
-          utmContent: `variant-${variant}`,
         },
       });
 
@@ -163,12 +118,6 @@ const LandingPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-sky-100 via-white to-orange-50">
-        {/* Variant Badge (only in dev/testing) */}
-        {new URLSearchParams(window.location.search).get("debug") && (
-          <div className="fixed top-4 right-4 bg-gray-900 text-white px-3 py-1 rounded-full text-sm font-mono z-50">
-            Variant {variant}
-          </div>
-        )}
 
         {/* Minimal Header */}
         <header className="py-6 px-4">
@@ -187,9 +136,9 @@ const LandingPage = () => {
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              {currentVariant.headline}
+              {content.headline}
               <br />
-              <span className="text-primary">{currentVariant.headlineAccent}</span>
+              <span className="text-primary">{content.headlineAccent}</span>
             </motion.h1>
 
             <motion.p
@@ -198,7 +147,7 @@ const LandingPage = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-xl md:text-2xl text-gray-600 mb-10"
             >
-              {currentVariant.subheadline}
+              {content.subheadline}
             </motion.p>
 
             <motion.div
@@ -211,7 +160,7 @@ const LandingPage = () => {
                 onClick={() => setIsFormOpen(true)}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
               >
-                {currentVariant.ctaPrimary} <ArrowRight className="ml-2" />
+                {content.ctaPrimary} <ArrowRight className="ml-2" />
               </Button>
             </motion.div>
 
@@ -347,7 +296,7 @@ const LandingPage = () => {
               onClick={() => setIsFormOpen(true)}
               className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all"
             >
-              {currentVariant.ctaSecondary} <ArrowRight className="ml-2" />
+              {content.ctaSecondary} <ArrowRight className="ml-2" />
             </Button>
           </div>
         </section>

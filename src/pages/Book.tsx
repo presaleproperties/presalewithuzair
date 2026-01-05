@@ -1,1103 +1,221 @@
-import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ChevronRight, 
-  ChevronLeft, 
-  CheckCircle, 
-  User, 
-  Phone, 
-  Mail, 
-  Star, 
-  Quote,
-  DollarSign,
-  Calendar,
-  MessageSquare,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-import { useHapticFeedback } from "@/hooks/useHapticFeedback";
-import { useCalCom } from "@/hooks/useCalCom";
+import { Star, Quote } from "lucide-react";
+import { Cal } from "@/hooks/useCalCom";
 import logo from "@/assets/logo.png";
 import uzairPhoto from "@/assets/uzair-headshot.jpeg";
 
-type LeadType = "buy-presale" | "sell-assignment" | "paid-advice";
-
-type FormData = {
-  firstName: string;
-  phone: string;
-  email: string;
-  leadType: LeadType | "";
-  timeline: string;
-  problemDescription: string;
-  hasAgent: string;
-};
-
-const agentOptions = [
-  { value: "no", label: "No, I'm not working with anyone", emoji: "👋" },
-  { value: "yes-not-committed", label: "Yes, but not committed", emoji: "🤔" },
-  { value: "yes-committed", label: "Yes, I have an agent", emoji: "🤝", isDisqualifying: true },
-];
-
-const leadTypeOptions = [
-  { 
-    value: "buy-presale" as LeadType, 
-    label: "I want to buy a Presale", 
-    subtext: "Condos, townhomes & more",
-    emoji: "🏠",
-    showBadge: false 
-  },
-  { 
-    value: "sell-assignment" as LeadType, 
-    label: "I want to sell an Assignment", 
-    subtext: "Get help assigning your contract",
-    emoji: "🔄",
-    showBadge: false 
-  },
-  { 
-    value: "paid-advice" as LeadType, 
-    label: "I need Expert Advice", 
-    subtext: "Investment or contract help",
-    emoji: "💡",
-    showBadge: true,
-    price: "$250" 
-  },
-];
+// Testimonial photos
+import adamPhoto from "@/assets/testimonials/adam.jpg";
+import akhiPhoto from "@/assets/testimonials/akhi.jpg";
+import anishPhoto from "@/assets/testimonials/anish.jpg";
+import michellePhoto from "@/assets/testimonials/michelle.jpg";
+import rayPhoto from "@/assets/testimonials/ray.jpg";
+import monaPhoto from "@/assets/testimonials/mona.jpg";
 
 const GOOGLE_REVIEWS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 
 const testimonials = [
-  { name: "Michelle K.", quote: "Uzair made my first presale purchase completely stress-free!", type: "Buyer" },
-  { name: "Ray S.", quote: "His market knowledge saved me from a bad investment.", type: "Investor" },
-  { name: "Anish P.", quote: "Honest advice that actually helped me make the right decision.", type: "Buyer" },
+  { 
+    name: "Michelle K.", 
+    quote: "Uzair made my first presale purchase completely stress-free! He walked me through every step and was always available to answer my questions.", 
+    type: "First-Time Buyer",
+    photo: michellePhoto
+  },
+  { 
+    name: "Ray S.", 
+    quote: "His market knowledge saved me from a bad investment. He actually told me NOT to buy a unit that I was excited about because the developer had issues.", 
+    type: "Investor",
+    photo: rayPhoto
+  },
+  { 
+    name: "Anish P.", 
+    quote: "Honest advice that actually helped me make the right decision. No pressure, just facts and expertise.", 
+    type: "Buyer",
+    photo: anishPhoto
+  },
+  { 
+    name: "Adam T.", 
+    quote: "Uzair's disclosure review caught several red flags that I would have completely missed. Worth every minute.", 
+    type: "Investor",
+    photo: adamPhoto
+  },
+  { 
+    name: "Akhi M.", 
+    quote: "Finally found a realtor who actually knows presales inside and out. The difference in expertise is night and day.", 
+    type: "Repeat Buyer",
+    photo: akhiPhoto
+  },
+  { 
+    name: "Mona R.", 
+    quote: "Best decision I made was booking that first call. Uzair helped me understand exactly what to look for.", 
+    type: "First-Time Buyer",
+    photo: monaPhoto
+  },
 ];
 
-const buyTimelineOptions = [
-  { value: "ready-now", label: "Ready to buy now", emoji: "🚀" },
-  { value: "within-3-months", label: "Under 3 months", emoji: "📅" },
-  { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
-];
-
-const sellTimelineOptions = [
-  { value: "ready-now", label: "Ready to sell now", emoji: "🚀" },
-  { value: "within-3-months", label: "Under 3 months", emoji: "📅" },
-  { value: "just-browsing", label: "Just looking", emoji: "🔍", isDisqualifying: true },
-];
-
-const SWIPE_THRESHOLD = 50;
-
-const STORAGE_KEY = "booking_user_details";
+const StarRating = () => (
+  <div className="flex gap-0.5">
+    {[...Array(5)].map((_, i) => (
+      <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+    ))}
+  </div>
+);
 
 const Book = () => {
-  const [step, setStep] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [formData, setFormData] = useState<FormData>(() => {
-    // Load saved user details from localStorage on mount
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        return {
-          firstName: parsed.firstName || "",
-          phone: parsed.phone || "",
-          email: parsed.email || "",
-          leadType: "",
-          timeline: "",
-          problemDescription: "",
-          hasAgent: "",
-        };
-      }
-    } catch (e) {
-      // Ignore parsing errors
-    }
-    return {
-      firstName: "",
-      phone: "",
-      email: "",
-      leadType: "",
-      timeline: "",
-      problemDescription: "",
-      hasAgent: "",
-    };
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isDisqualified, setIsDisqualified] = useState(false);
-  const [disqualifyReason, setDisqualifyReason] = useState<"timeline" | "agent" | null>(null);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const { toast } = useToast();
-  const haptic = useHapticFeedback();
-  const { openCalCom, isCalLoading } = useCalCom();
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-
-  // Save user details to localStorage when they change
-  useEffect(() => {
-    if (formData.firstName || formData.phone || formData.email) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        firstName: formData.firstName,
-        phone: formData.phone,
-        email: formData.email,
-      }));
-    }
-  }, [formData.firstName, formData.phone, formData.email]);
-
-  // Check for payment cancel in URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('canceled') === 'true') {
-      toast({
-        title: "Payment Cancelled",
-        description: "Your consultation booking was not completed.",
-        variant: "destructive",
-      });
-      window.history.replaceState({}, '', '/book');
-    }
-  }, [toast]);
-
-  // Steps vary based on lead type
-  // Buy/Sell: Intent(0) → Timeline(1) → Contact(2)
-  // Paid Advice: Intent(0) → Fee Explanation(1) → Problem(2) → Contact(3)
-  const getStepConfig = () => {
-    if (formData.leadType === "paid-advice") {
-      return { totalSteps: 4, steps: ["intent", "fee-explanation", "problem", "contact"] };
-    }
-    return { totalSteps: 4, steps: ["intent", "timeline", "agent", "contact"] };
-  };
-
-  const { totalSteps, steps } = getStepConfig();
-
-  // Rotate testimonials every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const validateStep = (): boolean => {
-    const currentStep = steps[step];
-    switch (currentStep) {
-      case "intent":
-        return formData.leadType !== "";
-      case "fee-explanation":
-        return true;
-      case "timeline":
-        return formData.timeline !== "";
-      case "agent":
-        return formData.hasAgent !== "";
-      case "problem":
-        return formData.problemDescription.trim().length >= 10;
-      case "contact":
-        const validPhone = /^\d{10,}$/.test(formData.phone.replace(/\D/g, ''));
-        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-        const validName = formData.firstName.trim().length >= 2;
-        return validPhone && validEmail && validName;
-      default:
-        return false;
-    }
-  };
-
-  const handleNext = () => {
-    if (validateStep()) {
-      if (step < totalSteps - 1) {
-        setDirection(1);
-        setStep(step + 1);
-      } else {
-        handleSubmit();
-      }
-    }
-  };
-
-  const handleBack = () => {
-    if (step > 0) {
-      setDirection(-1);
-      setStep(step - 1);
-    }
-  };
-
-  // Auto-advance for selection steps
-  const handleOptionSelect = (field: keyof FormData, value: string, autoAdvance = true) => {
-    haptic.light();
-    setFormData({ ...formData, [field]: value });
-    if (autoAdvance) {
-      setTimeout(() => {
-        if (step < totalSteps - 1) {
-          setDirection(1);
-          setStep(step + 1);
-        } else {
-          handleSubmit();
-        }
-      }, 300);
-    }
-  };
-
-  const handleLeadTypeSelect = (value: LeadType) => {
-    haptic.medium();
-    setFormData({ 
-      ...formData, 
-      leadType: value, 
-      timeline: "", 
-      problemDescription: "",
-      hasAgent: "",
-    });
-    setTimeout(() => {
-      setDirection(1);
-      setStep(1);
-    }, 300);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    const diff = touchStartX.current - touchEndX.current;
-    
-    if (Math.abs(diff) > SWIPE_THRESHOLD) {
-      if (diff > 0 && validateStep()) {
-        handleNext();
-      } else if (diff < 0 && step > 0) {
-        handleBack();
-      }
-    }
-    
-    touchStartX.current = 0;
-    touchEndX.current = 0;
-  };
-
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    try {
-      if (formData.leadType === "paid-advice") {
-        // Redirect to Stripe checkout
-        const { data, error } = await supabase.functions.invoke('create-advice-payment', {
-          body: {
-            firstName: formData.firstName.trim(),
-            lastName: "",
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            problemDescription: formData.problemDescription.trim(),
-          }
-        });
-
-        if (error) throw error;
-        if (data?.url) {
-          window.location.href = data.url;
-          return;
-        }
-      } else {
-        // Free lead capture → then open Cal.com
-        const { error } = await supabase.functions.invoke('capture-lead', {
-          body: {
-            firstName: formData.firstName.trim(),
-            lastName: "",
-            email: formData.email.trim(),
-            phone: formData.phone.trim(),
-            buyerType: formData.leadType,
-            timeline: formData.timeline,
-            hasAgent: formData.hasAgent,
-          }
-        });
-
-        if (error) throw error;
-
-        haptic.success();
-        setIsSuccess(true);
-        
-        // Open Cal.com popup with prefilled data
-        setTimeout(() => {
-          openCalCom({ 
-            name: formData.firstName.trim(), 
-            email: formData.email.trim() 
-          });
-        }, 500);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      toast({
-        title: "Something went wrong",
-        description: "Please try again or call us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && validateStep()) {
-      handleNext();
-    }
-  };
-
-  // Scroll form into view when keyboard opens
-  const handleInputFocus = () => {
-    setTimeout(() => {
-      formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
-  };
-
-  useEffect(() => {
-    if (isSuccess) {
-      const timer = setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [isSuccess]);
-
-  // Success screen (only for free leads, paid goes to /payment-success)
-  if (isSuccess) {
-    const whatsappNumber = "16722581100";
-    const whatsappMessage = encodeURIComponent("Hi Uzair! I just booked a call through your website and wanted to connect.");
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-    
-    return (
-      <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
-        <Helmet>
-          <title>Booking Confirmed | Presale with Uzair</title>
-        </Helmet>
-        
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4 }}
-          className="text-center max-w-sm"
-        >
-          {/* Profile photo */}
-          <div className="w-24 h-24 mx-auto mb-5 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
-            <img 
-              src={uzairPhoto} 
-              alt="Uzair" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-            <CheckCircle className="w-8 h-8 text-primary" />
-          </div>
-          
-          <h1 className="text-2xl font-bold text-foreground mb-3">You're All Set!</h1>
-          
-          <p className="text-muted-foreground text-lg mb-2">
-            I look forward to speaking with you.
-          </p>
-          
-          <p className="text-sm text-muted-foreground mb-6">
-            Pick a time in the Cal.com popup, or use the button below if it didn't open.
-          </p>
-          
-          <Button
-            onClick={() => openCalCom({ name: formData.firstName.trim(), email: formData.email.trim() })}
-            disabled={isCalLoading}
-            className="w-full h-12 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
-          >
-            {isCalLoading ? (
-              <>
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                  className="w-5 h-5 mr-2 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full"
-                />
-                Opening calendar...
-              </>
-            ) : (
-              <>
-                <Calendar className="w-5 h-5 mr-2" />
-                Pick a time
-              </>
-            )}
-          </Button>
-        </motion.div>
-      </div>
-    );
-  }
-
-  // Disqualification screen
-  if (isDisqualified) {
-    const isAgentDisqualify = disqualifyReason === "agent";
-    
-    return (
-      <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col items-center justify-center p-6">
-        <Helmet>
-          <title>Not a Fit Right Now | Presale with Uzair</title>
-        </Helmet>
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          className="text-center max-w-md"
-        >
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
-            <span className="text-4xl">{isAgentDisqualify ? "🙏" : "🤝"}</span>
-          </div>
-          <h1 className="text-2xl font-bold text-foreground mb-3">
-            {isAgentDisqualify ? "I appreciate your honesty!" : "Thanks for your honesty!"}
-          </h1>
-          <p className="text-muted-foreground mb-6 leading-relaxed">
-            {isAgentDisqualify 
-              ? "I don't work with clients who already have an agent—it's important to honor that relationship. I wish you the best with your current agent!"
-              : "I work best with clients who are ready to take action within the next 3 months. When you're ready to get serious about buying or selling, I'd love to help."
-            }
-          </p>
-          <div className="bg-card border border-border rounded-xl p-4 mb-6">
-            <p className="text-sm text-foreground font-medium mb-3">Follow me on social media:</p>
-            <div className="flex justify-center gap-3">
-              <a
-                href="https://www.instagram.com/presalewithuzair"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 text-white hover:opacity-90 transition-opacity"
-                aria-label="Follow on Instagram"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-              </a>
-              <a
-                href="https://www.tiktok.com/@presalewithuzair"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-black text-white hover:opacity-90 transition-opacity"
-                aria-label="Follow on TikTok"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                </svg>
-              </a>
-              <a
-                href="https://www.youtube.com/@presalewithuzair"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white hover:opacity-90 transition-opacity"
-                aria-label="Follow on YouTube"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <Button
-            variant="outline"
-            onClick={() => {
-              setIsDisqualified(false);
-              setDisqualifyReason(null);
-              setStep(0);
-              setFormData({
-                firstName: "",
-                phone: "",
-                email: "",
-                leadType: "",
-                timeline: "",
-                problemDescription: "",
-                hasAgent: "",
-              });
-            }}
-            className="w-full h-12"
-          >
-            Start Over
-          </Button>
-        </motion.div>
-      </div>
-    );
-  }
-
-  const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -100 : 100, opacity: 0 }),
-  };
-
-  const renderStepContent = () => {
-    const currentStep = steps[step];
-
-    switch (currentStep) {
-      case "intent":
-        return (
-          <motion.div
-            key="intent"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-3"
-          >
-            <div className="text-center mb-3">
-              <div className="relative w-20 h-20 mx-auto mb-3">
-                {/* Pulsing glow ring */}
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-primary/40 blur-md"
-                  animate={{
-                    scale: [1, 1.15, 1],
-                    opacity: [0.4, 0.7, 0.4],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/30">
-                  <img 
-                    src={uzairPhoto} 
-                    alt="Uzair - Presale Expert" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <h2 className="text-xl font-bold text-foreground mb-1">Book a One-on-One Call</h2>
-              <p className="text-muted-foreground text-sm">Select what best describes you</p>
-            </div>
-            <div className="space-y-2">
-              {leadTypeOptions.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => handleLeadTypeSelect(option.value)}
-                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 text-left ${
-                    formData.leadType === option.value
-                      ? "border-primary bg-primary/10 scale-[0.98]"
-                      : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
-                  }`}
-                >
-                    <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl">{option.emoji}</span>
-                      <div>
-                        <span className="text-foreground font-semibold block">{option.label}</span>
-                        <span className="text-muted-foreground text-sm">{option.subtext}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {option.showBadge && option.price && (
-                        <span className="text-xs bg-primary/20 text-primary px-2.5 py-1 rounded-full font-medium">{option.price}</span>
-                      )}
-                      <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                    </div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        );
-
-      case "timeline":
-        const timelineOpts = formData.leadType === "buy-presale" ? buyTimelineOptions : sellTimelineOptions;
-        return (
-          <motion.div
-            key="timeline"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <Calendar className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">
-                {formData.leadType === "buy-presale" ? "What's your timeline?" : "When do you need to sell?"}
-              </h2>
-              <p className="text-muted-foreground mt-1">This helps me prioritize your needs</p>
-            </div>
-            <div className="space-y-3">
-              {timelineOpts.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => {
-                    if (option.isDisqualifying) {
-                      haptic.error();
-                      setDisqualifyReason("timeline");
-                      setIsDisqualified(true);
-                    } else {
-                      handleOptionSelect("timeline", option.value);
-                    }
-                  }}
-                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
-                    formData.timeline === option.value
-                      ? "border-primary bg-primary/10 scale-[0.98]"
-                      : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
-                  }`}
-                >
-                  <span className="text-2xl">{option.emoji}</span>
-                  <span className="text-foreground font-medium">{option.label}</span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        );
-
-      case "agent":
-        return (
-          <motion.div
-            key="agent"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">Are you working with an agent?</h2>
-              <p className="text-muted-foreground mt-1">Just so I know how to best help you</p>
-            </div>
-            <div className="space-y-3">
-              {agentOptions.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => {
-                    if (option.isDisqualifying) {
-                      haptic.error();
-                      setDisqualifyReason("agent");
-                      setIsDisqualified(true);
-                    } else {
-                      handleOptionSelect("hasAgent", option.value);
-                    }
-                  }}
-                  className={`w-full p-4 rounded-xl border-2 transition-all duration-200 flex items-center gap-4 ${
-                    formData.hasAgent === option.value
-                      ? "border-primary bg-primary/10 scale-[0.98]"
-                      : "border-border bg-card hover:border-primary/50 active:scale-[0.98]"
-                  }`}
-                >
-                  <span className="text-2xl">{option.emoji}</span>
-                  <span className="text-foreground font-medium">{option.label}</span>
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        );
-
-      case "fee-explanation":
-        return (
-          <motion.div
-            key="fee-explanation"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-5"
-          >
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/30 to-primary/10 flex items-center justify-center">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h2 className="text-xl font-bold text-foreground mb-2">Happy to Help!</h2>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                I love helping buyers navigate presales and investments.
-              </p>
-            </div>
-            
-            <div className="bg-card border border-border rounded-xl p-4 space-y-3">
-              <p className="text-foreground text-sm leading-relaxed">
-                For personalized advice on <span className="text-primary font-medium">investment strategy</span> or <span className="text-primary font-medium">existing presale purchases</span>, I charge a small consulting fee.
-              </p>
-              <div className="flex items-center justify-between py-3 px-4 bg-primary/10 rounded-lg">
-                <div>
-                  <p className="text-foreground font-semibold">30-Minute Advisory Call</p>
-                  <p className="text-muted-foreground text-xs">One-on-one expert guidance</p>
-                </div>
-                <span className="text-2xl font-bold text-primary">$250</span>
-              </div>
-              <p className="text-muted-foreground text-xs text-center">
-                This ensures I can dedicate focused time to your specific situation.
-              </p>
-            </div>
-            
-            <Button
-              onClick={() => {
-                haptic.medium();
-                setDirection(1);
-                setStep(step + 1);
-              }}
-              className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
-            >
-              Sounds Good – Let's Continue
-              <ChevronRight className="w-5 h-5 ml-1" />
-            </Button>
-            
-            <p className="text-center text-xs text-muted-foreground">
-              Looking to buy or sell instead? <button onClick={() => { setStep(0); setFormData({ ...formData, leadType: "" }); }} className="text-primary underline">Go back</button>
-            </p>
-          </motion.div>
-        );
-
-      case "problem":
-        return (
-          <motion.div
-            key="problem"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-5"
-          >
-            <div className="text-center mb-4">
-              <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-primary/20 flex items-center justify-center">
-                <MessageSquare className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-xl font-bold text-foreground">How can I help?</h2>
-              <p className="text-muted-foreground text-sm mt-1">Tell me about your situation</p>
-            </div>
-            <div ref={formRef}>
-              <Textarea
-                placeholder="Examples: I'm reviewing my presale contract and have questions about the deposit structure... I bought a presale last year and want advice on whether to assign or close... I'm considering a presale investment and need guidance..."
-                value={formData.problemDescription}
-                onChange={(e) => setFormData({ ...formData, problemDescription: e.target.value })}
-                onFocus={handleInputFocus}
-                className="min-h-[130px] text-base bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground resize-none"
-                autoFocus
-              />
-              <p className="text-xs text-muted-foreground mt-2">
-                {formData.problemDescription.length < 10 
-                  ? `At least ${10 - formData.problemDescription.length} more characters needed`
-                  : "✓ Good to go!"}
-              </p>
-            </div>
-          </motion.div>
-        );
-
-      case "contact":
-        const isPaidPath = formData.leadType === "paid-advice";
-        const isNameFilled = formData.firstName.trim().length >= 2;
-        const isPhoneFilled = /^\d{10,}$/.test(formData.phone.replace(/\D/g, ''));
-        const isEmailFilled = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-        const filledCount = [isNameFilled, isPhoneFilled, isEmailFilled].filter(Boolean).length;
-        
-        return (
-          <motion.div
-            key="contact"
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            <div className="text-center mb-6">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
-                <User className="w-7 h-7 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold text-foreground">Almost there!</h2>
-              <p className="text-muted-foreground mt-1">
-                {isPaidPath ? "Enter your details to continue" : "Enter your details to schedule"}
-              </p>
-              
-              {/* Progress indicator */}
-              <div className="flex items-center justify-center gap-2 mt-4">
-                {[
-                  { filled: isNameFilled, label: "Name" },
-                  { filled: isPhoneFilled, label: "Phone" },
-                  { filled: isEmailFilled, label: "Email" },
-                ].map((field, idx) => (
-                  <div key={idx} className="flex items-center gap-1.5">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      field.filled 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-muted text-muted-foreground"
-                    }`}>
-                      {field.filled ? (
-                        <CheckCircle className="w-4 h-4" />
-                      ) : (
-                        <span className="text-xs font-medium">{idx + 1}</span>
-                      )}
-                    </div>
-                    <span className={`text-xs transition-colors ${field.filled ? "text-primary font-medium" : "text-muted-foreground"}`}>
-                      {field.label}
-                    </span>
-                    {idx < 2 && <div className="w-4 h-px bg-border mx-1" />}
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs text-muted-foreground mt-2">
-                {filledCount === 3 ? "✓ All set!" : `${filledCount}/3 complete`}
-              </p>
-            </div>
-            <div className="space-y-3" ref={formRef}>
-              <div className="relative">
-                <Input
-                  type="text"
-                  placeholder="First name"
-                  name="given-name"
-                  value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  onKeyDown={handleKeyDown}
-                  onFocus={handleInputFocus}
-                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isNameFilled ? "border-primary/50" : ""}`}
-                  autoFocus
-                  autoComplete="given-name"
-                />
-                {isNameFilled && (
-                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                )}
-              </div>
-              <div className="relative">
-                <Input
-                  type="tel"
-                  placeholder="Phone number"
-                  name="tel"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  onKeyDown={handleKeyDown}
-                  onFocus={handleInputFocus}
-                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isPhoneFilled ? "border-primary/50" : ""}`}
-                  autoComplete="tel"
-                />
-                {isPhoneFilled && (
-                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                )}
-              </div>
-              <div className="relative">
-                <Input
-                  type="email"
-                  placeholder="Email address"
-                  name="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  onKeyDown={handleKeyDown}
-                  onFocus={handleInputFocus}
-                  className={`h-14 text-lg bg-card border-border focus:border-primary text-foreground placeholder:text-muted-foreground pr-10 ${isEmailFilled ? "border-primary/50" : ""}`}
-                  autoComplete="email"
-                />
-                {isEmailFilled && (
-                  <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                )}
-              </div>
-            </div>
-            
-            {isPaidPath && (
-              <div className="bg-muted/50 rounded-xl p-4 mt-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-foreground">30-Minute Advisory Call</span>
-                </div>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Next: Secure payment via Stripe
-                </p>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Total:</span>
-                  <span className="text-xl font-bold text-primary">$250 CAD</span>
-                </div>
-              </div>
-            )}
-            
-            {!isPaidPath && (
-              <div className="bg-muted/50 rounded-xl p-4 mt-4">
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <div>
-                    <span className="font-semibold text-foreground block">Free Discovery Call</span>
-                    <span className="text-sm text-muted-foreground">Pick your time in Calendly next</span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        );
-
-      default:
-        return null;
-    }
-  };
-
-  // Determine if we need a Continue button
-  const currentStepType = steps[step];
-  const isInputStep = currentStepType === "contact" || currentStepType === "problem";
-  const showContinueButton = isInputStep;
-
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl" />
-      </div>
+    <div className="min-h-screen min-h-[100dvh] bg-background">
       <Helmet>
         <title>Book a Call | Presale with Uzair</title>
-        <meta name="description" content="Book a free consultation to discuss presale opportunities in Metro Vancouver. Get honest advice before you buy or sell." />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
+        <meta name="description" content="Schedule a one-on-one call with Uzair to discuss your presale real estate needs." />
       </Helmet>
 
       {/* Header */}
-      <div className="pt-3 pb-1 px-6 relative z-10">
-        <div className="flex items-center justify-center mb-2">
-          <img src={logo} alt="Presale with Uzair" className="h-7" />
-        </div>
-        {step === 0 && (
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <p className="text-primary font-semibold text-xs uppercase tracking-wide mb-0.5">No Hype. No Pressure.</p>
-            <h1 className="text-lg font-bold text-foreground">Just Honest Advice</h1>
-          </motion.div>
-        )}
-      </div>
-
-      {/* Testimonial - Only show on first step */}
-      {step === 0 && (
-        <div className="px-6 mb-1 relative z-10">
+      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-2">
+            <img src={logo} alt="Presale with Uzair" className="h-8 w-auto" />
+          </a>
           <a 
             href={GOOGLE_REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="block"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            <motion.div 
-              className="bg-card/80 backdrop-blur-sm border border-border rounded-xl p-3 active:scale-[0.98] transition-transform"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="flex items-start gap-2">
-                <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Quote className="w-3.5 h-3.5 text-primary" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={testimonialIndex}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <p className="text-xs text-foreground leading-relaxed">
-                        "{testimonials[testimonialIndex].quote}"
-                      </p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs font-medium text-primary">{testimonials[testimonialIndex].name}</span>
-                        <span className="text-xs text-muted-foreground">• {testimonials[testimonialIndex].type}</span>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-3 mt-2 pt-2 border-t border-border">
-                <div className="flex items-center gap-1">
-                  <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
-                  <span className="text-xs text-muted-foreground">31+ reviews</span>
-                </div>
-                <div className="w-px h-3 bg-border" />
-                <span className="text-xs text-muted-foreground">300+ clients</span>
-                <div className="w-px h-3 bg-border" />
-                <span className="text-xs text-primary font-medium">Google →</span>
-              </div>
-            </motion.div>
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <span className="font-medium">31+ Reviews</span>
           </a>
         </div>
-      )}
+      </header>
 
-      {/* Progress Bar - Show after first step */}
-      {step > 0 && (
-        <div className="px-6 py-3 relative z-10">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-muted-foreground">Step {step + 1} of {totalSteps}</span>
-            <span className="text-xs text-primary font-medium">{Math.round(((step + 1) / totalSteps) * 100)}%</span>
+      {/* Hero Section */}
+      <section className="py-8 md:py-12 border-b border-border/30">
+        <div className="container mx-auto px-4 text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-primary/50 shadow-lg shadow-primary/20">
+              <img 
+                src={uzairPhoto} 
+                alt="Uzair" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
-          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-primary"
-              initial={{ width: 0 }}
-              animate={{ width: `${((step + 1) / totalSteps) * 100}%` }}
-              transition={{ duration: 0.3 }}
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            Book a One-on-One Call
+          </h1>
+          <p className="text-muted-foreground max-w-md mx-auto">
+            Let's discuss your presale goals and how I can help you make smarter investment decisions.
+          </p>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-8 border-b border-border/30 bg-card/30">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <a 
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 bg-card border border-border rounded-full hover:border-primary/50 transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <StarRating />
+              <span className="text-sm font-medium text-foreground">31+ Reviews</span>
+            </a>
+          </div>
+
+          {/* Testimonials Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {testimonials.map((testimonial, index) => (
+              <a
+                key={index}
+                href={GOOGLE_REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-card border border-border rounded-xl p-4 hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-border">
+                    <img 
+                      src={testimonial.photo} 
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-medium text-foreground text-sm truncate">{testimonial.name}</h3>
+                      <StarRating />
+                    </div>
+                    <span className="text-xs text-primary/80">{testimonial.type}</span>
+                  </div>
+                </div>
+                <div className="relative">
+                  <Quote className="absolute -top-1 -left-1 w-4 h-4 text-primary/20" />
+                  <p className="text-sm text-muted-foreground pl-4 line-clamp-3">
+                    {testimonial.quote}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div className="text-center mt-4">
+            <a 
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary hover:text-primary/80 transition-colors"
+            >
+              View all reviews on Google →
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Calendar Section */}
+      <section className="py-8 md:py-12">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-semibold text-foreground mb-2">
+              Pick a Time That Works for You
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Select a date and time below to schedule our call
+            </p>
+          </div>
+
+          {/* Embedded Cal.com Calendar */}
+          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border border-border bg-card">
+            <Cal
+              calLink="uzair-muhammad-fcjyok/quick-call"
+              style={{ width: "100%", height: "100%", overflow: "scroll" }}
+              config={{
+                layout: "month_view",
+                theme: "dark",
+              }}
             />
           </div>
         </div>
-      )}
+      </section>
 
-      {/* Form Content */}
-      <div 
-        className="flex-1 px-6 py-2 touch-pan-y relative z-10 overflow-y-auto"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <AnimatePresence mode="wait" custom={direction}>
-          {renderStepContent()}
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation - Only show for input steps (contact/problem) */}
-      {showContinueButton && (
-        <div className="px-6 pt-4 pb-[calc(env(safe-area-inset-bottom)+1.5rem)] space-y-2 relative z-10 bg-gradient-to-t from-background via-background to-transparent">
-          <Button
-            onClick={handleNext}
-            disabled={!validateStep() || isSubmitting}
-            className="w-full h-14 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
-          >
-            <span className="flex items-center gap-2">
-              {isSubmitting ? "Processing..." : currentStepType === "contact" ? (formData.leadType === "paid-advice" ? "Continue to Payment" : "Schedule Your Call") : "Continue"}
-              {!isSubmitting && <ChevronRight className="w-5 h-5" />}
-            </span>
-          </Button>
-
-          {step > 0 && (
-            <Button
-              variant="ghost"
-              onClick={handleBack}
-              className="w-full h-10 text-muted-foreground hover:text-foreground"
-            >
-              <ChevronLeft className="w-4 h-4 mr-1" />
-              Back
-            </Button>
-          )}
+      {/* Footer */}
+      <footer className="py-6 border-t border-border/50 bg-card/30">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Presale with Uzair. All rights reserved.
+          </p>
         </div>
-      )}
-
-      {/* Back button for selection steps */}
-      {!showContinueButton && step > 0 && (
-        <div className="px-6 pb-[calc(env(safe-area-inset-bottom)+1rem)] relative z-10">
-          <Button
-            variant="ghost"
-            onClick={handleBack}
-            className="w-full h-10 text-muted-foreground hover:text-foreground"
-          >
-            <ChevronLeft className="w-4 h-4 mr-1" />
-            Back
-          </Button>
-        </div>
-      )}
-
-      {/* Loading overlay */}
-      {isSubmitting && (
-        <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="w-10 h-10 border-3 border-primary border-t-transparent rounded-full"
-          />
-        </div>
-      )}
+      </footer>
     </div>
   );
 };

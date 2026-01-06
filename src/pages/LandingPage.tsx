@@ -14,11 +14,11 @@ import headshotImage from "@/assets/uzair-headshot.jpeg";
 
 // Landing Page Content
 const content = {
-  headline: "Buy a New Condo or Townhome",
-  headlineAccent: "With Confidence.",
-  subheadline: "Expert guidance for first-time buyers and investors.",
-  ctaPrimary: "Request A Call",
-  ctaSecondary: "Request A Call",
+  headline: "New Home?",
+  headlineAccent: "I Can Help.",
+  subheadline: "Free expert advice. No pressure.",
+  ctaPrimary: "Get A Free Call",
+  ctaSecondary: "Get A Free Call",
 };
 
 const LandingPage = () => {
@@ -118,35 +118,35 @@ const LandingPage = () => {
   const benefits = [
     {
       icon: Shield,
-      title: "Protect Your Investment",
-      description: "I've analyzed 330+ presales and know which ones to avoid.",
+      title: "Save Money",
+      description: "I help you avoid bad deals. 330+ presales reviewed.",
     },
     {
       icon: TrendingUp,
-      title: "Maximize Your Returns",
-      description: "Strategic unit selection that builds equity from day one.",
+      title: "Best Units First",
+      description: "Get early access before public launch.",
     },
     {
       icon: Users,
-      title: "Insider Access",
-      description: "First access to projects before they hit the public market.",
+      title: "Trusted by Families",
+      description: "100+ South Asian families helped.",
     },
   ];
 
   const testimonials = [
     {
-      name: "Michelle T.",
-      text: "Uzair helped me navigate my first presale purchase. His knowledge saved me from making costly mistakes.",
+      name: "Baldeep S.",
+      text: "Uzair ji helped our family find the perfect home. He speaks Punjabi and understands our needs.",
       rating: 5,
     },
     {
       name: "Anish P.",
-      text: "As an investor, having Uzair analyze deals has been invaluable. He spots risks others miss.",
+      text: "Very professional. He saved us from a bad deal. Highly recommend!",
       rating: 5,
     },
     {
-      name: "Baldeep S.",
-      text: "Best decision I made was working with a presale specialist. Regular agents don't have this expertise.",
+      name: "Rehman K.",
+      text: "Finally someone who speaks our language and knows the market. Thank you Uzair bhai!",
       rating: 5,
     },
   ];
@@ -173,12 +173,24 @@ const LandingPage = () => {
         {/* Hero Section */}
         <section className="px-4 pt-8 pb-16 md:pt-16 md:pb-24">
           <div className="max-w-4xl mx-auto text-center">
+            {/* Language Badge - Prominent */}
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="mb-6"
+            >
+              <span className="inline-flex items-center gap-2 bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                🗣️ ਪੰਜਾਬੀ • हिंदी • اردو • English
+              </span>
+            </motion.div>
+
             {/* Headshot */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="mb-8"
+              className="mb-6"
             >
               <img 
                 src={headshotImage} 
@@ -191,7 +203,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-4"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               {content.headline}
@@ -203,7 +215,7 @@ const LandingPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-xl md:text-2xl text-slate-300 mb-10"
+              className="text-xl md:text-2xl text-slate-300 mb-8"
             >
               {content.subheadline}
             </motion.p>
@@ -217,21 +229,23 @@ const LandingPage = () => {
               <Button
                 size="lg"
                 onClick={() => setIsFormOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl px-10 py-7 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
               >
-                <Phone className="mr-2 w-5 h-5" /> {content.ctaPrimary} <ArrowRight className="ml-2" />
+                <Phone className="mr-2 w-5 h-5" /> {content.ctaPrimary}
               </Button>
-              <span className="text-primary text-sm font-medium">Same-day callbacks available</span>
+              <span className="text-primary text-sm font-medium">⚡ Same day call back</span>
             </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 text-slate-400 text-sm"
+              className="mt-8 flex flex-wrap justify-center gap-4 text-slate-400 text-sm"
             >
-              330+ Presales Advised • $1M+ Saved for Clients • 7+ Personal Investments
-            </motion.p>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 330+ Families Helped</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ $1M+ Saved</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 100% Free Advice</span>
+            </motion.div>
           </div>
         </section>
 
@@ -242,10 +256,10 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-4"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Why Work With a Presale Specialist?
+              Why Choose Me?
             </h2>
             <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-              Presales are complex. The right guidance can save you tens of thousands.
+              I speak your language. I understand your needs.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -276,7 +290,7 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              What My Clients Say
+              Happy Clients 💬
             </h2>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -309,14 +323,14 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              How It Works
+              3 Easy Steps
             </h2>
 
             <div className="space-y-8">
               {[
-                { step: "1", title: "Book Your Call", description: "Quick 15-minute discovery call to understand your goals." },
-                { step: "2", title: "Get Your Strategy", description: "Personalized presale strategy based on your budget and timeline." },
-                { step: "3", title: "Buy With Confidence", description: "Expert guidance through every step of your purchase." },
+                { step: "1", title: "Request A Call", description: "Fill the form. Takes 30 seconds." },
+                { step: "2", title: "We Talk", description: "I call you. We discuss your needs." },
+                { step: "3", title: "Find Your Home", description: "I help you get the best deal." },
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
@@ -346,17 +360,17 @@ const LandingPage = () => {
               className="text-3xl md:text-5xl font-bold text-white mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Ready to Take the Next Step?
+              Ready? Let's Talk! 🏠
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Book your free strategy session today. No pressure, just expert advice.
+              Free call. No pressure. I'm here to help.
             </p>
             <Button
               size="lg"
               onClick={() => setIsFormOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl px-10 py-7 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
             >
-              {content.ctaSecondary} <ArrowRight className="ml-2" />
+              <Phone className="mr-2 w-5 h-5" /> {content.ctaSecondary}
             </Button>
           </div>
         </section>
@@ -434,12 +448,12 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">I am a...</p>
+                <p className="text-white text-lg font-medium text-center mb-4">I am a... 👋</p>
                 <div className="flex flex-col gap-3">
                   {[
-                    { value: "first-time-buyer", label: "First-Time Buyer" },
-                    { value: "investor", label: "Investor" },
-                    { value: "assignment-seller", label: "Selling My Presale Assignment" },
+                    { value: "first-time-buyer", label: "🏠 First-Time Buyer" },
+                    { value: "investor", label: "📈 Investor" },
+                    { value: "assignment-seller", label: "💰 Selling My Presale" },
                   ].map((option) => (
                     <motion.button
                       key={option.value}
@@ -469,11 +483,11 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">Are you working with a realtor?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">Do you have a realtor?</p>
                 <div className="flex flex-col gap-3">
                   {[
-                    { value: "no", label: "No, I'm not" },
-                    { value: "yes", label: "Yes, I have an agent" },
+                    { value: "no", label: "❌ No" },
+                    { value: "yes", label: "✅ Yes" },
                   ].map((option) => (
                     <motion.button
                       key={option.value}
@@ -510,15 +524,15 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">What are you looking for?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">What do you want? 🏢</p>
                 
                 {/* Property Type */}
                 <div className="mb-4">
-                  <p className="text-slate-400 text-sm mb-2">Property Type</p>
+                  <p className="text-slate-400 text-sm mb-2">Type</p>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { value: "condo", label: "Condo" },
-                      { value: "townhome", label: "Townhome" },
+                      { value: "condo", label: "🏢 Condo" },
+                      { value: "townhome", label: "🏘️ Townhome" },
                     ].map((option) => (
                       <motion.button
                         key={option.value}
@@ -540,7 +554,7 @@ const LandingPage = () => {
 
                 {/* Price Range */}
                 <div>
-                  <p className="text-slate-400 text-sm mb-2">Price Range</p>
+                  <p className="text-slate-400 text-sm mb-2">Budget 💵</p>
                   <div className="flex flex-col gap-2">
                     {[
                       { value: "under-500k", label: "Under $500K" },
@@ -595,7 +609,7 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">How can we reach you?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">Your Info 📞</p>
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <Input

@@ -372,8 +372,9 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Clients From Social Media 📱
+              Happy Clients 💬
             </h2>
+            <p className="text-slate-400 text-lg mt-2">from social media</p>
 
             <div className="grid md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (

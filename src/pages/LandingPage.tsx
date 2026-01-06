@@ -197,18 +197,28 @@ const LandingPage = () => {
 
   const testimonials = [
     {
-      name: "Baldeep S.",
-      text: "Uzair ji helped our family find the perfect home. He speaks Punjabi and understands our needs.",
+      name: "Anish",
+      text: "As first-time buyers, we were nervous, but Uzair made everything clear and stress-free. He helped us find the perfect home for our family.",
       rating: 5,
     },
     {
-      name: "Anish P.",
-      text: "Very professional. He saved us from a bad deal. Highly recommend!",
+      name: "Baldeep",
+      text: "Uzair made our home-selling process seamless. He took the time to understand our needs and continues to support us. His professionalism is unmatched.",
       rating: 5,
     },
     {
-      name: "Rehman K.",
-      text: "Finally someone who speaks our language and knows the market. Thank you Uzair bhai!",
+      name: "Rehman",
+      text: "Uzair is very blunt, honest, and straight to the point. He doesn't beat around the bush. I truly respect his work ethic.",
+      rating: 5,
+    },
+    {
+      name: "Mona",
+      text: "Uzair is a very honest realtor who always puts his clients first. We've been working with him for years. I would advise anyone to work with him.",
+      rating: 5,
+    },
+    {
+      name: "Ray",
+      text: "Now I see why he's called the presale expert. His transparency and guidance helped our family find our first home in just two weeks.",
       rating: 5,
     },
   ];

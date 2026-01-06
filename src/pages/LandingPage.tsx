@@ -38,6 +38,8 @@ const LandingPage = () => {
     phone: urlParams.get("phone") || "",
     buyerType: urlParams.get("type") || "",
     hasAgent: "",
+    propertyType: "",
+    priceRange: "",
   });
 
   // Auto-advance when buyer type is selected
@@ -50,6 +52,17 @@ const LandingPage = () => {
   const handleAgentSelect = (value: string) => {
     setFormData({ ...formData, hasAgent: value });
     setTimeout(() => setStep(3), 300);
+  };
+
+  // Auto-advance when property type is selected
+  const handlePropertyTypeSelect = (value: string) => {
+    setFormData({ ...formData, propertyType: value });
+  };
+
+  // Auto-advance when price range is selected
+  const handlePriceRangeSelect = (value: string) => {
+    setFormData((prev) => ({ ...prev, priceRange: value }));
+    setTimeout(() => setStep(4), 300);
   };
 
   // Reset form when dialog closes
@@ -76,6 +89,7 @@ const LandingPage = () => {
           phone: formData.phone,
           buyerType: formData.buyerType,
           hasAgent: formData.hasAgent,
+          budget: `${formData.propertyType} - ${formData.priceRange}`,
           leadSource: "landing-page",
           utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
           utmMedium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
@@ -399,7 +413,7 @@ const LandingPage = () => {
             <div className="pt-2 min-h-[320px]">
               {/* Progress indicator */}
               <div className="flex justify-center gap-2 mb-6">
-                {[1, 2, 3].map((s) => (
+                {[1, 2, 3, 4].map((s) => (
                   <motion.div
                     key={s}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
@@ -486,13 +500,98 @@ const LandingPage = () => {
                 </button>
               </motion.div>
 
-              {/* Step 3: Contact Info */}
+              {/* Step 3: Property Type & Price Range */}
               <motion.div
                 initial={false}
                 animate={{ 
                   opacity: step === 3 ? 1 : 0,
-                  x: step === 3 ? 0 : 20,
+                  x: step === 3 ? 0 : step < 3 ? 20 : -20,
                   display: step === 3 ? "block" : "none"
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                <p className="text-white text-lg font-medium text-center mb-4">What are you looking for?</p>
+                
+                {/* Property Type */}
+                <div className="mb-4">
+                  <p className="text-slate-400 text-sm mb-2">Property Type</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { value: "condo", label: "Condo" },
+                      { value: "townhome", label: "Townhome" },
+                    ].map((option) => (
+                      <motion.button
+                        key={option.value}
+                        type="button"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => handlePropertyTypeSelect(option.value)}
+                        className={`p-4 rounded-xl border text-center transition-all ${
+                          formData.propertyType === option.value
+                            ? "bg-primary/20 border-primary text-white"
+                            : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
+                        }`}
+                      >
+                        {option.label}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Price Range */}
+                <div>
+                  <p className="text-slate-400 text-sm mb-2">Price Range</p>
+                  <div className="flex flex-col gap-2">
+                    {[
+                      { value: "under-500k", label: "Under $500K" },
+                      { value: "500k-750k", label: "$500K - $750K" },
+                      { value: "750k-1m", label: "$750K - $1M" },
+                      { value: "1m-plus", label: "$1M+" },
+                    ].map((option) => (
+                      <motion.button
+                        key={option.value}
+                        type="button"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          if (formData.propertyType) {
+                            handlePriceRangeSelect(option.value);
+                          }
+                        }}
+                        disabled={!formData.propertyType}
+                        className={`p-3 rounded-xl border text-left transition-all ${
+                          formData.priceRange === option.value
+                            ? "bg-primary/20 border-primary text-white"
+                            : formData.propertyType
+                              ? "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
+                              : "bg-slate-800/30 border-white/5 text-slate-500 cursor-not-allowed"
+                        }`}
+                      >
+                        {option.label}
+                      </motion.button>
+                    ))}
+                  </div>
+                  {!formData.propertyType && (
+                    <p className="text-slate-500 text-xs mt-2 text-center">Select a property type first</p>
+                  )}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setStep(2)}
+                  className="mt-4 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
+                >
+                  ← Back
+                </button>
+              </motion.div>
+
+              {/* Step 4: Contact Info */}
+              <motion.div
+                initial={false}
+                animate={{ 
+                  opacity: step === 4 ? 1 : 0,
+                  x: step === 4 ? 0 : 20,
+                  display: step === 4 ? "block" : "none"
                 }}
                 transition={{ duration: 0.2 }}
               >
@@ -562,7 +661,7 @@ const LandingPage = () => {
                 </form>
                 <button
                   type="button"
-                  onClick={() => setStep(2)}
+                  onClick={() => setStep(3)}
                   className="mt-2 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
                 >
                   ← Back

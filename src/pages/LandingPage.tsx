@@ -25,6 +25,7 @@ const LandingPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [step, setStep] = useState(1);
   const { toast } = useToast();
   
   // Parse URL params for form prefill
@@ -35,9 +36,32 @@ const LandingPage = () => {
     lastName: urlParams.get("lastName") || urlParams.get("name")?.split(" ").slice(1).join(" ") || "",
     email: urlParams.get("email") || "",
     phone: urlParams.get("phone") || "",
-    buyerType: urlParams.get("type") || "first-time-buyer",
+    buyerType: urlParams.get("type") || "",
     hasAgent: "",
   });
+
+  // Auto-advance when buyer type is selected
+  const handleBuyerTypeSelect = (value: string) => {
+    setFormData({ ...formData, buyerType: value });
+    setTimeout(() => setStep(2), 300);
+  };
+
+  // Auto-advance when agent status is selected
+  const handleAgentSelect = (value: string) => {
+    setFormData({ ...formData, hasAgent: value });
+    setTimeout(() => setStep(3), 300);
+  };
+
+  // Reset form when dialog closes
+  const handleDialogChange = (open: boolean) => {
+    setIsFormOpen(open);
+    if (!open) {
+      setTimeout(() => {
+        setStep(1);
+        setIsSuccess(false);
+      }, 300);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -331,130 +355,220 @@ const LandingPage = () => {
         </footer>
       </div>
 
-      <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
-        <DialogContent className="sm:max-w-md bg-slate-900 border-white/10">
+      <Dialog open={isFormOpen} onOpenChange={handleDialogChange}>
+        <DialogContent className="sm:max-w-md bg-slate-900 border-white/10 overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-white text-center">
               {isSuccess ? "You're All Set! 🎉" : "Request A Callback"}
             </DialogTitle>
-            <p className="text-slate-400 text-center text-sm mt-1">Available in English, Punjabi, Urdu & Hindi</p>
+            {!isSuccess && (
+              <p className="text-slate-400 text-center text-sm mt-1">Available in English, Punjabi, Urdu & Hindi</p>
+            )}
           </DialogHeader>
 
           {isSuccess ? (
-            <div className="text-center py-6">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-6"
+            >
               <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <p className="text-slate-300 mb-6">
-                We'll reach out within 24 hours to schedule your strategy session.
+              <p className="text-slate-300 mb-2">
+                We'll call you back same day!
               </p>
-              <Button onClick={() => setIsFormOpen(false)} variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                Close
-              </Button>
-            </div>
+              <p className="text-slate-400 text-sm mb-6">
+                In the meantime, explore what we can do for you.
+              </p>
+              <div className="flex flex-col gap-3">
+                <Button 
+                  onClick={() => window.location.href = "/"}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-5 rounded-full"
+                >
+                  Visit Our Website <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+                <Button 
+                  onClick={() => handleDialogChange(false)} 
+                  variant="ghost" 
+                  className="text-slate-400 hover:text-white hover:bg-white/5"
+                >
+                  Close
+                </Button>
+              </div>
+            </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName" className="text-slate-300">First Name</Label>
-                  <Input
-                    id="firstName"
-                    required
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    placeholder="John"
-                    className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
+            <div className="pt-2 min-h-[320px]">
+              {/* Progress indicator */}
+              <div className="flex justify-center gap-2 mb-6">
+                {[1, 2, 3].map((s) => (
+                  <motion.div
+                    key={s}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      s <= step ? "bg-primary w-8" : "bg-slate-700 w-4"
+                    }`}
+                    animate={{ width: s <= step ? 32 : 16 }}
                   />
-                </div>
-                <div>
-                  <Label htmlFor="lastName" className="text-slate-300">Last Name</Label>
-                  <Input
-                    id="lastName"
-                    required
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    placeholder="Doe"
-                    className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
-                  />
-                </div>
+                ))}
               </div>
 
-              <div>
-                <Label htmlFor="email" className="text-slate-300">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="john@example.com"
-                  className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="phone" className="text-slate-300">Phone</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="(604) 555-0123"
-                  className="mt-1 bg-slate-800 border-white/10 text-white placeholder:text-slate-500"
-                />
-              </div>
-
-              <div>
-                <Label className="text-slate-300 mb-3 block">I am a...</Label>
-                <RadioGroup
-                  value={formData.buyerType}
-                  onValueChange={(value) => setFormData({ ...formData, buyerType: value })}
-                  className="flex flex-col gap-3"
-                >
-                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="first-time-buyer" id="first-time" className="border-white/30 text-primary" />
-                    <Label htmlFor="first-time" className="cursor-pointer flex-1 text-white">First-Time Buyer</Label>
-                  </div>
-                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="investor" id="investor" className="border-white/30 text-primary" />
-                    <Label htmlFor="investor" className="cursor-pointer flex-1 text-white">Investor</Label>
-                  </div>
-                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="assignment-seller" id="assignment-seller" className="border-white/30 text-primary" />
-                    <Label htmlFor="assignment-seller" className="cursor-pointer flex-1 text-white">Sell My Presale Assignment</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-
-              <div>
-                <Label className="text-slate-300 mb-3 block">Are you currently working with a realtor?</Label>
-                <RadioGroup
-                  value={formData.hasAgent}
-                  onValueChange={(value) => setFormData({ ...formData, hasAgent: value })}
-                  className="flex flex-col gap-3"
-                >
-                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="no" id="no-agent" className="border-white/30 text-primary" />
-                    <Label htmlFor="no-agent" className="cursor-pointer flex-1 text-white">No</Label>
-                  </div>
-                  <div className="flex items-center space-x-3 bg-slate-800 p-3 rounded-lg border border-white/10">
-                    <RadioGroupItem value="yes" id="has-agent" className="border-white/30 text-primary" />
-                    <Label htmlFor="has-agent" className="cursor-pointer flex-1 text-white">Yes</Label>
-                  </div>
-                </RadioGroup>
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg shadow-lg shadow-primary/25"
+              {/* Step 1: Buyer Type */}
+              <motion.div
+                initial={false}
+                animate={{ 
+                  opacity: step === 1 ? 1 : 0,
+                  x: step === 1 ? 0 : -20,
+                  display: step === 1 ? "block" : "none"
+                }}
+                transition={{ duration: 0.2 }}
               >
-                {isSubmitting ? "Submitting..." : "Request A Callback"}
-              </Button>
+                <p className="text-white text-lg font-medium text-center mb-4">I am a...</p>
+                <div className="flex flex-col gap-3">
+                  {[
+                    { value: "first-time-buyer", label: "First-Time Buyer" },
+                    { value: "investor", label: "Investor" },
+                    { value: "assignment-seller", label: "Selling My Presale Assignment" },
+                  ].map((option) => (
+                    <motion.button
+                      key={option.value}
+                      type="button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleBuyerTypeSelect(option.value)}
+                      className={`p-4 rounded-xl border text-left transition-all ${
+                        formData.buyerType === option.value
+                          ? "bg-primary/20 border-primary text-white"
+                          : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
+                      }`}
+                    >
+                      {option.label}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
 
-              <p className="text-xs text-slate-500 text-center">
-                No spam. We respect your privacy.
-              </p>
-            </form>
+              {/* Step 2: Agent Status */}
+              <motion.div
+                initial={false}
+                animate={{ 
+                  opacity: step === 2 ? 1 : 0,
+                  x: step === 2 ? 0 : step < 2 ? 20 : -20,
+                  display: step === 2 ? "block" : "none"
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                <p className="text-white text-lg font-medium text-center mb-4">Are you working with a realtor?</p>
+                <div className="flex flex-col gap-3">
+                  {[
+                    { value: "no", label: "No, I'm not" },
+                    { value: "yes", label: "Yes, I have an agent" },
+                  ].map((option) => (
+                    <motion.button
+                      key={option.value}
+                      type="button"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => handleAgentSelect(option.value)}
+                      className={`p-4 rounded-xl border text-left transition-all ${
+                        formData.hasAgent === option.value
+                          ? "bg-primary/20 border-primary text-white"
+                          : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
+                      }`}
+                    >
+                      {option.label}
+                    </motion.button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="mt-4 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
+                >
+                  ← Back
+                </button>
+              </motion.div>
+
+              {/* Step 3: Contact Info */}
+              <motion.div
+                initial={false}
+                animate={{ 
+                  opacity: step === 3 ? 1 : 0,
+                  x: step === 3 ? 0 : 20,
+                  display: step === 3 ? "block" : "none"
+                }}
+                transition={{ duration: 0.2 }}
+              >
+                <p className="text-white text-lg font-medium text-center mb-4">How can we reach you?</p>
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <Input
+                      required
+                      value={formData.firstName}
+                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                      placeholder="First name"
+                      autoComplete="given-name"
+                      className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
+                    />
+                    <Input
+                      required
+                      value={formData.lastName}
+                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                      placeholder="Last name"
+                      autoComplete="family-name"
+                      className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
+                    />
+                  </div>
+                  <Input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="Email address"
+                    autoComplete="email"
+                    className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
+                  />
+                  <Input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="Phone number"
+                    autoComplete="tel"
+                    className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
+                  />
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg shadow-lg shadow-primary/25 mt-2"
+                  >
+                    {isSubmitting ? (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="flex items-center gap-2"
+                      >
+                        <motion.div 
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                          className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                        />
+                        Submitting...
+                      </motion.span>
+                    ) : (
+                      <>Request A Callback</>
+                    )}
+                  </Button>
+                  <p className="text-xs text-slate-500 text-center">
+                    No spam. We respect your privacy.
+                  </p>
+                </form>
+                <button
+                  type="button"
+                  onClick={() => setStep(2)}
+                  className="mt-2 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
+                >
+                  ← Back
+                </button>
+              </motion.div>
+            </div>
           )}
         </DialogContent>
       </Dialog>

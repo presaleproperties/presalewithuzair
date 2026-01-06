@@ -11,6 +11,11 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
+import anishPhoto from "@/assets/testimonials/anish.jpg";
+import baldeepPhoto from "@/assets/testimonials/baldeep.jpg";
+import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
+import monaPhoto from "@/assets/testimonials/mona.jpg";
+import rayPhoto from "@/assets/testimonials/ray.jpg";
 
 // Landing Page Content
 const content = {
@@ -200,26 +205,31 @@ const LandingPage = () => {
       name: "Anish",
       text: "As first-time buyers, we were nervous, but Uzair made everything clear and stress-free. He helped us find the perfect home for our family.",
       rating: 5,
+      photo: anishPhoto,
     },
     {
       name: "Baldeep",
       text: "Uzair made our home-selling process seamless. He took the time to understand our needs and continues to support us. His professionalism is unmatched.",
       rating: 5,
+      photo: baldeepPhoto,
     },
     {
       name: "Rehman",
       text: "Uzair is very blunt, honest, and straight to the point. He doesn't beat around the bush. I truly respect his work ethic.",
       rating: 5,
+      photo: rehmanPhoto,
     },
     {
       name: "Mona",
       text: "Uzair is a very honest realtor who always puts his clients first. We've been working with him for years. I would advise anyone to work with him.",
       rating: 5,
+      photo: monaPhoto,
     },
     {
       name: "Ray",
       text: "Now I see why he's called the presale expert. His transparency and guidance helped our family find our first home in just two weeks.",
       rating: 5,
+      photo: rayPhoto,
     },
   ];
 
@@ -381,7 +391,14 @@ const LandingPage = () => {
                     ))}
                   </div>
                   <p className="text-slate-300 mb-4">"{testimonial.text}"</p>
-                  <p className="font-semibold text-white">{testimonial.name}</p>
+                  <div className="flex items-center gap-3">
+                    <img 
+                      src={testimonial.photo} 
+                      alt={testimonial.name}
+                      className="w-10 h-10 rounded-full object-cover border-2 border-primary/30"
+                    />
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>

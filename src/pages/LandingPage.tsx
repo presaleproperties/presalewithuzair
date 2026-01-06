@@ -26,6 +26,7 @@ const LandingPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [step, setStep] = useState(1);
+  const [errors, setErrors] = useState({ email: "", phone: "" });
   const { toast } = useToast();
   
   // Parse URL params for form prefill
@@ -41,6 +42,46 @@ const LandingPage = () => {
     propertyType: "",
     priceRange: "",
   });
+
+  // Validation functions
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone: string): boolean => {
+    // Remove all non-digits
+    const digitsOnly = phone.replace(/\D/g, "");
+    // Valid if 10-11 digits (with or without country code)
+    return digitsOnly.length >= 10 && digitsOnly.length <= 11;
+  };
+
+  const handleEmailChange = (value: string) => {
+    setFormData({ ...formData, email: value });
+    if (value && !validateEmail(value)) {
+      setErrors((prev) => ({ ...prev, email: "Please enter a valid email" }));
+    } else {
+      setErrors((prev) => ({ ...prev, email: "" }));
+    }
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Format phone as user types
+    const digitsOnly = value.replace(/\D/g, "");
+    let formatted = digitsOnly;
+    if (digitsOnly.length >= 6) {
+      formatted = `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6, 10)}`;
+    } else if (digitsOnly.length >= 3) {
+      formatted = `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3)}`;
+    }
+    setFormData({ ...formData, phone: formatted });
+    
+    if (digitsOnly.length > 0 && !validatePhone(digitsOnly)) {
+      setErrors((prev) => ({ ...prev, phone: "Enter 10 digit phone number" }));
+    } else {
+      setErrors((prev) => ({ ...prev, phone: "" }));
+    }
+  };
 
   // Auto-advance when buyer type is selected
   const handleBuyerTypeSelect = (value: string) => {
@@ -78,6 +119,27 @@ const LandingPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Final validation before submit
+    const emailValid = validateEmail(formData.email);
+    const phoneValid = validatePhone(formData.phone);
+    
+    if (!emailValid) {
+      setErrors((prev) => ({ ...prev, email: "Please enter a valid email" }));
+    }
+    if (!phoneValid) {
+      setErrors((prev) => ({ ...prev, phone: "Enter 10 digit phone number" }));
+    }
+    
+    if (!emailValid || !phoneValid) {
+      toast({
+        title: "Please check your info",
+        description: "Email or phone number is not correct.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
 
     try {
@@ -629,24 +691,38 @@ const LandingPage = () => {
                       className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
                     />
                   </div>
-                  <Input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="Email address"
-                    autoComplete="email"
-                    className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
-                  />
-                  <Input
-                    type="tel"
-                    required
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="Phone number"
-                    autoComplete="tel"
-                    className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
-                  />
+                  <div>
+                    <Input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => handleEmailChange(e.target.value)}
+                      placeholder="Email address"
+                      autoComplete="email"
+                      className={`bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12 ${
+                        errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
+                      }`}
+                    />
+                    {errors.email && (
+                      <p className="text-red-400 text-xs mt-1">⚠️ {errors.email}</p>
+                    )}
+                  </div>
+                  <div>
+                    <Input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => handlePhoneChange(e.target.value)}
+                      placeholder="(604) 555-1234"
+                      autoComplete="tel"
+                      className={`bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12 ${
+                        errors.phone ? "border-red-500 focus-visible:ring-red-500" : ""
+                      }`}
+                    />
+                    {errors.phone && (
+                      <p className="text-red-400 text-xs mt-1">⚠️ {errors.phone}</p>
+                    )}
+                  </div>
                   <Button
                     type="submit"
                     disabled={isSubmitting}

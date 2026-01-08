@@ -167,6 +167,7 @@ const LandingPage = () => {
           utmContent: params.get("utm_content") || undefined,
           referrer: document.referrer || undefined,
           landingPage: window.location.pathname + window.location.search,
+          zapierWebhookUrl: "https://hooks.zapier.com/hooks/catch/11244776/uwxiv7d/",
         },
       });
 

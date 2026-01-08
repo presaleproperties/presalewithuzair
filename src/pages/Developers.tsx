@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
-import uzairOfficeWide from "@/assets/uzair-office-wide.jpg";
+import uzairFloorplanConsultation from "@/assets/uzair-floorplan-consultation.jpg";
 
 const advisoryAreas = [
   {
@@ -263,8 +263,8 @@ const Developers = () => {
                 
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img 
-                    src={uzairOfficeWide} 
-                    alt="Uzair Muhammad - Developer Advisory"
+                    src={uzairFloorplanConsultation} 
+                    alt="Uzair Muhammad reviewing floorplans with developers"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />

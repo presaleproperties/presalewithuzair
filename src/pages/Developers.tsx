@@ -258,7 +258,7 @@ const Developers = () => {
                 </div>
               </div>
               
-              <div className="relative space-y-4">
+              <div className="relative">
                 <div className="absolute -top-4 -right-4 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
                 <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent/10 rounded-full blur-2xl" />
                 
@@ -266,16 +266,7 @@ const Developers = () => {
                   <img 
                     src={uzairExpoSpeaking} 
                     alt="Uzair Muhammad speaking at Vancouver Presale Expo"
-                    className="w-full aspect-[16/9] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
-                </div>
-                
-                <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src={uzairExpoCrowd} 
-                    alt="Audience at Vancouver Presale Expo"
-                    className="w-full aspect-[16/9] object-cover"
+                    className="w-full aspect-[4/3] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                 </div>
@@ -287,28 +278,44 @@ const Developers = () => {
         {/* Who This Is For */}
         <section className="py-16 md:py-24 lg:py-32 bg-card">
           <div className="container-xl px-4 sm:px-6">
-            <div className="max-w-3xl">
-              <p className="section-label mb-3 sm:mb-4">FIT</p>
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-10">
-                WHO THIS IS <span className="text-gradient">FOR</span>
-              </h2>
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              <div>
+                <p className="section-label mb-3 sm:mb-4">FIT</p>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-10">
+                  WHO THIS IS <span className="text-gradient">FOR</span>
+                </h2>
+                
+                <ul className="space-y-4 mb-10">
+                  {whoThisIsFor.map((item, index) => (
+                    <li key={index} className="flex items-center gap-4 text-lg text-foreground/80">
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="pt-6 border-t border-border">
+                  <p className="text-muted-foreground mb-2">
+                    If you want polished opinions, I'm not the right fit.
+                  </p>
+                  <p className="text-foreground font-medium">
+                    If you want clarity and results, let's talk.
+                  </p>
+                </div>
+              </div>
               
-              <ul className="space-y-4 mb-10">
-                {whoThisIsFor.map((item, index) => (
-                  <li key={index} className="flex items-center gap-4 text-lg text-foreground/80">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="pt-6 border-t border-border">
-                <p className="text-muted-foreground mb-2">
-                  If you want polished opinions, I'm not the right fit.
-                </p>
-                <p className="text-foreground font-medium">
-                  If you want clarity and results, let's talk.
-                </p>
+              <div className="relative order-first lg:order-last">
+                <div className="absolute -top-4 -left-4 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+                <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-accent/10 rounded-full blur-2xl" />
+                
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={uzairExpoCrowd} 
+                    alt="Audience at Vancouver Presale Expo"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                </div>
               </div>
             </div>
           </div>

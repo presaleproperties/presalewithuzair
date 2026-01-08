@@ -28,6 +28,21 @@ const testimonials = [
 export const BookingContextSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [calendlyUrl, setCalendlyUrl] = useState("");
+
+  useEffect(() => {
+    // Build Calendly URL with UTM parameters
+    const baseUrl = "https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8";
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    const utmString = utmParams
+      .filter(param => urlParams.get(param))
+      .map(param => `${param}=${encodeURIComponent(urlParams.get(param) || '')}`)
+      .join('&');
+    
+    setCalendlyUrl(utmString ? `${baseUrl}&${utmString}` : baseUrl);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -121,7 +136,7 @@ export const BookingContextSection = () => {
             {/* Calendly Calendar - Full viewport height on mobile */}
             <div className="rounded-xl overflow-hidden border border-border bg-card h-[calc(100vh-120px)] min-h-[500px]">
               <iframe
-                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
+                src={calendlyUrl}
                 width="100%"
                 height="100%"
                 frameBorder="0"
@@ -141,7 +156,7 @@ export const BookingContextSection = () => {
           <div className="hidden lg:block">
             <div className="w-full rounded-xl overflow-hidden border border-border bg-card h-[750px]">
               <iframe
-                src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8"
+                src={calendlyUrl}
                 width="100%"
                 height="100%"
                 frameBorder="0"

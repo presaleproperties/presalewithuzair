@@ -149,10 +149,15 @@ const LandingPage = () => {
 
     try {
       const params = new URLSearchParams(window.location.search);
-      // Remove preview/session params so Zapier/CRM stores a clean URL
-      params.delete("__lovable_token");
+      
+      // Build clean URL with only UTM params
+      const utmParams = new URLSearchParams();
+      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach((key) => {
+        const value = params.get(key);
+        if (value) utmParams.set(key, value);
+      });
       const landingPageUrl = `${window.location.origin}${window.location.pathname}${
-        params.toString() ? `?${params.toString()}` : ""
+        utmParams.toString() ? `?${utmParams.toString()}` : ""
       }`;
 
       const { error } = await supabase.functions.invoke("capture-lead", {

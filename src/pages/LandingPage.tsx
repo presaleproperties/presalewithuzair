@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Shield, TrendingUp, Users, Star, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { Shield, TrendingUp, Users, Star, Quote } from "lucide-react";
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
 import anishPhoto from "@/assets/testimonials/anish.jpg";
@@ -22,184 +15,9 @@ const content = {
   headline: "Work With",
   headlineAccent: "Uzair.",
   subheadline: "BC's trusted presale expert for condo & townhome buyers.",
-  ctaPrimary: "Book A Call",
-  ctaSecondary: "Book A Call",
 };
 
 const LandingPage = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [step, setStep] = useState(1);
-  const [errors, setErrors] = useState({ email: "", phone: "" });
-  const { toast } = useToast();
-  
-  // Parse URL params for form prefill
-  const urlParams = new URLSearchParams(window.location.search);
-  
-  const [formData, setFormData] = useState({
-    firstName: urlParams.get("firstName") || urlParams.get("name")?.split(" ")[0] || "",
-    lastName: urlParams.get("lastName") || urlParams.get("name")?.split(" ").slice(1).join(" ") || "",
-    email: urlParams.get("email") || "",
-    phone: urlParams.get("phone") || "",
-    buyerType: urlParams.get("type") || "",
-    hasAgent: "",
-    propertyType: "",
-    priceRange: "",
-  });
-
-  // Validation functions
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validatePhone = (phone: string): boolean => {
-    // Remove all non-digits
-    const digitsOnly = phone.replace(/\D/g, "");
-    // Valid if 10-11 digits (with or without country code)
-    return digitsOnly.length >= 10 && digitsOnly.length <= 11;
-  };
-
-  const handleEmailChange = (value: string) => {
-    setFormData({ ...formData, email: value });
-    if (value && !validateEmail(value)) {
-      setErrors((prev) => ({ ...prev, email: "Please enter a valid email" }));
-    } else {
-      setErrors((prev) => ({ ...prev, email: "" }));
-    }
-  };
-
-  const handlePhoneChange = (value: string) => {
-    // Format phone as user types
-    const digitsOnly = value.replace(/\D/g, "");
-    let formatted = digitsOnly;
-    if (digitsOnly.length >= 6) {
-      formatted = `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6, 10)}`;
-    } else if (digitsOnly.length >= 3) {
-      formatted = `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3)}`;
-    }
-    setFormData({ ...formData, phone: formatted });
-    
-    if (digitsOnly.length > 0 && !validatePhone(digitsOnly)) {
-      setErrors((prev) => ({ ...prev, phone: "Enter 10 digit phone number" }));
-    } else {
-      setErrors((prev) => ({ ...prev, phone: "" }));
-    }
-  };
-
-  // Auto-advance when buyer type is selected
-  const handleBuyerTypeSelect = (value: string) => {
-    setFormData({ ...formData, buyerType: value });
-    setTimeout(() => setStep(2), 300);
-  };
-
-  // Auto-advance when agent status is selected
-  const handleAgentSelect = (value: string) => {
-    setFormData({ ...formData, hasAgent: value });
-    setTimeout(() => setStep(3), 300);
-  };
-
-  // Auto-advance when property type is selected
-  const handlePropertyTypeSelect = (value: string) => {
-    setFormData({ ...formData, propertyType: value });
-  };
-
-  // Auto-advance when price range is selected
-  const handlePriceRangeSelect = (value: string) => {
-    setFormData((prev) => ({ ...prev, priceRange: value }));
-    setTimeout(() => setStep(4), 300);
-  };
-
-  // Reset form when dialog closes
-  const handleDialogChange = (open: boolean) => {
-    setIsFormOpen(open);
-    if (!open) {
-      setTimeout(() => {
-        setStep(1);
-        setIsSuccess(false);
-      }, 300);
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Final validation before submit
-    const emailValid = validateEmail(formData.email);
-    const phoneValid = validatePhone(formData.phone);
-    
-    if (!emailValid) {
-      setErrors((prev) => ({ ...prev, email: "Please enter a valid email" }));
-    }
-    if (!phoneValid) {
-      setErrors((prev) => ({ ...prev, phone: "Enter 10 digit phone number" }));
-    }
-    
-    if (!emailValid || !phoneValid) {
-      toast({
-        title: "Please check your info",
-        description: "Email or phone number is not correct.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    setIsSubmitting(true);
-
-    try {
-      const params = new URLSearchParams(window.location.search);
-      
-      // Build clean URL with only UTM params
-      const utmParams = new URLSearchParams();
-      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"].forEach((key) => {
-        const value = params.get(key);
-        if (value) utmParams.set(key, value);
-      });
-      const landingPageUrl = `${window.location.origin}${window.location.pathname}${
-        utmParams.toString() ? `?${utmParams.toString()}` : ""
-      }`;
-
-      const { error } = await supabase.functions.invoke("capture-lead", {
-        body: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          buyerType: formData.buyerType,
-          hasAgent: formData.hasAgent,
-          budget: formData.priceRange || undefined,
-          timeline: formData.propertyType || undefined,
-          leadSource: "landing-page",
-          utmSource: params.get("utm_source") || undefined,
-          utmMedium: params.get("utm_medium") || undefined,
-          utmCampaign: params.get("utm_campaign") || undefined,
-          utmTerm: params.get("utm_term") || undefined,
-          utmContent: params.get("utm_content") || undefined,
-          referrer: document.referrer || undefined,
-          landingPage: landingPageUrl,
-          zapierWebhookUrl: "https://hooks.zapier.com/hooks/catch/11244776/uwxiv7d/",
-        },
-      });
-
-      if (error) throw error;
-
-      setIsSuccess(true);
-      toast({
-        title: "You're all set!",
-        description: "We'll be in touch within 24 hours.",
-      });
-    } catch (error) {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again or call us directly.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const benefits = [
     {
       icon: Shield,
@@ -251,13 +69,56 @@ const LandingPage = () => {
     },
   ];
 
+  // Rotating testimonial for booking section
+  const bookingTestimonials = [
+    {
+      quote: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free.",
+      name: "Anish",
+      type: "First-Time Buyer",
+      photo: anishPhoto,
+    },
+    {
+      quote: "Uzair helped me with my investment property and made sure I got the best deal. He's straightforward and knows the market.",
+      name: "Baldeep",
+      type: "Investor",
+      photo: baldeepPhoto,
+    },
+    {
+      quote: "Now I see why he's called the presale expert. His transparency and guidance helped our family find our first home.",
+      name: "Ray",
+      type: "First-Time Buyer",
+      photo: rayPhoto,
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % bookingTestimonials.length);
+        setIsAnimating(false);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentTestimonial = bookingTestimonials[currentIndex];
+
+  const scrollToBooking = () => {
+    document.getElementById("book-section")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <Helmet>
-        <title>Free Presale Strategy Session | Uzair Presales</title>
+        <title>Book A Call With Uzair | BC's Presale Expert</title>
         <meta
           name="description"
-          content="Book your free presale strategy session. Get expert guidance on Vancouver presale condos from BC's #1 presale specialist."
+          content="Book a call with Uzair, BC's trusted presale expert. Get guidance on Vancouver presale condos and townhomes."
         />
       </Helmet>
 
@@ -326,14 +187,13 @@ const LandingPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-col items-center gap-3"
             >
-              <Button
-                size="lg"
-                onClick={() => setIsFormOpen(true)}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl px-10 py-7 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+              <button
+                onClick={scrollToBooking}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl px-10 py-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all font-semibold"
               >
-                <Phone className="mr-2 w-5 h-5" /> {content.ctaPrimary}
-              </Button>
-              <span className="text-primary text-sm font-medium">⚡ Same day call back</span>
+                Book A Call ↓
+              </button>
+              <span className="text-primary text-sm font-medium">⚡ Limited weekly availability</span>
             </motion.div>
 
             <motion.div
@@ -387,12 +247,12 @@ const LandingPage = () => {
         <section className="px-4 py-16">
           <div className="max-w-6xl mx-auto">
             <h2
-              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-2"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
               Happy Clients 💬
             </h2>
-            <p className="text-slate-400 text-lg mt-2">from social media</p>
+            <p className="text-slate-400 text-center text-lg mb-12">from social media</p>
 
             <div className="grid md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
@@ -436,7 +296,7 @@ const LandingPage = () => {
 
             <div className="space-y-8">
               {[
-                { step: "1", title: "Request A Call", description: "Fill the form. Takes 30 seconds." },
+                { step: "1", title: "Book A Call", description: "Pick a time that works for you." },
                 { step: "2", title: "You Talk", description: "Uzair calls you. Discuss your needs." },
                 { step: "3", title: "Find Your Home", description: "He helps you get the best deal." },
               ].map((item, index) => (
@@ -461,25 +321,120 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Final CTA Section */}
-        <section className="px-4 py-20 bg-gradient-to-b from-slate-900 to-slate-950">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-5xl font-bold text-white mb-6"
-              style={{ fontFamily: "Raleway, sans-serif" }}
-            >
-              Ready To Talk? 🏠
-            </h2>
-            <p className="text-xl text-slate-300 mb-10">
-              Free call. No pressure. Uzair's here to help.
-            </p>
-            <Button
-              size="lg"
-              onClick={() => setIsFormOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-xl px-10 py-7 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
-            >
-              <Phone className="mr-2 w-5 h-5" /> {content.ctaSecondary}
-            </Button>
+        {/* Booking Section with Calendly */}
+        <section id="book-section" className="px-4 py-16 sm:py-24 relative overflow-hidden">
+          {/* Colorful bokeh effects */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-cyan-500/20 blur-3xl" />
+            <div className="absolute bottom-40 right-[10%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-pink-500/20 blur-3xl" />
+            <div className="absolute top-1/3 right-[5%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-purple-500/15 blur-3xl" />
+          </div>
+
+          <div className="max-w-6xl mx-auto relative z-10">
+            {/* Rotating Testimonial Quotes */}
+            <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
+              <div className="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-white/10 p-6 sm:p-8 min-h-[200px] sm:min-h-[220px]">
+                <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
+                <blockquote 
+                  className={`relative z-10 text-center transition-opacity duration-300 ${isAnimating ? 'opacity-0' : 'opacity-100'}`}
+                >
+                  {/* Client Photo */}
+                  <div className="flex justify-center mb-4">
+                    <img 
+                      src={currentTestimonial.photo} 
+                      alt={currentTestimonial.name}
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary/30"
+                    />
+                  </div>
+                  <p className="text-base sm:text-lg lg:text-xl text-slate-300 italic leading-relaxed">
+                    "{currentTestimonial.quote}"
+                  </p>
+                  <footer className="mt-4 sm:mt-6">
+                    <p className="text-sm sm:text-base font-semibold text-white">{currentTestimonial.name}</p>
+                    <p className="text-xs sm:text-sm text-slate-400">{currentTestimonial.type}</p>
+                  </footer>
+                </blockquote>
+                
+                {/* Dots indicator */}
+                <div className="flex justify-center gap-2 mt-4 sm:mt-6">
+                  {bookingTestimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setIsAnimating(true);
+                        setTimeout(() => {
+                          setCurrentIndex(index);
+                          setIsAnimating(false);
+                        }, 300);
+                      }}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentIndex 
+                          ? 'bg-primary w-6' 
+                          : 'bg-slate-600 hover:bg-slate-500'
+                      }`}
+                      aria-label={`View testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Header */}
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 
+                className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white uppercase tracking-tight"
+                style={{ fontFamily: "Raleway, sans-serif" }}
+              >
+                Book a <span className="text-primary">Discovery Call</span>
+              </h2>
+              <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto">
+                A quick conversation to understand your goals and see if we're a good fit.
+              </p>
+              <p className="mt-3 text-xs sm:text-sm text-slate-400">
+                Available in <span className="text-primary font-medium">English</span>, <span className="text-primary font-medium">Punjabi</span>, <span className="text-primary font-medium">Hindi</span> & <span className="text-primary font-medium">Urdu</span>
+              </p>
+            </div>
+
+            {/* Mobile: Calendar only */}
+            <div className="lg:hidden space-y-4">
+              {/* Calendly Calendar - Full viewport height on mobile */}
+              <div className="rounded-xl overflow-hidden border border-white/10 bg-slate-900 h-[calc(100vh-120px)] min-h-[500px]">
+                <iframe
+                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f172a&text_color=fafafa&primary_color=0fd9e8"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title="Schedule a meeting with Uzair"
+                  style={{ border: 'none' }}
+                />
+              </div>
+              
+              <div className="text-center">
+                <p className="text-xs text-slate-500">
+                  Limited weekly availability. Serious inquiries only.
+                </p>
+              </div>
+            </div>
+
+            {/* Desktop: Full-width calendar */}
+            <div className="hidden lg:block">
+              <div className="w-full rounded-xl overflow-hidden border border-white/10 bg-slate-900 h-[750px]">
+                <iframe
+                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f172a&text_color=fafafa&primary_color=0fd9e8"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title="Schedule a meeting with Uzair"
+                  style={{ border: 'none' }}
+                />
+              </div>
+              
+              <div className="text-center mt-4">
+                <p className="text-sm text-slate-500">
+                  Limited weekly availability. Serious inquiries only.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -490,323 +445,6 @@ const LandingPage = () => {
           </p>
         </footer>
       </div>
-
-      <Dialog open={isFormOpen} onOpenChange={handleDialogChange}>
-        <DialogContent className="sm:max-w-md bg-slate-900 border-white/10 overflow-hidden">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold text-white text-center">
-              {isSuccess ? "You're All Set! 🎉" : "Request A Callback"}
-            </DialogTitle>
-            {!isSuccess && (
-              <p className="text-slate-400 text-center text-sm mt-1">Available in English, Punjabi, Urdu & Hindi</p>
-            )}
-          </DialogHeader>
-
-          {isSuccess ? (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="text-center py-6"
-            >
-              <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <p className="text-slate-300 mb-2">
-                We'll call you back same day!
-              </p>
-              <p className="text-slate-400 text-sm mb-6">
-                In the meantime, explore what we can do for you.
-              </p>
-              <div className="flex flex-col gap-3">
-                <Button 
-                  onClick={() => window.location.href = "/"}
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-5 rounded-full"
-                >
-                  Visit Our Website <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button 
-                  onClick={() => handleDialogChange(false)} 
-                  variant="ghost" 
-                  className="text-slate-400 hover:text-white hover:bg-white/5"
-                >
-                  Close
-                </Button>
-              </div>
-            </motion.div>
-          ) : (
-            <div className="pt-2 min-h-[320px]">
-              {/* Progress indicator */}
-              <div className="flex justify-center gap-2 mb-6">
-                {[1, 2, 3, 4].map((s) => (
-                  <motion.div
-                    key={s}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      s <= step ? "bg-primary w-8" : "bg-slate-700 w-4"
-                    }`}
-                    animate={{ width: s <= step ? 32 : 16 }}
-                  />
-                ))}
-              </div>
-
-              {/* Step 1: Buyer Type */}
-              <motion.div
-                initial={false}
-                animate={{ 
-                  opacity: step === 1 ? 1 : 0,
-                  x: step === 1 ? 0 : -20,
-                  display: step === 1 ? "block" : "none"
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <p className="text-white text-lg font-medium text-center mb-4">I am a... 👋</p>
-                <div className="flex flex-col gap-3">
-                  {[
-                    { value: "first-time-buyer", label: "🏠 First-Time Buyer" },
-                    { value: "investor", label: "📈 Investor" },
-                    { value: "assignment-seller", label: "💰 Selling My Presale" },
-                  ].map((option) => (
-                    <motion.button
-                      key={option.value}
-                      type="button"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => handleBuyerTypeSelect(option.value)}
-                      className={`p-4 rounded-xl border text-left transition-all ${
-                        formData.buyerType === option.value
-                          ? "bg-primary/20 border-primary text-white"
-                          : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
-                      }`}
-                    >
-                      {option.label}
-                    </motion.button>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* Step 2: Agent Status */}
-              <motion.div
-                initial={false}
-                animate={{ 
-                  opacity: step === 2 ? 1 : 0,
-                  x: step === 2 ? 0 : step < 2 ? 20 : -20,
-                  display: step === 2 ? "block" : "none"
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <p className="text-white text-lg font-medium text-center mb-4">Do you have a realtor?</p>
-                <div className="flex flex-col gap-3">
-                  {[
-                    { value: "no", label: "❌ No" },
-                    { value: "yes", label: "✅ Yes" },
-                  ].map((option) => (
-                    <motion.button
-                      key={option.value}
-                      type="button"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => handleAgentSelect(option.value)}
-                      className={`p-4 rounded-xl border text-left transition-all ${
-                        formData.hasAgent === option.value
-                          ? "bg-primary/20 border-primary text-white"
-                          : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
-                      }`}
-                    >
-                      {option.label}
-                    </motion.button>
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="mt-4 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
-                >
-                  ← Back
-                </button>
-              </motion.div>
-
-              {/* Step 3: Property Type & Price Range */}
-              <motion.div
-                initial={false}
-                animate={{ 
-                  opacity: step === 3 ? 1 : 0,
-                  x: step === 3 ? 0 : step < 3 ? 20 : -20,
-                  display: step === 3 ? "block" : "none"
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <p className="text-white text-lg font-medium text-center mb-4">What do you want? 🏢</p>
-                
-                {/* Property Type */}
-                <div className="mb-4">
-                  <p className="text-slate-400 text-sm mb-2">Type</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { value: "condo", label: "🏢 Condo" },
-                      { value: "townhome", label: "🏘️ Townhome" },
-                    ].map((option) => (
-                      <motion.button
-                        key={option.value}
-                        type="button"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => handlePropertyTypeSelect(option.value)}
-                        className={`p-4 rounded-xl border text-center transition-all ${
-                          formData.propertyType === option.value
-                            ? "bg-primary/20 border-primary text-white"
-                            : "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
-                        }`}
-                      >
-                        {option.label}
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Price Range */}
-                <div>
-                  <p className="text-slate-400 text-sm mb-2">Budget 💵</p>
-                  <div className="flex flex-col gap-2">
-                    {[
-                      { value: "under-500k", label: "Under $500K" },
-                      { value: "500k-750k", label: "$500K - $750K" },
-                      { value: "750k-1m", label: "$750K - $1M" },
-                      { value: "1m-plus", label: "$1M+" },
-                    ].map((option) => (
-                      <motion.button
-                        key={option.value}
-                        type="button"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => {
-                          if (formData.propertyType) {
-                            handlePriceRangeSelect(option.value);
-                          }
-                        }}
-                        disabled={!formData.propertyType}
-                        className={`p-3 rounded-xl border text-left transition-all ${
-                          formData.priceRange === option.value
-                            ? "bg-primary/20 border-primary text-white"
-                            : formData.propertyType
-                              ? "bg-slate-800/50 border-white/10 text-slate-300 hover:border-white/30"
-                              : "bg-slate-800/30 border-white/5 text-slate-500 cursor-not-allowed"
-                        }`}
-                      >
-                        {option.label}
-                      </motion.button>
-                    ))}
-                  </div>
-                  {!formData.propertyType && (
-                    <p className="text-slate-500 text-xs mt-2 text-center">Select a property type first</p>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setStep(2)}
-                  className="mt-4 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
-                >
-                  ← Back
-                </button>
-              </motion.div>
-
-              {/* Step 4: Contact Info */}
-              <motion.div
-                initial={false}
-                animate={{ 
-                  opacity: step === 4 ? 1 : 0,
-                  x: step === 4 ? 0 : 20,
-                  display: step === 4 ? "block" : "none"
-                }}
-                transition={{ duration: 0.2 }}
-              >
-                <p className="text-white text-lg font-medium text-center mb-4">Your Info 📞</p>
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
-                    <Input
-                      required
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      placeholder="First name"
-                      autoComplete="given-name"
-                      className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
-                    />
-                    <Input
-                      required
-                      value={formData.lastName}
-                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                      placeholder="Last name"
-                      autoComplete="family-name"
-                      className="bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => handleEmailChange(e.target.value)}
-                      placeholder="Email address"
-                      autoComplete="email"
-                      className={`bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12 ${
-                        errors.email ? "border-red-500 focus-visible:ring-red-500" : ""
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="text-red-400 text-xs mt-1">⚠️ {errors.email}</p>
-                    )}
-                  </div>
-                  <div>
-                    <Input
-                      type="tel"
-                      required
-                      value={formData.phone}
-                      onChange={(e) => handlePhoneChange(e.target.value)}
-                      placeholder="(604) 555-1234"
-                      autoComplete="tel"
-                      className={`bg-slate-800 border-white/10 text-white placeholder:text-slate-500 h-12 ${
-                        errors.phone ? "border-red-500 focus-visible:ring-red-500" : ""
-                      }`}
-                    />
-                    {errors.phone && (
-                      <p className="text-red-400 text-xs mt-1">⚠️ {errors.phone}</p>
-                    )}
-                  </div>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 rounded-full text-lg shadow-lg shadow-primary/25 mt-2"
-                  >
-                    {isSubmitting ? (
-                      <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex items-center gap-2"
-                      >
-                        <motion.div 
-                          animate={{ rotate: 360 }}
-                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                          className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
-                        />
-                        Submitting...
-                      </motion.span>
-                    ) : (
-                      <>Request A Callback</>
-                    )}
-                  </Button>
-                  <p className="text-xs text-slate-500 text-center">
-                    No spam. We respect your privacy.
-                  </p>
-                </form>
-                <button
-                  type="button"
-                  onClick={() => setStep(3)}
-                  className="mt-2 text-slate-500 text-sm hover:text-slate-300 transition-colors w-full text-center"
-                >
-                  ← Back
-                </button>
-              </motion.div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </>
   );
 };

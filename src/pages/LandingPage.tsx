@@ -19,9 +19,9 @@ import rayPhoto from "@/assets/testimonials/ray.jpg";
 
 // Landing Page Content
 const content = {
-  headline: "Buy Smarter.",
-  headlineAccent: "Not Harder.",
-  subheadline: "Expert presale advice for condo & townhome buyers.",
+  headline: "Work With",
+  headlineAccent: "Uzair.",
+  subheadline: "BC's trusted presale expert for condo & townhome buyers.",
   ctaPrimary: "Get A Free Call",
   ctaSecondary: "Get A Free Call",
 };
@@ -192,7 +192,7 @@ const LandingPage = () => {
     {
       icon: Shield,
       title: "Save Money",
-      description: "I help you avoid bad deals. 330+ presales reviewed.",
+      description: "Uzair helps you avoid bad deals. 330+ presales reviewed.",
     },
     {
       icon: TrendingUp,
@@ -344,10 +344,10 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-4"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Why Choose Me?
+              Why Work With Uzair?
             </h2>
             <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-              I speak your language. I understand your needs.
+              He speaks your language. He understands your needs.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -425,8 +425,8 @@ const LandingPage = () => {
             <div className="space-y-8">
               {[
                 { step: "1", title: "Request A Call", description: "Fill the form. Takes 30 seconds." },
-                { step: "2", title: "We Talk", description: "I call you. We discuss your needs." },
-                { step: "3", title: "Find Your Home", description: "I help you get the best deal." },
+                { step: "2", title: "You Talk", description: "Uzair calls you. Discuss your needs." },
+                { step: "3", title: "Find Your Home", description: "He helps you get the best deal." },
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
@@ -456,10 +456,10 @@ const LandingPage = () => {
               className="text-3xl md:text-5xl font-bold text-white mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Ready? Let's Talk! 🏠
+              Ready To Talk? 🏠
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Free call. No pressure. I'm here to help.
+              Free call. No pressure. Uzair's here to help.
             </p>
             <Button
               size="lg"

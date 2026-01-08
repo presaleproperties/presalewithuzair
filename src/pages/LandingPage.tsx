@@ -148,6 +148,7 @@ const LandingPage = () => {
     setIsSubmitting(true);
 
     try {
+      const params = new URLSearchParams(window.location.search);
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
           firstName: formData.firstName,
@@ -156,11 +157,16 @@ const LandingPage = () => {
           phone: formData.phone,
           buyerType: formData.buyerType,
           hasAgent: formData.hasAgent,
-          budget: `${formData.propertyType} - ${formData.priceRange}`,
+          budget: formData.priceRange || undefined,
+          timeline: formData.propertyType || undefined,
           leadSource: "landing-page",
-          utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
-          utmMedium: new URLSearchParams(window.location.search).get("utm_medium") || undefined,
-          utmCampaign: new URLSearchParams(window.location.search).get("utm_campaign") || undefined,
+          utmSource: params.get("utm_source") || undefined,
+          utmMedium: params.get("utm_medium") || undefined,
+          utmCampaign: params.get("utm_campaign") || undefined,
+          utmTerm: params.get("utm_term") || undefined,
+          utmContent: params.get("utm_content") || undefined,
+          referrer: document.referrer || undefined,
+          landingPage: window.location.pathname + window.location.search,
         },
       });
 

@@ -398,9 +398,9 @@ const LandingPage = () => {
             {/* Mobile: Calendar only */}
             <div className="lg:hidden space-y-4">
               {/* Calendly Calendar - Full viewport height on mobile */}
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-slate-900 h-[calc(100vh-120px)] min-h-[500px]">
+              <div className="rounded-xl overflow-hidden border border-white/10 bg-slate-950 h-[calc(100vh-120px)] min-h-[500px]">
                 <iframe
-                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f172a&text_color=fafafa&primary_color=0fd9e8"
+                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=020617&text_color=fafafa&primary_color=0fd9e8"
                   width="100%"
                   height="100%"
                   frameBorder="0"
@@ -418,9 +418,9 @@ const LandingPage = () => {
 
             {/* Desktop: Full-width calendar */}
             <div className="hidden lg:block">
-              <div className="w-full rounded-xl overflow-hidden border border-white/10 bg-slate-900 h-[750px]">
+              <div className="w-full rounded-xl overflow-hidden border border-white/10 bg-slate-950 h-[750px]">
                 <iframe
-                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f172a&text_color=fafafa&primary_color=0fd9e8"
+                  src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=020617&text_color=fafafa&primary_color=0fd9e8"
                   width="100%"
                   height="100%"
                   frameBorder="0"

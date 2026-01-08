@@ -19,9 +19,9 @@ import rayPhoto from "@/assets/testimonials/ray.jpg";
 
 // Landing Page Content
 const content = {
-  headline: "New Home?",
-  headlineAccent: "I Can Help.",
-  subheadline: "Free expert advice. No pressure.",
+  headline: "Buy Smarter.",
+  headlineAccent: "Not Harder.",
+  subheadline: "Expert presale advice for condo & townhome buyers.",
   ctaPrimary: "Get A Free Call",
   ctaSecondary: "Get A Free Call",
 };

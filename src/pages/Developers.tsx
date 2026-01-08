@@ -158,19 +158,62 @@ const Developers = () => {
           </div>
         </section>
 
-        {/* Credibility Strip */}
-        <section className="py-8 md:py-10 bg-card border-y border-border">
+        {/* Trust Stats Section */}
+        <section className="py-16 md:py-20 lg:py-24 bg-card border-y border-border">
           <div className="container-xl px-4 sm:px-6">
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 md:gap-x-12">
-              {credibilityPoints.map((point, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span className="text-sm text-muted-foreground">{point}</span>
+            <div className="text-center mb-10 md:mb-14">
+              <p className="section-label mb-3">TRACK RECORD</p>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
+                SOLD OVER <span className="text-gradient">300+ PRESALE UNITS</span> SINCE 2022
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+              {/* Stat 1 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative bg-background rounded-2xl border border-border p-6 md:p-8 text-center hover:border-primary/30 transition-all duration-300">
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gradient mb-3">
+                    200+
+                  </div>
+                  <p className="text-lg font-semibold text-foreground mb-2">Units Closed</p>
+                  <p className="text-sm text-muted-foreground">Direct presale transactions completed for buyers and investors</p>
                 </div>
-              ))}
+              </div>
+              
+              {/* Stat 2 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative bg-background rounded-2xl border border-border p-6 md:p-8 text-center hover:border-primary/30 transition-all duration-300">
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gradient mb-3">
+                    100+
+                  </div>
+                  <p className="text-lg font-semibold text-foreground mb-2">Agents Educated</p>
+                  <p className="text-sm text-muted-foreground">Real estate professionals trained on presale strategy and execution</p>
+                </div>
+              </div>
+              
+              {/* Stat 3 */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative bg-background rounded-2xl border border-border p-6 md:p-8 text-center hover:border-primary/30 transition-all duration-300">
+                  <div className="flex justify-center mb-3">
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                        <path d="M2 17l10 5 10-5" />
+                        <path d="M2 12l10 5 10-5" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-lg font-semibold text-foreground mb-2">Expo Founder</p>
+                  <p className="text-sm text-muted-foreground">Founded the Vancouver Presale Expo — BC's premier presale event</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
 
         {/* Why Developers Work With Me */}
         <section id="why-developers" className="py-16 md:py-24 lg:py-32 bg-background">

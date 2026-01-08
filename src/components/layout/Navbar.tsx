@@ -8,6 +8,8 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Uzair" },
   { href: "/services", label: "Services" },
+  { href: "/developers", label: "Developers" },
+  { href: "/agents", label: "Agents" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];

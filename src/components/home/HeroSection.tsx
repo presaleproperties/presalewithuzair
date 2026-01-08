@@ -12,7 +12,7 @@ const heroContent = {
   headlineAccent: "WITH CLEAR",
   headlineAccent2: "GUIDANCE.",
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
-  supportingLine: "Independent, buyer-first guidance • No developer pressure",
+  supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Book a Discovery Call",
   microTrust: "Trusted by 300+ first-time buyers & investors • Focused on Metro Vancouver presales",
 };

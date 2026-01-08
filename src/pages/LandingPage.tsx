@@ -19,11 +19,11 @@ import rayPhoto from "@/assets/testimonials/ray.jpg";
 
 // Landing Page Content
 const content = {
-  headline: "Investing in Presale?",
-  headlineAccent: "Let's Strategize.",
-  subheadline: "Complimentary consultation. Data-driven guidance.",
-  ctaPrimary: "Schedule Your Call",
-  ctaSecondary: "Schedule Your Call",
+  headline: "New Home?",
+  headlineAccent: "I Can Help.",
+  subheadline: "Free expert advice. No pressure.",
+  ctaPrimary: "Get A Free Call",
+  ctaSecondary: "Get A Free Call",
 };
 
 const LandingPage = () => {
@@ -185,18 +185,18 @@ const LandingPage = () => {
   const benefits = [
     {
       icon: Shield,
-      title: "Risk Mitigation",
-      description: "330+ presale projects analyzed. I identify the pitfalls before you invest.",
+      title: "Save Money",
+      description: "I help you avoid bad deals. 330+ presales reviewed.",
     },
     {
       icon: TrendingUp,
-      title: "Priority Access",
-      description: "Secure premium units before public release through developer relationships.",
+      title: "Best Units First",
+      description: "Get early access before public launch.",
     },
     {
       icon: Users,
-      title: "Community Trust",
-      description: "Advisor to 100+ South Asian families across Metro Vancouver.",
+      title: "Trusted by Families",
+      description: "100+ South Asian families helped.",
     },
   ];
 
@@ -315,7 +315,7 @@ const LandingPage = () => {
               >
                 <Phone className="mr-2 w-5 h-5" /> {content.ctaPrimary}
               </Button>
-              <span className="text-primary text-sm font-medium">⚡ Response within 24 hours</span>
+              <span className="text-primary text-sm font-medium">⚡ Same day call back</span>
             </motion.div>
 
             <motion.div
@@ -324,9 +324,9 @@ const LandingPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-8 flex flex-wrap justify-center gap-4 text-slate-400 text-sm"
             >
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 330+ Presales Advised</span>
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ $1M+ Client Savings</span>
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ Complimentary Consultation</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 330+ Families Helped</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ $1M+ Saved</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 100% Free Advice</span>
             </motion.div>
           </div>
         </section>
@@ -338,10 +338,10 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-4"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Why Work With Me?
+              Why Choose Me?
             </h2>
             <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-              Fluent in your language. Aligned with your financial goals.
+              I speak your language. I understand your needs.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -369,12 +369,12 @@ const LandingPage = () => {
         <section className="px-4 py-16">
           <div className="max-w-6xl mx-auto">
             <h2
-              className="text-3xl md:text-4xl font-bold text-center text-white mb-2"
+              className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Client Testimonials
+              Happy Clients 💬
             </h2>
-            <p className="text-slate-400 text-center mb-12">Real feedback from our community</p>
+            <p className="text-slate-400 text-lg mt-2">from social media</p>
 
             <div className="grid md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
@@ -413,14 +413,14 @@ const LandingPage = () => {
               className="text-3xl md:text-4xl font-bold text-center text-white mb-12"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              How It Works
+              3 Easy Steps
             </h2>
 
             <div className="space-y-8">
               {[
-                { step: "1", title: "Request a Consultation", description: "Complete the brief intake form—takes under a minute." },
-                { step: "2", title: "Strategy Session", description: "We discuss your goals, timeline, and investment criteria." },
-                { step: "3", title: "Secure Your Property", description: "I guide you to the right opportunity with full transparency." },
+                { step: "1", title: "Request A Call", description: "Fill the form. Takes 30 seconds." },
+                { step: "2", title: "We Talk", description: "I call you. We discuss your needs." },
+                { step: "3", title: "Find Your Home", description: "I help you get the best deal." },
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
@@ -450,10 +450,10 @@ const LandingPage = () => {
               className="text-3xl md:text-5xl font-bold text-white mb-6"
               style={{ fontFamily: "Raleway, sans-serif" }}
             >
-              Ready to Make an Informed Decision?
+              Ready? Let's Talk! 🏠
             </h2>
             <p className="text-xl text-slate-300 mb-10">
-              Complimentary consultation. No obligation. Expert guidance.
+              Free call. No pressure. I'm here to help.
             </p>
             <Button
               size="lg"
@@ -477,7 +477,7 @@ const LandingPage = () => {
         <DialogContent className="sm:max-w-md bg-slate-900 border-white/10 overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-white text-center">
-              {isSuccess ? "Request Confirmed ✓" : "Schedule Your Consultation"}
+              {isSuccess ? "You're All Set! 🎉" : "Request A Callback"}
             </DialogTitle>
             {!isSuccess && (
               <p className="text-slate-400 text-center text-sm mt-1">Available in English, Punjabi, Urdu & Hindi</p>
@@ -492,10 +492,10 @@ const LandingPage = () => {
             >
               <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
               <p className="text-slate-300 mb-2">
-                You'll hear from us within 24 hours.
+                We'll call you back same day!
               </p>
               <p className="text-slate-400 text-sm mb-6">
-                In the meantime, explore our resources and insights.
+                In the meantime, explore what we can do for you.
               </p>
               <div className="flex flex-col gap-3">
                 <Button 
@@ -538,12 +538,12 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">What best describes you?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">I am a... 👋</p>
                 <div className="flex flex-col gap-3">
                   {[
-                    { value: "first-time-buyer", label: "🏠 First-Time Homebuyer" },
-                    { value: "investor", label: "📈 Real Estate Investor" },
-                    { value: "assignment-seller", label: "💰 Assignment Sale" },
+                    { value: "first-time-buyer", label: "🏠 First-Time Buyer" },
+                    { value: "investor", label: "📈 Investor" },
+                    { value: "assignment-seller", label: "💰 Selling My Presale" },
                   ].map((option) => (
                     <motion.button
                       key={option.value}
@@ -573,7 +573,7 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">Are you currently working with an agent?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">Do you have a realtor?</p>
                 <div className="flex flex-col gap-3">
                   {[
                     { value: "no", label: "❌ No" },
@@ -614,11 +614,11 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">What are you looking for?</p>
+                <p className="text-white text-lg font-medium text-center mb-4">What do you want? 🏢</p>
                 
                 {/* Property Type */}
                 <div className="mb-4">
-                  <p className="text-slate-400 text-sm mb-2">Property Type</p>
+                  <p className="text-slate-400 text-sm mb-2">Type</p>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { value: "condo", label: "🏢 Condo" },
@@ -644,7 +644,7 @@ const LandingPage = () => {
 
                 {/* Price Range */}
                 <div>
-                  <p className="text-slate-400 text-sm mb-2">Investment Range</p>
+                  <p className="text-slate-400 text-sm mb-2">Budget 💵</p>
                   <div className="flex flex-col gap-2">
                     {[
                       { value: "under-500k", label: "Under $500K" },
@@ -699,7 +699,7 @@ const LandingPage = () => {
                 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="text-white text-lg font-medium text-center mb-4">Your Contact Information</p>
+                <p className="text-white text-lg font-medium text-center mb-4">Your Info 📞</p>
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <Input
@@ -770,11 +770,11 @@ const LandingPage = () => {
                         Submitting...
                       </motion.span>
                     ) : (
-                      <>Request Consultation</>
+                      <>Request A Callback</>
                     )}
                   </Button>
                   <p className="text-xs text-slate-500 text-center">
-                    Your information is kept confidential.
+                    No spam. We respect your privacy.
                   </p>
                 </form>
                 <button

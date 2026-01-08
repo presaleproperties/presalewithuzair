@@ -149,6 +149,12 @@ const LandingPage = () => {
 
     try {
       const params = new URLSearchParams(window.location.search);
+      // Remove preview/session params so Zapier/CRM stores a clean URL
+      params.delete("__lovable_token");
+      const landingPageUrl = `${window.location.origin}${window.location.pathname}${
+        params.toString() ? `?${params.toString()}` : ""
+      }`;
+
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
           firstName: formData.firstName,
@@ -166,7 +172,7 @@ const LandingPage = () => {
           utmTerm: params.get("utm_term") || undefined,
           utmContent: params.get("utm_content") || undefined,
           referrer: document.referrer || undefined,
-          landingPage: window.location.pathname + window.location.search,
+          landingPage: landingPageUrl,
           zapierWebhookUrl: "https://hooks.zapier.com/hooks/catch/11244776/uwxiv7d/",
         },
       });

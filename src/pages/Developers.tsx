@@ -4,7 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle } from "lucide-react";
 import { useCalendly } from "@/hooks/useCalendly";
-import uzairFloorplanConsultation from "@/assets/uzair-floorplan-consultation.jpg";
+import uzairExpoSpeaking from "@/assets/uzair-expo-speaking.jpg";
+import uzairExpoCrowd from "@/assets/uzair-expo-crowd.jpg";
 
 const advisoryAreas = [
   {
@@ -257,15 +258,24 @@ const Developers = () => {
                 </div>
               </div>
               
-              <div className="relative">
+              <div className="relative space-y-4">
                 <div className="absolute -top-4 -right-4 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
                 <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-accent/10 rounded-full blur-2xl" />
                 
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img 
-                    src={uzairFloorplanConsultation} 
-                    alt="Uzair Muhammad reviewing floorplans with developers"
-                    className="w-full aspect-[4/3] object-cover"
+                    src={uzairExpoSpeaking} 
+                    alt="Uzair Muhammad speaking at Vancouver Presale Expo"
+                    className="w-full aspect-[16/9] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+                </div>
+                
+                <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                  <img 
+                    src={uzairExpoCrowd} 
+                    alt="Audience at Vancouver Presale Expo"
+                    className="w-full aspect-[16/9] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
                 </div>

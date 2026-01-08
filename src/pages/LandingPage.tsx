@@ -22,8 +22,8 @@ const content = {
   headline: "Work With",
   headlineAccent: "Uzair.",
   subheadline: "BC's trusted presale expert for condo & townhome buyers.",
-  ctaPrimary: "Request A Callback",
-  ctaSecondary: "Request A Callback",
+  ctaPrimary: "Book A Strategy Call",
+  ctaSecondary: "Book A Strategy Call",
 };
 
 const LandingPage = () => {

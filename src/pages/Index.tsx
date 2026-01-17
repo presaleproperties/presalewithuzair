@@ -17,13 +17,26 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Expert in Vancouver & Fraser Valley | Uzair Muhammad</title>
+        <title>Presale Expert Vancouver, Surrey, Burnaby & Fraser Valley | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Uzair Muhammad is Vancouver's premier presale advisor and strategist. Specializing in presale condos, assignments, and new construction. $200M+ in presales, 300+ units. Expert guidance for buyers and investors."
+          content="Uzair Muhammad is Vancouver's premier presale expert and realtor. Specializing in presale condos, assignments, and new construction across Vancouver, Surrey, Burnaby, Langley & Fraser Valley. $200M+ in presales, 300+ units."
         />
-        <meta name="keywords" content="presale expert Vancouver, presale advisor, presale strategist, presale consultant, presale assignments expert, presale condos Vancouver, new construction Vancouver, Fraser Valley presales, first-time buyer presale" />
+        <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://presalewithuzair.com" />
+        <meta property="og:title" content="Presale Expert Vancouver & Fraser Valley | Uzair Muhammad" />
+        <meta property="og:description" content="Vancouver's premier presale expert. Specializing in presale condos, assignments, and new construction. $200M+ in presales, 300+ units." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Presale Expert Vancouver | Uzair Muhammad" />
+        <meta name="twitter:description" content="Vancouver's premier presale expert. $200M+ in presales, 300+ units." />
+        
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -32,17 +45,76 @@ const Index = () => {
                 "@type": "Person",
                 "@id": "https://presalewithuzair.com/#person",
                 "name": "Uzair Muhammad",
-                "jobTitle": "Presale Expert & Strategist",
-                "description": "Vancouver's premier presale expert and strategist. $200M+ in presales, 300+ units. Specializing in presale condos and assignments for buyers and investors.",
+                "jobTitle": "Presale Expert & Real Estate Agent",
+                "description": "Vancouver's premier presale expert and realtor. $200M+ in presales, 300+ units. Specializing in presale condos and assignments for buyers and investors across Metro Vancouver and Fraser Valley.",
                 "url": "https://presalewithuzair.com",
+                "image": "https://presalewithuzair.com/og-image.jpg",
+                "telephone": "+1-778-231-3592",
+                "email": "info@meetuzair.com",
                 "sameAs": [
                   "https://www.instagram.com/presalewithuzair",
+                  "https://www.tiktok.com/@presalewithuzair",
+                  "https://www.youtube.com/@presalewithuzair",
                   "https://www.linkedin.com/in/uzairmuhammad"
                 ],
-                "knowsAbout": ["Presale Condos", "Presale Strategy", "Assignment Sales", "Developer Advisory", "Real Estate Investment", "New Construction"],
+                "knowsAbout": ["Presale Condos", "Presale Strategy", "Assignment Sales", "Developer Advisory", "Real Estate Investment", "New Construction", "Pre-Construction Condos"],
                 "worksFor": {
                   "@type": "RealEstateAgent",
                   "@id": "https://presalewithuzair.com/#business"
+                }
+              },
+              {
+                "@type": "LocalBusiness",
+                "@id": "https://presalewithuzair.com/#localbusiness",
+                "name": "Presale With Uzair",
+                "image": "https://presalewithuzair.com/og-image.jpg",
+                "description": "Vancouver's leading presale real estate service. Expert guidance on presale condos, assignments, and new construction investments.",
+                "url": "https://presalewithuzair.com",
+                "telephone": "+1-778-231-3592",
+                "email": "info@meetuzair.com",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "666 Burrard St, Suite 500",
+                  "addressLocality": "Vancouver",
+                  "addressRegion": "BC",
+                  "postalCode": "V6C 3P6",
+                  "addressCountry": "CA"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 49.2827,
+                  "longitude": -123.1207
+                },
+                "areaServed": [
+                  { "@type": "City", "name": "Vancouver", "sameAs": "https://en.wikipedia.org/wiki/Vancouver" },
+                  { "@type": "City", "name": "Burnaby", "sameAs": "https://en.wikipedia.org/wiki/Burnaby" },
+                  { "@type": "City", "name": "Surrey", "sameAs": "https://en.wikipedia.org/wiki/Surrey,_British_Columbia" },
+                  { "@type": "City", "name": "Langley", "sameAs": "https://en.wikipedia.org/wiki/Langley,_British_Columbia_(city)" },
+                  { "@type": "City", "name": "Coquitlam", "sameAs": "https://en.wikipedia.org/wiki/Coquitlam" },
+                  { "@type": "City", "name": "Richmond", "sameAs": "https://en.wikipedia.org/wiki/Richmond,_British_Columbia" },
+                  { "@type": "City", "name": "New Westminster", "sameAs": "https://en.wikipedia.org/wiki/New_Westminster" },
+                  { "@type": "City", "name": "Abbotsford", "sameAs": "https://en.wikipedia.org/wiki/Abbotsford,_British_Columbia" },
+                  { "@type": "City", "name": "Port Coquitlam" },
+                  { "@type": "City", "name": "Port Moody" },
+                  { "@type": "City", "name": "North Vancouver" },
+                  { "@type": "City", "name": "West Vancouver" },
+                  { "@type": "AdministrativeArea", "name": "Fraser Valley" },
+                  { "@type": "AdministrativeArea", "name": "Metro Vancouver" }
+                ],
+                "founder": { "@id": "https://presalewithuzair.com/#person" },
+                "priceRange": "$$",
+                "openingHoursSpecification": {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                  "opens": "09:00",
+                  "closes": "18:00"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "5",
+                  "reviewCount": "31",
+                  "bestRating": "5",
+                  "worstRating": "1"
                 }
               },
               {
@@ -52,10 +124,13 @@ const Index = () => {
                 "description": "Vancouver's leading presale advisory service. $200M+ in presales, 300+ units. Specializing in presale strategy and assignments across Metro Vancouver and Fraser Valley.",
                 "url": "https://presalewithuzair.com",
                 "email": "info@meetuzair.com",
+                "telephone": "+1-778-231-3592",
                 "address": {
                   "@type": "PostalAddress",
+                  "streetAddress": "666 Burrard St, Suite 500",
                   "addressLocality": "Vancouver",
                   "addressRegion": "BC",
+                  "postalCode": "V6C 3P6",
                   "addressCountry": "CA"
                 },
                 "areaServed": [
@@ -63,17 +138,28 @@ const Index = () => {
                   { "@type": "City", "name": "Burnaby" },
                   { "@type": "City", "name": "Surrey" },
                   { "@type": "City", "name": "Langley" },
-                  { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+                  { "@type": "City", "name": "Coquitlam" },
+                  { "@type": "City", "name": "Richmond" },
+                  { "@type": "City", "name": "New Westminster" },
+                  { "@type": "City", "name": "Abbotsford" },
+                  { "@type": "AdministrativeArea", "name": "Fraser Valley" },
+                  { "@type": "AdministrativeArea", "name": "Metro Vancouver" }
                 ],
                 "founder": { "@id": "https://presalewithuzair.com/#person" },
-                "priceRange": "$$$$"
+                "priceRange": "$$"
               },
               {
                 "@type": "WebSite",
                 "@id": "https://presalewithuzair.com/#website",
                 "url": "https://presalewithuzair.com",
                 "name": "Presale With Uzair",
-                "publisher": { "@id": "https://presalewithuzair.com/#person" }
+                "description": "Vancouver's premier presale real estate expert",
+                "publisher": { "@id": "https://presalewithuzair.com/#person" },
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://presalewithuzair.com/blog?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
               },
               {
                 "@type": "FAQPage",
@@ -100,6 +186,22 @@ const Index = () => {
                     "acceptedAnswer": {
                       "@type": "Answer",
                       "text": "An assignment sale is when the original buyer of a presale contract sells their purchase agreement to another buyer before the property is completed."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What areas does Uzair Muhammad serve?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Uzair serves all of Metro Vancouver and Fraser Valley, including Vancouver, Burnaby, Surrey, Langley, Coquitlam, Richmond, New Westminster, Abbotsford, Port Coquitlam, Port Moody, and North Vancouver."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How do I find the best presale condo in Vancouver?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Work with a presale specialist like Uzair who reviews developer track records, analyzes contracts for red flags, and identifies projects with genuine investment potential rather than marketing hype."
                     }
                   }
                 ]

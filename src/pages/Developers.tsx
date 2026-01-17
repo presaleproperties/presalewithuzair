@@ -72,26 +72,50 @@ const Developers = () => {
   return (
     <>
       <Helmet>
-        <title>Independent Developer Advisory | Presale Strategy & Consulting | Uzair Muhammad</title>
+        <title>Developer Advisory Vancouver | Presale Strategy & Consulting | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Independent strategic advisory for real estate developers. Pre-launch strategy, pricing guidance, and sales momentum — built from real buyer intelligence, not theory."
+          content="Independent strategic advisory for real estate developers in BC. Pre-launch strategy, pricing guidance, and sales momentum — built from real buyer intelligence."
         />
-        <meta name="keywords" content="developer advisory, presale consulting, condo launch strategy, real estate developer consultant, BC developer advisory, presale pricing strategy" />
+        <meta name="keywords" content="developer advisory Vancouver, presale consulting BC, condo launch strategy, real estate developer consultant, presale pricing strategy, developer sales advisory" />
         <link rel="canonical" href="https://presalewithuzair.com/developers" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://presalewithuzair.com/developers" />
+        <meta property="og:title" content="Developer Advisory | Presale Strategy Consulting" />
+        <meta property="og:description" content="Independent strategic advisory for real estate developers. Pre-launch strategy and sales momentum." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Developer Advisory | Uzair Muhammad" />
+        
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Service",
+            "@type": "ProfessionalService",
             "name": "Developer Advisory & Consulting",
             "provider": {
               "@type": "Person",
-              "name": "Uzair Muhammad"
+              "name": "Uzair Muhammad",
+              "url": "https://presalewithuzair.com"
             },
             "description": "Independent strategic advisory for real estate developers. Pre-launch strategy, pricing guidance, and ongoing sales advisory.",
-            "areaServed": {
-              "@type": "AdministrativeArea",
-              "name": "British Columbia"
+            "url": "https://presalewithuzair.com/developers",
+            "areaServed": [
+              { "@type": "AdministrativeArea", "name": "British Columbia" },
+              { "@type": "City", "name": "Vancouver" },
+              { "@type": "AdministrativeArea", "name": "Metro Vancouver" }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Developer Advisory Services",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Launch Strategy" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pricing & Release Strategy" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Launch & Sales Momentum" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ongoing Sales Advisory" } }
+              ]
             }
           })}
         </script>

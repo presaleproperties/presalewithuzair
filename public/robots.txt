@@ -13,4 +13,8 @@ Allow: /
 User-agent: *
 Allow: /
 
+# Dynamic sitemap with all blog posts
+Sitemap: https://ubbogklasownognviobh.supabase.co/functions/v1/generate-sitemap
+
+# Static sitemap fallback
 Sitemap: https://presalewithuzair.com/sitemap.xml

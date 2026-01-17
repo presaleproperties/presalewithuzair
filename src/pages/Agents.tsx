@@ -98,23 +98,45 @@ const Agents = () => {
         <title>Vancouver Presale Academy | Presale Training for Realtors | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Vancouver Presale Academy — the immersion program for real estate agents. Learn presale contracts, assignments, lead generation, and negotiation. Founded by Uzair Muhammad, $200M+ in presales."
+          content="Vancouver Presale Academy — the immersion program for real estate agents. Learn presale contracts, assignments, lead generation, and negotiation. Founded by Uzair Muhammad."
         />
-        <meta name="keywords" content="presale training for realtors, presale education BC, presale mentor for agents, Vancouver Presale Academy, presale course for agents, assignment training, presale certification" />
+        <meta name="keywords" content="presale training realtors, presale education BC, presale mentor agents, Vancouver Presale Academy, presale course agents, assignment training, real estate agent training Vancouver" />
         <link rel="canonical" href="https://presalewithuzair.com/agents" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://presalewithuzair.com/agents" />
+        <meta property="og:title" content="Vancouver Presale Academy | Agent Training" />
+        <meta property="og:description" content="The immersion program for real estate agents. Master presale contracts, assignments, and negotiation." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Vancouver Presale Academy" />
+        
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Vancouver Presale Academy",
             "description": "Presale immersion program for real estate agents in Vancouver. Learn contracts, assignments, lead generation, and negotiation strategies.",
+            "url": "https://presalewithuzair.com/agents",
             "provider": {
               "@type": "Person",
-              "name": "Uzair Muhammad"
+              "name": "Uzair Muhammad",
+              "url": "https://presalewithuzair.com"
             },
-            "areaServed": {
-              "@type": "AdministrativeArea",
-              "name": "British Columbia"
+            "areaServed": [
+              { "@type": "AdministrativeArea", "name": "British Columbia" },
+              { "@type": "City", "name": "Vancouver" }
+            ],
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "onsite",
+              "courseWorkload": "P2D",
+              "instructor": {
+                "@type": "Person",
+                "name": "Uzair Muhammad"
+              }
             }
           })}
         </script>

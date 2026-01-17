@@ -35,11 +35,50 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Vancouver Presale Expert | Real Estate Agent</title>
+        <title>About Uzair Muhammad | Vancouver Presale Expert & Realtor</title>
         <meta
           name="description"
-          content="Learn about Uzair Muhammad, Vancouver's top presale expert with $150M+ in sales. Specializing in presale condos, assignments, and investment strategies."
+          content="Learn about Uzair Muhammad, Vancouver's top presale expert with $200M+ in sales. Specializing in presale condos, assignments, and investment strategies across Metro Vancouver & Fraser Valley."
         />
+        <meta name="keywords" content="Uzair Muhammad realtor, Vancouver presale expert, presale specialist BC, top presale agent Vancouver, real estate advisor Vancouver" />
+        <link rel="canonical" href="https://presalewithuzair.com/about" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="profile" />
+        <meta property="og:url" content="https://presalewithuzair.com/about" />
+        <meta property="og:title" content="About Uzair Muhammad | Vancouver Presale Expert" />
+        <meta property="og:description" content="Vancouver's top presale expert with $200M+ in sales. Specializing in presale condos, assignments, and investment strategies." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Uzair Muhammad | Presale Expert" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Uzair Muhammad",
+              "jobTitle": "Presale Expert & Real Estate Agent",
+              "description": "Vancouver's premier presale expert with $200M+ in sales and 300+ units. Founder of Vancouver Presale Expo.",
+              "url": "https://presalewithuzair.com/about",
+              "image": "https://presalewithuzair.com/og-image.jpg",
+              "telephone": "+1-778-231-3592",
+              "email": "info@meetuzair.com",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Real Broker"
+              },
+              "knowsAbout": ["Presale Condos", "Assignment Sales", "Real Estate Investment", "New Construction"],
+              "sameAs": [
+                "https://www.instagram.com/presalewithuzair",
+                "https://www.tiktok.com/@presalewithuzair",
+                "https://www.linkedin.com/in/uzairmuhammad"
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

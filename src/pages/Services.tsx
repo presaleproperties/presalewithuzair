@@ -62,11 +62,72 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Services | Presale Guidance, Assignments & Resale | Uzair Muhammad</title>
+        <title>Presale Services Vancouver | Condos, Assignments & Advisory | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Get clear, buyer-first guidance on presale condos, assignment sales, and resale properties. Independent advice focused on education and protecting your interests."
+          content="Expert presale services in Vancouver: condo advisory, assignment sales support, and resale guidance. Buyer-first approach with contract review and developer analysis."
         />
+        <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver" />
+        <link rel="canonical" href="https://presalewithuzair.com/services" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://presalewithuzair.com/services" />
+        <meta property="og:title" content="Presale Services Vancouver | Uzair Muhammad" />
+        <meta property="og:description" content="Expert presale services: condo advisory, assignment sales, and resale guidance. Buyer-first approach." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Presale Services | Uzair Muhammad" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Real Estate Advisory",
+            "provider": {
+              "@type": "Person",
+              "name": "Uzair Muhammad",
+              "url": "https://presalewithuzair.com"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Vancouver" },
+              { "@type": "City", "name": "Surrey" },
+              { "@type": "City", "name": "Burnaby" },
+              { "@type": "AdministrativeArea", "name": "Fraser Valley" }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Presale Real Estate Services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Presale Condo Guidance",
+                    "description": "Expert advisory on presale condos including contract review, developer analysis, and red flag identification."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Assignment Sales Support",
+                    "description": "Guidance on selling presale contracts before completion, including valuation and developer approval."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Resale Property Advisory",
+                    "description": "Buyer-first guidance for resale property transactions."
+                  }
+                }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

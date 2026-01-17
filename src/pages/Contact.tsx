@@ -12,11 +12,44 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Uzair Muhammad | Vancouver Presale Guidance</title>
+        <title>Contact Uzair Muhammad | Vancouver Presale Expert | Book a Call</title>
         <meta
           name="description"
-          content="Have questions about presales? Get in touch with Uzair for honest, buyer-first guidance. No pressure, no sales pitch — just clear advice."
+          content="Contact Vancouver's top presale expert Uzair Muhammad. Get honest, buyer-first guidance on presale condos and assignments. Call, WhatsApp, or book a discovery call."
         />
+        <meta name="keywords" content="contact presale expert, Vancouver presale agent contact, book presale consultation, presale advisor Vancouver" />
+        <link rel="canonical" href="https://presalewithuzair.com/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://presalewithuzair.com/contact" />
+        <meta property="og:title" content="Contact Uzair Muhammad | Presale Expert" />
+        <meta property="og:description" content="Get in touch with Vancouver's top presale expert. No pressure, just clear advice." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Contact Uzair Muhammad" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "mainEntity": {
+              "@type": "Person",
+              "name": "Uzair Muhammad",
+              "telephone": "+1-778-231-3592",
+              "email": "info@meetuzair.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "666 Burrard St, Suite 500",
+                "addressLocality": "Vancouver",
+                "addressRegion": "BC",
+                "postalCode": "V6C 3P6",
+                "addressCountry": "CA"
+              }
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

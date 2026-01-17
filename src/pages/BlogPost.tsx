@@ -39,11 +39,61 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />;
   }
 
+  const articleStructuredData = post ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt || "",
+    "image": post.image_url || "https://presalewithuzair.com/og-image.jpg",
+    "datePublished": post.published_at,
+    "dateModified": post.published_at,
+    "author": {
+      "@type": "Person",
+      "name": "Uzair Muhammad",
+      "url": "https://presalewithuzair.com/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Presale With Uzair",
+      "url": "https://presalewithuzair.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://presalewithuzair.com/og-image.jpg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://presalewithuzair.com/blog/${slug}`
+    }
+  } : null;
+
   return (
     <>
       <Helmet>
-        <title>{post.title} | Uzair Muhammad</title>
+        <title>{post.title} | Presale Blog | Uzair Muhammad</title>
         <meta name="description" content={post.excerpt || ""} />
+        <meta name="keywords" content={`${post.title.toLowerCase().split(' ').slice(0, 5).join(', ')}, presale Vancouver, real estate tips`} />
+        <link rel="canonical" href={`https://presalewithuzair.com/blog/${slug}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://presalewithuzair.com/blog/${slug}`} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || ""} />
+        {post.image_url && <meta property="og:image" content={post.image_url} />}
+        <meta property="article:published_time" content={post.published_at || ""} />
+        <meta property="article:author" content="Uzair Muhammad" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt || ""} />
+        
+        {articleStructuredData && (
+          <script type="application/ld+json">
+            {JSON.stringify(articleStructuredData)}
+          </script>
+        )}
       </Helmet>
 
       <Navbar />

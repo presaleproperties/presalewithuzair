@@ -17,14 +17,48 @@ const Blog = () => {
     });
   };
 
+  const blogStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Presale With Uzair Blog",
+    "description": "Expert insights on presale condos, assignments, and real estate investment in Vancouver and Fraser Valley.",
+    "url": "https://presalewithuzair.com/blog",
+    "author": {
+      "@type": "Person",
+      "name": "Uzair Muhammad",
+      "url": "https://presalewithuzair.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Presale With Uzair",
+      "url": "https://presalewithuzair.com"
+    }
+  };
+
   return (
     <>
       <Helmet>
-        <title>Blog | Presale Insights & Real Estate Tips | Uzair Muhammad</title>
+        <title>Presale Blog Vancouver | Condo Investment Tips & Insights | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Expert insights on Vancouver presale condos, investment strategies, and real estate tips from Uzair Muhammad, Vancouver's top presale expert."
+          content="Expert insights on Vancouver presale condos, investment strategies, assignment sales, and real estate tips from Uzair Muhammad, Vancouver's top presale expert."
         />
+        <meta name="keywords" content="presale blog Vancouver, condo investment tips, presale condo advice, Vancouver real estate blog, assignment sale guide" />
+        <link rel="canonical" href="https://presalewithuzair.com/blog" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="blog" />
+        <meta property="og:url" content="https://presalewithuzair.com/blog" />
+        <meta property="og:title" content="Presale Blog | Investment Tips & Insights" />
+        <meta property="og:description" content="Expert insights on Vancouver presale condos and investment strategies." />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Presale Blog | Uzair Muhammad" />
+        
+        <script type="application/ld+json">
+          {JSON.stringify(blogStructuredData)}
+        </script>
       </Helmet>
 
       <Navbar />

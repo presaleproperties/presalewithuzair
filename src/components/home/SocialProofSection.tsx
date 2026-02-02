@@ -158,7 +158,7 @@ export const SocialProofSection = () => {
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground uppercase tracking-tight mb-3">
-            TRUSTED BY 300+ CLIENTS
+            TRUSTED BY 350+ CLIENTS
           </h2>
           <p className="text-primary font-semibold text-base sm:text-lg mb-4">
             Here's what they have to say.

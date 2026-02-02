@@ -219,8 +219,8 @@ const Agents = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground">Sold in Presales</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">300+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Units Sold</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">350+</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Clients Served</p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$26M+</p>
@@ -324,7 +324,7 @@ const Agents = () => {
                   As a leading Presale Expert in Vancouver, Uzair has achieved remarkable success — selling over $200M in presales as a solo agent.
                 </p>
                 <p className="text-sm sm:text-base text-foreground/80 mb-4 sm:mb-6">
-                  In less than 3 years, Uzair built his business from the ground up — selling 300+ units without a team, generating over $2M in GCI. The secret? His systems, processes, automations, and tailored marketing strategy.
+                  In less than 3 years, Uzair built his business from the ground up — serving 350+ clients without a team, generating over $2M in GCI. The secret? His systems, processes, automations, and tailored marketing strategy.
                 </p>
                 <p className="text-sm sm:text-base text-foreground/80 mb-6 sm:mb-8">
                   Vancouver Presale Academy is designed to empower fellow agents with the strategies and insights needed to excel in the lucrative presale market.

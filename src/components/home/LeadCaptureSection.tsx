@@ -362,7 +362,7 @@ export const LeadCaptureSection = () => {
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-5 pt-4 border-t border-border/30">
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <CheckCircle className="h-3.5 w-3.5 text-primary" />
-                  <span>300+ clients helped</span>
+                  <span>350+ clients helped</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <CheckCircle className="h-3.5 w-3.5 text-primary" />

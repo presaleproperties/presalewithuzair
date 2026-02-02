@@ -4,7 +4,6 @@ import heroImage from "@/assets/uzair-walking.jpg";
 import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
-
 const heroContent = {
   label: "PRESALE EXPERT",
   headlinePart1: "NAVIGATE THE",
@@ -14,16 +13,15 @@ const heroContent = {
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Book a Discovery Call",
-  microTrust: "Trusted by 350+ first-time buyers & investors • Focused on Metro Vancouver presales",
+  microTrust: "Trusted by 350+ first-time buyers & investors • Focused on Metro Vancouver presales"
 };
-
 export const HeroSection = () => {
   const handleBookClick = () => {
-    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('book-section')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <section className="relative min-h-screen overflow-hidden">
+  return <section className="relative min-h-screen overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
       
@@ -74,12 +72,7 @@ export const HeroSection = () => {
 
           {/* CTA Button - Outlined style like Dan Martell */}
           <div className="mb-4 animate-fade-up">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
-              onClick={handleBookClick}
-            >
+            <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
@@ -93,12 +86,7 @@ export const HeroSection = () => {
           <div className="relative mb-8 animate-fade-up">
             {/* Main hero image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
-              <OptimizedImage
-                src={heroImage}
-                alt="Uzair Muhammad - Vancouver's Top Presale Expert"
-                className="w-full aspect-[4/5]"
-                priority
-              />
+              <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[4/5]" priority />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
               
@@ -114,15 +102,8 @@ export const HeroSection = () => {
             {/* Who I Help Grid */}
             <div className="grid grid-cols-2 gap-3">
               {/* First-Time Buyers */}
-              <button 
-                onClick={handleBookClick}
-                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
-              >
-                <OptimizedImage
-                  src={showroomImage}
-                  alt="First-time home buyers touring presale showroom"
-                  className="w-full aspect-square"
-                />
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
@@ -131,15 +112,8 @@ export const HeroSection = () => {
               </button>
               
               {/* Investors */}
-              <button 
-                onClick={handleBookClick}
-                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
-              >
-                <OptimizedImage
-                  src={clientMeetingImage}
-                  alt="Real estate investor consultation"
-                  className="w-full aspect-square"
-                />
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
@@ -149,17 +123,8 @@ export const HeroSection = () => {
             </div>
 
             {/* Community Leader */}
-            <a 
-              href="https://vancouverpresaleexpo.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="relative rounded-xl overflow-hidden shadow-lg mt-3 block group hover:scale-[1.02] transition-transform duration-300"
-            >
-              <OptimizedImage
-                src={expoImage}
-                alt="Uzair speaking at Vancouver Presale Expo"
-                className="w-full aspect-[16/9]"
-              />
+            <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer" className="relative rounded-xl overflow-hidden shadow-lg mt-3 block group hover:scale-[1.02] transition-transform duration-300">
+              <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9]" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
                 <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
@@ -210,12 +175,7 @@ export const HeroSection = () => {
 
             {/* CTA Section */}
             <div className="space-y-3 animate-fade-up">
-              <Button 
-                variant="outline"
-                size="xl"
-                className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold"
-                onClick={handleBookClick}
-              >
+              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
               
@@ -228,7 +188,7 @@ export const HeroSection = () => {
             {/* Trust Badge */}
             <div className="pt-8 border-t border-border/50 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                Trusted by <span className="text-gradient">300+</span> First-Time Buyers & Investors
+                Trusted by <span className="text-gradient">350+</span> First-Time Buyers & Investors
               </p>
               <p className="text-sm text-muted-foreground mt-2">
                 $200M+ in presales closed • 4+ years presale focus
@@ -247,12 +207,7 @@ export const HeroSection = () => {
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-2 translate-y-2" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <OptimizedImage
-                  src={heroImage}
-                  alt="Uzair Muhammad - Vancouver's Top Presale Expert"
-                  className="w-full aspect-[3/4]"
-                  priority
-                />
+                <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[3/4]" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
             </div>
@@ -260,15 +215,8 @@ export const HeroSection = () => {
             {/* Who I Help Grid - Desktop */}
             <div className="relative grid grid-cols-3 gap-4">
               {/* First-Time Buyers */}
-              <button 
-                onClick={handleBookClick}
-                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
-              >
-                <OptimizedImage
-                  src={showroomImage}
-                  alt="First-time home buyers touring presale showroom"
-                  className="w-full aspect-[4/3]"
-                />
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
@@ -277,15 +225,8 @@ export const HeroSection = () => {
               </button>
               
               {/* Investors */}
-              <button 
-                onClick={handleBookClick}
-                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer"
-              >
-                <OptimizedImage
-                  src={clientMeetingImage}
-                  alt="Real estate investor consultation"
-                  className="w-full aspect-[4/3]"
-                />
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
@@ -294,17 +235,8 @@ export const HeroSection = () => {
               </button>
 
               {/* Community Leader */}
-              <a 
-                href="https://vancouverpresaleexpo.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300"
-              >
-                <OptimizedImage
-                  src={expoImage}
-                  alt="Uzair at Vancouver Presale Expo"
-                  className="w-full aspect-[4/3]"
-                />
+              <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer" className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300">
+                <OptimizedImage src={expoImage} alt="Uzair at Vancouver Presale Expo" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
                   <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community</p>
@@ -315,6 +247,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };

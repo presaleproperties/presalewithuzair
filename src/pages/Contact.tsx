@@ -41,10 +41,10 @@ const Contact = () => {
               "email": "info@meetuzair.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "666 Burrard St, Suite 500",
-                "addressLocality": "Vancouver",
+                "streetAddress": "3211 152 St Building 3211 C, Suite 402",
+                "addressLocality": "Surrey",
                 "addressRegion": "BC",
-                "postalCode": "V6C 3P6",
+                "postalCode": "V3Z 1H8",
                 "addressCountry": "CA"
               }
             }
@@ -137,8 +137,8 @@ const Contact = () => {
                       <p className="font-semibold text-foreground mb-1">Office</p>
                       <p className="text-muted-foreground text-sm mb-2">Real Broker</p>
                       <p className="text-foreground">
-                        666 Burrard St, Suite 500<br />
-                        Vancouver, BC V6C 3P6
+                        3211 152 St Building 3211 C, Suite 402<br />
+                        Surrey, BC V3Z 1H8
                       </p>
                     </div>
                   </div>

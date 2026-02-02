@@ -74,7 +74,7 @@ const Index = () => {
                 "email": "info@meetuzair.com",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "3211 152 St Building 3211 C, Suite 402",
+                  "streetAddress": "3211 152 St Building C, Suite 402",
                   "addressLocality": "Surrey",
                   "addressRegion": "BC",
                   "postalCode": "V3Z 1H8",
@@ -127,7 +127,7 @@ const Index = () => {
                 "telephone": "+1-778-231-3592",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "3211 152 St Building 3211 C, Suite 402",
+                  "streetAddress": "3211 152 St Building C, Suite 402",
                   "addressLocality": "Surrey",
                   "addressRegion": "BC",
                   "postalCode": "V3Z 1H8",

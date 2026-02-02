@@ -181,7 +181,7 @@ export const Footer = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Office</p>
                     <p className="text-foreground text-sm">
-                      3211 152 St Building 3211 C, Suite 402<br />
+                      3211 152 St Building C, Suite 402<br />
                       Surrey, BC V3Z 1H8
                     </p>
                   </div>

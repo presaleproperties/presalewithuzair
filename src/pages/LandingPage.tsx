@@ -32,7 +32,7 @@ const LandingPage = () => {
     {
       icon: Users,
       title: "Trusted by Families",
-      description: "100+ South Asian families helped.",
+      description: "350+ families helped across Metro Vancouver.",
     },
   ];
 

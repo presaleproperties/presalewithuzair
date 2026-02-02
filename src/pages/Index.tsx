@@ -74,10 +74,10 @@ const Index = () => {
                 "email": "info@meetuzair.com",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "666 Burrard St, Suite 500",
-                  "addressLocality": "Vancouver",
+                  "streetAddress": "3211 152 St Building 3211 C, Suite 402",
+                  "addressLocality": "Surrey",
                   "addressRegion": "BC",
-                  "postalCode": "V6C 3P6",
+                  "postalCode": "V3Z 1H8",
                   "addressCountry": "CA"
                 },
                 "geo": {
@@ -127,10 +127,10 @@ const Index = () => {
                 "telephone": "+1-778-231-3592",
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "666 Burrard St, Suite 500",
-                  "addressLocality": "Vancouver",
+                  "streetAddress": "3211 152 St Building 3211 C, Suite 402",
+                  "addressLocality": "Surrey",
                   "addressRegion": "BC",
-                  "postalCode": "V6C 3P6",
+                  "postalCode": "V3Z 1H8",
                   "addressCountry": "CA"
                 },
                 "areaServed": [

@@ -22,7 +22,7 @@ const LandingPage = () => {
     {
       icon: Shield,
       title: "Save Money",
-      description: "Uzair helps you avoid bad deals. 330+ presales reviewed.",
+      description: "Uzair helps you avoid bad deals. 350+ presales reviewed.",
     },
     {
       icon: TrendingUp,
@@ -217,7 +217,7 @@ const LandingPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-8 flex flex-wrap justify-center gap-4 text-slate-400 text-sm"
             >
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 330+ Families Helped</span>
+              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 350+ Families Helped</span>
               <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ $1M+ Saved</span>
               <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 100% Free Advice</span>
             </motion.div>

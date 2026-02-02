@@ -16,8 +16,8 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
-  { value: "330+", label: "Presales Advised" },
-  { value: "$100M+", label: "In Experience" },
+  { value: "350+", label: "Presales Advised" },
+  { value: "$200M+", label: "Sales Volume" },
   { value: "$1M+", label: "Saved for Clients" },
   { value: "100%", label: "Buyer-First" },
 ];
@@ -61,7 +61,7 @@ const About = () => {
               "@type": "Person",
               "name": "Uzair Muhammad",
               "jobTitle": "Presale Expert & Real Estate Agent",
-              "description": "Vancouver's premier presale expert with $200M+ in sales and 300+ units. Founder of Vancouver Presale Expo.",
+              "description": "Vancouver's premier presale expert with $200M+ in sales and 350+ clients served. Founder of Vancouver Presale Expo.",
               "url": "https://presalewithuzair.com/about",
               "image": "https://presalewithuzair.com/og-image.jpg",
               "telephone": "+1-778-231-3592",
@@ -114,8 +114,8 @@ const About = () => {
                 </div>
                 {/* Stats overlay */}
                 <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
-                  <p className="text-4xl font-display font-bold text-gradient">300+</p>
-                  <p className="text-sm text-muted-foreground">Units Sold</p>
+                  <p className="text-4xl font-display font-bold text-gradient">350+</p>
+                  <p className="text-sm text-muted-foreground">Clients Served</p>
                 </div>
               </div>
 
@@ -130,7 +130,7 @@ const About = () => {
                     then help you decide if a presale makes sense for your situation.
                   </p>
                   <p>
-                    With experience advising on 330+ presale homes, Uzair has learned which developers 
+                    With experience advising on 350+ presale homes, Uzair has learned which developers 
                     to trust, which contracts have hidden risks, and when to walk away from a deal.
                   </p>
                   <p>

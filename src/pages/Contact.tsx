@@ -200,8 +200,8 @@ const Contact = () => {
                       <p className="text-xs text-muted-foreground">Presales Advised</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">$1M+</p>
-                      <p className="text-xs text-muted-foreground">Saved for Clients</p>
+                      <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
+                      <p className="text-xs text-muted-foreground">Sales Volume</p>
                     </div>
                     <div>
                       <p className="text-2xl font-display font-bold text-gradient">5★</p>

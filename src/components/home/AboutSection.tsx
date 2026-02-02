@@ -35,7 +35,7 @@ export const AboutSection = () => {
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
                 Uzair is an investor-focused Real Estate Agent and Presale Expert specializing in 
-                Vancouver's new construction condo market. With over $200 million in volume and 300+ units sold, 
+                Vancouver's new construction condo market. With over $200M+ in volume and 350+ clients served, 
                 Uzair has built a reputation for delivering exceptional results and unparalleled client service.
               </p>
               <p>

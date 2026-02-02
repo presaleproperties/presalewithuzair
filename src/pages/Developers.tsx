@@ -188,7 +188,7 @@ const Developers = () => {
             <div className="text-center mb-10 md:mb-14">
               <p className="section-label mb-3">TRACK RECORD</p>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                SOLD OVER <span className="text-gradient">300+ PRESALE UNITS</span> SINCE 2022
+                SOLD OVER <span className="text-gradient">$200M+ IN PRESALES</span> SINCE 2022
               </h2>
             </div>
             
@@ -198,9 +198,9 @@ const Developers = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="relative bg-background rounded-2xl border border-border p-6 md:p-8 text-center hover:border-primary/30 transition-all duration-300">
                   <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gradient mb-3">
-                    200+
+                    350+
                   </div>
-                  <p className="text-lg font-semibold text-foreground mb-2">Units Closed</p>
+                  <p className="text-lg font-semibold text-foreground mb-2">Clients Served</p>
                   <p className="text-sm text-muted-foreground">Direct presale transactions completed for buyers and investors</p>
                 </div>
               </div>

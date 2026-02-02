@@ -136,7 +136,7 @@ export const HeroSection = () => {
           {/* Trust Badge - Mobile */}
           <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
             <p className="text-lg font-display font-bold text-foreground">
-              Trusted by <span className="text-gradient">300+</span> First-Time Buyers & Investors
+              Trusted by <span className="text-gradient">350+</span> First-Time Buyers & Investors
             </p>
             <p className="text-xs text-muted-foreground mt-2">
               $200M+ in presales closed • 4+ years presale focus

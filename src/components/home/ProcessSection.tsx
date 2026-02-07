@@ -30,18 +30,18 @@ const steps = [
     image: showroomTourImage,
   },
   {
-    icon: FileText,
-    step: "04",
-    title: "Contract Review",
-    description: "Every disclosure document is reviewed line-by-line. I explain what each clause means and identify red flags before you commit to anything.",
-    image: brochureReviewImage,
-  },
-  {
     icon: Home,
-    step: "05",
+    step: "04",
     title: "Guided Decision",
     description: "With clear information in hand, you make the decision. If I think a project isn't right for you, I'll tell you — even if it means walking away.",
     image: showroomEntranceImage,
+  },
+  {
+    icon: FileText,
+    step: "05",
+    title: "Contract Review",
+    description: "Every disclosure document is reviewed line-by-line. I explain what each clause means and identify red flags before you commit to anything.",
+    image: brochureReviewImage,
   },
   {
     icon: Headphones,

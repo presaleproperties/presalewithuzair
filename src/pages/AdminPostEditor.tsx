@@ -173,6 +173,7 @@ const AdminPostEditor = () => {
     <>
       <Helmet>
         <title>{isNew ? "New Post" : "Edit Post"} | Admin</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

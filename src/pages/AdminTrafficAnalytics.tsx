@@ -117,6 +117,7 @@ export default function AdminTrafficAnalytics() {
     <>
       <Helmet>
         <title>Traffic Analytics | Admin</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="min-h-screen bg-background">
         <div className="container-xl px-4 sm:px-6 py-8">

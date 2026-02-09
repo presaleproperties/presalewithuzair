@@ -85,10 +85,12 @@ const Developers = () => {
         <meta property="og:url" content="https://presalewithuzair.com/developers" />
         <meta property="og:title" content="Developer Advisory | Presale Strategy Consulting" />
         <meta property="og:description" content="Independent strategic advisory for real estate developers. Pre-launch strategy and sales momentum." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Developer Advisory | Uzair Muhammad" />
+        <meta name="twitter:description" content="Independent strategic advisory for real estate developers in BC." />
         
         <script type="application/ld+json">
           {JSON.stringify({

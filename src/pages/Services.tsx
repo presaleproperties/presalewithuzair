@@ -75,10 +75,12 @@ const Services = () => {
         <meta property="og:url" content="https://presalewithuzair.com/services" />
         <meta property="og:title" content="Presale Services Vancouver | Uzair Muhammad" />
         <meta property="og:description" content="Expert presale services: condo advisory, assignment sales, and resale guidance. Buyer-first approach." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Presale Services | Uzair Muhammad" />
+        <meta name="twitter:description" content="Expert presale services in Vancouver: condo advisory, assignment sales, and resale guidance." />
         
         <script type="application/ld+json">
           {JSON.stringify({

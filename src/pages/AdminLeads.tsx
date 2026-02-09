@@ -213,6 +213,7 @@ const AdminLeads = () => {
     <>
       <Helmet>
         <title>Leads Dashboard | Admin</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

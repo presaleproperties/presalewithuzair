@@ -51,10 +51,12 @@ const Blog = () => {
         <meta property="og:url" content="https://presalewithuzair.com/blog" />
         <meta property="og:title" content="Presale Blog | Investment Tips & Insights" />
         <meta property="og:description" content="Expert insights on Vancouver presale condos and investment strategies." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Presale Blog | Uzair Muhammad" />
+        <meta name="twitter:description" content="Expert insights on presale condos, investment strategies, and real estate tips." />
         
         <script type="application/ld+json">
           {JSON.stringify(blogStructuredData)}

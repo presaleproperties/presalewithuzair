@@ -25,10 +25,12 @@ const Contact = () => {
         <meta property="og:url" content="https://presalewithuzair.com/contact" />
         <meta property="og:title" content="Contact Uzair Muhammad | Presale Expert" />
         <meta property="og:description" content="Get in touch with Vancouver's top presale expert. No pressure, just clear advice." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="Contact Uzair Muhammad" />
+        <meta name="twitter:description" content="Contact Vancouver's top presale expert for honest, buyer-first guidance." />
         
         <script type="application/ld+json">
           {JSON.stringify({

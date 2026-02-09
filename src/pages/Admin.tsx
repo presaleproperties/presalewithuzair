@@ -157,6 +157,7 @@ const Admin = () => {
     <>
       <Helmet>
         <title>Admin Dashboard | Uzair Muhammad</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

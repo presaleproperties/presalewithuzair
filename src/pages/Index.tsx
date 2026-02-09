@@ -36,6 +36,7 @@ const Index = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Presale Expert Vancouver | Uzair Muhammad" />
         <meta name="twitter:description" content="Vancouver's premier presale expert. $200M+ in presales, 300+ units." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({

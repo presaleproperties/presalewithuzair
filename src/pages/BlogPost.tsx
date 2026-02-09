@@ -88,6 +88,8 @@ const BlogPost = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || ""} />
+        {post.image_url && <meta name="twitter:image" content={post.image_url} />}
+        <meta name="twitter:description" content={post.excerpt || ""} />
         
         {articleStructuredData && (
           <script type="application/ld+json">

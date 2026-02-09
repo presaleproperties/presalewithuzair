@@ -6,6 +6,8 @@ const Book = () => {
       <Helmet>
         <title>Book a Call | Presale with Uzair</title>
         <meta name="description" content="Schedule a one-on-one call with Uzair to discuss your presale real estate needs." />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://presalewithuzair.com/book" />
       </Helmet>
 
       {/* Full-screen Calendly embed */}

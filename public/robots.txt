@@ -22,8 +22,4 @@ Disallow: /admin
 Disallow: /admin/*
 Disallow: /payment-success
 
-# Dynamic sitemap with all blog posts
-Sitemap: https://ubbogklasownognviobh.supabase.co/functions/v1/generate-sitemap
-
-# Static sitemap fallback
 Sitemap: https://presalewithuzair.com/sitemap.xml

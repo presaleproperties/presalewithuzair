@@ -2,36 +2,181 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://presalewithuzair.com/</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/about</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/services</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/blog</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/contact</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/developers</loc>
+    <lastmod>2026-02-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://presalewithuzair.com/agents</loc>
+    <lastmod>2026-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/how-savvy-investors-get-the-best-deals-on-presale-properties</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/bc-s-new-20-flipping-tax-what-it-means-for-pre-sale-buyers-and-investors</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/the-4-ugly-truths-of-preconstruction-condos-in-vancouver-that-nobody-talks-about</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/fraser-valley-pre-sale-condo-market-what-investors-need-to-know-in-2025</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/the-5-rule-a-crucial-strategy-for-pre-sale-condo-investments</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-you-should-never-buy-a-presale-condo-directly-from-the-developer</loc>
+    <lastmod>2025-12-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/should-i-buy-a-presale-or-wait-2025-market-breakdown</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-hire-a-presale-agent-vs-traditional-agent</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-buyers-choose-uzair-muhammad-presale-realtor-surrey</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-buyers-choose-uzair-muhammad-presale-specialist-langley</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/top-5-reasons-vancouver-buyers-choose-uzair-muhammad-new-condo-specialist</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/surrey-central-a-perfect-storm-for-condo-price-drops-and-a-rare-opportunity-for-buyer</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/ai-in-real-estate-what-buyers-and-sellers-should-know</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/metro-vancouver-real-estate-march-2025-market-update</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/selling-a-presale-condo-assignment-in-fraser-valley-what-you-need-to-know</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/the-best-areas-to-buy-a-condo-townhome-or-detached-home-in-langley</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-markets-in-the-fraser-valley-are-prime-for-presale-investment-in-2025</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/surrey-central-condos-is-it-worth-investing-in-pre-sales-assignments-or-resales</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-you-need-a-pre-sale-expert-when-buying-a-fraser-valley-presale</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/is-investing-in-surrey-central-condos-worth-it-right-now</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/be-careful-when-comparing-floor-plans-avoid-overpaying-for-pre-sale-condos</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/fraser-valley-real-estate-the-best-investment-opportunities-under-500k</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://presalewithuzair.com/blog/why-now-is-the-best-time-to-buy-a-vancouver-presale-condo</loc>
+    <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

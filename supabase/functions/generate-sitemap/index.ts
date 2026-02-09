@@ -17,7 +17,6 @@ const staticPages = [
   { path: '/contact', priority: '0.8', changefreq: 'monthly' },
   { path: '/developers', priority: '0.7', changefreq: 'monthly' },
   { path: '/agents', priority: '0.7', changefreq: 'monthly' },
-  { path: '/book', priority: '0.8', changefreq: 'monthly' },
 ];
 
 serve(async (req) => {
@@ -79,7 +78,7 @@ serve(async (req) => {
         xml += `    <loc>${SITE_URL}/blog/${post.slug}</loc>\n`;
         xml += `    <lastmod>${lastmod}</lastmod>\n`;
         xml += `    <changefreq>monthly</changefreq>\n`;
-        xml += `    <priority>0.6</priority>\n`;
+        xml += `    <priority>0.7</priority>\n`;
         xml += '  </url>\n';
       }
     }

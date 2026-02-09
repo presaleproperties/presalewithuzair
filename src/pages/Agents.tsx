@@ -108,10 +108,12 @@ const Agents = () => {
         <meta property="og:url" content="https://presalewithuzair.com/agents" />
         <meta property="og:title" content="Vancouver Presale Academy | Agent Training" />
         <meta property="og:description" content="The immersion program for real estate agents. Master presale contracts, assignments, and negotiation." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Vancouver Presale Academy" />
+        <meta name="twitter:description" content="The immersion program for agents to master presale contracts and assignments." />
         
         <script type="application/ld+json">
           {JSON.stringify({

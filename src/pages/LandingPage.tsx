@@ -135,6 +135,8 @@ const LandingPage = () => {
           name="description"
           content="Book a call with Uzair, BC's trusted presale expert. Get guidance on Vancouver presale condos and townhomes."
         />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://presalewithuzair.com/requestacall" />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">

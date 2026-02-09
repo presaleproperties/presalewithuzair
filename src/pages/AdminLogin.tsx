@@ -62,6 +62,7 @@ const AdminLogin = () => {
     <>
       <Helmet>
         <title>Admin Login | Uzair Muhammad</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen flex items-center justify-center bg-background px-4">

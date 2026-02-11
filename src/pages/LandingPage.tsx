@@ -522,7 +522,7 @@ const LandingPage = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">How Can I Help? *</Label>
+                      <Label className="text-slate-300 text-sm">How Can Uzair Help? *</Label>
                       <Select value={formData.helpWith} onValueChange={v => setFormData({
                   ...formData,
                   helpWith: v
@@ -539,7 +539,7 @@ const LandingPage = () => {
                     </div>
 
                     <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Where Did You Find Me? *</Label>
+                      <Label className="text-slate-300 text-sm">Where Did You Find Uzair? *</Label>
                       <Select value={formData.foundVia} onValueChange={v => setFormData({
                   ...formData,
                   foundVia: v
@@ -560,7 +560,7 @@ const LandingPage = () => {
                     <div className="space-y-1.5">
                       <Label className="text-slate-300 text-sm">Notes</Label>
                       <Textarea 
-                        placeholder="Tell me more about how I can help so I can prepare for our call" 
+                        placeholder="Tell Uzair more about your situation so he can prepare for the call" 
                         value={formData.notes} 
                         onChange={e => setFormData({ ...formData, notes: e.target.value })} 
                         className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary min-h-[80px] resize-none" 
@@ -594,13 +594,13 @@ const LandingPage = () => {
                         className="mt-0.5 w-4 h-4 rounded border-white/20 bg-slate-800 text-primary focus:ring-primary accent-primary flex-shrink-0" 
                       />
                       <span className="text-xs text-slate-400 leading-relaxed">
-                        I understand that Uzair works exclusively with serious buyers and sellers who are <span className="text-slate-300 font-medium">not currently represented by another agent</span>. This call is not for general advice.
+                        Uzair works exclusively with serious buyers and sellers who are <span className="text-slate-300 font-medium">not currently represented by another agent</span>. By checking this box, you confirm this applies to you.
                       </span>
                     </label>
 
                     <Button type="submit" disabled={isSubmitting || !agreedToTerms} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6 rounded-xl shadow-lg shadow-primary/25 font-semibold disabled:opacity-40 disabled:cursor-not-allowed">
                       <Phone className="w-5 h-5 mr-2" />
-                      {isSubmitting ? "Sending..." : "Request My Call"}
+                      {isSubmitting ? "Sending..." : "Request A Call"}
                     </Button>
 
                     <p className="text-xs text-slate-500 text-center">

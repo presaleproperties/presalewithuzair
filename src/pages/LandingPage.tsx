@@ -240,66 +240,59 @@ const LandingPage = () => {
         </header>
 
         {/* Hero */}
-        <section className="px-4 pt-8 pb-10 md:pt-14 md:pb-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div initial={{
-            opacity: 0,
-            y: -10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} className="mb-5">
-              <span className="inline-flex items-center gap-2 bg-primary/20 text-primary px-4 py-1.5 rounded-full text-sm font-medium">BC's trusted Realtor & Presale Expert for Condo & Townhome buyers</span>
-            </motion.div>
+        <section className="px-4 pt-10 pb-12 md:pt-16 md:pb-20">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+              {/* Headshot */}
+              <motion.img 
+                src={headshotImage} 
+                alt="Uzair" 
+                initial={{ opacity: 0, scale: 0.9 }} 
+                animate={{ opacity: 1, scale: 1 }} 
+                className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" 
+              />
 
-            <motion.img src={headshotImage} alt="Uzair" initial={{
-            opacity: 0,
-            scale: 0.9
-          }} animate={{
-            opacity: 1,
-            scale: 1
-          }} className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto object-cover border-4 border-primary/30 shadow-lg shadow-primary/20 mb-5" />
+              <div className="text-center md:text-left">
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  className="mb-3"
+                >
+                  <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
+                    BC's Presale Expert
+                  </span>
+                </motion.div>
 
-            <motion.h1 initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5
-          }} className="text-4xl md:text-6xl font-bold text-white leading-tight mb-3" style={{
-            fontFamily: "Raleway, sans-serif"
-          }}>
-              Work With <span className="text-primary">Uzair.</span>
-            </motion.h1>
+                <motion.h1 
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.5 }} 
+                  className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" 
+                  style={{ fontFamily: "Raleway, sans-serif" }}
+                >
+                  Work With <span className="text-primary">Uzair.</span>
+                </motion.h1>
 
-            <motion.p initial={{
-            opacity: 0
-          }} animate={{
-            opacity: 1
-          }} transition={{
-            delay: 0.1
-          }} className="text-lg md:text-xl text-slate-300 mb-6">
-              BC's trusted presale expert for condo & townhome buyers.
-            </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }} 
+                  transition={{ delay: 0.1 }} 
+                  className="text-base md:text-lg text-slate-300 mb-5 max-w-lg"
+                >
+                  Trusted guidance for condo & townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.
+                </motion.p>
 
-            <motion.button initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            delay: 0.2
-          }} onClick={() => setIsFormOpen(true)} className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-10 py-4 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl transition-all font-semibold inline-flex items-center gap-2">
-              <Phone className="w-5 h-5" /> Request A Call
-            </motion.button>
-
-            <div className="mt-6 flex flex-wrap justify-center gap-3 text-slate-400 text-xs md:text-sm">
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 350+ Families Helped</span>
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ $1M+ Saved</span>
-              <span className="bg-slate-800/50 px-3 py-1 rounded-full">✓ 100% Free Advice</span>
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ delay: 0.2 }} 
+                  className="flex flex-wrap justify-center md:justify-start gap-2 text-slate-400 text-xs"
+                >
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ $1M+ Saved</span>
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 100% Free Advice</span>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>

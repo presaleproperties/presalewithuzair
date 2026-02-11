@@ -33,6 +33,8 @@ const LandingPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
+  const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book Your Free Call';
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -88,7 +90,8 @@ const LandingPage = () => {
           landing_page: cleanUrl,
           utm_source: urlParams.get("utm_source") || "",
           utm_medium: urlParams.get("utm_medium") || "",
-          utm_campaign: urlParams.get("utm_campaign") || ""
+          utm_campaign: urlParams.get("utm_campaign") || "",
+          cta_variant: ctaVariant
         })
       });
       setIsSubmitted(true);
@@ -423,7 +426,7 @@ const LandingPage = () => {
         }} className="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-emerald-400 text-slate-950 text-lg py-4 rounded-full shadow-[0_0_25px_rgba(0,200,200,0.5)] hover:shadow-[0_0_40px_rgba(0,200,200,0.7)] transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
             <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
             <Phone className="w-5 h-5 relative z-10" />
-            <span className="relative z-10">Book Your Free Call</span>
+            <span className="relative z-10">{ctaText}</span>
           </button>
           
         </div>

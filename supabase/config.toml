@@ -17,3 +17,6 @@ verify_jwt = false
 
 [functions.generate-sitemap]
 verify_jwt = false
+
+[functions.send-to-zapier]
+verify_jwt = false

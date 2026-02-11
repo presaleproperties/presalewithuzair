@@ -425,7 +425,7 @@ const LandingPage = () => {
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">Book Your Free Call</span>
           </button>
-          <p className="text-slate-500 text-[11px] text-center mt-1.5">No obligation • Takes 30 seconds</p>
+          
         </div>
       </div>
 

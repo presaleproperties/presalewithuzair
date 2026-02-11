@@ -25,7 +25,7 @@ import monaPhoto from "@/assets/testimonials/mona.jpg";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
-const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/11244776/uwxiv7d/";
+const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/11244776/uez90p7/";
 const LandingPage = () => {
   const {
     toast

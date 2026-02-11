@@ -218,7 +218,7 @@ const LandingPage = () => {
                 <div className="flex gap-0.5">
                   {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
-                <span className="text-slate-400 text-xs">5.0 ({testimonials.length}+ reviews)</span>
+                <span className="text-slate-400 text-xs">5.0 rating</span>
               </div>
             </div>
 
@@ -259,7 +259,7 @@ const LandingPage = () => {
                   onClick={() => setShowAllReviews(true)}
                   className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors"
                 >
-                  See All {testimonials.length} Reviews <ChevronDown className="w-4 h-4" />
+                  See More Reviews <ChevronDown className="w-4 h-4" />
                 </button>
               </div>
             )}

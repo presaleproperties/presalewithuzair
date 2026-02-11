@@ -84,20 +84,23 @@ const LandingPage = () => {
     try {
       await fetch(ZAPIER_WEBHOOK_URL, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         mode: "no-cors",
         body: JSON.stringify({
-          name: formData.name.trim(),
-          phone: formData.phone.trim(),
-          email: formData.email.trim(),
-          help_with: formData.helpWith,
-          preferred_call_time: formData.callTime,
-          found_via: formData.foundVia,
-          notes: formData.notes.trim(),
-          landing_page: cleanUrl,
-          utm_source: urlParams.get("utm_source") || "",
-          utm_medium: urlParams.get("utm_medium") || "",
-          utm_campaign: urlParams.get("utm_campaign") || "",
-          cta_variant: ctaVariant
+          Full_Name: formData.name.trim(),
+          Phone: formData.phone.trim(),
+          Email: formData.email.trim(),
+          Help_With: formData.helpWith,
+          Preferred_Call_Time: formData.callTime,
+          Found_Via: formData.foundVia,
+          Notes: formData.notes.trim(),
+          Landing_Page: cleanUrl,
+          UTM_Source: urlParams.get("utm_source") || "",
+          UTM_Medium: urlParams.get("utm_medium") || "",
+          UTM_Campaign: urlParams.get("utm_campaign") || "",
+          CTA_Variant: ctaVariant
         })
       });
       setIsSubmitted(true);

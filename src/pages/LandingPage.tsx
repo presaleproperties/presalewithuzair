@@ -424,7 +424,7 @@ const LandingPage = () => {
       </div>
 
       {/* Sticky Footer CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-t border-white/10 px-4 py-3 safe-area-bottom">
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-t border-white/10 px-4 py-3" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom, 0px))' }}>
         <div className="max-w-md mx-auto">
           <button onClick={() => {
           setIsFormOpen(true);

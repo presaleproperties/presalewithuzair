@@ -5,6 +5,7 @@ import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Ho
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import logoImage from "@/assets/logo.png";
@@ -41,7 +42,9 @@ const LandingPage = () => {
     phone: "",
     email: "",
     helpWith: "",
-    callTime: ""
+    callTime: "",
+    foundVia: "",
+    notes: ""
   });
 
   // Pre-fill from URL params
@@ -88,6 +91,8 @@ const LandingPage = () => {
           email: formData.email.trim(),
           help_with: formData.helpWith,
           preferred_call_time: formData.callTime,
+          found_via: formData.foundVia,
+          notes: formData.notes.trim(),
           landing_page: cleanUrl,
           utm_source: urlParams.get("utm_source") || "",
           utm_medium: urlParams.get("utm_medium") || "",
@@ -531,6 +536,36 @@ const LandingPage = () => {
                           <SelectItem value="selling-property">Selling My Property</SelectItem>
                         </SelectContent>
                       </Select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <Label className="text-slate-300 text-sm">Where Did You Find Me? *</Label>
+                      <Select value={formData.foundVia} onValueChange={v => setFormData({
+                  ...formData,
+                  foundVia: v
+                })}>
+                        <SelectTrigger className="bg-slate-800/80 border-white/10 text-white h-12">
+                          <SelectValue placeholder="Select one" />
+                        </SelectTrigger>
+                        <SelectContent className="bg-slate-800 border border-white/10 z-[60]">
+                          <SelectItem value="instagram">Instagram</SelectItem>
+                          <SelectItem value="tiktok">TikTok</SelectItem>
+                          <SelectItem value="youtube">YouTube</SelectItem>
+                          <SelectItem value="google">Google</SelectItem>
+                          <SelectItem value="referral">Referral</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <Label className="text-slate-300 text-sm">Notes</Label>
+                      <Textarea 
+                        placeholder="Tell me more about how I can help so I can prepare for our call" 
+                        value={formData.notes} 
+                        onChange={e => setFormData({ ...formData, notes: e.target.value })} 
+                        className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary min-h-[80px] resize-none" 
+                        maxLength={500}
+                      />
                     </div>
 
                     <div className="space-y-1.5">

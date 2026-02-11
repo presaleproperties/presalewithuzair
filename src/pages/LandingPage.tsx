@@ -82,7 +82,10 @@ const LandingPage = () => {
     const cleanUrl = window.location.origin + window.location.pathname;
     const urlParams = new URLSearchParams(window.location.search);
     try {
-      const { data, error } = await supabase.functions.invoke('send-to-zapier', {
+      const {
+        data,
+        error
+      } = await supabase.functions.invoke('send-to-zapier', {
         body: {
           Full_Name: formData.name.trim(),
           Phone: formData.phone.trim(),
@@ -98,7 +101,6 @@ const LandingPage = () => {
           CTA_Variant: ctaVariant
         }
       });
-
       if (error) throw error;
       setIsSubmitted(true);
       toast({
@@ -253,50 +255,58 @@ const LandingPage = () => {
           <div className="max-w-3xl mx-auto">
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
               {/* Headshot */}
-              <motion.img 
-                src={headshotImage} 
-                alt="Uzair" 
-                initial={{ opacity: 0, scale: 0.9 }} 
-                animate={{ opacity: 1, scale: 1 }} 
-                className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" 
-              />
+              <motion.img src={headshotImage} alt="Uzair" initial={{
+              opacity: 0,
+              scale: 0.9
+            }} animate={{
+              opacity: 1,
+              scale: 1
+            }} className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" />
 
               <div className="text-left">
-                <motion.div 
-                  initial={{ opacity: 0, y: -10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  className="mb-3"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                y: -10
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} className="mb-3">
                   <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
                     BC's Top Presale Expert
                   </span>
                 </motion.div>
 
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ duration: 0.5 }} 
-                  className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" 
-                  style={{ fontFamily: "Raleway, sans-serif" }}
-                >
+                <motion.h1 initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                duration: 0.5
+              }} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" style={{
+                fontFamily: "Raleway, sans-serif"
+              }}>
                   Work With <span className="text-primary">Uzair.</span>
                 </motion.h1>
 
-                <motion.p 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
-                  transition={{ delay: 0.1 }} 
-                  className="text-base md:text-lg text-slate-300 mb-5 max-w-lg"
-                >
-                  Trusted guidance for condo & townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.
-                </motion.p>
+                <motion.p initial={{
+                opacity: 0
+              }} animate={{
+                opacity: 1
+              }} transition={{
+                delay: 0.1
+              }} className="text-base md:text-lg text-slate-300 mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.</motion.p>
 
-                <motion.div 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
-                  transition={{ delay: 0.2 }} 
-                  className="flex flex-wrap justify-start gap-2 text-slate-400 text-xs"
-                >
+                <motion.div initial={{
+                opacity: 0,
+                y: 10
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                delay: 0.2
+              }} className="flex flex-wrap justify-start gap-2 text-slate-400 text-xs">
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
                   
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
@@ -372,36 +382,42 @@ const LandingPage = () => {
         <section className="px-4 py-14 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{
+            fontFamily: "Raleway, sans-serif"
+          }}>
               Why Work With Uzair?
             </h2>
             <p className="text-slate-400 text-sm text-left max-w-xl mb-10">
               Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
             </p>
             <div className="grid sm:grid-cols-2 gap-5">
-              {[
-                {
-                  icon: FileSearch,
-                  title: "Every Contract, Reviewed",
-                  desc: "Presale contracts are complex. Uzair breaks down every clause so you know exactly what you're signing — no surprises at completion."
-                },
-                {
-                  icon: Home,
-                  title: "Early Access to Best Units",
-                  desc: "Get priority access to new condo & townhome launches before they go public. The best floorplans and pricing go first."
-                },
-                {
-                  icon: BadgeDollarSign,
-                  title: "Protect Your Investment",
-                  desc: "Not every presale is worth buying. Uzair evaluates the developer, location, and pricing — and will tell you when to walk away."
-                },
-                {
-                  icon: Handshake,
-                  title: "With You From Start to Finish",
-                  desc: "From choosing the right project to completion day — Uzair guides you through deposits, milestones, inspections, and beyond."
-                }
-              ].map((b, i) => (
-                <motion.div key={b.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-slate-800/50 rounded-xl p-6 border border-white/10 flex gap-4">
+              {[{
+              icon: FileSearch,
+              title: "Every Contract, Reviewed",
+              desc: "Presale contracts are complex. Uzair breaks down every clause so you know exactly what you're signing — no surprises at completion."
+            }, {
+              icon: Home,
+              title: "Early Access to Best Units",
+              desc: "Get priority access to new condo & townhome launches before they go public. The best floorplans and pricing go first."
+            }, {
+              icon: BadgeDollarSign,
+              title: "Protect Your Investment",
+              desc: "Not every presale is worth buying. Uzair evaluates the developer, location, and pricing — and will tell you when to walk away."
+            }, {
+              icon: Handshake,
+              title: "With You From Start to Finish",
+              desc: "From choosing the right project to completion day — Uzair guides you through deposits, milestones, inspections, and beyond."
+            }].map((b, i) => <motion.div key={b.title} initial={{
+              opacity: 0,
+              y: 15
+            }} whileInView={{
+              opacity: 1,
+              y: 0
+            }} viewport={{
+              once: true
+            }} transition={{
+              delay: i * 0.08
+            }} className="bg-slate-800/50 rounded-xl p-6 border border-white/10 flex gap-4">
                   <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                     <b.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -409,8 +425,7 @@ const LandingPage = () => {
                     <h3 className="text-base font-semibold text-white mb-1.5">{b.title}</h3>
                     <p className="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
                   </div>
-                </motion.div>
-              ))}
+                </motion.div>)}
             </div>
           </div>
         </section>
@@ -424,7 +439,9 @@ const LandingPage = () => {
       </div>
 
       {/* Sticky Footer CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950 backdrop-blur-md border-t border-white/10 px-4 pt-3 pb-3" style={{ paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))' }}>
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950 backdrop-blur-md border-t border-white/10 px-4 pt-3 pb-3" style={{
+      paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))'
+    }}>
         <div className="max-w-md mx-auto">
           <button onClick={() => {
           setIsFormOpen(true);
@@ -559,13 +576,10 @@ const LandingPage = () => {
 
                     <div className="space-y-1.5">
                       <Label className="text-slate-300 text-sm">Notes</Label>
-                      <Textarea 
-                        placeholder="Tell Uzair more about your situation so he can prepare for the call" 
-                        value={formData.notes} 
-                        onChange={e => setFormData({ ...formData, notes: e.target.value })} 
-                        className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary min-h-[80px] resize-none" 
-                        maxLength={500}
-                      />
+                      <Textarea placeholder="Tell Uzair more about your situation so he can prepare for the call" value={formData.notes} onChange={e => setFormData({
+                  ...formData,
+                  notes: e.target.value
+                })} className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary min-h-[80px] resize-none" maxLength={500} />
                     </div>
 
                     <div className="space-y-1.5">
@@ -587,12 +601,7 @@ const LandingPage = () => {
                     </div>
 
                     <label className="flex items-start gap-3 cursor-pointer group">
-                      <input 
-                        type="checkbox" 
-                        checked={agreedToTerms} 
-                        onChange={e => setAgreedToTerms(e.target.checked)} 
-                        className="mt-0.5 w-4 h-4 rounded border-white/20 bg-slate-800 text-primary focus:ring-primary accent-primary flex-shrink-0" 
-                      />
+                      <input type="checkbox" checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} className="mt-0.5 w-4 h-4 rounded border-white/20 bg-slate-800 text-primary focus:ring-primary accent-primary flex-shrink-0" />
                       <span className="text-xs text-slate-400 leading-relaxed">
                         Uzair works exclusively with serious buyers and sellers who are <span className="text-slate-300 font-medium">not currently represented by another agent</span>. By checking this box, you confirm this applies to you.
                       </span>

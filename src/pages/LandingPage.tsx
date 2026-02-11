@@ -429,7 +429,7 @@ const LandingPage = () => {
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">{ctaText}</span>
           </button>
-          
+          <p className="text-center text-slate-400 text-xs mt-1.5">Same day call back</p>
         </div>
       </div>
 

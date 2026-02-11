@@ -489,7 +489,7 @@ const LandingPage = () => {
                 }}>
                         Request A <span className="text-primary">Call</span>
                       </h2>
-                      <p className="text-slate-400 text-xs mt-1">Uzair will call you back.</p>
+                      <p className="text-slate-400 text-xs mt-1">Same day call back.</p>
                     </div>
 
                     <div className="space-y-1.5">

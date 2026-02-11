@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X } from "lucide-react";
+import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,11 +9,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
+import michellePhoto from "@/assets/testimonials/michelle.jpg";
 import anishPhoto from "@/assets/testimonials/anish.jpg";
-import baldeepPhoto from "@/assets/testimonials/baldeep.jpg";
-import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
-import monaPhoto from "@/assets/testimonials/mona.jpg";
 import rayPhoto from "@/assets/testimonials/ray.jpg";
+import sonaliPhoto from "@/assets/testimonials/sonali.jpg";
+import hissanPhoto from "@/assets/testimonials/hissan.jpg";
+import andresPhoto from "@/assets/testimonials/andres.jpg";
+import adamPhoto from "@/assets/testimonials/adam.jpg";
+import miwaPhoto from "@/assets/testimonials/miwa.jpg";
+import mehreenPhoto from "@/assets/testimonials/mehreen.jpg";
+import baldeepPhoto from "@/assets/testimonials/baldeep.jpg";
+import jamilaPhoto from "@/assets/testimonials/jamila.jpg";
+import monaPhoto from "@/assets/testimonials/mona.jpg";
+import akhiPhoto from "@/assets/testimonials/akhi.jpg";
+import bryantPhoto from "@/assets/testimonials/bryant.jpg";
+import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
 
 const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/11244776/uwxiv7d/";
 
@@ -22,6 +32,7 @@ const LandingPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -88,13 +99,36 @@ const LandingPage = () => {
     }
   };
 
+  type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
+
+  const clientTypeColors: Record<ClientType, string> = {
+    "First-Time Buyer": "bg-primary/20 text-primary",
+    "Investor": "bg-amber-500/20 text-amber-400",
+    "Repeat Client": "bg-emerald-500/20 text-emerald-400",
+    "Presale Buyer": "bg-purple-500/20 text-purple-400",
+    "Seller & Buyer": "bg-blue-500/20 text-blue-400",
+    "Buyer": "bg-rose-500/20 text-rose-400",
+  };
+
   const testimonials = [
-    { name: "Anish", text: "First-time buyers — Uzair made everything clear and stress-free.", rating: 5, photo: anishPhoto },
-    { name: "Baldeep", text: "Made our home-selling process seamless. Professionalism unmatched.", rating: 5, photo: baldeepPhoto },
-    { name: "Rehman", text: "Very blunt, honest, and straight to the point. Respect his work ethic.", rating: 5, photo: rehmanPhoto },
-    { name: "Mona", text: "Honest realtor who always puts clients first. Would advise anyone to work with him.", rating: 5, photo: monaPhoto },
-    { name: "Ray", text: "Now I see why he's called the presale expert. Found our home in two weeks.", rating: 5, photo: rayPhoto },
+    { name: "Anish", text: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free. He helped us find the perfect home for our family.", rating: 5, photo: anishPhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 day ago" },
+    { name: "Michelle", text: "Uzair was very knowledgeable when I first approached him about purchasing my first home. He answered my questions honestly and made sure I was informed the entire way through.", rating: 5, photo: michellePhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 month ago" },
+    { name: "Andres", text: "Uzair turned what could have been a difficult first home purchase into an easy and enjoyable experience. He guided us from search to completion.", rating: 5, photo: andresPhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 month ago" },
+    { name: "Bryant", text: "From presale to closing, Uzair was extremely helpful throughout the entire process. He's talented, reliable, and someone I would recommend anytime.", rating: 5, photo: bryantPhoto, clientType: "Presale Buyer" as ClientType, timeAgo: "7 months ago" },
+    { name: "Adam", text: "Uzair helped me with my investment property and made sure I got the best deal. No fluff, no hype — just honesty and expertise.", rating: 5, photo: adamPhoto, clientType: "Investor" as ClientType, timeAgo: "8 months ago" },
+    { name: "Jamila", text: "Uzair was professional, knowledgeable, and always had my best interests at heart. He made the buying and selling process smooth.", rating: 5, photo: jamilaPhoto, clientType: "Buyer" as ClientType, timeAgo: "9 months ago" },
+    { name: "Mona", text: "Uzair is a very honest realtor who always puts his clients first. We've been working with him for years. I would advise anyone to work with him.", rating: 5, photo: monaPhoto, clientType: "Repeat Client" as ClientType, timeAgo: "10 months ago" },
+    { name: "Ray", text: "Now I see why he's called the presale expert. His transparency and guidance helped our family find our first home in just two weeks.", rating: 5, photo: rayPhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 year ago" },
+    { name: "Sonali", text: "Uzair's knowledge and expertise made the entire process smooth and easy to understand. We are extremely grateful for his efforts.", rating: 5, photo: sonaliPhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 year ago" },
+    { name: "M Hissan", text: "Uzair guided me through my first home purchase. Even after getting the house, he continued to help with upgrades and advice.", rating: 5, photo: hissanPhoto, clientType: "First-Time Buyer" as ClientType, timeAgo: "1 year ago" },
+    { name: "Miwa", text: "Uzair's knowledge of presales is incredible. Whenever we find a project, he already knows about it and provides detailed insights.", rating: 5, photo: miwaPhoto, clientType: "Investor" as ClientType, timeAgo: "1 year ago" },
+    { name: "Mehreen", text: "Uzair is an expert when it comes to presales in Vancouver. His personalized approach and deep market knowledge make the process very easy.", rating: 5, photo: mehreenPhoto, clientType: "Presale Buyer" as ClientType, timeAgo: "1 year ago" },
+    { name: "Baldeep", text: "Uzair made our home-selling process seamless. His professionalism and market expertise are unmatched.", rating: 5, photo: baldeepPhoto, clientType: "Seller & Buyer" as ClientType, timeAgo: "1 year ago" },
+    { name: "Akhi", text: "I've been working with Uzair for nearly three years and would highly recommend him for any property purchase or sale.", rating: 5, photo: akhiPhoto, clientType: "Repeat Client" as ClientType, timeAgo: "1 year ago" },
+    { name: "Rehman", text: "Very blunt, honest, and straight to the point. He doesn't beat around the bush. I truly respect his work ethic.", rating: 5, photo: rehmanPhoto, clientType: "Buyer" as ClientType, timeAgo: "4 years ago" },
   ];
+
+  const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 6);
 
   return (
     <>
@@ -171,33 +205,77 @@ const LandingPage = () => {
         {/* Social Proof */}
         <section className="px-4 py-12 border-t border-white/5">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8" style={{ fontFamily: "Raleway, sans-serif" }}>
-              Real Clients. Real Results. 💬
-            </h2>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
+                Real Clients. Real Results. 💬
+              </h2>
+              <div className="flex items-center justify-center gap-2">
+                <img
+                  src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                  alt="Google"
+                  className="h-4"
+                />
+                <div className="flex gap-0.5">
+                  {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <span className="text-slate-400 text-xs">5.0 ({testimonials.length}+ reviews)</span>
+              </div>
+            </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {testimonials.map((t, i) => (
+              {visibleTestimonials.map((t, i) => (
                 <motion.div
                   key={t.name}
                   initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
                   className="bg-slate-800/50 rounded-xl p-5 border border-white/10"
                 >
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(t.rating)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="flex gap-0.5">
+                      {[...Array(t.rating)].map((_, j) => (
+                        <Star key={j} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${clientTypeColors[t.clientType]}`}>
+                      {t.clientType}
+                    </span>
                   </div>
                   <p className="text-slate-300 text-sm mb-3">"{t.text}"</p>
-                  <div className="flex items-center gap-2">
-                    <img src={t.photo} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-primary/30" />
-                    <span className="text-white font-medium text-sm">{t.name}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <img src={t.photo} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-primary/30" />
+                      <span className="text-white font-medium text-sm">{t.name}</span>
+                    </div>
+                    <span className="text-slate-500 text-xs">{t.timeAgo}</span>
                   </div>
                 </motion.div>
               ))}
             </div>
+
+            {!showAllReviews && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowAllReviews(true)}
+                  className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors"
+                >
+                  See All {testimonials.length} Reviews <ChevronDown className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+
+            {showAllReviews && (
+              <div className="text-center mt-6">
+                <a
+                  href="https://share.google/qgUTcQF2kOnjBBPr7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors"
+                >
+                  Read All Reviews on Google →
+                </a>
+              </div>
+            )}
           </div>
         </section>
 

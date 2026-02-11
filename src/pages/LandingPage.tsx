@@ -529,8 +529,6 @@ const LandingPage = () => {
                           <SelectItem value="buying-first-home">Buying My First Home</SelectItem>
                           <SelectItem value="presale-investment">Presale Investment</SelectItem>
                           <SelectItem value="selling-property">Selling My Property</SelectItem>
-                          <SelectItem value="market-advice">Market Advice / General</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

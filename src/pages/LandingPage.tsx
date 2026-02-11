@@ -238,7 +238,7 @@ const LandingPage = () => {
 
         {/* Minimal Header */}
         <header className="py-4 px-4 border-b border-white/5">
-          <div className="max-w-6xl mx-auto flex justify-center">
+          <div className="max-w-6xl mx-auto flex justify-start">
             <img src={logoImage} alt="Uzair Presales" className="h-8" />
           </div>
         </header>
@@ -246,7 +246,7 @@ const LandingPage = () => {
         {/* Hero */}
         <section className="px-4 pt-10 pb-12 md:pt-16 md:pb-20">
           <div className="max-w-3xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-10">
               {/* Headshot */}
               <motion.img 
                 src={headshotImage} 
@@ -256,7 +256,7 @@ const LandingPage = () => {
                 className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" 
               />
 
-              <div className="text-center md:text-left">
+              <div className="text-left">
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }} 
                   animate={{ opacity: 1, y: 0 }} 
@@ -290,7 +290,7 @@ const LandingPage = () => {
                   initial={{ opacity: 0, y: 10 }} 
                   animate={{ opacity: 1, y: 0 }} 
                   transition={{ delay: 0.2 }} 
-                  className="flex flex-wrap justify-center md:justify-start gap-2 text-slate-400 text-xs"
+                  className="flex flex-wrap justify-start gap-2 text-slate-400 text-xs"
                 >
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
                   
@@ -305,13 +305,13 @@ const LandingPage = () => {
         {/* Social Proof */}
         <section className="px-4 py-12 border-t border-white/5">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-8">
+            <div className="text-left mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
               fontFamily: "Raleway, sans-serif"
             }}>
                 What Our Clients Say 💬
               </h2>
-              <div className="flex items-center justify-center gap-2">
+              <div className="flex items-center justify-start gap-2">
                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
@@ -349,13 +349,13 @@ const LandingPage = () => {
                 </motion.div>)}
             </div>
 
-            {!showAllReviews && <div className="text-center mt-6">
+            {!showAllReviews && <div className="text-left mt-6">
                 <button onClick={() => setShowAllReviews(true)} className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
                   See More Reviews <ChevronDown className="w-4 h-4" />
                 </button>
               </div>}
 
-            {showAllReviews && <div className="text-center mt-6">
+            {showAllReviews && <div className="text-left mt-6">
                 <a href="https://share.google/qgUTcQF2kOnjBBPr7" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
                   Read All Reviews on Google →
                 </a>
@@ -366,11 +366,11 @@ const LandingPage = () => {
         {/* Why Work With Uzair */}
         <section className="px-4 py-14 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
-            <p className="text-primary text-xs font-semibold tracking-wider uppercase text-center mb-2">For First-Time Buyers & Investors</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
+            <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
               Why Work With Uzair?
             </h2>
-            <p className="text-slate-400 text-sm text-center max-w-xl mx-auto mb-10">
+            <p className="text-slate-400 text-sm text-left max-w-xl mb-10">
               Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
             </p>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -411,7 +411,7 @@ const LandingPage = () => {
         </section>
 
         {/* Footer text */}
-        <footer className="py-6 px-4 bg-slate-950 border-t border-white/5 text-center">
+        <footer className="py-6 px-4 bg-slate-950 border-t border-white/5 text-left">
           <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} Uzair Presales • Vancouver's Presale Expert
           </p>

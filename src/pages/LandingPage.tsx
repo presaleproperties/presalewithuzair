@@ -420,9 +420,12 @@ const LandingPage = () => {
           <button onClick={() => {
           setIsFormOpen(true);
           setIsSubmitted(false);
-        }} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.5)] transition-all font-semibold inline-flex items-center justify-center gap-2">
-            <Phone className="w-5 h-5" /> Request A Call
+        }} className="w-full group relative overflow-hidden bg-gradient-to-r from-primary to-emerald-400 text-slate-950 text-lg py-4 rounded-full shadow-[0_0_25px_rgba(0,200,200,0.5)] hover:shadow-[0_0_40px_rgba(0,200,200,0.7)] transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
+            <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-full" />
+            <Phone className="w-5 h-5 relative z-10" />
+            <span className="relative z-10">Book Your Free Call</span>
           </button>
+          <p className="text-slate-500 text-[11px] text-center mt-1.5">No obligation • Takes 30 seconds</p>
         </div>
       </div>
 

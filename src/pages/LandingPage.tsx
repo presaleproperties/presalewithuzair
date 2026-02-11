@@ -263,7 +263,7 @@ const LandingPage = () => {
                   className="mb-3"
                 >
                   <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
-                    BC's Presale Expert
+                    BC's Top Presale Expert
                   </span>
                 </motion.div>
 

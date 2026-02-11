@@ -281,10 +281,22 @@ const LandingPage = () => {
                   initial={{ opacity: 0 }} 
                   animate={{ opacity: 1 }} 
                   transition={{ delay: 0.1 }} 
-                  className="text-base md:text-lg text-slate-300 mb-5 max-w-lg"
+                  className="text-base md:text-lg text-slate-300 mb-4 max-w-lg"
                 >
-                  Trusted guidance for condo & townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.
+                  For serious buyers and sellers only. Request a call and get a <span className="text-primary font-semibold">same-day callback</span>.
                 </motion.p>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ delay: 0.15 }} 
+                  className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1.5 text-slate-400 text-xs mb-4"
+                >
+                  <span>✓ First-Time Buyers</span>
+                  <span>✓ Presale Investors</span>
+                  <span>✓ Sellers</span>
+                  <span>✓ Assignments</span>
+                </motion.div>
 
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }} 
@@ -293,8 +305,7 @@ const LandingPage = () => {
                   className="flex flex-wrap justify-center md:justify-start gap-2 text-slate-400 text-xs"
                 >
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
-                  
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">📞 Same-Day Callback</span>
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">🗣 English · Punjabi · Urdu · Hindi</span>
                 </motion.div>
               </div>
@@ -529,8 +540,7 @@ const LandingPage = () => {
                           <SelectItem value="buying-first-home">Buying My First Home</SelectItem>
                           <SelectItem value="presale-investment">Presale Investment</SelectItem>
                           <SelectItem value="selling-property">Selling My Property</SelectItem>
-                          <SelectItem value="market-advice">Market Advice / General</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          <SelectItem value="assigning-presale">Assigning a Presale</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

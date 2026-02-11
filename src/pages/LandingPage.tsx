@@ -305,7 +305,7 @@ const LandingPage = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
               fontFamily: "Raleway, sans-serif"
             }}>
-                Real Clients. Real Results. 💬
+                What Our Clients Say 💬
               </h2>
               <div className="flex items-center justify-center gap-2">
                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />

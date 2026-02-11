@@ -289,7 +289,7 @@ const LandingPage = () => {
                   className="flex flex-wrap justify-center md:justify-start gap-2 text-slate-400 text-xs"
                 >
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ $1M+ Saved</span>
+                  
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">🗣 English · Punjabi · Urdu · Hindi</span>
                 </motion.div>

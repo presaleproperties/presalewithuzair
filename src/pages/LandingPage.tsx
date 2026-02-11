@@ -35,6 +35,7 @@ const LandingPage = () => {
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
   const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book Your Free Call';
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -552,13 +553,25 @@ const LandingPage = () => {
                       </Select>
                     </div>
 
-                    <Button type="submit" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6 rounded-xl shadow-lg shadow-primary/25 font-semibold">
+                    <label className="flex items-start gap-3 cursor-pointer group">
+                      <input 
+                        type="checkbox" 
+                        checked={agreedToTerms} 
+                        onChange={e => setAgreedToTerms(e.target.checked)} 
+                        className="mt-0.5 w-4 h-4 rounded border-white/20 bg-slate-800 text-primary focus:ring-primary accent-primary flex-shrink-0" 
+                      />
+                      <span className="text-xs text-slate-400 leading-relaxed">
+                        I understand that Uzair works exclusively with serious buyers and sellers who are <span className="text-slate-300 font-medium">not currently represented by another agent</span>. This call is not for general advice.
+                      </span>
+                    </label>
+
+                    <Button type="submit" disabled={isSubmitting || !agreedToTerms} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6 rounded-xl shadow-lg shadow-primary/25 font-semibold disabled:opacity-40 disabled:cursor-not-allowed">
                       <Phone className="w-5 h-5 mr-2" />
                       {isSubmitting ? "Sending..." : "Request My Call"}
                     </Button>
 
                     <p className="text-xs text-slate-500 text-center">
-                      ⚡ Limited weekly availability · Serious inquiries only
+                      ⚡ Limited weekly availability
                     </p>
                   </form>}
               </div>

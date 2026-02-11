@@ -25,7 +25,7 @@ import monaPhoto from "@/assets/testimonials/mona.jpg";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
-const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/11244776/uez90p7/";
+import { supabase } from "@/integrations/supabase/client";
 const LandingPage = () => {
   const {
     toast
@@ -82,13 +82,8 @@ const LandingPage = () => {
     const cleanUrl = window.location.origin + window.location.pathname;
     const urlParams = new URLSearchParams(window.location.search);
     try {
-      await fetch(ZAPIER_WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        mode: "no-cors",
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('send-to-zapier', {
+        body: {
           Full_Name: formData.name.trim(),
           Phone: formData.phone.trim(),
           Email: formData.email.trim(),
@@ -101,8 +96,10 @@ const LandingPage = () => {
           UTM_Medium: urlParams.get("utm_medium") || "",
           UTM_Campaign: urlParams.get("utm_campaign") || "",
           CTA_Variant: ctaVariant
-        })
+        }
       });
+
+      if (error) throw error;
       setIsSubmitted(true);
       toast({
         title: "You're booked! 🎉",

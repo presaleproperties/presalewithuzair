@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown } from "lucide-react";
+import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -360,43 +360,48 @@ const LandingPage = () => {
         </section>
 
         {/* Why Work With Uzair */}
-        <section className="px-4 py-12 bg-slate-900/50 border-y border-white/5">
+        <section className="px-4 py-14 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-8" style={{
-            fontFamily: "Raleway, sans-serif"
-          }}>
+            <p className="text-primary text-xs font-semibold tracking-wider uppercase text-center mb-2">For First-Time Buyers & Investors</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
               Why Work With Uzair?
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {[{
-              icon: Shield,
-              title: "Save Money",
-              desc: "Avoid bad deals. 350+ presales reviewed."
-            }, {
-              icon: TrendingUp,
-              title: "Best Units First",
-              desc: "Early access before public launch."
-            }, {
-              icon: Users,
-              title: "Trusted by Families",
-              desc: "350+ families across Metro Vancouver."
-            }].map((b, i) => <motion.div key={b.title} initial={{
-              opacity: 0,
-              y: 15
-            }} whileInView={{
-              opacity: 1,
-              y: 0
-            }} viewport={{
-              once: true
-            }} transition={{
-              delay: i * 0.1
-            }} className="bg-slate-800/50 rounded-xl p-6 border border-white/10 text-center">
-                  <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <b.icon className="w-6 h-6 text-primary" />
+            <p className="text-slate-400 text-sm text-center max-w-xl mx-auto mb-10">
+              Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {[
+                {
+                  icon: FileSearch,
+                  title: "Every Contract, Reviewed",
+                  desc: "Presale contracts are complex. Uzair breaks down every clause so you know exactly what you're signing — no surprises at completion."
+                },
+                {
+                  icon: Home,
+                  title: "Early Access to Best Units",
+                  desc: "Get priority access to new condo & townhome launches before they go public. The best floorplans and pricing go first."
+                },
+                {
+                  icon: BadgeDollarSign,
+                  title: "Protect Your Investment",
+                  desc: "Not every presale is worth buying. Uzair evaluates the developer, location, and pricing — and will tell you when to walk away."
+                },
+                {
+                  icon: Handshake,
+                  title: "With You From Start to Finish",
+                  desc: "From choosing the right project to completion day — Uzair guides you through deposits, milestones, inspections, and beyond."
+                }
+              ].map((b, i) => (
+                <motion.div key={b.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-slate-800/50 rounded-xl p-6 border border-white/10 flex gap-4">
+                  <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <b.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{b.title}</h3>
-                  <p className="text-slate-400 text-sm">{b.desc}</p>
-                </motion.div>)}
+                  <div>
+                    <h3 className="text-base font-semibold text-white mb-1.5">{b.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>

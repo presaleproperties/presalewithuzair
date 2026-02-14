@@ -32,7 +32,7 @@ export const BookingContextSection = () => {
 
   useEffect(() => {
     // Build Calendly URL with UTM parameters
-    const baseUrl = "https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=0f1419&text_color=fafafa&primary_color=0fd9e8";
+    const baseUrl = "https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=f2ede5&text_color=261c14&primary_color=d4a316";
     const urlParams = new URLSearchParams(window.location.search);
     
     const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
@@ -60,11 +60,11 @@ export const BookingContextSection = () => {
 
   return (
     <section id="book-section" className="py-16 sm:py-24 bg-background relative overflow-hidden">
-      {/* Colorful bokeh effects */}
+      {/* Warm bokeh effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-cyan-500/20 blur-3xl" />
-        <div className="absolute bottom-40 right-[10%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-pink-500/20 blur-3xl" />
-        <div className="absolute top-1/3 right-[5%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-purple-500/15 blur-3xl" />
+        <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-400/15 blur-3xl" />
+        <div className="absolute bottom-40 right-[10%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-orange-300/12 blur-3xl" />
+        <div className="absolute top-1/3 right-[5%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-yellow-400/10 blur-3xl" />
       </div>
 
       <div className="container-xl px-4 sm:px-6 relative z-10">

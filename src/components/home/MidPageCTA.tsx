@@ -10,7 +10,7 @@ export const MidPageCTA = ({ quote }: MidPageCTAProps) => {
   };
 
   return (
-    <section className="py-12 sm:py-16 bg-card">
+    <section className="dark-section py-12 sm:py-16 bg-card">
       <div className="container-xl px-4 sm:px-6 text-center">
         {quote && (
           <p className="text-lg sm:text-xl text-foreground/80 italic mb-6 max-w-2xl mx-auto">

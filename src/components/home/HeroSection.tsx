@@ -21,27 +21,27 @@ export const HeroSection = () => {
       behavior: 'smooth'
     });
   };
-  return <section className="relative min-h-screen overflow-hidden">
+  return <section className="dark-section relative min-h-screen overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
       
       {/* Colorful bokeh/light effects at bottom - matching Dan Martell style */}
       <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none">
-        {/* Pink/magenta bokeh */}
-        <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-pink-500/30 blur-3xl" />
-        <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-pink-400/40 blur-2xl" />
-        <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-fuchsia-500/30 blur-xl" />
+        {/* Warm amber bokeh */}
+        <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/25 blur-3xl" />
+        <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-400/30 blur-2xl" />
+        <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-orange-400/25 blur-xl" />
         
-        {/* Purple bokeh */}
-        <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-purple-500/25 blur-3xl" />
-        <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-violet-400/30 blur-2xl" />
+        {/* Warm rose bokeh */}
+        <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-rose-400/20 blur-3xl" />
+        <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-rose-300/20 blur-2xl" />
         
-        {/* Cyan/teal bokeh */}
-        <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-cyan-500/25 blur-3xl" />
-        <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-teal-400/30 blur-2xl" />
+        {/* Gold bokeh */}
+        <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-yellow-500/20 blur-3xl" />
+        <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-300/25 blur-2xl" />
         
-        {/* Light rays effect */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-cyan-500/10 via-transparent to-transparent" />
+        {/* Warm light rays */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-amber-500/8 via-transparent to-transparent" />
       </div>
 
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">

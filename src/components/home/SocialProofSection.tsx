@@ -130,7 +130,7 @@ const clientTypeColors: Record<ClientType, string> = {
   "Buyer": "bg-rose-500/20 text-rose-400 border-rose-500/30"
 };
 export const SocialProofSection = () => {
-  return <section className="py-16 sm:py-24 bg-gradient-to-b from-background via-card/50 to-background">
+  return <section className="dark-section py-16 sm:py-24 bg-gradient-to-b from-background via-card/50 to-background">
       <div className="container-xl px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">

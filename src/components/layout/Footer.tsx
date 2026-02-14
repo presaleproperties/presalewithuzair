@@ -5,7 +5,7 @@ import realBrokerLogo from "@/assets/real-broker-logo.avif";
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="dark-section bg-card border-t border-border">
       <div className="container-xl py-8 md:py-16">
         {/* Mobile: Compact stacked layout */}
         <div className="md:hidden">

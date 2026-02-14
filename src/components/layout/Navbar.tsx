@@ -46,7 +46,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`dark-section fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
           : "bg-background lg:bg-transparent"
@@ -68,7 +68,7 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="sm" 
-              className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
+              className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
               onClick={handleBookClick}
             >
               Book a Discovery Call
@@ -103,7 +103,7 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="rounded-full shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-shadow duration-300"
+              className="rounded-full shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
               onClick={handleBookClick}
             >
               Book a Discovery Call

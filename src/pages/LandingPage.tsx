@@ -284,8 +284,8 @@ const LandingPage = () => {
                 y: 0
               }} transition={{
                 duration: 0.5
-              }} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" style={{
-                fontFamily: "Raleway, sans-serif"
+               }} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" style={{
+                fontFamily: "'DM Serif Display', serif"
               }}>
                   Work With <span className="text-primary">Uzair.</span>
                 </motion.h1>
@@ -322,7 +322,7 @@ const LandingPage = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-left mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
-              fontFamily: "Raleway, sans-serif"
+              fontFamily: "'DM Serif Display', serif"
             }}>
                 What Our Clients Say 💬
               </h2>
@@ -382,8 +382,8 @@ const LandingPage = () => {
         <section className="px-4 py-14 bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{
-            fontFamily: "Raleway, sans-serif"
+             <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{
+            fontFamily: "'DM Serif Display', serif"
           }}>
               Why Work With Uzair?
             </h2>
@@ -446,7 +446,7 @@ const LandingPage = () => {
           <button onClick={() => {
           setIsFormOpen(true);
           setIsSubmitted(false);
-        }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(0,200,200,0.4)] hover:shadow-[0_0_30px_rgba(0,200,200,0.6)] transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
+        }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-xl shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
             <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl" />
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">{ctaText}</span>
@@ -494,8 +494,8 @@ const LandingPage = () => {
                     <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2" style={{
-                fontFamily: "Raleway, sans-serif"
+                     <h3 className="text-2xl font-bold text-white mb-2" style={{
+                fontFamily: "'DM Serif Display', serif"
               }}>
                       You're In! 🎉
                     </h3>
@@ -506,8 +506,8 @@ const LandingPage = () => {
                     </a>
                   </div> : <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="text-center mb-1">
-                      <h2 className="text-xl md:text-2xl font-bold text-white" style={{
-                  fontFamily: "Raleway, sans-serif"
+                       <h2 className="text-xl md:text-2xl font-bold text-white" style={{
+                  fontFamily: "'DM Serif Display', serif"
                 }}>
                         Request A <span className="text-primary">Call</span>
                       </h2>

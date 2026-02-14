@@ -5,11 +5,11 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  label: "PRESALE EXPERT",
-  headlinePart1: "NAVIGATE THE",
-  headlinePart2: "PRESALE MARKET",
-  headlineAccent: "WITH CLEAR",
-  headlineAccent2: "GUIDANCE.",
+  label: "Presale Expert",
+  headlinePart1: "Navigate the",
+  headlinePart2: "Presale Market",
+  headlineAccent: "With Clear",
+  headlineAccent2: "Guidance.",
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Book a Discovery Call",
@@ -48,7 +48,7 @@ export const HeroSection = () => {
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Label - Cyan like Dan Martell */}
-          <p className="text-primary font-bold tracking-[0.15em] text-sm mb-4 animate-fade-up">
+          <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
             {heroContent.label}
           </p>
           
@@ -150,7 +150,7 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Label */}
-              <p className="text-primary font-bold tracking-[0.15em] text-sm animate-fade-up">
+              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.label}
               </p>
               

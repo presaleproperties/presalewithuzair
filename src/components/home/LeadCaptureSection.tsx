@@ -170,8 +170,8 @@ export const LeadCaptureSection = () => {
             <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-primary/20 flex items-center justify-center">
               <CheckCircle className="h-10 w-10 text-primary" />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-black text-foreground uppercase tracking-tight mb-4">
-              ALL SET!
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4">
+              All Set!
             </h2>
             <p className="text-lg text-muted-foreground">
               You will hear from us soon.
@@ -214,8 +214,8 @@ export const LeadCaptureSection = () => {
             <p className="text-primary font-bold tracking-[0.15em] text-xs sm:text-sm mb-3">
               START HERE
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground uppercase tracking-tight mb-3">
-              GET CLEAR GUIDANCE <span className="text-muted-foreground">BEFORE YOU BUY</span>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground tracking-tight mb-3">
+              Get Clear Guidance <span className="text-muted-foreground">Before You Buy</span>
             </h2>
             
             <p className="text-sm sm:text-base text-muted-foreground mb-6">

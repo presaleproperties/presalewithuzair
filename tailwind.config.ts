@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Raleway"', 'sans-serif'],
+        display: ['"DM Serif Display"', 'serif'],
         sans: ['"Source Sans 3"', 'sans-serif'],
       },
       colors: {

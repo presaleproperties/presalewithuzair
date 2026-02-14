@@ -125,34 +125,34 @@ const Developers = () => {
 
       <Navbar />
       <main>
-        {/* Hero Section - Matching site style */}
-        <section className="relative min-h-[90vh] overflow-hidden flex items-center">
+        {/* Hero Section */}
+        <section className="dark-section relative min-h-[90vh] overflow-hidden flex items-center">
           {/* Background with gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
           
-          {/* Colorful bokeh/light effects at bottom */}
+          {/* Warm bokeh effects */}
           <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none">
-            <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-pink-500/30 blur-3xl" />
-            <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-pink-400/40 blur-2xl" />
-            <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-fuchsia-500/30 blur-xl" />
-            <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-purple-500/25 blur-3xl" />
-            <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-violet-400/30 blur-2xl" />
-            <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-cyan-500/25 blur-3xl" />
-            <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-teal-400/30 blur-2xl" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-cyan-500/10 via-transparent to-transparent" />
+            <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/25 blur-3xl" />
+            <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-400/30 blur-2xl" />
+            <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-orange-400/25 blur-xl" />
+            <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-rose-400/20 blur-3xl" />
+            <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-rose-300/20 blur-2xl" />
+            <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-yellow-500/20 blur-3xl" />
+            <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-300/25 blur-2xl" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-amber-500/8 via-transparent to-transparent" />
           </div>
 
           <div className="container-xl relative z-10 px-4 sm:px-6 py-20 md:py-28">
             <div className="max-w-4xl">
-              <p className="text-primary font-bold tracking-[0.15em] text-sm mb-4 animate-fade-up">
-                DEVELOPER ADVISORY
+              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
+                Developer Advisory
               </p>
 
-              <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 animate-fade-up">
-                <span className="text-foreground block">INDEPENDENT</span>
-                <span className="text-foreground block">ADVISORY FOR</span>
-                <span className="text-muted-foreground block">DEVELOPERS WHO</span>
-                <span className="text-muted-foreground block">WANT IT DONE RIGHT.</span>
+              <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-up">
+                <span className="text-foreground block">Independent</span>
+                <span className="text-foreground block">Advisory for</span>
+                <span className="text-muted-foreground block">Developers Who</span>
+                <span className="text-muted-foreground block">Want It Done Right.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-muted-foreground mb-4 animate-fade-up max-w-2xl">
@@ -188,9 +188,9 @@ const Developers = () => {
         <section className="py-16 md:py-20 lg:py-24 bg-card border-y border-border">
           <div className="container-xl px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-14">
-              <p className="section-label mb-3">TRACK RECORD</p>
+              <p className="section-label mb-3">Track Record</p>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                SOLD OVER <span className="text-gradient">$200M+ IN PRESALES</span> SINCE 2022
+                Sold Over <span className="text-gradient">$200M+ in Presales</span> Since 2022
               </h2>
             </div>
             
@@ -245,9 +245,9 @@ const Developers = () => {
         <section id="why-developers" className="py-16 md:py-24 lg:py-32 bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="max-w-3xl">
-              <p className="section-label mb-3 sm:mb-4">THE CHALLENGE</p>
+              <p className="section-label mb-3 sm:mb-4">The Challenge</p>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">
-                WHY DEVELOPERS <span className="text-gradient">BRING ME IN</span>
+                Why Developers <span className="text-gradient">Bring Me In</span>
               </h2>
               
               <div className="space-y-6 text-muted-foreground">
@@ -269,9 +269,9 @@ const Developers = () => {
         <section className="py-16 md:py-24 lg:py-32 bg-card">
           <div className="container-xl px-4 sm:px-6">
             <div className="mb-12 md:mb-16">
-              <p className="section-label mb-3 sm:mb-4">ADVISORY FOCUS</p>
+              <p className="section-label mb-3 sm:mb-4">Advisory Focus</p>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                WHERE I CREATE <span className="text-gradient">REAL IMPACT</span>
+                Where I Create <span className="text-gradient">Real Impact</span>
               </h2>
             </div>
 
@@ -306,9 +306,9 @@ const Developers = () => {
           <div className="container-xl px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
-                <p className="section-label mb-3 sm:mb-4">MY ROLE</p>
+                <p className="section-label mb-3 sm:mb-4">My Role</p>
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8">
-                  INDEPENDENT. <span className="text-gradient">DIRECT.</span> ON YOUR SIDE.
+                  Independent. <span className="text-gradient">Direct.</span> On Your Side.
                 </h2>
                 
                 <div className="space-y-4 text-muted-foreground mb-8">
@@ -349,9 +349,9 @@ const Developers = () => {
           <div className="container-xl px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
-                <p className="section-label mb-3 sm:mb-4">FIT</p>
+                <p className="section-label mb-3 sm:mb-4">Fit</p>
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-10">
-                  WHO THIS IS <span className="text-gradient">FOR</span>
+                  Who This Is <span className="text-gradient">For</span>
                 </h2>
                 
                 <ul className="space-y-4 mb-10">
@@ -391,18 +391,18 @@ const Developers = () => {
         </section>
 
         {/* Final CTA Section */}
-        <section className="relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden">
-          {/* Bokeh effects */}
+        <section className="dark-section relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden">
+          {/* Warm bokeh effects */}
           <div className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none">
-            <div className="absolute bottom-10 left-[15%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-cyan-500/20 blur-3xl" />
-            <div className="absolute bottom-20 right-[15%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-purple-500/20 blur-3xl" />
+            <div className="absolute bottom-10 left-[15%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-amber-500/20 blur-3xl" />
+            <div className="absolute bottom-20 right-[15%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-orange-400/15 blur-3xl" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
           </div>
           
           <div className="container-xl px-4 sm:px-6 relative z-10">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                BOOK A <span className="text-gradient">DEVELOPER</span> CONSULTING CALL
+                Book a <span className="text-gradient">Developer</span> Consulting Call
               </h2>
               
               <p className="text-muted-foreground mb-10">

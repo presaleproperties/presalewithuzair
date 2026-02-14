@@ -146,33 +146,33 @@ const Agents = () => {
 
       <Navbar />
       <main>
-        {/* Hero Section - Dan Martell Style */}
-        <section className="relative min-h-[85vh] overflow-hidden flex items-center">
+        {/* Hero Section */}
+        <section className="dark-section relative min-h-[85vh] overflow-hidden flex items-center">
           {/* Background with gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
           
-          {/* Colorful bokeh/light effects at bottom */}
+          {/* Warm bokeh effects */}
           <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none">
-            <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-pink-500/30 blur-3xl" />
-            <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-pink-400/40 blur-2xl" />
-            <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-fuchsia-500/30 blur-xl" />
-            <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-purple-500/25 blur-3xl" />
-            <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-violet-400/30 blur-2xl" />
-            <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-cyan-500/25 blur-3xl" />
-            <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-teal-400/30 blur-2xl" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-cyan-500/10 via-transparent to-transparent" />
+            <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/25 blur-3xl" />
+            <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-400/30 blur-2xl" />
+            <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-orange-400/25 blur-xl" />
+            <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-rose-400/20 blur-3xl" />
+            <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-rose-300/20 blur-2xl" />
+            <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-yellow-500/20 blur-3xl" />
+            <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-300/25 blur-2xl" />
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-amber-500/8 via-transparent to-transparent" />
           </div>
 
           <div className="container-xl relative z-10 px-4 sm:px-6 py-20">
             <div className="max-w-3xl">
-              <p className="text-primary font-bold tracking-[0.15em] text-sm mb-4 animate-fade-up">
-                VANCOUVER PRESALE ACADEMY
+              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
+                Vancouver Presale Academy
               </p>
 
-              <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl font-black leading-[1.05] mb-6 animate-fade-up">
-                <span className="text-foreground block">MASTER THE ART OF</span>
-                <span className="text-foreground block">SELLING PRESALES</span>
-                <span className="text-muted-foreground block">IN ANY MARKET</span>
+              <h1 className="font-display text-[2.5rem] sm:text-5xl md:text-6xl leading-[1.05] mb-6 animate-fade-up">
+                <span className="text-foreground block">Master the Art of</span>
+                <span className="text-foreground block">Selling Presales</span>
+                <span className="text-muted-foreground block">In Any Market</span>
               </h1>
 
               <p className="text-base sm:text-lg text-muted-foreground mb-4 animate-fade-up">

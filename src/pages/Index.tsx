@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
@@ -221,7 +222,12 @@ const Index = () => {
         <SocialProofSection />
         
         {/* Mid-page CTA */}
-        <MidPageCTA quote="Uzair told me not to buy two projects I was excited about — and saved me from major issues. That's the kind of honesty you need." />
+        <MidPageCTA 
+          quote="Uzair told me not to buy two projects I was excited about — and saved me from major issues. That's the kind of honesty you need."
+          clientName="Akhi"
+          clientRole="First-Time Buyer"
+          clientPhoto={akhiPhoto}
+        />
         
         {/* Why Work With a Presale Expert */}
         <DifferentiationSection />

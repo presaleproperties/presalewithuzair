@@ -263,7 +263,7 @@ const LandingPage = () => {
 
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs mb-5">
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🏠 Presales</span>
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🔄 Assignments</span>
+                
                 
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🔑 Resale Buy & Sell</span>
               </motion.div>

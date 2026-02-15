@@ -270,7 +270,7 @@ const LandingPage = () => {
 
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs">
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ 350+ Clients Helped</span>
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ Free, No-Obligation Call</span>
+                
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🗣 English · Punjabi · Urdu · Hindi</span>
               </motion.div>
             </div>

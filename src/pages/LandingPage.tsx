@@ -249,12 +249,16 @@ const LandingPage = () => {
             <motion.img src={headshotImage} alt="Uzair" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" />
 
             <div className="text-left">
+              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-3">
+                <span className="text-sm font-medium text-primary">Hey, I'm Uzair 👋</span>
+              </motion.div>
+
               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-3xl md:text-5xl text-foreground leading-tight mb-4">
-                The Unfiltered, No-BS Advice <span className="text-primary">You Need.</span>
+                Thinking About Buying a <span className="text-primary">Presale?</span>
               </motion.h1>
 
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-5 max-w-lg">
-                Whether you're buying your first presale, building an investment portfolio, or assigning a contract — you deserve an advisor who tells you the truth, not a sales pitch.
+                Whether it's your first home or your next investment — let's have an honest conversation about what makes sense for you. No pressure, no pitch. Just real advice.
               </motion.p>
 
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs mb-5">

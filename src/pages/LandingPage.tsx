@@ -322,6 +322,56 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Services */}
+      <section className="px-4 py-14 border-t border-border">
+        <div className="max-w-5xl mx-auto">
+          <p className="section-label text-left mb-2">How Uzair Can Help</p>
+          <h2 className="text-2xl md:text-3xl text-left text-foreground mb-8">
+            Services
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {[{
+              icon: Home,
+              title: "Buy New Construction",
+              items: ["Condos", "Townhomes", "Single Family"],
+              desc: "Get early access, expert contract review, and negotiation on brand-new builds before they hit the public market."
+            }, {
+              icon: FileSearch,
+              title: "Buy Resale",
+              items: ["Condos", "Townhomes", "Single Family"],
+              desc: "Find the right resale property with honest market analysis, negotiation strategy, and full transaction support."
+            }, {
+              icon: BadgeDollarSign,
+              title: "Assign a Presale",
+              items: null,
+              desc: "Already own a presale contract? Uzair helps you navigate the assignment process to maximize your return."
+            }, {
+              icon: Handshake,
+              title: "Sell Resale Property",
+              items: null,
+              desc: "Get top dollar for your property with strategic pricing, professional marketing, and hands-on guidance from list to close."
+            }].map((s, i) => (
+              <motion.div key={s.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <s.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground">{s.title}</h3>
+                </div>
+                {s.items && (
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {s.items.map(item => (
+                      <span key={item} className="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-full font-medium">{item}</span>
+                    ))}
+                  </div>
+                )}
+                <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Work With Uzair */}
       <section className="px-4 py-14 bg-muted/30 border-y border-border">
         <div className="max-w-4xl mx-auto">

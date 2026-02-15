@@ -97,7 +97,7 @@ const LandingPage = () => {
       });
       if (error) throw error;
       setIsSubmitted(true);
-      toast({ title: "You're booked! 🎉", description: "Uzair will call you soon." });
+      toast({ title: "You're booked! 🎉", description: "I'll call you soon." });
     } catch {
       toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
     } finally {
@@ -259,7 +259,7 @@ const LandingPage = () => {
                 Work With <span className="text-primary">Uzair.</span>
               </motion.h1>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.</motion.p>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice from me directly.</motion.p>
 
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs">
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ 350+ Families Helped</span>
@@ -276,7 +276,7 @@ const LandingPage = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-left mb-8">
             <h2 className="text-2xl md:text-3xl text-foreground mb-3">
-              What Our Clients Say 💬
+              What My Clients Say 💬
             </h2>
             <div className="flex items-center justify-start gap-2">
               <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
@@ -325,7 +325,7 @@ const LandingPage = () => {
       {/* Services */}
       <section className="px-4 py-14 border-t border-border">
         <div className="max-w-5xl mx-auto">
-          <p className="section-label text-left mb-2">How Uzair Can Help</p>
+          <p className="section-label text-left mb-2">How I Can Help</p>
           <h2 className="text-2xl md:text-3xl text-left text-foreground mb-8">
             Services
           </h2>
@@ -344,7 +344,7 @@ const LandingPage = () => {
               icon: BadgeDollarSign,
               title: "Assign a Presale",
               items: null,
-              desc: "Already own a presale contract? Uzair helps you navigate the assignment process to maximize your return."
+              desc: "Already own a presale contract? I'll help you navigate the assignment process to maximize your return."
             }, {
               icon: Handshake,
               title: "Sell Resale Property",
@@ -377,35 +377,35 @@ const LandingPage = () => {
         <div className="max-w-4xl mx-auto">
           <p className="section-label text-left mb-2">What Clients Say</p>
           <h2 className="text-2xl md:text-3xl text-left text-foreground mb-3">
-            What It's Actually Like Working With Uzair
+            What It's Actually Like Working With Me
           </h2>
           <p className="text-muted-foreground text-sm text-left max-w-xl mb-10">
-            Buying real estate can feel overwhelming — especially your first time. Here's how Uzair addresses the fears most buyers won't say out loud.
+            Buying real estate can feel overwhelming — especially your first time. Here's how I address the fears most buyers won't say out loud.
           </p>
           <div className="space-y-5">
             {[{
               fear: "\"I'm nervous I'll sign something I don't understand.\"",
-              answer: "Uzair breaks down every clause in plain language so nothing catches you off guard. As one first-time buyer put it:",
+              answer: "I break down every clause in plain language so nothing catches you off guard. As one first-time buyer put it:",
               quote: "Every question we had was answered thoroughly, and they always explained things in a way that made us feel confident and informed at every step.",
               reviewer: "— Anish B., First-Time Buyer"
             }, {
               fear: "\"What if I get pressured into a bad deal?\"",
-              answer: "Uzair will tell you when to walk away — even if it means losing a sale. He evaluates the developer, location, and pricing before he ever recommends a project.",
+              answer: "I'll tell you when to walk away — even if it means losing a sale. I evaluate the developer, location, and pricing before I ever recommend a project.",
               quote: "He's not one to pressure you into making a decision if it's not the right one for you.",
               reviewer: "— Michelle L., First-Time Buyer"
             }, {
               fear: "\"I don't know this market. What if I make a mistake?\"",
-              answer: "Whether you're new to Vancouver or new to real estate, Uzair guides you through the entire process — search, offer, deposits, completion.",
+              answer: "Whether you're new to Vancouver or new to real estate, I'll guide you through the entire process — search, offer, deposits, completion.",
               quote: "Uzair made what could have been a really difficult transaction... he turned it into an easy and enjoyable process.",
               reviewer: "— Andres J., First-Time Buyer"
             }, {
               fear: "\"Is my realtor actually looking out for me, or just chasing commission?\"",
-              answer: "Uzair invests in the same projects he recommends. He won't let you put money into something he wouldn't put his own money into.",
+              answer: "I invest in the same projects I recommend. I won't let you put money into something I wouldn't put my own money into.",
               quote: "He is not a realtor for just money, he is a realtor to make sure every hard earned dollar you put down is worth your struggle and sweat.",
               reviewer: "— Amrin S., Investor"
             }, {
               fear: "\"What happens after I sign? Will I be left on my own?\"",
-              answer: "From choosing the right unit to completion day and beyond — Uzair stays with you through deposits, milestones, inspections, and move-in.",
+              answer: "From choosing the right unit to completion day and beyond — I stay with you through deposits, milestones, inspections, and move-in.",
               quote: "He made the entire process smooth and stress-free, answering all my questions and keeping me informed every step of the way.",
               reviewer: "— Jamila K., Buyer"
             }].map((item, i) => (
@@ -468,7 +468,7 @@ const LandingPage = () => {
               <h3 className="text-2xl text-foreground mb-2">
                 You're In! 🎉
               </h3>
-              <p className="text-muted-foreground mb-2">Uzair will call you at your preferred time.</p>
+              <p className="text-muted-foreground mb-2">I'll call you at your preferred time.</p>
               <p className="text-muted-foreground text-sm mb-6">Check your email for confirmation.</p>
               <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
                 Visit Our Website →
@@ -497,7 +497,7 @@ const LandingPage = () => {
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-muted-foreground text-sm">How Can Uzair Help? *</Label>
+                <Label className="text-muted-foreground text-sm">How Can I Help? *</Label>
                 <Select value={formData.helpWith} onValueChange={v => setFormData({ ...formData, helpWith: v })}>
                   <SelectTrigger className="bg-input border-border text-foreground h-12">
                     <SelectValue placeholder="Select one" />
@@ -511,7 +511,7 @@ const LandingPage = () => {
               </div>
 
               <div className="space-y-1.5">
-                <Label className="text-muted-foreground text-sm">Where Did You Find Uzair? *</Label>
+                <Label className="text-muted-foreground text-sm">Where Did You Find Me? *</Label>
                 <Select value={formData.foundVia} onValueChange={v => setFormData({ ...formData, foundVia: v })}>
                   <SelectTrigger className="bg-input border-border text-foreground h-12">
                     <SelectValue placeholder="Select one" />
@@ -528,7 +528,7 @@ const LandingPage = () => {
 
               <div className="space-y-1.5">
                 <Label className="text-muted-foreground text-sm">Notes</Label>
-                <Textarea placeholder="Tell Uzair more about your situation so he can prepare for the call" value={formData.notes} onChange={e => setFormData({ ...formData, notes: e.target.value })} className="bg-input border-border text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[80px] resize-none" maxLength={500} />
+                <Textarea placeholder="Tell me more about your situation so I can prepare for the call" value={formData.notes} onChange={e => setFormData({ ...formData, notes: e.target.value })} className="bg-input border-border text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[80px] resize-none" maxLength={500} />
               </div>
 
               <div className="space-y-1.5">
@@ -549,7 +549,7 @@ const LandingPage = () => {
               <label className="flex items-start gap-3 cursor-pointer group">
                 <input type="checkbox" checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} className="mt-0.5 w-4 h-4 rounded border-border bg-input text-primary focus:ring-primary accent-primary flex-shrink-0" />
                 <span className="text-xs text-muted-foreground leading-relaxed">
-                  Uzair works exclusively with serious buyers and sellers who are <span className="text-foreground font-medium">not currently represented by another agent</span>. By checking this box, you confirm this applies to you.
+                  I work exclusively with serious buyers and sellers who are <span className="text-foreground font-medium">not currently represented by another agent</span>. By checking this box, you confirm this applies to you.
                 </span>
               </label>
 

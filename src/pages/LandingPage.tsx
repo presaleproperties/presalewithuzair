@@ -254,7 +254,7 @@ const LandingPage = () => {
               </motion.div>
 
               <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-3xl md:text-5xl text-foreground leading-tight mb-4">
-                Thinking About Buying a <span className="text-primary">Presale?</span>
+                Thinking About Buying a <span className="text-primary">Property?</span>
               </motion.h1>
 
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-5 max-w-lg">

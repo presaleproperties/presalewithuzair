@@ -372,42 +372,52 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Why Work With Uzair */}
+      {/* What It's Like Working With Uzair */}
       <section className="px-4 py-14 bg-muted/30 border-y border-border">
         <div className="max-w-4xl mx-auto">
-          <p className="section-label text-left mb-2">For First-Time Buyers & Investors</p>
+          <p className="section-label text-left mb-2">What Clients Say</p>
           <h2 className="text-2xl md:text-3xl text-left text-foreground mb-3">
-            Why Work With Uzair?
+            What It's Actually Like Working With Uzair
           </h2>
           <p className="text-muted-foreground text-sm text-left max-w-xl mb-10">
-            Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
+            Buying real estate can feel overwhelming — especially your first time. Here's how Uzair addresses the fears most buyers won't say out loud.
           </p>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="space-y-5">
             {[{
-              icon: FileSearch,
-              title: "Every Contract, Reviewed",
-              desc: "Presale contracts are complex. Uzair breaks down every clause so you know exactly what you're signing — no surprises at completion."
+              fear: "\"I'm nervous I'll sign something I don't understand.\"",
+              answer: "Uzair breaks down every clause in plain language so nothing catches you off guard. As one first-time buyer put it:",
+              quote: "Every question we had was answered thoroughly, and they always explained things in a way that made us feel confident and informed at every step.",
+              reviewer: "— Anish B., First-Time Buyer"
             }, {
-              icon: Home,
-              title: "Early Access to Best Units",
-              desc: "Get priority access to new condo & townhome launches before they go public. The best floorplans and pricing go first."
+              fear: "\"What if I get pressured into a bad deal?\"",
+              answer: "Uzair will tell you when to walk away — even if it means losing a sale. He evaluates the developer, location, and pricing before he ever recommends a project.",
+              quote: "He's not one to pressure you into making a decision if it's not the right one for you.",
+              reviewer: "— Michelle L., First-Time Buyer"
             }, {
-              icon: BadgeDollarSign,
-              title: "Protect Your Investment",
-              desc: "Not every presale is worth buying. Uzair evaluates the developer, location, and pricing — and will tell you when to walk away."
+              fear: "\"I don't know this market. What if I make a mistake?\"",
+              answer: "Whether you're new to Vancouver or new to real estate, Uzair guides you through the entire process — search, offer, deposits, completion.",
+              quote: "Uzair made what could have been a really difficult transaction... he turned it into an easy and enjoyable process.",
+              reviewer: "— Andres J., First-Time Buyer"
             }, {
-              icon: Handshake,
-              title: "With You From Start to Finish",
-              desc: "From choosing the right project to completion day — Uzair guides you through deposits, milestones, inspections, and beyond."
-            }].map((b, i) => <motion.div key={b.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border flex gap-4">
-              <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                <b.icon className="w-5 h-5 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground mb-1.5">{b.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{b.desc}</p>
-              </div>
-            </motion.div>)}
+              fear: "\"Is my realtor actually looking out for me, or just chasing commission?\"",
+              answer: "Uzair invests in the same projects he recommends. He won't let you put money into something he wouldn't put his own money into.",
+              quote: "He is not a realtor for just money, he is a realtor to make sure every hard earned dollar you put down is worth your struggle and sweat.",
+              reviewer: "— Amrin S., Investor"
+            }, {
+              fear: "\"What happens after I sign? Will I be left on my own?\"",
+              answer: "From choosing the right unit to completion day and beyond — Uzair stays with you through deposits, milestones, inspections, and move-in.",
+              quote: "He made the entire process smooth and stress-free, answering all my questions and keeping me informed every step of the way.",
+              reviewer: "— Jamila K., Buyer"
+            }].map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="bg-card rounded-xl p-6 border border-border">
+                <p className="text-foreground font-semibold text-base italic mb-3">{item.fear}</p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">{item.answer}</p>
+                <div className="pl-4 border-l-2 border-primary/40">
+                  <p className="text-foreground/80 text-sm italic leading-relaxed">"{item.quote}"</p>
+                  <p className="text-primary text-xs mt-1.5 font-medium">{item.reviewer}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

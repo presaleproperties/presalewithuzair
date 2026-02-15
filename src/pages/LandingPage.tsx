@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
+import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -329,27 +329,19 @@ const LandingPage = () => {
           <h2 className="text-2xl md:text-3xl text-left text-foreground mb-8">
             Services
           </h2>
-          <div className="grid sm:grid-cols-2 gap-5">
+
+          {/* Primary services — 2 col */}
+          <div className="grid sm:grid-cols-2 gap-5 mb-5">
             {[{
               icon: Home,
-              title: "Buy New Construction",
+              title: "Buy a Presale",
               items: ["Condos", "Townhomes", "Single Family"],
-              desc: "Get early access, expert contract review, and negotiation on brand-new builds before they hit the public market."
-            }, {
-              icon: FileSearch,
-              title: "Buy Resale",
-              items: ["Condos", "Townhomes", "Single Family"],
-              desc: "Find the right resale property with honest market analysis, negotiation strategy, and full transaction support."
+              desc: "Get early access to new developments, expert contract review, and honest advice on which projects are actually worth your money — before they hit the public market."
             }, {
               icon: BadgeDollarSign,
               title: "Assign a Presale",
               items: null,
-              desc: "Already own a presale contract? I'll help you navigate the assignment process to maximize your return."
-            }, {
-              icon: Handshake,
-              title: "Sell Resale Property",
-              items: null,
-              desc: "Get top dollar for your property with strategic pricing, professional marketing, and hands-on guidance from list to close."
+              desc: "Already own a presale contract? I'll help you navigate the assignment process, find qualified buyers, and maximize your return — while keeping you protected."
             }].map((s, i) => (
               <motion.div key={s.title} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="bg-card rounded-xl p-6 border border-border">
                 <div className="flex items-center gap-3 mb-3">
@@ -369,6 +361,24 @@ const LandingPage = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Resale — full width */}
+          <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.16 }} className="bg-card rounded-xl p-6 border border-border">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Handshake className="w-5 h-5 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-foreground">"Do You Help With Resale Too?"</h3>
+            </div>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {["Buy Resale", "Sell Resale"].map(item => (
+                <span key={item} className="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-full font-medium">{item}</span>
+              ))}
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Yes — whether you're buying or selling a resale condo, townhome, or house, I bring the same honest analysis, negotiation strategy, and hands-on support from start to close.
+            </p>
+          </motion.div>
         </div>
       </section>
 

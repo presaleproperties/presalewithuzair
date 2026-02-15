@@ -249,23 +249,21 @@ const LandingPage = () => {
             <motion.img src={headshotImage} alt="Uzair" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" />
 
             <div className="text-left">
-              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-3xl md:text-5xl text-foreground leading-tight mb-4">
-                The Unfiltered, No-BS Advice <span className="text-primary">You Need.</span>
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-3xl md:text-5xl text-foreground leading-tight mb-3">
+                Buying Your First <span className="text-primary">Presale?</span>
               </motion.h1>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-5 max-w-lg">
-                Whether you're buying your first presale, building an investment portfolio, or assigning a contract — you deserve an advisor who tells you the truth, not a sales pitch.
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="text-base md:text-lg text-muted-foreground mb-2 max-w-lg">
+                You don't need more listings. You need someone who'll tell you the truth — which projects are worth your money, which ones aren't, and why.
               </motion.p>
 
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs mb-5">
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🏠 Presales & Assignments</span>
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">📈 Investment Strategy</span>
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🔑 Resale Buy & Sell</span>
-              </motion.div>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15 }} className="text-sm text-muted-foreground mb-5 max-w-lg">
+                I've helped 350+ families buy with confidence across Metro Vancouver. Let's talk about your situation — no pressure, no pitch.
+              </motion.p>
 
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs">
-                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ 350+ Families Helped</span>
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="flex flex-wrap justify-start gap-2 text-muted-foreground text-xs">
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ Free, No-Obligation Call</span>
+                <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">✓ Same Day Callback</span>
                 <span className="bg-secondary px-3 py-1.5 rounded-full border border-border">🗣 English · Punjabi · Urdu · Hindi</span>
               </motion.div>
             </div>

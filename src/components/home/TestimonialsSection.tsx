@@ -138,12 +138,12 @@ const testimonials: Testimonial[] = [
 ];
 
 const clientTypeColors: Record<ClientType, string> = {
-  "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",
-  "Investor": "bg-primary/15 text-primary/80 border-primary/25",
-  "Repeat Client": "bg-secondary text-secondary-foreground border-border",
-  "Presale Buyer": "bg-primary/10 text-primary/70 border-primary/20",
-  "Seller & Buyer": "bg-muted text-muted-foreground border-border",
-  "Buyer": "bg-primary/20 text-primary border-primary/30",
+  "First-Time Buyer": "bg-primary/25 text-primary border-primary/40",
+  "Investor": "bg-primary/25 text-primary border-primary/40",
+  "Repeat Client": "bg-primary/25 text-primary border-primary/40",
+  "Presale Buyer": "bg-primary/25 text-primary border-primary/40",
+  "Seller & Buyer": "bg-primary/25 text-primary border-primary/40",
+  "Buyer": "bg-primary/25 text-primary border-primary/40",
 };
 
 const StarRating = () => {

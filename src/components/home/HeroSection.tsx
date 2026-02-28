@@ -40,12 +40,12 @@ export const HeroSection = () => {
             {heroContent.label}
           </p>
           
-          {/* Large Bold Headline - Mobile */}
-          <h1 className="font-display text-[2.5rem] leading-[1.05] font-bold mb-6 animate-fade-up">
+          {/* Large Serif Headline - Mobile */}
+          <h1 className="font-display text-[3rem] leading-[1.1] font-normal mb-8 animate-fade-up">
             <span className="text-foreground block">{heroContent.headlinePart1}</span>
             <span className="text-foreground block">{heroContent.headlinePart2}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
+            <span className="text-gradient block">{heroContent.headlineAccent}</span>
+            <span className="text-gradient block">{heroContent.headlineAccent2}</span>
           </h1>
 
           {/* Subheadline */}
@@ -135,28 +135,28 @@ export const HeroSection = () => {
         {/* Desktop Layout - Keep existing side-by-side */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center min-h-screen pt-24 pb-16">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-6">
+          <div className="space-y-10">
+            <div className="space-y-8">
               {/* Label */}
-              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-primary font-semibold tracking-[0.2em] text-xs uppercase animate-fade-up">
                 {heroContent.label}
               </p>
               
-              {/* Headline */}
-              <h1 className="font-display text-5xl xl:text-6xl font-bold leading-[1.1] animate-fade-up">
-                <span className="text-foreground">{heroContent.headlinePart1} </span>
-                <span className="text-foreground">{heroContent.headlinePart2} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent2}</span>
+              {/* Headline — premium advisory serif, light weight */}
+              <h1 className="font-display text-6xl xl:text-7xl 2xl:text-8xl font-normal leading-[1.08] animate-fade-up">
+                <span className="text-foreground block">{heroContent.headlinePart1}</span>
+                <span className="text-foreground block">{heroContent.headlinePart2}</span>
+                <span className="text-gradient block">{heroContent.headlineAccent}</span>
+                <span className="text-gradient block">{heroContent.headlineAccent2}</span>
               </h1>
 
               {/* Sub-headline */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed animate-fade-up">
                 {heroContent.subheadline}
               </p>
               
               {/* Supporting Line */}
-              <p className="text-sm text-primary/80 animate-fade-up font-medium">
+              <p className="text-sm text-primary/80 animate-fade-up font-medium tracking-wide">
                 {heroContent.supportingLine}
               </p>
             </div>

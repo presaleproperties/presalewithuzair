@@ -200,6 +200,12 @@
 }
 
 @layer utilities {
+  /* Gold accent divider — use as <hr class="gold-rule"> or as a section border */
+  .gold-rule {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, hsl(var(--primary) / 0.5), transparent);
+  }
   .container-lg {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }

@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   TrendingUp, Shield, Banknote, PiggyBank, Workflow, ArrowRightLeft,
-  CheckCircle, Loader2, BookOpen, AlertTriangle, Users, ClipboardList, Footprints,
-  MapPin, Download, ChevronDown
+  CheckCircle, Loader2, BookOpen, AlertTriangle, Users, ClipboardList,
+  Footprints, MapPin, Download, HelpCircle, BarChart3, Building2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 import logoImage from "@/assets/logo.png";
 import presaleBuilding from "@/assets/presale-building.jpg";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types ────────────────────────────────────────────────────────────────────
 
 interface FormState {
   firstName: string;
@@ -24,59 +24,68 @@ interface FormState {
   buyerType: string;
 }
 
-// ─── Data ────────────────────────────────────────────────────────────────────
+// ─── Data ─────────────────────────────────────────────────────────────────────
 
 const highlights = [
   {
-    icon: TrendingUp,
-    title: "Lock In Today's Prices",
-    body: "A $600K presale bought in 2026 could be worth $660K by completion — that's $60K in equity before you even get the keys.",
+    icon: BarChart3,
+    title: "26% Price Collapse = Your Entry Point",
+    body: "Low-rise construction that sold at $950/sqft in 2022 now trades at $700/sqft. Townhomes are down $150K–$200K from peak. Developers are selling below build cost to stay afloat.",
   },
   {
     icon: Banknote,
-    title: "Massive Leverage",
-    body: "Put down just 5–10% now. Your $30K deposit can grow to $45K+ in equity (150% return) in 3 years while the property is still being built.",
+    title: "Near-Immediate Cash Flow",
+    body: "For the first time in years, new 1-bed & 2-bed condos in the Fraser Valley generate cash flow that nearly covers all expenses from day one — and fully covers by year 5–7.",
   },
   {
-    icon: Shield,
-    title: "Brand New with Warranty",
-    body: "BC's 2-5-10 warranty covers structural defects, building envelope & structural integrity. No major repairs for a decade — saving $25K–$40K.",
+    icon: TrendingUp,
+    title: "SkyTrain-Driven Appreciation",
+    body: "The SkyTrain extension to Langley opens in 2025–2026. Properties near new stations historically appreciate 20–40% over 5–10 years. You can still buy before that wave.",
   },
   {
     icon: PiggyBank,
     title: "$47,000 in Tax Savings",
-    body: "First-time buyers get a $35K GST rebate + $12K Property Transfer Tax exemption on qualifying presales. That's $47,000 back in your pocket.",
+    body: "First-time buyers get a full GST rebate (5%) + Property Transfer Tax exemption on new homes up to $1.1M. On a $630K presale, that's $47,000 back.",
   },
   {
-    icon: Workflow,
-    title: "Strong Cash Flow",
-    body: "New condos command $200–$600/month more in rent than older buildings. Your tenant covers the mortgage, strata, taxes, insurance & utilities.",
+    icon: Shield,
+    title: "Brand New with 2-5-10 Warranty",
+    body: "BC's home warranty covers structural defects (2 yrs), building envelope (5 yrs), and structural integrity (10 yrs). No major repairs for a decade — saving $25K–$40K.",
   },
   {
     icon: ArrowRightLeft,
-    title: "Assignment Flexibility",
-    body: "Life changes. An assignment clause lets you sell your contract before completion — built-in exit strategy at no extra cost to lock in your profit early.",
+    title: "VIP Access Is Closing",
+    body: "By late 2026, 60–70% of the best inventory will be allocated privately to VIP buyers. Public inventory and public pricing are still available — but the window is closing fast.",
   },
 ];
 
 const whatsInside = [
-  { icon: BookOpen, part: "Part 1", title: "What is a Presale & Why It Works", desc: "The mechanics, the BC market opportunity, and why now is the right time." },
-  { icon: Banknote, part: "Part 2", title: "The Money — Real Numbers", desc: "Deposit structures, closing costs, monthly costs, rental income breakdowns." },
-  { icon: AlertTriangle, part: "Part 3", title: "7 Deadly Mistakes to Avoid", desc: "From missing closing costs to weak developers — what trips buyers up." },
-  { icon: Users, part: "Part 4", title: "Real Success Stories", desc: "Sarah & Mike, David, and James — real numbers, real outcomes." },
-  { icon: ClipboardList, part: "Part 5", title: "Decision Framework", desc: "10-question checklist: is presale right for YOU right now?" },
-  { icon: Footprints, part: "Part 6", title: "10-Step Action Plan", desc: "Week-by-week roadmap from pre-approval to signed contract." },
+  { icon: BarChart3, part: "Part 1", title: "The Market Collapse & Why It Happened", desc: "The 26% price decline, the 3 crises driving developer desperation, and why this is a historic opportunity." },
+  { icon: Banknote, part: "Part 2", title: "The Cash Flow Breakthrough", desc: "Real numbers: mortgage, strata, rental income, and how rents rising 5–8%/yr flip the math in your favour." },
+  { icon: MapPin, part: "Part 3", title: "Neighbourhoods & Opportunities", desc: "Surrey, Langley, and Abbotsford — with current pricing, appreciation potential, and the best areas in each." },
+  { icon: Workflow, part: "Part 4", title: "Investment Strategies by Budget", desc: "The Appreciation Play, the Cash Flow Play, and the Hybrid Play — each with real numbers." },
+  { icon: Building2, part: "Part 5", title: "Developer Risk & How to Protect Yourself", desc: "How to tell Tier-1 from weak developers, and how to protect your deposit." },
+  { icon: HelpCircle, part: "Part 6", title: "The Full FAQ — 20+ Questions Answered", desc: "Mortgages, strata, assignment, closing costs, CMHC insurance, and more." },
+  { icon: ClipboardList, part: "Part 7", title: "10-Step Action Plan", desc: "Week-by-week roadmap from pre-approval to signed contract." },
+  { icon: AlertTriangle, part: "Part 8", title: "The Closing Window", desc: "Why 2026 is the last year to access public inventory at below-build-cost pricing." },
 ];
 
 const neighborhoods = [
-  { name: "Clayton, Surrey", tag: "SkyTrain Coming", range: "$500K–$650K", rent: "$2,500–$2,700/mo" },
-  { name: "Guildford, Surrey", tag: "Hidden Gem", range: "$450K–$600K", rent: "$2,300–$2,500/mo" },
-  { name: "Langley City", tag: "Emerging Market", range: "$400K–$550K", rent: "$2,200–$2,400/mo" },
-  { name: "Willoughby, Langley", tag: "Established", range: "$450K–$600K", rent: "$2,200–$2,400/mo" },
-  { name: "South Surrey", tag: "Premium", range: "$550K–$750K", rent: "$2,400–$2,700/mo" },
+  { name: "Surrey City Centre", tag: "SkyTrain Today", range: "$450K–$750K", note: "SFU, hospital, city hall anchors" },
+  { name: "King George Corridor", tag: "Best Value", range: "$450K–$650K", note: "10–15% cheaper than City Centre" },
+  { name: "Langley City Centre", tag: "SkyTrain Coming", range: "$400K–$550K", note: "20–30% appreciation potential" },
+  { name: "Willoughby, Langley", tag: "Established", range: "$450K–$600K", note: "Top schools, family-friendly" },
+  { name: "Abbotsford", tag: "Cash Flow Play", range: "$350K–$480K", note: "Near break-even from day one" },
 ];
 
-// ─── Component ───────────────────────────────────────────────────────────────
+const stats = [
+  { value: "26%", label: "Price decline since 2022 peak" },
+  { value: "$150K–$200K", label: "Townhome discount from peak" },
+  { value: "$47K", label: "Tax savings for first-time buyers" },
+  { value: "2025–26", label: "SkyTrain extension to Langley opens" },
+];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const PresaleGuide = () => {
   const { toast } = useToast();
@@ -138,49 +147,48 @@ const PresaleGuide = () => {
   return (
     <>
       <Helmet>
-        <title>BC Presale Buyer's Guide | Free Download</title>
+        <title>2026 Fraser Valley Presale Buyer's Guide | Free Download</title>
         <meta
           name="description"
-          content="Download the free BC Presale Buyer's Guide. Learn how to build wealth through strategic presale investing in Metro Vancouver and Fraser Valley."
+          content="Download the free 2026 Fraser Valley Presale Buyer's Guide. Discover why developers are selling below build cost and how to capitalize on the historic opportunity."
         />
         <link rel="canonical" href="https://presalewithuzair.com/presale-guide" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
 
-        {/* ── Navbar ── */}
-        <header className="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-border py-3 px-4">
+        {/* ── Sticky Navbar ── */}
+        <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border py-3 px-4">
           <div className="max-w-5xl mx-auto flex items-center justify-between">
-            <a href="/">
-              <img src={logoImage} alt="Uzair Presales" className="h-8" />
-            </a>
+            <a href="/"><img src={logoImage} alt="Uzair Presales" className="h-8" /></a>
             <Button variant="hero" size="sm" onClick={scrollToForm} className="text-xs sm:text-sm">
+              <Download className="h-3.5 w-3.5 mr-1.5" />
               Download Free Guide
             </Button>
           </div>
         </header>
 
         {/* ── Hero ── */}
-        <section className="relative overflow-hidden pt-16 pb-20 px-4">
-          {/* Subtle background gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background pointer-events-none" />
+        <section className="relative overflow-hidden pt-14 pb-20 px-4">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/6 via-background to-background pointer-events-none" />
 
           <div className="relative max-w-5xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
-              {/* Left */}
+
+              {/* Left copy */}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <span className="inline-block text-xs font-bold tracking-widest text-primary uppercase mb-4">
                   Free Download · 2026 Edition
                 </span>
                 <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-5">
-                  The BC Presale<br />
-                  <span className="text-primary">Buyer's Guide</span>
+                  The 2026 Fraser Valley<br />
+                  <span className="text-primary">Presale Buyer's Guide</span>
                 </h1>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Sudip lost his <strong className="text-foreground">$82,000 deposit</strong> on a South Surrey presale. But for every buyer who lost everything, <strong className="text-foreground">10 made $50K–$150K profit</strong>. The difference? Strategy — and avoiding 7 critical mistakes.
+                <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+                  For the first time in a decade, developers are selling presales <strong className="text-foreground">below build cost</strong>. Low-rise construction that sold for <strong className="text-foreground">$950/sqft in 2022</strong> now sells for <strong className="text-foreground">$700/sqft</strong> — a 26% collapse. Townhomes are down $150K–$200K from peak.
                 </p>
                 <p className="text-base text-muted-foreground mb-8">
-                  This guide covers everything: real numbers, real stories, and a step-by-step action plan to build wealth through presale investing in Metro Vancouver and Fraser Valley.
+                  This guide explains exactly why this happened, which neighbourhoods to buy in, how the cash flow math works, and how to close before the window shuts in late 2026.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Button variant="hero" size="xl" onClick={scrollToForm} className="text-base font-semibold">
@@ -198,7 +206,7 @@ const PresaleGuide = () => {
                 </div>
               </motion.div>
 
-              {/* Right — cover image */}
+              {/* Right image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -206,15 +214,10 @@ const PresaleGuide = () => {
                 className="hidden lg:block"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src={presaleBuilding}
-                    alt="BC Presale Building"
-                    className="w-full aspect-[4/3] object-cover"
-                  />
-                  {/* Overlay badge */}
+                  <img src={presaleBuilding} alt="Fraser Valley Presale" className="w-full aspect-[4/3] object-cover" />
                   <div className="absolute bottom-5 left-5 right-5 bg-background/90 backdrop-blur rounded-xl p-4 border border-border">
-                    <p className="text-xs text-primary font-bold tracking-wide uppercase mb-1">Inside the Guide</p>
-                    <p className="text-sm text-foreground font-semibold">7 Deadly Mistakes · Real Numbers · 10-Step Action Plan</p>
+                    <p className="text-xs text-primary font-bold tracking-wide uppercase mb-1">Historic Opportunity</p>
+                    <p className="text-sm text-foreground font-semibold">Developers selling below build cost · Cash flow from day one · Window closing late 2026</p>
                   </div>
                 </div>
               </motion.div>
@@ -222,8 +225,28 @@ const PresaleGuide = () => {
           </div>
         </section>
 
+        {/* ── Stats Bar ── */}
+        <section className="py-10 px-4 bg-primary/8 border-y border-primary/20">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+              {stats.map((s, i) => (
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                >
+                  <p className="font-display text-2xl sm:text-3xl font-bold text-primary mb-1">{s.value}</p>
+                  <p className="text-xs text-muted-foreground leading-snug">{s.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── 6 Key Highlights ── */}
-        <section className="py-20 px-4 bg-card/40 border-y border-border">
+        <section className="py-20 px-4">
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -231,9 +254,9 @@ const PresaleGuide = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <span className="text-xs font-bold tracking-widest text-primary uppercase mb-3 block">Why Presale?</span>
+              <span className="text-xs font-bold tracking-widest text-primary uppercase mb-3 block">Why 2026 Is Different</span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                6 Reasons Smart Investors Choose Presale
+                The 6 Reasons This Is a Historic Buying Opportunity
               </h2>
             </motion.div>
 
@@ -245,7 +268,7 @@ const PresaleGuide = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="bg-background rounded-xl p-6 border border-border hover:border-primary/40 transition-colors"
+                  className="bg-card rounded-xl p-6 border border-border hover:border-primary/40 transition-colors"
                 >
                   <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center mb-4">
                     <h.icon className="h-5 w-5 text-primary" />
@@ -259,7 +282,7 @@ const PresaleGuide = () => {
         </section>
 
         {/* ── What's Inside ── */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4 bg-card/40 border-y border-border">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -268,11 +291,9 @@ const PresaleGuide = () => {
               className="text-center mb-12"
             >
               <span className="text-xs font-bold tracking-widest text-primary uppercase mb-3 block">Inside the Guide</span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                What You'll Learn
-              </h2>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">What You'll Learn</h2>
               <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-                6 comprehensive parts covering everything from first principles to your signed contract.
+                8 comprehensive parts — from the market collapse to your signed contract.
               </p>
             </motion.div>
 
@@ -284,7 +305,7 @@ const PresaleGuide = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06 }}
-                  className="flex gap-4 p-5 bg-card rounded-xl border border-border"
+                  className="flex gap-4 p-5 bg-background rounded-xl border border-border"
                 >
                   <div className="flex-shrink-0 w-10 h-10 bg-primary/15 rounded-lg flex items-center justify-center">
                     <item.icon className="h-5 w-5 text-primary" />
@@ -312,7 +333,32 @@ const PresaleGuide = () => {
           </div>
         </section>
 
-        {/* ── Neighborhoods ── */}
+        {/* ── Urgency: The Window Is Closing ── */}
+        <section className="py-16 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 bg-destructive/10 text-destructive border border-destructive/30 rounded-full px-4 py-1.5 text-xs font-bold tracking-wide uppercase mb-6">
+                <AlertTriangle className="h-3.5 w-3.5" />
+                Window Closing Late 2026
+              </div>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                60–70% of the Best Inventory Will Be Gone by Late 2026
+              </h2>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                VIP buyers (those on developer lists) get early access, VIP pricing (10–15% below public launch), and $10K–$25K in buyer incentives. Public buyers — right now, that's still you — see the remaining 30–40% at public pricing. Once developer desperation fades and financing normalises, discounts disappear.
+              </p>
+              <p className="text-foreground font-semibold">
+                This guide shows you exactly how to act before that happens.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── Neighbourhoods ── */}
         <section className="py-16 px-4 bg-card/40 border-y border-border">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -322,7 +368,7 @@ const PresaleGuide = () => {
               className="text-center mb-10"
             >
               <span className="text-xs font-bold tracking-widest text-primary uppercase mb-3 block">Where to Buy</span>
-              <h2 className="font-display text-3xl font-bold text-foreground">Featured Neighborhoods</h2>
+              <h2 className="font-display text-3xl font-bold text-foreground">Featured Neighbourhoods</h2>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -333,15 +379,15 @@ const PresaleGuide = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="bg-background border border-border rounded-xl px-5 py-4 min-w-[200px] flex-1 max-w-[220px]"
+                  className="bg-background border border-border rounded-xl px-5 py-4 flex-1 min-w-[180px] max-w-[220px]"
                 >
                   <div className="flex items-center gap-1.5 mb-2">
                     <MapPin className="h-3.5 w-3.5 text-primary flex-shrink-0" />
                     <span className="text-xs font-bold text-primary uppercase tracking-wide">{n.tag}</span>
                   </div>
-                  <p className="font-semibold text-foreground text-sm mb-2">{n.name}</p>
+                  <p className="font-semibold text-foreground text-sm mb-1">{n.name}</p>
                   <p className="text-xs text-muted-foreground">Presale: <span className="text-foreground font-medium">{n.range}</span></p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Rent: <span className="text-foreground font-medium">{n.rent}</span></p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{n.note}</p>
                 </motion.div>
               ))}
             </div>
@@ -365,11 +411,9 @@ const PresaleGuide = () => {
                   Thanks! We'll send the guide to your email shortly.
                 </p>
                 <p className="text-sm text-muted-foreground mb-8">
-                  In the meantime, Uzair may reach out personally to answer any questions.
+                  In the meantime, Uzair may reach out personally to walk you through any questions.
                 </p>
-                <a href="/">
-                  <Button variant="outline" size="lg">← Back to Main Site</Button>
-                </a>
+                <a href="/"><Button variant="outline" size="lg">← Back to Main Site</Button></a>
               </motion.div>
             ) : (
               <motion.div
@@ -383,13 +427,12 @@ const PresaleGuide = () => {
                     Get Your Free Guide — Instantly
                   </h2>
                   <p className="text-muted-foreground">
-                    Fill in your details and we'll email the full guide to you right away.
+                    Fill in your details and we'll email the full 2026 guide to you right away.
                   </p>
                 </div>
 
                 <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm">
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* Name row */}
                     <div className="grid grid-cols-2 gap-3">
                       <div>
                         <label className="block text-xs font-medium text-foreground mb-1">First Name *</label>
@@ -415,7 +458,6 @@ const PresaleGuide = () => {
                       </div>
                     </div>
 
-                    {/* Email */}
                     <div>
                       <label className="block text-xs font-medium text-foreground mb-1">Email *</label>
                       <Input
@@ -429,7 +471,6 @@ const PresaleGuide = () => {
                       />
                     </div>
 
-                    {/* Phone */}
                     <div>
                       <label className="block text-xs font-medium text-foreground mb-1">Phone *</label>
                       <Input
@@ -443,7 +484,6 @@ const PresaleGuide = () => {
                       />
                     </div>
 
-                    {/* Buyer Type */}
                     <div>
                       <label className="block text-xs font-medium text-foreground mb-1">I am a... *</label>
                       <Select
@@ -470,15 +510,9 @@ const PresaleGuide = () => {
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
-                        <>
-                          <Loader2 className="h-5 w-5 animate-spin mr-2" />
-                          Submitting...
-                        </>
+                        <><Loader2 className="h-5 w-5 animate-spin mr-2" />Submitting...</>
                       ) : (
-                        <>
-                          <Download className="h-5 w-5 mr-2" />
-                          Send Me the Guide
-                        </>
+                        <><Download className="h-5 w-5 mr-2" />Send Me the Guide</>
                       )}
                     </Button>
 

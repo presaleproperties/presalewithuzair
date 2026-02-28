@@ -122,20 +122,20 @@ const testimonials: Testimonial[] = [{
 }];
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 const clientTypeColors: Record<ClientType, string> = {
-  "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",
-  "Investor": "bg-amber-500/20 text-amber-400 border-amber-500/30",
-  "Repeat Client": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  "Presale Buyer": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-  "Seller & Buyer": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "Buyer": "bg-rose-500/20 text-rose-400 border-rose-500/30"
+  "First-Time Buyer": "bg-primary/15 text-primary border-primary/25",
+  "Investor": "bg-primary/10 text-primary/80 border-primary/20",
+  "Repeat Client": "bg-secondary text-secondary-foreground border-border",
+  "Presale Buyer": "bg-primary/15 text-primary border-primary/25",
+  "Seller & Buyer": "bg-secondary text-secondary-foreground border-border",
+  "Buyer": "bg-muted text-muted-foreground border-border"
 };
 export const SocialProofSection = () => {
   return <section className="dark-section py-16 sm:py-24 bg-gradient-to-b from-background via-card/50 to-background">
       <div className="container-xl px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground uppercase tracking-tight mb-3">
-            TRUSTED BY 350+ CLIENTS
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+            Trusted by 350+ Clients
           </h2>
           <p className="text-primary font-semibold text-base sm:text-lg mb-4">
             Here's what they have to say.

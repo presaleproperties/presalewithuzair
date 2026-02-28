@@ -5,24 +5,27 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Contact from "./pages/Contact";
-import Developers from "./pages/Developers";
-import Agents from "./pages/Agents";
-import Admin from "./pages/Admin";
-import AdminLogin from "./pages/AdminLogin";
-import AdminPostEditor from "./pages/AdminPostEditor";
-import AdminLeads from "./pages/AdminLeads";
-import AdminTrafficAnalytics from "./pages/AdminTrafficAnalytics";
-import NotFound from "./pages/NotFound";
-import Book from "./pages/Book";
-import PaymentSuccess from "./pages/PaymentSuccess";
-import LandingPage from "./pages/LandingPage";
-import PresaleGuide from "./pages/PresaleGuide";
+
+// Lazy load all non-critical pages to reduce initial bundle size
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Developers = lazy(() => import("./pages/Developers"));
+const Agents = lazy(() => import("./pages/Agents"));
+const Admin = lazy(() => import("./pages/Admin"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminPostEditor = lazy(() => import("./pages/AdminPostEditor"));
+const AdminLeads = lazy(() => import("./pages/AdminLeads"));
+const AdminTrafficAnalytics = lazy(() => import("./pages/AdminTrafficAnalytics"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Book = lazy(() => import("./pages/Book"));
+const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
 
 const queryClient = new QueryClient();
 
@@ -34,6 +37,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/en" element={<Navigate to="/" replace />} />
@@ -58,6 +62,7 @@ const App = () => (
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            </Suspense>
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>

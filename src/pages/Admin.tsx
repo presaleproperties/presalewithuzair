@@ -233,11 +233,11 @@ const Admin = () => {
                         {post.title}
                       </h2>
                       {post.published ? (
-                        <span className="px-2 py-1 bg-green-500/10 text-green-500 text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 bg-primary/15 text-primary text-xs font-medium rounded-full">
                           Published
                         </span>
                       ) : (
-                        <span className="px-2 py-1 bg-yellow-500/10 text-yellow-500 text-xs font-medium rounded-full">
+                        <span className="px-2 py-1 bg-muted text-muted-foreground text-xs font-medium rounded-full">
                           Draft
                         </span>
                       )}

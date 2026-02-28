@@ -107,12 +107,12 @@ const LandingPage = () => {
 
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
-    "First-Time Buyer": "bg-primary/20 text-primary",
-    "Investor": "bg-amber-500/20 text-amber-400",
-    "Repeat Client": "bg-emerald-500/20 text-emerald-400",
-    "Presale Buyer": "bg-purple-500/20 text-purple-400",
-    "Seller & Buyer": "bg-blue-500/20 text-blue-400",
-    "Buyer": "bg-rose-500/20 text-rose-400"
+    "First-Time Buyer": "bg-primary/25 text-primary border border-primary/40",
+    "Investor": "bg-primary/25 text-primary border border-primary/40",
+    "Repeat Client": "bg-primary/25 text-primary border border-primary/40",
+    "Presale Buyer": "bg-primary/25 text-primary border border-primary/40",
+    "Seller & Buyer": "bg-primary/25 text-primary border border-primary/40",
+    "Buyer": "bg-primary/25 text-primary border border-primary/40"
   };
 
   const testimonials = [{
@@ -288,7 +288,7 @@ const LandingPage = () => {
             <div className="flex items-center justify-start gap-2">
               <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
               <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-primary text-primary" />)}
               </div>
               <span className="text-muted-foreground text-xs">5.0 rating</span>
             </div>
@@ -298,7 +298,7 @@ const LandingPage = () => {
             {visibleTestimonials.map((t, i) => <motion.div key={t.name} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="bg-card rounded-xl p-5 border border-border">
               <div className="flex items-center gap-2 mb-3">
                 <div className="flex gap-0.5">
-                  {[...Array(t.rating)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
+                  {[...Array(t.rating)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-primary text-primary" />)}
                 </div>
                 <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${clientTypeColors[t.clientType]}`}>
                   {t.clientType}

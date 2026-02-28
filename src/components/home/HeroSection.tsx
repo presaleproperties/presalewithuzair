@@ -44,8 +44,8 @@ export const HeroSection = () => {
           <h1 className="font-display text-[3rem] leading-[1.1] font-normal mb-8 animate-fade-up">
             <span className="text-foreground block">{heroContent.headlinePart1}</span>
             <span className="text-foreground block">{heroContent.headlinePart2}</span>
-            <span className="text-gradient block">{heroContent.headlineAccent}</span>
-            <span className="text-gradient block">{heroContent.headlineAccent2}</span>
+            <span className="text-shimmer block">{heroContent.headlineAccent}</span>
+            <span className="text-shimmer block">{heroContent.headlineAccent2}</span>
           </h1>
 
           {/* Subheadline */}
@@ -146,8 +146,8 @@ export const HeroSection = () => {
               <h1 className="font-display text-6xl xl:text-7xl 2xl:text-8xl font-normal leading-[1.08] animate-fade-up">
                 <span className="text-foreground block">{heroContent.headlinePart1}</span>
                 <span className="text-foreground block">{heroContent.headlinePart2}</span>
-                <span className="text-gradient block">{heroContent.headlineAccent}</span>
-                <span className="text-gradient block">{heroContent.headlineAccent2}</span>
+                <span className="text-shimmer block">{heroContent.headlineAccent}</span>
+                <span className="text-shimmer block">{heroContent.headlineAccent2}</span>
               </h1>
 
               {/* Sub-headline */}

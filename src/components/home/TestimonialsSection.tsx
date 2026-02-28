@@ -139,11 +139,11 @@ const testimonials: Testimonial[] = [
 
 const clientTypeColors: Record<ClientType, string> = {
   "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",
-  "Investor": "bg-amber-500/20 text-amber-400 border-amber-500/30",
-  "Repeat Client": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  "Presale Buyer": "bg-purple-500/20 text-purple-400 border-purple-500/30",
-  "Seller & Buyer": "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "Buyer": "bg-rose-500/20 text-rose-400 border-rose-500/30",
+  "Investor": "bg-primary/15 text-primary/80 border-primary/25",
+  "Repeat Client": "bg-secondary text-secondary-foreground border-border",
+  "Presale Buyer": "bg-primary/10 text-primary/70 border-primary/20",
+  "Seller & Buyer": "bg-muted text-muted-foreground border-border",
+  "Buyer": "bg-primary/20 text-primary border-primary/30",
 };
 
 const StarRating = () => {
@@ -152,7 +152,7 @@ const StarRating = () => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className="h-4 w-4 fill-yellow-400 text-yellow-400"
+          className="h-4 w-4 fill-primary text-primary"
         />
       ))}
     </div>
@@ -230,7 +230,7 @@ export const TestimonialsSection = () => {
             />
             <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <Star key={star} className="h-4 w-4 fill-primary text-primary" />
               ))}
             </div>
             <span className="text-muted-foreground text-xs md:text-sm">

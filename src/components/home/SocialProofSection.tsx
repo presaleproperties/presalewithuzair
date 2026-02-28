@@ -145,7 +145,7 @@ export const SocialProofSection = () => {
           <div className="flex flex-wrap items-center justify-center gap-2">
             <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 md:h-5" />
             <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+              {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 fill-primary text-primary" />)}
             </div>
             <a href={GOOGLE_BUSINESS_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors underline underline-offset-2">4.9 → See all on Google</a>
           </div>
@@ -173,7 +173,7 @@ export const SocialProofSection = () => {
                   
                   {/* Stars */}
                   <div className="flex gap-0.5 mb-3">
-                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3 w-3 fill-yellow-400 text-yellow-400" />)}
+                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3 w-3 fill-primary text-primary" />)}
                   </div>
                   
                   {/* Quote */}
@@ -204,7 +204,7 @@ export const SocialProofSection = () => {
                 
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-3">
-                  {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />)}
+                  {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3.5 w-3.5 fill-primary text-primary" />)}
                 </div>
                 
                 <Quote className={`h-5 w-5 mb-2 ${testimonial.highlight ? 'text-primary/50' : 'text-muted-foreground/30'}`} />

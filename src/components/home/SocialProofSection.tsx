@@ -122,20 +122,20 @@ const testimonials: Testimonial[] = [{
 }];
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 const clientTypeColors: Record<ClientType, string> = {
-  "First-Time Buyer": "bg-primary/15 text-primary border-primary/25",
-  "Investor": "bg-primary/10 text-primary/80 border-primary/20",
-  "Repeat Client": "bg-secondary text-secondary-foreground border-border",
-  "Presale Buyer": "bg-primary/15 text-primary border-primary/25",
-  "Seller & Buyer": "bg-secondary text-secondary-foreground border-border",
-  "Buyer": "bg-muted text-muted-foreground border-border"
+  "First-Time Buyer": "bg-primary/20 text-primary border-primary/30",
+  "Investor": "bg-amber-500/20 text-amber-400 border-amber-500/30",
+  "Repeat Client": "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  "Presale Buyer": "bg-purple-500/20 text-purple-400 border-purple-500/30",
+  "Seller & Buyer": "bg-blue-500/20 text-blue-400 border-blue-500/30",
+  "Buyer": "bg-rose-500/20 text-rose-400 border-rose-500/30"
 };
 export const SocialProofSection = () => {
   return <section className="dark-section py-16 sm:py-24 bg-gradient-to-b from-background via-card/50 to-background">
       <div className="container-xl px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Trusted by 350+ Clients
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground uppercase tracking-tight mb-3">
+            TRUSTED BY 350+ CLIENTS
           </h2>
           <p className="text-primary font-semibold text-base sm:text-lg mb-4">
             Here's what they have to say.
@@ -145,7 +145,7 @@ export const SocialProofSection = () => {
           <div className="flex flex-wrap items-center justify-center gap-2">
             <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 md:h-5" />
             <div className="flex gap-0.5">
-              {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 fill-primary text-primary" />)}
+              {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
             </div>
             <a href={GOOGLE_BUSINESS_URL} target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors underline underline-offset-2">4.9 → See all on Google</a>
           </div>
@@ -173,7 +173,7 @@ export const SocialProofSection = () => {
                   
                   {/* Stars */}
                   <div className="flex gap-0.5 mb-3">
-                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3 w-3 fill-primary text-primary" />)}
+                    {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3 w-3 fill-yellow-400 text-yellow-400" />)}
                   </div>
                   
                   {/* Quote */}
@@ -204,7 +204,7 @@ export const SocialProofSection = () => {
                 
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-3">
-                  {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3.5 w-3.5 fill-primary text-primary" />)}
+                  {[1, 2, 3, 4, 5].map(star => <Star key={star} className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />)}
                 </div>
                 
                 <Quote className={`h-5 w-5 mb-2 ${testimonial.highlight ? 'text-primary/50' : 'text-muted-foreground/30'}`} />

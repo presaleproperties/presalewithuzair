@@ -56,19 +56,19 @@ interface Lead {
 }
 
 const leadTypeLabels: Record<string, { label: string; icon: typeof Home; color: string }> = {
-  "buy-presale": { label: "Buyer", icon: Home, color: "text-primary bg-primary/15" },
-  "sell-assignment": { label: "Seller", icon: ArrowRightLeft, color: "text-primary bg-primary/10" },
-  "paid-advice": { label: "Paid Advice", icon: MessageCircle, color: "text-primary bg-primary/20" },
-  "first-time-buyer": { label: "First-Time", icon: User, color: "text-primary bg-primary/15" },
-  "investor": { label: "Investor", icon: DollarSign, color: "text-primary bg-primary/10" },
+  "buy-presale": { label: "Buyer", icon: Home, color: "text-blue-500 bg-blue-500/10" },
+  "sell-assignment": { label: "Seller", icon: ArrowRightLeft, color: "text-purple-500 bg-purple-500/10" },
+  "paid-advice": { label: "Paid Advice", icon: MessageCircle, color: "text-amber-500 bg-amber-500/10" },
+  "first-time-buyer": { label: "First-Time", icon: User, color: "text-green-500 bg-green-500/10" },
+  "investor": { label: "Investor", icon: DollarSign, color: "text-cyan-500 bg-cyan-500/10" },
 };
 
 const statusOptions = [
-  { value: "new", label: "New", icon: Clock, color: "text-foreground bg-muted" },
-  { value: "contacted", label: "Contacted", icon: Phone, color: "text-primary bg-primary/10" },
-  { value: "qualified", label: "Qualified", icon: CheckCircle, color: "text-primary bg-primary/20" },
+  { value: "new", label: "New", icon: Clock, color: "text-blue-500 bg-blue-500/10" },
+  { value: "contacted", label: "Contacted", icon: Phone, color: "text-yellow-500 bg-yellow-500/10" },
+  { value: "qualified", label: "Qualified", icon: CheckCircle, color: "text-green-500 bg-green-500/10" },
   { value: "closed", label: "Closed", icon: CheckCircle, color: "text-primary bg-primary/10" },
-  { value: "lost", label: "Lost", icon: XCircle, color: "text-destructive bg-destructive/10" },
+  { value: "lost", label: "Lost", icon: XCircle, color: "text-red-500 bg-red-500/10" },
 ];
 
 const AdminLeads = () => {
@@ -252,15 +252,15 @@ const AdminLeads = () => {
               <div className="text-sm text-muted-foreground">Total Leads</div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4">
-              <div className="text-2xl font-bold text-primary">{stats.new}</div>
+              <div className="text-2xl font-bold text-blue-500">{stats.new}</div>
               <div className="text-sm text-muted-foreground">New</div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4">
-              <div className="text-2xl font-bold text-primary">{stats.contacted}</div>
+              <div className="text-2xl font-bold text-yellow-500">{stats.contacted}</div>
               <div className="text-sm text-muted-foreground">Contacted</div>
             </div>
             <div className="bg-card rounded-xl border border-border p-4">
-              <div className="text-2xl font-bold text-primary">{stats.qualified}</div>
+              <div className="text-2xl font-bold text-green-500">{stats.qualified}</div>
               <div className="text-sm text-muted-foreground">Qualified</div>
             </div>
           </div>
@@ -345,7 +345,7 @@ const AdminLeads = () => {
                             {typeInfo.label}
                           </span>
                           {lead.is_paid && (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium text-primary bg-primary/15">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium text-green-600 bg-green-500/10">
                               <DollarSign className="h-3 w-3" />
                               Paid
                             </span>

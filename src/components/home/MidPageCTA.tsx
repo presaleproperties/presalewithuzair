@@ -15,11 +15,11 @@ export const MidPageCTA = ({ quote, clientName, clientRole, clientPhoto }: MidPa
 
   return (
     <section className="dark-section relative py-16 sm:py-24 overflow-hidden">
-      {/* Navy ambient background */}
+      {/* Warm ambient background */}
       <div className="absolute inset-0 bg-background" />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/6 blur-[100px]" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-primary/4 blur-[80px]" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-amber-500/8 blur-[100px]" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-orange-400/6 blur-[80px]" />
       </div>
 
       <div className="container-xl relative z-10 px-4 sm:px-6">
@@ -63,9 +63,9 @@ export const MidPageCTA = ({ quote, clientName, clientRole, clientPhoto }: MidPa
 
           {/* CTA */}
           <Button
-            variant="hero"
+            variant="outline"
             size="lg"
-            className="rounded-full px-8 py-6 text-base font-semibold shadow-lg"
+            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
             onClick={handleBookClick}
           >
             Book a Discovery Call

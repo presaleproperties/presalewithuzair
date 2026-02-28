@@ -189,9 +189,9 @@ export const LeadCaptureSection = () => {
       
       {/* Colorful bokeh effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-40 left-[10%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-primary/6 blur-3xl" />
-        <div className="absolute top-1/3 right-[5%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-accent/8 blur-3xl" />
+        <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-cyan-500/20 blur-3xl" />
+        <div className="absolute bottom-40 left-[10%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-pink-500/20 blur-3xl" />
+        <div className="absolute top-1/3 right-[5%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-purple-500/15 blur-3xl" />
       </div>
 
       <div className="relative z-10 container-xl px-4 sm:px-6 min-h-screen flex items-center py-16 sm:py-24">

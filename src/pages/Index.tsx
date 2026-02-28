@@ -217,11 +217,9 @@ const Index = () => {
       <main>
         {/* Hero - Bold headline with colorful bokeh */}
         <HeroSection />
-        <hr className="gold-rule" />
         
-        {/* Social Proof */}
+        {/* Social Proof - "But don't listen to me..." + scrolling testimonials */}
         <SocialProofSection />
-        <hr className="gold-rule" />
         
         {/* Mid-page CTA */}
         <MidPageCTA 
@@ -230,27 +228,21 @@ const Index = () => {
           clientRole="First-Time Buyer"
           clientPhoto={akhiPhoto}
         />
-        <hr className="gold-rule" />
         
         {/* Why Work With a Presale Expert */}
         <DifferentiationSection />
-        <hr className="gold-rule" />
         
         {/* Process Steps */}
         <ProcessSection />
-        <hr className="gold-rule" />
         
         {/* Who This Is For */}
         <BookingContextSection />
-        <hr className="gold-rule" />
         
-        {/* Blog Preview */}
+        {/* Blog Preview (desktop only) */}
         <BlogPreviewSection />
-        <hr className="gold-rule" />
         
         {/* Instagram Follow */}
         <InstagramSection />
-        <hr className="gold-rule" />
         
         {/* Final CTA */}
         <FinalCTASection />

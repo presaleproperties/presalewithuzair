@@ -52,8 +52,6 @@ export const Navbar = () => {
           : "bg-background lg:bg-transparent"
       }`}
     >
-      {/* Gold accent stripe */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80" />
       <div className="container-xl">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}

@@ -10,12 +10,13 @@ export const FinalCTASection = () => {
   return (
     <section className="dark-section py-16 sm:py-24 bg-background relative overflow-hidden">
       {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
       
-      {/* Refined gold depth effects */}
+      {/* Colorful bokeh effects at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none">
-        <div className="absolute bottom-10 left-[10%] w-40 h-40 md:w-64 md:h-64 rounded-full bg-primary/8 blur-3xl" />
-        <div className="absolute bottom-20 right-[15%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/6 blur-3xl" />
+        <div className="absolute bottom-10 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/20 blur-3xl" />
+        <div className="absolute bottom-20 right-[15%] w-28 h-28 md:w-40 md:h-40 rounded-full bg-yellow-500/15 blur-3xl" />
+        <div className="absolute bottom-0 left-[40%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-orange-400/15 blur-2xl" />
       </div>
       
       <div className="container-xl relative z-10 px-4 sm:px-6">
@@ -26,9 +27,9 @@ export const FinalCTASection = () => {
             <span className="text-sm font-medium text-primary">Community Leader</span>
           </div>
           
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            <span className="text-foreground">Founder,</span>{" "}
-            <span className="text-gradient">Vancouver Presale Expo</span>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
+            <span className="text-foreground">FOUNDER,</span>{" "}
+            <span className="text-gradient">VANCOUVER PRESALE EXPO</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
@@ -41,9 +42,9 @@ export const FinalCTASection = () => {
           </p>
 
           <Button 
-            variant="hero"
+            variant="outline"
             size="xl"
-            className="rounded-full px-10 py-7 text-base font-semibold mb-10 shadow-lg"
+            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-10"
             onClick={handleBookClick}
           >
             Book a Discovery Call

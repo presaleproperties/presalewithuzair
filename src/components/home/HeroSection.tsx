@@ -22,14 +22,26 @@ export const HeroSection = () => {
     });
   };
   return <section className="dark-section relative min-h-screen overflow-hidden">
-      {/* Navy hero background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/40" />
+      {/* Background with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
       
-      {/* Subtle navy/gold depth effects */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none">
-        <div className="absolute bottom-20 left-[10%] w-48 h-48 md:w-72 md:h-72 rounded-full bg-primary/8 blur-3xl" />
-        <div className="absolute bottom-10 right-[15%] w-40 h-40 md:w-64 md:h-64 rounded-full bg-primary/6 blur-3xl" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-primary/4 via-transparent to-transparent" />
+      {/* Colorful bokeh/light effects at bottom - matching Dan Martell style */}
+      <div className="absolute bottom-0 left-0 right-0 h-[40%] pointer-events-none">
+        {/* Warm amber bokeh */}
+        <div className="absolute bottom-20 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/25 blur-3xl" />
+        <div className="absolute bottom-40 left-[5%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-400/30 blur-2xl" />
+        <div className="absolute bottom-10 left-[20%] w-16 h-16 md:w-24 md:h-24 rounded-full bg-orange-400/25 blur-xl" />
+        
+        {/* Warm rose bokeh */}
+        <div className="absolute bottom-32 left-[25%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-rose-400/20 blur-3xl" />
+        <div className="absolute bottom-16 left-[35%] w-16 h-16 md:w-28 md:h-28 rounded-full bg-rose-300/20 blur-2xl" />
+        
+        {/* Gold bokeh */}
+        <div className="absolute bottom-24 right-[20%] w-28 h-28 md:w-44 md:h-44 rounded-full bg-yellow-500/20 blur-3xl" />
+        <div className="absolute bottom-8 right-[30%] w-20 h-20 md:w-32 md:h-32 rounded-full bg-amber-300/25 blur-2xl" />
+        
+        {/* Warm light rays */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-amber-500/8 via-transparent to-transparent" />
       </div>
 
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
@@ -40,12 +52,12 @@ export const HeroSection = () => {
             {heroContent.label}
           </p>
           
-          {/* Large Serif Headline - Mobile */}
-          <h1 className="font-display text-[3rem] leading-[1.1] font-normal mb-8 animate-fade-up">
+          {/* Large Bold Headline - Mobile */}
+          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up">
             <span className="text-foreground block">{heroContent.headlinePart1}</span>
             <span className="text-foreground block">{heroContent.headlinePart2}</span>
-            <span className="text-shimmer block">{heroContent.headlineAccent}</span>
-            <span className="text-shimmer block">{heroContent.headlineAccent2}</span>
+            <span className="text-muted-foreground block">{heroContent.headlineAccent}</span>
+            <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
           </h1>
 
           {/* Subheadline */}
@@ -60,7 +72,7 @@ export const HeroSection = () => {
 
           {/* CTA Button - Outlined style like Dan Martell */}
           <div className="mb-4 animate-fade-up">
-          <Button variant="hero" size="lg" className="rounded-full px-8 py-6 text-base font-semibold shadow-lg" onClick={handleBookClick}>
+            <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
@@ -135,35 +147,35 @@ export const HeroSection = () => {
         {/* Desktop Layout - Keep existing side-by-side */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center min-h-screen pt-24 pb-16">
           {/* Left Content */}
-          <div className="space-y-10">
-            <div className="space-y-8">
+          <div className="space-y-8">
+            <div className="space-y-6">
               {/* Label */}
-              <p className="text-primary font-semibold tracking-[0.2em] text-xs uppercase animate-fade-up">
+              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.label}
               </p>
               
-              {/* Headline — premium advisory serif, light weight */}
-              <h1 className="font-display text-6xl xl:text-7xl 2xl:text-8xl font-normal leading-[1.08] animate-fade-up">
-                <span className="text-foreground block">{heroContent.headlinePart1}</span>
-                <span className="text-foreground block">{heroContent.headlinePart2}</span>
-                <span className="text-shimmer block">{heroContent.headlineAccent}</span>
-                <span className="text-shimmer block">{heroContent.headlineAccent2}</span>
+              {/* Headline */}
+              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up">
+                <span className="text-foreground">{heroContent.headlinePart1} </span>
+                <span className="text-foreground">{heroContent.headlinePart2} </span>
+                <span className="text-muted-foreground">{heroContent.headlineAccent} </span>
+                <span className="text-muted-foreground">{heroContent.headlineAccent2}</span>
               </h1>
 
               {/* Sub-headline */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed animate-fade-up">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
                 {heroContent.subheadline}
               </p>
               
               {/* Supporting Line */}
-              <p className="text-sm text-primary/80 animate-fade-up font-medium tracking-wide">
+              <p className="text-sm text-primary/80 animate-fade-up font-medium">
                 {heroContent.supportingLine}
               </p>
             </div>
 
             {/* CTA Section */}
             <div className="space-y-3 animate-fade-up">
-              <Button variant="hero" size="xl" className="gap-2 rounded-full px-10 py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
+              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
               

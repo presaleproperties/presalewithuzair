@@ -22,7 +22,6 @@ import NotFound from "./pages/NotFound";
 import Book from "./pages/Book";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import LandingPage from "./pages/LandingPage";
-import PresaleGuide from "./pages/PresaleGuide";
 
 const queryClient = new QueryClient();
 
@@ -43,8 +42,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/developers" element={<Navigate to="/" replace />} />
-              <Route path="/agents" element={<Navigate to="/" replace />} />
+              <Route path="/developers" element={<Developers />} />
+              <Route path="/agents" element={<Agents />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/leads" element={<AdminLeads />} />
@@ -53,7 +52,6 @@ const App = () => (
               <Route path="/book" element={<Book />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/call" element={<LandingPage />} />
-              <Route path="/presale-guide" element={<PresaleGuide />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />

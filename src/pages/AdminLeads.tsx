@@ -26,7 +26,19 @@ import {
   XCircle,
   DollarSign,
   Sparkles,
+  Trash2,
 } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
   Select,
   SelectContent,
@@ -129,6 +141,16 @@ const AdminLeads = () => {
     } else {
       toast({ title: "Status Updated", description: `Lead marked as ${newStatus}` });
       fetchLeads();
+    }
+  };
+
+  const deleteLead = async (leadId: string) => {
+    const { error } = await supabase.from("leads").delete().eq("id", leadId);
+    if (error) {
+      toast({ title: "Error", description: "Failed to delete lead", variant: "destructive" });
+    } else {
+      toast({ title: "Deleted", description: "Lead removed." });
+      setLeads((prev) => prev.filter((l) => l.id !== leadId));
     }
   };
 
@@ -294,8 +316,8 @@ const AdminLeads = () => {
             </div>
           </div>
 
-          {/* Status */}
-          <div className="shrink-0">
+          {/* Actions */}
+          <div className="shrink-0 flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -320,6 +342,31 @@ const AdminLeads = () => {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-destructive hover:bg-destructive/10 h-8 w-8">
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Delete lead?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    This will permanently remove <strong>{lead.first_name} {lead.last_name}</strong> from your leads. This cannot be undone.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => deleteLead(lead.id)}
+                    className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  >
+                    Delete
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </div>
       </div>

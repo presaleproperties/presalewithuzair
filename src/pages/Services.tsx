@@ -193,7 +193,7 @@ const Services = () => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-[500px] object-cover"
+                    className="w-full h-[500px] object-cover saturate-[1.15] contrast-[1.05] brightness-95"
                   />
                 </div>
               </div>

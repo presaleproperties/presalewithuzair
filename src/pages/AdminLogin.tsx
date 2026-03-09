@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Lock } from "lucide-react";
+import { Navigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");

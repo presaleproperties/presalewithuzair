@@ -7,14 +7,12 @@ import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Lock } from "lucide-react";
-import { Navigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -22,40 +20,22 @@ const AdminLogin = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (isSignUp) {
-      const { error } = await signUp(email, password);
-      if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
+    const { error } = await signIn(email, password);
+    if (error) {
       toast({
-        title: "Account created",
-        description: "Your account has been created. Please contact the admin to get access.",
+        title: "Access Denied",
+        description: "Invalid credentials. Please try again.",
+        variant: "destructive",
       });
-      setIsSignUp(false);
-    } else {
-      const { error } = await signIn(email, password);
-      if (error) {
-        toast({
-          title: "Error",
-          description: error.message,
-          variant: "destructive",
-        });
-        setIsLoading(false);
-        return;
-      }
-      toast({
-        title: "Success",
-        description: "Logged in successfully",
-      });
-      navigate("/admin");
+      setIsLoading(false);
+      return;
     }
-    
+
+    toast({
+      title: "Welcome back",
+      description: "Signed in successfully.",
+    });
+    navigate("/admin");
     setIsLoading(false);
   };
 
@@ -74,10 +54,10 @@ const AdminLogin = () => {
                 <Lock className="h-8 w-8 text-primary" />
               </div>
               <h1 className="font-display text-2xl font-bold text-foreground">
-                {isSignUp ? "Create Account" : "Admin Login"}
+                Admin Login
               </h1>
               <p className="text-muted-foreground mt-2">
-                {isSignUp ? "Sign up to request admin access" : "Sign in to manage blog posts"}
+                Sign in to manage your dashboard
               </p>
             </div>
 
@@ -89,8 +69,9 @@ const AdminLogin = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@example.com"
+                  placeholder="admin@meetuzair.com"
                   required
+                  autoComplete="username"
                 />
               </div>
 
@@ -103,7 +84,8 @@ const AdminLogin = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   required
-                  minLength={6}
+                  minLength={8}
+                  autoComplete="current-password"
                 />
               </div>
 
@@ -115,23 +97,13 @@ const AdminLogin = () => {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {isSignUp ? "Creating account..." : "Signing in..."}
+                    Signing in…
                   </>
                 ) : (
-                  isSignUp ? "Sign Up" : "Sign In"
+                  "Sign In"
                 )}
               </Button>
             </form>
-
-            <div className="mt-6 text-center">
-              <button
-                type="button"
-                onClick={() => setIsSignUp(!isSignUp)}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                {isSignUp ? "Already have an account? Sign in" : "Need an account? Sign up"}
-              </button>
-            </div>
           </div>
         </div>
       </div>

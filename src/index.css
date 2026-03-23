@@ -380,3 +380,13 @@
   color: hsl(var(--foreground) / 0.8);
   line-height: 1.7;
 }
+
+.blog-content .blog-code,
+.blog-content code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}

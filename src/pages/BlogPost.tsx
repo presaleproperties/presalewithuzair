@@ -43,6 +43,21 @@ function readTime(content: string) {
 
 /* ─── Markdown → HTML renderer ─── */
 function renderMarkdown(content: string): string {
+  // If content already looks like HTML, pass it through
+  const trimmed = content.trim();
+  if (trimmed.startsWith("<") && (trimmed.startsWith("<p") || trimmed.startsWith("<h") || trimmed.startsWith("<ul") || trimmed.startsWith("<ol") || trimmed.startsWith("<div") || trimmed.startsWith("<blockquote"))) {
+    // Inject blog classes into existing HTML tags
+    return trimmed
+      .replace(/<h1(\s[^>]*)?>/g, '<h1$1 class="blog-h1">')
+      .replace(/<h2(\s[^>]*)?>/g, '<h2$1 class="blog-h2">')
+      .replace(/<h3(\s[^>]*)?>/g, '<h3$1 class="blog-h3">')
+      .replace(/<h4(\s[^>]*)?>/g, '<h4$1 class="blog-h3">')
+      .replace(/<p(\s[^>]*)?>/g, '<p$1 class="blog-p">')
+      .replace(/<ul(\s[^>]*)?>/g, '<ul$1 class="blog-ul">')
+      .replace(/<ol(\s[^>]*)?>/g, '<ol$1 class="blog-ol">')
+      .replace(/<blockquote(\s[^>]*)?>/g, '<blockquote$1 class="blog-pullquote">');
+  }
+
   // Escape HTML but leave inline markdown markers intact temporarily
   const escapeHtml = (text: string) =>
     text

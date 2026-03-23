@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide-react";
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
+import { FAQSchema } from "@/components/blog/FAQSchema";
 
 /* ─── Reading progress bar ─── */
 function ReadingProgressBar() {
@@ -364,6 +365,9 @@ const BlogPost = () => {
                     }),
                   }}
                 />
+
+                {/* FAQ Schema + Accordion */}
+                <FAQSchema />
 
                 {/* Author bio card */}
                 <div

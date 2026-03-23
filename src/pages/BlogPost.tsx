@@ -247,11 +247,11 @@ const BlogPost = () => {
       <ReadingProgressBar />
       <Navbar />
 
-      <main>
-        {/* ── Light editorial hero ── */}
+      <main style={{ background: "hsl(40 20% 97%)" }}>
+        {/* ── Hero ── */}
         <section
           className="w-full pt-28 pb-0"
-          style={{ background: "hsl(var(--cream, 38 30% 97%))" }}
+          style={{ background: "#fff" }}
         >
           <div className="container-xl max-w-5xl">
             {/* Back link */}

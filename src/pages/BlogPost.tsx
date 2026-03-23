@@ -248,11 +248,386 @@ const BlogPost = () => {
       <Navbar />
 
       <main style={{ background: "hsl(40 20% 97%)" }}>
-        {/* ── Hero ── */}
-        <section
-          className="w-full pt-28 pb-0"
-          style={{ background: "#fff" }}
-        >
+
+        {/* ── Premium editorial hero ── */}
+        <section className="w-full pt-28 pb-0" style={{ background: "#fff" }}>
+          {/* Top gold accent bar */}
+          <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
+
+          <div className="container-xl max-w-4xl pt-10">
+            {/* Back link */}
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 mb-8 text-xs font-bold tracking-[0.15em] uppercase transition-colors w-fit hover:underline"
+              style={{ color: "hsl(var(--primary))" }}
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              All Articles
+            </Link>
+
+            {/* Category badge */}
+            {post.category && (
+              <div className="mb-5">
+                <span
+                  className="inline-block px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm"
+                  style={{
+                    background: "hsl(var(--primary) / 0.1)",
+                    color: "hsl(var(--primary))",
+                    border: "1px solid hsl(var(--primary) / 0.25)",
+                  }}
+                >
+                  {post.category.name}
+                </span>
+              </div>
+            )}
+
+            {/* Title */}
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-[3.25rem] max-w-3xl leading-[1.1] mb-8"
+              style={{ color: "hsl(var(--foreground))", letterSpacing: "-0.025em" }}
+            >
+              {post.title}
+            </h1>
+
+            {/* Meta row */}
+            <div
+              className="flex flex-wrap items-center gap-5 text-sm pb-8"
+              style={{
+                color: "hsl(var(--muted-foreground))",
+                borderBottom: "1px solid hsl(var(--border))",
+              }}
+            >
+              <div className="flex items-center gap-2.5">
+                <img
+                  src="/favicon.jpeg"
+                  alt="Uzair Muhammad"
+                  className="h-8 w-8 rounded-full object-cover"
+                  style={{ border: "2px solid hsl(var(--primary) / 0.35)" }}
+                />
+                <span className="font-semibold" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</span>
+              </div>
+              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
+              <div className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" />
+                {formatDate(post.published_at)}
+              </div>
+              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                {mins} min read
+              </div>
+            </div>
+          </div>
+
+          {/* Hero image — full-bleed within container */}
+          {post.image_url && (
+            <div className="container-xl max-w-4xl mt-10 pb-0">
+              <div
+                className="w-full h-[360px] md:h-[480px] rounded-2xl overflow-hidden"
+                style={{ boxShadow: "0 16px 64px -16px hsla(25,20%,15%,0.18)" }}
+              >
+                <img
+                  src={post.image_url}
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                  style={{ filter: "saturate(1.08) contrast(1.04)" }}
+                />
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* ── Article body ── */}
+        <section className="py-16" style={{ background: "hsl(40 20% 97%)" }}>
+          <div className="container-xl">
+            <div className="flex gap-16 max-w-5xl mx-auto">
+
+              {/* ─ Main article ─ */}
+              <article ref={articleRef} className="flex-1 min-w-0">
+
+                {/* Lede / excerpt */}
+                {post.excerpt && (
+                  <p
+                    className="font-display text-xl italic leading-relaxed mb-10"
+                    style={{
+                      color: "hsl(var(--foreground) / 0.7)",
+                      borderLeft: "4px solid hsl(var(--primary))",
+                      paddingLeft: "1.5rem",
+                    }}
+                  >
+                    {post.excerpt}
+                  </p>
+                )}
+
+                {/* Rendered content */}
+                <div
+                  className="blog-content"
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(renderMarkdown(post.content), {
+                      ALLOWED_TAGS: ["h1","h2","h3","h4","h5","h6","p","li","ul","ol","strong","em","a","blockquote","code","pre","span"],
+                      ALLOWED_ATTR: ["class","href","target","rel"],
+                    }),
+                  }}
+                />
+
+                {/* FAQ */}
+                <FAQSchema />
+
+                {/* Author bio */}
+                <div
+                  className="mt-16 p-8 rounded-2xl flex gap-6 items-start"
+                  style={{
+                    background: "#fff",
+                    border: "1px solid hsl(var(--border))",
+                    boxShadow: "0 4px 24px -8px hsla(25,20%,15%,0.08)",
+                  }}
+                >
+                  <img
+                    src="/favicon.jpeg"
+                    alt="Uzair Muhammad"
+                    className="h-20 w-20 rounded-full object-cover flex-shrink-0"
+                    style={{ border: "3px solid hsl(var(--primary) / 0.35)" }}
+                  />
+                  <div>
+                    <p className="text-xs font-black tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--primary))" }}>
+                      Written by
+                    </p>
+                    <h3 className="font-display text-xl mb-2" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
+                    <div className="w-8 h-[2px] rounded-full mb-3" style={{ background: "var(--text-gradient)" }} />
+                    <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
+                      Vancouver's presale specialist with a track record of helping 350+ buyers and investors navigate the market with clarity. Uzair provides unbiased advice — even if that means advising you not to buy.
+                    </p>
+                    <a
+                      href="https://wa.me/17782313592"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-4 text-sm font-bold transition-all hover:gap-2.5"
+                      style={{ color: "hsl(var(--primary))" }}
+                    >
+                      Chat with Uzair <ChevronRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Inline CTA — dark premium */}
+                <div
+                  className="mt-8 p-10 rounded-2xl text-center relative overflow-hidden"
+                  style={{
+                    background: "hsl(25 15% 10%)",
+                    border: "1px solid hsl(25 12% 20%)",
+                    boxShadow: "0 16px 48px -12px hsla(25,30%,10%,0.4)",
+                  }}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(40 85% 45% / 0.08) 0%, transparent 65%)" }}
+                  />
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(var(--primary))" }}>
+                    Free Consultation
+                  </p>
+                  <h3 className="font-display text-2xl md:text-3xl text-white mb-3 relative z-10" style={{ letterSpacing: "-0.02em" }}>
+                    Ready to Navigate Your Presale?
+                  </h3>
+                  <p className="text-sm mb-7 max-w-sm mx-auto relative z-10" style={{ color: "hsl(40 15% 65%)" }}>
+                    Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
+                  </p>
+                  <a
+                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                    style={{
+                      background: "var(--text-gradient)",
+                      color: "hsl(25 15% 10%)",
+                      boxShadow: "0 8px 32px -8px hsl(40 85% 45% / 0.5)",
+                    }}
+                  >
+                    <Phone className="h-4 w-4" />
+                    Chat with Uzair on WhatsApp
+                  </a>
+                </div>
+              </article>
+
+              {/* ─ Sticky sidebar ─ */}
+              {relatedPosts.length > 0 && (
+                <aside className="hidden lg:block w-[260px] flex-shrink-0">
+                  <div className="sticky top-24 space-y-8">
+                    {/* Section header */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-5">
+                        <div className="w-6 h-[2px] rounded-full" style={{ background: "var(--text-gradient)" }} />
+                        <p className="text-xs font-black tracking-[0.2em] uppercase" style={{ color: "hsl(var(--primary))" }}>
+                          More Articles
+                        </p>
+                      </div>
+                      <div className="flex flex-col divide-y" style={{ borderColor: "hsl(var(--border))" }}>
+                        {relatedPosts.slice(0, 5).map((rp) => (
+                          <Link
+                            key={rp.slug}
+                            to={`/blog/${rp.slug}`}
+                            className="group flex gap-3 items-start py-4 first:pt-0"
+                          >
+                            <div
+                              className="w-14 h-14 flex-shrink-0 rounded-xl overflow-hidden"
+                              style={{ border: "1px solid hsl(var(--border))" }}
+                            >
+                              {rp.image_url ? (
+                                <img
+                                  src={rp.image_url}
+                                  alt={rp.title}
+                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-400"
+                                />
+                              ) : (
+                                <div className="w-full h-full" style={{ background: "hsl(var(--muted))" }} />
+                              )}
+                            </div>
+                            <div className="min-w-0">
+                              <h4
+                                className="font-display text-xs leading-snug group-hover:text-primary transition-colors line-clamp-3"
+                                style={{ color: "hsl(var(--foreground))" }}
+                              >
+                                {rp.title}
+                              </h4>
+                              <p className="text-[10px] mt-1.5" style={{ color: "hsl(var(--muted-foreground))" }}>
+                                {formatDate(rp.published_at)}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Sidebar CTA card */}
+                    <div
+                      className="p-5 rounded-xl relative overflow-hidden"
+                      style={{
+                        background: "hsl(25 15% 10%)",
+                        border: "1px solid hsl(25 12% 22%)",
+                      }}
+                    >
+                      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
+                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
+                        Free Call
+                      </p>
+                      <p className="font-display text-base text-white leading-tight mb-3">
+                        Talk strategy with Uzair
+                      </p>
+                      <a
+                        href="https://wa.me/17782313592"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full text-center py-2.5 rounded-lg text-xs font-bold transition-all hover:opacity-90"
+                        style={{
+                          background: "var(--text-gradient)",
+                          color: "hsl(25 15% 10%)",
+                        }}
+                      >
+                        Book Free Consultation
+                      </a>
+                    </div>
+                  </div>
+                </aside>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Related posts ── */}
+        {relatedPosts.length > 0 && (
+          <section className="py-20" style={{ background: "hsl(25 15% 10%)" }}>
+            <div
+              className="h-[2px] w-full mb-0"
+              style={{ background: "var(--text-gradient)", marginBottom: 0 }}
+            />
+            <div className="container-xl pt-16">
+              <div className="flex items-end justify-between mb-10">
+                <div>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>Keep Reading</p>
+                  <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>
+                    More <span className="text-gradient">Articles</span>
+                  </h2>
+                </div>
+                <Link
+                  to="/blog"
+                  className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold transition-all hover:gap-3"
+                  style={{ color: "hsl(var(--primary))" }}
+                >
+                  View all <ChevronRight className="h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedPosts.map((rp) => (
+                  <Link
+                    key={rp.slug}
+                    to={`/blog/${rp.slug}`}
+                    className="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                    style={{
+                      background: "hsl(25 12% 14%)",
+                      border: "1px solid hsl(25 10% 22%)",
+                      boxShadow: "0 4px 24px -8px hsla(0,0%,0%,0.3)",
+                    }}
+                  >
+                    <div className="h-48 overflow-hidden">
+                      {rp.image_url ? (
+                        <img
+                          src={rp.image_url}
+                          alt={rp.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          style={{ filter: "saturate(1.05) brightness(0.92)" }}
+                        />
+                      ) : (
+                        <div className="w-full h-full" style={{ background: "hsl(25 10% 20%)" }} />
+                      )}
+                    </div>
+                    <div className="p-5">
+                      {rp.category && (
+                        <span
+                          className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block"
+                          style={{ color: "hsl(var(--primary))" }}
+                        >
+                          {rp.category.name}
+                        </span>
+                      )}
+                      <h3
+                        className="font-display text-base text-white leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2"
+                        style={{ letterSpacing: "-0.01em" }}
+                      >
+                        {rp.title}
+                      </h3>
+                      {rp.excerpt && (
+                        <p className="text-xs line-clamp-2 mb-4" style={{ color: "hsl(30 8% 52%)" }}>
+                          {rp.excerpt}
+                        </p>
+                      )}
+                      <div
+                        className="flex items-center justify-between pt-3"
+                        style={{ borderTop: "1px solid hsl(25 10% 22%)" }}
+                      >
+                        <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(30 8% 45%)" }}>
+                          <Calendar className="h-3 w-3" />
+                          {formatDate(rp.published_at)}
+                        </span>
+                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(var(--primary))" }}>
+                          Read →
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </main>
+
+      <Footer />
+    </>
+  );
+};
+
+export default BlogPost;
           <div className="container-xl max-w-5xl">
             {/* Back link */}
             <Link

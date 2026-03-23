@@ -1,18 +1,138 @@
 import { Helmet } from "react-helmet-async";
 import { useParams, Link, Navigate } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { useEffect, useState, useRef } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowLeft, Phone, Loader2 } from "lucide-react";
+import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide-react";
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 
+/* ─── Reading progress bar ─── */
+function ReadingProgressBar() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const update = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent pointer-events-none">
+      <div
+        className="h-full transition-all duration-100 ease-out"
+        style={{
+          width: `${progress}%`,
+          background: "var(--text-gradient)",
+        }}
+      />
+    </div>
+  );
+}
+
+/* ─── Estimated read time ─── */
+function readTime(content: string) {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
+/* ─── Markdown → HTML renderer ─── */
+function renderMarkdown(content: string): string {
+  const escapeHtml = (text: string) =>
+    text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const lines = content.split("\n");
+  const html: string[] = [];
+  let inList = false;
+  let listType = "";
+
+  const closeList = () => {
+    if (inList) {
+      html.push(listType === "ul" ? "</ul>" : "</ol>");
+      inList = false;
+      listType = "";
+    }
+  };
+
+  lines.forEach((line, i) => {
+    // Pull-quote: lines starting with > 
+    if (line.startsWith("> ")) {
+      closeList();
+      html.push(
+        `<blockquote class="blog-pullquote">${escapeHtml(line.slice(2))}</blockquote>`
+      );
+      return;
+    }
+    if (line.startsWith("# ")) {
+      closeList();
+      html.push(`<h1 class="blog-h1">${escapeHtml(line.slice(2))}</h1>`);
+      return;
+    }
+    if (line.startsWith("## ")) {
+      closeList();
+      html.push(`<h2 class="blog-h2">${escapeHtml(line.slice(3))}</h2>`);
+      return;
+    }
+    if (line.startsWith("### ")) {
+      closeList();
+      html.push(`<h3 class="blog-h3">${escapeHtml(line.slice(4))}</h3>`);
+      return;
+    }
+    if (line.startsWith("- ")) {
+      if (!inList || listType !== "ul") {
+        closeList();
+        html.push('<ul class="blog-ul">');
+        inList = true;
+        listType = "ul";
+      }
+      html.push(`<li>${escapeHtml(line.slice(2))}</li>`);
+      return;
+    }
+    if (line.match(/^\d+\./)) {
+      if (!inList || listType !== "ol") {
+        closeList();
+        html.push('<ol class="blog-ol">');
+        inList = true;
+        listType = "ol";
+      }
+      html.push(`<li>${escapeHtml(line.slice(line.indexOf(" ") + 1))}</li>`);
+      return;
+    }
+    if (line.trim() === "") {
+      closeList();
+      return;
+    }
+    closeList();
+    // First paragraph gets a drop-cap class
+    if (i === 0 || (i > 0 && lines.slice(0, i).every((l) => l.trim() === ""))) {
+      html.push(`<p class="blog-p blog-dropcap">${escapeHtml(line)}</p>`);
+    } else {
+      html.push(`<p class="blog-p">${escapeHtml(line)}</p>`);
+    }
+  });
+
+  closeList();
+  return html.join("");
+}
+
+/* ─── Main component ─── */
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: post, isLoading, error } = useBlogPost(slug || "");
   const { data: allPosts } = useBlogPosts();
+  const articleRef = useRef<HTMLDivElement>(null);
 
-  const relatedPosts = allPosts?.filter((p) => p.slug !== slug).slice(0, 2) || [];
+  const relatedPosts = allPosts?.filter((p) => p.slug !== slug).slice(0, 3) || [];
 
   const formatDate = (dateString: string | null) => {
     if (!dateString) return "";
@@ -39,43 +159,46 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />;
   }
 
-  const articleStructuredData = post ? {
+  const articleStructuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": post.title,
-    "description": post.excerpt || "",
-    "image": post.image_url || "https://presalewithuzair.com/og-image.jpg",
-    "datePublished": post.published_at,
-    "dateModified": post.published_at,
-    "author": {
+    headline: post.title,
+    description: post.excerpt || "",
+    image: post.image_url || "https://presalewithuzair.com/og-image.jpg",
+    datePublished: post.published_at,
+    dateModified: post.published_at,
+    author: {
       "@type": "Person",
-      "name": "Uzair Muhammad",
-      "url": "https://presalewithuzair.com/about"
+      name: "Uzair Muhammad",
+      url: "https://presalewithuzair.com/about",
     },
-    "publisher": {
+    publisher: {
       "@type": "Organization",
-      "name": "Presale With Uzair",
-      "url": "https://presalewithuzair.com",
-      "logo": {
+      name: "Presale With Uzair",
+      url: "https://presalewithuzair.com",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://presalewithuzair.com/og-image.jpg"
-      }
+        url: "https://presalewithuzair.com/og-image.jpg",
+      },
     },
-    "mainEntityOfPage": {
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://presalewithuzair.com/blog/${slug}`
-    }
-  } : null;
+      "@id": `https://presalewithuzair.com/blog/${slug}`,
+    },
+  };
+
+  const mins = readTime(post.content);
 
   return (
     <>
       <Helmet>
         <title>{post.title} | Presale Blog | Uzair Muhammad</title>
         <meta name="description" content={post.excerpt || ""} />
-        <meta name="keywords" content={`${post.title.toLowerCase().split(' ').slice(0, 5).join(', ')}, presale Vancouver, real estate tips`} />
+        <meta
+          name="keywords"
+          content={`${post.title.toLowerCase().split(" ").slice(0, 5).join(", ")}, presale Vancouver, real estate tips`}
+        />
         <link rel="canonical" href={`https://presalewithuzair.com/blog/${slug}`} />
-        
-        {/* Open Graph */}
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://presalewithuzair.com/blog/${slug}`} />
         <meta property="og:title" content={post.title} />
@@ -83,178 +206,320 @@ const BlogPost = () => {
         {post.image_url && <meta property="og:image" content={post.image_url} />}
         <meta property="article:published_time" content={post.published_at || ""} />
         <meta property="article:author" content="Uzair Muhammad" />
-        
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || ""} />
         {post.image_url && <meta name="twitter:image" content={post.image_url} />}
-        <meta name="twitter:description" content={post.excerpt || ""} />
-        
-        {articleStructuredData && (
-          <script type="application/ld+json">
-            {JSON.stringify(articleStructuredData)}
-          </script>
-        )}
+        <script type="application/ld+json">{JSON.stringify(articleStructuredData)}</script>
       </Helmet>
 
+      <ReadingProgressBar />
       <Navbar />
+
       <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-12 bg-card">
-          <div className="container-xl">
+        {/* ── Full-width hero ── */}
+        <section className="relative w-full h-[70vh] min-h-[520px] overflow-hidden">
+          {/* Background image */}
+          {post.image_url ? (
+            <img
+              src={post.image_url}
+              alt={post.title}
+              className="absolute inset-0 w-full h-full object-cover scale-105"
+              style={{ filter: "saturate(1.05) brightness(0.55)" }}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-[hsl(25,15%,8%)]" />
+          )}
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0" style={{ background: "var(--overlay-dark)" }} />
+
+          {/* Gold accent line */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-[3px]"
+            style={{ background: "var(--text-gradient)" }}
+          />
+
+          {/* Content */}
+          <div className="relative z-10 h-full flex flex-col justify-end container-xl pb-12 pt-28">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-6"
+              className="inline-flex items-center gap-2 mb-6 text-sm font-medium tracking-wide text-white/60 hover:text-white transition-colors w-fit"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Blog
             </Link>
 
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-4 mb-4">
-                {post.category && (
-                  <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full">
-                    {post.category.name}
-                  </span>
-                )}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
-                  {formatDate(post.published_at)}
-                </div>
+            {/* Category badge */}
+            {post.category && (
+              <span
+                className="inline-block mb-4 px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm w-fit"
+                style={{
+                  background: "hsl(var(--primary) / 0.2)",
+                  color: "hsl(var(--primary))",
+                  border: "1px solid hsl(var(--primary) / 0.4)",
+                }}
+              >
+                {post.category.name}
+              </span>
+            )}
+
+            {/* Title */}
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl max-w-4xl leading-tight text-white mb-6"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              {post.title}
+            </h1>
+
+            {/* Meta row */}
+            <div className="flex flex-wrap items-center gap-5 text-white/55 text-sm">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/favicon.jpeg"
+                  alt="Uzair Muhammad"
+                  className="h-7 w-7 rounded-full object-cover border border-white/20"
+                />
+                <span className="text-white/80 font-medium">Uzair Muhammad</span>
               </div>
-              <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground">
-                {post.title}
-              </h1>
+              <span className="hidden sm:block w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-1.5">
+                <Calendar className="h-3.5 w-3.5" />
+                {formatDate(post.published_at)}
+              </div>
+              <span className="hidden sm:block w-px h-4 bg-white/20" />
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                {mins} min read
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Image */}
-        {post.image_url && (
-          <section className="py-8 bg-card">
-            <div className="container-xl">
-              <div className="max-w-4xl mx-auto">
-                <div className="rounded-2xl overflow-hidden">
-                  <img
-                    src={post.image_url}
-                    alt={post.title}
-                    className="w-full h-[400px] object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Content */}
+        {/* ── Article body ── */}
         <section className="py-16 bg-background">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <article className="prose prose-lg prose-invert max-w-none">
+            {/* Two-column layout: article + sidebar */}
+            <div className="flex gap-14 max-w-6xl mx-auto">
+              {/* Main article */}
+              <article ref={articleRef} className="flex-1 min-w-0">
+                {/* Excerpt / lede */}
+                {post.excerpt && (
+                  <p
+                    className="text-xl leading-relaxed mb-10 font-light"
+                    style={{
+                      color: "hsl(var(--foreground) / 0.65)",
+                      borderLeft: "3px solid hsl(var(--primary))",
+                      paddingLeft: "1.25rem",
+                    }}
+                  >
+                    {post.excerpt}
+                  </p>
+                )}
+
+                {/* Rendered content */}
                 <div
-                  className="text-foreground/90 leading-relaxed space-y-6"
+                  className="blog-content"
                   dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      post.content
-                        .split("\n")
-                        .map((line) => {
-                          // Escape HTML entities in content to prevent XSS
-                          const escapeHtml = (text: string) =>
-                            text
-                              .replace(/&/g, "&amp;")
-                              .replace(/</g, "&lt;")
-                              .replace(/>/g, "&gt;")
-                              .replace(/"/g, "&quot;")
-                              .replace(/'/g, "&#039;");
-                          
-                          if (line.startsWith("# ")) {
-                            return `<h1 class="font-display text-4xl font-bold text-foreground mt-8 mb-6">${escapeHtml(line.slice(2))}</h1>`;
-                          }
-                          if (line.startsWith("## ")) {
-                            return `<h2 class="font-display text-2xl font-bold text-foreground mt-8 mb-4">${escapeHtml(line.slice(3))}</h2>`;
-                          }
-                          if (line.startsWith("### ")) {
-                            return `<h3 class="font-display text-xl font-semibold text-foreground mt-6 mb-3">${escapeHtml(line.slice(4))}</h3>`;
-                          }
-                          if (line.startsWith("- ")) {
-                            return `<li class="text-foreground/80 ml-4">${escapeHtml(line.slice(2))}</li>`;
-                          }
-                          if (line.match(/^\d+\./)) {
-                            return `<li class="text-foreground/80 ml-4">${escapeHtml(line.slice(line.indexOf(" ") + 1))}</li>`;
-                          }
-                          if (line.trim() === "") {
-                            return "";
-                          }
-                          return `<p class="text-foreground/80">${escapeHtml(line)}</p>`;
-                        })
-                        .join(""),
-                      {
-                        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li', 'ul', 'ol', 'strong', 'em', 'a', 'blockquote', 'code', 'pre'],
-                        ALLOWED_ATTR: ['class', 'href', 'target', 'rel']
-                      }
-                    ),
+                    __html: DOMPurify.sanitize(renderMarkdown(post.content), {
+                      ALLOWED_TAGS: [
+                        "h1","h2","h3","h4","h5","h6",
+                        "p","li","ul","ol",
+                        "strong","em","a","blockquote","code","pre",
+                      ],
+                      ALLOWED_ATTR: ["class","href","target","rel"],
+                    }),
                   }}
                 />
+
+                {/* Author bio card */}
+                <div
+                  className="mt-16 p-8 rounded-xl flex gap-6 items-start"
+                  style={{
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border))",
+                  }}
+                >
+                  <img
+                    src="/favicon.jpeg"
+                    alt="Uzair Muhammad"
+                    className="h-20 w-20 rounded-full object-cover flex-shrink-0"
+                    style={{ border: "2px solid hsl(var(--primary) / 0.4)" }}
+                  />
+                  <div>
+                    <p className="text-xs font-bold tracking-[0.15em] uppercase mb-1" style={{ color: "hsl(var(--primary))" }}>
+                      Written by
+                    </p>
+                    <h3 className="font-display text-xl text-foreground mb-2">Uzair Muhammad</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
+                      Vancouver's presale specialist with a track record of helping 350+ buyers and investors navigate the market with clarity. Uzair provides unbiased advice — even if that means advising you not to buy.
+                    </p>
+                    <a
+                      href="https://wa.me/17782313592"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold transition-colors hover:underline"
+                      style={{ color: "hsl(var(--primary))" }}
+                    >
+                      Chat with Uzair <ChevronRight className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Inline CTA */}
+                <div
+                  className="mt-8 p-8 rounded-xl text-center relative overflow-hidden"
+                  style={{
+                    background: "hsl(25 15% 10%)",
+                    border: "1px solid hsl(25 10% 22%)",
+                  }}
+                >
+                  {/* Gold top accent */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[3px]"
+                    style={{ background: "var(--text-gradient)" }}
+                  />
+                  <p
+                    className="text-xs font-bold tracking-[0.2em] uppercase mb-3"
+                    style={{ color: "hsl(var(--primary))" }}
+                  >
+                    Free Consultation
+                  </p>
+                  <h3 className="font-display text-2xl text-white mb-3">
+                    Ready to Navigate Your Presale?
+                  </h3>
+                  <p className="text-white/60 text-sm mb-6 max-w-md mx-auto">
+                    Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
+                  </p>
+                  <a
+                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="hero" size="lg" className="gap-2">
+                      <Phone className="h-4 w-4" />
+                      Chat with Uzair on WhatsApp
+                    </Button>
+                  </a>
+                </div>
               </article>
 
-              {/* CTA */}
-              <div className="mt-12 p-8 bg-card rounded-2xl border border-border text-center">
-                <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                  Ready to Invest in Presales?
-                </h3>
-                <p className="text-foreground/70 mb-6">
-                  Connect with Uzair to discuss your investment goals and discover exclusive opportunities.
-                </p>
-                <a
-                  href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="hero" size="lg" className="gap-2">
-                    <Phone className="h-4 w-4" />
-                    Chat with Uzair
-                  </Button>
-                </a>
-              </div>
+              {/* Sticky sidebar — desktop only */}
+              {relatedPosts.length > 0 && (
+                <aside className="hidden lg:block w-72 flex-shrink-0">
+                  <div className="sticky top-24">
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase mb-5" style={{ color: "hsl(var(--primary))" }}>
+                      More Articles
+                    </p>
+                    <div className="flex flex-col gap-5">
+                      {relatedPosts.map((rp) => (
+                        <Link
+                          key={rp.slug}
+                          to={`/blog/${rp.slug}`}
+                          className="group flex gap-4 items-start hover-lift"
+                        >
+                          <div className="w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
+                            {rp.image_url ? (
+                              <img
+                                src={rp.image_url}
+                                alt={rp.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                            ) : (
+                              <div
+                                className="w-full h-full"
+                                style={{ background: "hsl(var(--muted))" }}
+                              />
+                            )}
+                          </div>
+                          <div>
+                            <p className="text-xs mb-1" style={{ color: "hsl(var(--muted-foreground))" }}>
+                              {formatDate(rp.published_at)}
+                            </p>
+                            <h4
+                              className="font-display text-sm leading-snug group-hover:text-primary transition-colors line-clamp-3"
+                              style={{ color: "hsl(var(--foreground))" }}
+                            >
+                              {rp.title}
+                            </h4>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </aside>
+              )}
             </div>
           </div>
         </section>
 
-        {/* Related Posts */}
+        {/* ── Related posts — full grid at bottom ── */}
         {relatedPosts.length > 0 && (
-          <section className="py-16 bg-card">
+          <section
+            className="py-20"
+            style={{ background: "hsl(25 15% 10%)" }}
+          >
             <div className="container-xl">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-8">
-                Related <span className="text-gradient">Articles</span>
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                {relatedPosts.map((relatedPost) => (
+              {/* Header */}
+              <div className="flex items-end justify-between mb-10">
+                <div>
+                  <p className="section-label mb-2">Keep Reading</p>
+                  <h2 className="font-display text-3xl text-white">
+                    Related <span className="text-gradient">Articles</span>
+                  </h2>
+                </div>
+                <Link
+                  to="/blog"
+                  className="hidden sm:inline-flex items-center gap-1 text-sm font-medium transition-colors"
+                  style={{ color: "hsl(var(--primary))" }}
+                >
+                  View all articles <ChevronRight className="h-4 w-4" />
+                </Link>
+              </div>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {relatedPosts.map((rp) => (
                   <Link
-                    key={relatedPost.slug}
-                    to={`/blog/${relatedPost.slug}`}
-                    className="group flex gap-6 bg-background rounded-xl p-4 border border-border hover-lift"
+                    key={rp.slug}
+                    to={`/blog/${rp.slug}`}
+                    className="group rounded-xl overflow-hidden hover-lift"
+                    style={{
+                      background: "hsl(25 12% 14%)",
+                      border: "1px solid hsl(25 10% 22%)",
+                    }}
                   >
-                    <div className="w-32 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-muted">
-                      {relatedPost.image_url ? (
+                    <div className="h-48 overflow-hidden bg-muted">
+                      {rp.image_url ? (
                         <img
-                          src={relatedPost.image_url}
-                          alt={relatedPost.title}
-                          className="w-full h-full object-cover"
+                          src={rp.image_url}
+                          alt={rp.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
-                          No image
-                        </div>
+                        <div className="w-full h-full" style={{ background: "hsl(25 10% 20%)" }} />
                       )}
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-muted-foreground mb-2">
-                        {formatDate(relatedPost.published_at)}
-                      </p>
-                      <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
-                        {relatedPost.title}
+                    <div className="p-5">
+                      {rp.category && (
+                        <span
+                          className="text-xs font-bold tracking-[0.12em] uppercase mb-2 inline-block"
+                          style={{ color: "hsl(var(--primary))" }}
+                        >
+                          {rp.category.name}
+                        </span>
+                      )}
+                      <h3 className="font-display text-lg text-white leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        {rp.title}
                       </h3>
+                      {rp.excerpt && (
+                        <p className="text-sm line-clamp-2" style={{ color: "hsl(30 8% 55%)" }}>
+                          {rp.excerpt}
+                        </p>
+                      )}
+                      <div className="flex items-center gap-1.5 mt-4 text-xs" style={{ color: "hsl(30 8% 45%)" }}>
+                        <Calendar className="h-3 w-3" />
+                        {formatDate(rp.published_at)}
+                      </div>
                     </div>
                   </Link>
                 ))}
@@ -263,6 +528,7 @@ const BlogPost = () => {
           </section>
         )}
       </main>
+
       <Footer />
     </>
   );

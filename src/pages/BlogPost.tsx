@@ -43,18 +43,28 @@ function readTime(content: string) {
 
 /* ─── Markdown → HTML renderer ─── */
 function renderMarkdown(content: string): string {
+  // Escape HTML but leave inline markdown markers intact temporarily
   const escapeHtml = (text: string) =>
     text
       .replace(/&/g, "&amp;")
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      .replace(/"/g, "&quot;");
+
+  // Process inline markdown: **bold**, *italic*, `code`
+  const inline = (text: string): string => {
+    const escaped = escapeHtml(text);
+    return escaped
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.+?)\*/g, "<em>$1</em>")
+      .replace(/`(.+?)`/g, '<code class="blog-code">$1</code>');
+  };
 
   const lines = content.split("\n");
   const html: string[] = [];
   let inList = false;
   let listType = "";
+  let firstParagraphDone = false;
 
   const closeList = () => {
     if (inList) {
@@ -64,48 +74,53 @@ function renderMarkdown(content: string): string {
     }
   };
 
-  lines.forEach((line, i) => {
-    // Pull-quote: lines starting with > 
+  lines.forEach((line) => {
+    // Pull-quote: lines starting with >
     if (line.startsWith("> ")) {
       closeList();
       html.push(
-        `<blockquote class="blog-pullquote">${escapeHtml(line.slice(2))}</blockquote>`
+        `<blockquote class="blog-pullquote">${inline(line.slice(2))}</blockquote>`
       );
       return;
     }
     if (line.startsWith("# ")) {
       closeList();
-      html.push(`<h1 class="blog-h1">${escapeHtml(line.slice(2))}</h1>`);
+      html.push(`<h1 class="blog-h1">${inline(line.slice(2))}</h1>`);
       return;
     }
     if (line.startsWith("## ")) {
       closeList();
-      html.push(`<h2 class="blog-h2">${escapeHtml(line.slice(3))}</h2>`);
+      html.push(`<h2 class="blog-h2">${inline(line.slice(3))}</h2>`);
       return;
     }
     if (line.startsWith("### ")) {
       closeList();
-      html.push(`<h3 class="blog-h3">${escapeHtml(line.slice(4))}</h3>`);
+      html.push(`<h3 class="blog-h3">${inline(line.slice(4))}</h3>`);
       return;
     }
-    if (line.startsWith("- ")) {
+    if (line.startsWith("#### ")) {
+      closeList();
+      html.push(`<h3 class="blog-h3">${inline(line.slice(5))}</h3>`);
+      return;
+    }
+    if (line.startsWith("- ") || line.startsWith("* ")) {
       if (!inList || listType !== "ul") {
         closeList();
         html.push('<ul class="blog-ul">');
         inList = true;
         listType = "ul";
       }
-      html.push(`<li>${escapeHtml(line.slice(2))}</li>`);
+      html.push(`<li>${inline(line.slice(2))}</li>`);
       return;
     }
-    if (line.match(/^\d+\./)) {
+    if (line.match(/^\d+\.\s/)) {
       if (!inList || listType !== "ol") {
         closeList();
         html.push('<ol class="blog-ol">');
         inList = true;
         listType = "ol";
       }
-      html.push(`<li>${escapeHtml(line.slice(line.indexOf(" ") + 1))}</li>`);
+      html.push(`<li>${inline(line.slice(line.indexOf(" ") + 1))}</li>`);
       return;
     }
     if (line.trim() === "") {
@@ -113,11 +128,11 @@ function renderMarkdown(content: string): string {
       return;
     }
     closeList();
-    // First paragraph gets a drop-cap class
-    if (i === 0 || (i > 0 && lines.slice(0, i).every((l) => l.trim() === ""))) {
-      html.push(`<p class="blog-p blog-dropcap">${escapeHtml(line)}</p>`);
+    if (!firstParagraphDone) {
+      firstParagraphDone = true;
+      html.push(`<p class="blog-p blog-dropcap">${inline(line)}</p>`);
     } else {
-      html.push(`<p class="blog-p">${escapeHtml(line)}</p>`);
+      html.push(`<p class="blog-p">${inline(line)}</p>`);
     }
   });
 

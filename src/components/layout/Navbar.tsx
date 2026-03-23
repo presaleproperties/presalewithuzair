@@ -20,6 +20,11 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Pages with light/cream backgrounds need dark navbar text when unscrolled
+  const isLightPage = ["/blog", "/about", "/services", "/contact", "/book"].some(
+    (p) => location.pathname === p || location.pathname.startsWith("/blog/")
+  );
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -35,39 +40,47 @@ export const Navbar = () => {
 
   const handleBookClick = () => {
     if (location.pathname === '/') {
-      // On homepage, scroll to booking section
       document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // On other pages, navigate to /book
       navigate('/book');
     }
     setIsMobileMenuOpen(false);
   };
 
+  // When unscrolled on a light page: white bg + dark text
+  // When unscrolled on dark page (home): transparent + light text
+  // When scrolled anywhere: solid bg + foreground text
+  const navBg = isScrolled
+    ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
+    : isLightPage
+    ? "bg-background border-b border-border/60"
+    : "bg-background lg:bg-transparent";
+
+  const linkColor = (href: string) =>
+    location.pathname === href
+      ? "text-primary"
+      : isScrolled || isLightPage
+      ? "text-foreground/80 hover:text-primary"
+      : "text-foreground/80 hover:text-primary";
+
   return (
-    <nav
-      className={`dark-section fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
-          : "bg-background lg:bg-transparent"
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="container-xl">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src={logo} 
-              alt="Presale with Uzair" 
-              className="h-8 md:h-10 w-auto" 
+            <img
+              src={logo}
+              alt="Presale with Uzair"
+              className="h-8 md:h-10 w-auto"
             />
           </Link>
 
           {/* Mobile CTA + Menu */}
           <div className="flex lg:hidden items-center gap-3">
-            <Button 
-              variant="hero" 
-              size="sm" 
+            <Button
+              variant="hero"
+              size="sm"
               className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
               onClick={handleBookClick}
             >
@@ -87,11 +100,7 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-primary ${
-                  location.pathname === link.href
-                    ? "text-primary"
-                    : "text-foreground/80"
-                }`}
+                className={`text-sm font-medium transition-colors duration-300 ${linkColor(link.href)}`}
               >
                 {link.label}
               </Link>

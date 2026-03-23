@@ -366,6 +366,9 @@ const BlogPost = () => {
                   }}
                 />
 
+                {/* FAQ Schema + Accordion */}
+                <FAQSchema />
+
                 {/* Author bio card */}
                 <div
                   className="mt-16 p-8 rounded-xl flex gap-6 items-start"

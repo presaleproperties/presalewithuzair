@@ -247,34 +247,17 @@ const BlogPost = () => {
       <Navbar />
 
       <main>
-        {/* ── Full-width hero ── */}
-        <section className="relative w-full h-[70vh] min-h-[520px] overflow-hidden">
-          {/* Background image */}
-          {post.image_url ? (
-            <img
-              src={post.image_url}
-              alt={post.title}
-              className="absolute inset-0 w-full h-full object-cover scale-105"
-              style={{ filter: "saturate(1.05) brightness(0.55)" }}
-            />
-          ) : (
-            <div className="absolute inset-0 bg-[hsl(25,15%,8%)]" />
-          )}
-
-          {/* Gradient overlay */}
-          <div className="absolute inset-0" style={{ background: "var(--overlay-dark)" }} />
-
-          {/* Gold accent line */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[3px]"
-            style={{ background: "var(--text-gradient)" }}
-          />
-
-          {/* Content */}
-          <div className="relative z-10 h-full flex flex-col justify-end container-xl pb-12 pt-28">
+        {/* ── Light editorial hero ── */}
+        <section
+          className="w-full pt-28 pb-0"
+          style={{ background: "hsl(var(--cream, 38 30% 97%))" }}
+        >
+          <div className="container-xl max-w-5xl">
+            {/* Back link */}
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 mb-6 text-sm font-medium tracking-wide text-white/60 hover:text-white transition-colors w-fit"
+              className="inline-flex items-center gap-2 mb-8 text-sm font-medium tracking-wide transition-colors w-fit"
+              style={{ color: "hsl(var(--muted-foreground))" }}
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Blog
@@ -283,11 +266,11 @@ const BlogPost = () => {
             {/* Category badge */}
             {post.category && (
               <span
-                className="inline-block mb-4 px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm w-fit"
+                className="inline-block mb-5 px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm w-fit"
                 style={{
-                  background: "hsl(var(--primary) / 0.2)",
+                  background: "hsl(var(--primary) / 0.12)",
                   color: "hsl(var(--primary))",
-                  border: "1px solid hsl(var(--primary) / 0.4)",
+                  border: "1px solid hsl(var(--primary) / 0.3)",
                 }}
               >
                 {post.category.name}
@@ -296,34 +279,54 @@ const BlogPost = () => {
 
             {/* Title */}
             <h1
-              className="font-display text-4xl md:text-5xl lg:text-6xl max-w-4xl leading-tight text-white mb-6"
-              style={{ letterSpacing: "-0.02em" }}
+              className="font-display text-4xl md:text-5xl lg:text-[3.5rem] max-w-4xl leading-tight mb-6"
+              style={{ color: "hsl(var(--foreground))", letterSpacing: "-0.02em" }}
             >
               {post.title}
             </h1>
 
             {/* Meta row */}
-            <div className="flex flex-wrap items-center gap-5 text-white/55 text-sm">
+            <div
+              className="flex flex-wrap items-center gap-5 text-sm pb-8 mb-0"
+              style={{
+                color: "hsl(var(--muted-foreground))",
+                borderBottom: "1px solid hsl(var(--border))",
+              }}
+            >
               <div className="flex items-center gap-2">
                 <img
                   src="/favicon.jpeg"
                   alt="Uzair Muhammad"
-                  className="h-7 w-7 rounded-full object-cover border border-white/20"
+                  className="h-7 w-7 rounded-full object-cover"
+                  style={{ border: "2px solid hsl(var(--primary) / 0.3)" }}
                 />
-                <span className="text-white/80 font-medium">Uzair Muhammad</span>
+                <span className="font-medium" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</span>
               </div>
-              <span className="hidden sm:block w-px h-4 bg-white/20" />
+              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
                 {formatDate(post.published_at)}
               </div>
-              <span className="hidden sm:block w-px h-4 bg-white/20" />
+              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 {mins} min read
               </div>
             </div>
           </div>
+
+          {/* Full-width hero image below the header text */}
+          {post.image_url && (
+            <div className="container-xl max-w-5xl mt-8 pb-0">
+              <div className="w-full h-[420px] md:h-[520px] rounded-xl overflow-hidden">
+                <img
+                  src={post.image_url}
+                  alt={post.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          )}
         </section>
 
         {/* ── Article body ── */}

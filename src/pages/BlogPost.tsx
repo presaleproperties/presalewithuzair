@@ -340,7 +340,7 @@ const BlogPost = () => {
                       ALLOWED_TAGS: [
                         "h1","h2","h3","h4","h5","h6",
                         "p","li","ul","ol",
-                        "strong","em","a","blockquote","code","pre",
+                        "strong","em","a","blockquote","code","pre","span",
                       ],
                       ALLOWED_ATTR: ["class","href","target","rel"],
                     }),

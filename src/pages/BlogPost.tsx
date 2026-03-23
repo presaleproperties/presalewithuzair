@@ -330,7 +330,7 @@ const BlogPost = () => {
         </section>
 
         {/* ── Article body ── */}
-        <section className="py-16 bg-background">
+        <section className="py-16" style={{ background: "hsl(var(--cream, 38 30% 97%))" }}>
           <div className="container-xl">
             {/* Two-column layout: article + sidebar */}
             <div className="flex gap-14 max-w-6xl mx-auto">

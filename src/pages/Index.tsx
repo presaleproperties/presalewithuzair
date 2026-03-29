@@ -13,6 +13,7 @@ import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
 import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
+import { PresaleGuideBanner } from "@/components/home/PresaleGuideBanner";
 
 
 const Index = () => {

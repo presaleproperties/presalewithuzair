@@ -24,6 +24,7 @@ export const Navbar = () => {
   const isLightPage = ["/blog", "/about", "/services", "/contact", "/book"].some(
     (p) => location.pathname === p || location.pathname.startsWith("/blog/")
   );
+  const isDarkHeroPage = location.pathname === "/" || location.pathname === "/call";
 
   useEffect(() => {
     const handleScroll = () => {

@@ -13,7 +13,7 @@ const heroContent = {
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Book a Discovery Call",
-  microTrust: "Trusted by 350+ first-time buyers & investors • Focused on Metro Vancouver presales"
+  microTrust: "Trusted by 400+ first-time buyers & investors • Focused on Metro Vancouver presales"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {
@@ -136,7 +136,7 @@ export const HeroSection = () => {
           {/* Trust Badge - Mobile */}
           <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
             <p className="text-lg font-display font-bold text-foreground">
-              Trusted by <span className="text-gradient">350+</span> First-Time Buyers & Investors
+              Trusted by <span className="text-gradient">400+</span> First-Time Buyers & Investors
             </p>
             <p className="text-xs text-muted-foreground mt-2">
               $200M+ in presales closed • 4+ years presale focus
@@ -188,7 +188,7 @@ export const HeroSection = () => {
             {/* Trust Badge */}
             <div className="pt-8 border-t border-border/50 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                Trusted by <span className="text-gradient">350+</span> First-Time Buyers & Investors
+                Trusted by <span className="text-gradient">400+</span> First-Time Buyers & Investors
               </p>
               <p className="text-sm text-muted-foreground mt-2">
                 $200M+ in presales closed • 4+ years presale focus

@@ -307,7 +307,7 @@ const LandingPage = () => {
               }} transition={{
                 delay: 0.2
               }} className="flex flex-wrap justify-start gap-2 text-slate-400 text-xs">
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 350+ Families Helped</span>
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 400+ Families Helped</span>
                   
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">🗣 English · Punjabi · Urdu · Hindi</span>

@@ -2,18 +2,14 @@ import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, CheckCircle, AlertTriangle, Search, FileText, DollarSign, Building2, FileCheck, Users, X } from "lucide-react";
+import { Loader2, CheckCircle, AlertTriangle, Search, FileText, DollarSign, Building2, FileCheck, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(50),
-  lastName: z.string().trim().min(1, "Last name is required").max(50),
   email: z.string().trim().email("Please enter a valid email").max(255),
-  phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
-  buyerType: z.string().min(1, "Please select an option"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -32,16 +28,12 @@ export const PresaleGuidePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
-    lastName: "",
     email: "",
-    phone: "",
-    buyerType: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
 
-  // Show popup after 15 seconds on the page
   useEffect(() => {
     const dismissed = sessionStorage.getItem("presale-guide-dismissed");
     if (dismissed) return;
@@ -76,7 +68,11 @@ export const PresaleGuidePopup = () => {
       const params = new URLSearchParams(window.location.search);
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
-          ...formData,
+          firstName: formData.firstName,
+          lastName: "",
+          email: formData.email,
+          phone: "not-provided",
+          buyerType: "first-time-buyer",
           leadSource: "presale-guide-popup",
           utmSource: params.get("utm_source"),
           utmMedium: params.get("utm_medium"),
@@ -137,7 +133,7 @@ export const PresaleGuidePopup = () => {
           ) : (
             <div className="grid md:grid-cols-2">
               {/* Left - Content */}
-              <div className="p-6 sm:p-8 bg-[hsl(25_15%_10%)] text-white">
+              <div className="p-6 sm:p-8 bg-[hsl(var(--sidebar-background))] text-white">
                 <p className="text-amber-400 font-bold tracking-[0.15em] text-xs mb-3 uppercase">
                   Free Guide
                 </p>
@@ -159,95 +155,47 @@ export const PresaleGuidePopup = () => {
                 </div>
               </div>
 
-              {/* Right - Form */}
-              <div className="p-6 sm:p-8">
+              {/* Right - Form (simplified) */}
+              <div className="p-6 sm:p-8 flex flex-col justify-center">
                 <h4 className="font-display text-lg font-bold text-foreground mb-1">
                   Get Your Free Copy
                 </h4>
-                <p className="text-sm text-muted-foreground mb-5">
-                  Enter your details below and we'll send it straight to your inbox.
+                <p className="text-sm text-muted-foreground mb-6">
+                  Just your name and email — we'll send it right over.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-3" autoComplete="on">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="guide-firstName" className="block text-xs font-medium text-foreground mb-1">First Name *</label>
-                      <Input
-                        id="guide-firstName"
-                        name="firstName"
-                        placeholder="First"
-                        value={formData.firstName}
-                        onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                        className="h-11 text-sm bg-card/50 border-border/50"
-                        autoComplete="given-name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="guide-lastName" className="block text-xs font-medium text-foreground mb-1">Last Name *</label>
-                      <Input
-                        id="guide-lastName"
-                        name="lastName"
-                        placeholder="Last"
-                        value={formData.lastName}
-                        onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                        className="h-11 text-sm bg-card/50 border-border/50"
-                        autoComplete="family-name"
-                        required
-                      />
-                    </div>
+                <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
+                  <div>
+                    <Input
+                      id="guide-firstName"
+                      name="firstName"
+                      placeholder="Your first name"
+                      value={formData.firstName}
+                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                      className="h-12 text-base bg-card/50 border-border/50"
+                      autoComplete="given-name"
+                      required
+                    />
                   </div>
 
                   <div>
-                    <label htmlFor="guide-email" className="block text-xs font-medium text-foreground mb-1">Email *</label>
                     <Input
                       id="guide-email"
                       name="email"
                       type="email"
-                      placeholder="you@email.com"
+                      placeholder="Your email address"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="h-11 text-sm bg-card/50 border-border/50"
+                      className="h-12 text-base bg-card/50 border-border/50"
                       autoComplete="email"
                       required
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="guide-phone" className="block text-xs font-medium text-foreground mb-1">Phone *</label>
-                    <Input
-                      id="guide-phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="(604) 555-1234"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="h-11 text-sm bg-card/50 border-border/50"
-                      autoComplete="tel"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="guide-buyerType" className="block text-xs font-medium text-foreground mb-1">I am a... *</label>
-                    <Select value={formData.buyerType} onValueChange={(v) => setFormData({ ...formData, buyerType: v })}>
-                      <SelectTrigger className="h-11 text-sm bg-card/50 border-border/50">
-                        <SelectValue placeholder="Select one" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="first-time-buyer">First-Time Buyer</SelectItem>
-                        <SelectItem value="investor">Investor</SelectItem>
-                        <SelectItem value="upsizer">Upsizer / Downsizer</SelectItem>
-                        <SelectItem value="assignment-buyer">Assignment Buyer</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
                   <Button
                     type="submit"
                     variant="hero"
-                    className="w-full h-12 text-sm font-semibold rounded-xl mt-2"
+                    className="w-full h-12 text-base font-semibold rounded-xl"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -256,12 +204,12 @@ export const PresaleGuidePopup = () => {
                         Sending...
                       </>
                     ) : (
-                      "Send Me the Guide"
+                      "Send Me the Guide →"
                     )}
                   </Button>
 
-                  <p className="text-[11px] text-muted-foreground text-center mt-2">
-                    By submitting, you agree to receive communications from us. We respect your privacy.
+                  <p className="text-[11px] text-muted-foreground text-center">
+                    No spam. Unsubscribe anytime.
                   </p>
                 </form>
               </div>

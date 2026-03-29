@@ -70,7 +70,7 @@ function isValidName(name: string): boolean {
 }
 
 function isValidBuyerType(buyerType: string): boolean {
-  const validTypes = ['first-time', 'investor', 'end-user', 'first-time-buyer', 'buy-presale', 'sell-assignment', 'paid-advice'];
+  const validTypes = ['first-time', 'investor', 'end-user', 'first-time-buyer', 'buy-presale', 'sell-assignment', 'paid-advice', 'upsizer', 'assignment-buyer', 'other'];
   return validTypes.includes(buyerType);
 }
 

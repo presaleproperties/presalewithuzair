@@ -32,7 +32,7 @@ export const BookingContextSection = () => {
 
   useEffect(() => {
     // Build Calendly URL with UTM parameters
-    const baseUrl = "https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=f2ede5&text_color=261c14&primary_color=d4a316";
+    const baseUrl = "https://calendly.com/meetuzair/45min?hide_gdpr_banner=1&background_color=f2ede5&text_color=261c14&primary_color=d4a316";
     const urlParams = new URLSearchParams(window.location.search);
     
     const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];

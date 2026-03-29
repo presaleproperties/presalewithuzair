@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const CALENDLY_URL = "https://calendly.com/meetuzair/30min";
+const CALENDLY_URL = "https://calendly.com/meetuzair/45min";
 
 export const useCalendly = () => {
   const openCalendly = useCallback((prefill?: { name?: string; email?: string }) => {

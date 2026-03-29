@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader2, CheckCircle, AlertTriangle, Search, FileText, DollarSign, Building2, FileCheck, Users } from "lucide-react";
+import { Loader2, CheckCircle, AlertTriangle, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
@@ -13,16 +13,6 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const guidePoints = [
-  { icon: AlertTriangle, text: "Hidden contract clauses that cost buyers $50K+" },
-  { icon: Search, text: "Developer red flags most buyers overlook" },
-  { icon: FileText, text: "Deposit traps & assignment restriction risks" },
-  { icon: DollarSign, text: "GST, PTT & closing costs nobody warns you about" },
-  { icon: Building2, text: "Completion delay loopholes developers use" },
-  { icon: FileCheck, text: "What the sales centre won't tell you" },
-  { icon: Users, text: "Why you need YOUR own agent — not theirs" },
-];
 
 export const PresaleGuidePopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,115 +94,92 @@ export const PresaleGuidePopup = () => {
       {/* Floating CTA Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-destructive text-destructive-foreground px-5 py-3 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 flex items-center gap-2 font-semibold text-sm animate-bounce-subtle"
+        className="fixed bottom-6 right-6 z-40 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 flex items-center gap-2 font-semibold text-sm animate-bounce-subtle"
         aria-label="Download free presale guide"
       >
         <AlertTriangle className="h-4 w-4" />
-        Free Presale Guide
+        Free Guide
       </button>
 
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-        <DialogContent className="sm:max-w-[900px] p-0 gap-0 overflow-hidden border-border/50 bg-background max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-2xl">
           <DialogTitle className="sr-only">Download Free Presale Guide</DialogTitle>
-          
+
           {isSuccess ? (
-            <div className="p-8 sm:p-12 text-center">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-primary" />
+            <div className="p-8 text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+                <CheckCircle className="h-7 w-7 text-primary" />
               </div>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-2">
                 Check Your Inbox!
               </h3>
-              <p className="text-muted-foreground mb-6">
-                Your guide is on its way. Keep an eye out for an email from us.
+              <p className="text-muted-foreground text-sm mb-5">
+                Your guide is on its way.
               </p>
               <Button variant="hero" onClick={handleClose} className="rounded-xl">
-                Close
+                Done
               </Button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2">
-              {/* Left - Content */}
-              <div className="p-6 sm:p-8 bg-[hsl(var(--sidebar-background))] text-white">
-                <p className="text-amber-400 font-bold tracking-[0.15em] text-xs mb-3 uppercase">
+            <div className="p-6 sm:p-8">
+              {/* Compact header */}
+              <div className="mb-5">
+                <p className="text-primary font-bold tracking-[0.12em] text-[11px] mb-2 uppercase">
                   Free Guide
                 </p>
-                <h3 className="font-display text-xl sm:text-2xl font-bold mb-2 leading-tight">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground leading-tight mb-2">
                   7 Costly Mistakes Presale Buyers Make
                 </h3>
-                <p className="text-white/70 text-sm mb-6">
-                  Most buyers don't find out until it's too late. This guide tells you exactly what to watch for before you sign anything.
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Avoid contract traps, hidden costs & developer red flags — get the checklist before you sign.
                 </p>
-
-                <div className="space-y-3">
-                  <p className="text-white/50 text-xs font-semibold uppercase tracking-wider">What's inside</p>
-                  {guidePoints.map((point, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <point.icon className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
-                      <span className="text-white/85 text-sm">{point.text}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
 
-              {/* Right - Form (simplified) */}
-              <div className="p-6 sm:p-8 flex flex-col justify-center">
-                <h4 className="font-display text-lg font-bold text-foreground mb-1">
-                  Get Your Free Copy
-                </h4>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Just your name and email — we'll send it right over.
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-3" autoComplete="on">
+                <Input
+                  id="guide-firstName"
+                  name="firstName"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  className="h-12 text-base"
+                  autoComplete="given-name"
+                  required
+                />
+
+                <Input
+                  id="guide-email"
+                  name="email"
+                  type="email"
+                  placeholder="Email address"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="h-12 text-base"
+                  autoComplete="email"
+                  required
+                />
+
+                <Button
+                  type="submit"
+                  variant="hero"
+                  className="w-full h-12 text-base font-semibold rounded-xl"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Me the Guide"
+                  )}
+                </Button>
+
+                <p className="text-[11px] text-muted-foreground text-center">
+                  No spam. Unsubscribe anytime.
                 </p>
-
-                <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
-                  <div>
-                    <Input
-                      id="guide-firstName"
-                      name="firstName"
-                      placeholder="Your first name"
-                      value={formData.firstName}
-                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      className="h-12 text-base bg-card/50 border-border/50"
-                      autoComplete="given-name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Input
-                      id="guide-email"
-                      name="email"
-                      type="email"
-                      placeholder="Your email address"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="h-12 text-base bg-card/50 border-border/50"
-                      autoComplete="email"
-                      required
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    variant="hero"
-                    className="w-full h-12 text-base font-semibold rounded-xl"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                        Sending...
-                      </>
-                    ) : (
-                      "Send Me the Guide →"
-                    )}
-                  </Button>
-
-                  <p className="text-[11px] text-muted-foreground text-center">
-                    No spam. Unsubscribe anytime.
-                  </p>
-                </form>
-              </div>
+              </form>
             </div>
           )}
         </DialogContent>

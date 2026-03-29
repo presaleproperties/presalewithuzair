@@ -55,6 +55,8 @@ export const Navbar = () => {
     ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
     : isLightPage
     ? "bg-background border-b border-border/60"
+    : isDarkHeroPage
+    ? "bg-[hsl(25_15%_10%)]"
     : "bg-transparent";
 
   const linkColor = (href: string) =>

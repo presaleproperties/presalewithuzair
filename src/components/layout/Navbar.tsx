@@ -96,7 +96,7 @@ export const Navbar = () => {
               Book a Discovery Call
             </Button>
             <button
-              className="p-2 text-foreground"
+              className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

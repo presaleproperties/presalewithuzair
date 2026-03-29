@@ -24,6 +24,7 @@ export const Navbar = () => {
   const isLightPage = ["/blog", "/about", "/services", "/contact", "/book"].some(
     (p) => location.pathname === p || location.pathname.startsWith("/blog/")
   );
+  const isDarkHeroPage = location.pathname === "/" || location.pathname === "/call";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +55,8 @@ export const Navbar = () => {
     ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
     : isLightPage
     ? "bg-background border-b border-border/60"
+    : isDarkHeroPage
+    ? "bg-[hsl(25_15%_10%)]"
     : "bg-transparent";
 
   const linkColor = (href: string) =>

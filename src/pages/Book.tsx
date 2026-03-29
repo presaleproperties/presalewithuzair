@@ -13,7 +13,7 @@ const Book = () => {
       {/* Full-screen Calendly embed */}
       <div className="flex-1 w-full">
         <iframe
-          src="https://calendly.com/meetuzair/30min?hide_gdpr_banner=1&background_color=1c1510&text_color=f2ede5&primary_color=d4a316"
+          src="https://calendly.com/meetuzair/45min?hide_gdpr_banner=1&background_color=1c1510&text_color=f2ede5&primary_color=d4a316"
           width="100%"
           height="100%"
           frameBorder="0"

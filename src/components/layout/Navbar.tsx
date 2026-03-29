@@ -49,22 +49,28 @@ export const Navbar = () => {
   };
 
   // When unscrolled on a light page: white bg + dark text
-  // When unscrolled on dark page (home): transparent + light text
+  // When unscrolled on dark page (home): dark bg + light logo/text
   // When scrolled anywhere: solid bg + foreground text
   const navBg = isScrolled
     ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
     : isLightPage
     ? "bg-background border-b border-border/60"
     : isDarkHeroPage
-    ? "bg-[hsl(25_15%_10%)]"
+    ? "bg-[hsl(var(--sidebar-background))]"
     : "bg-transparent";
+
+  const shouldUseDarkNavContent = isScrolled || isLightPage;
 
   const linkColor = (href: string) =>
     location.pathname === href
       ? "text-primary"
-      : isScrolled || isLightPage
+      : shouldUseDarkNavContent
       ? "text-foreground/80 hover:text-primary"
       : "text-white/80 hover:text-primary";
+
+  const logoClassName = shouldUseDarkNavContent
+    ? "h-8 md:h-10 w-auto brightness-0"
+    : "h-8 md:h-10 w-auto";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
@@ -75,7 +81,7 @@ export const Navbar = () => {
             <img
               src={logo}
               alt="Presale with Uzair"
-              className="h-8 md:h-10 w-auto"
+              className={logoClassName}
             />
           </Link>
 
@@ -90,7 +96,7 @@ export const Navbar = () => {
               Book a Discovery Call
             </Button>
             <button
-              className="p-2 text-foreground"
+              className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

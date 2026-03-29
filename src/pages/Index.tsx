@@ -237,6 +237,9 @@ const Index = () => {
         {/* Process Steps */}
         <ProcessSection />
         
+        {/* Free Presale Guide Banner */}
+        <PresaleGuideBanner />
+        
         {/* Who This Is For */}
         <BookingContextSection />
         

@@ -131,28 +131,6 @@ export const Footer = () => {
               </ul>
             </div>
 
-            {/* For Professionals */}
-            <div>
-              <h4 className="font-display text-lg font-semibold mb-6 text-foreground">For Professionals</h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link
-                    to="/developers"
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    Developer Advisory
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/agents"
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    Agent Education
-                  </Link>
-                </li>
-              </ul>
-            </div>
 
             {/* Contact */}
             <div>

@@ -79,7 +79,7 @@ export const ProcessSection = () => {
                   alt={item.title}
                   className="w-full h-full group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent" />
                 
                 {/* Step Number Badge */}
                 <div className="absolute top-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 bg-primary text-primary-foreground text-xs sm:text-sm font-bold rounded-full">

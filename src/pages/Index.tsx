@@ -248,6 +248,7 @@ const Index = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <PresaleGuidePopup />
     </>
   );
 };

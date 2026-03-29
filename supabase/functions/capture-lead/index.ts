@@ -57,7 +57,8 @@ function isValidEmail(email: string): boolean {
 }
 
 function isValidPhone(phone: string): boolean {
-  // Allow digits, spaces, parentheses, plus, and dashes
+  // Allow digits, spaces, parentheses, plus, dashes, and "not-provided" for lead magnets
+  if (phone === "not-provided") return true;
   const phoneRegex = /^[\d\s()+-]{10,20}$/;
   return phoneRegex.test(phone);
 }
@@ -69,7 +70,7 @@ function isValidName(name: string): boolean {
 }
 
 function isValidBuyerType(buyerType: string): boolean {
-  const validTypes = ['first-time', 'investor', 'end-user', 'first-time-buyer', 'buy-presale', 'sell-assignment', 'paid-advice'];
+  const validTypes = ['first-time', 'investor', 'end-user', 'first-time-buyer', 'buy-presale', 'sell-assignment', 'paid-advice', 'upsizer', 'assignment-buyer', 'other'];
   return validTypes.includes(buyerType);
 }
 

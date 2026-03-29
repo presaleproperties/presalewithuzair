@@ -224,7 +224,7 @@ const Index = () => {
         
         {/* Mid-page CTA */}
         <MidPageCTA 
-          quote="Uzair told me not to buy two projects I was excited about — and saved me from major issues. That's the kind of honesty you need."
+          quote="I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with."
           clientName="Akhi"
           clientRole="First-Time Buyer"
           clientPhoto={akhiPhoto}

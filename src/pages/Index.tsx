@@ -12,6 +12,7 @@ import { BookingContextSection } from "@/components/home/BookingContextSection";
 import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
 import { InstagramSection } from "@/components/home/InstagramSection";
 import { FinalCTASection } from "@/components/home/FinalCTASection";
+import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
 
 
 const Index = () => {
@@ -248,6 +249,7 @@ const Index = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <PresaleGuidePopup />
     </>
   );
 };

@@ -61,7 +61,7 @@ export const Navbar = () => {
       ? "text-primary"
       : isScrolled || isLightPage
       ? "text-foreground/80 hover:text-primary"
-      : "text-foreground/80 hover:text-primary";
+      : "text-white/80 hover:text-primary";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>

@@ -121,7 +121,7 @@ export const BookingContextSection = () => {
           <div className="text-center mb-6 sm:mb-8">
             <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-              Book a <span className="text-gradient">Discovery Call</span>
+              Schedule a <span className="text-gradient">Call</span>
             </h2>
             <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
               A quick conversation to understand your goals and see if we're a good fit.

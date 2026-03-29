@@ -184,7 +184,7 @@ const Services = () => {
                     className="gap-2"
                     onClick={() => openCalendly()}
                   >
-                    Book a Discovery Call
+                    Schedule a Call
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
@@ -220,7 +220,7 @@ const Services = () => {
                   onClick={() => openCalendly()}
                 >
                   <Mail className="h-5 w-5" />
-                  Book a Discovery Call
+                  Schedule a Call
                 </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">

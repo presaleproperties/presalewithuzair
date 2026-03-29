@@ -54,7 +54,7 @@ export const Navbar = () => {
     ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
     : isLightPage
     ? "bg-background border-b border-border/60"
-    : "bg-background lg:bg-transparent";
+    : "bg-transparent";
 
   const linkColor = (href: string) =>
     location.pathname === href

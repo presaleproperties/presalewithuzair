@@ -392,10 +392,10 @@ const Developers = () => {
 
         {/* Final CTA Section */}
         <section className="dark-section relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden">
-          {/* Warm bokeh effects */}
+          {/* Subtle blue glow effects */}
           <div className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none">
-            <div className="absolute bottom-10 left-[15%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-amber-500/20 blur-3xl" />
-            <div className="absolute bottom-20 right-[15%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-orange-400/15 blur-3xl" />
+            <div className="absolute bottom-10 left-[15%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-primary/12 blur-3xl" />
+            <div className="absolute bottom-20 right-[15%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-blue-500/10 blur-3xl" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
           </div>
           

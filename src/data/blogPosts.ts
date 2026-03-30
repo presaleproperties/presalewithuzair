@@ -1,3 +1,9 @@
+import willoughbyFirstTimeBuyers from "@/assets/blog/willoughby-first-time-buyers.jpg";
+import willoughbyInvestment from "@/assets/blog/willoughby-investment.jpg";
+import presaleAgentVsTraditional from "@/assets/blog/presale-agent-vs-traditional.jpg";
+import presaleDepositsGuide from "@/assets/blog/presale-deposits-guide.jpg";
+import presaleVsResale from "@/assets/blog/presale-vs-resale.jpg";
+
 export interface BlogPost {
   slug: string;
   title: string;

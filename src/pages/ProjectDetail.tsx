@@ -260,7 +260,7 @@ const ProjectDetail = () => {
 
       <Navbar />
 
-      <main className="bg-background">
+      <main className="bg-background pt-20">
         {/* ── Breadcrumb ── */}
         <div className="container-xl px-5 sm:px-8 lg:px-16 pt-6 pb-5">
           <Link

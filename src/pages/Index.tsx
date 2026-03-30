@@ -12,7 +12,7 @@ const DifferentiationSection = lazy(() => import("@/components/home/Differentiat
 const ProcessSection = lazy(() => import("@/components/home/ProcessSection").then(m => ({ default: m.ProcessSection })));
 const MidPageCTA = lazy(() => import("@/components/home/MidPageCTA").then(m => ({ default: m.MidPageCTA })));
 const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
-const BlogPreviewSection = lazy(() => import("@/components/home/BlogPreviewSection").then(m => ({ default: m.BlogPreviewSection })));
+
 const InstagramSection = lazy(() => import("@/components/home/InstagramSection").then(m => ({ default: m.InstagramSection })));
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
 const PresaleGuidePopup = lazy(() => import("@/components/home/PresaleGuidePopup").then(m => ({ default: m.PresaleGuidePopup })));

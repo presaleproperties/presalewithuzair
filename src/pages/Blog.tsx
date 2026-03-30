@@ -324,7 +324,7 @@ const Blog = () => {
             />
             <p
               className="max-w-xl mx-auto text-base leading-relaxed"
-              style={{ color: "hsl(40 15% 70%)" }}
+              style={{ color: "hsl(220 10% 70%)" }}
             >
               Everything you need to navigate Metro Vancouver presales with confidence — expert guides, market intelligence, and investment insights.
             </p>

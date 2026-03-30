@@ -91,7 +91,7 @@ export const HeroSection = () => {
               {/* Floating badge on image */}
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border/50">
-                  <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
+                  <p className="text-xs text-white/60 font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
                   <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
                 </div>
               </div>

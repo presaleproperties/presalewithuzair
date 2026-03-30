@@ -177,7 +177,7 @@ At completion, your deposit forms part of your down payment. If you've put down 
 Contact Uzair to find presale projects with buyer-friendly deposit terms.
     `,
     date: "Jul 15, 2025",
-    image: "https://framerusercontent.com/images/fex3gGtmfhVtXGLunb4e7vQvpdg.jpg",
+    image: presaleDepositsGuide,
     category: "Education",
   },
   {

@@ -28,32 +28,10 @@ const LandingPage = () => {
     toast
   } = useToast();
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
   const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book Your Free Call';
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    helpWith: "",
-    callTime: "",
-    foundVia: "",
-    notes: ""
-  });
-
-  // Pre-fill from URL params
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setFormData(prev => ({
-      ...prev,
-      name: [params.get("firstName"), params.get("lastName")].filter(Boolean).join(" ") || prev.name,
-      email: params.get("email") || prev.email,
-      phone: params.get("phone") || prev.phone
-    }));
-  }, []);
 
   // Lock body scroll when form is open
   useEffect(() => {
@@ -66,54 +44,6 @@ const LandingPage = () => {
       document.body.style.overflow = "";
     };
   }, [isFormOpen]);
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.email || !formData.helpWith || !formData.callTime) {
-      toast({
-        title: "Please fill in all fields",
-        variant: "destructive"
-      });
-      return;
-    }
-    setIsSubmitting(true);
-    const cleanUrl = window.location.origin + window.location.pathname;
-    const urlParams = new URLSearchParams(window.location.search);
-    try {
-      const {
-        data,
-        error
-      } = await supabase.functions.invoke('send-to-zapier', {
-        body: {
-          Full_Name: formData.name.trim(),
-          Phone: formData.phone.trim(),
-          Email: formData.email.trim(),
-          Help_With: formData.helpWith,
-          Preferred_Call_Time: formData.callTime,
-          Found_Via: formData.foundVia,
-          Notes: formData.notes.trim(),
-          Landing_Page: cleanUrl,
-          UTM_Source: urlParams.get("utm_source") || "",
-          UTM_Medium: urlParams.get("utm_medium") || "",
-          UTM_Campaign: urlParams.get("utm_campaign") || "",
-          CTA_Variant: ctaVariant
-        }
-      });
-      if (error) throw error;
-      setIsSubmitted(true);
-      toast({
-        title: "You're booked! 🎉",
-        description: "Uzair will call you soon."
-      });
-    } catch {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
     "First-Time Buyer": "bg-primary/20 text-primary",

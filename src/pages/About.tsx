@@ -89,13 +89,12 @@ const About = () => {
         <section className="relative pt-32 pb-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">About Uzair</p>
+              <p className="section-label mb-4 animate-fade-up">Meet Uzair Muhammad</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Buyer-First <span className="text-gradient">Guidance</span>
+                Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Independent presale advice focused on education, transparency, and protecting your interests — 
-                not pushing sales.
+                $200M+ in presale transactions. 400+ families served. Zero BS.
               </p>
             </div>
           </div>

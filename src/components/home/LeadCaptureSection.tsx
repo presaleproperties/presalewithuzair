@@ -226,40 +226,22 @@ export const LeadCaptureSection = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="on">
-              {/* Name Row - Side by side on mobile */}
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="firstName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
-                    First Name *
-                  </label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder="First"
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
-                    autoComplete="given-name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
-                    Last Name *
-                  </label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder="Last"
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
-                    autoComplete="family-name"
-                    required
-                  />
-                </div>
+              {/* Full Name */}
+              <div>
+                <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
+                  Full Name *
+                </label>
+                <Input
+                  id="fullName"
+                  name="name"
+                  type="text"
+                  placeholder="Your full name"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                  autoComplete="name"
+                  required
+                />
               </div>
 
               {/* Email */}

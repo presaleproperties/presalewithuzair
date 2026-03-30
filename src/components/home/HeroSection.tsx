@@ -145,22 +145,24 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              {/* Label */}
+              {/* Eyebrow */}
               <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
-                {heroContent.label}
+                {heroContent.eyebrow}
               </p>
               
               {/* Headline */}
-              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up">
-                <span className="text-foreground">{heroContent.headlinePart1} </span>
-                <span className="text-foreground">{heroContent.headlinePart2} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent2}</span>
+              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up text-foreground">
+                {heroContent.headline}
               </h1>
 
-              {/* Sub-headline */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+              {/* Subheadline */}
+              <p className="text-2xl font-semibold text-muted-foreground animate-fade-up">
                 {heroContent.subheadline}
+              </p>
+
+              {/* Body */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+                {heroContent.body}
               </p>
               
               {/* Supporting Line */}
@@ -175,9 +177,9 @@ export const HeroSection = () => {
                 {heroContent.cta}
               </Button>
               
-              {/* Micro-trust */}
+              {/* Trust Bar */}
               <p className="text-sm text-muted-foreground">
-                {heroContent.microTrust}
+                {heroContent.trustBar}
               </p>
             </div>
 

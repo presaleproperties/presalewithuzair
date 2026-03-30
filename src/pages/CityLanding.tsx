@@ -10,9 +10,13 @@ interface CityConfig {
   slug: string;
   title: string;
   metaDescription: string;
+  heroEyebrow: string;
   heroHeadline: string;
   heroSubheadline: string;
   heroBody: string;
+  heroCta: string;
+  whyBuyTitle: string;
+  whyBuyBody: string;
   benefits: { icon: React.ReactNode; title: string; description: string }[];
 }
 
@@ -21,75 +25,95 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     city: "Surrey",
     slug: "surrey",
     title: "Presale Condos Surrey BC | VIP Access & New Construction | Uzair Muhammad",
-    metaDescription: "Get VIP access to presale condos and townhomes in Surrey, BC. Expert guidance on new construction from Fraser Valley's leading presale specialist. First access, best pricing, full contract protection.",
-    heroHeadline: "Surrey's Presale Market Is Booming.",
-    heroSubheadline: "Make Sure You're Not Overpaying.",
-    heroBody: "Surrey is the fastest-growing city in BC with billions in new transit, infrastructure, and housing projects. But not every presale is a smart buy. I help you get into the right project — at the best price, with full contract protection.",
+    metaDescription: "Looking for presale condos in Surrey, BC? Get VIP access to new construction projects, exclusive developer incentives, and expert buyer representation.",
+    heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
+    heroHeadline: "Get VIP Access to Surrey's Best Presale Condos.",
+    heroSubheadline: "New Construction. Early Pricing. Full Contract Protection.",
+    heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey, I get you in before the public launch. Secure the best floor plans, exclusive developer incentives, and bulletproof contract protection.",
+    heroCta: "Get Surrey VIP Access",
+    whyBuyTitle: "Why Invest in Surrey New Construction?",
+    whyBuyBody: "With the upcoming SkyTrain extension and massive infrastructure investments, Surrey offers the strongest appreciation potential in the Fraser Valley. But not every project is a good deal. I analyze the developer's track record, the deposit structure, and the assignment clauses to ensure your investment is protected.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Fastest-Growing City in BC", description: "SkyTrain expansion, new city centre, and massive population growth are driving demand and long-term value." },
-      { icon: <Shield className="h-6 w-6" />, title: "Contract Protection", description: "Every developer contract is reviewed line-by-line to protect your deposit and your rights as a buyer." },
-      { icon: <CheckCircle className="h-6 w-6" />, title: "VIP Pricing & First Access", description: "Get access to Surrey presales before the general public — with exclusive incentives and pricing." },
-      { icon: <MapPin className="h-6 w-6" />, title: "Local Expertise", description: "Deep knowledge of every Surrey neighbourhood — from Fleetwood to South Surrey to City Centre." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "SkyTrain Expansion", description: "The Surrey-Langley SkyTrain extension is driving massive appreciation along the corridor." },
+      { icon: <Shield className="h-6 w-6" />, title: "Contract Protection", description: "Every developer contract is reviewed line-by-line to protect your deposit and your rights." },
+      { icon: <CheckCircle className="h-6 w-6" />, title: "VIP Pricing & First Access", description: "Get access to Surrey presales before the general public — with exclusive incentives." },
+      { icon: <MapPin className="h-6 w-6" />, title: "Local Expertise", description: "Deep knowledge of every Surrey neighbourhood — City Centre, Fleetwood, South Surrey." },
     ],
   },
   langley: {
     city: "Langley",
     slug: "langley",
     title: "Presale Townhomes Langley BC | New Construction 2026 | Uzair Muhammad",
-    metaDescription: "Find presale townhomes and condos in Langley, BC. VIP access to new construction projects with expert guidance. First access, negotiated incentives, and full buyer protection.",
-    heroHeadline: "Langley's Best New Townhomes & Condos.",
-    heroSubheadline: "First Access. Best Price. Full Protection.",
-    heroBody: "Langley is one of BC's most desirable suburbs for families and investors alike. From Willoughby to Murrayville, I help you navigate the presale market with VIP access, exclusive incentives, and unbiased advice.",
+    metaDescription: "Find the best presale townhomes and condos in Langley, BC. Get VIP access to Willoughby and Latimer Heights new construction projects before public launch.",
+    heroEyebrow: "LANGLEY PRESALE TOWNHOMES & CONDOS",
+    heroHeadline: "Secure Your Langley Presale Townhome Before the Public.",
+    heroSubheadline: "VIP Access to Willoughby, Latimer Heights, and Central Langley.",
+    heroBody: "Langley is the top destination for Fraser Valley families and investors looking for space and growth. I provide expert buyer's representation for Langley's most sought-after new construction townhomes and condos. Get the right deal, with zero developer bias.",
+    heroCta: "Get Langley VIP Access",
+    whyBuyTitle: "The Langley Presale Advantage",
+    whyBuyBody: "Langley offers a perfect mix of family-friendly communities and rapid transit development. As developers build out Willoughby and the upcoming SkyTrain corridor, getting in early is critical. I help you navigate the hype, negotiate the best terms, and secure a home that fits your financial goals.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Family-Friendly Growth Hub", description: "Top-ranked schools, parks, and community amenities make Langley a top choice for families and investors." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Family-Friendly Growth Hub", description: "Top-ranked schools, parks, and community amenities make Langley a top choice." },
       { icon: <Shield className="h-6 w-6" />, title: "Full Contract Review", description: "Every purchase agreement is reviewed to ensure your deposit is protected and terms are fair." },
-      { icon: <CheckCircle className="h-6 w-6" />, title: "Townhome Specialist", description: "Langley is townhome country — I know every project, every developer, and every neighbourhood." },
-      { icon: <MapPin className="h-6 w-6" />, title: "Neighbourhood Expertise", description: "Willoughby, Willowbrook, Murrayville, Brookswood — I know the nuances of each Langley community." },
+      { icon: <CheckCircle className="h-6 w-6" />, title: "Townhome Specialist", description: "Langley is townhome country — I know every project, developer, and neighbourhood." },
+      { icon: <MapPin className="h-6 w-6" />, title: "Neighbourhood Expertise", description: "Willoughby, Latimer Heights, Murrayville, Brookswood — deep local knowledge." },
     ],
   },
   abbotsford: {
     city: "Abbotsford",
     slug: "abbotsford",
     title: "Presale Condos Abbotsford BC | New Developments 2026 | Uzair Muhammad",
-    metaDescription: "Discover presale condos and townhomes in Abbotsford, BC. Get VIP access to new developments with expert presale guidance. Best pricing, contract protection, and unbiased advice.",
-    heroHeadline: "Abbotsford Presales Are Heating Up.",
-    heroSubheadline: "Get In Early — Before Prices Catch Up.",
-    heroBody: "Abbotsford offers some of the best value in the Fraser Valley for presale buyers. With new developments launching regularly, I help you identify the right project and negotiate the best deal — with full contract protection.",
+    metaDescription: "Discover 2026 presale condos and townhomes in Abbotsford, BC. Expert buyer's agent offering VIP access, floor plans, and pricing for new developments.",
+    heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",
+    heroHeadline: "Abbotsford's Top Presale Condos and New Developments.",
+    heroSubheadline: "Investor-Grade Advice. First-Time Buyer Focus.",
+    heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown, I help you identify the most profitable presale opportunities. Get early access to pricing, floor plans, and exclusive incentives before they hit the MLS.",
+    heroCta: "Get Abbotsford VIP Access",
+    whyBuyTitle: "Why Abbotsford is the Smart Play for 2026",
+    whyBuyBody: "With lower entry prices than Surrey and Langley, Abbotsford offers incredible value for both first-time buyers and cash-flow investors. I vet every Abbotsford developer and read every contract line-by-line so you can invest with absolute confidence.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Best Value in the Valley", description: "Lower entry prices with strong appreciation potential as the city continues to grow and develop." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Best Value in the Valley", description: "Lower entry prices with strong appreciation potential as the city grows." },
       { icon: <Shield className="h-6 w-6" />, title: "Buyer Protection First", description: "Contract review, deposit protection, and full transparency — your interests come first." },
-      { icon: <CheckCircle className="h-6 w-6" />, title: "Early Access Pricing", description: "Get into Abbotsford presales at launch pricing before the general public and prices rise." },
-      { icon: <MapPin className="h-6 w-6" />, title: "Growing Urban Core", description: "Downtown Abbotsford is transforming with new transit, amenities, and mixed-use developments." },
+      { icon: <CheckCircle className="h-6 w-6" />, title: "Early Access Pricing", description: "Get into Abbotsford presales at launch pricing before prices rise." },
+      { icon: <MapPin className="h-6 w-6" />, title: "Growing Urban Core", description: "University District and Downtown are transforming with new developments." },
     ],
   },
   chilliwack: {
     city: "Chilliwack",
     slug: "chilliwack",
-    title: "Presale Condos Chilliwack BC | New Construction 2026 | Uzair Muhammad",
-    metaDescription: "Explore presale condos and townhomes in Chilliwack, BC. Expert guidance on new construction with VIP access, best pricing, and contract protection from Fraser Valley's top presale specialist.",
-    heroHeadline: "Chilliwack: The Fraser Valley's Hidden Gem.",
-    heroSubheadline: "Smart Buyers Are Getting in Early.",
-    heroBody: "Chilliwack offers the most affordable entry point in the Fraser Valley with strong growth fundamentals. I help buyers and investors find the right presale project — with VIP pricing and full contract protection.",
+    title: "Presale Condos Chilliwack BC | New Construction | Uzair Muhammad",
+    metaDescription: "VIP access to presale condos and townhomes in Chilliwack, BC. Fraser Valley's leading presale expert helps you find the best new construction deals.",
+    heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
+    heroHeadline: "Chilliwack Presales: Maximum Value, Zero Hype.",
+    heroSubheadline: "VIP Access to the Fraser Valley's Most Affordable New Construction.",
+    heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. I help you navigate the Chilliwack presale market, ensuring you buy into quality projects with reputable developers.",
+    heroCta: "Get Chilliwack VIP Access",
+    whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",
+    whyBuyBody: "Chilliwack offers the most affordable new construction entry point in the Fraser Valley. As infrastructure and population grow, early buyers stand to benefit the most. I ensure you're buying quality — not just price.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Most Affordable Entry Point", description: "The lowest presale prices in the Fraser Valley with significant upside as the city grows." },
-      { icon: <Shield className="h-6 w-6" />, title: "Developer Contract Review", description: "Every contract is reviewed to protect your interests — no surprises at completion." },
-      { icon: <CheckCircle className="h-6 w-6" />, title: "First-Mover Advantage", description: "Get into Chilliwack's best new projects before they sell out at launch pricing." },
-      { icon: <MapPin className="h-6 w-6" />, title: "Lifestyle + Investment", description: "Mountain views, outdoor recreation, and a growing downtown core — lifestyle and value combined." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Most Affordable Entry Point", description: "The lowest presale prices in the Fraser Valley with significant upside." },
+      { icon: <Shield className="h-6 w-6" />, title: "Developer Vetting", description: "Every contract is reviewed to protect your interests — no surprises at completion." },
+      { icon: <CheckCircle className="h-6 w-6" />, title: "First-Mover Advantage", description: "Get into Chilliwack's best new projects before they sell out." },
+      { icon: <MapPin className="h-6 w-6" />, title: "Lifestyle + Investment", description: "Mountain views, outdoor recreation, and a growing downtown core." },
     ],
   },
   "maple-ridge": {
     city: "Maple Ridge",
     slug: "maple-ridge",
-    title: "Presale Condos Maple Ridge BC | New Townhomes 2026 | Uzair Muhammad",
-    metaDescription: "Find presale condos and townhomes in Maple Ridge, BC. VIP access to new construction projects with expert guidance, negotiated incentives, and full buyer protection.",
-    heroHeadline: "Maple Ridge: Where Nature Meets New Construction.",
-    heroSubheadline: "Premium Presales at Fraser Valley Prices.",
-    heroBody: "Maple Ridge offers a unique blend of mountain lifestyle and urban convenience. With new presale projects launching across the city, I help you find the right fit — at the best price, with full contract protection.",
+    title: "Presale Condos Maple Ridge BC | New Homes | Uzair Muhammad",
+    metaDescription: "Find the best presale condos and new construction homes in Maple Ridge, BC. VIP access, contract protection, and expert buyer representation.",
+    heroEyebrow: "MAPLE RIDGE PRESALE CONDOS & TOWNHOMES",
+    heroHeadline: "Maple Ridge Presales and New Construction.",
+    heroSubheadline: "Expert Guidance for First-Time Buyers and Investors.",
+    heroBody: "Maple Ridge offers incredible lifestyle and investment potential. I get you VIP access to the best new condo and townhome developments, protecting your deposit and your future.",
+    heroCta: "Get Maple Ridge VIP Access",
+    whyBuyTitle: "Why Buy a Presale in Maple Ridge",
+    whyBuyBody: "Maple Ridge combines mountain lifestyle with urban convenience. Growing demand, limited supply, and improving infrastructure make it a strong long-term play for presale buyers.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Strong Appreciation Potential", description: "Growing demand, limited supply, and improving infrastructure are driving long-term value." },
-      { icon: <Shield className="h-6 w-6" />, title: "Full Buyer Protection", description: "Contract review, deposit protection, and independent advice — always in your corner." },
-      { icon: <CheckCircle className="h-6 w-6" />, title: "VIP Project Access", description: "Get first access to Maple Ridge's best new developments with exclusive pricing." },
-      { icon: <MapPin className="h-6 w-6" />, title: "Nature + Convenience", description: "Mountain trails, river parks, and West Coast Express access — the best of both worlds." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Strong Appreciation Potential", description: "Growing demand and limited supply are driving long-term value." },
+      { icon: <Shield className="h-6 w-6" />, title: "Full Buyer Protection", description: "Contract review, deposit protection, and independent advice." },
+      { icon: <CheckCircle className="h-6 w-6" />, title: "VIP Project Access", description: "First access to Maple Ridge's best new developments with exclusive pricing." },
+      { icon: <MapPin className="h-6 w-6" />, title: "Nature + Convenience", description: "Mountain trails, river parks, and West Coast Express access." },
     ],
   },
 };
@@ -148,13 +172,14 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           <div className="relative z-10 container-xl px-4 sm:px-6">
             <div className="max-w-3xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up" style={{ color: "hsl(230 70% 60%)" }}>
-                {config.city} Presales · Fraser Valley
+                {config.heroEyebrow}
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-foreground mb-4 animate-fade-up">
                 {config.heroHeadline}
-                <br />
-                <span className="text-foreground/50">{config.heroSubheadline}</span>
               </h1>
+              <h2 className="font-display text-xl md:text-2xl text-foreground/50 mb-4 animate-fade-up">
+                {config.heroSubheadline}
+              </h2>
               <div className="w-14 h-[2px] rounded-full mb-6 animate-fade-up" style={{ background: "var(--text-gradient)" }} />
               <p className="text-lg text-foreground/60 max-w-2xl leading-relaxed mb-8 animate-fade-up">
                 {config.heroBody}
@@ -163,7 +188,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background font-semibold text-base transition-all duration-300 animate-fade-up"
               >
-                Get VIP Access — It's Free
+                {config.heroCta}
               </button>
             </div>
           </div>
@@ -188,11 +213,14 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         {/* ── Why Buy Here Section ── */}
         <section className="py-16 sm:py-24" style={{ background: "hsl(var(--card))" }}>
           <div className="container-xl px-4 sm:px-6">
-            <div className="mb-12 text-center">
+            <div className="mb-12 max-w-3xl">
               <p className="section-label mb-3">Why {config.city}</p>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                Why Buy a Presale in <span className="text-gradient">{config.city}</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                {config.whyBuyTitle}
               </h2>
+              <p className="text-foreground/70 leading-relaxed">
+                {config.whyBuyBody}
+              </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {config.benefits.map((benefit, i) => (

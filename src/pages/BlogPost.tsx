@@ -488,7 +488,7 @@ const BlogPost = () => {
                     </div>
                     <div className="p-5">
                       {rp.category && (
-                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 60%)" }}>
+                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 65%)" }}>
                           {rp.category.name}
                         </span>
                       )}
@@ -499,16 +499,16 @@ const BlogPost = () => {
                         {rp.title}
                       </h3>
                       {rp.excerpt && (
-                        <p className="text-xs line-clamp-2 mb-4" style={{ color: "hsl(220 10% 52%)" }}>
+                        <p className="text-xs line-clamp-2 mb-4" style={{ color: "hsl(220 15% 75%)" }}>
                           {rp.excerpt}
                         </p>
                       )}
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(222 14% 18%)" }}>
-                        <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(220 10% 50%)" }}>
+                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(222 14% 22%)" }}>
+                        <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(220 15% 72%)" }}>
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}
                         </span>
-                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(230 70% 60%)" }}>
+                        <span className="text-xs font-bold group-hover:underline" style={{ color: "hsl(230 70% 65%)" }}>
                           Read →
                         </span>
                       </div>

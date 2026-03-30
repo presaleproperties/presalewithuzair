@@ -22,14 +22,14 @@ export const FinalCTASection = () => {
       <div className="container-xl relative z-10 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Community Leader Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
-            <Users className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Community Leader</span>
+          <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/20 rounded-full px-4 py-2 mb-6">
+            <Users className="h-4 w-4 text-foreground/80" />
+            <span className="text-sm font-medium text-foreground/80">Community Leader</span>
           </div>
           
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
             <span className="text-foreground">Founder,</span>{" "}
-            <span className="text-gradient">Vancouver Presale Expo</span>
+            <span className="text-white/90">Vancouver Presale Expo</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">

@@ -160,6 +160,7 @@ export const PresaleGuidePopup = () => {
                   placeholder="First name"
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                   className="h-12 text-base"
                   autoComplete="given-name"
                   required
@@ -172,6 +173,7 @@ export const PresaleGuidePopup = () => {
                   placeholder="Email address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                   className="h-12 text-base"
                   autoComplete="email"
                   required

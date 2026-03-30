@@ -110,7 +110,7 @@ export const BookingContextSection = () => {
           email: form.email,
           phone: form.phone,
           buyerType: form.buyerType,
-          leadSource: form.contactMethod ? `preferred-${form.contactMethod}` : "website-form",
+          leadSource: form.leadSource || "website-form",
           preferredCallTime: form.preferredTime || undefined,
           timeline: form.notes || undefined,
           landingPage: window.location.pathname,

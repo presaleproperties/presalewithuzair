@@ -5,15 +5,13 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  label: "Fraser Valley Presale Specialist",
-  headlinePart1: "Buy the Right",
-  headlinePart2: "Presale.",
-  headlineAccent: "Skip the Costly",
-  headlineAccent2: "Mistakes.",
-  subheadline: "I've closed 400+ presale transactions across Surrey, Langley, and Abbotsford. I'll tell you exactly which projects are worth buying — and which ones to walk away from. Straight talk. No developer bias. No fluff.",
-  supportingLine: "The unfiltered, no-BS advice you need",
-  cta: "Get a Free Presale Strategy Call",
-  microTrust: "400+ Clients Served · $200M+ in Presale Transactions · Fraser Valley's #1 Presale Team"
+  eyebrow: "VANCOUVER PRESALE EXPERT · FRASER VALLEY'S LEADING PRESALE SPECIALIST",
+  headline: "The Fraser Valley's Most Trusted Presale Expert.",
+  subheadline: "Your First Home or Next Investment — Done Right.",
+  body: "I've helped more buyers secure presale condos across Surrey, Langley, and Abbotsford than any other agent in the Fraser Valley. You get VIP access before the public launch, the best unit allocation, bulletproof contract protection, and straight-talk advice on which projects are actually worth your money — and which ones to walk away from.",
+  supportingLine: "Buyer representation. Zero developer bias. Available in English, Punjabi, Hindi & Urdu.",
+  cta: "Get VIP Access — It's Free",
+  trustBar: "400+ Clients Helped · $200M+ in Presale Transactions · First-Time Buyers & Investors · Surrey · Langley · Abbotsford"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

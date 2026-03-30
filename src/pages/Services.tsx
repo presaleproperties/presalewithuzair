@@ -50,7 +50,8 @@ const services = [
 ];
 
 const Services = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>

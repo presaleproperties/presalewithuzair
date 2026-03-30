@@ -319,9 +319,8 @@ const Blog = () => {
               )}
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => {
-                const Icon = cat.icon;
                 const count = posts?.filter((p) => p.category?.slug === cat.slug).length ?? 0;
                 const isActive = activeCategory === cat.slug;
 
@@ -329,32 +328,14 @@ const Blog = () => {
                   <button
                     key={cat.slug}
                     onClick={() => setActiveCategory(isActive ? null : cat.slug)}
-                    className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border transition-all duration-200"
-                    style={{
-                      background: isActive ? cat.bg : "hsl(var(--background))",
-                      borderColor: isActive ? cat.color : "hsl(var(--border))",
-                      boxShadow: isActive ? `0 0 0 2px ${cat.color}33` : "none",
-                    }}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                      isActive
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-transparent text-foreground/70 border-border hover:border-foreground/40 hover:text-foreground"
+                    }`}
                   >
-                    <div
-                      className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
-                      style={{ background: isActive ? cat.color + "22" : cat.bg }}
-                    >
-                      <Icon className="h-3.5 w-3.5" style={{ color: cat.color }} />
-                    </div>
-                    <span
-                      className="text-sm font-semibold"
-                      style={{ color: isActive ? cat.color : "hsl(var(--foreground))" }}
-                    >
-                      {cat.label}
-                    </span>
-                    <span
-                      className="text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[1.25rem] text-center"
-                      style={{
-                        background: isActive ? cat.color : "hsl(var(--muted))",
-                        color: isActive ? "#fff" : "hsl(var(--muted-foreground))",
-                      }}
-                    >
+                    {cat.label}
+                    <span className={`ml-1.5 text-xs ${isActive ? "text-background/70" : "text-muted-foreground"}`}>
                       {count}
                     </span>
                   </button>

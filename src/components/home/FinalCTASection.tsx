@@ -64,7 +64,7 @@ export const FinalCTASection = () => {
                 className="w-full h-full object-cover object-top"
               />
             </div>
-            <p className="text-xs text-primary mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            <p className="text-xs text-foreground/60 mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
               Visit vancouverpresaleexpo.com →
             </p>
           </a>

@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { usePresaleProject } from "@/hooks/usePresaleProjects";
+import { usePresaleProject, usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import {
   Building2,
@@ -12,6 +13,7 @@ import {
   DollarSign,
   Train,
   ArrowLeft,
+  ArrowUp,
   CheckCircle,
   Loader2,
   Play,
@@ -21,6 +23,14 @@ import { Button } from "@/components/ui/button";
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: project, isLoading, error } = usePresaleProject(slug || "");
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Back to top visibility
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (isLoading) {
     return (
@@ -268,10 +278,80 @@ const ProjectDetail = () => {
             </div>
           </div>
         </section>
+        {/* Related Projects */}
+        <RelatedProjects city={project.city} currentSlug={project.slug} />
       </main>
+
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-20 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:scale-110 transition-transform duration-200"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="h-5 w-5" />
+        </button>
+      )}
 
       <Footer />
     </>
+  );
+};
+
+/* ── Related Projects ── */
+const RelatedProjects = ({ city, currentSlug }: { city: string | null; currentSlug: string }) => {
+  const { data: projects } = usePresaleProjects(city || undefined);
+  const related = (projects || []).filter((p) => p.slug !== currentSlug).slice(0, 3);
+
+  if (related.length === 0) return null;
+
+  return (
+    <section className="py-16 bg-secondary/30 border-t border-border">
+      <div className="container-xl px-4 sm:px-6">
+        <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-8">
+          More Presales in {city || "Fraser Valley"}
+        </h2>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {related.map((project) => (
+            <Link
+              key={project.id}
+              to={`/projects/${project.slug}`}
+              className="group rounded-2xl overflow-hidden border border-border bg-card hover-lift"
+            >
+              <div className="aspect-[16/10] overflow-hidden bg-muted">
+                {project.featured_image ? (
+                  <img
+                    src={project.featured_image}
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-secondary">
+                    <Building2 className="h-12 w-12 text-muted-foreground/40" />
+                  </div>
+                )}
+              </div>
+              <div className="p-5">
+                <h3 className="font-display text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
+                  {project.name}
+                </h3>
+                {project.developer_name && (
+                  <p className="text-sm text-muted-foreground mb-1 flex items-center gap-1.5">
+                    <User className="h-3.5 w-3.5" /> {project.developer_name}
+                  </p>
+                )}
+                {project.starting_price && (
+                  <p className="text-sm font-semibold text-foreground">
+                    From ${project.starting_price.toLocaleString()}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 

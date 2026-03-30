@@ -11,7 +11,7 @@ const heroContent = {
   body: "I help first-time buyers and investors get into the right presale condo or townhome across the Fraser Valley — before the public, at the best price, with VIP access, exclusive incentives, and full protection on every developer contract.",
   supportingLine: "Zero developer bias. Always in your corner.",
   cta: "Work With Uzair — It's Free",
-  trustBar: "Serving in English, Punjabi, Hindi & Urdu."
+  trustBar: "Available: English, Punjabi, Hindi & Urdu."
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

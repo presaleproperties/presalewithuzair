@@ -180,7 +180,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           </div>
           <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
 
-          <div className="relative z-10 container-xl px-4 sm:px-6">
+          <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-2xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-primary">
                 {config.heroEyebrow}

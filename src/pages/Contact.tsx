@@ -181,10 +181,10 @@ const Contact = () => {
                     variant="hero" 
                     size="xl" 
                     className="w-full gap-2"
-                    onClick={() => openCalendly()}
+                    onClick={handleCTA}
                   >
                     <Mail className="h-5 w-5" />
-                    Schedule a Call
+                    Work With Uzair
                   </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">

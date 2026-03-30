@@ -326,10 +326,10 @@ const About = () => {
                   variant="hero" 
                   size="xl" 
                   className="gap-2 w-full sm:w-auto"
-                  onClick={() => openCalendly()}
+                  onClick={handleCTA}
                 >
                   <Phone className="h-5 w-5" />
-                  Schedule a Call
+                  Work With Uzair
                 </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">

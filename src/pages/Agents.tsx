@@ -340,9 +340,9 @@ const Agents = () => {
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>
-                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={() => openCalendly()}>
+                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={handleCTA}>
                     <Phone className="h-4 w-4" />
-                    Schedule a Call
+                    Talk to Uzair
                   </Button>
                 </div>
               </div>

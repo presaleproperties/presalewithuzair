@@ -59,10 +59,10 @@ const whoThisIsFor = [
 ];
 
 const Developers = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
 
   const handleBookCall = () => {
-    openCalendly();
+    navigate('/?scroll=book-section');
   };
 
   const scrollToHowIWork = () => {

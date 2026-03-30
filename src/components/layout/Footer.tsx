@@ -110,7 +110,7 @@ export const Footer = () => {
                       to={link.href}
                       className={`transition-colors text-sm ${
                         'highlight' in link && link.highlight 
-                          ? "text-primary hover:text-primary/80" 
+                          ? "text-foreground font-medium hover:text-foreground/80" 
                           : "text-muted-foreground hover:text-primary"
                       }`}
                     >

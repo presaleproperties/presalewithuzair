@@ -5,7 +5,7 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  eyebrow: "UZAIR MUHAMMAD · PRESALE EXPERT",
+  eyebrow: "Uzair Muhammad",
   headline: "Fraser Valley's Leading Presale Agent.",
   subheadline: "400+ Clients Helped · $200M+ in Presale Transactions",
   body: "I get my clients in before the public, with the best unit selection and contract protection on every deal. No developer bias. No pressure. Just the right move for you.",

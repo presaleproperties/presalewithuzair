@@ -316,7 +316,7 @@ const Blog = () => {
               className="font-display text-5xl lg:text-6xl mb-6 text-white"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Guides &amp; <span className="text-gradient">Resources</span>
+              Guides &amp; <span className="text-white/80">Resources</span>
             </h1>
             <div
               className="w-14 h-[2px] mx-auto mb-7 rounded-full"

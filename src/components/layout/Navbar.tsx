@@ -158,14 +158,25 @@ export const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
             <Button 
               variant="hero" 
               size="lg" 
-              className="w-full rounded-full"
-              onClick={handleBookClick}
+              className="w-full rounded-full gap-2"
+              asChild
             >
-              Schedule a Call
+              <a href="tel:+17782313592">
+                <Phone className="h-4 w-4" />
+                Call Now
+              </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="w-full rounded-full"
+              onClick={handleFormCTA}
+            >
+              Work With Uzair
             </Button>
           </div>
         </div>

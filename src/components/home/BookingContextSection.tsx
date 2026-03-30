@@ -37,6 +37,14 @@ const buyerTypes = [
   { value: "seller", label: "Seller" },
 ];
 
+const leadSources = [
+  { value: "instagram", label: "Instagram" },
+  { value: "tiktok", label: "TikTok" },
+  { value: "youtube", label: "YouTube" },
+  { value: "referral", label: "Referral" },
+  { value: "other", label: "Other" },
+];
+
 const contactMethods = [
   { value: "phone", label: "Phone Call" },
   { value: "whatsapp", label: "WhatsApp" },

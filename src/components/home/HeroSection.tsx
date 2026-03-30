@@ -76,7 +76,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
+          <p className="text-xs text-foreground/60 mb-8 animate-fade-up">
             {heroContent.trustBar}
           </p>
 

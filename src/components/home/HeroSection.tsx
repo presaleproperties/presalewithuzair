@@ -149,7 +149,6 @@ export const HeroSection = () => {
               <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.label}
               </p>
-              </p>
               
               {/* Headline */}
               <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up">

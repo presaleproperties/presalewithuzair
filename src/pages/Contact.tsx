@@ -62,11 +62,10 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Have <span className="text-gradient">Questions</span>?
+                Have <span className="text-gradient">Questions</span>? Let's Talk.
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Not sure if a presale is right for you? Have concerns about a specific project? 
-                Reach out for honest, no-pressure guidance.
+                Not sure if a presale makes sense right now? Have concerns about a specific developer? Reach out. I'm here to provide honest, unfiltered guidance.
               </p>
             </div>
           </div>

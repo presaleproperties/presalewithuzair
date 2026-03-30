@@ -63,10 +63,12 @@ export const Navbar = () => {
 
   const linkColor = (href: string) =>
     location.pathname === href
-      ? "text-primary"
+      ? shouldUseDarkNavContent
+        ? "text-foreground font-semibold"
+        : "text-white font-semibold"
       : shouldUseDarkNavContent
-      ? "text-foreground/80 hover:text-primary"
-      : "text-white/80 hover:text-primary";
+      ? "text-foreground/70 hover:text-foreground"
+      : "text-white/70 hover:text-white";
 
   const logoClassName = shouldUseDarkNavContent
     ? "h-8 md:h-10 w-auto brightness-0"

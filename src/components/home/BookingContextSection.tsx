@@ -104,8 +104,8 @@ export const BookingContextSection = () => {
       const utm = getUtmParams();
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
-          firstName: form.firstName,
-          lastName: form.lastName || "",
+          firstName: form.fullName.split(" ")[0] || form.fullName,
+          lastName: form.fullName.split(" ").slice(1).join(" ") || "",
           email: form.email,
           phone: form.phone,
           buyerType: form.buyerType,

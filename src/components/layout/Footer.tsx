@@ -12,7 +12,7 @@ export const Footer = () => {
           {/* Brand & Contact Row */}
           <div className="flex items-center justify-between mb-6">
             <Link to="/">
-              <img src={logo} alt="Presale with Uzair" className="h-8 w-auto" />
+              <img src={logo} alt="Presale with Uzair" className="h-12 w-auto" />
             </Link>
             <div className="flex items-center gap-3">
               <a

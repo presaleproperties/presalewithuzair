@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
@@ -12,6 +12,14 @@ import {
   Loader2,
   ChevronLeft,
   ChevronRight,
+  MapPin,
+  Calendar,
+  Home,
+  DollarSign,
+  Download,
+  FileText,
+  Sparkles,
+  X,
 } from "lucide-react";
 
 /* ── Lightbox ── */
@@ -47,19 +55,17 @@ const Lightbox = ({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
       onClick={onClose}
     >
-      {/* Close */}
       <button
-        className="absolute top-5 right-5 text-white/70 hover:text-white text-3xl font-light z-10"
+        className="absolute top-5 right-5 text-white/70 hover:text-white z-10 p-2"
         onClick={onClose}
         aria-label="Close"
       >
-        ✕
+        <X className="h-6 w-6" />
       </button>
 
-      {/* Prev */}
       {images.length > 1 && (
         <button
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
           aria-label="Previous"
         >
@@ -67,7 +73,6 @@ const Lightbox = ({
         </button>
       )}
 
-      {/* Image */}
       <img
         src={images[index]}
         alt={`Gallery ${index + 1}`}
@@ -75,10 +80,9 @@ const Lightbox = ({
         onClick={(e) => e.stopPropagation()}
       />
 
-      {/* Next */}
       {images.length > 1 && (
         <button
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-10"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           onClick={(e) => { e.stopPropagation(); onNext(); }}
           aria-label="Next"
         >
@@ -86,7 +90,6 @@ const Lightbox = ({
         </button>
       )}
 
-      {/* Counter */}
       <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/60 text-sm">
         {index + 1} / {images.length}
       </p>
@@ -94,60 +97,57 @@ const Lightbox = ({
   );
 };
 
-/* ── Horizontal scrollable gallery ── */
-const ScrollGallery = ({ images, name }: { images: string[]; name: string }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+/* ── Gallery with main image + thumbnail strip (presaleproperties-style) ── */
+const ProjectGallery = ({ images, name }: { images: string[]; name: string }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = scrollRef.current.clientWidth * 0.7;
-    scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
-  };
+  const maxThumbs = 4;
+  const extraCount = images.length - maxThumbs;
 
   return (
     <>
-      <div className="relative group">
-        {/* Scroll buttons */}
+      <div className="space-y-3">
+        {/* Main image */}
         <button
-          onClick={() => scroll("left")}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 border border-border text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-          aria-label="Scroll left"
+          onClick={() => setLightboxIndex(activeIndex)}
+          className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-muted cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary group"
         >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 border border-border text-foreground opacity-0 group-hover:opacity-100 transition-opacity"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="h-5 w-5" />
+          <img
+            src={images[activeIndex]}
+            alt={`${name} - ${activeIndex + 1}`}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+          <span className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md backdrop-blur-sm">
+            {activeIndex + 1}/{images.length}
+          </span>
         </button>
 
-        {/* Scrollable container */}
-        <div
-          ref={scrollRef}
-          className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mx-4 px-4 sm:-mx-6 sm:px-6 scrollbar-hide"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {images.map((img, i) => (
-            <button
-              key={i}
-              onClick={() => setLightboxIndex(i)}
-              className="flex-none w-[280px] sm:w-[340px] md:w-[400px] snap-start rounded-xl overflow-hidden aspect-[4/3] cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <img
-                src={img}
-                alt={`${name} ${i + 1}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-            </button>
-          ))}
-        </div>
+        {/* Thumbnail strip */}
+        {images.length > 1 && (
+          <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: "none" }}>
+            {images.slice(0, maxThumbs).map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                className={`flex-none w-20 h-16 sm:w-24 sm:h-[72px] rounded-lg overflow-hidden border-2 transition-all ${
+                  activeIndex === i ? "border-primary ring-1 ring-primary/30" : "border-transparent opacity-70 hover:opacity-100"
+                }`}
+              >
+                <img src={img} alt={`${name} thumb ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+              </button>
+            ))}
+            {extraCount > 0 && (
+              <button
+                onClick={() => setLightboxIndex(maxThumbs)}
+                className="flex-none w-20 h-16 sm:w-24 sm:h-[72px] rounded-lg overflow-hidden bg-black/70 flex items-center justify-center text-white font-bold text-sm hover:bg-black/80 transition-colors"
+              >
+                +{extraCount} more
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
         <Lightbox
           images={images}
@@ -160,6 +160,17 @@ const ScrollGallery = ({ images, name }: { images: string[]; name: string }) => 
     </>
   );
 };
+
+/* ── Detail row ── */
+const DetailRow = ({ icon: Icon, label, value }: { icon: any; label: string; value: string }) => (
+  <div className="flex items-start gap-3 py-2.5">
+    <Icon className="h-4 w-4 text-primary/70 mt-0.5 shrink-0" />
+    <div className="flex-1 min-w-0">
+      <p className="text-xs text-muted-foreground">{label}</p>
+      <p className="text-sm font-medium text-foreground leading-snug">{value}</p>
+    </div>
+  </div>
+);
 
 /* ── Main Page ── */
 const ProjectDetail = () => {
@@ -188,9 +199,7 @@ const ProjectDetail = () => {
         <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4">
           <h1 className="font-display text-2xl font-bold text-foreground mb-2">Project Not Found</h1>
           <p className="text-muted-foreground mb-6">This project may no longer be available.</p>
-          <Link to="/" className="text-primary hover:underline font-medium">
-            ← Back to Home
-          </Link>
+          <Link to="/" className="text-primary hover:underline font-medium">← Back to Home</Link>
         </div>
         <Footer />
       </>
@@ -206,15 +215,19 @@ const ProjectDetail = () => {
 
   const citySlug = project.city?.toLowerCase().replace(/\s+/g, "-") || "";
 
-  // Collect key details into a clean list
-  const details: { label: string; value: string }[] = [];
-  if (project.city) details.push({ label: "Location", value: `${project.city}${project.neighborhood ? `, ${project.neighborhood}` : ""}` });
-  if (project.starting_price) details.push({ label: "Starting From", value: `$${project.starting_price.toLocaleString()}` });
-  if (project.project_type) details.push({ label: "Type", value: project.project_type });
-  if (project.developer_name) details.push({ label: "Developer", value: project.developer_name });
-  if (project.completion_year) details.push({ label: "Est. Completion", value: project.occupancy_estimate || String(project.completion_year) });
-  if (project.deposit_percent) details.push({ label: "Deposit", value: `${project.deposit_percent}%` });
-  if (project.unit_mix) details.push({ label: "Unit Mix", value: project.unit_mix });
+  const allImages = [
+    ...(project.featured_image ? [project.featured_image] : []),
+    ...(project.gallery_images || []),
+  ].filter((v, i, a) => a.indexOf(v) === i); // dedupe
+
+  const completionText =
+    project.occupancy_estimate ||
+    (project.completion_year
+      ? `${project.completion_month ? new Date(2000, project.completion_month - 1).toLocaleString("en", { month: "long" }) + " " : ""}${project.completion_year}`
+      : null);
+
+  const hasFloorplans = project.floorplan_files && project.floorplan_files.length > 0;
+  const hasBrochures = project.brochure_files && project.brochure_files.length > 0;
 
   return (
     <>
@@ -229,69 +242,176 @@ const ProjectDetail = () => {
       <Navbar />
 
       <main className="bg-background">
-        {/* ── Hero ── */}
-        <section className="dark-section relative min-h-[45vh] md:min-h-[50vh] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
-            {project.featured_image ? (
-              <img src={project.featured_image} alt={project.name} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-muted to-secondary" />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-          </div>
+        {/* ── Breadcrumb ── */}
+        <div className="container-xl px-5 sm:px-8 lg:px-16 pt-6 pb-4">
+          <Link
+            to={citySlug ? `/${citySlug}` : "/"}
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground text-sm transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {project.city ? `${project.city} Projects` : "Back"}
+          </Link>
+        </div>
 
-          <div className="relative z-10 w-full px-5 sm:px-8 lg:px-16 pb-10 pt-28">
-            <Link
-              to={citySlug ? `/${citySlug}` : "/"}
-              className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-5 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {project.city || "Back"}
-            </Link>
+        {/* ── Hero: Gallery + Details side-by-side ── */}
+        <section className="container-xl px-5 sm:px-8 lg:px-16 pb-10">
+          <div className="grid lg:grid-cols-[1fr_400px] gap-8 lg:gap-10">
+            {/* Left — Gallery */}
+            <div>
+              {allImages.length > 0 ? (
+                <ProjectGallery images={allImages} name={project.name} />
+              ) : (
+                <div className="aspect-[16/10] rounded-xl bg-gradient-to-br from-muted to-secondary flex items-center justify-center">
+                  <Building2 className="h-16 w-16 text-muted-foreground/30" />
+                </div>
+              )}
+            </div>
 
-            <span className="block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">
-              {getStatusLabel()}
-            </span>
+            {/* Right — Project info */}
+            <div>
+              {/* Status badge */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-2.5 py-1 text-xs font-bold tracking-wider uppercase bg-primary/10 text-primary rounded-md">
+                  {getStatusLabel()}
+                </span>
+                {project.is_featured && (
+                  <span className="px-2.5 py-1 text-xs font-bold tracking-wider uppercase bg-amber-500/10 text-amber-600 rounded-md">
+                    ★ Featured
+                  </span>
+                )}
+              </div>
 
-            <h1 className="font-display text-3xl md:text-5xl font-black text-white leading-tight mb-1">
-              {project.name}
-            </h1>
-            {project.developer_name && (
-              <p className="text-white/60 text-base md:text-lg">
-                by {project.developer_name}
-              </p>
-            )}
+              {/* Name */}
+              <h1 className="font-display text-2xl md:text-3xl font-black text-foreground leading-tight mb-1">
+                {project.name}
+              </h1>
+
+              {/* Location */}
+              {(project.city || project.neighborhood) && (
+                <p className="flex items-center gap-1.5 text-muted-foreground text-sm mb-4">
+                  <MapPin className="h-3.5 w-3.5" />
+                  {[project.neighborhood, project.city].filter(Boolean).join(", ")}
+                </p>
+              )}
+
+              {/* Price */}
+              {project.starting_price && (
+                <p className="text-2xl font-black text-primary mb-5">
+                  <span className="text-sm font-normal text-muted-foreground mr-1">From</span>
+                  ${project.starting_price.toLocaleString()}
+                </p>
+              )}
+
+              {/* Key details */}
+              <div className="border-t border-border pt-3 space-y-0.5">
+                {project.developer_name && (
+                  <DetailRow icon={Building2} label="Developer" value={project.developer_name} />
+                )}
+                {completionText && (
+                  <DetailRow icon={Calendar} label="Est. Completion" value={completionText} />
+                )}
+                {project.unit_mix && (
+                  <DetailRow icon={Home} label="Units" value={project.unit_mix} />
+                )}
+                {project.deposit_percent && (
+                  <DetailRow
+                    icon={DollarSign}
+                    label="Deposit"
+                    value={project.deposit_structure || `${project.deposit_percent}%`}
+                  />
+                )}
+              </div>
+
+              {/* Short description */}
+              {project.short_description && (
+                <p className="text-sm text-foreground/70 leading-relaxed mt-4 line-clamp-4">
+                  {project.short_description}
+                </p>
+              )}
+
+              {/* File download CTAs */}
+              {(hasFloorplans || hasBrochures) && (
+                <div className="flex flex-wrap gap-2 mt-5">
+                  {hasFloorplans && (
+                    <a
+                      href={project.floorplan_files![0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold bg-primary text-primary-foreground hover:-translate-y-0.5 transition-all"
+                    >
+                      <Download className="h-4 w-4" />
+                      Floor Plans
+                    </a>
+                  )}
+                  {hasBrochures && (
+                    <a
+                      href={project.brochure_files![0]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-border bg-card text-foreground hover:-translate-y-0.5 hover:border-primary/30 transition-all"
+                    >
+                      <FileText className="h-4 w-4" />
+                      Brochure
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
-        {/* ── Details + CTA ── */}
-        <section className="container-xl px-5 sm:px-8 lg:px-16 py-10 md:py-14">
-          <div className="grid lg:grid-cols-[1fr_360px] gap-10 lg:gap-14">
-            {/* Left column */}
-            <div className="space-y-10">
-              {/* Quick details table */}
-              {details.length > 0 && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5">
-                  {details.map((d) => (
-                    <div key={d.label}>
-                      <p className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{d.label}</p>
-                      <p className="text-sm font-semibold text-foreground">{d.value}</p>
-                    </div>
-                  ))}
+        {/* ── Quick stats bar ── */}
+        {(project.strata_fees || project.incentives_available) && (
+          <section className="border-y border-border bg-card/50">
+            <div className="container-xl px-5 sm:px-8 lg:px-16 py-5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                {project.developer_name && (
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground mb-0.5">Developer</p>
+                    <p className="text-sm font-semibold text-foreground">{project.developer_name}</p>
+                  </div>
+                )}
+                {project.strata_fees && (
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground mb-0.5">Strata Fees</p>
+                    <p className="text-sm font-semibold text-foreground">{project.strata_fees}</p>
+                  </div>
+                )}
+                {project.project_type && (
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground mb-0.5">Type</p>
+                    <p className="text-sm font-semibold text-foreground capitalize">{project.project_type}</p>
+                  </div>
+                )}
+              </div>
+
+              {/* Incentives banner */}
+              {project.incentives_available && project.incentives && (
+                <div className="mt-4 flex items-start gap-3 px-4 py-3 rounded-lg bg-green-500/10 border border-green-500/20">
+                  <Sparkles className="h-4 w-4 text-green-600 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-green-700 mb-0.5">Current Incentives</p>
+                    <p className="text-sm text-green-800 leading-relaxed">{project.incentives}</p>
+                  </div>
                 </div>
               )}
+            </div>
+          </section>
+        )}
 
-              {/* Divider */}
-              <div className="h-px bg-border" />
-
-              {/* Description */}
-              {(project.full_description || project.short_description) && (
+        {/* ── Content + Lead Form ── */}
+        <section className="container-xl px-5 sm:px-8 lg:px-16 py-10 md:py-14">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-14">
+            {/* Left — Content */}
+            <div className="space-y-10">
+              {/* Full description */}
+              {project.full_description && (
                 <div>
                   <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-4">About This Project</h2>
                   <div
                     className="text-foreground/75 leading-relaxed whitespace-pre-line text-[15px]"
                     dangerouslySetInnerHTML={{
-                      __html: (project.full_description || project.short_description || "")
+                      __html: project.full_description
                         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
                     }}
                   />
@@ -327,14 +447,6 @@ const ProjectDetail = () => {
                 </div>
               )}
 
-              {/* Gallery — horizontal scroll */}
-              {project.gallery_images && project.gallery_images.length > 0 && (
-                <div>
-                  <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-4">Gallery</h2>
-                  <ScrollGallery images={project.gallery_images} name={project.name} />
-                </div>
-              )}
-
               {/* Video */}
               {project.video_url && (
                 <div>
@@ -351,17 +463,32 @@ const ProjectDetail = () => {
               )}
             </div>
 
-            {/* Right column — sticky CTA */}
+            {/* Right — Sticky lead form */}
             <div className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-2xl border border-border bg-card p-6">
-                <UnifiedLeadForm
-                  heading="Request Floor Plans & Info"
-                  subheading={`Get the full information package for ${project.name} — floor plans, pricing, deposit structure & incentives.`}
-                  eyebrow=""
-                  buttonText="Request Info Package"
-                  variant="default"
-                  showTrust={false}
-                />
+              <div className="rounded-2xl border border-border bg-card overflow-hidden">
+                {/* Dark header */}
+                <div className="bg-foreground/95 px-5 py-4">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Download className="h-4 w-4 text-primary" />
+                    <h3 className="text-white font-display font-bold text-base">
+                      Instant Access to Floor Plans & Pricing
+                    </h3>
+                  </div>
+                  <p className="text-white/50 text-xs">
+                    Floor Plans · Brochure · No obligation
+                  </p>
+                </div>
+
+                <div className="p-5">
+                  <UnifiedLeadForm
+                    heading=""
+                    subheading=""
+                    eyebrow=""
+                    buttonText="Get Floor Plans"
+                    variant="default"
+                    showTrust={false}
+                  />
+                </div>
               </div>
             </div>
           </div>

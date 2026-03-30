@@ -24,8 +24,16 @@ export interface PresaleProject {
   is_featured: boolean;
   occupancy_estimate: string | null;
   deposit_percent: number | null;
+  deposit_structure: string | null;
   completion_year: number | null;
+  completion_month: number | null;
   video_url: string | null;
+  floorplan_files: string[] | null;
+  brochure_files: string[] | null;
+  incentives: string | null;
+  incentives_available: boolean | null;
+  strata_fees: string | null;
+  price_range: string | null;
   created_at: string;
 }
 

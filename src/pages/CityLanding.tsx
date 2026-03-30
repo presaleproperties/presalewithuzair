@@ -172,13 +172,14 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           <div className="relative z-10 container-xl px-4 sm:px-6">
             <div className="max-w-3xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up" style={{ color: "hsl(230 70% 60%)" }}>
-                {config.city} Presales · Fraser Valley
+                {config.heroEyebrow}
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-foreground mb-4 animate-fade-up">
                 {config.heroHeadline}
-                <br />
-                <span className="text-foreground/50">{config.heroSubheadline}</span>
               </h1>
+              <h2 className="font-display text-xl md:text-2xl text-foreground/50 mb-4 animate-fade-up">
+                {config.heroSubheadline}
+              </h2>
               <div className="w-14 h-[2px] rounded-full mb-6 animate-fade-up" style={{ background: "var(--text-gradient)" }} />
               <p className="text-lg text-foreground/60 max-w-2xl leading-relaxed mb-8 animate-fade-up">
                 {config.heroBody}
@@ -187,7 +188,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background font-semibold text-base transition-all duration-300 animate-fade-up"
               >
-                Get VIP Access — It's Free
+                {config.heroCta}
               </button>
             </div>
           </div>

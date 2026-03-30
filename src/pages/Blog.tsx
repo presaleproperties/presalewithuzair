@@ -288,21 +288,21 @@ const Blog = () => {
 
       <Navbar />
 
-      <main style={{ background: "hsl(40 20% 97%)" }}>
+      <main style={{ background: "hsl(0 0% 100%)" }}>
 
         {/* ── Hero ── */}
         <section
           className="pt-32 pb-16 relative overflow-hidden"
-          style={{ background: "hsl(25 15% 10%)" }}
+          style={{ background: "hsl(222 25% 6%)" }}
         >
-          {/* Subtle gold radial glow */}
+          {/* Subtle blue radial glow */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse at center, hsl(40 85% 45% / 0.12) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse at center, hsl(230 80% 28% / 0.12) 0%, transparent 70%)",
             }}
           />
-          {/* Gold top bar */}
+          {/* Blue top bar */}
           <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
 
           <div className="container-xl text-center relative z-10">

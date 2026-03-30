@@ -166,6 +166,135 @@ export type Database = {
         }
         Relationships: []
       }
+      presale_projects: {
+        Row: {
+          address: string | null
+          amenities: Json | null
+          brochure_files: Json | null
+          city: string | null
+          completion_month: number | null
+          completion_year: number | null
+          created_at: string | null
+          deposit_percent: number | null
+          deposit_structure: string | null
+          developer_name: string | null
+          faq: Json | null
+          featured_image: string | null
+          floorplan_files: Json | null
+          full_description: string | null
+          gallery_images: Json | null
+          highlights: Json | null
+          id: string
+          incentives: string | null
+          incentives_available: boolean | null
+          is_featured: boolean | null
+          is_published: boolean | null
+          map_lat: number | null
+          map_lng: number | null
+          name: string
+          near_skytrain: boolean | null
+          neighborhood: string | null
+          occupancy_estimate: string | null
+          price_range: string | null
+          project_type: string | null
+          seo_description: string | null
+          seo_title: string | null
+          short_description: string | null
+          slug: string
+          source_id: string | null
+          starting_price: number | null
+          status: string | null
+          strata_fees: string | null
+          unit_mix: string | null
+          updated_at: string | null
+          video_url: string | null
+        }
+        Insert: {
+          address?: string | null
+          amenities?: Json | null
+          brochure_files?: Json | null
+          city?: string | null
+          completion_month?: number | null
+          completion_year?: number | null
+          created_at?: string | null
+          deposit_percent?: number | null
+          deposit_structure?: string | null
+          developer_name?: string | null
+          faq?: Json | null
+          featured_image?: string | null
+          floorplan_files?: Json | null
+          full_description?: string | null
+          gallery_images?: Json | null
+          highlights?: Json | null
+          id?: string
+          incentives?: string | null
+          incentives_available?: boolean | null
+          is_featured?: boolean | null
+          is_published?: boolean | null
+          map_lat?: number | null
+          map_lng?: number | null
+          name: string
+          near_skytrain?: boolean | null
+          neighborhood?: string | null
+          occupancy_estimate?: string | null
+          price_range?: string | null
+          project_type?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          short_description?: string | null
+          slug: string
+          source_id?: string | null
+          starting_price?: number | null
+          status?: string | null
+          strata_fees?: string | null
+          unit_mix?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Update: {
+          address?: string | null
+          amenities?: Json | null
+          brochure_files?: Json | null
+          city?: string | null
+          completion_month?: number | null
+          completion_year?: number | null
+          created_at?: string | null
+          deposit_percent?: number | null
+          deposit_structure?: string | null
+          developer_name?: string | null
+          faq?: Json | null
+          featured_image?: string | null
+          floorplan_files?: Json | null
+          full_description?: string | null
+          gallery_images?: Json | null
+          highlights?: Json | null
+          id?: string
+          incentives?: string | null
+          incentives_available?: boolean | null
+          is_featured?: boolean | null
+          is_published?: boolean | null
+          map_lat?: number | null
+          map_lng?: number | null
+          name?: string
+          near_skytrain?: boolean | null
+          neighborhood?: string | null
+          occupancy_estimate?: string | null
+          price_range?: string | null
+          project_type?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          short_description?: string | null
+          slug?: string
+          source_id?: string | null
+          starting_price?: number | null
+          status?: string | null
+          strata_fees?: string | null
+          unit_mix?: string | null
+          updated_at?: string | null
+          video_url?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

@@ -167,7 +167,6 @@ export const HeroSection = () => {
               <p className="text-sm text-white/50 animate-fade-up font-medium">
                 {heroContent.supportingLine}
               </p>
-              </p>
             </div>
 
             {/* CTA Section */}

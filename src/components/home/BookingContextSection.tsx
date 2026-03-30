@@ -116,52 +116,6 @@ export const BookingContextSection = () => {
 
       <div className="container-xl px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Rotating Testimonial Quotes */}
-          <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8 min-h-[220px] sm:min-h-[240px]">
-              <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
-              <blockquote
-                className={`relative z-10 text-center transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}
-              >
-                <div className="flex justify-center mb-4">
-                  <img
-                    src={currentTestimonial.photo}
-                    alt={currentTestimonial.name}
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary/30"
-                  />
-                </div>
-                <p className="text-base sm:text-lg lg:text-xl text-foreground/90 italic leading-relaxed">
-                  "{currentTestimonial.quote}"
-                </p>
-                <footer className="mt-4 sm:mt-6">
-                  <p className="text-sm sm:text-base font-semibold text-foreground">{currentTestimonial.name}</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground">{currentTestimonial.type}</p>
-                </footer>
-              </blockquote>
-
-              <div className="flex justify-center gap-2 mt-4 sm:mt-6">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setIsAnimating(true);
-                      setTimeout(() => {
-                        setCurrentIndex(index);
-                        setIsAnimating(false);
-                      }, 300);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-primary w-6"
-                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
-                    aria-label={`View testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Header */}
           <div className="text-center mb-8 sm:mb-10">
             <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>

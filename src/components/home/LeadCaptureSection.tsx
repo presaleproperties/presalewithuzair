@@ -9,8 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
 const formSchema = z.object({
-  firstName: z.string().trim().min(1, "First name is required").max(50),
-  lastName: z.string().trim().min(1, "Last name is required").max(50),
+  fullName: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
   buyerType: z.string().min(1, "Please select an option"),

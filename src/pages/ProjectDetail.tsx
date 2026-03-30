@@ -253,12 +253,6 @@ const ProjectDetail = () => {
             {/* Right: Sticky Lead Form */}
             <div className="lg:sticky lg:top-24 lg:self-start">
               <div className="rounded-2xl border border-border bg-card p-6 sm:p-8">
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                  Get VIP Access to {project.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-6">
-                  Get floor plans, pricing, and exclusive incentives before the public.
-                </p>
                 <UnifiedLeadForm
                   heading={`Get VIP Access to ${project.name}`}
                   subheading="Get floor plans, pricing, and exclusive incentives before the public."

@@ -65,6 +65,7 @@ const App = () => (
               <Route path="/abbotsford" element={<CityLanding citySlug="abbotsford" />} />
               <Route path="/chilliwack" element={<CityLanding citySlug="chilliwack" />} />
               <Route path="/maple-ridge" element={<CityLanding citySlug="maple-ridge" />} />
+              <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />

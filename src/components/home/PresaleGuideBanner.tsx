@@ -112,6 +112,7 @@ export const PresaleGuideBanner = () => {
                     placeholder="First name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
+                    onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                     className="h-12 text-base flex-1"
                     autoComplete="given-name"
                     required
@@ -121,6 +122,7 @@ export const PresaleGuideBanner = () => {
                     placeholder="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                     className="h-12 text-base flex-1"
                     autoComplete="email"
                     required

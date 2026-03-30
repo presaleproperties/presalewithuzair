@@ -178,7 +178,7 @@ export const Footer = () => {
               <h4 className="font-display text-sm font-bold tracking-[0.15em] uppercase text-white/80 mb-6">Contact</h4>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3">
-                  <Phone className="h-4 w-4 text-primary/70 mt-1 shrink-0" />
+                  <Phone className="h-4 w-4 text-blue-400 mt-1 shrink-0" />
                   <div>
                     <p className="text-xs text-white/40 mb-0.5">Phone</p>
                     <a href="tel:+17782313592" className="text-sm text-white/80 hover:text-white transition-colors">

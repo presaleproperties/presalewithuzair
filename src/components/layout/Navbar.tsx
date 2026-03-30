@@ -63,10 +63,12 @@ export const Navbar = () => {
 
   const linkColor = (href: string) =>
     location.pathname === href
-      ? "text-primary"
+      ? shouldUseDarkNavContent
+        ? "text-foreground font-semibold"
+        : "text-white font-semibold"
       : shouldUseDarkNavContent
-      ? "text-foreground/80 hover:text-primary"
-      : "text-white/80 hover:text-primary";
+      ? "text-foreground/70 hover:text-foreground"
+      : "text-white/70 hover:text-white";
 
   const logoClassName = shouldUseDarkNavContent
     ? "h-8 md:h-10 w-auto brightness-0"
@@ -151,8 +153,8 @@ export const Navbar = () => {
               to={link.href}
               className={`block text-lg font-medium py-2 transition-colors ${
                 location.pathname === link.href
-                  ? "text-primary"
-                  : "text-foreground/80 hover:text-primary"
+                  ? "text-foreground font-bold"
+                  : "text-foreground/70 hover:text-foreground"
               }`}
             >
               {link.label}

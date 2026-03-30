@@ -2,13 +2,13 @@ import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
-  eyebrow: "UZAIR MUHAMMAD · FRASER VALLEY PRESALE EXPERT",
-  headline: "You Deserve the Best Deal in New Construction.",
-  subheadline: "I Make Sure You Get It.",
-  body: "Fraser Valley's leading presale expert. VIP access, exclusive incentives, and full contract protection — for first-time buyers and investors who want the right deal, not just any deal. One advisor. Fully in your corner. Zero developer bias.",
-  supportingLine: "",
-  cta: "Get VIP Access — It's Free",
-  trustBar: "400+ Clients · $200M+ in Presales · Surrey · Langley · Abbotsford · Chilliwack"
+  eyebrow: "UZAIR MUHAMMAD",
+  headline: "Fraser Valley's Leading Presale Agent.",
+  subheadline: "400+ Clients Helped · $200M+ in Presale Transactions",
+  body: "I help first-time buyers and investors get into the right presale condo or townhome across the Fraser Valley — before the public, at the best price, with VIP access, exclusive incentives, and full protection on every developer contract.",
+  supportingLine: "Zero developer bias. Always in your corner.",
+  cta: "Work With Uzair — It's Free",
+  trustBar: "Available: English, Punjabi, Hindi & Urdu."
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

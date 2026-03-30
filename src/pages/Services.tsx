@@ -175,9 +175,9 @@ const Services = () => {
                     variant="hero" 
                     size="lg" 
                     className="gap-2"
-                    onClick={() => openCalendly()}
+                    onClick={handleCTA}
                   >
-                    Schedule a Call
+                    Work With Uzair
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>

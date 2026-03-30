@@ -46,7 +46,7 @@ export const Footer = () => {
             <Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
             <Link to="/developers" className="text-muted-foreground hover:text-primary">Developers</Link>
             <Link to="/agents" className="text-muted-foreground hover:text-primary">Agents</Link>
-            <Link to="/book" className="text-primary hover:text-primary/80">Book a Call</Link>
+            <Link to="/book" className="text-foreground font-medium hover:text-foreground/80">Book a Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"

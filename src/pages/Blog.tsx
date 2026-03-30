@@ -68,20 +68,6 @@ function FeaturedCard({ post }: { post: BlogPost }) {
             >
               Featured
             </span>
-            {post.category && (
-              <>
-                <span style={{ color: "hsl(var(--border))" }}>·</span>
-                <span
-                  className="px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase rounded-sm"
-                  style={{
-                    background: "hsl(var(--primary) / 0.1)",
-                    color: "hsl(var(--primary))",
-                  }}
-                >
-                  {post.category.name}
-                </span>
-              </>
-            )}
           </div>
 
           {/* Gold rule */}

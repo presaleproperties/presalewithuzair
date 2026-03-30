@@ -176,7 +176,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               className="w-full h-full object-cover"
             />
             {/* Strong left-side overlay so text is legible */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
           </div>
           <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
 

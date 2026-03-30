@@ -17,7 +17,7 @@ export const Footer = () => {
             <div className="flex items-center gap-3">
               <a
                 href="tel:+17782313592"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <Phone className="h-5 w-5" />
               </a>

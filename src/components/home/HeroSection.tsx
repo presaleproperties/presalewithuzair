@@ -182,7 +182,7 @@ export const HeroSection = () => {
               </Button>
               
               {/* Trust Bar */}
-              <p className="text-sm text-foreground/40">
+              <p className="text-sm text-foreground/50">
                 {heroContent.trustBar}
               </p>
             </div>

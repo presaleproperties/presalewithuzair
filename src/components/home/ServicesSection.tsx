@@ -66,7 +66,7 @@ export const ServicesSection = () => {
                 <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-white/80 transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-foreground/70 text-sm leading-relaxed mb-4">
+                <p className="text-white/70 text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
                 <div className="flex items-center gap-2 text-white/90 font-medium text-sm group-hover:gap-3 transition-all">

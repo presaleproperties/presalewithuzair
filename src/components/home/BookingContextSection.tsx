@@ -34,9 +34,7 @@ const testimonials = [
 const buyerTypes = [
   { value: "first-time-buyer", label: "First-Time Buyer" },
   { value: "investor", label: "Investor" },
-  { value: "upsizer", label: "Upsizing / Upgrading" },
-  { value: "assignment-buyer", label: "Assignment Buyer" },
-  { value: "other", label: "Other" },
+  { value: "seller", label: "Seller" },
 ];
 
 const contactMethods = [
@@ -59,8 +57,7 @@ export const BookingContextSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     phone: "",
     buyerType: "",
@@ -96,7 +93,7 @@ export const BookingContextSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.firstName || !form.email || !form.phone || !form.buyerType) {
+    if (!form.fullName || !form.email || !form.phone || !form.buyerType) {
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -107,8 +104,8 @@ export const BookingContextSection = () => {
       const utm = getUtmParams();
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
-          firstName: form.firstName,
-          lastName: form.lastName || "",
+          firstName: form.fullName.split(" ")[0] || form.fullName,
+          lastName: form.fullName.split(" ").slice(1).join(" ") || "",
           email: form.email,
           phone: form.phone,
           buyerType: form.buyerType,
@@ -232,35 +229,21 @@ export const BookingContextSection = () => {
                 onSubmit={handleSubmit}
                 className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-10 space-y-6"
               >
-                {/* Name Row */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-foreground font-medium">
-                      First Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="firstName"
-                      placeholder="Your first name"
-                      value={form.firstName}
-                      onChange={(e) => updateField("firstName", e.target.value)}
-                      required
-                      maxLength={100}
-                      className="bg-background border-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-foreground font-medium">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Your last name"
-                      value={form.lastName}
-                      onChange={(e) => updateField("lastName", e.target.value)}
-                      maxLength={100}
-                      className="bg-background border-border"
-                    />
-                  </div>
+                {/* Full Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="fullName" className="text-foreground font-medium">
+                    Full Name <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="fullName"
+                    placeholder="Your full name"
+                    value={form.fullName}
+                    onChange={(e) => updateField("fullName", e.target.value)}
+                    required
+                    maxLength={100}
+                    autoComplete="name"
+                    className="bg-background border-border"
+                  />
                 </div>
 
                 {/* Contact Row */}

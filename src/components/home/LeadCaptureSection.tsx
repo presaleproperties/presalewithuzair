@@ -9,8 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
 const formSchema = z.object({
-  firstName: z.string().trim().min(1, "First name is required").max(50),
-  lastName: z.string().trim().min(1, "Last name is required").max(50),
+  fullName: z.string().trim().min(1, "Name is required").max(100),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
   buyerType: z.string().min(1, "Please select an option"),
@@ -54,8 +53,7 @@ const getTrackingData = (): TrackingData => {
 
 export const LeadCaptureSection = () => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     phone: "",
     buyerType: "",
@@ -115,7 +113,12 @@ export const LeadCaptureSection = () => {
     try {
       const { data, error } = await supabase.functions.invoke('capture-lead', {
         body: {
-          ...formData,
+          firstName: formData.fullName.split(" ")[0] || formData.fullName,
+          lastName: formData.fullName.split(" ").slice(1).join(" ") || "",
+          email: formData.email,
+          phone: formData.phone,
+          buyerType: formData.buyerType,
+          leadSource: formData.leadSource,
           ...trackingData,
         },
       });
@@ -147,8 +150,7 @@ export const LeadCaptureSection = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setIsSuccess(false);
         setFormData({
-          firstName: "",
-          lastName: "",
+          fullName: "",
           email: "",
           phone: "",
           buyerType: "",
@@ -224,40 +226,22 @@ export const LeadCaptureSection = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="on">
-              {/* Name Row - Side by side on mobile */}
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label htmlFor="firstName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
-                    First Name *
-                  </label>
-                  <Input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder="First"
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
-                    autoComplete="given-name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
-                    Last Name *
-                  </label>
-                  <Input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder="Last"
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
-                    autoComplete="family-name"
-                    required
-                  />
-                </div>
+              {/* Full Name */}
+              <div>
+                <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-foreground mb-1">
+                  Full Name *
+                </label>
+                <Input
+                  id="fullName"
+                  name="name"
+                  type="text"
+                  placeholder="Your full name"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  className="h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation"
+                  autoComplete="name"
+                  required
+                />
               </div>
 
               {/* Email */}
@@ -311,9 +295,7 @@ export const LeadCaptureSection = () => {
                   <SelectContent>
                     <SelectItem value="first-time-buyer">First-Time Buyer</SelectItem>
                     <SelectItem value="investor">Investor</SelectItem>
-                    <SelectItem value="upsizer">Upsizer / Downsizer</SelectItem>
-                    <SelectItem value="assignment-buyer">Assignment Buyer</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="seller">Seller</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

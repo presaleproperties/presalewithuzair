@@ -6,7 +6,7 @@ import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
   eyebrow: "VANCOUVER PRESALE EXPERT · LEADING THE FRASER VALLEY PRESALE MARKET",
-  headline: "The Fraser Valley's Most Trusted Presale Expert.",
+  headline: "Fraser Valley's Leading Presale Specialist.",
   subheadline: "Your First Home or Next Investment — Done Right.",
   body: "VIP access before public launch, best unit allocation, bulletproof contract protection, and straight-talk advice on which projects are worth your money — and which ones to walk away from.",
   supportingLine: "Buyer representation. Zero developer bias. Available in English, Punjabi, Hindi & Urdu.",

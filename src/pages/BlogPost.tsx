@@ -162,7 +162,7 @@ const BlogPost = () => {
       <main className="bg-background">
 
         {/* ── Premium editorial hero ── */}
-        <section className="w-full pb-0" style={{ background: "#fff" }}>
+        <section className="w-full pb-0 bg-background">
           {/* Blue accent bar at very top */}
           <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
 

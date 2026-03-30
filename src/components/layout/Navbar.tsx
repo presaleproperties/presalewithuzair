@@ -153,8 +153,8 @@ export const Navbar = () => {
               to={link.href}
               className={`block text-lg font-medium py-2 transition-colors ${
                 location.pathname === link.href
-                  ? "text-primary"
-                  : "text-foreground/80 hover:text-primary"
+                  ? "text-foreground font-bold"
+                  : "text-foreground/70 hover:text-foreground"
               }`}
             >
               {link.label}

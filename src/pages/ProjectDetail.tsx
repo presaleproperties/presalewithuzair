@@ -260,8 +260,10 @@ const ProjectDetail = () => {
                   Get floor plans, pricing, and exclusive incentives before the public.
                 </p>
                 <UnifiedLeadForm
-                  source={`project-${project.slug}`}
-                  buyerType="first-time-buyer"
+                  heading={`Get VIP Access to ${project.name}`}
+                  subheading="Get floor plans, pricing, and exclusive incentives before the public."
+                  eyebrow="VIP ACCESS"
+                  buttonText="Get VIP Access"
                   variant="default"
                 />
               </div>

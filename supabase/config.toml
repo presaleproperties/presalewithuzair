@@ -23,3 +23,6 @@ verify_jwt = false
 
 [functions.send-to-zapier]
 verify_jwt = false
+
+[functions.sync-projects]
+verify_jwt = false

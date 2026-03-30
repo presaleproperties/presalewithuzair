@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import uzairImage from "@/assets/uzair-expo-profile.jpg";
 
 const Contact = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>

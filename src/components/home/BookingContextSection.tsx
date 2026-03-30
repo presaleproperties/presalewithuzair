@@ -93,7 +93,7 @@ export const BookingContextSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.firstName || !form.email || !form.phone || !form.buyerType) {
+    if (!form.fullName || !form.email || !form.phone || !form.buyerType) {
       toast.error("Please fill in all required fields.");
       return;
     }

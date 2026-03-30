@@ -77,6 +77,14 @@ export const PresaleGuidePopup = () => {
       if (error) throw new Error(error.message || "Failed to submit");
 
       setIsSuccess(true);
+
+      // Trigger immediate PDF download
+      const link = document.createElement("a");
+      link.href = "/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      link.download = "7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (err) {
       console.error("Form submission error:", err);
       toast({

@@ -34,9 +34,7 @@ const testimonials = [
 const buyerTypes = [
   { value: "first-time-buyer", label: "First-Time Buyer" },
   { value: "investor", label: "Investor" },
-  { value: "upsizer", label: "Upsizing / Upgrading" },
-  { value: "assignment-buyer", label: "Assignment Buyer" },
-  { value: "other", label: "Other" },
+  { value: "seller", label: "Seller" },
 ];
 
 const contactMethods = [

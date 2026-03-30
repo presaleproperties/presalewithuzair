@@ -14,7 +14,7 @@ export const FinalCTASection = () => {
       </div>
 
       <div className="container-xl relative z-10 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-center">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
           
           {/* Image */}
           <a

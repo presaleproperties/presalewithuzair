@@ -23,7 +23,7 @@ export const Navbar = () => {
   // Pages with light/cream backgrounds need dark navbar text when unscrolled
   const isLightPage = ["/blog", "/about", "/services", "/contact", "/book"].some(
     (p) => location.pathname === p || location.pathname.startsWith("/blog/")
-  );
+  ) || location.pathname.startsWith("/projects/");
   const isDarkHeroPage = location.pathname === "/" || location.pathname === "/call";
 
   useEffect(() => {

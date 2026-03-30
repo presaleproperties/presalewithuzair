@@ -182,7 +182,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
           <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-2xl">
-              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-primary">
+              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
                 {config.heroEyebrow}
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-white mb-4 animate-fade-up">

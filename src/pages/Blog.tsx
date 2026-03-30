@@ -308,7 +308,7 @@ const Blog = () => {
           <div className="container-xl text-center relative z-10">
             <p
               className="text-xs font-black tracking-[0.3em] uppercase mb-4"
-              style={{ color: "hsl(var(--primary))" }}
+              style={{ color: "hsl(220 10% 65%)" }}
             >
               Educational Resources
             </p>

@@ -268,9 +268,6 @@ const Index = () => {
           <BookingContextSection />
         </Suspense>
         
-        <Suspense fallback={<SectionFallback />}>
-          <BlogPreviewSection />
-        </Suspense>
         
         <Suspense fallback={<SectionFallback />}>
           <InstagramSection />

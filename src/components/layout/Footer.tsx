@@ -196,7 +196,7 @@ export const Footer = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="h-4 w-4 text-primary/70 mt-1 shrink-0" />
+                  <MapPin className="h-4 w-4 text-blue-400 mt-1 shrink-0" />
                   <div>
                     <p className="text-xs text-white/40 mb-0.5">Office</p>
                     <p className="text-sm text-white/80">

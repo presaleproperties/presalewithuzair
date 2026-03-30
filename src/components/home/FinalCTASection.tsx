@@ -12,7 +12,7 @@ export const FinalCTASection = () => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1">
-            <p className="text-primary font-bold tracking-[0.2em] text-xs sm:text-sm mb-3 uppercase">
+            <p className="text-blue-400 font-bold tracking-[0.2em] text-xs sm:text-sm mb-3 uppercase">
               Community Leader
             </p>
 

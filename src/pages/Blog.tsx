@@ -431,7 +431,7 @@ const Blog = () => {
             style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(230 80% 28% / 0.07) 0%, transparent 70%)" }}
           />
           <div className="container-xl text-center relative z-10">
-            <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
+            <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "hsl(230 70% 60%)" }}>
               Free Strategy Call
             </p>
             <h2 className="font-display text-4xl text-white mb-4" style={{ letterSpacing: "-0.02em" }}>

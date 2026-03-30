@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 20% 12%;
 
-    /* Deep royal blue primary — matches Serhant */
-    --primary: 230 80% 28%;
+    /* Vibrant royal blue primary — legible as text, strong as buttons */
+    --primary: 225 70% 45%;
     --primary-foreground: 0 0% 100%;
 
     /* Cool neutral secondary */

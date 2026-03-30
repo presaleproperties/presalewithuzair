@@ -23,6 +23,14 @@ import { Button } from "@/components/ui/button";
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const { data: project, isLoading, error } = usePresaleProject(slug || "");
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Back to top visibility
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 600);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (isLoading) {
     return (

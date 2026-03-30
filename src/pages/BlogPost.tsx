@@ -331,7 +331,7 @@ const BlogPost = () => {
                   <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
                   <div
                     className="absolute inset-0 pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(40 85% 45% / 0.09) 0%, transparent 65%)" }}
+                    style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(230 80% 28% / 0.09) 0%, transparent 65%)" }}
                   />
                   <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(var(--primary))" }}>
                     Free Consultation
@@ -339,7 +339,7 @@ const BlogPost = () => {
                   <h3 className="font-display text-2xl md:text-3xl text-white mb-3 relative z-10" style={{ letterSpacing: "-0.02em" }}>
                     Ready to Navigate Your Presale?
                   </h3>
-                  <p className="text-sm mb-7 max-w-sm mx-auto relative z-10" style={{ color: "hsl(40 15% 65%)" }}>
+                  <p className="text-sm mb-7 max-w-sm mx-auto relative z-10" style={{ color: "hsl(220 10% 65%)" }}>
                     Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
                   </p>
                   <a
@@ -469,8 +469,8 @@ const BlogPost = () => {
                     to={`/blog/${rp.slug}`}
                     className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
                     style={{
-                      background: "hsl(25 12% 14%)",
-                      border: "1px solid hsl(25 10% 22%)",
+                      background: "hsl(222 20% 10%)",
+                      border: "1px solid hsl(222 14% 18%)",
                       boxShadow: "0 4px 24px -8px hsla(0,0%,0%,0.3)",
                     }}
                   >
@@ -483,7 +483,7 @@ const BlogPost = () => {
                           style={{ filter: "saturate(1.05) brightness(0.92)" }}
                         />
                       ) : (
-                        <div className="w-full h-full" style={{ background: "hsl(25 10% 20%)" }} />
+                        <div className="w-full h-full" style={{ background: "hsl(222 16% 16%)" }} />
                       )}
                     </div>
                     <div className="p-5">
@@ -503,8 +503,8 @@ const BlogPost = () => {
                           {rp.excerpt}
                         </p>
                       )}
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(25 10% 22%)" }}>
-                        <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(30 8% 45%)" }}>
+                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(222 14% 18%)" }}>
+                        <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(220 10% 50%)" }}>
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}
                         </span>

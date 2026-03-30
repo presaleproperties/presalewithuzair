@@ -349,7 +349,7 @@ const Blog = () => {
         </section>
 
         {/* ── Articles ── */}
-        <section className="py-14 pb-24" style={{ background: "hsl(0 0% 100%)" }}>
+        <section className="py-14 pb-24 bg-background">
           <div className="container-xl">
             {isLoading ? (
               <div className="flex justify-center py-24">

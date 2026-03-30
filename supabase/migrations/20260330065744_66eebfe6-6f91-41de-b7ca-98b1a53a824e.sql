@@ -1,0 +1,1 @@
+UPDATE blog_posts SET image_url = '/images/blog/bc-home-flipping-tax-presale.jpg' WHERE slug = 'does-the-bc-home-flipping-tax-apply-to-presale-condos-what-buyers-need-to-know-in-2026';

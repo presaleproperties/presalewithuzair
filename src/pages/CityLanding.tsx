@@ -71,7 +71,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Abbotsford's Top Presale Condos and New Developments.",
     heroSubheadline: "Investor-Grade Advice. First-Time Buyer Focus.",
-    heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown, I help you identify the most profitable presale opportunities. Get early access to pricing, floor plans, and exclusive incentives before they hit the MLS.",
+    heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown — get early access to pricing, floor plans, and exclusive incentives.",
     heroCta: "Get Abbotsford VIP Access",
     whyBuyTitle: "Why Abbotsford is the Smart Play for 2026",
     whyBuyBody: "With lower entry prices than Surrey and Langley, Abbotsford offers incredible value for both first-time buyers and cash-flow investors. I vet every Abbotsford developer and read every contract line-by-line so you can invest with absolute confidence.",

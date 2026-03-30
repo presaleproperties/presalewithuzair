@@ -192,7 +192,7 @@ export const HeroSection = () => {
               <p className="text-xl font-display font-bold text-foreground">
                 Trusted by <span className="text-gradient">400+</span> Clients
               </p>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-foreground/60 mt-2">
                 $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>

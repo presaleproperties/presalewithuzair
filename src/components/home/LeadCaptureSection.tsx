@@ -150,8 +150,7 @@ export const LeadCaptureSection = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         setIsSuccess(false);
         setFormData({
-          firstName: "",
-          lastName: "",
+          fullName: "",
           email: "",
           phone: "",
           buyerType: "",

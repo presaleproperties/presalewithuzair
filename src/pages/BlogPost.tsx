@@ -488,7 +488,7 @@ const BlogPost = () => {
                     </div>
                     <div className="p-5">
                       {rp.category && (
-                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(var(--primary))" }}>
+                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 60%)" }}>
                           {rp.category.name}
                         </span>
                       )}

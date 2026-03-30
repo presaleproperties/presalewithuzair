@@ -418,7 +418,7 @@ export const BookingContextSection = () => {
                 </Button>
 
                 <p className="text-center text-xs text-muted-foreground">
-                  No spam. No pressure. Just a real conversation about your goals.
+                  📞 You'll receive a personal callback within 24 hours. No spam. No pressure.
                 </p>
               </form>
             )}

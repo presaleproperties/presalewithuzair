@@ -38,7 +38,7 @@ const About = () => {
         <title>About Uzair Muhammad | Vancouver Presale Expert & Realtor</title>
         <meta
           name="description"
-          content="Learn about Uzair Muhammad, Vancouver's top presale expert with $200M+ in sales. Specializing in presale condos, assignments, and investment strategies across Metro Vancouver & Fraser Valley."
+          content="Uzair Muhammad is a Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford & more."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Vancouver presale expert, presale specialist BC, top presale agent Vancouver, real estate advisor Vancouver" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
@@ -47,13 +47,13 @@ const About = () => {
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
         <meta property="og:title" content="About Uzair Muhammad | Vancouver Presale Expert" />
-        <meta property="og:description" content="Vancouver's top presale expert with $200M+ in sales. Specializing in presale condos, assignments, and investment strategies." />
+        <meta property="og:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, exclusive focus on new construction in Surrey, Langley, Abbotsford & more." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Uzair Muhammad | Presale Expert" />
-        <meta name="twitter:description" content="Vancouver's top presale expert with $200M+ in sales." />
+        <meta name="twitter:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales." />
         
         <script type="application/ld+json">
           {JSON.stringify({

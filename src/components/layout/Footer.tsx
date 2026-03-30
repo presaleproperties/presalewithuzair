@@ -69,8 +69,8 @@ export const Footer = () => {
           </div>
 
           <div className="flex items-center gap-2.5 mb-5">
-            <span className="text-white/40 text-xs">Brokered by</span>
-            <img src={realBrokerLogo} alt="Real Broker" className="h-5 w-auto brightness-200 opacity-50" />
+            <span className="text-white text-xs">Brokered by</span>
+            <img src={realBrokerLogo} alt="Real Broker" className="h-5 w-auto brightness-200 opacity-100" />
           </div>
 
           <p className="text-xs text-white/30">

@@ -27,6 +27,7 @@ const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
 const CityLanding = lazy(() => import("./pages/CityLanding"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 
 const queryClient = new QueryClient();
 

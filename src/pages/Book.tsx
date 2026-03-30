@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 
 const Book = () => {
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col dark-section">
+    <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col">
       <Helmet>
         <title>Book a Call | Presale with Uzair</title>
         <meta name="description" content="Schedule a one-on-one call with Uzair to discuss your presale real estate needs." />
@@ -13,7 +13,7 @@ const Book = () => {
       {/* Full-screen Calendly embed */}
       <div className="flex-1 w-full">
         <iframe
-          src="https://calendly.com/meetuzair/45min?hide_gdpr_banner=1&background_color=1c1510&text_color=f2ede5&primary_color=d4a316"
+          src="https://calendly.com/meetuzair/45min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1f2e&primary_color=182478"
           width="100%"
           height="100%"
           frameBorder="0"

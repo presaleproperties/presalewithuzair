@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Users } from "lucide-react";
 import uzairExpoImage from "@/assets/uzair-expo-speaking.jpg";
 
 export const FinalCTASection = () => {
@@ -8,66 +7,62 @@ export const FinalCTASection = () => {
   };
 
   return (
-    <section className="dark-section py-16 sm:py-24 bg-background relative overflow-hidden">
-      {/* Background with subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
-      
-      {/* Subtle blue glow effects */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none">
-        <div className="absolute bottom-10 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-20 right-[15%] w-28 h-28 md:w-40 md:h-40 rounded-full bg-primary/8 blur-3xl" />
-        <div className="absolute bottom-0 left-[40%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-primary/6 blur-2xl" />
+    <section className="py-20 sm:py-28 bg-background relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/6 blur-[120px]" />
       </div>
-      
+
       <div className="container-xl relative z-10 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Community Leader Badge */}
-          <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/20 rounded-full px-4 py-2 mb-6">
-            <Users className="h-4 w-4 text-foreground/80" />
-            <span className="text-sm font-medium text-foreground/80">Community Leader</span>
-          </div>
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-center">
           
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
-            <span className="text-foreground">Founder,</span>{" "}
-            <span className="text-white/90">Vancouver Presale Expo</span>
-          </h2>
-          
-          <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
-            The Vancouver Presale Expo is the largest annual gathering for real estate agents and developers 
-            in the presale space — a launchpad for groundbreaking projects and invaluable training for 1,000+ realtors.
-          </p>
-          
-          <p className="text-sm text-muted-foreground/70 mb-8 max-w-xl mx-auto italic">
-            Get guidance from the same expert who educates the industry.
-          </p>
-
-          <Button 
-            variant="outline"
-            size="xl"
-            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold mb-10"
-            onClick={handleBookClick}
-          >
-            Work With Uzair
-          </Button>
-
-          {/* Uzair Expo Image */}
-          <a 
-            href="https://vancouverpresaleexpo.com" 
-            target="_blank" 
+          {/* Image */}
+          <a
+            href="https://vancouverpresaleexpo.com"
+            target="_blank"
             rel="noopener noreferrer"
-            className="relative mx-auto max-w-sm sm:max-w-md block group"
+            className="block group mx-auto lg:mx-0 max-w-xs sm:max-w-sm"
           >
-            <div className="aspect-square rounded-full overflow-hidden border-4 border-foreground/20 shadow-2xl transition-all duration-300 group-hover:border-foreground/40 group-hover:scale-105">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-border/40 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
               <img
                 src={uzairExpoImage}
                 alt="Uzair Muhammad speaking at Vancouver Presale Expo"
                 className="w-full h-full object-cover object-top"
               />
             </div>
-            <p className="text-xs text-foreground/60 mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-              Visit vancouverpresaleexpo.com →
+            <p className="text-xs text-muted-foreground mt-3 text-center font-medium group-hover:text-foreground transition-colors">
+              vancouverpresaleexpo.com ↗
             </p>
           </a>
+
+          {/* Content */}
+          <div className="text-center lg:text-left">
+            <p className="text-primary font-bold tracking-[0.15em] text-xs sm:text-sm mb-3">
+              COMMUNITY LEADER
+            </p>
+
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground tracking-tight leading-tight mb-5">
+              Founder, Vancouver{" "}
+              <span className="text-gradient">Presale Expo</span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-lg mx-auto lg:mx-0">
+              The largest annual gathering for real estate agents and developers in the presale space — training 1,000+ realtors and launching groundbreaking projects.
+            </p>
+
+            <p className="text-sm text-muted-foreground/70 mb-8 max-w-md mx-auto lg:mx-0 italic">
+              Get guidance from the same expert who educates the industry.
+            </p>
+
+            <Button
+              variant="outline"
+              size="lg"
+              className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
+              onClick={handleBookClick}
+            >
+              Work With Uzair
+            </Button>
+          </div>
         </div>
       </div>
     </section>

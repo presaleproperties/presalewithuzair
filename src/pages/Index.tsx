@@ -1,20 +1,23 @@
 import { Helmet } from "react-helmet-async";
+import { lazy, Suspense } from "react";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { SocialProofSection } from "@/components/home/SocialProofSection";
 
-import { DifferentiationSection } from "@/components/home/DifferentiationSection";
-import { ProcessSection } from "@/components/home/ProcessSection";
-import { MidPageCTA } from "@/components/home/MidPageCTA";
-import { BookingContextSection } from "@/components/home/BookingContextSection";
-import { BlogPreviewSection } from "@/components/home/BlogPreviewSection";
-import { InstagramSection } from "@/components/home/InstagramSection";
-import { FinalCTASection } from "@/components/home/FinalCTASection";
-import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
-import { PresaleGuideBanner } from "@/components/home/PresaleGuideBanner";
+// Lazy load below-fold sections to reduce initial bundle
+const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
+const DifferentiationSection = lazy(() => import("@/components/home/DifferentiationSection").then(m => ({ default: m.DifferentiationSection })));
+const ProcessSection = lazy(() => import("@/components/home/ProcessSection").then(m => ({ default: m.ProcessSection })));
+const MidPageCTA = lazy(() => import("@/components/home/MidPageCTA").then(m => ({ default: m.MidPageCTA })));
+const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
+const BlogPreviewSection = lazy(() => import("@/components/home/BlogPreviewSection").then(m => ({ default: m.BlogPreviewSection })));
+const InstagramSection = lazy(() => import("@/components/home/InstagramSection").then(m => ({ default: m.InstagramSection })));
+const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
+const PresaleGuidePopup = lazy(() => import("@/components/home/PresaleGuidePopup").then(m => ({ default: m.PresaleGuidePopup })));
+const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 
+const SectionFallback = () => <div className="min-h-[200px]" />;
 
 const Index = () => {
   return (
@@ -217,43 +220,55 @@ const Index = () => {
 
       <Navbar />
       <main>
-        {/* Hero - Bold headline with colorful bokeh */}
+        {/* Hero - loads immediately (above fold) */}
         <HeroSection />
         
-        {/* Social Proof - "But don't listen to me..." + scrolling testimonials */}
-        <SocialProofSection />
+        {/* Below-fold sections lazy loaded */}
+        <Suspense fallback={<SectionFallback />}>
+          <SocialProofSection />
+        </Suspense>
         
-        {/* Mid-page CTA */}
-        <MidPageCTA 
-          quote="I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with."
-          clientName="Akhi"
-          clientRole="First-Time Buyer"
-          clientPhoto={akhiPhoto}
-        />
+        <Suspense fallback={<SectionFallback />}>
+          <MidPageCTA 
+            quote="I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with."
+            clientName="Akhi"
+            clientRole="First-Time Buyer"
+            clientPhoto={akhiPhoto}
+          />
+        </Suspense>
         
-        {/* Why Work With a Presale Expert */}
-        <DifferentiationSection />
+        <Suspense fallback={<SectionFallback />}>
+          <DifferentiationSection />
+        </Suspense>
         
-        {/* Process Steps */}
-        <ProcessSection />
+        <Suspense fallback={<SectionFallback />}>
+          <ProcessSection />
+        </Suspense>
         
-        {/* Free Presale Guide Banner */}
-        <PresaleGuideBanner />
+        <Suspense fallback={<SectionFallback />}>
+          <PresaleGuideBanner />
+        </Suspense>
         
-        {/* Who This Is For */}
-        <BookingContextSection />
+        <Suspense fallback={<SectionFallback />}>
+          <BookingContextSection />
+        </Suspense>
         
-        {/* Blog Preview (desktop only) */}
-        <BlogPreviewSection />
+        <Suspense fallback={<SectionFallback />}>
+          <BlogPreviewSection />
+        </Suspense>
         
-        {/* Instagram Follow */}
-        <InstagramSection />
+        <Suspense fallback={<SectionFallback />}>
+          <InstagramSection />
+        </Suspense>
         
-        {/* Final CTA */}
-        <FinalCTASection />
+        <Suspense fallback={<SectionFallback />}>
+          <FinalCTASection />
+        </Suspense>
       </main>
       <Footer />
-      <PresaleGuidePopup />
+      <Suspense fallback={null}>
+        <PresaleGuidePopup />
+      </Suspense>
     </>
   );
 };

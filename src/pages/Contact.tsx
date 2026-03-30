@@ -123,8 +123,8 @@ const Contact = () => {
                       <Mail className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground mb-1">Email</p>
-                      <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry</p>
+                     <p className="font-semibold text-foreground mb-1">Email</p>
+                      <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry or project question.</p>
                       <p className="text-primary font-medium">info@meetuzair.com</p>
                     </div>
                   </a>

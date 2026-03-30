@@ -137,7 +137,7 @@ With over 80% of presale projects being overpriced or unsuitable for investment,
 Connect with Uzair to ensure your presale investment is strategic and profitable.
     `,
     date: "Aug 17, 2025",
-    image: "https://framerusercontent.com/images/R3i7zDXNDEg5XG1LMBip38uNb5M.jpeg",
+    image: presaleAgentVsTraditional,
     category: "Education",
   },
   {

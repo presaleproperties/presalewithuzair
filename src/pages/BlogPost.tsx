@@ -456,7 +456,7 @@ const BlogPost = () => {
                 <Link
                   to="/blog"
                   className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold transition-all hover:gap-3"
-                  style={{ color: "hsl(var(--primary))" }}
+                  style={{ color: "hsl(230 70% 60%)" }}
                 >
                   View all <ChevronRight className="h-4 w-4" />
                 </Link>

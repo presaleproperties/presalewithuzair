@@ -69,7 +69,7 @@ export const ServicesSection = () => {
                 <p className="text-foreground/70 text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
-                <div className="flex items-center gap-2 text-primary font-medium text-sm group-hover:gap-3 transition-all">
+                <div className="flex items-center gap-2 text-white/90 font-medium text-sm group-hover:gap-3 transition-all">
                   Learn more
                   <ArrowRight className="h-4 w-4" />
                 </div>

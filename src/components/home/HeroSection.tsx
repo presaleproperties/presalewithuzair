@@ -41,22 +41,24 @@ export const HeroSection = () => {
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
-          {/* Label - Cyan like Dan Martell */}
-          <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
-            {heroContent.label}
+          {/* Eyebrow */}
+          <p className="text-white/60 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
+            {heroContent.eyebrow}
           </p>
           
-          {/* Large Bold Headline - Mobile */}
-          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up">
-            <span className="text-foreground block">{heroContent.headlinePart1}</span>
-            <span className="text-foreground block">{heroContent.headlinePart2}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
+          {/* Headline */}
+          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
+            {heroContent.headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+          <p className="text-xl font-semibold text-muted-foreground mb-4 animate-fade-up">
             {heroContent.subheadline}
+          </p>
+
+          {/* Body */}
+          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+            {heroContent.body}
           </p>
           
           {/* Supporting Line */}
@@ -64,16 +66,16 @@ export const HeroSection = () => {
             {heroContent.supportingLine}
           </p>
 
-          {/* CTA Button - Outlined style like Dan Martell */}
+          {/* CTA Button */}
           <div className="mb-4 animate-fade-up">
             <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
 
-          {/* Micro-trust - Mobile */}
+          {/* Trust Bar */}
           <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
-            {heroContent.microTrust}
+            {heroContent.trustBar}
           </p>
 
           {/* Hero Photos Grid - Mobile (After the fold like Dan Martell) */}

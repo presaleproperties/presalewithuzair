@@ -124,10 +124,13 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
-              onClick={handleBookClick}
+              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 gap-2"
+              asChild
             >
-              Schedule a Call
+              <a href="tel:+17782313592">
+                <Phone className="h-4 w-4" />
+                Call Now
+              </a>
             </Button>
           </div>
         </div>

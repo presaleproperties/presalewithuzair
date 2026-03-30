@@ -13,7 +13,7 @@ const heroContent = {
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Schedule a Call",
-  microTrust: "Trusted by 400+ first-time buyers & investors • Focused on Metro Vancouver presales"
+  microTrust: "Trusted by 400+ clients • Focused on Metro Vancouver presales"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

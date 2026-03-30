@@ -10,9 +10,13 @@ interface CityConfig {
   slug: string;
   title: string;
   metaDescription: string;
+  heroEyebrow: string;
   heroHeadline: string;
   heroSubheadline: string;
   heroBody: string;
+  heroCta: string;
+  whyBuyTitle: string;
+  whyBuyBody: string;
   benefits: { icon: React.ReactNode; title: string; description: string }[];
 }
 

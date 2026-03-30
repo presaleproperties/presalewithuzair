@@ -497,34 +497,37 @@ const ProjectDetail = () => {
 
             {/* Right — Sticky lead form */}
             <div id="project-lead-form" className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-xl shadow-black/5">
-                {/* Dark premium header */}
-                <div className="relative bg-gradient-to-br from-foreground/95 to-foreground/85 px-6 py-5 overflow-hidden">
-                  {/* Subtle glow */}
-                  <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-primary/10 blur-2xl" />
+              <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-2xl shadow-primary/5">
+                {/* Premium header */}
+                <div className="relative bg-primary px-6 py-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />
+                  <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/5 blur-2xl" />
+                  <div className="absolute bottom-0 left-0 w-20 h-20 rounded-full bg-white/5 blur-xl" />
                   <div className="relative">
-                    <div className="flex items-center gap-2.5 mb-1.5">
-                      <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                        <Download className="h-4 w-4 text-primary" />
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                        <FileText className="h-5 w-5 text-white" />
                       </div>
-                      <h3 className="text-white font-display font-bold text-[15px] leading-tight">
-                        Instant Access to Floor Plans & Pricing
-                      </h3>
+                      <div>
+                        <h3 className="text-white font-display font-bold text-base leading-tight">
+                          Get Floor Plans & Pricing
+                        </h3>
+                        <p className="text-white/60 text-xs mt-0.5">
+                          Floor Plans · Brochure · No obligation
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-white/45 text-xs ml-[42px]">
-                      Floor Plans · Brochure · No obligation
-                    </p>
                   </div>
                 </div>
 
-                <div className="p-5">
+                <div className="p-5 sm:p-6">
                   <UnifiedLeadForm
                     heading=""
                     subheading=""
                     eyebrow=""
                     buttonText="Get Floor Plans & Pricing"
                     variant="default"
-                    showTrust={false}
+                    showTrust={true}
                   />
                 </div>
               </div>

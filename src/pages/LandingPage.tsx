@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
+import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
+
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
 import michellePhoto from "@/assets/testimonials/michelle.jpg";
@@ -25,38 +22,13 @@ import monaPhoto from "@/assets/testimonials/mona.jpg";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
-import { supabase } from "@/integrations/supabase/client";
+
 const LandingPage = () => {
-  const {
-    toast
-  } = useToast();
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
   const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book Your Free Call';
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    helpWith: "",
-    callTime: "",
-    foundVia: "",
-    notes: ""
-  });
-
-  // Pre-fill from URL params
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setFormData(prev => ({
-      ...prev,
-      name: [params.get("firstName"), params.get("lastName")].filter(Boolean).join(" ") || prev.name,
-      email: params.get("email") || prev.email,
-      phone: params.get("phone") || prev.phone
-    }));
-  }, []);
 
   // Lock body scroll when form is open
   useEffect(() => {
@@ -69,54 +41,6 @@ const LandingPage = () => {
       document.body.style.overflow = "";
     };
   }, [isFormOpen]);
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.email || !formData.helpWith || !formData.callTime) {
-      toast({
-        title: "Please fill in all fields",
-        variant: "destructive"
-      });
-      return;
-    }
-    setIsSubmitting(true);
-    const cleanUrl = window.location.origin + window.location.pathname;
-    const urlParams = new URLSearchParams(window.location.search);
-    try {
-      const {
-        data,
-        error
-      } = await supabase.functions.invoke('send-to-zapier', {
-        body: {
-          Full_Name: formData.name.trim(),
-          Phone: formData.phone.trim(),
-          Email: formData.email.trim(),
-          Help_With: formData.helpWith,
-          Preferred_Call_Time: formData.callTime,
-          Found_Via: formData.foundVia,
-          Notes: formData.notes.trim(),
-          Landing_Page: cleanUrl,
-          UTM_Source: urlParams.get("utm_source") || "",
-          UTM_Medium: urlParams.get("utm_medium") || "",
-          UTM_Campaign: urlParams.get("utm_campaign") || "",
-          CTA_Variant: ctaVariant
-        }
-      });
-      if (error) throw error;
-      setIsSubmitted(true);
-      toast({
-        title: "You're booked! 🎉",
-        description: "Uzair will call you soon."
-      });
-    } catch {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again.",
-        variant: "destructive"
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
     "First-Time Buyer": "bg-primary/20 text-primary",
@@ -504,8 +428,8 @@ const LandingPage = () => {
                     <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
                       Visit Our Website →
                     </a>
-                  </div> : <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="text-center mb-1">
+                  </div> : <div>
+                    <div className="text-center mb-4">
                        <h2 className="text-xl md:text-2xl font-bold text-white" style={{
                   fontFamily: "'DM Serif Display', serif"
                 }}>
@@ -513,109 +437,15 @@ const LandingPage = () => {
                       </h2>
                       <p className="text-slate-400 text-xs mt-1">Same day call back.</p>
                     </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Your Name *</Label>
-                      <Input placeholder="Full name" value={formData.name} onChange={e => setFormData({
-                  ...formData,
-                  name: e.target.value
-                })} className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary h-12" required />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Phone Number *</Label>
-                      <Input type="tel" placeholder="+1 (xxx) xxx-xxxx" value={formData.phone} onChange={e => setFormData({
-                  ...formData,
-                  phone: e.target.value
-                })} className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary h-12" required />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Email *</Label>
-                      <Input type="email" placeholder="you@email.com" value={formData.email} onChange={e => setFormData({
-                  ...formData,
-                  email: e.target.value
-                })} className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary h-12" required />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">How Can Uzair Help? *</Label>
-                      <Select value={formData.helpWith} onValueChange={v => setFormData({
-                  ...formData,
-                  helpWith: v
-                })}>
-                        <SelectTrigger className="bg-slate-800/80 border-white/10 text-white h-12">
-                          <SelectValue placeholder="Select one" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-slate-800 border border-white/10 z-[60]">
-                          <SelectItem value="buying-first-home">Buying My First Home</SelectItem>
-                          <SelectItem value="presale-investment">Presale Investment</SelectItem>
-                          <SelectItem value="selling-property">Selling My Property</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Where Did You Find Uzair? *</Label>
-                      <Select value={formData.foundVia} onValueChange={v => setFormData({
-                  ...formData,
-                  foundVia: v
-                })}>
-                        <SelectTrigger className="bg-slate-800/80 border-white/10 text-white h-12">
-                          <SelectValue placeholder="Select one" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-slate-800 border border-white/10 z-[60]">
-                          <SelectItem value="instagram">Instagram</SelectItem>
-                          <SelectItem value="tiktok">TikTok</SelectItem>
-                          <SelectItem value="youtube">YouTube</SelectItem>
-                          <SelectItem value="google">Google</SelectItem>
-                          <SelectItem value="referral">Referral</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Notes</Label>
-                      <Textarea placeholder="Tell Uzair more about your situation so he can prepare for the call" value={formData.notes} onChange={e => setFormData({
-                  ...formData,
-                  notes: e.target.value
-                })} className="bg-slate-800/80 border-white/10 text-white placeholder:text-slate-500 focus:border-primary min-h-[80px] resize-none" maxLength={500} />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <Label className="text-slate-300 text-sm">Preferred Time For A Call *</Label>
-                      <Select value={formData.callTime} onValueChange={v => setFormData({
-                  ...formData,
-                  callTime: v
-                })}>
-                        <SelectTrigger className="bg-slate-800/80 border-white/10 text-white h-12">
-                          <SelectValue placeholder="Select a time" />
-                        </SelectTrigger>
-                        <SelectContent className="bg-slate-800 border border-white/10 z-[60]">
-                          <SelectItem value="morning">Morning (9am – 12pm)</SelectItem>
-                          <SelectItem value="afternoon">Afternoon (12pm – 5pm)</SelectItem>
-                          <SelectItem value="evening">Evening (5pm – 8pm)</SelectItem>
-                          <SelectItem value="anytime">Anytime Works</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <label className="flex items-start gap-3 cursor-pointer group">
-                      <input type="checkbox" checked={agreedToTerms} onChange={e => setAgreedToTerms(e.target.checked)} className="mt-0.5 w-4 h-4 rounded border-white/20 bg-slate-800 text-primary focus:ring-primary accent-primary flex-shrink-0" />
-                      <span className="text-xs text-slate-400 leading-relaxed">
-                        Uzair works exclusively with serious buyers and sellers who are <span className="text-slate-300 font-medium">not currently represented by another agent</span>. By checking this box, you confirm this applies to you.
-                      </span>
-                    </label>
-
-                    <Button type="submit" disabled={isSubmitting || !agreedToTerms} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6 rounded-xl shadow-lg shadow-primary/25 font-semibold disabled:opacity-40 disabled:cursor-not-allowed">
-                      <Phone className="w-5 h-5 mr-2" />
-                      {isSubmitting ? "Sending..." : "Request A Call"}
-                    </Button>
-
-                    <p className="text-xs text-slate-500 text-center">
-                      ⚡ Limited weekly availability
-                    </p>
-                  </form>}
+                    <UnifiedLeadForm
+                      variant="dark"
+                      eyebrow=""
+                      heading=""
+                      subheading=""
+                      buttonText="Request A Call"
+                      showTrust={false}
+                    />
+                  </div>}
               </div>
             </motion.div>
           </>}

@@ -1,5 +1,8 @@
 project_id = "ubbogklasownognviobh"
 
+[functions.sync-blogs]
+verify_jwt = false
+
 [functions.create-advice-payment]
 verify_jwt = false
 

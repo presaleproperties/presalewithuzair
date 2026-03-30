@@ -178,20 +178,6 @@ const BlogPost = () => {
             </Link>
 
             {/* Category badge */}
-            {post.category && (
-              <div className="mb-5">
-                <span
-                  className="inline-block px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm"
-                  style={{
-                    background: "hsl(var(--primary) / 0.1)",
-                    color: "hsl(var(--primary))",
-                    border: "1px solid hsl(var(--primary) / 0.25)",
-                  }}
-                >
-                  {post.category.name}
-                </span>
-              </div>
-            )}
 
             {/* Title */}
             <h1

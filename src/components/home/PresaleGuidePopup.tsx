@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader2, CheckCircle, AlertTriangle, X } from "lucide-react";
+import { Loader2, CheckCircle, Download, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
@@ -97,8 +97,8 @@ export const PresaleGuidePopup = () => {
         className="fixed bottom-6 right-6 z-40 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 flex items-center gap-2 font-semibold text-sm animate-bounce-subtle"
         aria-label="Download free presale guide"
       >
-        <AlertTriangle className="h-4 w-4" />
-        Free Guide
+        <Download className="h-4 w-4" />
+        Presale Guide
       </button>
 
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>

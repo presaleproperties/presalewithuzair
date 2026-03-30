@@ -188,11 +188,11 @@ export const HeroSection = () => {
             </div>
 
             {/* Trust Badge */}
-            <div className="pt-8 border-t border-border/50 animate-fade-up">
+            <div className="pt-8 border-t border-foreground/10 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                Trusted by <span className="text-gradient">400+</span> Clients
+                Trusted by <span className="text-foreground">400+</span> Clients
               </p>
-              <p className="text-sm text-foreground/40 mt-2">
+              <p className="text-sm text-foreground/50 mt-2">
                 $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>

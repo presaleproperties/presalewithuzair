@@ -14,12 +14,11 @@ export const MidPageCTA = ({ quote, clientName, clientRole, clientPhoto }: MidPa
   };
 
   return (
-    <section className="dark-section relative py-16 sm:py-24 overflow-hidden">
-      {/* Warm ambient background */}
-      <div className="absolute inset-0 bg-background" />
+    <section className="relative py-16 sm:py-24 overflow-hidden bg-background">
+      {/* Subtle ambient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-amber-500/8 blur-[100px]" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-orange-400/6 blur-[80px]" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[100px]" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-primary/3 blur-[80px]" />
       </div>
 
       <div className="container-xl relative z-10 px-4 sm:px-6">

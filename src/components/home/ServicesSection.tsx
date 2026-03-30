@@ -63,7 +63,7 @@ export const ServicesSection = () => {
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="font-display text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-white/80 transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-foreground/70 text-sm leading-relaxed mb-4">

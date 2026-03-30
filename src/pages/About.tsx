@@ -13,7 +13,6 @@ import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
-import { useNavigate as useNav } from "react-router-dom";
 
 const stats = [
   { value: "$200M+", label: "Sales Volume" },

@@ -1,29 +1,14 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Book = () => {
-  return (
-    <div className="min-h-screen min-h-[100dvh] bg-background flex flex-col">
-      <Helmet>
-        <title>Book a Call | Presale with Uzair</title>
-        <meta name="description" content="Schedule a one-on-one call with Uzair to discuss your presale real estate needs." />
-        <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://presalewithuzair.com/book" />
-      </Helmet>
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    navigate('/?scroll=book-section', { replace: true });
+  }, [navigate]);
 
-      {/* Full-screen Calendly embed */}
-      <div className="flex-1 w-full">
-        <iframe
-          src="https://calendly.com/meetuzair/45min?hide_gdpr_banner=1&background_color=ffffff&text_color=1a1f2e&primary_color=182478"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          title="Schedule a meeting with Uzair"
-          className="min-h-screen min-h-[100dvh]"
-          style={{ border: 'none' }}
-        />
-      </div>
-    </div>
-  );
+  return null;
 };
 
 export default Book;

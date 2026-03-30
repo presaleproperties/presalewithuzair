@@ -201,7 +201,7 @@ const Agents = () => {
                   variant="ghost" 
                   size="lg" 
                   className="rounded-full text-muted-foreground hover:text-foreground px-8 py-6 text-base font-semibold gap-2"
-                  onClick={() => openCalendly()}
+                  onClick={handleCTA}
                 >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                   Talk to Uzair First

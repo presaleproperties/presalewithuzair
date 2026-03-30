@@ -37,6 +37,14 @@ const buyerTypes = [
   { value: "seller", label: "Seller" },
 ];
 
+const leadSources = [
+  { value: "instagram", label: "Instagram" },
+  { value: "tiktok", label: "TikTok" },
+  { value: "youtube", label: "YouTube" },
+  { value: "referral", label: "Referral" },
+  { value: "other", label: "Other" },
+];
+
 const contactMethods = [
   { value: "phone", label: "Phone Call" },
   { value: "whatsapp", label: "WhatsApp" },
@@ -61,6 +69,7 @@ export const BookingContextSection = () => {
     email: "",
     phone: "",
     buyerType: "",
+    leadSource: "",
     contactMethod: "",
     preferredTime: "",
     notes: "",
@@ -109,7 +118,7 @@ export const BookingContextSection = () => {
           email: form.email,
           phone: form.phone,
           buyerType: form.buyerType,
-          leadSource: form.contactMethod ? `preferred-${form.contactMethod}` : "website-form",
+          leadSource: form.leadSource || "website-form",
           preferredCallTime: form.preferredTime || undefined,
           timeline: form.notes || undefined,
           landingPage: window.location.pathname,
@@ -298,6 +307,29 @@ export const BookingContextSection = () => {
                         }`}
                       >
                         {type.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* How did you find me */}
+                <div className="space-y-2">
+                  <Label className="text-foreground font-medium">
+                    How did you find me?
+                  </Label>
+                  <div className="flex flex-wrap gap-2">
+                    {leadSources.map((source) => (
+                      <button
+                        key={source.value}
+                        type="button"
+                        onClick={() => updateField("leadSource", source.value)}
+                        className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all border ${
+                          form.leadSource === source.value
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-background text-foreground/70 border-border hover:border-primary/50 hover:text-foreground"
+                        }`}
+                      >
+                        {source.label}
                       </button>
                     ))}
                   </div>

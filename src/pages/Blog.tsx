@@ -73,7 +73,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       style={{
         background: "#fff",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 4px 32px -8px hsla(25,20%,15%,0.10)",
+        boxShadow: "0 4px 32px -8px hsla(222,20%,12%,0.08)",
       }}
     >
       {/* Image */}

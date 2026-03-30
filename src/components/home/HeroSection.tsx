@@ -5,15 +5,15 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  label: "Presale Expert",
-  headlinePart1: "Navigate the",
-  headlinePart2: "Presale Market",
-  headlineAccent: "With Clear",
-  headlineAccent2: "Guidance.",
-  subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
+  label: "Fraser Valley Presale Specialist",
+  headlinePart1: "Buy the Right",
+  headlinePart2: "Presale.",
+  headlineAccent: "Skip the Costly",
+  headlineAccent2: "Mistakes.",
+  subheadline: "I've closed 400+ presale transactions across Surrey, Langley, and Abbotsford. I'll tell you exactly which projects are worth buying — and which ones to walk away from. Straight talk. No developer bias. No fluff.",
   supportingLine: "The unfiltered, no-BS advice you need",
-  cta: "Schedule a Call",
-  microTrust: "Trusted by 400+ clients • Focused on Metro Vancouver presales"
+  cta: "Get a Free Presale Strategy Call",
+  microTrust: "400+ Clients Served · $200M+ in Presale Transactions · Fraser Valley's #1 Presale Team"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

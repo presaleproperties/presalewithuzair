@@ -22,7 +22,7 @@ import monaPhoto from "@/assets/testimonials/mona.jpg";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
-import { supabase } from "@/integrations/supabase/client";
+
 const LandingPage = () => {
   const {
     toast

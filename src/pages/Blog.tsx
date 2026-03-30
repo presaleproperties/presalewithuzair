@@ -24,8 +24,8 @@ const CATEGORIES = [
     label: "Pre-Sale Tips",
     description: "Expert tips to navigate presale purchases with confidence",
     icon: Lightbulb,
-    color: "hsl(38 90% 40%)",
-    bg: "hsl(38 90% 97%)",
+    color: "hsl(220 70% 50%)",
+    bg: "hsl(220 70% 97%)",
   },
   {
     slug: "investment-strategy",
@@ -324,7 +324,7 @@ const Blog = () => {
             />
             <p
               className="max-w-xl mx-auto text-base leading-relaxed"
-              style={{ color: "hsl(40 15% 70%)" }}
+              style={{ color: "hsl(220 10% 70%)" }}
             >
               Everything you need to navigate Metro Vancouver presales with confidence — expert guides, market intelligence, and investment insights.
             </p>
@@ -480,7 +480,7 @@ const Blog = () => {
           />
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(40 85% 45% / 0.07) 0%, transparent 70%)" }}
+            style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(230 80% 28% / 0.07) 0%, transparent 70%)" }}
           />
           <div className="container-xl text-center relative z-10">
             <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
@@ -489,7 +489,7 @@ const Blog = () => {
             <h2 className="font-display text-4xl text-white mb-4" style={{ letterSpacing: "-0.02em" }}>
               Ready to Buy Smart?
             </h2>
-            <p className="max-w-lg mx-auto mb-8 text-base" style={{ color: "hsl(40 15% 65%)" }}>
+            <p className="max-w-lg mx-auto mb-8 text-base" style={{ color: "hsl(220 10% 65%)" }}>
               Stop guessing. Get unfiltered, no-BS presale advice from BC's top specialist — at no cost to you.
             </p>
             <a

@@ -13,7 +13,7 @@ const heroContent = {
   subheadline: "Buying a presale shouldn't feel confusing or risky. I help you understand contracts, evaluate developers, and avoid costly mistakes — even if that means advising you not to buy.",
   supportingLine: "The unfiltered, no-BS advice you need",
   cta: "Schedule a Call",
-  microTrust: "Trusted by 400+ first-time buyers & investors • Focused on Metro Vancouver presales"
+  microTrust: "Trusted by 400+ clients • Focused on Metro Vancouver presales"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {
@@ -44,7 +44,7 @@ export const HeroSection = () => {
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Label - Cyan like Dan Martell */}
-          <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
+          <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
             {heroContent.label}
           </p>
           
@@ -62,7 +62,7 @@ export const HeroSection = () => {
           </p>
           
           {/* Supporting Line */}
-          <p className="text-xs text-primary/80 mb-8 animate-fade-up font-medium">
+          <p className="text-xs text-white/50 mb-8 animate-fade-up font-medium">
             {heroContent.supportingLine}
           </p>
 
@@ -89,7 +89,7 @@ export const HeroSection = () => {
               {/* Floating badge on image */}
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border/50">
-                  <p className="text-xs text-primary font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
+                  <p className="text-xs text-white/60 font-semibold uppercase tracking-wider mb-1">Vancouver's #1</p>
                   <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
               </button>
@@ -112,7 +112,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
               </button>
@@ -123,7 +123,7 @@ export const HeroSection = () => {
               <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9]" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
-                <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
+                <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
                 <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
               </div>
             </a>
@@ -132,7 +132,7 @@ export const HeroSection = () => {
           {/* Trust Badge - Mobile */}
           <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
             <p className="text-lg font-display font-bold text-foreground">
-              Trusted by <span className="text-gradient">400+</span> First-Time Buyers & Investors
+              Trusted by <span className="text-gradient">400+</span> Clients
             </p>
             <p className="text-xs text-muted-foreground mt-2">
               $200M+ in presales closed • 4+ years presale focus
@@ -146,7 +146,7 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Label */}
-              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.label}
               </p>
               
@@ -164,7 +164,7 @@ export const HeroSection = () => {
               </p>
               
               {/* Supporting Line */}
-              <p className="text-sm text-primary/80 animate-fade-up font-medium">
+              <p className="text-sm text-white/50 animate-fade-up font-medium">
                 {heroContent.supportingLine}
               </p>
             </div>
@@ -184,7 +184,7 @@ export const HeroSection = () => {
             {/* Trust Badge */}
             <div className="pt-8 border-t border-border/50 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                Trusted by <span className="text-gradient">400+</span> First-Time Buyers & Investors
+                Trusted by <span className="text-gradient">400+</span> Clients
               </p>
               <p className="text-sm text-muted-foreground mt-2">
                 $200M+ in presales closed • 4+ years presale focus
@@ -215,7 +215,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
               </button>
@@ -225,7 +225,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
               </button>
@@ -235,7 +235,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={expoImage} alt="Uzair at Vancouver Presale Expo" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community</p>
+                  <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community</p>
                   <p className="text-sm font-bold text-foreground">Leader</p>
                 </div>
               </a>

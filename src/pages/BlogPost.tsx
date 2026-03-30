@@ -248,7 +248,7 @@ const BlogPost = () => {
         </section>
 
         {/* ── Article body ── */}
-        <section className="py-16" style={{ background: "hsl(0 0% 100%)" }}>
+        <section className="py-16 bg-background">
           <div className="container-xl">
             <div className="flex gap-16 max-w-5xl mx-auto">
 

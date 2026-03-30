@@ -74,8 +74,8 @@ export const Footer = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Brand */}
             <div className="lg:col-span-1">
-              <Link to="/">
-                <img src={logo} alt="Presale with Uzair" className="h-10 w-auto mb-6" />
+              <Link to="/" className="inline-block mb-6">
+                <img src={logo} alt="Presale with Uzair" className="h-14 w-auto" />
               </Link>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                 Vancouver's Top Presale Expert. Specializing in presale condos, assignments, and new construction investments.

@@ -6,12 +6,12 @@ import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Fraser Valley's Leading Presale Specialist.",
-  subheadline: "#1 Buyer's Representation for New Construction.",
-  body: "VIP access before public launch, best unit allocation, bulletproof contract protection, and straight-talk advice on which projects are worth your money — and which ones to walk away from.",
+  headline: "Fraser Valley's Leading Presale Expert.",
+  subheadline: "Helping First-Time Buyers & Investors Win in New Construction.",
+  body: "VIP access. Exclusive incentives. Full contract protection. No developer bias.",
   supportingLine: "Buyer representation. Zero developer bias. Available in English, Punjabi, Hindi & Urdu.",
   cta: "Get VIP Access — It's Free",
-  trustBar: "400+ Clients Helped · $200M+ in Presale Transactions · First-Time Buyers & Investors · Surrey · Langley · Abbotsford"
+  trustBar: "400+ Clients · $200M+ in Presales · Surrey · Langley · Abbotsford · Chilliwack"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {

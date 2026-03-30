@@ -74,8 +74,8 @@ function FeaturedCard({ post }: { post: BlogPost }) {
                 <span
                   className="px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase rounded-sm"
                   style={{
-                    background: cat ? cat.bg : "hsl(var(--primary) / 0.1)",
-                    color: cat ? cat.color : "hsl(var(--primary))",
+                    background: "hsl(var(--primary) / 0.1)",
+                    color: "hsl(var(--primary))",
                   }}
                 >
                   {post.category.name}

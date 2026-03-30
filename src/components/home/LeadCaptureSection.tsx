@@ -113,7 +113,12 @@ export const LeadCaptureSection = () => {
     try {
       const { data, error } = await supabase.functions.invoke('capture-lead', {
         body: {
-          ...formData,
+          firstName: formData.fullName.split(" ")[0] || formData.fullName,
+          lastName: formData.fullName.split(" ").slice(1).join(" ") || "",
+          email: formData.email,
+          phone: formData.phone,
+          buyerType: formData.buyerType,
+          leadSource: formData.leadSource,
           ...trackingData,
         },
       });

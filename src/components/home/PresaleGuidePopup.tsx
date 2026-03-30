@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -110,7 +110,7 @@ export const PresaleGuidePopup = () => {
       </button>
 
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-2xl">
+        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-2xl max-h-[85vh] overflow-y-auto fixed top-[5vh] sm:top-[50%] translate-y-0 sm:-translate-y-1/2 [&>button]:top-3 [&>button]:right-3">
           <DialogTitle className="sr-only">Download Free Presale Guide</DialogTitle>
 
           {isSuccess ? (
@@ -160,6 +160,7 @@ export const PresaleGuidePopup = () => {
                   placeholder="First name"
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                  onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                   className="h-12 text-base"
                   autoComplete="given-name"
                   required
@@ -172,6 +173,7 @@ export const PresaleGuidePopup = () => {
                   placeholder="Email address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onFocus={(e) => setTimeout(() => e.target.scrollIntoView({ behavior: 'smooth', block: 'center' }), 300)}
                   className="h-12 text-base"
                   autoComplete="email"
                   required

@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";

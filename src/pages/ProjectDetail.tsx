@@ -1,8 +1,9 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { usePresaleProject } from "@/hooks/usePresaleProjects";
+import { usePresaleProject, usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import {
   Building2,
@@ -12,6 +13,7 @@ import {
   DollarSign,
   Train,
   ArrowLeft,
+  ArrowUp,
   CheckCircle,
   Loader2,
   Play,

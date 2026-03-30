@@ -65,7 +65,6 @@ export const HeroSection = () => {
           <p className="text-xs text-white/50 mb-8 animate-fade-up font-medium">
             {heroContent.supportingLine}
           </p>
-          </p>
 
           {/* CTA Button - Outlined style like Dan Martell */}
           <div className="mb-4 animate-fade-up">

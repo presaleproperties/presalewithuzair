@@ -57,7 +57,7 @@ export const FinalCTASection = () => {
             rel="noopener noreferrer"
             className="relative mx-auto max-w-sm sm:max-w-md block group"
           >
-            <div className="aspect-square rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl transition-all duration-300 group-hover:border-primary group-hover:scale-105">
+            <div className="aspect-square rounded-full overflow-hidden border-4 border-foreground/20 shadow-2xl transition-all duration-300 group-hover:border-foreground/40 group-hover:scale-105">
               <img
                 src={uzairExpoImage}
                 alt="Uzair Muhammad speaking at Vancouver Presale Expo"

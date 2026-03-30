@@ -57,8 +57,7 @@ export const BookingContextSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     phone: "",
     buyerType: "",

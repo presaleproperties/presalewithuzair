@@ -446,7 +446,7 @@ const BlogPost = () => {
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">
                 <div>
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                     Keep Reading
                   </p>
                   <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>

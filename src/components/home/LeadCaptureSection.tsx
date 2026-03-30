@@ -53,8 +53,7 @@ const getTrackingData = (): TrackingData => {
 
 export const LeadCaptureSection = () => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
+    fullName: "",
     email: "",
     phone: "",
     buyerType: "",

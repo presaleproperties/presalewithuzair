@@ -159,7 +159,7 @@ const BlogPost = () => {
       <ReadingProgressBar />
       <Navbar />
 
-      <main style={{ background: "hsl(0 0% 100%)" }}>
+      <main className="bg-background">
 
         {/* ── Premium editorial hero ── */}
         <section className="w-full pb-0" style={{ background: "#fff" }}>

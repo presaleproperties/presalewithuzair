@@ -35,9 +35,9 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       to={`/blog/${post.slug}`}
       className="group grid md:grid-cols-[1.1fr_1fr] rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
       style={{
-        background: "#fff",
+        background: "hsl(var(--background))",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 4px 32px -8px hsla(222,20%,12%,0.08)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       {/* Image */}
@@ -142,9 +142,9 @@ function PostCard({ post }: { post: BlogPost }) {
       to={`/blog/${post.slug}`}
       className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-400 hover:-translate-y-1"
       style={{
-        background: "#fff",
+        background: "hsl(var(--background))",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 2px 16px -4px hsla(222,20%,12%,0.06)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       {/* Thumbnail */}
@@ -255,7 +255,7 @@ const Blog = () => {
 
       <Navbar />
 
-      <main style={{ background: "hsl(0 0% 100%)" }}>
+      <main className="bg-background">
 
         {/* ── Hero ── */}
         <section
@@ -301,7 +301,7 @@ const Blog = () => {
         {/* ── Category filters ── */}
         <section
           className="py-10 border-b"
-          style={{ background: "#fff", borderColor: "hsl(var(--border))" }}
+          style={{ background: "hsl(var(--background))", borderColor: "hsl(var(--border))" }}
         >
           <div className="container-xl">
             <div className="flex items-center justify-between mb-6">
@@ -349,7 +349,7 @@ const Blog = () => {
         </section>
 
         {/* ── Articles ── */}
-        <section className="py-14 pb-24" style={{ background: "hsl(0 0% 100%)" }}>
+        <section className="py-14 pb-24 bg-background">
           <div className="container-xl">
             {isLoading ? (
               <div className="flex justify-center py-24">
@@ -431,7 +431,7 @@ const Blog = () => {
             style={{ background: "radial-gradient(ellipse at 60% 50%, hsl(230 80% 28% / 0.07) 0%, transparent 70%)" }}
           />
           <div className="container-xl text-center relative z-10">
-            <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
+            <p className="text-xs font-black tracking-[0.3em] uppercase mb-4" style={{ color: "hsl(230 70% 60%)" }}>
               Free Strategy Call
             </p>
             <h2 className="font-display text-4xl text-white mb-4" style={{ letterSpacing: "-0.02em" }}>

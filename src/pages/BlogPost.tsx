@@ -159,10 +159,10 @@ const BlogPost = () => {
       <ReadingProgressBar />
       <Navbar />
 
-      <main style={{ background: "hsl(0 0% 100%)" }}>
+      <main className="bg-background">
 
         {/* ── Premium editorial hero ── */}
-        <section className="w-full pb-0" style={{ background: "#fff" }}>
+        <section className="w-full pb-0 bg-background">
           {/* Blue accent bar at very top */}
           <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
 
@@ -233,7 +233,7 @@ const BlogPost = () => {
             <div className="container-xl max-w-4xl mt-10">
               <div
                 className="w-full h-[360px] md:h-[480px] rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 16px 64px -16px hsla(25,20%,15%,0.18)" }}
+                style={{ boxShadow: "0 16px 64px -16px hsla(222,20%,12%,0.18)" }}
               >
                 <img
                   src={post.image_url}
@@ -248,7 +248,7 @@ const BlogPost = () => {
         </section>
 
         {/* ── Article body ── */}
-        <section className="py-16" style={{ background: "hsl(0 0% 100%)" }}>
+        <section className="py-16 bg-background">
           <div className="container-xl">
             <div className="flex gap-16 max-w-5xl mx-auto">
 
@@ -287,9 +287,9 @@ const BlogPost = () => {
                 <div
                   className="mt-16 p-8 rounded-2xl flex gap-6 items-start"
                   style={{
-                    background: "#fff",
+                    background: "hsl(var(--background))",
                     border: "1px solid hsl(var(--border))",
-                    boxShadow: "0 4px 24px -8px hsla(25,20%,15%,0.08)",
+                    boxShadow: "var(--shadow-card)",
                   }}
                 >
                   <img
@@ -333,7 +333,7 @@ const BlogPost = () => {
                     className="absolute inset-0 pointer-events-none"
                     style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(230 80% 28% / 0.09) 0%, transparent 65%)" }}
                   />
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(var(--primary))" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(230 70% 60%)" }}>
                     Free Consultation
                   </p>
                   <h3 className="font-display text-2xl md:text-3xl text-white mb-3 relative z-10" style={{ letterSpacing: "-0.02em" }}>
@@ -416,7 +416,7 @@ const BlogPost = () => {
                       }}
                     >
                       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
-                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
+                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                         Free Call
                       </p>
                       <p className="font-display text-base text-white leading-tight mb-3">
@@ -446,7 +446,7 @@ const BlogPost = () => {
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">
                 <div>
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                     Keep Reading
                   </p>
                   <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>
@@ -456,7 +456,7 @@ const BlogPost = () => {
                 <Link
                   to="/blog"
                   className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold transition-all hover:gap-3"
-                  style={{ color: "hsl(var(--primary))" }}
+                  style={{ color: "hsl(230 70% 60%)" }}
                 >
                   View all <ChevronRight className="h-4 w-4" />
                 </Link>
@@ -488,7 +488,7 @@ const BlogPost = () => {
                     </div>
                     <div className="p-5">
                       {rp.category && (
-                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(var(--primary))" }}>
+                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 60%)" }}>
                           {rp.category.name}
                         </span>
                       )}
@@ -508,7 +508,7 @@ const BlogPost = () => {
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}
                         </span>
-                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(var(--primary))" }}>
+                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(230 70% 60%)" }}>
                           Read →
                         </span>
                       </div>

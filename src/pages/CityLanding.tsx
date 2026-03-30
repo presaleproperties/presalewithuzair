@@ -31,7 +31,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Get VIP Access to Surrey's Best Presale Condos.",
     heroSubheadline: "New Construction. Early Pricing. Full Contract Protection.",
-    heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey, I get you in before the public launch. Secure the best floor plans, exclusive developer incentives, and bulletproof contract protection.",
+    heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey — I help you buy smart with expert guidance.",
     heroCta: "Get Surrey VIP Access",
     whyBuyTitle: "Why Invest in Surrey New Construction?",
     whyBuyBody: "With the upcoming SkyTrain extension and massive infrastructure investments, Surrey offers the strongest appreciation potential in the Fraser Valley. But not every project is a good deal. I analyze the developer's track record, the deposit structure, and the assignment clauses to ensure your investment is protected.",
@@ -51,7 +51,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "LANGLEY PRESALE TOWNHOMES & CONDOS",
     heroHeadline: "Secure Your Langley Presale Townhome Before the Public.",
     heroSubheadline: "VIP Access to Willoughby, Latimer Heights, and Central Langley.",
-    heroBody: "Langley is the top destination for Fraser Valley families and investors looking for space and growth. I provide expert buyer's representation for Langley's most sought-after new construction townhomes and condos. Get the right deal, with zero developer bias.",
+    heroBody: "Langley is the top destination for Fraser Valley families and investors looking for space and growth. Get expert buyer's representation for the most sought-after new construction projects.",
     heroCta: "Get Langley VIP Access",
     whyBuyTitle: "The Langley Presale Advantage",
     whyBuyBody: "Langley offers a perfect mix of family-friendly communities and rapid transit development. As developers build out Willoughby and the upcoming SkyTrain corridor, getting in early is critical. I help you navigate the hype, negotiate the best terms, and secure a home that fits your financial goals.",
@@ -71,7 +71,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Abbotsford's Top Presale Condos and New Developments.",
     heroSubheadline: "Investor-Grade Advice. First-Time Buyer Focus.",
-    heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown, I help you identify the most profitable presale opportunities. Get early access to pricing, floor plans, and exclusive incentives before they hit the MLS.",
+    heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown — get early access to pricing, floor plans, and exclusive incentives.",
     heroCta: "Get Abbotsford VIP Access",
     whyBuyTitle: "Why Abbotsford is the Smart Play for 2026",
     whyBuyBody: "With lower entry prices than Surrey and Langley, Abbotsford offers incredible value for both first-time buyers and cash-flow investors. I vet every Abbotsford developer and read every contract line-by-line so you can invest with absolute confidence.",
@@ -91,7 +91,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Chilliwack Presales: Maximum Value, Zero Hype.",
     heroSubheadline: "VIP Access to the Fraser Valley's Most Affordable New Construction.",
-    heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. I help you navigate the Chilliwack presale market, ensuring you buy into quality projects with reputable developers.",
+    heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. Navigate the presale market with confidence and buy into quality projects.",
     heroCta: "Get Chilliwack VIP Access",
     whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",
     whyBuyBody: "Chilliwack offers the most affordable new construction entry point in the Fraser Valley. As infrastructure and population grow, early buyers stand to benefit the most. I ensure you're buying quality — not just price.",
@@ -111,7 +111,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "MAPLE RIDGE PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Maple Ridge Presales and New Construction.",
     heroSubheadline: "Expert Guidance for First-Time Buyers and Investors.",
-    heroBody: "Maple Ridge offers incredible lifestyle and investment potential. I get you VIP access to the best new condo and townhome developments, protecting your deposit and your future.",
+    heroBody: "Maple Ridge offers incredible lifestyle and investment potential. Get VIP access to the best new condo and townhome developments in the area.",
     heroCta: "Get Maple Ridge VIP Access",
     whyBuyTitle: "Why Buy a Presale in Maple Ridge",
     whyBuyBody: "Maple Ridge combines mountain lifestyle with urban convenience. Growing demand, limited supply, and improving infrastructure make it a strong long-term play for presale buyers.",
@@ -182,7 +182,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
           <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-2xl">
-              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-primary">
+              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
                 {config.heroEyebrow}
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-white mb-4 animate-fade-up">

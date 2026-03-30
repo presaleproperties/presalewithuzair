@@ -86,10 +86,10 @@ function FeaturedCard({ post }: { post: BlogPost }) {
             style={{ filter: "saturate(1.1) contrast(1.05)" }}
           />
         )}
-        {/* Gold shimmer overlay on hover */}
+        {/* Blue shimmer overlay on hover */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, hsl(40 85% 45% / 0.08) 0%, transparent 60%)" }}
+          style={{ background: "linear-gradient(135deg, hsl(230 80% 28% / 0.08) 0%, transparent 60%)" }}
         />
       </div>
 

@@ -162,9 +162,9 @@ function PostCard({ post }: { post: BlogPost }) {
           <span
             className="absolute top-3 left-3 px-2.5 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
             style={{
-              background: cat ? `${cat.bg}ee` : "hsl(var(--primary) / 0.15)",
-              color: cat ? cat.color : "hsl(var(--primary))",
-              border: `1px solid ${cat ? cat.color + "33" : "hsl(var(--primary) / 0.2)"}`,
+              background: "hsl(var(--primary) / 0.15)",
+              color: "hsl(var(--primary))",
+              border: "1px solid hsl(var(--primary) / 0.2)",
             }}
           >
             {post.category.name}

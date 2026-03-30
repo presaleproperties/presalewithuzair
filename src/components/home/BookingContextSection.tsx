@@ -1,35 +1,11 @@
-import { useState, useEffect } from "react";
-import { Quote, Send, CheckCircle, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import anishPhoto from "@/assets/testimonials/anish.jpg";
-import adamPhoto from "@/assets/testimonials/adam.jpg";
-import rayPhoto from "@/assets/testimonials/ray.jpg";
-
-const testimonials = [
-  {
-    quote: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free. He took the time to understand what we wanted, explained every step thoroughly, and never once rushed us.",
-    name: "Anish",
-    type: "First-Time Buyer",
-    photo: anishPhoto,
-  },
-  {
-    quote: "Uzair helped me with my investment property and made sure I got the best deal. He's straightforward, knows the market, and will tell you directly if a project isn't right. No fluff, no hype — just honesty and expertise.",
-    name: "Adam",
-    type: "Investor",
-    photo: adamPhoto,
-  },
-  {
-    quote: "Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks.",
-    name: "Ray",
-    type: "First-Time Buyer",
-    photo: rayPhoto,
-  },
-];
 
 const buyerTypes = [
   { value: "first-time-buyer", label: "First-Time Buyer" },
@@ -59,8 +35,6 @@ const preferredTimes = [
 ];
 
 export const BookingContextSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -75,18 +49,6 @@ export const BookingContextSection = () => {
     notes: "",
   });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-        setIsAnimating(false);
-      }, 300);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentTestimonial = testimonials[currentIndex];
 
   const getUtmParams = () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -154,52 +116,6 @@ export const BookingContextSection = () => {
 
       <div className="container-xl px-4 sm:px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Rotating Testimonial Quotes */}
-          <div className="max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="relative bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-8 min-h-[220px] sm:min-h-[240px]">
-              <Quote className="absolute top-4 left-4 sm:top-6 sm:left-6 h-8 w-8 sm:h-10 sm:w-10 text-primary/20" />
-              <blockquote
-                className={`relative z-10 text-center transition-opacity duration-300 ${isAnimating ? "opacity-0" : "opacity-100"}`}
-              >
-                <div className="flex justify-center mb-4">
-                  <img
-                    src={currentTestimonial.photo}
-                    alt={currentTestimonial.name}
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 border-primary/30"
-                  />
-                </div>
-                <p className="text-base sm:text-lg lg:text-xl text-foreground/90 italic leading-relaxed">
-                  "{currentTestimonial.quote}"
-                </p>
-                <footer className="mt-4 sm:mt-6">
-                  <p className="text-sm sm:text-base font-semibold text-foreground">{currentTestimonial.name}</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground">{currentTestimonial.type}</p>
-                </footer>
-              </blockquote>
-
-              <div className="flex justify-center gap-2 mt-4 sm:mt-6">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setIsAnimating(true);
-                      setTimeout(() => {
-                        setCurrentIndex(index);
-                        setIsAnimating(false);
-                      }, 300);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-primary w-6"
-                        : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    }`}
-                    aria-label={`View testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
           {/* Header */}
           <div className="text-center mb-8 sm:mb-10">
             <p className="section-label mb-3 sm:mb-4">Ready to Get Started?</p>

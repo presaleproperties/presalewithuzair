@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, CheckCircle } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 import uzairExpoSpeaking from "@/assets/uzair-expo-speaking.jpg";
 import uzairExpoCrowd from "@/assets/uzair-expo-crowd.jpg";
 

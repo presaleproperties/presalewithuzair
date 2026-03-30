@@ -51,7 +51,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "LANGLEY PRESALE TOWNHOMES & CONDOS",
     heroHeadline: "Secure Your Langley Presale Townhome Before the Public.",
     heroSubheadline: "VIP Access to Willoughby, Latimer Heights, and Central Langley.",
-    heroBody: "Langley is the top destination for Fraser Valley families and investors looking for space and growth. I provide expert buyer's representation for Langley's most sought-after new construction townhomes and condos. Get the right deal, with zero developer bias.",
+    heroBody: "Langley is the top destination for Fraser Valley families and investors looking for space and growth. Get expert buyer's representation for the most sought-after new construction projects.",
     heroCta: "Get Langley VIP Access",
     whyBuyTitle: "The Langley Presale Advantage",
     whyBuyBody: "Langley offers a perfect mix of family-friendly communities and rapid transit development. As developers build out Willoughby and the upcoming SkyTrain corridor, getting in early is critical. I help you navigate the hype, negotiate the best terms, and secure a home that fits your financial goals.",

@@ -11,43 +11,43 @@ const steps = [
   {
     icon: MessageSquare,
     step: "01",
-    title: "Discovery Call",
-    description: "We start by understanding your goals, timeline, and concerns. No sales pitch — just an honest conversation about whether presales make sense for you.",
+    title: "The Discovery Call",
+    description: "We discuss your timeline, capital, and goals. No sales pitch. Just a blunt conversation about whether a presale actually makes sense for you right now.",
     image: officeWideImage,
   },
   {
     icon: Search,
     step: "02",
-    title: "Education & Research",
-    description: "Learn how presales work, what risks to watch for, and which projects meet strict quality standards. Most projects don't make the cut.",
+    title: "Market Education",
+    description: "I show you how the presale market really works. You'll learn how to spot developer red flags and identify projects with actual upside.",
     image: presaleBuilding,
   },
   {
     icon: TrendingUp,
     step: "03",
-    title: "Showroom Walkthrough",
-    description: "We visit together to review finishes, floor plans, and details. No pressure — just making sure everything aligns with your expectations.",
+    title: "VIP Access & Walkthroughs",
+    description: "We review floor plans, finishing specs, and pricing sheets together — days or weeks before the general public gets access.",
     image: showroomTourImage,
   },
   {
     icon: Home,
     step: "04",
-    title: "Guided Decision",
-    description: "With clear information in hand, you make the decision. If I think a project isn't right for you, I'll tell you — even if it means walking away.",
+    title: 'The "Walk Away" Rule',
+    description: "If the numbers don't make sense, or the developer's track record is weak, I will explicitly tell you not to buy.",
     image: showroomEntranceImage,
   },
   {
     icon: FileText,
     step: "05",
-    title: "Contract Review",
-    description: "Every disclosure document is reviewed line-by-line. I explain what each clause means and identify red flags before you commit to anything.",
+    title: "Bulletproof Contract Review",
+    description: "We go through the disclosure statement line-by-line. I point out the hidden fees, assignment fees, and exact deposit structures before you sign.",
     image: brochureReviewImage,
   },
   {
     icon: Headphones,
     step: "06",
-    title: "Ongoing Support",
-    description: "From contract to keys (or assignment), I remain your advisor. Questions, updates, and guidance whenever you need it throughout the process.",
+    title: "Support Until Keys",
+    description: "My job doesn't end at the contract. I track the construction, advise on assignments if needed, and guide you straight through to possession day.",
     image: clientsImage,
   },
 ];
@@ -62,7 +62,7 @@ export const ProcessSection = () => {
             Education <span className="text-gradient">Before Commitment</span>
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
-            A transparent, no-pressure approach focused on helping you make informed decisions.
+            A transparent, zero-pressure framework designed to protect your money.
           </p>
         </div>
 

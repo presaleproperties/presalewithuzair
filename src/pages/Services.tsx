@@ -11,47 +11,40 @@ import { useCalendly } from "@/hooks/useCalendly";
 const services = [
   {
     id: "presales",
-    title: "Presale Guidance",
-    subtitle: "New Construction Advisory",
-    description: "Considering a presale condo? Before you commit, get clear guidance on contracts, developers, and whether the deal truly makes sense for your situation.",
+    title: "Presale Purchasing & VIP Access",
+    subtitle: "Presale Acquisitions",
+    description: "Stop waiting in line at public launches. I get my clients front-of-the-line access to the best floor plans and pricing across the Fraser Valley. But more importantly, I act as your filter — the unfiltered truth on whether to buy or walk away.",
     image: showroomTourImage,
     benefits: [
-      "Honest assessment of each project",
-      "Line-by-line contract review",
-      "Developer reputation analysis",
-      "Red flag identification",
-      "Education before commitment",
-      "Advice to walk away when needed",
+      "VIP pricing and early floor plan access",
+      "Line-by-line disclosure and contract review",
+      "Developer track-record analysis",
+      "Strict ROI and cash-flow math",
     ],
   },
   {
     id: "assignments",
-    title: "Assignment Support",
-    subtitle: "Sell Before Completion",
-    description: "Looking to assign your presale contract? Get clear guidance on your options, realistic valuations, and the process — without the sales pressure.",
+    title: "Presale Assignment Strategy",
+    subtitle: "Contract Assignments",
+    description: "Need to exit your presale contract before completion? Assignments are complex and highly regulated. I provide clear, realistic valuations and manage the entire exit strategy.",
     image: floorplanImage,
     benefits: [
-      "Honest valuation of your contract",
-      "Clear explanation of your options",
-      "Navigate assignment restrictions",
-      "Understand tax implications",
-      "Developer approval guidance",
-      "Transparent process management",
+      "Honest, data-backed contract valuation",
+      "Navigation of developer assignment restrictions",
+      "Tax implication overview",
+      "Targeted marketing to qualified assignment buyers",
     ],
   },
   {
     id: "resale",
-    title: "Resale Properties",
-    subtitle: "Buy & Sell",
-    description: "Need help with a resale property? Whether buying or selling, get the same buyer-first approach with clear guidance throughout the transaction.",
+    title: "Resale & Portfolio Building",
+    subtitle: "Resale & Investment Properties",
+    description: "My investor clients don't just buy presales. When the math makes sense on a resale property, we execute. You get the same analytical, no-nonsense approach applied to the resale market.",
     image: clientMeetingImage,
     benefits: [
-      "Honest market analysis",
-      "Realistic pricing guidance",
-      "Transparent process",
-      "Clear communication",
-      "Education at every step",
-      "Your interests first",
+      "Cash-flow analysis and cap-rate breakdowns",
+      "Strategic portfolio planning",
+      "Fierce negotiation on your behalf",
     ],
   },
 ];
@@ -140,11 +133,10 @@ const Services = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">How I Can Help</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Clear <span className="text-gradient">Guidance</span>
+                Expert Guidance. <span className="text-gradient">No Sales Pressure.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Whether you're buying a presale, assigning a contract, or exploring resale — 
-                get honest, buyer-first advice focused on education and protecting your interests.
+                Whether you are buying your first presale, assigning a contract, or looking for an investment property, you get honest, buyer-first advice designed to protect your capital.
               </p>
             </div>
           </div>
@@ -206,11 +198,10 @@ const Services = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Have <span className="text-gradient">Questions</span>?
+                Let's Discuss Your <span className="text-gradient">Next Move</span>
               </h2>
               <p className="text-foreground/80 mb-8">
-                Not sure where to start? Let's have an honest conversation about your situation. 
-                No pressure, no sales pitch — just clear guidance to help you decide your next step.
+                No pressure. No pitch. Just a clear conversation about your real estate goals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 

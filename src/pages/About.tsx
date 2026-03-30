@@ -16,10 +16,10 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
-  { value: "400+", label: "Presales Advised" },
   { value: "$200M+", label: "Sales Volume" },
-  { value: "$1M+", label: "Saved for Clients" },
-  { value: "100%", label: "Buyer-First" },
+  { value: "400+", label: "Clients Advised" },
+  { value: "3X", label: "Elite Agent at Real Broker" },
+  { value: "4", label: "Languages Spoken" },
 ];
 
 const values = [
@@ -89,13 +89,12 @@ const About = () => {
         <section className="relative pt-32 pb-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">About Uzair</p>
+              <p className="section-label mb-4 animate-fade-up">Meet Uzair Muhammad</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Buyer-First <span className="text-gradient">Guidance</span>
+                Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Independent presale advice focused on education, transparency, and protecting your interests — 
-                not pushing sales.
+                $200M+ in presale transactions. 400+ families served. Zero BS.
               </p>
             </div>
           </div>
@@ -123,22 +122,17 @@ const About = () => {
 
               <div>
                 <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                  Clear <span className="text-gradient">Guidance</span>
+                  I Don't Sell Hype. I Sell <span className="text-gradient">Financial Clarity.</span>
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    Uzair is a presale specialist in Vancouver, BC who believes buyers deserve honest, 
-                    independent advice — not sales pressure. His approach is simple: educate first, 
-                    then help you decide if a presale makes sense for your situation.
+                    I was born in Pakistan and raised right here in Surrey. I know the Fraser Valley because I live here, I raise my two kids here, and I invest my own money here.
                   </p>
                   <p>
-                    With experience advising on 400+ presale homes, Uzair has learned which developers 
-                    to trust, which contracts have hidden risks, and when to walk away from a deal.
+                    Early in my career, I noticed a massive problem in the real estate industry: most agents treat presales like an afterthought. They sell the hype of a shiny brochure without understanding the contracts, the developers, or the real risks involved.
                   </p>
                   <p>
-                    Working primarily with first-time buyers and investors, Uzair provides clear 
-                    explanations of complex presale contracts, identifies red flags before you commit, 
-                    and ensures you understand exactly what you're signing.
+                    I built my entire practice around fixing that. Every project I recommend, I've personally vetted. Every contract I review, I read line-by-line. And if a deal doesn't make financial sense, I'll tell you — even if it means losing the sale.
                   </p>
                 </div>
 

@@ -3,43 +3,33 @@ import { Check, X } from "lucide-react";
 const comparisons = [
   {
     category: "Business Focus",
-    presaleExpert: "80%+ of business is presales",
-    regularRealtor: "Does the odd presale deal",
+    presaleExpert: "100% focused on new construction & presales.",
+    regularRealtor: "Does the occasional presale deal.",
   },
   {
     category: "Market Knowledge",
-    presaleExpert: "In-depth presale market expertise",
-    regularRealtor: "Surface-level understanding",
+    presaleExpert: "Knows the floor plans, pricing, and hidden clauses before public launch.",
+    regularRealtor: "Reads the same brochures you do.",
   },
   {
     category: "Developer Connections",
-    presaleExpert: "Strong relationships, early access",
-    regularRealtor: "Limited developer insight",
+    presaleExpert: "VIP access. Gets you in first for the best pricing.",
+    regularRealtor: "Waits in line at the public grand opening.",
   },
   {
     category: "Project Selectivity",
-    presaleExpert: "Avoids 8/10 projects — not great investments",
-    regularRealtor: "Sells whatever is available",
-  },
-  {
-    category: "Ongoing Service",
-    presaleExpert: "Monitors projects from day 1 to completion",
-    regularRealtor: "Set it and forget it",
+    presaleExpert: "Rejects 8 out of 10 projects. Only recommends high-ROI assets.",
+    regularRealtor: "Will sell you whatever is available today.",
   },
   {
     category: "Skin in the Game",
-    presaleExpert: "Owns multiple units in the same projects",
-    regularRealtor: "Rarely invests in what they sell",
-  },
-  {
-    category: "Portfolio Management",
-    presaleExpert: "Strategic guidance on building wealth",
-    regularRealtor: "Transaction-focused only",
+    presaleExpert: "Personally invests in the same projects he recommends.",
+    regularRealtor: "Rarely invests in what they are selling.",
   },
   {
     category: "Market Timing",
-    presaleExpert: "Knows when to act and when to wait",
-    regularRealtor: "Pushes to close any deal",
+    presaleExpert: "Tells you when to wait, and when to strike.",
+    regularRealtor: "Pushes to close the deal today, regardless of market conditions.",
   },
 ];
 
@@ -123,7 +113,7 @@ export const DifferentiationSection = () => {
           {/* Bottom Insight */}
           <div className="mt-8 sm:mt-12 text-center">
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-              Presales require specialized knowledge. You deserve someone focused on your interests — not the developer's.
+              Presales require specialized knowledge. You deserve an advisor focused on your wealth, not the developer's quota.
             </p>
           </div>
         </div>

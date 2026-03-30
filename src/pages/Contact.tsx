@@ -62,11 +62,10 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Have <span className="text-gradient">Questions</span>?
+                Have <span className="text-gradient">Questions</span>? Let's Talk.
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Not sure if a presale is right for you? Have concerns about a specific project? 
-                Reach out for honest, no-pressure guidance.
+                Not sure if a presale makes sense right now? Have concerns about a specific developer? Reach out. I'm here to provide honest, unfiltered guidance.
               </p>
             </div>
           </div>
@@ -94,9 +93,9 @@ const Contact = () => {
                       <MessageCircle className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
-                      <p className="text-muted-foreground text-sm mb-2">Get a quick response</p>
-                      <p className="text-primary font-medium">Chat Now</p>
+                     <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
+                      <p className="text-muted-foreground text-sm mb-2">Fastest response time for quick questions.</p>
+                      <p className="text-primary font-medium">Chat on WhatsApp</p>
                     </div>
                   </a>
 
@@ -109,8 +108,8 @@ const Contact = () => {
                       <Phone className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground mb-1">Phone</p>
-                      <p className="text-muted-foreground text-sm mb-2">Call directly</p>
+                     <p className="font-semibold text-foreground mb-1">Phone</p>
+                      <p className="text-muted-foreground text-sm mb-2">Call me directly.</p>
                       <p className="text-primary font-medium">+1 (778) 231-3592</p>
                     </div>
                   </a>
@@ -124,8 +123,8 @@ const Contact = () => {
                       <Mail className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground mb-1">Email</p>
-                      <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry</p>
+                     <p className="font-semibold text-foreground mb-1">Email</p>
+                      <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry or project question.</p>
                       <p className="text-primary font-medium">info@meetuzair.com</p>
                     </div>
                   </a>
@@ -168,11 +167,11 @@ const Contact = () => {
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3 text-foreground/80">
                     <Clock className="h-5 w-5 text-primary" />
-                    <span>Typically responds within 2 hours</span>
+                    <span>Typically responds within 2 hours.</span>
                   </div>
                   <div className="flex items-center gap-3 text-foreground/80">
                     <MessageCircle className="h-5 w-5 text-primary" />
-                    <span>No obligation — just honest conversation</span>
+                    <span>Zero obligation — just an honest conversation.</span>
                   </div>
                 </div>
 

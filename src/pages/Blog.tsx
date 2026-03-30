@@ -255,7 +255,7 @@ const Blog = () => {
 
       <Navbar />
 
-      <main style={{ background: "hsl(0 0% 100%)" }}>
+      <main className="bg-background">
 
         {/* ── Hero ── */}
         <section

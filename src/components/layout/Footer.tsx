@@ -87,7 +87,7 @@ export const Footer = () => {
                   href="https://wa.me/17782313592"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80 hover:bg-foreground/20 hover:text-foreground transition-all duration-300"
                 >
                   <MessageCircle className="h-5 w-5" />
                 </a>

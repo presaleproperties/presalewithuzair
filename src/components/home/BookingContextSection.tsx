@@ -61,6 +61,7 @@ export const BookingContextSection = () => {
     email: "",
     phone: "",
     buyerType: "",
+    leadSource: "",
     contactMethod: "",
     preferredTime: "",
     notes: "",

@@ -333,7 +333,7 @@ const BlogPost = () => {
                     className="absolute inset-0 pointer-events-none"
                     style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(230 80% 28% / 0.09) 0%, transparent 65%)" }}
                   />
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(var(--primary))" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(230 70% 60%)" }}>
                     Free Consultation
                   </p>
                   <h3 className="font-display text-2xl md:text-3xl text-white mb-3 relative z-10" style={{ letterSpacing: "-0.02em" }}>

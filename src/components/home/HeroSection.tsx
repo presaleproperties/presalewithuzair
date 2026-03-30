@@ -42,7 +42,7 @@ export const HeroSection = () => {
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Eyebrow */}
-          <p className="text-foreground/70 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
+          <p className="text-foreground font-bold tracking-[0.2em] text-xs uppercase mb-4 animate-fade-up">
             {heroContent.eyebrow}
           </p>
           
@@ -52,18 +52,18 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl font-semibold text-foreground/80 mb-4 animate-fade-up">
+          <p className="text-xl font-semibold text-foreground/50 mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
           {/* Body */}
-          <p className="text-base text-foreground/70 mb-3 animate-fade-up">
+          <p className="text-base text-foreground/60 mb-3 animate-fade-up leading-relaxed">
             {heroContent.body}
           </p>
           
           {/* Supporting Line */}
           {heroContent.supportingLine && (
-            <p className="text-xs text-foreground/60 mb-8 animate-fade-up font-medium">
+            <p className="text-xs text-foreground/40 mb-8 animate-fade-up font-medium">
               {heroContent.supportingLine}
             </p>
           )}

@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Search } from "lucide-react";
 import expoImage from "@/assets/expo.jpg";
-import { useCalendly } from "@/hooks/useCalendly";
 
 export const CTASection = () => {
-  const { openCalendly } = useCalendly();
+  const handleBookClick = () => {
+    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section className="py-24 bg-card relative overflow-hidden">
@@ -33,7 +34,7 @@ export const CTASection = () => {
               variant="hero" 
               size="xl" 
               className="gap-2 w-full sm:w-auto"
-              onClick={() => openCalendly()}
+              onClick={handleBookClick}
             >
               <Mail className="h-5 w-5" />
               Schedule a Call

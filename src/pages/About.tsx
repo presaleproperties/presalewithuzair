@@ -63,7 +63,7 @@ const About = () => {
               "@type": "Person",
               "name": "Uzair Muhammad",
               "jobTitle": "Presale Expert & Real Estate Agent",
-              "description": "Vancouver's premier presale expert with $200M+ in sales and 400+ clients served. Founder of Vancouver Presale Expo.",
+              "description": "Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford, Chilliwack & Maple Ridge.",
               "url": "https://presalewithuzair.com/about",
               "image": "https://presalewithuzair.com/og-image.jpg",
               "telephone": "+1-778-231-3592",
@@ -72,7 +72,8 @@ const About = () => {
                 "@type": "Organization",
                 "name": "Real Broker"
               },
-              "knowsAbout": ["Presale Condos", "Assignment Sales", "Real Estate Investment", "New Construction"],
+              "knowsAbout": ["Presale Condos", "Assignment Sales", "Real Estate Investment", "New Construction", "Fraser Valley Real Estate", "Buyer Protection", "Contract Review"],
+              "areaServed": ["Surrey", "Langley", "Abbotsford", "Chilliwack", "Maple Ridge", "Fraser Valley"],
               "sameAs": [
                 "https://www.instagram.com/presalewithuzair",
                 "https://www.tiktok.com/@presalewithuzair",

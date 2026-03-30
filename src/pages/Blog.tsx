@@ -73,7 +73,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       style={{
         background: "#fff",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 4px 32px -8px hsla(25,20%,15%,0.10)",
+        boxShadow: "0 4px 32px -8px hsla(222,20%,12%,0.08)",
       }}
     >
       {/* Image */}
@@ -180,7 +180,7 @@ function PostCard({ post }: { post: BlogPost }) {
       style={{
         background: "#fff",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 2px 16px -4px hsla(25,20%,15%,0.07)",
+        boxShadow: "0 2px 16px -4px hsla(222,20%,12%,0.06)",
       }}
     >
       {/* Thumbnail */}
@@ -308,7 +308,7 @@ const Blog = () => {
           <div className="container-xl text-center relative z-10">
             <p
               className="text-xs font-black tracking-[0.3em] uppercase mb-4"
-              style={{ color: "hsl(var(--primary))" }}
+              style={{ color: "hsl(220 10% 65%)" }}
             >
               Educational Resources
             </p>
@@ -316,7 +316,7 @@ const Blog = () => {
               className="font-display text-5xl lg:text-6xl mb-6 text-white"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Guides &amp; <span className="text-gradient">Resources</span>
+              Guides &amp; <span className="text-white/80">Resources</span>
             </h1>
             <div
               className="w-14 h-[2px] mx-auto mb-7 rounded-full"

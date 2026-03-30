@@ -125,7 +125,7 @@ export const HeroSection = () => {
               <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9]" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
-                <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
+                <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
                 <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
               </div>
             </a>

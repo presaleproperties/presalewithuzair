@@ -96,10 +96,10 @@ const Agents = () => {
   return (
     <>
       <Helmet>
-        <title>Vancouver Presale Academy | Presale Training for Realtors | Uzair Muhammad</title>
+        <title>Vancouver Presale Academy | Agent Training | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Vancouver Presale Academy — the immersion program for real estate agents. Learn presale contracts, assignments, lead generation, and negotiation. Founded by Uzair Muhammad."
+          content="Learn presale contracts, assignments, lead generation, and negotiation from Fraser Valley's leading presale specialist. Training for real estate agents."
         />
         <meta name="keywords" content="presale training realtors, presale education BC, presale mentor agents, Vancouver Presale Academy, presale course agents, assignment training, real estate agent training Vancouver" />
         <link rel="canonical" href="https://presalewithuzair.com/agents" />
@@ -107,14 +107,15 @@ const Agents = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/agents" />
-        <meta property="og:title" content="Vancouver Presale Academy | Agent Training" />
-        <meta property="og:description" content="The immersion program for real estate agents. Master presale contracts, assignments, and negotiation." />
+        <meta property="og:title" content="Vancouver Presale Academy | Agent Training | Uzair Muhammad" />
+        <meta property="og:description" content="Learn presale contracts, assignments, lead generation, and negotiation from Fraser Valley's leading presale specialist. Training for real estate agents." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Vancouver Presale Academy" />
-        <meta name="twitter:description" content="The immersion program for agents to master presale contracts and assignments." />
+        <meta name="twitter:title" content="Vancouver Presale Academy | Agent Training | Uzair Muhammad" />
+        <meta name="twitter:description" content="Learn presale contracts, assignments, lead generation, and negotiation from Fraser Valley's leading presale specialist." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({

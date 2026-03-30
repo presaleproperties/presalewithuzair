@@ -35,26 +35,26 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Vancouver Presale Expert & Realtor</title>
+        <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
         <meta
           name="description"
-          content="Uzair Muhammad is a Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford & more."
+          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions across Surrey, Langley, Abbotsford, and Chilliwack."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
         
         {/* Open Graph */}
-        <meta property="og:type" content="profile" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad | Vancouver Presale Expert" />
-        <meta property="og:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, exclusive focus on new construction in Surrey, Langley, Abbotsford & more." />
-        <meta property="og:image" content="https://presalewithuzair.com/about-og-image.jpg" />
+        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions across Surrey, Langley, Abbotsford, and Chilliwack." />
+        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad | Presale Expert" />
-        <meta name="twitter:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales." />
-        <meta name="twitter:image" content="https://presalewithuzair.com/about-og-image.jpg" />
+        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({

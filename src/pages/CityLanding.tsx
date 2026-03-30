@@ -45,6 +45,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   langley: {
     city: "Langley",
     slug: "langley",
+    heroImage: "/images/heroes/langley-hero.jpg",
     title: "Presale Townhomes Langley BC | New Construction 2026 | Uzair Muhammad",
     metaDescription: "Find the best presale townhomes and condos in Langley, BC. Get VIP access to Willoughby and Latimer Heights new construction projects before public launch.",
     heroEyebrow: "LANGLEY PRESALE TOWNHOMES & CONDOS",

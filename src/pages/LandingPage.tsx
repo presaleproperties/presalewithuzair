@@ -24,9 +24,6 @@ import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
 
 const LandingPage = () => {
-  const {
-    toast
-  } = useToast();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);

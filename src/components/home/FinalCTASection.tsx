@@ -12,11 +12,11 @@ export const FinalCTASection = () => {
       {/* Background with subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
       
-      {/* Colorful bokeh effects at bottom */}
+      {/* Subtle blue glow effects */}
       <div className="absolute bottom-0 left-0 right-0 h-[50%] pointer-events-none">
-        <div className="absolute bottom-10 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-amber-500/20 blur-3xl" />
-        <div className="absolute bottom-20 right-[15%] w-28 h-28 md:w-40 md:h-40 rounded-full bg-yellow-500/15 blur-3xl" />
-        <div className="absolute bottom-0 left-[40%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-orange-400/15 blur-2xl" />
+        <div className="absolute bottom-10 left-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-20 right-[15%] w-28 h-28 md:w-40 md:h-40 rounded-full bg-primary/8 blur-3xl" />
+        <div className="absolute bottom-0 left-[40%] w-24 h-24 md:w-36 md:h-36 rounded-full bg-primary/6 blur-2xl" />
       </div>
       
       <div className="container-xl relative z-10 px-4 sm:px-6">
@@ -28,8 +28,8 @@ export const FinalCTASection = () => {
           </div>
           
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
-            <span className="text-foreground">FOUNDER,</span>{" "}
-            <span className="text-gradient">VANCOUVER PRESALE EXPO</span>
+            <span className="text-foreground">Founder,</span>{" "}
+            <span className="text-gradient">Vancouver Presale Expo</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">

@@ -159,11 +159,11 @@ const BlogPost = () => {
       <ReadingProgressBar />
       <Navbar />
 
-      <main style={{ background: "hsl(40 20% 97%)" }}>
+      <main style={{ background: "hsl(0 0% 100%)" }}>
 
         {/* ── Premium editorial hero ── */}
         <section className="w-full pb-0" style={{ background: "#fff" }}>
-          {/* Gold accent bar at very top */}
+          {/* Blue accent bar at very top */}
           <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
 
           <div className="container-xl max-w-4xl pt-28 pb-0">

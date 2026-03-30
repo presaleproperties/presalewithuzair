@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -50,7 +50,8 @@ const services = [
 ];
 
 const Services = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>
@@ -174,9 +175,9 @@ const Services = () => {
                     variant="hero" 
                     size="lg" 
                     className="gap-2"
-                    onClick={() => openCalendly()}
+                    onClick={handleCTA}
                   >
-                    Schedule a Call
+                    Work With Uzair
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
@@ -208,10 +209,10 @@ const Services = () => {
                   variant="hero" 
                   size="xl" 
                   className="gap-2 w-full sm:w-auto"
-                  onClick={() => openCalendly()}
+                  onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Schedule a Call
+                  Work With Uzair
                 </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">

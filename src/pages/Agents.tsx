@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, TrendingUp, Users, Target, Mail, Megaphone, Settings, Calendar, CheckCircle, ArrowRight } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 import { AgentContactForm } from "@/components/forms/AgentContactForm";
 
 const day1Modules = [
@@ -90,7 +90,8 @@ const day2Modules = [
 ];
 
 const Agents = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>
@@ -200,7 +201,7 @@ const Agents = () => {
                   variant="ghost" 
                   size="lg" 
                   className="rounded-full text-muted-foreground hover:text-foreground px-8 py-6 text-base font-semibold gap-2"
-                  onClick={() => openCalendly()}
+                  onClick={handleCTA}
                 >
                   <Phone className="h-4 w-4 sm:h-5 sm:w-5" />
                   Talk to Uzair First
@@ -339,9 +340,9 @@ const Agents = () => {
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>
-                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={() => openCalendly()}>
+                  <Button variant="outline" className="gap-2 w-full sm:w-auto" onClick={handleCTA}>
                     <Phone className="h-4 w-4" />
-                    Schedule a Call
+                    Talk to Uzair
                   </Button>
                 </div>
               </div>

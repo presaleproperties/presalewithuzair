@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -20,6 +21,20 @@ const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBann
 const SectionFallback = () => <div className="min-h-[200px]" />;
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const scrollTarget = params.get('scroll');
+    if (scrollTarget) {
+      // Small delay to allow lazy sections to load
+      const timer = setTimeout(() => {
+        document.getElementById(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [location.search]);
+
   return (
     <>
       <Helmet>

@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -13,7 +13,6 @@ import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
-import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
   { value: "$200M+", label: "Sales Volume" },
@@ -30,7 +29,8 @@ const values = [
 ];
 
 const About = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>
@@ -141,10 +141,10 @@ const About = () => {
                     variant="hero" 
                     size="lg" 
                     className="gap-2"
-                    onClick={() => openCalendly()}
+                    onClick={handleCTA}
                   >
                     <Phone className="h-4 w-4" />
-                    Schedule a Call
+                    Work With Uzair
                   </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                     <Button variant="outline" size="lg" className="gap-2">
@@ -325,10 +325,10 @@ const About = () => {
                   variant="hero" 
                   size="xl" 
                   className="gap-2 w-full sm:w-auto"
-                  onClick={() => openCalendly()}
+                  onClick={handleCTA}
                 >
                   <Phone className="h-5 w-5" />
-                  Schedule a Call
+                  Work With Uzair
                 </Button>
                 <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">

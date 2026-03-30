@@ -3,11 +3,12 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 import uzairImage from "@/assets/uzair-expo-profile.jpg";
 
 const Contact = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>
@@ -180,10 +181,10 @@ const Contact = () => {
                     variant="hero" 
                     size="xl" 
                     className="w-full gap-2"
-                    onClick={() => openCalendly()}
+                    onClick={handleCTA}
                   >
                     <Mail className="h-5 w-5" />
-                    Schedule a Call
+                    Work With Uzair
                   </Button>
                   <a href="https://presaleproperties.com" target="_blank" rel="noopener noreferrer" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">

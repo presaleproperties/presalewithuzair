@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -39,11 +39,11 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  const handleBookClick = () => {
+  const handleFormCTA = () => {
     if (location.pathname === '/') {
       document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
     } else {
-      navigate('/book');
+      navigate('/?scroll=book-section');
     }
     setIsMobileMenuOpen(false);
   };
@@ -90,10 +90,13 @@ export const Navbar = () => {
             <Button
               variant="hero"
               size="sm"
-              className="rounded-full px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300"
-              onClick={handleBookClick}
+              className="rounded-full px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300 gap-1.5"
+              asChild
             >
-              Schedule a Call
+              <a href="tel:+17782313592">
+                <Phone className="h-3.5 w-3.5" />
+                Call Now
+              </a>
             </Button>
             <button
               className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
@@ -121,10 +124,13 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
-              onClick={handleBookClick}
+              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 gap-2"
+              asChild
             >
-              Schedule a Call
+              <a href="tel:+17782313592">
+                <Phone className="h-4 w-4" />
+                Call Now
+              </a>
             </Button>
           </div>
         </div>
@@ -152,14 +158,25 @@ export const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <div className="pt-4">
+          <div className="pt-4 space-y-3">
             <Button 
               variant="hero" 
               size="lg" 
-              className="w-full rounded-full"
-              onClick={handleBookClick}
+              className="w-full rounded-full gap-2"
+              asChild
             >
-              Schedule a Call
+              <a href="tel:+17782313592">
+                <Phone className="h-4 w-4" />
+                Call Now
+              </a>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="w-full rounded-full"
+              onClick={handleFormCTA}
+            >
+              Work With Uzair
             </Button>
           </div>
         </div>

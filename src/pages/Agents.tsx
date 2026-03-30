@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, FileText, TrendingUp, Users, Target, Mail, Megaphone, Settings, Calendar, CheckCircle, ArrowRight } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 import { AgentContactForm } from "@/components/forms/AgentContactForm";
 
 const day1Modules = [

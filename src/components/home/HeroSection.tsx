@@ -42,7 +42,7 @@ export const HeroSection = () => {
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Eyebrow */}
-          <p className="text-white/60 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
+          <p className="text-foreground/70 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
             {heroContent.eyebrow}
           </p>
           
@@ -52,19 +52,21 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl font-semibold text-muted-foreground mb-4 animate-fade-up">
+          <p className="text-xl font-semibold text-foreground/80 mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
           {/* Body */}
-          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+          <p className="text-base text-foreground/70 mb-3 animate-fade-up">
             {heroContent.body}
           </p>
           
           {/* Supporting Line */}
-          <p className="text-xs text-white/50 mb-8 animate-fade-up font-medium">
-            {heroContent.supportingLine}
-          </p>
+          {heroContent.supportingLine && (
+            <p className="text-xs text-foreground/60 mb-8 animate-fade-up font-medium">
+              {heroContent.supportingLine}
+            </p>
+          )}
 
           {/* CTA Button */}
           <div className="mb-4 animate-fade-up">
@@ -74,7 +76,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
+          <p className="text-xs text-foreground/60 mb-8 animate-fade-up">
             {heroContent.trustBar}
           </p>
 
@@ -89,7 +91,7 @@ export const HeroSection = () => {
               {/* Floating badge on image */}
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border/50">
-               <p className="text-xs text-white/60 font-semibold uppercase tracking-wider mb-1">Fraser Valley's #1</p>
+               <p className="text-xs text-foreground/60 font-semibold uppercase tracking-wider mb-1">Fraser Valley's #1</p>
                   <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
                 </div>
               </div>
@@ -102,7 +104,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
               </button>
@@ -112,7 +114,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-square" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
               </button>
@@ -123,7 +125,7 @@ export const HeroSection = () => {
               <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9]" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
               <div className="absolute bottom-3 left-3 right-3">
-                <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
+                <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
                 <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
               </div>
             </a>
@@ -134,7 +136,7 @@ export const HeroSection = () => {
             <p className="text-lg font-display font-bold text-foreground">
               Trusted by <span className="text-gradient">400+</span> Clients
             </p>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-foreground/60 mt-2">
               $200M+ in presales closed • 4+ years presale focus
             </p>
           </div>
@@ -146,7 +148,7 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Eyebrow */}
-              <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-foreground/70 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.eyebrow}
               </p>
               
@@ -156,19 +158,21 @@ export const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-muted-foreground animate-fade-up">
+              <p className="text-2xl font-semibold text-foreground/80 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+              <p className="text-lg md:text-xl text-foreground/70 max-w-xl animate-fade-up">
                 {heroContent.body}
               </p>
               
               {/* Supporting Line */}
-              <p className="text-sm text-white/50 animate-fade-up font-medium">
-                {heroContent.supportingLine}
-              </p>
+              {heroContent.supportingLine && (
+                <p className="text-sm text-foreground/60 animate-fade-up font-medium">
+                  {heroContent.supportingLine}
+                </p>
+              )}
             </div>
 
             {/* CTA Section */}
@@ -178,7 +182,7 @@ export const HeroSection = () => {
               </Button>
               
               {/* Trust Bar */}
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/60">
                 {heroContent.trustBar}
               </p>
             </div>
@@ -188,7 +192,7 @@ export const HeroSection = () => {
               <p className="text-xl font-display font-bold text-foreground">
                 Trusted by <span className="text-gradient">400+</span> Clients
               </p>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-foreground/60 mt-2">
                 $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>
@@ -217,7 +221,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                   <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
                 </div>
               </button>
@@ -227,7 +231,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
               </button>
@@ -237,7 +241,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={expoImage} alt="Uzair at Vancouver Presale Expo" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community</p>
+                  <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">Community</p>
                   <p className="text-sm font-bold text-foreground">Leader</p>
                 </div>
               </a>

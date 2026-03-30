@@ -31,7 +31,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Get VIP Access to Surrey's Best Presale Condos.",
     heroSubheadline: "New Construction. Early Pricing. Full Contract Protection.",
-    heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey, I get you in before the public launch. Secure the best floor plans, exclusive developer incentives, and bulletproof contract protection.",
+    heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey — I help you buy smart with expert guidance.",
     heroCta: "Get Surrey VIP Access",
     whyBuyTitle: "Why Invest in Surrey New Construction?",
     whyBuyBody: "With the upcoming SkyTrain extension and massive infrastructure investments, Surrey offers the strongest appreciation potential in the Fraser Valley. But not every project is a good deal. I analyze the developer's track record, the deposit structure, and the assignment clauses to ensure your investment is protected.",

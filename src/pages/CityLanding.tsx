@@ -25,6 +25,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   surrey: {
     city: "Surrey",
     slug: "surrey",
+    heroImage: "/images/heroes/surrey-hero.jpg",
     title: "Presale Condos Surrey BC | VIP Access & New Construction | Uzair Muhammad",
     metaDescription: "Looking for presale condos in Surrey, BC? Get VIP access to new construction projects, exclusive developer incentives, and expert buyer representation.",
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",

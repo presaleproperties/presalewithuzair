@@ -49,18 +49,6 @@ export const BookingContextSection = () => {
     notes: "",
   });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-        setIsAnimating(false);
-      }, 300);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentTestimonial = testimonials[currentIndex];
 
   const getUtmParams = () => {
     const urlParams = new URLSearchParams(window.location.search);

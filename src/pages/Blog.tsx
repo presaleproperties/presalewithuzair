@@ -143,19 +143,6 @@ function PostCard({ post }: { post: BlogPost }) {
             style={{ filter: "saturate(1.08) contrast(1.04)" }}
           />
         )}
-        {/* Category pill overlay */}
-        {post.category && (
-          <span
-            className="absolute top-3 left-3 px-2.5 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
-            style={{
-              background: "hsl(var(--primary) / 0.15)",
-              color: "hsl(var(--primary))",
-              border: "1px solid hsl(var(--primary) / 0.2)",
-            }}
-          >
-            {post.category.name}
-          </span>
-        )}
       </div>
 
       {/* Body */}

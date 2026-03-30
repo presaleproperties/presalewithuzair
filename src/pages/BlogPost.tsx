@@ -473,11 +473,6 @@ const BlogPost = () => {
                       )}
                     </div>
                     <div className="p-5">
-                      {rp.category && (
-                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 65%)" }}>
-                          {rp.category.name}
-                        </span>
-                      )}
                       <h3
                         className="font-display text-base text-white leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2"
                         style={{ letterSpacing: "-0.01em" }}

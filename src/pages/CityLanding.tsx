@@ -85,6 +85,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   chilliwack: {
     city: "Chilliwack",
     slug: "chilliwack",
+    heroImage: "/images/heroes/chilliwack-hero.jpg",
     title: "Presale Condos Chilliwack BC | New Construction | Uzair Muhammad",
     metaDescription: "VIP access to presale condos and townhomes in Chilliwack, BC. Fraser Valley's leading presale expert helps you find the best new construction deals.",
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",

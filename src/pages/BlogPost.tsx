@@ -508,7 +508,7 @@ const BlogPost = () => {
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}
                         </span>
-                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(var(--primary))" }}>
+                        <span className="text-xs font-semibold group-hover:underline" style={{ color: "hsl(230 70% 60%)" }}>
                           Read →
                         </span>
                       </div>

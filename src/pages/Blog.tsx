@@ -301,7 +301,7 @@ const Blog = () => {
         {/* ── Category filters ── */}
         <section
           className="py-10 border-b"
-          style={{ background: "#fff", borderColor: "hsl(var(--border))" }}
+          style={{ background: "hsl(var(--background))", borderColor: "hsl(var(--border))" }}
         >
           <div className="container-xl">
             <div className="flex items-center justify-between mb-6">

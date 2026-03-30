@@ -90,7 +90,8 @@ const day2Modules = [
 ];
 
 const Agents = () => {
-  const { openCalendly } = useCalendly();
+  const navigate = useNavigate();
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>

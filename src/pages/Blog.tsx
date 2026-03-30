@@ -142,9 +142,9 @@ function PostCard({ post }: { post: BlogPost }) {
       to={`/blog/${post.slug}`}
       className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-400 hover:-translate-y-1"
       style={{
-        background: "#fff",
+        background: "hsl(var(--background))",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 2px 16px -4px hsla(222,20%,12%,0.06)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       {/* Thumbnail */}

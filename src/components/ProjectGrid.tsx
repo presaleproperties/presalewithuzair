@@ -1,71 +1,16 @@
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2, Building2, MapPin, User } from "lucide-react";
-
-export interface Project {
-  id: string;
-  name: string;
-  developer: string;
-  city: string;
-  propertyType: string; // "Condo" | "Townhome" | etc.
-  image?: string;
-  priceFrom?: string;
-  status?: string;
-}
+import { Building2, MapPin, User, Loader2 } from "lucide-react";
+import { usePresaleProjects, PresaleProject } from "@/hooks/usePresaleProjects";
 
 interface ProjectGridProps {
   city?: string;
-  projects?: Project[];
-  apiUrl?: string;
   limit?: number;
 }
 
-const PLACEHOLDER_PROJECTS: Project[] = [
-  { id: "1", name: "The Timber", developer: "Ledingham McAllister", city: "Surrey", propertyType: "Condo", priceFrom: "From $499,900", status: "Now Selling" },
-  { id: "2", name: "Parkway 2", developer: "Concord Pacific", city: "Surrey", propertyType: "Condo", priceFrom: "From $549,900", status: "Coming Soon" },
-  { id: "3", name: "Highpoint", developer: "Anthem Properties", city: "Langley", propertyType: "Townhome", priceFrom: "From $749,900", status: "Now Selling" },
-  { id: "4", name: "The Oaks", developer: "Mosaic Homes", city: "Langley", propertyType: "Townhome", priceFrom: "From $899,900", status: "Now Selling" },
-  { id: "5", name: "Skyline", developer: "Aquilini", city: "Abbotsford", propertyType: "Condo", priceFrom: "From $399,900", status: "Coming Soon" },
-  { id: "6", name: "Riverside", developer: "Pollyco", city: "Abbotsford", propertyType: "Townhome", priceFrom: "From $649,900", status: "Now Selling" },
-  { id: "7", name: "Valley View", developer: "Wesgroup", city: "Chilliwack", propertyType: "Condo", priceFrom: "From $349,900", status: "Coming Soon" },
-  { id: "8", name: "Eagle Ridge", developer: "Wanson Group", city: "Maple Ridge", propertyType: "Townhome", priceFrom: "From $699,900", status: "Now Selling" },
-];
+export const ProjectGrid = ({ city, limit }: ProjectGridProps) => {
+  const { data: projects, isLoading, error } = usePresaleProjects(city);
 
-export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }: ProjectGridProps) => {
-  const [projects, setProjects] = useState<Project[]>(externalProjects || []);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (externalProjects) {
-      setProjects(externalProjects);
-      return;
-    }
-
-    if (apiUrl) {
-      setIsLoading(true);
-      fetch(apiUrl)
-        .then((res) => {
-          if (!res.ok) throw new Error("Failed to fetch projects");
-          return res.json();
-        })
-        .then((data) => setProjects(data))
-        .catch((err) => {
-          console.error("ProjectGrid fetch error:", err);
-          setError("Unable to load projects. Please try again later.");
-          setProjects(PLACEHOLDER_PROJECTS);
-        })
-        .finally(() => setIsLoading(false));
-    } else {
-      setProjects(PLACEHOLDER_PROJECTS);
-    }
-  }, [apiUrl, externalProjects]);
-
-  const filtered = city
-    ? projects.filter((p) => p.city.toLowerCase() === city.toLowerCase())
-    : projects;
-
-  const displayed = limit ? filtered.slice(0, limit) : filtered;
+  const displayed = limit ? (projects || []).slice(0, limit) : (projects || []);
 
   const handleVIPClick = () => {
     document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" });
@@ -79,10 +24,10 @@ export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }:
     );
   }
 
-  if (error && displayed.length === 0) {
+  if (error) {
     return (
       <div className="text-center py-16">
-        <p className="text-muted-foreground">{error}</p>
+        <p className="text-muted-foreground">Unable to load projects. Please try again later.</p>
       </div>
     );
   }
@@ -106,6 +51,18 @@ export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }:
     );
   }
 
+  const formatPrice = (price: number | null) => {
+    if (!price) return null;
+    return `From $${price.toLocaleString()}`;
+  };
+
+  const getStatusLabel = (project: PresaleProject) => {
+    if (project.status === "active") return "Now Selling";
+    if (project.status === "coming_soon") return "Coming Soon";
+    if (project.status === "sold_out") return "Sold Out";
+    return project.status;
+  };
+
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {displayed.map((project) => (
@@ -113,13 +70,14 @@ export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }:
           key={project.id}
           className="group rounded-2xl overflow-hidden border border-border bg-card hover-lift"
         >
-          {/* Image placeholder */}
+          {/* Image */}
           <div className="aspect-[16/10] overflow-hidden bg-muted relative">
-            {project.image ? (
+            {project.featured_image ? (
               <img
-                src={project.image}
-                alt={`${project.name} by ${project.developer}`}
+                src={project.featured_image}
+                alt={`${project.name} by ${project.developer_name}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-secondary">
@@ -127,21 +85,19 @@ export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }:
               </div>
             )}
             {/* Status badge */}
-            {project.status && (
-              <span
-                className="absolute top-3 left-3 px-3 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
-                style={{
-                  background: project.status === "Now Selling"
-                    ? "hsl(var(--primary) / 0.9)"
-                    : "hsl(var(--muted) / 0.9)",
-                  color: project.status === "Now Selling"
-                    ? "hsl(var(--primary-foreground))"
-                    : "hsl(var(--foreground))",
-                }}
-              >
-                {project.status}
-              </span>
-            )}
+            <span
+              className="absolute top-3 left-3 px-3 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
+              style={{
+                background: project.status === "active"
+                  ? "hsl(var(--primary) / 0.9)"
+                  : "hsl(var(--muted) / 0.9)",
+                color: project.status === "active"
+                  ? "hsl(var(--primary-foreground))"
+                  : "hsl(var(--foreground))",
+              }}
+            >
+              {getStatusLabel(project)}
+            </span>
           </div>
 
           {/* Content */}
@@ -149,16 +105,18 @@ export const ProjectGrid = ({ city, projects: externalProjects, apiUrl, limit }:
             <h3 className="font-display text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
               {project.name}
             </h3>
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-1">
-              <User className="h-3.5 w-3.5" />
-              {project.developer}
-            </div>
+            {project.developer_name && (
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-1">
+                <User className="h-3.5 w-3.5" />
+                {project.developer_name}
+              </div>
+            )}
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-3">
               <MapPin className="h-3.5 w-3.5" />
-              {project.city} · {project.propertyType}
+              {project.city}{project.project_type ? ` · ${project.project_type}` : ""}
             </div>
-            {project.priceFrom && (
-              <p className="text-sm font-semibold text-foreground mb-4">{project.priceFrom}</p>
+            {project.starting_price && (
+              <p className="text-sm font-semibold text-foreground mb-4">{formatPrice(project.starting_price)}</p>
             )}
             <Button
               variant="outline"

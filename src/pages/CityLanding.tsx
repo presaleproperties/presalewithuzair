@@ -8,6 +8,7 @@ import { CheckCircle, TrendingUp, Shield, MapPin } from "lucide-react";
 interface CityConfig {
   city: string;
   slug: string;
+  heroImage: string;
   title: string;
   metaDescription: string;
   heroEyebrow: string;

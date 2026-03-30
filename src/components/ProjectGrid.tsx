@@ -118,14 +118,14 @@ export const ProjectGrid = ({ city, limit }: ProjectGridProps) => {
             {project.starting_price && (
               <p className="text-sm font-semibold text-foreground mb-4">{formatPrice(project.starting_price)}</p>
             )}
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-full rounded-lg border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold"
-              onClick={handleVIPClick}
+            <a
+              href={`https://presaleproperties.com/projects/${project.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center w-full rounded-lg border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-sm h-9 px-3 transition-colors"
             >
               Get VIP Access
-            </Button>
+            </a>
           </div>
         </div>
       ))}

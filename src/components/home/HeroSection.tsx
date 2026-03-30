@@ -47,7 +47,6 @@ export const HeroSection = () => {
           <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
             {heroContent.label}
           </p>
-          </p>
           
           {/* Large Bold Headline - Mobile */}
           <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up">

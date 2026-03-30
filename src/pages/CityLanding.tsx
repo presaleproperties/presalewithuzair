@@ -8,6 +8,7 @@ import { CheckCircle, TrendingUp, Shield, MapPin } from "lucide-react";
 interface CityConfig {
   city: string;
   slug: string;
+  heroImage: string;
   title: string;
   metaDescription: string;
   heroEyebrow: string;
@@ -24,6 +25,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   surrey: {
     city: "Surrey",
     slug: "surrey",
+    heroImage: "/images/heroes/surrey-hero.jpg",
     title: "Presale Condos Surrey BC | VIP Access & New Construction | Uzair Muhammad",
     metaDescription: "Looking for presale condos in Surrey, BC? Get VIP access to new construction projects, exclusive developer incentives, and expert buyer representation.",
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
@@ -43,6 +45,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   langley: {
     city: "Langley",
     slug: "langley",
+    heroImage: "/images/heroes/langley-hero.jpg",
     title: "Presale Townhomes Langley BC | New Construction 2026 | Uzair Muhammad",
     metaDescription: "Find the best presale townhomes and condos in Langley, BC. Get VIP access to Willoughby and Latimer Heights new construction projects before public launch.",
     heroEyebrow: "LANGLEY PRESALE TOWNHOMES & CONDOS",
@@ -62,6 +65,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   abbotsford: {
     city: "Abbotsford",
     slug: "abbotsford",
+    heroImage: "/images/heroes/abbotsford-hero.jpg",
     title: "Presale Condos Abbotsford BC | New Developments 2026 | Uzair Muhammad",
     metaDescription: "Discover 2026 presale condos and townhomes in Abbotsford, BC. Expert buyer's agent offering VIP access, floor plans, and pricing for new developments.",
     heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",
@@ -81,6 +85,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   chilliwack: {
     city: "Chilliwack",
     slug: "chilliwack",
+    heroImage: "/images/heroes/chilliwack-hero.jpg",
     title: "Presale Condos Chilliwack BC | New Construction | Uzair Muhammad",
     metaDescription: "VIP access to presale condos and townhomes in Chilliwack, BC. Fraser Valley's leading presale expert helps you find the best new construction deals.",
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
@@ -100,6 +105,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   "maple-ridge": {
     city: "Maple Ridge",
     slug: "maple-ridge",
+    heroImage: "/images/heroes/maple-ridge-hero.jpg",
     title: "Presale Condos Maple Ridge BC | New Homes | Uzair Muhammad",
     metaDescription: "Find the best presale condos and new construction homes in Maple Ridge, BC. VIP access, contract protection, and expert buyer representation.",
     heroEyebrow: "MAPLE RIDGE PRESALE CONDOS & TOWNHOMES",
@@ -161,27 +167,31 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
       <main>
         {/* ── Hero Section ── */}
-        <section className="dark-section relative pt-32 pb-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
-          <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 left-[10%] w-48 h-48 rounded-full bg-primary/15 blur-3xl" />
-            <div className="absolute bottom-20 right-[10%] w-40 h-40 rounded-full bg-primary/10 blur-3xl" />
+        <section className="relative pt-32 pb-20 overflow-hidden min-h-[60vh] flex items-center">
+          {/* Hero background image */}
+          <div className="absolute inset-0">
+            <img
+              src={config.heroImage}
+              alt={`${config.city} BC skyline`}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
           </div>
+          <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
 
           <div className="relative z-10 container-xl px-4 sm:px-6">
             <div className="max-w-3xl">
-              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up" style={{ color: "hsl(230 70% 60%)" }}>
+              <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-primary">
                 {config.heroEyebrow}
               </p>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-foreground mb-4 animate-fade-up">
                 {config.heroHeadline}
               </h1>
-              <h2 className="font-display text-xl md:text-2xl text-foreground/50 mb-4 animate-fade-up">
+              <h2 className="font-display text-xl md:text-2xl text-foreground/70 mb-4 animate-fade-up">
                 {config.heroSubheadline}
               </h2>
               <div className="w-14 h-[2px] rounded-full mb-6 animate-fade-up" style={{ background: "var(--text-gradient)" }} />
-              <p className="text-lg text-foreground/60 max-w-2xl leading-relaxed mb-8 animate-fade-up">
+              <p className="text-lg text-foreground/80 max-w-2xl leading-relaxed mb-8 animate-fade-up">
                 {config.heroBody}
               </p>
               <button

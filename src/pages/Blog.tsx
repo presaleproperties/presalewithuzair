@@ -10,46 +10,11 @@ import { useBlogPosts, BlogPost } from "@/hooks/useBlogPosts";
 
 /* ── Category config ── */
 const CATEGORIES = [
-  {
-    slug: "resources",
-    label: "Resources",
-    description: "Practical guides for presale buyers and investors",
-    icon: BookOpen,
-    color: "hsl(220 80% 50%)",
-    bg: "hsl(220 80% 97%)",
-  },
-  {
-    slug: "pre-sale-tips",
-    label: "Pre-Sale Tips",
-    description: "Expert tips to navigate presale purchases with confidence",
-    icon: Lightbulb,
-    color: "hsl(220 70% 50%)",
-    bg: "hsl(220 70% 97%)",
-  },
-  {
-    slug: "investment-strategy",
-    label: "Investment Strategy",
-    description: "ROI calculations, timing strategies, and long-term thinking",
-    icon: TrendingUp,
-    color: "hsl(160 55% 35%)",
-    bg: "hsl(160 55% 96%)",
-  },
-  {
-    slug: "tax-legal",
-    label: "Tax & Legal",
-    description: "BC flipping tax, assignments, and contract essentials",
-    icon: Scale,
-    color: "hsl(270 55% 50%)",
-    bg: "hsl(270 55% 97%)",
-  },
-  {
-    slug: "market-analysis",
-    label: "Market Analysis",
-    description: "Metro Vancouver price trends and market reports",
-    icon: BarChart2,
-    color: "hsl(0 60% 48%)",
-    bg: "hsl(0 60% 97%)",
-  },
+  { slug: "resources", label: "Resources" },
+  { slug: "pre-sale-tips", label: "Pre-Sale Tips" },
+  { slug: "investment-strategy", label: "Investment Strategy" },
+  { slug: "tax-legal", label: "Tax & Legal" },
+  { slug: "market-analysis", label: "Market Analysis" },
 ];
 
 function readTime(content: string) {

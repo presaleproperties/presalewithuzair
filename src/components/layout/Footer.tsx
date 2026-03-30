@@ -155,7 +155,7 @@ export const Footer = () => {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                  <MapPin className="h-5 w-5 text-foreground/70 mt-0.5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Office</p>
                     <p className="text-foreground text-sm">

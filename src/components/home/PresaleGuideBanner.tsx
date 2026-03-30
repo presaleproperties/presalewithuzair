@@ -72,7 +72,10 @@ export const PresaleGuideBanner = () => {
           <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-14">
             {/* Text + Form */}
             <div className="flex-1 text-center md:text-left">
-              <p className="section-label mb-3">Free Guide</p>
+              <p className="section-label mb-3 inline-flex items-center gap-2">
+                <Download className="h-4 w-4" />
+                Presale Guide
+              </p>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl text-foreground leading-tight mb-3">
                 7 Costly Mistakes Presale Buyers Make
               </h2>

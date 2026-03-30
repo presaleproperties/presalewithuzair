@@ -248,7 +248,7 @@ const BlogPost = () => {
         </section>
 
         {/* ── Article body ── */}
-        <section className="py-16" style={{ background: "hsl(40 20% 97%)" }}>
+        <section className="py-16" style={{ background: "hsl(0 0% 100%)" }}>
           <div className="container-xl">
             <div className="flex gap-16 max-w-5xl mx-auto">
 
@@ -323,9 +323,9 @@ const BlogPost = () => {
                 <div
                   className="mt-8 p-10 rounded-2xl text-center relative overflow-hidden"
                   style={{
-                    background: "hsl(25 15% 10%)",
-                    border: "1px solid hsl(25 12% 20%)",
-                    boxShadow: "0 16px 48px -12px hsla(25,30%,10%,0.4)",
+                    background: "hsl(222 25% 6%)",
+                    border: "1px solid hsl(222 14% 18%)",
+                    boxShadow: "0 16px 48px -12px hsla(222,25%,6%,0.4)",
                   }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
@@ -349,8 +349,8 @@ const BlogPost = () => {
                     className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
                     style={{
                       background: "var(--text-gradient)",
-                      color: "hsl(25 15% 10%)",
-                      boxShadow: "0 8px 32px -8px hsl(40 85% 45% / 0.5)",
+                      color: "hsl(222 25% 6%)",
+                      boxShadow: "0 8px 32px -8px hsl(230 80% 28% / 0.4)",
                     }}
                   >
                     <Phone className="h-4 w-4" />
@@ -411,8 +411,8 @@ const BlogPost = () => {
                     <div
                       className="p-5 rounded-xl relative overflow-hidden"
                       style={{
-                        background: "hsl(25 15% 10%)",
-                        border: "1px solid hsl(25 12% 22%)",
+                        background: "hsl(222 25% 6%)",
+                        border: "1px solid hsl(222 14% 18%)",
                       }}
                     >
                       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
@@ -427,7 +427,7 @@ const BlogPost = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full text-center py-2.5 rounded-lg text-xs font-bold transition-all hover:opacity-90"
-                        style={{ background: "var(--text-gradient)", color: "hsl(25 15% 10%)" }}
+                        style={{ background: "var(--text-gradient)", color: "hsl(222 25% 6%)" }}
                       >
                         Book Free Consultation
                       </a>
@@ -441,7 +441,7 @@ const BlogPost = () => {
 
         {/* ── Related posts ── */}
         {relatedPosts.length > 0 && (
-          <section className="pb-20" style={{ background: "hsl(25 15% 10%)" }}>
+          <section className="pb-20" style={{ background: "hsl(222 25% 6%)" }}>
             <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">

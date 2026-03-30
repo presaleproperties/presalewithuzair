@@ -401,7 +401,7 @@ const Blog = () => {
         </section>
 
         {/* ── Articles ── */}
-        <section className="py-14 pb-24" style={{ background: "hsl(40 20% 97%)" }}>
+        <section className="py-14 pb-24" style={{ background: "hsl(0 0% 100%)" }}>
           <div className="container-xl">
             {isLoading ? (
               <div className="flex justify-center py-24">
@@ -472,7 +472,7 @@ const Blog = () => {
         {/* ── Dark CTA strip ── */}
         <section
           className="py-20 relative overflow-hidden"
-          style={{ background: "hsl(25 15% 10%)" }}
+          style={{ background: "hsl(222 25% 6%)" }}
         >
           <div
             className="absolute top-0 left-0 right-0 h-[2px]"
@@ -499,8 +499,8 @@ const Blog = () => {
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: "var(--text-gradient)",
-                color: "hsl(25 15% 10%)",
-                boxShadow: "0 8px 32px -8px hsl(40 85% 45% / 0.5)",
+                color: "hsl(222 25% 6%)",
+                boxShadow: "0 8px 32px -8px hsl(230 80% 28% / 0.4)",
               }}
             >
               Book a Free Call with Uzair

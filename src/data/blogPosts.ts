@@ -1,3 +1,9 @@
+import willoughbyFirstTimeBuyers from "@/assets/blog/willoughby-first-time-buyers.jpg";
+import willoughbyInvestment from "@/assets/blog/willoughby-investment.jpg";
+import presaleAgentVsTraditional from "@/assets/blog/presale-agent-vs-traditional.jpg";
+import presaleDepositsGuide from "@/assets/blog/presale-deposits-guide.jpg";
+import presaleVsResale from "@/assets/blog/presale-vs-resale.jpg";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -44,7 +50,7 @@ With the ongoing development and increasing demand, Willoughby presales are show
 Contact Uzair to learn about upcoming presale opportunities in Willoughby.
     `,
     date: "Nov 10, 2025",
-    image: "https://framerusercontent.com/images/X7roYCDcOm4G19QDL6LIwPnVGiU.png",
+    image: willoughbyFirstTimeBuyers,
     category: "First-Time Buyers",
   },
   {
@@ -80,7 +86,7 @@ For investors looking at 3-5 year holds, Willoughby presales offer an excellent 
 Book a call with Uzair to discuss current opportunities.
     `,
     date: "Nov 10, 2025",
-    image: "https://framerusercontent.com/images/PzqbNRttq5qGZTf5rAeNjGlswFE.png",
+    image: willoughbyInvestment,
     category: "Investment",
   },
   {
@@ -131,7 +137,7 @@ With over 80% of presale projects being overpriced or unsuitable for investment,
 Connect with Uzair to ensure your presale investment is strategic and profitable.
     `,
     date: "Aug 17, 2025",
-    image: "https://framerusercontent.com/images/R3i7zDXNDEg5XG1LMBip38uNb5M.jpeg",
+    image: presaleAgentVsTraditional,
     category: "Education",
   },
   {
@@ -171,7 +177,7 @@ At completion, your deposit forms part of your down payment. If you've put down 
 Contact Uzair to find presale projects with buyer-friendly deposit terms.
     `,
     date: "Jul 15, 2025",
-    image: "https://framerusercontent.com/images/fex3gGtmfhVtXGLunb4e7vQvpdg.jpg",
+    image: presaleDepositsGuide,
     category: "Education",
   },
   {
@@ -220,7 +226,7 @@ For most investors and patient buyers, presale offers superior returns when you 
 Schedule a consultation with Uzair to discuss your options.
     `,
     date: "Jun 20, 2025",
-    image: "https://framerusercontent.com/images/STbZucFoQl1oSpyZzgFkTPu0We8.jpg",
+    image: presaleVsResale,
     category: "Education",
   },
 ];

@@ -148,7 +148,7 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Eyebrow */}
-              <p className="text-foreground/70 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-foreground font-bold tracking-[0.2em] text-sm uppercase animate-fade-up">
                 {heroContent.eyebrow}
               </p>
               
@@ -158,18 +158,18 @@ export const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-foreground/80 animate-fade-up">
+              <p className="text-2xl font-semibold text-foreground/50 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-foreground/70 max-w-xl animate-fade-up">
+              <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
               
               {/* Supporting Line */}
               {heroContent.supportingLine && (
-                <p className="text-sm text-foreground/60 animate-fade-up font-medium">
+                <p className="text-sm text-foreground/40 animate-fade-up font-medium">
                   {heroContent.supportingLine}
                 </p>
               )}

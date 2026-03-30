@@ -213,11 +213,14 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         {/* ── Why Buy Here Section ── */}
         <section className="py-16 sm:py-24" style={{ background: "hsl(var(--card))" }}>
           <div className="container-xl px-4 sm:px-6">
-            <div className="mb-12 text-center">
+            <div className="mb-12 max-w-3xl">
               <p className="section-label mb-3">Why {config.city}</p>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                Why Buy a Presale in <span className="text-gradient">{config.city}</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                {config.whyBuyTitle}
               </h2>
+              <p className="text-foreground/70 leading-relaxed">
+                {config.whyBuyBody}
+              </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {config.benefits.map((benefit, i) => (

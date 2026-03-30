@@ -167,8 +167,9 @@ export const HeroSection = () => {
               </p>
               
               {/* Supporting Line */}
-              <p className="text-sm text-primary/80 animate-fade-up font-medium">
+              <p className="text-sm text-white/50 animate-fade-up font-medium">
                 {heroContent.supportingLine}
+              </p>
               </p>
             </div>
 

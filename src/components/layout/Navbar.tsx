@@ -90,7 +90,7 @@ export const Navbar = () => {
             <Button
               variant="hero"
               size="sm"
-              className="rounded-full px-4 py-2 text-sm font-semibold shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
+              className="rounded-full px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300"
               onClick={handleBookClick}
             >
               Schedule a Call
@@ -121,7 +121,7 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="rounded-full shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
+              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
               onClick={handleBookClick}
             >
               Schedule a Call
@@ -132,12 +132,11 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 backdrop-blur-lg border-b border-border transition-all duration-300 ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white backdrop-blur-lg border-b border-border transition-all duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
-        style={{ backgroundColor: "hsl(40 25% 97%)" }}
       >
         <div className="container-xl py-6 space-y-4">
           {navLinks.map((link) => (
@@ -147,9 +146,8 @@ export const Navbar = () => {
               className={`block text-lg font-medium py-2 transition-colors ${
                 location.pathname === link.href
                   ? "text-primary"
-                  : "hover:text-primary"
+                  : "text-foreground/80 hover:text-primary"
               }`}
-              style={location.pathname !== link.href ? { color: "hsl(25 25% 12%)" } : undefined}
             >
               {link.label}
             </Link>

@@ -40,7 +40,7 @@ const About = () => {
           name="description"
           content="Uzair Muhammad is a Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford & more."
         />
-        <meta name="keywords" content="Uzair Muhammad realtor, Vancouver presale expert, presale specialist BC, top presale agent Vancouver, real estate advisor Vancouver" />
+        <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
         
         {/* Open Graph */}

@@ -76,7 +76,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs text-foreground/40 mb-8 animate-fade-up">
+          <p className="text-xs text-foreground/50 mb-8 animate-fade-up">
             {heroContent.trustBar}
           </p>
 
@@ -132,11 +132,11 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Badge - Mobile */}
-          <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
+          <div className="pt-6 border-t border-foreground/10 mt-auto animate-fade-up text-center">
             <p className="text-lg font-display font-bold text-foreground">
-              Trusted by <span className="text-gradient">400+</span> Clients
+              Trusted by <span className="text-foreground">400+</span> Clients
             </p>
-            <p className="text-xs text-foreground/60 mt-2">
+            <p className="text-xs text-foreground/50 mt-2">
               $200M+ in presales closed • 4+ years presale focus
             </p>
           </div>
@@ -182,17 +182,17 @@ export const HeroSection = () => {
               </Button>
               
               {/* Trust Bar */}
-              <p className="text-sm text-foreground/40">
+              <p className="text-sm text-foreground/50">
                 {heroContent.trustBar}
               </p>
             </div>
 
             {/* Trust Badge */}
-            <div className="pt-8 border-t border-border/50 animate-fade-up">
+            <div className="pt-8 border-t border-foreground/10 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                Trusted by <span className="text-gradient">400+</span> Clients
+                Trusted by <span className="text-foreground">400+</span> Clients
               </p>
-              <p className="text-sm text-foreground/40 mt-2">
+              <p className="text-sm text-foreground/50 mt-2">
                 $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>

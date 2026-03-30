@@ -4,10 +4,10 @@ import { Instagram } from "lucide-react";
 export const InstagramSection = () => {
   return (
     <section className="py-16 sm:py-24 bg-card/30 relative overflow-hidden">
-      {/* Warm bokeh effects */}
+      {/* Subtle blue glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 right-[15%] w-32 h-32 rounded-full bg-amber-400/15 blur-3xl" />
-        <div className="absolute bottom-10 left-[10%] w-40 h-40 rounded-full bg-orange-300/12 blur-3xl" />
+        <div className="absolute top-10 right-[15%] w-32 h-32 rounded-full bg-primary/8 blur-3xl" />
+        <div className="absolute bottom-10 left-[10%] w-40 h-40 rounded-full bg-blue-400/6 blur-3xl" />
       </div>
 
       <div className="relative z-10 container-xl px-4 sm:px-6">

@@ -229,7 +229,7 @@ export const HeroSection = () => {
                 <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-[4/3]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
                   <p className="text-sm font-bold text-foreground">Investors</p>
                 </div>
               </button>

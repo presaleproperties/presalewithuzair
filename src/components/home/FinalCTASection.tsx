@@ -16,27 +16,8 @@ export const FinalCTASection = () => {
       <div className="container-xl relative z-10 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-10 lg:gap-16 items-center">
           
-          {/* Image */}
-          <a
-            href="https://vancouverpresaleexpo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group mx-auto lg:mx-0 max-w-xs sm:max-w-sm"
-          >
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-border/40 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
-              <img
-                src={uzairExpoImage}
-                alt="Uzair Muhammad speaking at Vancouver Presale Expo"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-            <p className="text-xs text-muted-foreground mt-3 text-center font-medium group-hover:text-foreground transition-colors">
-              vancouverpresaleexpo.com ↗
-            </p>
-          </a>
-
           {/* Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left order-2 lg:order-1">
             <p className="text-primary font-bold tracking-[0.15em] text-xs sm:text-sm mb-3">
               COMMUNITY LEADER
             </p>
@@ -63,6 +44,25 @@ export const FinalCTASection = () => {
               Work With Uzair
             </Button>
           </div>
+
+          {/* Image */}
+          <a
+            href="https://vancouverpresaleexpo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group mx-auto lg:mx-0 max-w-xs sm:max-w-sm order-1 lg:order-2"
+          >
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-border/40 shadow-xl transition-transform duration-300 group-hover:scale-[1.02]">
+              <img
+                src={uzairExpoImage}
+                alt="Uzair Muhammad speaking at Vancouver Presale Expo"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <p className="text-xs text-muted-foreground mt-3 text-center font-medium group-hover:text-foreground transition-colors">
+              vancouverpresaleexpo.com ↗
+            </p>
+          </a>
         </div>
       </div>
     </section>

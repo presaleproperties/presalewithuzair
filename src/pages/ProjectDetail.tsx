@@ -262,7 +262,7 @@ const ProjectDetail = () => {
                 <UnifiedLeadForm
                   source={`project-${project.slug}`}
                   buyerType="first-time-buyer"
-                  variant="stacked"
+                  variant="default"
                 />
               </div>
             </div>

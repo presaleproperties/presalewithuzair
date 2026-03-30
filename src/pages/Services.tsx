@@ -6,7 +6,7 @@ import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {

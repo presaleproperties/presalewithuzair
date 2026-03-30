@@ -6,30 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import anishPhoto from "@/assets/testimonials/anish.jpg";
-import adamPhoto from "@/assets/testimonials/adam.jpg";
-import rayPhoto from "@/assets/testimonials/ray.jpg";
-
-const testimonials = [
-  {
-    quote: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free. He took the time to understand what we wanted, explained every step thoroughly, and never once rushed us.",
-    name: "Anish",
-    type: "First-Time Buyer",
-    photo: anishPhoto,
-  },
-  {
-    quote: "Uzair helped me with my investment property and made sure I got the best deal. He's straightforward, knows the market, and will tell you directly if a project isn't right. No fluff, no hype — just honesty and expertise.",
-    name: "Adam",
-    type: "Investor",
-    photo: adamPhoto,
-  },
-  {
-    quote: "Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks.",
-    name: "Ray",
-    type: "First-Time Buyer",
-    photo: rayPhoto,
-  },
-];
 
 const buyerTypes = [
   { value: "first-time-buyer", label: "First-Time Buyer" },

@@ -48,7 +48,7 @@ const About = () => {
         <meta property="og:url" content="https://presalewithuzair.com/about" />
         <meta property="og:title" content="About Uzair Muhammad | Vancouver Presale Expert" />
         <meta property="og:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, exclusive focus on new construction in Surrey, Langley, Abbotsford & more." />
-        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
+        <meta property="og:image" content="https://presalewithuzair.com/about-og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />

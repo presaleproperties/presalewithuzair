@@ -169,9 +169,13 @@ const ProjectDetail = () => {
               {(project.full_description || project.short_description) && (
                 <div>
                   <h2 className="font-display text-2xl font-bold text-foreground mb-4">About {project.name}</h2>
-                  <div className="prose prose-invert max-w-none text-foreground/80 leading-relaxed whitespace-pre-line">
-                    {project.full_description || project.short_description}
-                  </div>
+                  <div
+                    className="prose prose-invert max-w-none text-foreground/80 leading-relaxed whitespace-pre-line"
+                    dangerouslySetInnerHTML={{
+                      __html: (project.full_description || project.short_description || "")
+                        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                    }}
+                  />
                 </div>
               )}
 

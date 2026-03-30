@@ -5,15 +5,13 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  label: "Fraser Valley Presale Specialist",
-  headlinePart1: "Buy the Right",
-  headlinePart2: "Presale.",
-  headlineAccent: "Skip the Costly",
-  headlineAccent2: "Mistakes.",
-  subheadline: "I've closed 400+ presale transactions across Surrey, Langley, and Abbotsford. I'll tell you exactly which projects are worth buying — and which ones to walk away from. Straight talk. No developer bias. No fluff.",
-  supportingLine: "The unfiltered, no-BS advice you need",
-  cta: "Get a Free Presale Strategy Call",
-  microTrust: "400+ Clients Served · $200M+ in Presale Transactions · Fraser Valley's #1 Presale Team"
+  eyebrow: "VANCOUVER PRESALE EXPERT · FRASER VALLEY'S LEADING PRESALE SPECIALIST",
+  headline: "The Fraser Valley's Most Trusted Presale Expert.",
+  subheadline: "Your First Home or Next Investment — Done Right.",
+  body: "I've helped more buyers secure presale condos across Surrey, Langley, and Abbotsford than any other agent in the Fraser Valley. You get VIP access before the public launch, the best unit allocation, bulletproof contract protection, and straight-talk advice on which projects are actually worth your money — and which ones to walk away from.",
+  supportingLine: "Buyer representation. Zero developer bias. Available in English, Punjabi, Hindi & Urdu.",
+  cta: "Get VIP Access — It's Free",
+  trustBar: "400+ Clients Helped · $200M+ in Presale Transactions · First-Time Buyers & Investors · Surrey · Langley · Abbotsford"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {
@@ -43,22 +41,24 @@ export const HeroSection = () => {
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
-          {/* Label - Cyan like Dan Martell */}
-          <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase mb-4 animate-fade-up">
-            {heroContent.label}
+          {/* Eyebrow */}
+          <p className="text-white/60 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
+            {heroContent.eyebrow}
           </p>
           
-          {/* Large Bold Headline - Mobile */}
-          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-6 animate-fade-up">
-            <span className="text-foreground block">{heroContent.headlinePart1}</span>
-            <span className="text-foreground block">{heroContent.headlinePart2}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent}</span>
-            <span className="text-muted-foreground block">{heroContent.headlineAccent2}</span>
+          {/* Headline */}
+          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
+            {heroContent.headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+          <p className="text-xl font-semibold text-muted-foreground mb-4 animate-fade-up">
             {heroContent.subheadline}
+          </p>
+
+          {/* Body */}
+          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+            {heroContent.body}
           </p>
           
           {/* Supporting Line */}
@@ -66,16 +66,16 @@ export const HeroSection = () => {
             {heroContent.supportingLine}
           </p>
 
-          {/* CTA Button - Outlined style like Dan Martell */}
+          {/* CTA Button */}
           <div className="mb-4 animate-fade-up">
             <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
 
-          {/* Micro-trust - Mobile */}
+          {/* Trust Bar */}
           <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
-            {heroContent.microTrust}
+            {heroContent.trustBar}
           </p>
 
           {/* Hero Photos Grid - Mobile (After the fold like Dan Martell) */}
@@ -145,22 +145,24 @@ export const HeroSection = () => {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">
-              {/* Label */}
+              {/* Eyebrow */}
               <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
-                {heroContent.label}
+                {heroContent.eyebrow}
               </p>
               
               {/* Headline */}
-              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up">
-                <span className="text-foreground">{heroContent.headlinePart1} </span>
-                <span className="text-foreground">{heroContent.headlinePart2} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent} </span>
-                <span className="text-muted-foreground">{heroContent.headlineAccent2}</span>
+              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up text-foreground">
+                {heroContent.headline}
               </h1>
 
-              {/* Sub-headline */}
-              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+              {/* Subheadline */}
+              <p className="text-2xl font-semibold text-muted-foreground animate-fade-up">
                 {heroContent.subheadline}
+              </p>
+
+              {/* Body */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+                {heroContent.body}
               </p>
               
               {/* Supporting Line */}
@@ -175,9 +177,9 @@ export const HeroSection = () => {
                 {heroContent.cta}
               </Button>
               
-              {/* Micro-trust */}
+              {/* Trust Bar */}
               <p className="text-sm text-muted-foreground">
-                {heroContent.microTrust}
+                {heroContent.trustBar}
               </p>
             </div>
 

@@ -295,9 +295,7 @@ export const LeadCaptureSection = () => {
                   <SelectContent>
                     <SelectItem value="first-time-buyer">First-Time Buyer</SelectItem>
                     <SelectItem value="investor">Investor</SelectItem>
-                    <SelectItem value="upsizer">Upsizer / Downsizer</SelectItem>
-                    <SelectItem value="assignment-buyer">Assignment Buyer</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
+                    <SelectItem value="seller">Seller</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

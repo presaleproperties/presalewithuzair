@@ -62,7 +62,7 @@ export const ProcessSection = () => {
             Education <span className="text-gradient">Before Commitment</span>
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-foreground/70 max-w-2xl mx-auto font-normal normal-case tracking-normal">
-            A transparent, no-pressure approach focused on helping you make informed decisions.
+            A transparent, zero-pressure framework designed to protect your money.
           </p>
         </div>
 

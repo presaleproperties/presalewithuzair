@@ -29,22 +29,26 @@ export const AboutSection = () => {
           <div className="order-1 lg:order-2">
             <p className="section-label mb-4">Meet Uzair</p>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Presale <span className="text-gradient">Expert</span>
+              Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
             </h2>
+
+            <p className="text-lg text-foreground/90 font-semibold mb-4">
+              $200M+ in presale transactions. 400+ families served. Zero BS.
+            </p>
+            
+            <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+              I Don't Sell Hype. I Sell Financial Clarity.
+            </h3>
             
             <div className="space-y-4 text-foreground/80 leading-relaxed">
               <p>
-                Uzair is an investor-focused Real Estate Agent and Presale Expert specializing in 
-                Vancouver's new construction condo market. With over $200M+ in volume and 400+ clients served, 
-                Uzair has built a reputation for delivering exceptional results and unparalleled client service.
+                I was born in Pakistan and raised right here in Surrey. I know the Fraser Valley because I live here, I raise my two kids here, and I invest my own money here.
               </p>
               <p>
-                Working primarily with investors and first-time buyers, Uzair provides insider access 
-                to presale projects, market trends, and exclusive opportunities before they become publicly available.
+                Early in my career, I noticed a massive problem in the real estate industry: most agents treat presales like an afterthought. They sell the hype of a shiny brochure without understanding the contracts, the developers, or the real risks involved.
               </p>
               <p>
-                He has helped clients save over $1M+ in negotiated credits from developers. 
-                Uzair is dedicated to building long-term relationships to deliver a lifetime of real estate services.
+                I built my entire practice around fixing that. Every project I recommend, I've personally vetted. Every contract I review, I read line-by-line. And if a deal doesn't make financial sense, I'll tell you — even if it means losing the sale.
               </p>
             </div>
 

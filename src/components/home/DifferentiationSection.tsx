@@ -113,7 +113,7 @@ export const DifferentiationSection = () => {
           {/* Bottom Insight */}
           <div className="mt-8 sm:mt-12 text-center">
             <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-              Presales require specialized knowledge. You deserve someone focused on your interests — not the developer's.
+              Presales require specialized knowledge. You deserve an advisor focused on your wealth, not the developer's quota.
             </p>
           </div>
         </div>

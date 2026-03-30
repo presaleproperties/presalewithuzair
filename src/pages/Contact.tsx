@@ -167,11 +167,11 @@ const Contact = () => {
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3 text-foreground/80">
                     <Clock className="h-5 w-5 text-primary" />
-                    <span>Typically responds within 2 hours</span>
+                    <span>Typically responds within 2 hours.</span>
                   </div>
                   <div className="flex items-center gap-3 text-foreground/80">
                     <MessageCircle className="h-5 w-5 text-primary" />
-                    <span>No obligation — just honest conversation</span>
+                    <span>Zero obligation — just an honest conversation.</span>
                   </div>
                 </div>
 

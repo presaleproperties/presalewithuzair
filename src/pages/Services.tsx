@@ -198,11 +198,10 @@ const Services = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Have <span className="text-gradient">Questions</span>?
+                Let's Discuss Your <span className="text-gradient">Next Move</span>
               </h2>
               <p className="text-foreground/80 mb-8">
-                Not sure where to start? Let's have an honest conversation about your situation. 
-                No pressure, no sales pitch — just clear guidance to help you decide your next step.
+                No pressure. No pitch. Just a clear conversation about your real estate goals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 

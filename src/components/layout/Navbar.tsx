@@ -121,7 +121,7 @@ export const Navbar = () => {
             <Button 
               variant="hero" 
               size="lg" 
-              className="rounded-full shadow-[0_0_20px_rgba(212,163,22,0.4)] hover:shadow-[0_0_30px_rgba(212,163,22,0.6)] transition-shadow duration-300"
+              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
               onClick={handleBookClick}
             >
               Schedule a Call

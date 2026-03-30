@@ -68,20 +68,6 @@ function FeaturedCard({ post }: { post: BlogPost }) {
             >
               Featured
             </span>
-            {post.category && (
-              <>
-                <span style={{ color: "hsl(var(--border))" }}>·</span>
-                <span
-                  className="px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase rounded-sm"
-                  style={{
-                    background: "hsl(var(--primary) / 0.1)",
-                    color: "hsl(var(--primary))",
-                  }}
-                >
-                  {post.category.name}
-                </span>
-              </>
-            )}
           </div>
 
           {/* Gold rule */}
@@ -156,19 +142,6 @@ function PostCard({ post }: { post: BlogPost }) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             style={{ filter: "saturate(1.08) contrast(1.04)" }}
           />
-        )}
-        {/* Category pill overlay */}
-        {post.category && (
-          <span
-            className="absolute top-3 left-3 px-2.5 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
-            style={{
-              background: "hsl(var(--primary) / 0.15)",
-              color: "hsl(var(--primary))",
-              border: "1px solid hsl(var(--primary) / 0.2)",
-            }}
-          >
-            {post.category.name}
-          </span>
         )}
       </div>
 
@@ -298,55 +271,6 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* ── Category filters ── */}
-        <section
-          className="py-10 border-b"
-          style={{ background: "hsl(var(--background))", borderColor: "hsl(var(--border))" }}
-        >
-          <div className="container-xl">
-            <div className="flex items-center justify-between mb-6">
-              <h2
-                className="font-display text-xl"
-                style={{ color: "hsl(var(--foreground))" }}
-              >
-                Browse by Topic
-              </h2>
-              {activeCategory && (
-                <button
-                  onClick={() => setActiveCategory(null)}
-                  className="flex items-center gap-1.5 text-xs font-semibold transition-colors hover:underline"
-                  style={{ color: "hsl(var(--primary))" }}
-                >
-                  <X className="h-3.5 w-3.5" /> Clear filter
-                </button>
-              )}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => {
-                const count = posts?.filter((p) => p.category?.slug === cat.slug).length ?? 0;
-                const isActive = activeCategory === cat.slug;
-
-                return (
-                  <button
-                    key={cat.slug}
-                    onClick={() => setActiveCategory(isActive ? null : cat.slug)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
-                      isActive
-                        ? "bg-foreground text-background border-foreground"
-                        : "bg-transparent text-foreground/70 border-border hover:border-foreground/40 hover:text-foreground"
-                    }`}
-                  >
-                    {cat.label}
-                    <span className={`ml-1.5 text-xs ${isActive ? "text-background/70" : "text-muted-foreground"}`}>
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* ── Articles ── */}
         <section className="py-14 pb-24 bg-background">

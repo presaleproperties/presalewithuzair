@@ -178,20 +178,6 @@ const BlogPost = () => {
             </Link>
 
             {/* Category badge */}
-            {post.category && (
-              <div className="mb-5">
-                <span
-                  className="inline-block px-3 py-1 text-xs font-bold tracking-[0.15em] uppercase rounded-sm"
-                  style={{
-                    background: "hsl(var(--primary) / 0.1)",
-                    color: "hsl(var(--primary))",
-                    border: "1px solid hsl(var(--primary) / 0.25)",
-                  }}
-                >
-                  {post.category.name}
-                </span>
-              </div>
-            )}
 
             {/* Title */}
             <h1
@@ -487,11 +473,6 @@ const BlogPost = () => {
                       )}
                     </div>
                     <div className="p-5">
-                      {rp.category && (
-                        <span className="text-xs font-black tracking-[0.15em] uppercase mb-3 inline-block" style={{ color: "hsl(230 70% 65%)" }}>
-                          {rp.category.name}
-                        </span>
-                      )}
                       <h3
                         className="font-display text-base text-white leading-snug mb-3 group-hover:text-primary transition-colors line-clamp-2"
                         style={{ letterSpacing: "-0.01em" }}

@@ -4,53 +4,17 @@ import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
-  Calendar, ArrowRight, Loader2, BookOpen,
-  TrendingUp, Lightbulb, Scale, BarChart2, X, Clock,
+  Calendar, ArrowRight, Loader2, BookOpen, X, Clock,
 } from "lucide-react";
 import { useBlogPosts, BlogPost } from "@/hooks/useBlogPosts";
 
 /* ── Category config ── */
 const CATEGORIES = [
-  {
-    slug: "resources",
-    label: "Resources",
-    description: "Practical guides for presale buyers and investors",
-    icon: BookOpen,
-    color: "hsl(220 80% 50%)",
-    bg: "hsl(220 80% 97%)",
-  },
-  {
-    slug: "pre-sale-tips",
-    label: "Pre-Sale Tips",
-    description: "Expert tips to navigate presale purchases with confidence",
-    icon: Lightbulb,
-    color: "hsl(220 70% 50%)",
-    bg: "hsl(220 70% 97%)",
-  },
-  {
-    slug: "investment-strategy",
-    label: "Investment Strategy",
-    description: "ROI calculations, timing strategies, and long-term thinking",
-    icon: TrendingUp,
-    color: "hsl(160 55% 35%)",
-    bg: "hsl(160 55% 96%)",
-  },
-  {
-    slug: "tax-legal",
-    label: "Tax & Legal",
-    description: "BC flipping tax, assignments, and contract essentials",
-    icon: Scale,
-    color: "hsl(270 55% 50%)",
-    bg: "hsl(270 55% 97%)",
-  },
-  {
-    slug: "market-analysis",
-    label: "Market Analysis",
-    description: "Metro Vancouver price trends and market reports",
-    icon: BarChart2,
-    color: "hsl(0 60% 48%)",
-    bg: "hsl(0 60% 97%)",
-  },
+  { slug: "resources", label: "Resources" },
+  { slug: "pre-sale-tips", label: "Pre-Sale Tips" },
+  { slug: "investment-strategy", label: "Investment Strategy" },
+  { slug: "tax-legal", label: "Tax & Legal" },
+  { slug: "market-analysis", label: "Market Analysis" },
 ];
 
 function readTime(content: string) {
@@ -110,8 +74,8 @@ function FeaturedCard({ post }: { post: BlogPost }) {
                 <span
                   className="px-2.5 py-0.5 text-xs font-bold tracking-wide uppercase rounded-sm"
                   style={{
-                    background: cat ? cat.bg : "hsl(var(--primary) / 0.1)",
-                    color: cat ? cat.color : "hsl(var(--primary))",
+                    background: "hsl(var(--primary) / 0.1)",
+                    color: "hsl(var(--primary))",
                   }}
                 >
                   {post.category.name}
@@ -198,9 +162,9 @@ function PostCard({ post }: { post: BlogPost }) {
           <span
             className="absolute top-3 left-3 px-2.5 py-1 text-xs font-bold tracking-wide uppercase rounded-sm backdrop-blur-sm"
             style={{
-              background: cat ? `${cat.bg}ee` : "hsl(var(--primary) / 0.15)",
-              color: cat ? cat.color : "hsl(var(--primary))",
-              border: `1px solid ${cat ? cat.color + "33" : "hsl(var(--primary) / 0.2)"}`,
+              background: "hsl(var(--primary) / 0.15)",
+              color: "hsl(var(--primary))",
+              border: "1px solid hsl(var(--primary) / 0.2)",
             }}
           >
             {post.category.name}
@@ -355,9 +319,8 @@ const Blog = () => {
               )}
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((cat) => {
-                const Icon = cat.icon;
                 const count = posts?.filter((p) => p.category?.slug === cat.slug).length ?? 0;
                 const isActive = activeCategory === cat.slug;
 
@@ -365,32 +328,14 @@ const Blog = () => {
                   <button
                     key={cat.slug}
                     onClick={() => setActiveCategory(isActive ? null : cat.slug)}
-                    className="group flex items-center gap-2.5 px-4 py-2.5 rounded-xl border transition-all duration-200"
-                    style={{
-                      background: isActive ? cat.bg : "hsl(var(--background))",
-                      borderColor: isActive ? cat.color : "hsl(var(--border))",
-                      boxShadow: isActive ? `0 0 0 2px ${cat.color}33` : "none",
-                    }}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
+                      isActive
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-transparent text-foreground/70 border-border hover:border-foreground/40 hover:text-foreground"
+                    }`}
                   >
-                    <div
-                      className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
-                      style={{ background: isActive ? cat.color + "22" : cat.bg }}
-                    >
-                      <Icon className="h-3.5 w-3.5" style={{ color: cat.color }} />
-                    </div>
-                    <span
-                      className="text-sm font-semibold"
-                      style={{ color: isActive ? cat.color : "hsl(var(--foreground))" }}
-                    >
-                      {cat.label}
-                    </span>
-                    <span
-                      className="text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[1.25rem] text-center"
-                      style={{
-                        background: isActive ? cat.color : "hsl(var(--muted))",
-                        color: isActive ? "#fff" : "hsl(var(--muted-foreground))",
-                      }}
-                    >
+                    {cat.label}
+                    <span className={`ml-1.5 text-xs ${isActive ? "text-background/70" : "text-muted-foreground"}`}>
                       {count}
                     </span>
                   </button>

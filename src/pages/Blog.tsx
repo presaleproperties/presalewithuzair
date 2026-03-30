@@ -4,8 +4,7 @@ import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import {
-  Calendar, ArrowRight, Loader2, BookOpen,
-  TrendingUp, Lightbulb, Scale, BarChart2, X, Clock,
+  Calendar, ArrowRight, Loader2, BookOpen, X, Clock,
 } from "lucide-react";
 import { useBlogPosts, BlogPost } from "@/hooks/useBlogPosts";
 

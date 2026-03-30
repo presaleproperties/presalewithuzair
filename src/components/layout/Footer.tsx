@@ -17,7 +17,7 @@ export const Footer = () => {
             <div className="flex items-center gap-3">
               <a
                 href="tel:+17782313592"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <Phone className="h-5 w-5" />
               </a>
@@ -25,13 +25,13 @@ export const Footer = () => {
                 href="https://wa.me/17782313592"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <MessageCircle className="h-5 w-5" />
               </a>
               <a
                 href="mailto:info@meetuzair.com"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <Mail className="h-5 w-5" />
               </a>
@@ -46,7 +46,7 @@ export const Footer = () => {
             <Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link>
             <Link to="/developers" className="text-muted-foreground hover:text-primary">Developers</Link>
             <Link to="/agents" className="text-muted-foreground hover:text-primary">Agents</Link>
-            <Link to="/book" className="text-primary hover:text-primary/80">Book a Call</Link>
+            <Link to="/book" className="text-foreground font-medium hover:text-foreground/80">Book a Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -87,7 +87,7 @@ export const Footer = () => {
                   href="https://wa.me/17782313592"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80 hover:bg-foreground/20 hover:text-foreground transition-all duration-300"
                 >
                   <MessageCircle className="h-5 w-5" />
                 </a>
@@ -110,7 +110,7 @@ export const Footer = () => {
                       to={link.href}
                       className={`transition-colors text-sm ${
                         'highlight' in link && link.highlight 
-                          ? "text-primary hover:text-primary/80" 
+                          ? "text-foreground font-medium hover:text-foreground/80" 
                           : "text-muted-foreground hover:text-primary"
                       }`}
                     >
@@ -137,25 +137,25 @@ export const Footer = () => {
               <h4 className="font-display text-lg font-semibold mb-6 text-foreground">Contact</h4>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <Phone className="h-5 w-5 text-primary mt-0.5" />
+                  <Phone className="h-5 w-5 text-foreground/70 mt-0.5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
-                    <a href="tel:+17782313592" className="text-foreground hover:text-primary transition-colors">
+                    <a href="tel:+17782313592" className="text-foreground hover:text-foreground/80 transition-colors">
                       +1 (778) 231-3592
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Mail className="h-5 w-5 text-primary mt-0.5" />
+                  <Mail className="h-5 w-5 text-foreground/70 mt-0.5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <a href="mailto:info@meetuzair.com" className="text-foreground hover:text-primary transition-colors">
+                    <a href="mailto:info@meetuzair.com" className="text-foreground hover:text-foreground/80 transition-colors">
                       info@meetuzair.com
                     </a>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                  <MapPin className="h-5 w-5 text-foreground/70 mt-0.5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Office</p>
                     <p className="text-foreground text-sm">

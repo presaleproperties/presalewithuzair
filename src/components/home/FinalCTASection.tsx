@@ -22,14 +22,14 @@ export const FinalCTASection = () => {
       <div className="container-xl relative z-10 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Community Leader Badge */}
-          <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
-            <Users className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Community Leader</span>
+          <div className="inline-flex items-center gap-2 bg-foreground/10 border border-foreground/20 rounded-full px-4 py-2 mb-6">
+            <Users className="h-4 w-4 text-foreground/80" />
+            <span className="text-sm font-medium text-foreground/80">Community Leader</span>
           </div>
           
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-6 uppercase tracking-tight leading-tight">
             <span className="text-foreground">Founder,</span>{" "}
-            <span className="text-gradient">Vancouver Presale Expo</span>
+            <span className="text-white/90">Vancouver Presale Expo</span>
           </h2>
           
           <p className="text-base sm:text-lg text-muted-foreground mb-4 max-w-2xl mx-auto">
@@ -57,14 +57,14 @@ export const FinalCTASection = () => {
             rel="noopener noreferrer"
             className="relative mx-auto max-w-sm sm:max-w-md block group"
           >
-            <div className="aspect-square rounded-full overflow-hidden border-4 border-primary/30 shadow-2xl transition-all duration-300 group-hover:border-primary group-hover:scale-105">
+            <div className="aspect-square rounded-full overflow-hidden border-4 border-foreground/20 shadow-2xl transition-all duration-300 group-hover:border-foreground/40 group-hover:scale-105">
               <img
                 src={uzairExpoImage}
                 alt="Uzair Muhammad speaking at Vancouver Presale Expo"
                 className="w-full h-full object-cover object-top"
               />
             </div>
-            <p className="text-xs text-primary mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            <p className="text-xs text-foreground/60 mt-4 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
               Visit vancouverpresaleexpo.com →
             </p>
           </a>

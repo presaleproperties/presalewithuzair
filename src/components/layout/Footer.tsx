@@ -140,7 +140,7 @@ export const Footer = () => {
                   <Phone className="h-5 w-5 text-foreground/70 mt-0.5" />
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
-                    <a href="tel:+17782313592" className="text-foreground hover:text-primary transition-colors">
+                    <a href="tel:+17782313592" className="text-foreground hover:text-foreground/80 transition-colors">
                       +1 (778) 231-3592
                     </a>
                   </div>

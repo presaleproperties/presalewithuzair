@@ -56,25 +56,26 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Services Vancouver | Condos, Assignments & Advisory | Uzair Muhammad</title>
+        <title>Presale Buyer Services | VIP Access, Contract Protection & Incentives | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Expert presale services in Vancouver: condo advisory, assignment sales support, and resale guidance. Buyer-first approach with contract review and developer analysis."
+          content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access before public launch, exclusive developer incentives, and full legal protection on every contract."
         />
-        <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver" />
+        <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver, Fraser Valley presale services" />
         <link rel="canonical" href="https://presalewithuzair.com/services" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/services" />
-        <meta property="og:title" content="Presale Services Vancouver | Uzair Muhammad" />
-        <meta property="og:description" content="Expert presale services: condo advisory, assignment sales, and resale guidance. Buyer-first approach." />
+        <meta property="og:title" content="Presale Buyer Services | VIP Access, Contract Protection & Incentives | Uzair Muhammad" />
+        <meta property="og:description" content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access before public launch, exclusive developer incentives, and full legal protection on every contract." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Presale Services | Uzair Muhammad" />
-        <meta name="twitter:description" content="Expert presale services in Vancouver: condo advisory, assignment sales, and resale guidance." />
+        <meta name="twitter:title" content="Presale Buyer Services | Uzair Muhammad" />
+        <meta name="twitter:description" content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access, exclusive incentives, and full contract protection." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -89,7 +90,8 @@ const Services = () => {
             "areaServed": [
               { "@type": "City", "name": "Vancouver" },
               { "@type": "City", "name": "Surrey" },
-              { "@type": "City", "name": "Burnaby" },
+              { "@type": "City", "name": "Langley" },
+              { "@type": "City", "name": "Abbotsford" },
               { "@type": "AdministrativeArea", "name": "Fraser Valley" }
             ],
             "hasOfferCatalog": {

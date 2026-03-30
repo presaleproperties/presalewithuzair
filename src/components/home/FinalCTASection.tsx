@@ -18,7 +18,7 @@ export const FinalCTASection = () => {
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5">
               Founder, Vancouver{" "}
-              <span className="text-primary">Presale Expo</span>
+              <span className="text-blue-400">Presale Expo</span>
             </h2>
 
             <p className="text-base sm:text-lg text-white/70 mb-4 leading-relaxed">

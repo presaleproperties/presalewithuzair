@@ -499,7 +499,7 @@ const BlogPost = () => {
                         {rp.title}
                       </h3>
                       {rp.excerpt && (
-                        <p className="text-xs line-clamp-2 mb-4" style={{ color: "hsl(30 8% 52%)" }}>
+                        <p className="text-xs line-clamp-2 mb-4" style={{ color: "hsl(220 10% 52%)" }}>
                           {rp.excerpt}
                         </p>
                       )}

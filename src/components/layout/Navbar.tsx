@@ -132,11 +132,12 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border transition-all duration-300 ${
+        className={`lg:hidden absolute top-full left-0 right-0 backdrop-blur-lg border-b border-border transition-all duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
+        style={{ backgroundColor: "hsl(40 25% 97%)" }}
       >
         <div className="container-xl py-6 space-y-4">
           {navLinks.map((link) => (
@@ -146,8 +147,9 @@ export const Navbar = () => {
               className={`block text-lg font-medium py-2 transition-colors ${
                 location.pathname === link.href
                   ? "text-primary"
-                  : "text-foreground/80 hover:text-primary"
+                  : "hover:text-primary"
               }`}
+              style={location.pathname !== link.href ? { color: "hsl(25 25% 12%)" } : undefined}
             >
               {link.label}
             </Link>

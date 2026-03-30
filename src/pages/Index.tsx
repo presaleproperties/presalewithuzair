@@ -270,10 +270,6 @@ const Index = () => {
         
         
         <Suspense fallback={<SectionFallback />}>
-          <InstagramSection />
-        </Suspense>
-        
-        <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
       </main>

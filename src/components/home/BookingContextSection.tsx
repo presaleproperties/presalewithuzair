@@ -229,35 +229,21 @@ export const BookingContextSection = () => {
                 onSubmit={handleSubmit}
                 className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-10 space-y-6"
               >
-                {/* Name Row */}
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-foreground font-medium">
-                      First Name <span className="text-destructive">*</span>
-                    </Label>
-                    <Input
-                      id="firstName"
-                      placeholder="Your first name"
-                      value={form.firstName}
-                      onChange={(e) => updateField("firstName", e.target.value)}
-                      required
-                      maxLength={100}
-                      className="bg-background border-border"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-foreground font-medium">
-                      Last Name
-                    </Label>
-                    <Input
-                      id="lastName"
-                      placeholder="Your last name"
-                      value={form.lastName}
-                      onChange={(e) => updateField("lastName", e.target.value)}
-                      maxLength={100}
-                      className="bg-background border-border"
-                    />
-                  </div>
+                {/* Full Name */}
+                <div className="space-y-2">
+                  <Label htmlFor="fullName" className="text-foreground font-medium">
+                    Full Name <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="fullName"
+                    placeholder="Your full name"
+                    value={form.fullName}
+                    onChange={(e) => updateField("fullName", e.target.value)}
+                    required
+                    maxLength={100}
+                    autoComplete="name"
+                    className="bg-background border-border"
+                  />
                 </div>
 
                 {/* Contact Row */}

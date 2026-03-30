@@ -65,6 +65,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   abbotsford: {
     city: "Abbotsford",
     slug: "abbotsford",
+    heroImage: "/images/heroes/abbotsford-hero.jpg",
     title: "Presale Condos Abbotsford BC | New Developments 2026 | Uzair Muhammad",
     metaDescription: "Discover 2026 presale condos and townhomes in Abbotsford, BC. Expert buyer's agent offering VIP access, floor plans, and pricing for new developments.",
     heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",

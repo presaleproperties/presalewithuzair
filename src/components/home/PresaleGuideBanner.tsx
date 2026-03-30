@@ -121,14 +121,14 @@ export const PresaleGuideBanner = () => {
             </div>
 
             {/* Guide Cover Image */}
-            <div className="w-48 sm:w-56 lg:w-64 shrink-0">
+            <div className="w-56 sm:w-64 lg:w-80 shrink-0">
               <img
                 src={guideCover}
                 alt="7 Costly Mistakes Presale Buyers Make — Free Guide"
-                className="w-full h-auto drop-shadow-xl hover:scale-105 transition-transform duration-300"
+                className="w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-lg"
                 loading="lazy"
-                width={800}
-                height={1024}
+                width={960}
+                height={1280}
               />
             </div>
           </div>

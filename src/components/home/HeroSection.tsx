@@ -5,13 +5,13 @@ import showroomImage from "@/assets/uzair-showroom-tour.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
-  eyebrow: "UZAIR MUHAMMAD",
-  headline: "Fraser Valley's Leading Presale Expert.",
-  subheadline: "Helping First-Time Buyers & Investors Win in New Construction.",
-  body: "VIP access. Exclusive incentives. Full contract protection. No developer bias.",
+  eyebrow: "VANCOUVER PRESALE EXPERT · FRASER VALLEY'S LEADING PRESALE SPECIALIST",
+  headline: "The Fraser Valley's Most Trusted Presale Expert.",
+  subheadline: "Your First Home or Next Investment — Done Right.",
+  body: "I've helped more buyers secure presale condos across Surrey, Langley, and Abbotsford than any other agent in the Fraser Valley. You get VIP access before the public launch, the best unit allocation, bulletproof contract protection, and straight-talk advice on which projects are actually worth your money — and which ones to walk away from.",
   supportingLine: "Buyer representation. Zero developer bias. Available in English, Punjabi, Hindi & Urdu.",
   cta: "Get VIP Access — It's Free",
-  trustBar: "400+ Clients · $200M+ in Presales · Surrey · Langley · Abbotsford · Chilliwack"
+  trustBar: "400+ Clients Helped · $200M+ in Presale Transactions · First-Time Buyers & Investors · Surrey · Langley · Abbotsford"
 };
 export const HeroSection = () => {
   const handleBookClick = () => {
@@ -39,91 +39,157 @@ export const HeroSection = () => {
       </div>
 
       <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
-        {/* Mobile Layout */}
+        {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Eyebrow */}
-          <p className="text-primary font-bold tracking-[0.2em] text-[11px] uppercase mb-5 animate-fade-up">
+          <p className="text-white/60 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
             {heroContent.eyebrow}
           </p>
           
           {/* Headline */}
-          <h1 className="font-display text-[2.25rem] leading-[1.08] font-black mb-4 animate-fade-up text-foreground">
+          <h1 className="font-display text-[2.5rem] leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
             {heroContent.headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg font-semibold text-foreground/80 mb-5 animate-fade-up leading-snug">
+          <p className="text-xl font-semibold text-muted-foreground mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
-          {/* Body - scannable pills */}
-          <div className="flex flex-wrap gap-2 mb-5 animate-fade-up">
-            {heroContent.body.split('. ').filter(Boolean).map((item, i) => (
-              <span key={i} className="text-xs font-medium text-muted-foreground border border-border/50 rounded-full px-3 py-1.5">
-                {item.replace('.', '')}
-              </span>
-            ))}
-          </div>
-
-          {/* Languages */}
-          <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
-            Available in English, Punjabi, Hindi & Urdu
+          {/* Body */}
+          <p className="text-base text-muted-foreground mb-3 animate-fade-up">
+            {heroContent.body}
+          </p>
+          
+          {/* Supporting Line */}
+          <p className="text-xs text-white/50 mb-8 animate-fade-up font-medium">
+            {heroContent.supportingLine}
           </p>
 
           {/* CTA Button */}
-          <div className="mb-5 animate-fade-up">
+          <div className="mb-4 animate-fade-up">
             <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
 
           {/* Trust Bar */}
-          <p className="text-[11px] text-muted-foreground tracking-wide animate-fade-up">
+          <p className="text-xs text-muted-foreground mb-8 animate-fade-up">
             {heroContent.trustBar}
           </p>
-        </div>
 
-        {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center min-h-screen pt-24 pb-16">
-          {/* Left Content */}
-          <div className="space-y-7">
-            {/* Eyebrow */}
-            <p className="text-primary font-bold tracking-[0.2em] text-xs uppercase animate-fade-up">
-              {heroContent.eyebrow}
-            </p>
-            
-            {/* Headline */}
-            <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.08] animate-fade-up text-foreground">
-              {heroContent.headline}
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-xl xl:text-2xl font-semibold text-foreground/80 animate-fade-up leading-snug">
-              {heroContent.subheadline}
-            </p>
-
-            {/* Body - scannable pills */}
-            <div className="flex flex-wrap gap-2.5 animate-fade-up">
-              {heroContent.body.split('. ').filter(Boolean).map((item, i) => (
-                <span key={i} className="text-sm font-medium text-muted-foreground border border-border/50 rounded-full px-4 py-2">
-                  {item.replace('.', '')}
-                </span>
-              ))}
+          {/* Hero Photos Grid - Mobile (After the fold like Dan Martell) */}
+          <div className="relative mb-8 animate-fade-up">
+            {/* Main hero image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
+              <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[4/5]" priority />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+              
+              {/* Floating badge on image */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 border border-border/50">
+               <p className="text-xs text-white/60 font-semibold uppercase tracking-wider mb-1">Fraser Valley's #1</p>
+                  <p className="text-sm font-bold text-foreground">Presale Expert & Strategist</p>
+                </div>
+              </div>
             </div>
 
-            {/* Languages */}
-            <p className="text-sm text-muted-foreground animate-fade-up">
-              Available in English, Punjabi, Hindi & Urdu
-            </p>
+            {/* Who I Help Grid */}
+            <div className="grid grid-cols-2 gap-3">
+              {/* First-Time Buyers */}
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-square" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
+                <div className="absolute bottom-3 left-3 right-3">
+                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
+                </div>
+              </button>
+              
+              {/* Investors */}
+              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
+                <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-square" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
+                <div className="absolute bottom-3 left-3 right-3">
+                   <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
+                  <p className="text-sm font-bold text-foreground">Investors</p>
+                </div>
+              </button>
+            </div>
 
-            {/* CTA + Trust Bar */}
-            <div className="space-y-4 animate-fade-up pt-2">
+            {/* Community Leader */}
+            <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer" className="relative rounded-xl overflow-hidden shadow-lg mt-3 block group hover:scale-[1.02] transition-transform duration-300">
+              <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
+                <p className="text-sm font-bold text-foreground">Founder, Vancouver Presale Expo</p>
+              </div>
+            </a>
+          </div>
+
+          {/* Trust Badge - Mobile */}
+          <div className="pt-6 border-t border-border/30 mt-auto animate-fade-up text-center">
+            <p className="text-lg font-display font-bold text-foreground">
+              Trusted by <span className="text-gradient">400+</span> Clients
+            </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              $200M+ in presales closed • 4+ years presale focus
+            </p>
+          </div>
+        </div>
+
+        {/* Desktop Layout - Keep existing side-by-side */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center min-h-screen pt-24 pb-16">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-6">
+              {/* Eyebrow */}
+              <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+                {heroContent.eyebrow}
+              </p>
+              
+              {/* Headline */}
+              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up text-foreground">
+                {heroContent.headline}
+              </h1>
+
+              {/* Subheadline */}
+              <p className="text-2xl font-semibold text-muted-foreground animate-fade-up">
+                {heroContent.subheadline}
+              </p>
+
+              {/* Body */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl animate-fade-up">
+                {heroContent.body}
+              </p>
+              
+              {/* Supporting Line */}
+              <p className="text-sm text-white/50 animate-fade-up font-medium">
+                {heroContent.supportingLine}
+              </p>
+            </div>
+
+            {/* CTA Section */}
+            <div className="space-y-3 animate-fade-up">
               <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
               
-              <p className="text-sm text-muted-foreground tracking-wide">
+              {/* Trust Bar */}
+              <p className="text-sm text-muted-foreground">
                 {heroContent.trustBar}
+              </p>
+            </div>
+
+            {/* Trust Badge */}
+            <div className="pt-8 border-t border-border/50 animate-fade-up">
+              <p className="text-xl font-display font-bold text-foreground">
+                Trusted by <span className="text-gradient">400+</span> Clients
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>
           </div>

@@ -148,8 +148,9 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Label */}
-              <p className="text-primary font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-white/60 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
                 {heroContent.label}
+              </p>
               </p>
               
               {/* Headline */}

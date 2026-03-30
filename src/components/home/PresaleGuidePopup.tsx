@@ -77,6 +77,14 @@ export const PresaleGuidePopup = () => {
       if (error) throw new Error(error.message || "Failed to submit");
 
       setIsSuccess(true);
+
+      // Trigger immediate PDF download
+      const link = document.createElement("a");
+      link.href = "/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      link.download = "7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (err) {
       console.error("Form submission error:", err);
       toast({
@@ -111,13 +119,22 @@ export const PresaleGuidePopup = () => {
                 <CheckCircle className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-                Check Your Inbox!
+                Your Guide Is Ready!
               </h3>
               <p className="text-muted-foreground text-sm mb-5">
-                Your guide is on its way.
+                Your download should start automatically. If not, click below.
               </p>
-              <Button variant="hero" onClick={handleClose} className="rounded-xl">
-                Done
+              <a
+                href="/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf"
+                download="7-Costly-Mistakes-Presale-Buyers-Make.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity mb-3"
+              >
+                <Download className="h-4 w-4" />
+                Download Guide
+              </a>
+              <br />
+              <Button variant="ghost" onClick={handleClose} className="rounded-xl text-muted-foreground">
+                Close
               </Button>
             </div>
           ) : (

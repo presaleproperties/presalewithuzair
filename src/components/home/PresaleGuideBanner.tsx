@@ -54,6 +54,14 @@ export const PresaleGuideBanner = () => {
       });
       if (error) throw new Error(error.message);
       setIsSuccess(true);
+
+      // Trigger immediate PDF download
+      const link = document.createElement("a");
+      link.href = "/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      link.download = "7-Costly-Mistakes-Presale-Buyers-Make.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch {
       toast({
         title: "Something went wrong",
@@ -84,9 +92,19 @@ export const PresaleGuideBanner = () => {
               </p>
 
               {isSuccess ? (
-                <div className="flex items-center gap-3 justify-center md:justify-start text-primary">
-                  <CheckCircle className="h-5 w-5" />
-                  <span className="font-semibold">Check your inbox — guide is on its way!</span>
+                <div className="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start">
+                  <div className="flex items-center gap-2 text-primary">
+                    <CheckCircle className="h-5 w-5" />
+                    <span className="font-semibold">Your download has started!</span>
+                  </div>
+                  <a
+                    href="/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf"
+                    download="7-Costly-Mistakes-Presale-Buyers-Make.pdf"
+                    className="inline-flex items-center gap-2 text-sm text-primary hover:underline font-medium"
+                  >
+                    <Download className="h-4 w-4" />
+                    Download again
+                  </a>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto md:mx-0">

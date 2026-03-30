@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
-import { useCalendly } from "@/hooks/useCalendly";
+import { useNavigate } from "react-router-dom";
 import uzairImage from "@/assets/uzair-expo-profile.jpg";
 
 const Contact = () => {

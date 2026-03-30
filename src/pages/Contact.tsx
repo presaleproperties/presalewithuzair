@@ -93,9 +93,9 @@ const Contact = () => {
                       <MessageCircle className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
-                      <p className="text-muted-foreground text-sm mb-2">Get a quick response</p>
-                      <p className="text-primary font-medium">Chat Now</p>
+                     <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
+                      <p className="text-muted-foreground text-sm mb-2">Fastest response time for quick questions.</p>
+                      <p className="text-primary font-medium">Chat on WhatsApp</p>
                     </div>
                   </a>
 

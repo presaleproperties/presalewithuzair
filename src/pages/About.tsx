@@ -53,7 +53,7 @@ const About = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Uzair Muhammad | Presale Expert" />
-        <meta name="twitter:description" content="Vancouver's top presale expert with $200M+ in sales." />
+        <meta name="twitter:description" content="Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales." />
         
         <script type="application/ld+json">
           {JSON.stringify({

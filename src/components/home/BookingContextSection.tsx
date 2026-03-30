@@ -219,7 +219,7 @@ export const BookingContextSection = () => {
           <div className="max-w-2xl mx-auto">
             {isSubmitted ? (
               <div className="text-center py-16 px-6 bg-card/50 backdrop-blur-sm rounded-2xl border border-border">
-                <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
+                <CheckCircle className="h-16 w-16 text-primary mx-auto mb-6" />
                 <h3 className="font-display text-2xl font-bold text-foreground mb-3">
                   You're All Set!
                 </h3>

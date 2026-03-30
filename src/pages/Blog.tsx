@@ -271,55 +271,6 @@ const Blog = () => {
           </div>
         </section>
 
-        {/* ── Category filters ── */}
-        <section
-          className="py-10 border-b"
-          style={{ background: "hsl(var(--background))", borderColor: "hsl(var(--border))" }}
-        >
-          <div className="container-xl">
-            <div className="flex items-center justify-between mb-6">
-              <h2
-                className="font-display text-xl"
-                style={{ color: "hsl(var(--foreground))" }}
-              >
-                Browse by Topic
-              </h2>
-              {activeCategory && (
-                <button
-                  onClick={() => setActiveCategory(null)}
-                  className="flex items-center gap-1.5 text-xs font-semibold transition-colors hover:underline"
-                  style={{ color: "hsl(var(--primary))" }}
-                >
-                  <X className="h-3.5 w-3.5" /> Clear filter
-                </button>
-              )}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {CATEGORIES.map((cat) => {
-                const count = posts?.filter((p) => p.category?.slug === cat.slug).length ?? 0;
-                const isActive = activeCategory === cat.slug;
-
-                return (
-                  <button
-                    key={cat.slug}
-                    onClick={() => setActiveCategory(isActive ? null : cat.slug)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border ${
-                      isActive
-                        ? "bg-foreground text-background border-foreground"
-                        : "bg-transparent text-foreground/70 border-border hover:border-foreground/40 hover:text-foreground"
-                    }`}
-                  >
-                    {cat.label}
-                    <span className={`ml-1.5 text-xs ${isActive ? "text-background/70" : "text-muted-foreground"}`}>
-                      {count}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* ── Articles ── */}
         <section className="py-14 pb-24 bg-background">

@@ -91,7 +91,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Chilliwack Presales: Maximum Value, Zero Hype.",
     heroSubheadline: "VIP Access to the Fraser Valley's Most Affordable New Construction.",
-    heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. I help you navigate the Chilliwack presale market, ensuring you buy into quality projects with reputable developers.",
+    heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. Navigate the presale market with confidence and buy into quality projects.",
     heroCta: "Get Chilliwack VIP Access",
     whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",
     whyBuyBody: "Chilliwack offers the most affordable new construction entry point in the Fraser Valley. As infrastructure and population grow, early buyers stand to benefit the most. I ensure you're buying quality — not just price.",

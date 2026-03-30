@@ -120,7 +120,7 @@ const LandingPage = () => {
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
     "First-Time Buyer": "bg-primary/20 text-primary",
-    "Investor": "bg-amber-500/20 text-amber-400",
+    "Investor": "bg-sky-500/20 text-sky-600",
     "Repeat Client": "bg-emerald-500/20 text-emerald-400",
     "Presale Buyer": "bg-purple-500/20 text-purple-400",
     "Seller & Buyer": "bg-blue-500/20 text-blue-400",

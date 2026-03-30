@@ -233,7 +233,7 @@ const BlogPost = () => {
             <div className="container-xl max-w-4xl mt-10">
               <div
                 className="w-full h-[360px] md:h-[480px] rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 16px 64px -16px hsla(25,20%,15%,0.18)" }}
+                style={{ boxShadow: "0 16px 64px -16px hsla(222,20%,12%,0.18)" }}
               >
                 <img
                   src={post.image_url}

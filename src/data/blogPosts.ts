@@ -86,7 +86,7 @@ For investors looking at 3-5 year holds, Willoughby presales offer an excellent 
 Book a call with Uzair to discuss current opportunities.
     `,
     date: "Nov 10, 2025",
-    image: "https://framerusercontent.com/images/PzqbNRttq5qGZTf5rAeNjGlswFE.png",
+    image: willoughbyInvestment,
     category: "Investment",
   },
   {

@@ -25,13 +25,13 @@ export const Footer = () => {
                 href="https://wa.me/17782313592"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <MessageCircle className="h-5 w-5" />
               </a>
               <a
                 href="mailto:info@meetuzair.com"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary"
+                className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center text-foreground/80"
               >
                 <Mail className="h-5 w-5" />
               </a>

@@ -8,7 +8,7 @@ const heroContent = {
   eyebrow: "Uzair Muhammad",
   headline: "Fraser Valley's Leading Presale Agent.",
   subheadline: "400+ Clients Helped · $200M+ in Presale Transactions",
-  body: "I get my clients in before the public, with the best unit selection and contract protection on every deal. No developer bias. No pressure. Just the right move for you.",
+  body: "Expert buyer's representation for first-time buyers and investors purchasing new condos, townhomes across the Fraser Valley — with VIP access, exclusive developer incentives, and full legal protection on every contract.",
   supportingLine: "",
   cta: "Work With Uzair — It's Free",
   trustBar: "400+ Clients Helped · $200M+ in Presale Transactions · Surrey · Langley · Abbotsford · Chilliwack · Maple Ridge"

@@ -16,10 +16,10 @@ import expoImage from "@/assets/uzair-expo-wide.jpg";
 import { useCalendly } from "@/hooks/useCalendly";
 
 const stats = [
-  { value: "400+", label: "Presales Advised" },
   { value: "$200M+", label: "Sales Volume" },
-  { value: "$1M+", label: "Saved for Clients" },
-  { value: "100%", label: "Buyer-First" },
+  { value: "400+", label: "Clients Advised" },
+  { value: "3X", label: "Elite Agent at Real Broker" },
+  { value: "4", label: "Languages Spoken" },
 ];
 
 const values = [

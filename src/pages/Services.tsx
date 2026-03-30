@@ -133,11 +133,10 @@ const Services = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">How I Can Help</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Clear <span className="text-gradient">Guidance</span>
+                Expert Guidance. <span className="text-gradient">No Sales Pressure.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Whether you're buying a presale, assigning a contract, or exploring resale — 
-                get honest, buyer-first advice focused on education and protecting your interests.
+                Whether you are buying your first presale, assigning a contract, or looking for an investment property, you get honest, buyer-first advice designed to protect your capital.
               </p>
             </div>
           </div>

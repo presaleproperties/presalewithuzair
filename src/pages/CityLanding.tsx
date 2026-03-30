@@ -167,7 +167,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
       <main>
         {/* ── Hero Section ── */}
-        <section className="relative pt-32 pb-20 overflow-hidden min-h-[60vh] flex items-center">
+        <section className="dark-section relative pt-32 pb-20 overflow-hidden min-h-[70vh] flex items-center">
           {/* Hero background image */}
           <div className="absolute inset-0">
             <img
@@ -175,28 +175,29 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               alt={`${config.city} BC skyline`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+            {/* Strong left-side overlay so text is legible */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/20" />
           </div>
           <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
 
           <div className="relative z-10 container-xl px-4 sm:px-6">
-            <div className="max-w-3xl">
+            <div className="max-w-2xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-primary">
                 {config.heroEyebrow}
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-foreground mb-4 animate-fade-up">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-white mb-4 animate-fade-up">
                 {config.heroHeadline}
               </h1>
-              <h2 className="font-display text-xl md:text-2xl text-foreground/70 mb-4 animate-fade-up">
+              <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">
                 {config.heroSubheadline}
               </h2>
               <div className="w-14 h-[2px] rounded-full mb-6 animate-fade-up" style={{ background: "var(--text-gradient)" }} />
-              <p className="text-lg text-foreground/80 max-w-2xl leading-relaxed mb-8 animate-fade-up">
+              <p className="text-lg text-white/80 max-w-xl leading-relaxed mb-8 animate-fade-up">
                 {config.heroBody}
               </p>
               <button
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background font-semibold text-base transition-all duration-300 animate-fade-up"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/80 text-white bg-transparent hover:bg-white hover:text-black font-semibold text-base transition-all duration-300 animate-fade-up"
               >
                 {config.heroCta}
               </button>

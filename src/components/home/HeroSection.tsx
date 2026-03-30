@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
-import showroomImage from "@/assets/uzair-showroom-tour.jpg";
-import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
-import expoImage from "@/assets/uzair-expo-wide.jpg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "Fraser Valley's Leading Presale Agent.",
@@ -97,38 +94,6 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Who I Help Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {/* First-Time Buyers */}
-              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
-                <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-square md:aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] md:text-xs text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">First-Time Buyers</p>
-                </div>
-              </button>
-              
-              {/* Investors */}
-              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
-                <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-square md:aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent group-hover:from-background/90 transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] md:text-xs text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">Investors</p>
-                </div>
-              </button>
-
-              {/* Community Leader - full width on mobile, fits in 3-col on tablet */}
-              <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer" className="relative rounded-xl overflow-hidden shadow-lg col-span-2 md:col-span-1 block group hover:scale-[1.02] transition-transform duration-300">
-                <OptimizedImage src={expoImage} alt="Uzair speaking at Vancouver Presale Expo" className="w-full aspect-[16/9] md:aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent group-hover:from-background transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] md:text-xs text-foreground/60 font-bold uppercase tracking-wider mb-0.5">Community Leader</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">Founder, Vancouver Presale Expo</p>
-                </div>
-              </a>
-            </div>
           </div>
 
           {/* Trust Badge */}
@@ -214,38 +179,6 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Who I Help Grid - Desktop */}
-            <div className="relative grid grid-cols-3 gap-4">
-              {/* First-Time Buyers */}
-              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
-                <OptimizedImage src={showroomImage} alt="First-time home buyers touring presale showroom" className="w-full aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                   <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
-                  <p className="text-sm font-bold text-foreground">First-Time Buyers</p>
-                </div>
-              </button>
-              
-              {/* Investors */}
-              <button onClick={handleBookClick} className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300 text-left cursor-pointer">
-                <OptimizedImage src={clientMeetingImage} alt="Real estate investor consultation" className="w-full aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">I Help</p>
-                  <p className="text-sm font-bold text-foreground">Investors</p>
-                </div>
-              </button>
-
-              {/* Community Leader */}
-              <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer" className="relative rounded-xl overflow-hidden shadow-lg group hover:scale-105 transition-transform duration-300">
-                <OptimizedImage src={expoImage} alt="Uzair at Vancouver Presale Expo" className="w-full aspect-[4/3]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent group-hover:from-background/90 transition-all duration-300" />
-                <div className="absolute bottom-3 left-3 right-3">
-                  <p className="text-[10px] text-foreground/60 font-bold uppercase tracking-wider mb-0.5">Community</p>
-                  <p className="text-sm font-bold text-foreground">Leader</p>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>

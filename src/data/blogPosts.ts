@@ -226,7 +226,7 @@ For most investors and patient buyers, presale offers superior returns when you 
 Schedule a consultation with Uzair to discuss your options.
     `,
     date: "Jun 20, 2025",
-    image: "https://framerusercontent.com/images/STbZucFoQl1oSpyZzgFkTPu0We8.jpg",
+    image: presaleVsResale,
     category: "Education",
   },
 ];

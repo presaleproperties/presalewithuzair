@@ -42,7 +42,7 @@ export const HeroSection = () => {
         {/* Mobile Layout - Stacked like Dan Martell */}
         <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8">
           {/* Eyebrow */}
-          <p className="text-foreground/70 font-bold tracking-[0.15em] text-xs uppercase mb-4 animate-fade-up">
+          <p className="text-foreground font-bold tracking-[0.2em] text-xs uppercase mb-4 animate-fade-up">
             {heroContent.eyebrow}
           </p>
           
@@ -52,18 +52,18 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl font-semibold text-foreground/80 mb-4 animate-fade-up">
+          <p className="text-xl font-semibold text-foreground/50 mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
           {/* Body */}
-          <p className="text-base text-foreground/70 mb-3 animate-fade-up">
+          <p className="text-base text-foreground/60 mb-3 animate-fade-up leading-relaxed">
             {heroContent.body}
           </p>
           
           {/* Supporting Line */}
           {heroContent.supportingLine && (
-            <p className="text-xs text-foreground/60 mb-8 animate-fade-up font-medium">
+            <p className="text-xs text-foreground/40 mb-8 animate-fade-up font-medium">
               {heroContent.supportingLine}
             </p>
           )}
@@ -76,7 +76,7 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs text-foreground/60 mb-8 animate-fade-up">
+          <p className="text-xs text-foreground/40 mb-8 animate-fade-up">
             {heroContent.trustBar}
           </p>
 
@@ -148,7 +148,7 @@ export const HeroSection = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               {/* Eyebrow */}
-              <p className="text-foreground/70 font-bold tracking-[0.15em] text-sm uppercase animate-fade-up">
+              <p className="text-foreground font-bold tracking-[0.2em] text-sm uppercase animate-fade-up">
                 {heroContent.eyebrow}
               </p>
               
@@ -158,18 +158,18 @@ export const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-foreground/80 animate-fade-up">
+              <p className="text-2xl font-semibold text-foreground/50 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-foreground/70 max-w-xl animate-fade-up">
+              <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
               
               {/* Supporting Line */}
               {heroContent.supportingLine && (
-                <p className="text-sm text-foreground/60 animate-fade-up font-medium">
+                <p className="text-sm text-foreground/40 animate-fade-up font-medium">
                   {heroContent.supportingLine}
                 </p>
               )}
@@ -182,7 +182,7 @@ export const HeroSection = () => {
               </Button>
               
               {/* Trust Bar */}
-              <p className="text-sm text-foreground/60">
+              <p className="text-sm text-foreground/40">
                 {heroContent.trustBar}
               </p>
             </div>
@@ -192,7 +192,7 @@ export const HeroSection = () => {
               <p className="text-xl font-display font-bold text-foreground">
                 Trusted by <span className="text-gradient">400+</span> Clients
               </p>
-              <p className="text-sm text-foreground/60 mt-2">
+              <p className="text-sm text-foreground/40 mt-2">
                 $200M+ in presales closed • 4+ years presale focus
               </p>
             </div>

@@ -13,7 +13,7 @@ const ProcessSection = lazy(() => import("@/components/home/ProcessSection").the
 const MidPageCTA = lazy(() => import("@/components/home/MidPageCTA").then(m => ({ default: m.MidPageCTA })));
 const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
 
-const InstagramSection = lazy(() => import("@/components/home/InstagramSection").then(m => ({ default: m.InstagramSection })));
+
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
 const PresaleGuidePopup = lazy(() => import("@/components/home/PresaleGuidePopup").then(m => ({ default: m.PresaleGuidePopup })));
 const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
@@ -268,10 +268,6 @@ const Index = () => {
           <BookingContextSection />
         </Suspense>
         
-        
-        <Suspense fallback={<SectionFallback />}>
-          <InstagramSection />
-        </Suspense>
         
         <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />

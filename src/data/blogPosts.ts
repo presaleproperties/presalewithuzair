@@ -50,7 +50,7 @@ With the ongoing development and increasing demand, Willoughby presales are show
 Contact Uzair to learn about upcoming presale opportunities in Willoughby.
     `,
     date: "Nov 10, 2025",
-    image: "https://framerusercontent.com/images/X7roYCDcOm4G19QDL6LIwPnVGiU.png",
+    image: willoughbyFirstTimeBuyers,
     category: "First-Time Buyers",
   },
   {

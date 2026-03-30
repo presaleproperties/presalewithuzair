@@ -35,9 +35,9 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       to={`/blog/${post.slug}`}
       className="group grid md:grid-cols-[1.1fr_1fr] rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1"
       style={{
-        background: "#fff",
+        background: "hsl(var(--background))",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 4px 32px -8px hsla(222,20%,12%,0.08)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       {/* Image */}

@@ -86,10 +86,10 @@ function FeaturedCard({ post }: { post: BlogPost }) {
             style={{ filter: "saturate(1.1) contrast(1.05)" }}
           />
         )}
-        {/* Gold shimmer overlay on hover */}
+        {/* Blue shimmer overlay on hover */}
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, hsl(40 85% 45% / 0.08) 0%, transparent 60%)" }}
+          style={{ background: "linear-gradient(135deg, hsl(230 80% 28% / 0.08) 0%, transparent 60%)" }}
         />
       </div>
 
@@ -288,21 +288,21 @@ const Blog = () => {
 
       <Navbar />
 
-      <main style={{ background: "hsl(40 20% 97%)" }}>
+      <main style={{ background: "hsl(0 0% 100%)" }}>
 
         {/* ── Hero ── */}
         <section
           className="pt-32 pb-16 relative overflow-hidden"
-          style={{ background: "hsl(25 15% 10%)" }}
+          style={{ background: "hsl(222 25% 6%)" }}
         >
-          {/* Subtle gold radial glow */}
+          {/* Subtle blue radial glow */}
           <div
             className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none"
             style={{
-              background: "radial-gradient(ellipse at center, hsl(40 85% 45% / 0.12) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse at center, hsl(230 80% 28% / 0.12) 0%, transparent 70%)",
             }}
           />
-          {/* Gold top bar */}
+          {/* Blue top bar */}
           <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
 
           <div className="container-xl text-center relative z-10">
@@ -401,7 +401,7 @@ const Blog = () => {
         </section>
 
         {/* ── Articles ── */}
-        <section className="py-14 pb-24" style={{ background: "hsl(40 20% 97%)" }}>
+        <section className="py-14 pb-24" style={{ background: "hsl(0 0% 100%)" }}>
           <div className="container-xl">
             {isLoading ? (
               <div className="flex justify-center py-24">
@@ -472,7 +472,7 @@ const Blog = () => {
         {/* ── Dark CTA strip ── */}
         <section
           className="py-20 relative overflow-hidden"
-          style={{ background: "hsl(25 15% 10%)" }}
+          style={{ background: "hsl(222 25% 6%)" }}
         >
           <div
             className="absolute top-0 left-0 right-0 h-[2px]"
@@ -499,8 +499,8 @@ const Blog = () => {
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: "var(--text-gradient)",
-                color: "hsl(25 15% 10%)",
-                boxShadow: "0 8px 32px -8px hsl(40 85% 45% / 0.5)",
+                color: "hsl(222 25% 6%)",
+                boxShadow: "0 8px 32px -8px hsl(230 80% 28% / 0.4)",
               }}
             >
               Book a Free Call with Uzair

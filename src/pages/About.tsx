@@ -122,17 +122,26 @@ const About = () => {
 
               <div>
                 <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                  I Don't Sell Hype. I Sell <span className="text-gradient">Financial Clarity.</span>
+                  I Don't Sell Hype. I Protect You <span className="text-gradient">Against It.</span>
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    I was born in Pakistan and raised right here in Surrey. I know the Fraser Valley because I live here, I raise my two kids here, and I invest my own money here.
+                    I got into presales because I saw buyers getting burned — signing contracts they didn't understand, buying into projects that never should have been sold to them, and working with agents who were more loyal to the developer than the client.
                   </p>
                   <p>
-                    Early in my career, I noticed a massive problem in the real estate industry: most agents treat presales like an afterthought. They sell the hype of a shiny brochure without understanding the contracts, the developers, or the real risks involved.
+                    I built my entire practice to fix that.
                   </p>
                   <p>
-                    I built my entire practice around fixing that. Every project I recommend, I've personally vetted. Every contract I review, I read line-by-line. And if a deal doesn't make financial sense, I'll tell you — even if it means losing the sale.
+                    I focus exclusively on new construction and presales across the Fraser Valley — Surrey, Langley, Abbotsford, Chilliwack, and Maple Ridge. This is the only market I work in, which means I know every active developer, every project in the pipeline, and exactly which ones are worth your money before you ever walk into a showroom.
+                  </p>
+                  <p>
+                    Every project I recommend, I've personally vetted. Every contract I put in front of you, I've read line-by-line. I know where developers hide the fees, where the assignment clauses can hurt you, and what questions to ask before you commit a single dollar.
+                  </p>
+                  <p>
+                    And if a deal doesn't make financial sense for you — I'll tell you to walk away. Even if it costs me the sale.
+                  </p>
+                  <p>
+                    That's the only way I know how to do this.
                   </p>
                 </div>
 

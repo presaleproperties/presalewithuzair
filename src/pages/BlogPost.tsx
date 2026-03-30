@@ -287,9 +287,9 @@ const BlogPost = () => {
                 <div
                   className="mt-16 p-8 rounded-2xl flex gap-6 items-start"
                   style={{
-                    background: "#fff",
+                    background: "hsl(var(--background))",
                     border: "1px solid hsl(var(--border))",
-                    boxShadow: "0 4px 24px -8px hsla(25,20%,15%,0.08)",
+                    boxShadow: "var(--shadow-card)",
                   }}
                 >
                   <img

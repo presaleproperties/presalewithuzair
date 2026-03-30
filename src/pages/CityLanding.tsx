@@ -111,7 +111,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroEyebrow: "MAPLE RIDGE PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Maple Ridge Presales and New Construction.",
     heroSubheadline: "Expert Guidance for First-Time Buyers and Investors.",
-    heroBody: "Maple Ridge offers incredible lifestyle and investment potential. I get you VIP access to the best new condo and townhome developments, protecting your deposit and your future.",
+    heroBody: "Maple Ridge offers incredible lifestyle and investment potential. Get VIP access to the best new condo and townhome developments in the area.",
     heroCta: "Get Maple Ridge VIP Access",
     whyBuyTitle: "Why Buy a Presale in Maple Ridge",
     whyBuyBody: "Maple Ridge combines mountain lifestyle with urban convenience. Growing demand, limited supply, and improving infrastructure make it a strong long-term play for presale buyers.",

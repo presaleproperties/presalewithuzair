@@ -416,7 +416,7 @@ const BlogPost = () => {
                       }}
                     >
                       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
-                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
+                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                         Free Call
                       </p>
                       <p className="font-display text-base text-white leading-tight mb-3">

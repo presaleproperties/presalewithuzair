@@ -72,7 +72,8 @@ const About = () => {
                 "@type": "Organization",
                 "name": "Real Broker"
               },
-              "knowsAbout": ["Presale Condos", "Assignment Sales", "Real Estate Investment", "New Construction"],
+              "knowsAbout": ["Presale Condos", "Assignment Sales", "Real Estate Investment", "New Construction", "Fraser Valley Real Estate", "Buyer Protection", "Contract Review"],
+              "areaServed": ["Surrey", "Langley", "Abbotsford", "Chilliwack", "Maple Ridge", "Fraser Valley"],
               "sameAs": [
                 "https://www.instagram.com/presalewithuzair",
                 "https://www.tiktok.com/@presalewithuzair",

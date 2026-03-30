@@ -180,7 +180,7 @@ function PostCard({ post }: { post: BlogPost }) {
       style={{
         background: "#fff",
         border: "1px solid hsl(var(--border))",
-        boxShadow: "0 2px 16px -4px hsla(25,20%,15%,0.07)",
+        boxShadow: "0 2px 16px -4px hsla(222,20%,12%,0.06)",
       }}
     >
       {/* Thumbnail */}

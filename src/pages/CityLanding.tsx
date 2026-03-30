@@ -105,6 +105,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
   "maple-ridge": {
     city: "Maple Ridge",
     slug: "maple-ridge",
+    heroImage: "/images/heroes/maple-ridge-hero.jpg",
     title: "Presale Condos Maple Ridge BC | New Homes | Uzair Muhammad",
     metaDescription: "Find the best presale condos and new construction homes in Maple Ridge, BC. VIP access, contract protection, and expert buyer representation.",
     heroEyebrow: "MAPLE RIDGE PRESALE CONDOS & TOWNHOMES",

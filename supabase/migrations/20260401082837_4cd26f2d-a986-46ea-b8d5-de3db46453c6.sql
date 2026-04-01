@@ -1,0 +1,2 @@
+SELECT cron.unschedule('sync-blogs-from-presaleproperties');
+SELECT cron.schedule('sync-blogs-from-presaleproperties', '0 0 */3 * *', $$SELECT net.http_get(url := current_setting('app.settings.supabase_url') || '/functions/v1/sync-blogs', headers := jsonb_build_object('Authorization', 'Bearer ' || current_setting('app.settings.service_role_key')))$$);

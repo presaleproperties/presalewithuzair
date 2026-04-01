@@ -15,9 +15,9 @@ import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const stats = [
-  { value: "$200M+", label: "Sales Volume" },
-  { value: "400+", label: "Clients Advised" },
-  { value: "3X", label: "Elite Agent at Real Broker" },
+  { value: "400+", label: "Units Sold" },
+  { value: "$200M+", label: "in Sales Volume" },
+  { value: "5 Yrs", label: "in the Presale Market" },
   { value: "4", label: "Languages Spoken" },
 ];
 

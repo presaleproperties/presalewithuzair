@@ -200,7 +200,7 @@ export const Footer = () => {
                   <div>
                     <p className="text-xs text-white/40 mb-0.5">Office</p>
                     <p className="text-sm text-white/80">
-                      3211 152 St Building C, Suite 402<br />
+                      3211 152 St, Building C, Suite 402<br />
                       Surrey, BC V3Z 1H8
                     </p>
                   </div>

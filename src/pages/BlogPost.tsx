@@ -291,7 +291,7 @@ const BlogPost = () => {
                     <h3 className="font-display text-xl mb-2" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
                     <div className="w-8 h-[2px] rounded-full mb-3" style={{ background: "var(--text-gradient)" }} />
                     <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
-                      Vancouver's presale specialist with a track record of helping 400+ buyers and investors navigate the market with clarity. Uzair provides unbiased advice — even if that means advising you not to buy.
+                      Vancouver's presale specialist with 400+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
                     <a
                       href="https://wa.me/17782313592"

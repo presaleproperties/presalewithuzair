@@ -118,7 +118,7 @@ const About = () => {
                 {/* Stats overlay */}
                 <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
                   <p className="text-4xl font-display font-bold text-gradient">400+</p>
-                  <p className="text-sm text-muted-foreground">Clients Served</p>
+                  <p className="text-sm text-muted-foreground">Units Sold</p>
                 </div>
               </div>
 

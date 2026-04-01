@@ -21,7 +21,7 @@ export const AboutSection = () => {
             {/* Floating Card */}
             <div className="absolute bottom-6 left-6 right-6 bg-card/95 backdrop-blur-sm rounded-xl p-6 border border-border">
               <p className="text-sm text-primary font-medium mb-2">Investment Track Record</p>
-              <p className="font-display text-2xl font-bold text-foreground">$200M+ In Volume</p>
+              <p className="font-display text-2xl font-bold text-foreground">$200M+ in Sales Volume</p>
             </div>
           </div>
 

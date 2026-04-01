@@ -45,7 +45,7 @@ const Contact = () => {
               "email": "info@meetuzair.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "3211 152 St Building C, Suite 402",
+                "streetAddress": "3211 152 St, Building C, Suite 402",
                 "addressLocality": "Surrey",
                 "addressRegion": "BC",
                 "postalCode": "V3Z 1H8",

@@ -64,7 +64,7 @@ const About = () => {
               "@type": "Person",
               "name": "Uzair Muhammad",
               "jobTitle": "Presale Expert & Real Estate Agent",
-              "description": "Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford, Chilliwack & Maple Ridge.",
+              "description": "Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales volume, 400+ units sold. 5 years in the presale market across Surrey, Langley, Abbotsford, Chilliwack & Maple Ridge.",
               "url": "https://presalewithuzair.com/about",
               "image": "https://presalewithuzair.com/og-image.jpg",
               "telephone": "+1-778-231-3592",

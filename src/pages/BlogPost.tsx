@@ -36,7 +36,8 @@ function readTime(content: string) {
 
 function renderMarkdown(content: string): string {
   const trimmed = content.trim();
-  if (trimmed.startsWith("<") && (trimmed.startsWith("<p") || trimmed.startsWith("<h") || trimmed.startsWith("<ul") || trimmed.startsWith("<ol") || trimmed.startsWith("<div") || trimmed.startsWith("<blockquote"))) {
+  // If content is already HTML, enhance it with classes
+  if (trimmed.startsWith("<") && (trimmed.startsWith("<p") || trimmed.startsWith("<h") || trimmed.startsWith("<ul") || trimmed.startsWith("<ol") || trimmed.startsWith("<div") || trimmed.startsWith("<blockquote") || trimmed.startsWith("<table") || trimmed.startsWith("<figure"))) {
     return trimmed
       .replace(/<h1(\s[^>]*)?>/g, '<h1$1 class="blog-h1">')
       .replace(/<h2(\s[^>]*)?>/g, '<h2$1 class="blog-h2">')
@@ -61,10 +62,43 @@ function renderMarkdown(content: string): string {
   let inList = false;
   let listType = "";
   let firstParagraphDone = false;
+  let inTable = false;
+  let tableRows: string[][] = [];
   const closeList = () => {
     if (inList) { html.push(listType === "ul" ? "</ul>" : "</ol>"); inList = false; listType = ""; }
   };
+  const closeTable = () => {
+    if (inTable && tableRows.length > 0) {
+      html.push('<table>');
+      tableRows.forEach((cols, i) => {
+        if (i === 0) {
+          html.push('<thead><tr>');
+          cols.forEach(c => html.push(`<th>${inline(c.trim())}</th>`));
+          html.push('</tr></thead><tbody>');
+        } else {
+          html.push('<tr>');
+          cols.forEach(c => html.push(`<td>${inline(c.trim())}</td>`));
+          html.push('</tr>');
+        }
+      });
+      html.push('</tbody></table>');
+      inTable = false;
+      tableRows = [];
+    }
+  };
   lines.forEach((line) => {
+    // Table rows
+    if (line.trim().startsWith("|") && line.trim().endsWith("|")) {
+      const cells = line.trim().slice(1, -1).split("|");
+      // Skip separator rows like |---|---|
+      if (cells.every(c => /^[\s\-:]+$/.test(c))) return;
+      if (!inTable) { closeList(); inTable = true; }
+      tableRows.push(cells);
+      return;
+    }
+    if (inTable) closeTable();
+    // Horizontal rule
+    if (/^(-{3,}|\*{3,}|_{3,})$/.test(line.trim())) { closeList(); html.push('<hr />'); return; }
     if (line.startsWith("> ")) { closeList(); html.push(`<blockquote class="blog-pullquote">${inline(line.slice(2))}</blockquote>`); return; }
     if (line.startsWith("# ")) { closeList(); html.push(`<h1 class="blog-h1">${inline(line.slice(2))}</h1>`); return; }
     if (line.startsWith("## ")) { closeList(); html.push(`<h2 class="blog-h2">${inline(line.slice(3))}</h2>`); return; }
@@ -84,6 +118,7 @@ function renderMarkdown(content: string): string {
     else { html.push(`<p class="blog-p">${inline(line)}</p>`); }
   });
   closeList();
+  closeTable();
   return html.join("");
 }
 
@@ -260,8 +295,8 @@ const BlogPost = () => {
                   className="blog-content"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(renderMarkdown(post.content), {
-                      ALLOWED_TAGS: ["h1","h2","h3","h4","h5","h6","p","li","ul","ol","strong","em","a","blockquote","code","pre","span"],
-                      ALLOWED_ATTR: ["class","href","target","rel"],
+                      ALLOWED_TAGS: ["h1","h2","h3","h4","h5","h6","p","li","ul","ol","strong","em","a","blockquote","code","pre","span","table","thead","tbody","tr","th","td","hr","br","img","figure","figcaption","div","sup","sub","mark","del","s"],
+                      ALLOWED_ATTR: ["class","href","target","rel","src","alt","width","height","colspan","rowspan","style"],
                     }),
                   }}
                 />

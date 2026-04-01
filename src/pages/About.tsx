@@ -96,7 +96,7 @@ const About = () => {
                 Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                $200M+ in presale transactions. 400+ families served. Zero BS.
+                400+ Units Sold. $200M+ in Sales Volume. 5 Years in the Presale Market.
               </p>
             </div>
           </div>

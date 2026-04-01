@@ -53,7 +53,7 @@ const About = () => {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
-        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions." />
+        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">

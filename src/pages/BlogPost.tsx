@@ -260,8 +260,8 @@ const BlogPost = () => {
                   className="blog-content"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(renderMarkdown(post.content), {
-                      ALLOWED_TAGS: ["h1","h2","h3","h4","h5","h6","p","li","ul","ol","strong","em","a","blockquote","code","pre","span"],
-                      ALLOWED_ATTR: ["class","href","target","rel"],
+                      ALLOWED_TAGS: ["h1","h2","h3","h4","h5","h6","p","li","ul","ol","strong","em","a","blockquote","code","pre","span","table","thead","tbody","tr","th","td","hr","br","img","figure","figcaption","div","sup","sub","mark","del","s"],
+                      ALLOWED_ATTR: ["class","href","target","rel","src","alt","width","height","colspan","rowspan","style"],
                     }),
                   }}
                 />

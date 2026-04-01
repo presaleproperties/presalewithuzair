@@ -38,7 +38,7 @@ const About = () => {
         <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
         <meta
           name="description"
-          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions across Surrey, Langley, Abbotsford, and Chilliwack."
+          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />

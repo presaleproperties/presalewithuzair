@@ -45,7 +45,7 @@ const Contact = () => {
               "email": "info@meetuzair.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "3211 152 St Building C, Suite 402",
+                "streetAddress": "3211 152 St, Building C, Suite 402",
                 "addressLocality": "Surrey",
                 "addressRegion": "BC",
                 "postalCode": "V3Z 1H8",
@@ -140,7 +140,7 @@ const Contact = () => {
                       <p className="font-semibold text-foreground mb-1">Office</p>
                       <p className="text-muted-foreground text-sm mb-2">Real Broker</p>
                       <p className="text-foreground">
-                        3211 152 St Building C, Suite 402<br />
+                        3211 152 St, Building C, Suite 402<br />
                         Surrey, BC V3Z 1H8
                       </p>
                     </div>
@@ -200,15 +200,15 @@ const Contact = () => {
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <p className="text-2xl font-display font-bold text-gradient">400+</p>
-                      <p className="text-xs text-muted-foreground">Presales Advised</p>
+                      <p className="text-xs text-muted-foreground">Units Sold</p>
                     </div>
                     <div>
                       <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
-                      <p className="text-xs text-muted-foreground">Sales Volume</p>
+                      <p className="text-xs text-muted-foreground">in Sales Volume</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">5★</p>
-                      <p className="text-xs text-muted-foreground">Reviews</p>
+                      <p className="text-2xl font-display font-bold text-gradient">5 Yrs</p>
+                      <p className="text-xs text-muted-foreground">in Presale Market</p>
                     </div>
                   </div>
                 </div>

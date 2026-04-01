@@ -220,11 +220,11 @@ const Agents = () => {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
               <div>
                 <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$200M+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Sold in Presales</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">in Sales Volume</p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">400+</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Clients Served</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Units Sold</p>
               </div>
               <div>
                 <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$26M+</p>

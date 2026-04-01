@@ -202,7 +202,7 @@ const Developers = () => {
                   <div className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gradient mb-3">
                     400+
                   </div>
-                  <p className="text-lg font-semibold text-foreground mb-2">Clients Served</p>
+                  <p className="text-lg font-semibold text-foreground mb-2">Units Sold</p>
                   <p className="text-sm text-muted-foreground">Direct presale transactions completed for buyers and investors</p>
                 </div>
               </div>

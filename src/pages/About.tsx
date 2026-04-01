@@ -15,9 +15,9 @@ import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const stats = [
-  { value: "$200M+", label: "Sales Volume" },
-  { value: "400+", label: "Clients Advised" },
-  { value: "3X", label: "Elite Agent at Real Broker" },
+  { value: "400+", label: "Units Sold" },
+  { value: "$200M+", label: "in Sales Volume" },
+  { value: "5 Yrs", label: "in the Presale Market" },
   { value: "4", label: "Languages Spoken" },
 ];
 
@@ -38,7 +38,7 @@ const About = () => {
         <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
         <meta
           name="description"
-          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions across Surrey, Langley, Abbotsford, and Chilliwack."
+          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
@@ -47,13 +47,13 @@ const About = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
         <meta property="og:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
-        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions across Surrey, Langley, Abbotsford, and Chilliwack." />
+        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
-        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ clients and $200M+ in new construction transactions." />
+        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
@@ -64,7 +64,7 @@ const About = () => {
               "@type": "Person",
               "name": "Uzair Muhammad",
               "jobTitle": "Presale Expert & Real Estate Agent",
-              "description": "Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales, 400+ clients served. Exclusive focus on new construction in Surrey, Langley, Abbotsford, Chilliwack & Maple Ridge.",
+              "description": "Fraser Valley presale specialist who protects buyers from bad deals. $200M+ in sales volume, 400+ units sold. 5 years in the presale market across Surrey, Langley, Abbotsford, Chilliwack & Maple Ridge.",
               "url": "https://presalewithuzair.com/about",
               "image": "https://presalewithuzair.com/og-image.jpg",
               "telephone": "+1-778-231-3592",
@@ -96,7 +96,7 @@ const About = () => {
                 Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                $200M+ in presale transactions. 400+ families served. Zero BS.
+                400+ Units Sold. $200M+ in Sales Volume. 5 Years in the Presale Market.
               </p>
             </div>
           </div>
@@ -118,7 +118,7 @@ const About = () => {
                 {/* Stats overlay */}
                 <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
                   <p className="text-4xl font-display font-bold text-gradient">400+</p>
-                  <p className="text-sm text-muted-foreground">Clients Served</p>
+                  <p className="text-sm text-muted-foreground">Units Sold</p>
                 </div>
               </div>
 

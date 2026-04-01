@@ -222,50 +222,65 @@ Deno.serve(async (req) => {
 
     console.log("Lead saved successfully:", lead.id);
 
-    // Send to Zapier webhook if configured
+    // Build Zapier payload
+    const zapierPayload = {
+      id: lead.id,
+      first_name: lead.first_name,
+      last_name: lead.last_name,
+      full_name: `${lead.first_name} ${lead.last_name}`.trim(),
+      email: lead.email,
+      phone: lead.phone,
+      buyer_type: lead.buyer_type,
+      lead_source: lead.lead_source,
+      timeline: lead.timeline,
+      budget: lead.budget,
+      preferred_call_date: lead.preferred_call_date,
+      preferred_call_time: lead.preferred_call_time,
+      has_agent: lead.has_agent,
+      utm_source: lead.utm_source,
+      utm_medium: lead.utm_medium,
+      utm_campaign: lead.utm_campaign,
+      utm_term: lead.utm_term,
+      utm_content: lead.utm_content,
+      referrer: lead.referrer,
+      landing_page: lead.landing_page,
+      created_at: lead.created_at,
+      source: "presalewithuzair.com",
+    };
+
+    // Send to main Zapier webhook if configured
     const zapierUrl = leadData.zapierWebhookUrl || Deno.env.get("ZAPIER_WEBHOOK_URL");
     
     if (zapierUrl) {
       try {
-        console.log("Sending to Zapier webhook...");
+        console.log("Sending to main Zapier webhook...");
         const zapierResponse = await fetch(zapierUrl, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: lead.id,
-            first_name: lead.first_name,
-            last_name: lead.last_name,
-            full_name: `${lead.first_name} ${lead.last_name}`.trim(),
-            email: lead.email,
-            phone: lead.phone,
-            buyer_type: lead.buyer_type,
-            lead_source: lead.lead_source,
-            timeline: lead.timeline,
-            budget: lead.budget,
-            preferred_call_date: lead.preferred_call_date,
-            preferred_call_time: lead.preferred_call_time,
-            has_agent: lead.has_agent,
-            utm_source: lead.utm_source,
-            utm_medium: lead.utm_medium,
-            utm_campaign: lead.utm_campaign,
-            utm_term: lead.utm_term,
-            utm_content: lead.utm_content,
-            referrer: lead.referrer,
-            landing_page: lead.landing_page,
-            created_at: lead.created_at,
-            source: "presalewithuzair.com",
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(zapierPayload),
         });
-        
-        console.log("Zapier webhook response status:", zapierResponse.status);
+        console.log("Main Zapier webhook response status:", zapierResponse.status);
       } catch (zapierError) {
-        // Log but don't fail the request if Zapier fails
-        console.error("Zapier webhook error:", zapierError);
+        console.error("Main Zapier webhook error:", zapierError);
       }
-    } else {
-      console.log("No Zapier webhook URL configured, skipping...");
+    }
+
+    // Send to presale guide webhook for guide-specific leads
+    const isPresaleGuideLead = leadSource.startsWith("presale-guide");
+    const presaleGuideWebhookUrl = Deno.env.get("PRESALE_GUIDE_WEBHOOK_URL");
+
+    if (isPresaleGuideLead && presaleGuideWebhookUrl) {
+      try {
+        console.log("Sending to presale guide webhook...");
+        const guideResponse = await fetch(presaleGuideWebhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(zapierPayload),
+        });
+        console.log("Presale guide webhook response status:", guideResponse.status);
+      } catch (guideError) {
+        console.error("Presale guide webhook error:", guideError);
+      }
     }
 
     return new Response(

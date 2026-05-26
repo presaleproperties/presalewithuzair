@@ -106,6 +106,14 @@ const Index = () => {
         <Suspense fallback={<SectionFallback />}>
           <SocialProofSection />
         </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <ReviewsSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <HomeFAQSection />
+        </Suspense>
         
         <Suspense fallback={<SectionFallback />}>
           <MidPageCTA 

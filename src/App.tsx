@@ -7,6 +7,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
+import { SiteSchema } from "@/components/SiteSchema";
+import { FloatingContactButtons } from "@/components/FloatingContactButtons";
 
 // Lazy load all non-critical pages to reduce initial bundle size
 const About = lazy(() => import("./pages/About"));
@@ -36,9 +38,11 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <TooltipProvider>
+          <SiteSchema />
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <FloatingContactButtons />
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <Routes>
               <Route path="/" element={<Index />} />

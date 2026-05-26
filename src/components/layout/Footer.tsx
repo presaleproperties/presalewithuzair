@@ -20,6 +20,23 @@ export const Footer = () => {
 
       <div className="container-xl relative z-10 py-10 md:py-16 px-5 sm:px-8 lg:px-16">
 
+        {/* Google Review CTA banner */}
+        <div className="mb-10 rounded-2xl border border-primary/20 bg-primary/5 px-5 py-4 md:px-7 md:py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+          <p className="text-sm md:text-base text-white/80">
+            <span className="text-white font-semibold">Love working with Uzair?</span>{" "}
+            Leave us a Google review — it helps other buyers find us.
+          </p>
+          <a
+            href="https://g.page/r/PLACEHOLDER/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold whitespace-nowrap hover:opacity-90 transition-opacity"
+          >
+            ⭐ Leave a Review →
+          </a>
+        </div>
+
+
         {/* ── Mobile ── */}
         <div className="md:hidden">
           <div className="flex items-center justify-between mb-8">

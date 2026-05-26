@@ -15,6 +15,8 @@ const BookingContextSection = lazy(() => import("@/components/home/BookingContex
 
 
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
+const ReviewsSection = lazy(() => import("@/components/home/ReviewsSection").then(m => ({ default: m.ReviewsSection })));
+const HomeFAQSection = lazy(() => import("@/components/home/HomeFAQSection").then(m => ({ default: m.HomeFAQSection })));
 const PresaleGuidePopup = lazy(() => import("@/components/home/PresaleGuidePopup").then(m => ({ default: m.PresaleGuidePopup })));
 const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 
@@ -38,26 +40,27 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Fraser Valley's Leading Presale Expert | Uzair Muhammad</title>
+        <title>Uzair Muhammad | Fraser Valley's #1 Presale Condo Expert | Surrey & Langley</title>
         <meta
           name="description"
-          content="Fraser Valley's #1 presale agent. Helping first-time buyers and investors buy new construction condos and townhomes in Surrey, Langley, Abbotsford, and Chilliwack with VIP access, exclusive incentives, and full contract protection. Zero developer bias."
+          content="Fraser Valley's leading presale condo expert. Get VIP access to Surrey, Langley & Abbotsford presale condos before public launch. 400+ units sold. Zero developer bias."
         />
         <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />
-        
+
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/" />
-        <meta property="og:title" content="Fraser Valley's Leading Presale Expert | Uzair Muhammad" />
-        <meta property="og:description" content="Fraser Valley's #1 presale agent. Helping first-time buyers and investors buy new construction condos and townhomes in Surrey, Langley, Abbotsford, and Chilliwack with VIP access, exclusive incentives, and full contract protection." />
+        <meta property="og:title" content="Uzair Muhammad | Fraser Valley's #1 Presale Condo Expert | Surrey & Langley" />
+        <meta property="og:description" content="Fraser Valley's leading presale condo expert. Get VIP access to Surrey, Langley & Abbotsford presale condos before public launch. 400+ units sold. Zero developer bias." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
-        
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Fraser Valley's Leading Presale Expert | Uzair Muhammad" />
-        <meta name="twitter:description" content="Fraser Valley's #1 presale agent. VIP access, exclusive incentives, and full contract protection for first-time buyers and investors." />
+        <meta name="twitter:title" content="Uzair Muhammad | Fraser Valley's #1 Presale Condo Expert | Surrey & Langley" />
+        <meta name="twitter:description" content="Fraser Valley's leading presale condo expert. Get VIP access to Surrey, Langley & Abbotsford presale condos before public launch. 400+ units sold. Zero developer bias." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
+
         
         <script type="application/ld+json">
           {JSON.stringify({
@@ -102,6 +105,14 @@ const Index = () => {
         {/* Below-fold sections lazy loaded */}
         <Suspense fallback={<SectionFallback />}>
           <SocialProofSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <ReviewsSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
+          <HomeFAQSection />
         </Suspense>
         
         <Suspense fallback={<SectionFallback />}>

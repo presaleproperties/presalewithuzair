@@ -132,6 +132,10 @@ const Index = () => {
         
         
         <Suspense fallback={<SectionFallback />}>
+          <HomeFAQSection />
+        </Suspense>
+
+        <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
       </main>

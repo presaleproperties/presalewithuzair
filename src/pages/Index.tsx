@@ -41,7 +41,7 @@ const Index = () => {
         <title>Fraser Valley's Leading Presale Expert | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Fraser Valley's #1 presale agent. Before the public. At the best price. No developer bias — ever. VIP access, negotiate your terms, and review every contract so you're protected from day one."
+          content="Fraser Valley's #1 presale agent. VIP access, best pricing, and full contract protection on new condos & townhomes in Surrey, Langley & beyond."
         />
         <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />

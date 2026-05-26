@@ -89,6 +89,7 @@ export type Database = {
         Row: {
           budget: string | null
           buyer_type: string
+          city: string | null
           created_at: string
           email: string
           first_name: string
@@ -98,6 +99,7 @@ export type Database = {
           landing_page: string | null
           last_name: string
           lead_source: string | null
+          message: string | null
           payment_intent_id: string | null
           phone: string
           preferred_call_date: string | null
@@ -115,6 +117,7 @@ export type Database = {
         Insert: {
           budget?: string | null
           buyer_type: string
+          city?: string | null
           created_at?: string
           email: string
           first_name: string
@@ -124,6 +127,7 @@ export type Database = {
           landing_page?: string | null
           last_name: string
           lead_source?: string | null
+          message?: string | null
           payment_intent_id?: string | null
           phone: string
           preferred_call_date?: string | null
@@ -141,6 +145,7 @@ export type Database = {
         Update: {
           budget?: string | null
           buyer_type?: string
+          city?: string | null
           created_at?: string
           email?: string
           first_name?: string
@@ -150,6 +155,7 @@ export type Database = {
           landing_page?: string | null
           last_name?: string
           lead_source?: string | null
+          message?: string | null
           payment_intent_id?: string | null
           phone?: string
           preferred_call_date?: string | null

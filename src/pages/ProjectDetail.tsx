@@ -574,6 +574,27 @@ const ProjectDetail = () => {
 
         {/* ── Related ── */}
         <RelatedProjects city={project.city} currentSlug={project.slug} />
+
+        {/* ── Browse marketplace ── */}
+        <section className="py-12 border-t border-border/40 bg-muted/20">
+          <div className="container-xl px-5 sm:px-8 lg:px-16 text-center">
+            <p className="text-sm uppercase tracking-[0.2em] text-foreground/50 mb-2">Explore more</p>
+            <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
+              Browse every active presale in BC
+            </h3>
+            <p className="text-foreground/60 mb-6 max-w-xl mx-auto">
+              See floorplans, pricing, and full project details for hundreds of presales across the Lower Mainland and Fraser Valley.
+            </p>
+            <a
+              href={`https://presaleproperties.com/projects/${project.slug}`}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+            >
+              View this project on PresaleProperties.com →
+            </a>
+          </div>
+        </section>
       </main>
 
       {/* Back to Top */}

@@ -3,10 +3,10 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Fraser Valley's Leading Presale Agent.",
+  headline: "Fraser Valley's Leading Presale Expert.",
   subheadline: "400+ Units Sold · $200M+ in Sales Volume",
-  body: "I help first-time buyers and investors get into the right presale condo or townhome across the Fraser Valley — before the public, at the best price, with VIP access, exclusive incentives, and full protection on every developer contract.",
-  supportingLine: "Zero developer bias. Always in your corner.",
+  body: "Before the public. At the best price. No developer bias — ever. I secure VIP access, negotiate your terms, and review every contract so you're protected from day one.",
+  supportingLine: "Buyer-only representation. Always in your corner.",
   cta: "Let's Chat",
   trustBar: "Available: English, Punjabi, Hindi & Urdu."
 };

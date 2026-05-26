@@ -187,7 +187,7 @@ const Contact = () => {
                     <Mail className="h-5 w-5" />
                     Work With Uzair
                   </Button>
-                  <a REPLACEME className="block">
+                  <a href="https://presaleproperties.com" target="_blank" rel="noopener" className="block">
                     <Button variant="outline" size="xl" className="w-full gap-2">
                       <Search className="h-5 w-5" />
                       Search Presale Projects

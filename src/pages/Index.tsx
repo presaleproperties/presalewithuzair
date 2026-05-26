@@ -15,6 +15,8 @@ const BookingContextSection = lazy(() => import("@/components/home/BookingContex
 
 
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
+const ReviewsSection = lazy(() => import("@/components/home/ReviewsSection").then(m => ({ default: m.ReviewsSection })));
+const HomeFAQSection = lazy(() => import("@/components/home/HomeFAQSection").then(m => ({ default: m.HomeFAQSection })));
 const PresaleGuidePopup = lazy(() => import("@/components/home/PresaleGuidePopup").then(m => ({ default: m.PresaleGuidePopup })));
 const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 

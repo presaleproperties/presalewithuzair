@@ -16,7 +16,6 @@ interface LeadData {
   budget?: string;
   preferredCallDate?: string;
   preferredCallTime?: string;
-  zapierWebhookUrl?: string;
   hasAgent?: string;
   // Traffic tracking fields
   utmSource?: string;

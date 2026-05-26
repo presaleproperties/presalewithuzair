@@ -39,7 +39,7 @@ export const CTASection = () => {
               <Mail className="h-5 w-5" />
               Schedule a Call
             </Button>
-            <a REPLACEME>
+            <a href="https://presaleproperties.com" target="_blank" rel="noopener">
               <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
                 <Search className="h-5 w-5" />
                 Search Presale Projects

@@ -199,7 +199,7 @@ const Contact = () => {
                 <div className="mt-10 pt-8 border-t border-border">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">400+</p>
+                      <p className="text-2xl font-display font-bold text-gradient">450+</p>
                       <p className="text-xs text-muted-foreground">Units Sold</p>
                     </div>
                     <div>

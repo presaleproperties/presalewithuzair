@@ -4,7 +4,7 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "Fraser Valley's Leading Presale Expert.",
-  subheadline: "400+ Units Sold · $200M+ in Sales Volume",
+  subheadline: "450+ Units Sold · $200M+ in Sales Volume",
   body: "Before the public. At the best price. No developer bias — ever. I secure VIP access, negotiate your terms, and review every contract so you're protected from day one.",
   supportingLine: "Buyer-only representation. Always in your corner.",
   cta: "Let's Chat",
@@ -99,7 +99,7 @@ export const HeroSection = () => {
           {/* Trust Badge */}
           <div className="pt-6 border-t border-foreground/10 mt-auto animate-fade-up text-center">
             <p className="text-lg md:text-xl font-display font-bold text-foreground">
-              <span className="text-foreground">400+</span> Units Sold
+              <span className="text-foreground">450+</span> Units Sold
             </p>
             <p className="text-xs md:text-sm text-foreground/50 mt-2">
               $200M+ in Sales Volume • 5 Years in the Presale Market
@@ -155,7 +155,7 @@ export const HeroSection = () => {
             {/* Trust Badge */}
             <div className="pt-8 border-t border-foreground/10 animate-fade-up">
               <p className="text-xl font-display font-bold text-foreground">
-                <span className="text-foreground">400+</span> Units Sold
+                <span className="text-foreground">450+</span> Units Sold
               </p>
               <p className="text-sm text-foreground/50 mt-2">
                 $200M+ in Sales Volume • 5 Years in the Presale Market

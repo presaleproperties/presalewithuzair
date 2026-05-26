@@ -136,18 +136,18 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Fraser Valley Presale Blog | Market Updates & Buyer Guides | Uzair Muhammad</title>
-        <meta name="description" content="Fraser Valley presale condo guides, market updates and buyer tips from Uzair Muhammad. Surrey, Langley, Abbotsford new construction expert." />
+        <title>Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad</title>
+        <meta name="description" content="Straight-talk advice on presale condos, new construction, and real estate investment in Surrey, Langley, Abbotsford, and the Fraser Valley. No hype. No developer bias." />
         <meta name="keywords" content="presale blog Vancouver, condo investment tips, presale condo advice, Vancouver real estate blog, assignment sale guide, Fraser Valley presale blog" />
         <link rel="canonical" href="https://presalewithuzair.com/blog" />
         <meta property="og:type" content="blog" />
         <meta property="og:url" content="https://presalewithuzair.com/blog" />
-        <meta property="og:title" content="Fraser Valley Presale Blog | Market Updates & Buyer Guides | Uzair Muhammad" />
-        <meta property="og:description" content="Fraser Valley presale condo guides, market updates and buyer tips from Uzair Muhammad. Surrey, Langley, Abbotsford new construction expert." />
+        <meta property="og:title" content="Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad" />
+        <meta property="og:description" content="Straight-talk advice on presale condos, new construction, and real estate investment in Surrey, Langley, Abbotsford, and the Fraser Valley. No hype. No developer bias." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Fraser Valley Presale Blog | Market Updates & Buyer Guides | Uzair Muhammad" />
-        <meta name="twitter:description" content="Fraser Valley presale condo guides, market updates and buyer tips from Uzair Muhammad." />
+        <meta name="twitter:title" content="Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad" />
+        <meta name="twitter:description" content="Straight-talk advice on presale condos, new construction, and real estate investment in the Fraser Valley." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify(blogStructuredData)}</script>
       </Helmet>

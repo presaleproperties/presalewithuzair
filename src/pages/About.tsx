@@ -35,25 +35,26 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Buyer-Only Presale Expert | Surrey BC</title>
+        <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
         <meta
           name="description"
-          content="Meet Uzair Muhammad — buyer-only presale expert in Surrey BC. 10 years City of Surrey planning background. 400+ clients helped. Speaks English, Punjabi, Urdu & Hindi."
+          content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
-
+        
+        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad | Buyer-Only Presale Expert | Surrey BC" />
-        <meta property="og:description" content="Meet Uzair Muhammad — buyer-only presale expert in Surrey BC. 10 years City of Surrey planning background. 400+ clients helped. Speaks English, Punjabi, Urdu & Hindi." />
+        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad | Buyer-Only Presale Expert | Surrey BC" />
-        <meta name="twitter:description" content="Meet Uzair Muhammad — buyer-only presale expert in Surrey BC. 10 years City of Surrey planning background. 400+ clients helped." />
-        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 400+ units sold and $200M+ in sales volume." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({

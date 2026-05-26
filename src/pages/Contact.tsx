@@ -13,25 +13,26 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Book a Free Presale Call | Uzair Muhammad | Fraser Valley</title>
+        <title>Contact Uzair Muhammad | Fraser Valley Presale Expert</title>
         <meta
           name="description"
-          content="Book a free 15-minute presale strategy call with Uzair Muhammad. Surrey & Fraser Valley presale condos — VIP pricing and floor plans."
+          content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent. Available in English, Punjabi, Hindi, and Urdu."
         />
         <meta name="keywords" content="contact presale expert, Vancouver presale agent contact, book presale consultation, presale advisor Vancouver, Fraser Valley presale agent" />
         <link rel="canonical" href="https://presalewithuzair.com/contact" />
-
+        
+        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/contact" />
-        <meta property="og:title" content="Book a Free Presale Call | Uzair Muhammad | Fraser Valley" />
-        <meta property="og:description" content="Book a free 15-minute presale strategy call with Uzair Muhammad. Surrey & Fraser Valley presale condos — VIP pricing and floor plans." />
+        <meta property="og:title" content="Contact Uzair Muhammad | Fraser Valley Presale Expert" />
+        <meta property="og:description" content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent. Available in English, Punjabi, Hindi, and Urdu." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Book a Free Presale Call | Uzair Muhammad | Fraser Valley" />
-        <meta name="twitter:description" content="Book a free 15-minute presale strategy call with Uzair Muhammad." />
-        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Uzair Muhammad | Fraser Valley Presale Expert" />
+        <meta name="twitter:description" content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent." />
+        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
           {JSON.stringify({

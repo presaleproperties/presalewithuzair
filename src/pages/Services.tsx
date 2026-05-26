@@ -56,39 +56,26 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Condo Services | VIP Access, Assignment Sales & Investor Advisory | Surrey</title>
+        <title>Presale Buyer Services | VIP Access, Contract Protection & Incentives | Uzair Muhammad</title>
         <meta
           name="description"
-          content="VIP presale condo access, assignment sales, investor advisory across Surrey, Langley, Abbotsford & Coquitlam. Zero developer representation — always in your corner."
+          content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access before public launch, exclusive developer incentives, and full legal protection on every contract."
         />
         <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver, Fraser Valley presale services" />
         <link rel="canonical" href="https://presalewithuzair.com/services" />
-
+        
+        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/services" />
-        <meta property="og:title" content="Presale Condo Services | VIP Access, Assignment Sales & Investor Advisory | Surrey" />
-        <meta property="og:description" content="VIP presale condo access, assignment sales, investor advisory across Surrey, Langley, Abbotsford & Coquitlam. Zero developer representation — always in your corner." />
+        <meta property="og:title" content="Presale Buyer Services | VIP Access, Contract Protection & Incentives | Uzair Muhammad" />
+        <meta property="og:description" content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access before public launch, exclusive developer incentives, and full legal protection on every contract." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
-
+        
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Presale Condo Services | VIP Access, Assignment Sales & Investor Advisory | Surrey" />
-        <meta name="twitter:description" content="VIP presale condo access, assignment sales, investor advisory across Surrey, Langley, Abbotsford & Coquitlam." />
+        <meta name="twitter:title" content="Presale Buyer Services | Uzair Muhammad" />
+        <meta name="twitter:description" content="Expert buyer's representation for presale condos and townhomes in the Fraser Valley. VIP access, exclusive incentives, and full contract protection." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
-
-        {/* FAQPage schema */}
-        <script type="application/ld+json">{JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            { "@type": "Question", name: "What is a presale condo?", acceptedAnswer: { "@type": "Answer", text: "A presale condo is a unit you purchase before it's built. You sign a contract today, pay a deposit in stages, and take possession when construction completes — typically 2–4 years later." } },
-            { "@type": "Question", name: "Why use a buyer's agent for presale?", acceptedAnswer: { "@type": "Answer", text: "The developer's sales team represents the developer — not you. As your buyer-only agent, Uzair reviews contract terms, flags risk clauses, negotiates upgrades and incentives. This costs you nothing — the developer pays the commission." } },
-            { "@type": "Question", name: "How much deposit do I need?", acceptedAnswer: { "@type": "Answer", text: "Most Fraser Valley presale projects require 10–20% paid in stages over 6–12 months." } },
-            { "@type": "Question", name: "What areas do you cover?", acceptedAnswer: { "@type": "Answer", text: "Surrey, Langley, Abbotsford, Coquitlam, Delta/Tsawwassen, and Burnaby South." } },
-            { "@type": "Question", name: "How do I get VIP pricing?", acceptedAnswer: { "@type": "Answer", text: "Click 'Get VIP Access' and we'll send you floor plans, pricing, and incentives before public launch — typically 3–7% below public pricing." } },
-            { "@type": "Question", name: "Can I resell my presale before completion?", acceptedAnswer: { "@type": "Answer", text: "Yes — most BC presale contracts allow assignment for a fee. Uzair advises on which projects have the best assignment clauses." } },
-          ],
-        })}</script>
-
         
         <script type="application/ld+json">
           {JSON.stringify({

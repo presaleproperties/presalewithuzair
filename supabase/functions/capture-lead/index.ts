@@ -221,8 +221,8 @@ Deno.serve(async (req) => {
 
     console.log("Lead saved successfully:", lead.id);
 
-    // Send to Zapier webhook if configured
-    const zapierUrl = leadData.zapierWebhookUrl || Deno.env.get("ZAPIER_WEBHOOK_URL");
+    // Send to Zapier webhook if configured (server-side env only — never trust client input)
+    const zapierUrl = Deno.env.get("ZAPIER_WEBHOOK_URL");
     
     if (zapierUrl) {
       try {

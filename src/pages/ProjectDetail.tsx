@@ -248,15 +248,52 @@ const ProjectDetail = () => {
   const hasFloorplans = project.floorplan_files && project.floorplan_files.length > 0;
   const hasBrochures = project.brochure_files && project.brochure_files.length > 0;
 
+  const pageTitle = `${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`;
+  const pageDescription = project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`;
+  const pageUrl = `https://presalewithuzair.com/projects/${project.slug}`;
+  const pageImage = project.featured_image || "https://presalewithuzair.com/og-image.jpg";
+
   return (
     <>
       <Helmet>
-        <title>{`${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`}</title>
-        <meta
-          name="description"
-          content={project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`}
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={pageUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={pageImage} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={pageImage} />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: project.name,
+            description: pageDescription,
+            image: pageImage,
+            url: pageUrl,
+            brand: project.developer_name ? { "@type": "Organization", name: project.developer_name } : undefined,
+            category: project.project_type || "Presale Condo",
+            ...(project.starting_price ? {
+              offers: {
+                "@type": "Offer",
+                price: project.starting_price,
+                priceCurrency: "CAD",
+                url: pageUrl,
+                availability: project.status === "sold_out" ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+              },
+            } : {}),
+          })}
+        </script>
       </Helmet>
+
 
       <Navbar />
 

@@ -341,7 +341,7 @@ const About = () => {
                   <Phone className="h-5 w-5" />
                   Work With Uzair
                 </Button>
-                <a REPLACEME>
+                <a href="https://presaleproperties.com" target="_blank" rel="noopener">
                   <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
                     Search Presale Projects
                   </Button>

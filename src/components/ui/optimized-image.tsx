@@ -50,11 +50,13 @@ export const OptimizedImage = ({
           src={src}
           alt={alt}
           loading={priority ? "eager" : "lazy"}
-          decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
+          decoding={priority ? "sync" : "async"}
           onLoad={() => setIsLoaded(true)}
           className={cn(
-            "w-full h-full object-cover transition-opacity duration-500",
-            isLoaded ? "opacity-100" : "opacity-0"
+            "w-full h-full object-cover",
+            priority ? "" : "transition-opacity duration-500",
+            !priority && !isLoaded ? "opacity-0" : "opacity-100"
           )}
         />
       )}

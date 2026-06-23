@@ -17,7 +17,7 @@
 const SITE = "https://presalewithuzair.com";
 const DEFAULT_IMAGE =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
-const SUPABASE_URL = "https://ubbogklasownognviobh.supabase.co";
+const SUPABASE_URL = "https://llbkcvvbnsthvjvcerdj.supabase.co";
 
 const BOT_RE =
   /(googlebot|google-inspectiontool|bingbot|yandex|duckduckbot|baiduspider|facebookexternalhit|facebot|twitterbot|linkedinbot|whatsapp|slackbot|discordbot|telegrambot|pinterest|applebot|redditbot|embedly|iframely|quora link preview|skypeuripreview|vkshare|w3c_validator|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-web|anthropic-ai|perplexitybot|google-extended|bytespider|amazonbot|cohere-ai)/i;

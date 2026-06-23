@@ -7,7 +7,7 @@ const heroContent = {
   subheadline: "450+ Units Sold · $200M+ in Sales Volume",
   body: "Before the public. At the best price. No developer bias — ever. I secure VIP access, negotiate your terms, and review every contract so you're protected from day one.",
   supportingLine: "Buyer-only representation. Always in your corner.",
-  cta: "Let's Chat",
+  cta: "Let's Connect",
   trustBar: "Available: English, Punjabi, Hindi & Urdu."
 };
 export const HeroSection = () => {

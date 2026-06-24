@@ -27,6 +27,26 @@ const BUYER_TYPE_LABELS: Record<string, string> = {
   "other": "Other",
 };
 
+// Friendly labels for the self-reported "How did you find me?" dropdown.
+const LEAD_SOURCE_LABELS: Record<string, string> = {
+  instagram: "Instagram",
+  tiktok: "TikTok",
+  youtube: "YouTube",
+  referral: "Referral / Friend",
+  google: "Google Search",
+  facebook: "Facebook",
+  other: "Other",
+  website: "Website (direct)",
+};
+
+// Map a landing-page path to the BC city the lead is interested in.
+function cityFromPath(path?: string | null): string | null {
+  if (!path) return null;
+  const m = path.match(/(surrey|langley|abbotsford|chilliwack|maple-ridge|coquitlam|burnaby|delta)/i);
+  if (!m) return null;
+  return m[1].replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 interface LeadData {
   firstName: string;
   lastName?: string;
@@ -39,6 +59,8 @@ interface LeadData {
   preferredCallDate?: string;
   preferredCallTime?: string;
   hasAgent?: string;
+  message?: string;
+  neighbourhood?: string;
   // Traffic tracking fields
   utmSource?: string;
   utmMedium?: string;
@@ -100,20 +122,45 @@ function isValidLeadSource(source: string): boolean {
   return typeof source === 'string' && source.length > 0 && source.length <= 100;
 }
 
-// Forward a captured lead to the DealzFlow CRM lead-intake endpoint.
+// Forward a captured lead to the DealzFlow CRM lead-intake endpoint with a
+// rich, agent-friendly summary + full structured detail in `raw`.
 // Best-effort: any failure is logged but never thrown to the caller.
-async function forwardToDealzFlow(lead: Record<string, any>): Promise<void> {
+async function forwardToDealzFlow(
+  lead: Record<string, any>,
+  ctx: { userAgent: string | null; clientIP: string | null; extraMessage?: string | null; neighbourhood?: string | null },
+): Promise<void> {
   try {
-    const msgParts: string[] = [];
+    const city = cityFromPath(lead.landing_page);
     const bt = lead.buyer_type as string | null;
-    if (bt) msgParts.push(`Buyer type: ${BUYER_TYPE_LABELS[bt] || bt}`);
-    if (lead.lead_source) msgParts.push(`Found via: ${lead.lead_source}`);
-    if (lead.timeline) msgParts.push(`Timeline: ${lead.timeline}`);
-    if (lead.budget) msgParts.push(`Budget: ${lead.budget}`);
+    const buyerLabel = bt ? (BUYER_TYPE_LABELS[bt] || bt) : null;
+    const srcLabel = lead.lead_source
+      ? (LEAD_SOURCE_LABELS[lead.lead_source] || lead.lead_source)
+      : null;
+
+    // Human-readable summary the agent sees at the top of the contact.
+    const lines: string[] = [];
+    lines.push(`🆕 New lead — presalewithuzair.com${lead.landing_page ? ` (${lead.landing_page})` : ""}`);
+    if (city) lines.push(`📍 City interest: ${city}`);
+    if (ctx.neighbourhood) lines.push(`📍 Neighbourhood: ${ctx.neighbourhood}`);
+    if (buyerLabel) lines.push(`👤 Buyer type: ${buyerLabel}`);
+    if (srcLabel) lines.push(`📣 How they found us: ${srcLabel}`);
+    if (lead.budget) lines.push(`💰 Budget: ${lead.budget}`);
+    if (lead.timeline) lines.push(`🗓️ Timeline: ${lead.timeline}`);
+    if (lead.has_agent) lines.push(`🤝 Already has an agent: ${lead.has_agent}`);
     if (lead.preferred_call_date || lead.preferred_call_time) {
-      msgParts.push(`Preferred call: ${[lead.preferred_call_date, lead.preferred_call_time].filter(Boolean).join(" ")}`);
+      lines.push(`📞 Preferred call: ${[lead.preferred_call_date, lead.preferred_call_time].filter(Boolean).join(" ")}`);
     }
-    if (lead.has_agent) msgParts.push(`Has agent: ${lead.has_agent}`);
+    if (ctx.extraMessage) lines.push(`💬 Message: ${ctx.extraMessage}`);
+    const attribution = [
+      lead.utm_source && `source=${lead.utm_source}`,
+      lead.utm_medium && `medium=${lead.utm_medium}`,
+      lead.utm_campaign && `campaign=${lead.utm_campaign}`,
+      lead.utm_term && `term=${lead.utm_term}`,
+      lead.utm_content && `content=${lead.utm_content}`,
+    ].filter(Boolean).join(" · ");
+    if (attribution) lines.push(`🎯 Ad attribution: ${attribution}`);
+    lines.push(`↩️ Referrer: ${lead.referrer || "direct / none"}`);
+    lines.push(`🕒 Submitted: ${lead.created_at || new Date().toISOString()}`);
 
     const crmBody = {
       source_slug: DEALZFLOW_SOURCE_SLUG,
@@ -121,26 +168,39 @@ async function forwardToDealzFlow(lead: Record<string, any>): Promise<void> {
       last_name: lead.last_name || undefined,
       email: lead.email || undefined,
       phone: lead.phone || undefined,
-      message: msgParts.length ? msgParts.join(" · ") : undefined,
-      campaign: lead.utm_campaign || undefined,
-      // Real UTM wins; fall back to the self-reported "How did you find me?" value.
+      message: lines.join("\n"),
+      // Surface ad attribution at the top level for DealzFlow reporting.
+      campaign: lead.utm_campaign || (city ? `pwu-${city.toLowerCase().replace(/\s+/g, "-")}` : undefined),
       utm_source: lead.utm_source || lead.lead_source || undefined,
       utm_medium: lead.utm_medium || undefined,
       utm_campaign: lead.utm_campaign || undefined,
+      ad_id: lead.utm_content || undefined,
+      // Full structured detail — preserved verbatim in DealzFlow's inbound event log.
       raw: {
         site: "presalewithuzair.com",
         local_lead_id: lead.id,
+        city_interest: city,
+        neighbourhood: ctx.neighbourhood || null,
         buyer_type: lead.buyer_type,
+        buyer_type_label: buyerLabel,
         lead_source: lead.lead_source,
-        timeline: lead.timeline,
+        lead_source_label: srcLabel,
         budget: lead.budget,
+        timeline: lead.timeline,
         has_agent: lead.has_agent,
+        message: ctx.extraMessage || null,
         preferred_call_date: lead.preferred_call_date,
         preferred_call_time: lead.preferred_call_time,
+        utm_source: lead.utm_source,
+        utm_medium: lead.utm_medium,
+        utm_campaign: lead.utm_campaign,
         utm_term: lead.utm_term,
         utm_content: lead.utm_content,
         referrer: lead.referrer,
         landing_page: lead.landing_page,
+        user_agent: ctx.userAgent,
+        client_ip: ctx.clientIP,
+        submitted_at: lead.created_at,
       },
     };
 
@@ -205,6 +265,8 @@ Deno.serve(async (req) => {
     const preferredCallDate = leadData.preferredCallDate?.trim() || null;
     const preferredCallTime = leadData.preferredCallTime?.trim() || null;
     const hasAgent = leadData.hasAgent?.trim() || null;
+    const message = leadData.message?.trim() || null;
+    const neighbourhood = leadData.neighbourhood?.trim() || null;
     
     // Traffic tracking data
     const utmSource = leadData.utmSource?.trim() || null;
@@ -303,7 +365,12 @@ Deno.serve(async (req) => {
     console.log("Lead saved successfully:", lead.id);
 
     // ─── Forward to DealzFlow CRM (primary destination) ──────────────────
-    await forwardToDealzFlow(lead);
+    await forwardToDealzFlow(lead, {
+      userAgent: req.headers.get("user-agent"),
+      clientIP,
+      extraMessage: message,
+      neighbourhood,
+    });
 
     // Send to Zapier webhook if configured (legacy; no-ops when env unset)
     const zapierUrl = Deno.env.get("ZAPIER_WEBHOOK_URL");

@@ -12,10 +12,29 @@ const formSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
   buyerType: z.string().min(1, "Please select an option"),
+  budget: z.string().min(1, "Please select a budget range"),
+  timeline: z.string().min(1, "Please select your timeline"),
   leadSource: z.string().min(1, "Please let us know how you found us"),
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+const budgetOptions = [
+  { value: "under-500k", label: "Under $500K" },
+  { value: "500k-750k", label: "$500K – $750K" },
+  { value: "750k-1m", label: "$750K – $1M" },
+  { value: "1m-1.5m", label: "$1M – $1.5M" },
+  { value: "over-1.5m", label: "Over $1.5M" },
+  { value: "not-sure", label: "Not sure yet" },
+];
+
+const timelineOptions = [
+  { value: "asap", label: "ASAP / ready now" },
+  { value: "1-3-months", label: "1–3 months" },
+  { value: "3-6-months", label: "3–6 months" },
+  { value: "6-12-months", label: "6–12 months" },
+  { value: "just-researching", label: "Just researching" },
+];
 
 const leadSources = [
   { value: "instagram", label: "Instagram" },
@@ -73,6 +92,8 @@ export const UnifiedLeadForm = ({
     email: "",
     phone: "",
     buyerType: defaultBuyerType,
+    budget: "",
+    timeline: "",
     leadSource: "",
   });
   const [trackingData, setTrackingData] = useState(getTrackingData());
@@ -119,6 +140,8 @@ export const UnifiedLeadForm = ({
           email: formData.email,
           phone: formData.phone,
           buyerType: formData.buyerType,
+          budget: budgetOptions.find((b) => b.value === formData.budget)?.label || formData.budget,
+          timeline: timelineOptions.find((t) => t.value === formData.timeline)?.label || formData.timeline,
           leadSource: formData.leadSource,
           ...trackingData,
         },
@@ -147,7 +170,7 @@ export const UnifiedLeadForm = ({
     if (isSuccess) {
       const timer = setTimeout(() => {
         setIsSuccess(false);
-        setFormData({ fullName: "", email: "", phone: "", buyerType: defaultBuyerType, leadSource: "" });
+        setFormData({ fullName: "", email: "", phone: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
       }, 4000);
       return () => clearTimeout(timer);
     }
@@ -257,6 +280,44 @@ export const UnifiedLeadForm = ({
               <SelectItem value="first-time-buyer">First-Time Buyer</SelectItem>
               <SelectItem value="investor">Investor</SelectItem>
               <SelectItem value="seller">Seller</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div>
+          <label htmlFor="ulc-budget" className={labelClasses}>Budget *</label>
+          <Select
+            value={formData.budget}
+            onValueChange={(value) => setFormData({ ...formData, budget: value })}
+          >
+            <SelectTrigger className={inputClasses}>
+              <SelectValue placeholder="Select your budget" />
+            </SelectTrigger>
+            <SelectContent>
+              {budgetOptions.map((b) => (
+                <SelectItem key={b.value} value={b.value}>
+                  {b.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div>
+          <label htmlFor="ulc-timeline" className={labelClasses}>When are you looking to buy? *</label>
+          <Select
+            value={formData.timeline}
+            onValueChange={(value) => setFormData({ ...formData, timeline: value })}
+          >
+            <SelectTrigger className={inputClasses}>
+              <SelectValue placeholder="Select your timeline" />
+            </SelectTrigger>
+            <SelectContent>
+              {timelineOptions.map((t) => (
+                <SelectItem key={t.value} value={t.value}>
+                  {t.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>

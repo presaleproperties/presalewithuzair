@@ -6,6 +6,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
 
+// ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
+// Server-side only. Best-effort forward — never blocks the lead response.
+const DEALZFLOW_INTAKE_URL =
+  "https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=website_form";
+const DEALZFLOW_SOURCE_SLUG = "website_form";
+const DEALZFLOW_INTAKE_TOKEN = "f297b8ce7bbc98180b5a8abd605e6384a985dc52930e9951";
+
 // --- Rate limiting (in-memory, resets on cold start) ---
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
@@ -39,6 +46,65 @@ function isValidName(name: string): boolean {
 function sanitizeText(val: unknown, maxLen = 500): string {
   if (typeof val !== "string") return "";
   return val.trim().slice(0, maxLen);
+}
+
+// Best-effort forward to the DealzFlow CRM lead-intake endpoint.
+async function forwardToDealzFlow(args: {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  buyerTypeLabel: string;
+  helpWith: string;
+  preferredCallTime: string;
+  utmSource: string;
+  utmMedium: string;
+  utmCampaign: string;
+  foundVia: string;
+  landingPage: string;
+  localLeadId?: string | null;
+}): Promise<void> {
+  try {
+    const msgParts: string[] = [];
+    if (args.buyerTypeLabel) msgParts.push(`Buyer type: ${args.buyerTypeLabel}`);
+    if (args.helpWith) msgParts.push(`Help with: ${args.helpWith}`);
+    if (args.preferredCallTime) msgParts.push(`Preferred call: ${args.preferredCallTime}`);
+
+    const crmBody = {
+      source_slug: DEALZFLOW_SOURCE_SLUG,
+      first_name: args.firstName || undefined,
+      last_name: args.lastName || undefined,
+      email: args.email || undefined,
+      phone: args.phone || undefined,
+      message: msgParts.length ? msgParts.join(" · ") : undefined,
+      campaign: args.utmCampaign || undefined,
+      utm_source: args.utmSource || args.foundVia || undefined,
+      utm_medium: args.utmMedium || undefined,
+      utm_campaign: args.utmCampaign || undefined,
+      raw: {
+        site: "presalewithuzair.com",
+        form: "landing-page-call",
+        local_lead_id: args.localLeadId ?? null,
+        help_with: args.helpWith,
+        preferred_call_time: args.preferredCallTime,
+        found_via: args.foundVia,
+        landing_page: args.landingPage,
+      },
+    };
+
+    const res = await fetch(DEALZFLOW_INTAKE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-intake-token": DEALZFLOW_INTAKE_TOKEN,
+      },
+      body: JSON.stringify(crmBody),
+    });
+    const text = await res.text();
+    console.log("DealzFlow lead-intake status:", res.status, text.slice(0, 300));
+  } catch (crmErr) {
+    console.error("DealzFlow forward error:", crmErr instanceof Error ? crmErr.message : crmErr);
+  }
 }
 
 serve(async (req) => {
@@ -108,6 +174,13 @@ serve(async (req) => {
     else if (helpWith.toLowerCase().includes("invest")) buyerType = "investor";
     else if (helpWith.toLowerCase().includes("sell") || helpWith.toLowerCase().includes("assign")) buyerType = "sell-assignment";
 
+    const preferredCallTime = sanitizeText(payload.Preferred_Call_Time, 100);
+    const utmSource = sanitizeText(payload.UTM_Source, 100);
+    const utmMedium = sanitizeText(payload.UTM_Medium, 100);
+    const utmCampaign = sanitizeText(payload.UTM_Campaign, 100);
+    const foundVia = sanitizeText(payload.Found_Via, 200);
+    const landingPage = sanitizeText(payload.Landing_Page, 200) || "/call";
+
     // Save to Supabase leads table via service role
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
@@ -124,13 +197,13 @@ serve(async (req) => {
         lead_source: "landing-page",
         timeline: null,
         budget: null,
-        preferred_call_time: sanitizeText(payload.Preferred_Call_Time, 100) || null,
+        preferred_call_time: preferredCallTime || null,
         has_agent: null,
-        utm_source: sanitizeText(payload.UTM_Source, 100) || null,
-        utm_medium: sanitizeText(payload.UTM_Medium, 100) || null,
-        utm_campaign: sanitizeText(payload.UTM_Campaign, 100) || null,
-        referrer: sanitizeText(payload.Found_Via, 200) || null,
-        landing_page: sanitizeText(payload.Landing_Page, 200) || "/call",
+        utm_source: utmSource || null,
+        utm_medium: utmMedium || null,
+        utm_campaign: utmCampaign || null,
+        referrer: foundVia || null,
+        landing_page: landingPage,
       })
       .select()
       .single();
@@ -142,19 +215,35 @@ serve(async (req) => {
       console.log("Lead saved to DB:", lead?.id);
     }
 
-    // Forward to Zapier
-    const webhookUrl = Deno.env.get('ZAPIER_WEBHOOK_URL');
-    if (!webhookUrl) throw new Error('Zapier webhook URL not configured');
-
-    // Forward original payload to Zapier (it expects the original field names)
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+    // ─── Forward to DealzFlow CRM (primary destination) ──────────────────
+    const buyerTypeLabel =
+      buyerType === "first-time-buyer" ? "First-time buyer"
+      : buyerType === "investor" ? "Investor"
+      : buyerType === "sell-assignment" ? "Selling an assignment"
+      : "Buying a presale";
+    await forwardToDealzFlow({
+      firstName, lastName, email, phone,
+      buyerTypeLabel, helpWith, preferredCallTime,
+      utmSource, utmMedium, utmCampaign, foundVia, landingPage,
+      localLeadId: lead?.id ?? null,
     });
 
+    // Optional legacy Zapier forward — only if still configured. Never throws.
+    const webhookUrl = Deno.env.get('ZAPIER_WEBHOOK_URL');
+    if (webhookUrl) {
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      } catch (zapErr) {
+        console.error("Zapier forward error:", zapErr instanceof Error ? zapErr.message : zapErr);
+      }
+    }
+
     return new Response(
-      JSON.stringify({ success: true, status: response.status, leadId: lead?.id }),
+      JSON.stringify({ success: true, leadId: lead?.id }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );
   } catch (error) {

@@ -5,6 +5,28 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
+// Server-side only (token never reaches the browser). Best-effort forward —
+// a CRM hiccup must never block saving the lead locally.
+const DEALZFLOW_INTAKE_URL =
+  "https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=website_form";
+const DEALZFLOW_SOURCE_SLUG = "website_form";
+const DEALZFLOW_INTAKE_TOKEN = "f297b8ce7bbc98180b5a8abd605e6384a985dc52930e9951";
+
+const BUYER_TYPE_LABELS: Record<string, string> = {
+  "first-time": "First-time buyer",
+  "first-time-buyer": "First-time buyer",
+  "investor": "Investor",
+  "end-user": "End user",
+  "upsizer": "Upsizer",
+  "buy-presale": "Buying a presale",
+  "assignment-buyer": "Assignment buyer",
+  "sell-assignment": "Selling an assignment",
+  "seller": "Seller",
+  "paid-advice": "Paid advice",
+  "other": "Other",
+};
+
 interface LeadData {
   firstName: string;
   lastName?: string;
@@ -76,6 +98,65 @@ function isValidBuyerType(buyerType: string): boolean {
 function isValidLeadSource(source: string): boolean {
   // Allow common lead sources, up to 100 chars
   return typeof source === 'string' && source.length > 0 && source.length <= 100;
+}
+
+// Forward a captured lead to the DealzFlow CRM lead-intake endpoint.
+// Best-effort: any failure is logged but never thrown to the caller.
+async function forwardToDealzFlow(lead: Record<string, any>): Promise<void> {
+  try {
+    const msgParts: string[] = [];
+    const bt = lead.buyer_type as string | null;
+    if (bt) msgParts.push(`Buyer type: ${BUYER_TYPE_LABELS[bt] || bt}`);
+    if (lead.lead_source) msgParts.push(`Found via: ${lead.lead_source}`);
+    if (lead.timeline) msgParts.push(`Timeline: ${lead.timeline}`);
+    if (lead.budget) msgParts.push(`Budget: ${lead.budget}`);
+    if (lead.preferred_call_date || lead.preferred_call_time) {
+      msgParts.push(`Preferred call: ${[lead.preferred_call_date, lead.preferred_call_time].filter(Boolean).join(" ")}`);
+    }
+    if (lead.has_agent) msgParts.push(`Has agent: ${lead.has_agent}`);
+
+    const crmBody = {
+      source_slug: DEALZFLOW_SOURCE_SLUG,
+      first_name: lead.first_name || undefined,
+      last_name: lead.last_name || undefined,
+      email: lead.email || undefined,
+      phone: lead.phone || undefined,
+      message: msgParts.length ? msgParts.join(" · ") : undefined,
+      campaign: lead.utm_campaign || undefined,
+      // Real UTM wins; fall back to the self-reported "How did you find me?" value.
+      utm_source: lead.utm_source || lead.lead_source || undefined,
+      utm_medium: lead.utm_medium || undefined,
+      utm_campaign: lead.utm_campaign || undefined,
+      raw: {
+        site: "presalewithuzair.com",
+        local_lead_id: lead.id,
+        buyer_type: lead.buyer_type,
+        lead_source: lead.lead_source,
+        timeline: lead.timeline,
+        budget: lead.budget,
+        has_agent: lead.has_agent,
+        preferred_call_date: lead.preferred_call_date,
+        preferred_call_time: lead.preferred_call_time,
+        utm_term: lead.utm_term,
+        utm_content: lead.utm_content,
+        referrer: lead.referrer,
+        landing_page: lead.landing_page,
+      },
+    };
+
+    const res = await fetch(DEALZFLOW_INTAKE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-intake-token": DEALZFLOW_INTAKE_TOKEN,
+      },
+      body: JSON.stringify(crmBody),
+    });
+    const text = await res.text();
+    console.log("DealzFlow lead-intake status:", res.status, text.slice(0, 300));
+  } catch (crmErr) {
+    console.error("DealzFlow forward error:", crmErr instanceof Error ? crmErr.message : crmErr);
+  }
 }
 
 Deno.serve(async (req) => {
@@ -221,7 +302,10 @@ Deno.serve(async (req) => {
 
     console.log("Lead saved successfully:", lead.id);
 
-    // Send to Zapier webhook if configured (server-side env only — never trust client input)
+    // ─── Forward to DealzFlow CRM (primary destination) ──────────────────
+    await forwardToDealzFlow(lead);
+
+    // Send to Zapier webhook if configured (legacy; no-ops when env unset)
     const zapierUrl = Deno.env.get("ZAPIER_WEBHOOK_URL");
     
     if (zapierUrl) {

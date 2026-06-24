@@ -6,6 +6,24 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const SITE_ORIGIN = "https://presalewithuzair.com";
+
+// --- Rate limiting (in-memory, resets on cold start) ---
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const MAX_REQUESTS_PER_WINDOW = 5;
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  if (entry.count >= MAX_REQUESTS_PER_WINDOW) return true;
+  entry.count++;
+  return false;
+}
+
 const logStep = (step: string, details?: unknown) => {
   const detailsStr = details ? ` - ${JSON.stringify(details)}` : '';
   console.log(`[CREATE-ADVICE-PAYMENT] ${step}${detailsStr}`);
@@ -19,6 +37,17 @@ serve(async (req) => {
 
   try {
     logStep("Function started");
+
+    const clientIP =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "unknown";
+    if (isRateLimited(clientIP)) {
+      return new Response(JSON.stringify({ error: "Too many requests. Please try again later." }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 429,
+      });
+    }
 
     const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
     if (!stripeKey) throw new Error("STRIPE_SECRET_KEY is not set");

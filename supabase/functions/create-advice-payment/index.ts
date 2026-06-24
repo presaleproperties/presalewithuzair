@@ -105,8 +105,8 @@ serve(async (req) => {
         },
       ],
       mode: "payment",
-      success_url: `${req.headers.get("origin")}/payment-success?${successParams.toString()}`,
-      cancel_url: `${req.headers.get("origin")}/book?canceled=true`,
+      success_url: `${SITE_ORIGIN}/payment-success?${successParams.toString()}`,
+      cancel_url: `${SITE_ORIGIN}/book?canceled=true`,
       metadata: {
         firstName,
         phone,

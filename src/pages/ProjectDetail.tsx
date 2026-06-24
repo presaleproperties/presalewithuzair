@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -478,8 +479,11 @@ const ProjectDetail = () => {
                   <div
                     className="text-foreground/70 leading-[1.8] whitespace-pre-line text-[15px]"
                     dangerouslySetInnerHTML={{
-                      __html: project.full_description
-                        .replace(/\*\*(.*?)\*\*/g, "<strong class='text-foreground font-semibold'>$1</strong>")
+                      __html: DOMPurify.sanitize(
+                        project.full_description
+                          .replace(/\*\*(.*?)\*\*/g, "<strong class='text-foreground font-semibold'>$1</strong>"),
+                        { ALLOWED_TAGS: ['strong','em','p','br','ul','ol','li','h2','h3','h4','a','span'], ALLOWED_ATTR: ['class','href','target','rel'] }
+                      )
                     }}
                   />
                 </div>

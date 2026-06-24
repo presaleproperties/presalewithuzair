@@ -11,7 +11,7 @@ const corsHeaders = {
 const DEALZFLOW_INTAKE_URL =
   "https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=website_form";
 const DEALZFLOW_SOURCE_SLUG = "website_form";
-const DEALZFLOW_INTAKE_TOKEN = "f297b8ce7bbc98180b5a8abd605e6384a985dc52930e9951";
+const DEALZFLOW_INTAKE_TOKEN = Deno.env.get("DEALZFLOW_INTAKE_TOKEN") ?? "";
 
 // --- Rate limiting (in-memory, resets on cold start) ---
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();

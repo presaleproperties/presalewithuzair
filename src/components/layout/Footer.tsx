@@ -32,6 +32,7 @@ export const Footer = () => {
             <div className="flex items-center gap-2.5">
               <a
                 href="tel:+17782313592"
+                onClick={trackPhone}
                 className="w-10 h-10 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/15 hover:text-white transition-all"
               >
                 <Phone className="h-4 w-4" />
@@ -40,6 +41,7 @@ export const Footer = () => {
                 href="https://wa.me/17782313592"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWa}
                 className="w-10 h-10 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/15 hover:text-white transition-all"
               >
                 <MessageCircle className="h-4 w-4" />

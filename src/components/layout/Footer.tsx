@@ -3,6 +3,9 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 import realBrokerLogo from "@/assets/real-broker-logo.avif";
 
+const trackPhone = () => { try { (window as any).gtag?.("event", "click_phone", { location: "footer" }); } catch {} };
+const trackWa = () => { try { (window as any).gtag?.("event", "click_whatsapp", { location: "footer" }); } catch {} };
+
 export const Footer = () => {
   return (
     <footer className="dark-section relative overflow-hidden">

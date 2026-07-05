@@ -341,11 +341,11 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         <meta property="og:url" content={pageUrl} />
         <meta property="og:title" content={config.title} />
         <meta property="og:description" content={config.metaDescription} />
-        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
+        <meta property="og:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={config.title} />
         <meta name="twitter:description" content={config.metaDescription} />
-        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
+        <meta name="twitter:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <script type="application/ld+json">{JSON.stringify(realEstateAgentJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>

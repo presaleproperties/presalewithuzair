@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.sync-projects]
 verify_jwt = false
+
+[functions.sync-presale-projects]
+verify_jwt = false

@@ -34,6 +34,12 @@ export interface PresaleProject {
   incentives_available: boolean | null;
   strata_fees: string | null;
   price_range: string | null;
+  seo_title: string | null;
+  seo_description: string | null;
+  og_image: string | null;
+  source_slug: string | null;
+  assignment_allowed: string | null;
+  faq: Array<{ question?: string; answer?: string; q?: string; a?: string }> | null;
   created_at: string;
 }
 

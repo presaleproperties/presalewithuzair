@@ -176,6 +176,7 @@ export type Database = {
         Row: {
           address: string | null
           amenities: Json | null
+          assignment_allowed: string | null
           brochure_files: Json | null
           city: string | null
           completion_month: number | null
@@ -194,13 +195,16 @@ export type Database = {
           incentives: string | null
           incentives_available: boolean | null
           is_featured: boolean | null
+          is_indexed: boolean
           is_published: boolean | null
+          last_synced_at: string | null
           map_lat: number | null
           map_lng: number | null
           name: string
           near_skytrain: boolean | null
           neighborhood: string | null
           occupancy_estimate: string | null
+          og_image: string | null
           price_range: string | null
           project_type: string | null
           seo_description: string | null
@@ -208,6 +212,7 @@ export type Database = {
           short_description: string | null
           slug: string
           source_id: string | null
+          source_slug: string | null
           starting_price: number | null
           status: string | null
           strata_fees: string | null
@@ -218,6 +223,7 @@ export type Database = {
         Insert: {
           address?: string | null
           amenities?: Json | null
+          assignment_allowed?: string | null
           brochure_files?: Json | null
           city?: string | null
           completion_month?: number | null
@@ -236,13 +242,16 @@ export type Database = {
           incentives?: string | null
           incentives_available?: boolean | null
           is_featured?: boolean | null
+          is_indexed?: boolean
           is_published?: boolean | null
+          last_synced_at?: string | null
           map_lat?: number | null
           map_lng?: number | null
           name: string
           near_skytrain?: boolean | null
           neighborhood?: string | null
           occupancy_estimate?: string | null
+          og_image?: string | null
           price_range?: string | null
           project_type?: string | null
           seo_description?: string | null
@@ -250,6 +259,7 @@ export type Database = {
           short_description?: string | null
           slug: string
           source_id?: string | null
+          source_slug?: string | null
           starting_price?: number | null
           status?: string | null
           strata_fees?: string | null
@@ -260,6 +270,7 @@ export type Database = {
         Update: {
           address?: string | null
           amenities?: Json | null
+          assignment_allowed?: string | null
           brochure_files?: Json | null
           city?: string | null
           completion_month?: number | null
@@ -278,13 +289,16 @@ export type Database = {
           incentives?: string | null
           incentives_available?: boolean | null
           is_featured?: boolean | null
+          is_indexed?: boolean
           is_published?: boolean | null
+          last_synced_at?: string | null
           map_lat?: number | null
           map_lng?: number | null
           name?: string
           near_skytrain?: boolean | null
           neighborhood?: string | null
           occupancy_estimate?: string | null
+          og_image?: string | null
           price_range?: string | null
           project_type?: string | null
           seo_description?: string | null
@@ -292,6 +306,7 @@ export type Database = {
           short_description?: string | null
           slug?: string
           source_id?: string | null
+          source_slug?: string | null
           starting_price?: number | null
           status?: string | null
           strata_fees?: string | null

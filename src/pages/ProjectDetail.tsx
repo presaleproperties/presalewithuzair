@@ -249,17 +249,83 @@ const ProjectDetail = () => {
   const hasFloorplans = project.floorplan_files && project.floorplan_files.length > 0;
   const hasBrochures = project.brochure_files && project.brochure_files.length > 0;
 
-  const pageTitle = `${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`;
-  const pageDescription = project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`;
+  const pageTitle = project.seo_title || `${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`;
+  const pageDescription = project.seo_description || project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`;
   const pageUrl = `https://presalewithuzair.com/projects/${project.slug}`;
-  const pageImage = project.featured_image || "https://presalewithuzair.com/og-image.jpg";
+  const canonicalUrl = project.source_slug
+    ? `https://presaleproperties.com/${project.source_slug}`
+    : pageUrl;
+  const pageImage = project.og_image || project.featured_image || "https://presalewithuzair.com/og-image.jpg";
+
+  const faqItems: Array<{ question: string; answer: string }> = Array.isArray(project.faq)
+    ? (project.faq as any[])
+        .map((f) => ({
+          question: String(f?.question ?? f?.q ?? "").trim(),
+          answer: String(f?.answer ?? f?.a ?? "").trim(),
+        }))
+        .filter((f) => f.question && f.answer)
+    : [];
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: project.name,
+    description: pageDescription,
+    image: pageImage,
+    url: pageUrl,
+    brand: project.developer_name ? { "@type": "Organization", name: project.developer_name } : undefined,
+    category: project.project_type || "Presale Condo",
+    ...(project.city ? { areaServed: { "@type": "Place", name: project.city } } : {}),
+    ...(project.starting_price ? {
+      offers: {
+        "@type": "Offer",
+        price: project.starting_price,
+        priceCurrency: "CAD",
+        url: pageUrl,
+        availability: project.status === "sold_out" ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+      },
+    } : {}),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://presalewithuzair.com/" },
+      ...(project.city ? [{
+        "@type": "ListItem",
+        position: 2,
+        name: project.city,
+        item: `https://presalewithuzair.com/${citySlug}`,
+      }] : []),
+      {
+        "@type": "ListItem",
+        position: project.city ? 3 : 2,
+        name: project.name,
+        item: pageUrl,
+      },
+    ],
+  };
+
+  const faqJsonLd = faqItems.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
 
   return (
     <>
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <link rel="canonical" href={pageUrl} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta name="robots" content="noindex,follow" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
@@ -272,27 +338,11 @@ const ProjectDetail = () => {
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={pageImage} />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: project.name,
-            description: pageDescription,
-            image: pageImage,
-            url: pageUrl,
-            brand: project.developer_name ? { "@type": "Organization", name: project.developer_name } : undefined,
-            category: project.project_type || "Presale Condo",
-            ...(project.starting_price ? {
-              offers: {
-                "@type": "Offer",
-                price: project.starting_price,
-                priceCurrency: "CAD",
-                url: pageUrl,
-                availability: project.status === "sold_out" ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
-              },
-            } : {}),
-          })}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(productJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        {faqJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        )}
       </Helmet>
 
 
@@ -531,6 +581,28 @@ const ProjectDetail = () => {
                       allowFullScreen
                       title={`${project.name} video`}
                     />
+                  </div>
+                </div>
+              )}
+
+              {/* FAQ */}
+              {faqItems.length > 0 && (
+                <div>
+                  <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-5">Frequently Asked Questions</h2>
+                  <div className="divide-y divide-border/60 rounded-2xl border border-border/60 bg-card/40">
+                    {faqItems.map((f, i) => (
+                      <details key={i} className="group p-5 open:bg-card/70 transition-colors">
+                        <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                          <span className="font-display text-base md:text-lg text-foreground group-open:text-primary transition-colors">
+                            {f.question}
+                          </span>
+                          <ChevronRight className="h-4 w-4 shrink-0 mt-1.5 text-muted-foreground transition-transform group-open:rotate-90" />
+                        </summary>
+                        <p className="mt-3 text-[15px] leading-relaxed text-foreground/70 whitespace-pre-line">
+                          {f.answer}
+                        </p>
+                      </details>
+                    ))}
                   </div>
                 </div>
               )}

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
@@ -73,9 +74,15 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs md:text-sm text-foreground/50 mb-8 animate-fade-up">
+          <p className="text-xs md:text-sm text-foreground/50 mb-4 animate-fade-up">
             {heroContent.trustBar}
           </p>
+
+          {/* Google Rating */}
+          <div className="mb-8 animate-fade-up">
+            <GoogleRatingBadge />
+          </div>
+
 
           {/* Hero Photos Grid */}
           <div className="relative mb-8 animate-fade-up">
@@ -150,7 +157,11 @@ export const HeroSection = () => {
               <p className="text-sm text-foreground/50">
                 {heroContent.trustBar}
               </p>
+
+              {/* Google Rating */}
+              <GoogleRatingBadge />
             </div>
+
 
             {/* Trust Badge */}
             <div className="pt-8 border-t border-foreground/10 animate-fade-up">

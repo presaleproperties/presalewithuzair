@@ -53,7 +53,7 @@ export const ProjectGrid = ({ city, limit }: ProjectGridProps) => {
   }
 
   const formatPrice = (price: number | null) => {
-    if (!price) return null;
+    if (!price || price < 200000) return "Pricing on request";
     return `From $${price.toLocaleString()}`;
   };
 

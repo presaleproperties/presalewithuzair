@@ -228,27 +228,13 @@ serve(async (req) => {
       localLeadId: lead?.id ?? null,
     });
 
-    // Optional legacy Zapier forward — only if still configured. Never throws.
-    const webhookUrl = Deno.env.get('ZAPIER_WEBHOOK_URL');
-    if (webhookUrl) {
-      try {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-      } catch (zapErr) {
-        console.error("Zapier forward error:", zapErr instanceof Error ? zapErr.message : zapErr);
-      }
-    }
-
     return new Response(
       JSON.stringify({ success: true, leadId: lead?.id }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
     );
   } catch (error) {
     const msg = error instanceof Error ? error.message : "Unknown error";
-    console.error('Error in send-to-zapier:', msg);
+    console.error('Error in capture-landing-lead:', msg);
     return new Response(
       JSON.stringify({ error: "An error occurred. Please try again." }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }

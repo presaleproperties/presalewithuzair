@@ -21,7 +21,7 @@ verify_jwt = false
 [functions.generate-sitemap]
 verify_jwt = false
 
-[functions.send-to-zapier]
+[functions.capture-landing-lead]
 verify_jwt = false
 
 [functions.sync-projects]

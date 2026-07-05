@@ -397,42 +397,6 @@ Deno.serve(async (req) => {
       neighbourhood,
     });
 
-    // Legacy Zapier webhook (no-ops when env unset)
-    const zapierUrl = Deno.env.get("ZAPIER_WEBHOOK_URL");
-    if (zapierUrl) {
-      try {
-        await fetch(zapierUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id: lead.id,
-            first_name: lead.first_name,
-            last_name: lead.last_name,
-            full_name: `${lead.first_name} ${lead.last_name}`.trim(),
-            email: lead.email,
-            phone: lead.phone,
-            buyer_type: lead.buyer_type,
-            lead_source: lead.lead_source,
-            timeline: lead.timeline,
-            budget: lead.budget,
-            preferred_call_date: lead.preferred_call_date,
-            preferred_call_time: lead.preferred_call_time,
-            has_agent: lead.has_agent,
-            utm_source: lead.utm_source,
-            utm_medium: lead.utm_medium,
-            utm_campaign: lead.utm_campaign,
-            utm_term: lead.utm_term,
-            utm_content: lead.utm_content,
-            referrer: lead.referrer,
-            landing_page: lead.landing_page,
-            created_at: lead.created_at,
-            source: "presalewithuzair.com",
-          }),
-        });
-      } catch (zapierError) {
-        console.error("Zapier webhook error:", zapierError);
-      }
-    }
 
     return new Response(
       JSON.stringify({ success: true, leadId: lead.id }),

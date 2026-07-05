@@ -65,10 +65,16 @@ async function forwardToDealzFlow(args: {
   localLeadId?: string | null;
 }): Promise<void> {
   try {
+    const landingPage = args.landingPage || "/call";
+    const pageUrl = landingPage.startsWith("http")
+      ? landingPage
+      : `https://presalewithuzair.com${landingPage.startsWith("/") ? landingPage : `/${landingPage}`}`;
+
     const msgParts: string[] = [];
     if (args.buyerTypeLabel) msgParts.push(`Buyer type: ${args.buyerTypeLabel}`);
     if (args.helpWith) msgParts.push(`Help with: ${args.helpWith}`);
     if (args.preferredCallTime) msgParts.push(`Preferred call: ${args.preferredCallTime}`);
+    msgParts.push(`🔗 Page: ${pageUrl}`);
 
     const crmBody = {
       source_slug: DEALZFLOW_SOURCE_SLUG,
@@ -77,6 +83,7 @@ async function forwardToDealzFlow(args: {
       email: args.email || undefined,
       phone: args.phone || undefined,
       message: msgParts.length ? msgParts.join(" · ") : undefined,
+      page_url: pageUrl,
       campaign: args.utmCampaign || undefined,
       utm_source: args.utmSource || args.foundVia || undefined,
       utm_medium: args.utmMedium || undefined,
@@ -84,6 +91,7 @@ async function forwardToDealzFlow(args: {
       raw: {
         site: "presalewithuzair.com",
         form: "landing-page-call",
+        page_url: pageUrl,
         local_lead_id: args.localLeadId ?? null,
         help_with: args.helpWith,
         preferred_call_time: args.preferredCallTime,

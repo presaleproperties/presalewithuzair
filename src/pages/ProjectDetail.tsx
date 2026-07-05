@@ -252,9 +252,7 @@ const ProjectDetail = () => {
   const pageTitle = project.seo_title || `${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`;
   const pageDescription = project.seo_description || project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`;
   const pageUrl = `https://presalewithuzair.com/projects/${project.slug}`;
-  const canonicalUrl = project.source_slug
-    ? `https://presaleproperties.com/${project.source_slug}`
-    : pageUrl;
+  const canonicalUrl = project.source_url || pageUrl;
   const pageImage = project.og_image || project.featured_image || "https://presalewithuzair.com/og-image.jpg";
 
   const faqItems: Array<{ question: string; answer: string }> = Array.isArray(project.faq)

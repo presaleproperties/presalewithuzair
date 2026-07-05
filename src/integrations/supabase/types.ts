@@ -213,6 +213,7 @@ export type Database = {
           slug: string
           source_id: string | null
           source_slug: string | null
+          source_url: string | null
           starting_price: number | null
           status: string | null
           strata_fees: string | null
@@ -260,6 +261,7 @@ export type Database = {
           slug: string
           source_id?: string | null
           source_slug?: string | null
+          source_url?: string | null
           starting_price?: number | null
           status?: string | null
           strata_fees?: string | null
@@ -307,6 +309,7 @@ export type Database = {
           slug?: string
           source_id?: string | null
           source_slug?: string | null
+          source_url?: string | null
           starting_price?: number | null
           status?: string | null
           strata_fees?: string | null

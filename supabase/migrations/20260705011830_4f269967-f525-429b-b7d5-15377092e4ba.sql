@@ -1,0 +1,1 @@
+ALTER TABLE public.presale_projects ADD COLUMN IF NOT EXISTS source_url text;

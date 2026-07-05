@@ -38,6 +38,7 @@ export interface PresaleProject {
   seo_description: string | null;
   og_image: string | null;
   source_slug: string | null;
+  source_url: string | null;
   assignment_allowed: string | null;
   faq: Array<{ question?: string; answer?: string; q?: string; a?: string }> | null;
   created_at: string;

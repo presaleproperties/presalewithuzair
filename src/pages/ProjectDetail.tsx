@@ -252,9 +252,7 @@ const ProjectDetail = () => {
   const pageTitle = project.seo_title || `${project.name} | Presale ${project.project_type || "Condo"} in ${project.city || "Fraser Valley"}`;
   const pageDescription = project.seo_description || project.short_description || `${project.name} by ${project.developer_name} — presale in ${project.city || "Fraser Valley"}. Request floor plans & pricing.`;
   const pageUrl = `https://presalewithuzair.com/projects/${project.slug}`;
-  const canonicalUrl = project.source_slug
-    ? `https://presaleproperties.com/${project.source_slug}`
-    : pageUrl;
+  const canonicalUrl = project.source_url || pageUrl;
   const pageImage = project.og_image || project.featured_image || "https://presalewithuzair.com/og-image.jpg";
 
   const faqItems: Array<{ question: string; answer: string }> = Array.isArray(project.faq)
@@ -402,14 +400,19 @@ const ProjectDetail = () => {
               )}
 
               {/* Price */}
-              {project.starting_price && (
-                <div className="mb-6">
-                  <p className="text-xs text-muted-foreground mb-0.5">Starting From</p>
+              <div className="mb-6">
+                <p className="text-xs text-muted-foreground mb-0.5">Starting From</p>
+                {project.starting_price && project.starting_price >= 200000 ? (
                   <p className="text-3xl font-black text-primary tracking-tight">
                     ${project.starting_price.toLocaleString()}
                   </p>
-                </div>
-              )}
+                ) : (
+                  <p className="text-2xl font-black text-primary tracking-tight">
+                    Pricing on request
+                  </p>
+                )}
+              </div>
+
 
               {/* Key details */}
               <div className="rounded-xl border border-border bg-card/50 p-4 mb-5">
@@ -661,14 +664,16 @@ const ProjectDetail = () => {
             <p className="text-foreground/60 mb-6 max-w-xl mx-auto">
               See floorplans, pricing, and full project details for hundreds of presales across the Lower Mainland and Fraser Valley.
             </p>
-            <a
-              href={`https://presaleproperties.com/projects/${project.slug}`}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
-            >
-              View this project on PresaleProperties.com →
-            </a>
+            {project.source_url && (
+              <a
+                href={project.source_url}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+              >
+                View this project on PresaleProperties.com →
+              </a>
+            )}
           </div>
         </section>
       </main>
@@ -741,11 +746,12 @@ const RelatedProjects = ({ city, currentSlug }: { city: string | null; currentSl
                 {project.developer_name && (
                   <p className="text-sm text-muted-foreground mt-0.5">{project.developer_name}</p>
                 )}
-                {project.starting_price && (
-                  <p className="text-sm font-bold text-primary mt-2">
-                    From ${project.starting_price.toLocaleString()}
-                  </p>
-                )}
+                <p className="text-sm font-bold text-primary mt-2">
+                  {project.starting_price && project.starting_price >= 200000
+                    ? `From $${project.starting_price.toLocaleString()}`
+                    : "Pricing on request"}
+                </p>
+
               </div>
             </Link>
           ))}

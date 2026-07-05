@@ -274,7 +274,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   const projectCount = activeProjects.length;
   const lowestPrice = activeProjects
     .map((p) => p.starting_price)
-    .filter((n): n is number => typeof n === "number" && n > 0)
+    .filter((n): n is number => typeof n === "number" && n >= 200000)
     .reduce<number | null>((min, n) => (min === null || n < min ? n : min), null);
 
   const formatPrice = (n: number) => `$${n.toLocaleString("en-CA")}`;

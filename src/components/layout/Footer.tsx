@@ -188,7 +188,7 @@ export const Footer = () => {
                   <Phone className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div>
                     <p className="text-xs text-white/40 mb-0.5">Phone</p>
-                    <a href="tel:+17782313592" className="text-sm text-white/80 hover:text-white transition-colors">
+                    <a href="tel:+17782313592" onClick={trackPhone} className="text-sm text-white/80 hover:text-white transition-colors">
                       +1 (778) 231-3592
                     </a>
                   </div>

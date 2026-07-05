@@ -161,6 +161,9 @@ export const Footer = () => {
                   { href: "/surrey", label: "Surrey" },
                   { href: "/langley", label: "Langley" },
                   { href: "/abbotsford", label: "Abbotsford" },
+                  { href: "/coquitlam", label: "Coquitlam" },
+                  { href: "/delta", label: "Delta" },
+                  { href: "/burnaby", label: "Burnaby" },
                   { href: "/chilliwack", label: "Chilliwack" },
                   { href: "/maple-ridge", label: "Maple Ridge" },
                 ].map((link) => (

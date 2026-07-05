@@ -115,6 +115,40 @@ Deno.serve(async (req) => {
       auth: { persistSession: false },
     });
 
+    // Build a map of slug -> canonical URL from presaleproperties.com sitemap.
+    // The sitemap URLs end with `-{slug}` (e.g. .../west-coquitlam-presale-homes-florin for slug `florin`).
+    const slugToSourceUrl = new Map<string, string>();
+    try {
+      const sitemapRes = await fetch(
+        "https://thvlisplwqhtjpzpedhq.supabase.co/functions/v1/generate-sitemap?type=projects",
+      );
+      if (sitemapRes.ok) {
+        const xml = await sitemapRes.text();
+        const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) => m[1].trim());
+        // Sort by URL length descending so longer/more-specific paths win when
+        // multiple slugs are suffixes of one another (e.g. `park` vs `city-park`).
+        const sortedSlugs = sourceRows
+          .map((r: any) => r.slug as string)
+          .filter(Boolean)
+          .slice()
+          .sort((a, b) => b.length - a.length);
+        for (const loc of locs) {
+          const pathname = loc.replace(/\/+$/, "");
+          for (const slug of sortedSlugs) {
+            if (pathname.endsWith(`-${slug}`) || pathname.endsWith(`/${slug}`)) {
+              if (!slugToSourceUrl.has(slug)) slugToSourceUrl.set(slug, loc);
+              break;
+            }
+          }
+        }
+      } else {
+        console.warn("sitemap fetch non-ok:", sitemapRes.status);
+      }
+    } catch (e) {
+      console.warn("sitemap fetch failed:", e instanceof Error ? e.message : String(e));
+    }
+
+
     // Load existing local rows (by source_id + slug) to detect collisions/retirements
     const { data: existing, error: exErr } = await local
       .from("presale_projects")

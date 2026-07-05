@@ -170,8 +170,14 @@ async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): P
     const buyerLabel = bt ? (BUYER_TYPE_LABELS[bt] || bt) : null;
     const srcLabel = lead.lead_source ? (LEAD_SOURCE_LABELS[lead.lead_source] || lead.lead_source) : null;
 
+    const landingPage = lead.landing_page || "/";
+    const pageUrl = landingPage.startsWith("http")
+      ? landingPage
+      : `https://presalewithuzair.com${landingPage.startsWith("/") ? landingPage : `/${landingPage}`}`;
+
     const lines: string[] = [];
-    lines.push(`🆕 New lead — presalewithuzair.com${lead.landing_page ? ` (${lead.landing_page})` : ""}`);
+    lines.push(`🆕 New lead — presalewithuzair.com`);
+    lines.push(`🔗 Page: ${pageUrl}`);
     if (ctx.city) lines.push(`📍 City interest: ${ctx.city}`);
     if (ctx.neighbourhood) lines.push(`📍 Neighbourhood: ${ctx.neighbourhood}`);
     if (buyerLabel) lines.push(`👤 Buyer type: ${buyerLabel}`);
@@ -201,6 +207,7 @@ async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): P
       email: lead.email || undefined,
       phone: lead.phone || undefined,
       message: lines.join("\n"),
+      page_url: pageUrl,
       campaign: lead.utm_campaign || (ctx.city ? `pwu-${ctx.city.toLowerCase().replace(/\s+/g, "-")}` : undefined),
       utm_source: lead.utm_source || lead.lead_source || undefined,
       utm_medium: lead.utm_medium || undefined,
@@ -215,6 +222,7 @@ async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): P
       tags: ctx.tags.length ? ctx.tags : undefined,
       raw: {
         site: "presalewithuzair.com",
+        page_url: pageUrl,
         local_lead_id: lead.id,
         city_interest: ctx.city,
         neighbourhood: ctx.neighbourhood || null,

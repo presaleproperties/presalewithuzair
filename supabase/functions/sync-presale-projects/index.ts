@@ -181,6 +181,7 @@ Deno.serve(async (req) => {
       const payload: Record<string, unknown> = {
         source_id: src.id,
         source_slug: src.slug,
+        source_url: slugToSourceUrl.get(src.slug) ?? null,
         slug,
         name: src.name,
         status,

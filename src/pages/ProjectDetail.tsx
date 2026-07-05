@@ -584,6 +584,28 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               )}
+
+              {/* FAQ */}
+              {faqItems.length > 0 && (
+                <div>
+                  <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-5">Frequently Asked Questions</h2>
+                  <div className="divide-y divide-border/60 rounded-2xl border border-border/60 bg-card/40">
+                    {faqItems.map((f, i) => (
+                      <details key={i} className="group p-5 open:bg-card/70 transition-colors">
+                        <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                          <span className="font-display text-base md:text-lg text-foreground group-open:text-primary transition-colors">
+                            {f.question}
+                          </span>
+                          <ChevronRight className="h-4 w-4 shrink-0 mt-1.5 text-muted-foreground transition-transform group-open:rotate-90" />
+                        </summary>
+                        <p className="mt-3 text-[15px] leading-relaxed text-foreground/70 whitespace-pre-line">
+                          {f.answer}
+                        </p>
+                      </details>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right — Sticky lead form */}

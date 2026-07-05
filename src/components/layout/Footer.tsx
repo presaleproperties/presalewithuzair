@@ -3,6 +3,9 @@ import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 import realBrokerLogo from "@/assets/real-broker-logo.avif";
 
+const trackPhone = () => { try { (window as any).gtag?.("event", "click_phone", { location: "footer" }); } catch {} };
+const trackWa = () => { try { (window as any).gtag?.("event", "click_whatsapp", { location: "footer" }); } catch {} };
+
 export const Footer = () => {
   return (
     <footer className="dark-section relative overflow-hidden">
@@ -29,6 +32,7 @@ export const Footer = () => {
             <div className="flex items-center gap-2.5">
               <a
                 href="tel:+17782313592"
+                onClick={trackPhone}
                 className="w-10 h-10 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/15 hover:text-white transition-all"
               >
                 <Phone className="h-4 w-4" />
@@ -37,6 +41,7 @@ export const Footer = () => {
                 href="https://wa.me/17782313592"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWa}
                 className="w-10 h-10 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/70 hover:bg-white/15 hover:text-white transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
@@ -55,8 +60,6 @@ export const Footer = () => {
             <Link to="/services" className="text-white/50 hover:text-primary transition-colors">Services</Link>
             <Link to="/blog" className="text-white/50 hover:text-primary transition-colors">Blog</Link>
             <Link to="/contact" className="text-white/50 hover:text-primary transition-colors">Contact</Link>
-            <Link to="/developers" className="text-white/50 hover:text-primary transition-colors">Developers</Link>
-            <Link to="/agents" className="text-white/50 hover:text-primary transition-colors">Agents</Link>
             <Link to="/book" className="text-white font-medium hover:text-primary transition-colors">Book a Call</Link>
             <a
               href="https://presaleproperties.com"
@@ -98,6 +101,7 @@ export const Footer = () => {
                   href="https://wa.me/17782313592"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={trackWa}
                   className="w-9 h-9 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/60 hover:bg-primary/20 hover:text-primary hover:border-primary/30 transition-all duration-300"
                 >
                   <MessageCircle className="h-4 w-4" />
@@ -158,6 +162,9 @@ export const Footer = () => {
                   { href: "/surrey", label: "Surrey" },
                   { href: "/langley", label: "Langley" },
                   { href: "/abbotsford", label: "Abbotsford" },
+                  { href: "/coquitlam", label: "Coquitlam" },
+                  { href: "/delta", label: "Delta" },
+                  { href: "/burnaby", label: "Burnaby" },
                   { href: "/chilliwack", label: "Chilliwack" },
                   { href: "/maple-ridge", label: "Maple Ridge" },
                 ].map((link) => (
@@ -181,7 +188,7 @@ export const Footer = () => {
                   <Phone className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div>
                     <p className="text-xs text-white/40 mb-0.5">Phone</p>
-                    <a href="tel:+17782313592" className="text-sm text-white/80 hover:text-white transition-colors">
+                    <a href="tel:+17782313592" onClick={trackPhone} className="text-sm text-white/80 hover:text-white transition-colors">
                       +1 (778) 231-3592
                     </a>
                   </div>

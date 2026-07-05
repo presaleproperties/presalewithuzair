@@ -149,6 +149,17 @@ export const UnifiedLeadForm = ({
 
       if (error) throw new Error(error.message || "Failed to submit");
 
+      // GA4 conversion event
+      try {
+        (window as any).gtag?.("event", "generate_lead", {
+          landing_page: trackingData.landingPage,
+          buyer_type: formData.buyerType,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          lead_source: formData.leadSource,
+        });
+      } catch {}
+
       setIsSuccess(true);
       toast({
         title: "Thanks for reaching out!",

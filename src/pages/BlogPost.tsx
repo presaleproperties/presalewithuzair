@@ -380,6 +380,35 @@ const BlogPost = () => {
                 </div>
               </article>
 
+              {/* Explore presales by city — internal links */}
+              <div className="mt-10 pt-8 border-t" style={{ borderColor: "hsl(var(--border))" }}>
+                <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
+                  Explore Presales By City
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { href: "/surrey", label: "Surrey" },
+                    { href: "/langley", label: "Langley" },
+                    { href: "/abbotsford", label: "Abbotsford" },
+                    { href: "/coquitlam", label: "Coquitlam" },
+                    { href: "/delta", label: "Delta" },
+                    { href: "/burnaby", label: "Burnaby" },
+                    { href: "/chilliwack", label: "Chilliwack" },
+                    { href: "/maple-ridge", label: "Maple Ridge" },
+                  ].map((c) => (
+                    <Link
+                      key={c.href}
+                      to={c.href}
+                      className="px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors hover:bg-primary hover:text-white hover:border-primary"
+                      style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))" }}
+                    >
+                      {c.label} Presales
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+
               {/* ─ Sticky sidebar ─ */}
               {relatedPosts.length > 0 && (
                 <aside className="hidden lg:block w-[260px] flex-shrink-0">

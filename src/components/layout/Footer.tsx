@@ -101,6 +101,7 @@ export const Footer = () => {
                   href="https://wa.me/17782313592"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={trackWa}
                   className="w-9 h-9 rounded-full bg-white/8 border border-white/10 flex items-center justify-center text-white/60 hover:bg-primary/20 hover:text-primary hover:border-primary/30 transition-all duration-300"
                 >
                   <MessageCircle className="h-4 w-4" />

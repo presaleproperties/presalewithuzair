@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",

@@ -157,7 +157,11 @@ export const HeroSection = () => {
               <p className="text-sm text-foreground/50">
                 {heroContent.trustBar}
               </p>
+
+              {/* Google Rating */}
+              <GoogleRatingBadge />
             </div>
+
 
             {/* Trust Badge */}
             <div className="pt-8 border-t border-foreground/10 animate-fade-up">

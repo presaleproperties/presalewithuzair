@@ -116,9 +116,8 @@ export const ProjectGrid = ({ city, limit }: ProjectGridProps) => {
               <MapPin className="h-3.5 w-3.5" />
               {project.city}{project.project_type ? ` · ${project.project_type}` : ""}
             </div>
-            {project.starting_price && (
-              <p className="text-sm font-semibold text-foreground mb-4">{formatPrice(project.starting_price)}</p>
-            )}
+            <p className="text-sm font-semibold text-foreground mb-4">{formatPrice(project.starting_price)}</p>
+
             <Link
               to={`/projects/${project.slug}`}
               className="inline-flex items-center justify-center w-full rounded-lg border border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-sm h-9 px-3 transition-colors"

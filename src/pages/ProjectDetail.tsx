@@ -400,14 +400,19 @@ const ProjectDetail = () => {
               )}
 
               {/* Price */}
-              {project.starting_price && (
-                <div className="mb-6">
-                  <p className="text-xs text-muted-foreground mb-0.5">Starting From</p>
+              <div className="mb-6">
+                <p className="text-xs text-muted-foreground mb-0.5">Starting From</p>
+                {project.starting_price && project.starting_price >= 200000 ? (
                   <p className="text-3xl font-black text-primary tracking-tight">
                     ${project.starting_price.toLocaleString()}
                   </p>
-                </div>
-              )}
+                ) : (
+                  <p className="text-2xl font-black text-primary tracking-tight">
+                    Pricing on request
+                  </p>
+                )}
+              </div>
+
 
               {/* Key details */}
               <div className="rounded-xl border border-border bg-card/50 p-4 mb-5">

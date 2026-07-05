@@ -744,11 +744,12 @@ const RelatedProjects = ({ city, currentSlug }: { city: string | null; currentSl
                 {project.developer_name && (
                   <p className="text-sm text-muted-foreground mt-0.5">{project.developer_name}</p>
                 )}
-                {project.starting_price && (
-                  <p className="text-sm font-bold text-primary mt-2">
-                    From ${project.starting_price.toLocaleString()}
-                  </p>
-                )}
+                <p className="text-sm font-bold text-primary mt-2">
+                  {project.starting_price && project.starting_price >= 200000
+                    ? `From $${project.starting_price.toLocaleString()}`
+                    : "Pricing on request"}
+                </p>
+
               </div>
             </Link>
           ))}

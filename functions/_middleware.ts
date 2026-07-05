@@ -143,7 +143,11 @@ async function resolve(pathname: string, env: Record<string, string | undefined>
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
 
   if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
-  if (CITY_META[path]) return { meta: CITY_META[path], body: cityBody(path) };
+  if (CITY_META[path]) {
+    const citySlug = path.replace(/^\//, "");
+    const cityImage = `${SITE}/images/heroes/${citySlug}-hero.jpg`;
+    return { meta: { ...CITY_META[path], image: cityImage }, body: cityBody(path) };
+  }
 
   if (path.startsWith("/blog/")) {
     const slug = path.slice("/blog/".length);

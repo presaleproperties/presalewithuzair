@@ -60,8 +60,6 @@ export const Footer = () => {
             <Link to="/services" className="text-white/50 hover:text-primary transition-colors">Services</Link>
             <Link to="/blog" className="text-white/50 hover:text-primary transition-colors">Blog</Link>
             <Link to="/contact" className="text-white/50 hover:text-primary transition-colors">Contact</Link>
-            <Link to="/developers" className="text-white/50 hover:text-primary transition-colors">Developers</Link>
-            <Link to="/agents" className="text-white/50 hover:text-primary transition-colors">Agents</Link>
             <Link to="/book" className="text-white font-medium hover:text-primary transition-colors">Book a Call</Link>
             <a
               href="https://presaleproperties.com"

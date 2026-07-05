@@ -65,6 +65,9 @@ const App = () => (
               <Route path="/abbotsford" element={<CityLanding citySlug="abbotsford" />} />
               <Route path="/chilliwack" element={<CityLanding citySlug="chilliwack" />} />
               <Route path="/maple-ridge" element={<CityLanding citySlug="maple-ridge" />} />
+              <Route path="/coquitlam" element={<CityLanding citySlug="coquitlam" />} />
+              <Route path="/delta" element={<CityLanding citySlug="delta" />} />
+              <Route path="/burnaby" element={<CityLanding citySlug="burnaby" />} />
               <Route path="/projects/:slug" element={<ProjectDetail />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />

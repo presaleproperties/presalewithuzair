@@ -74,9 +74,15 @@ export const HeroSection = () => {
           </div>
 
           {/* Trust Bar */}
-          <p className="text-xs md:text-sm text-foreground/50 mb-8 animate-fade-up">
+          <p className="text-xs md:text-sm text-foreground/50 mb-4 animate-fade-up">
             {heroContent.trustBar}
           </p>
+
+          {/* Google Rating */}
+          <div className="mb-8 animate-fade-up">
+            <GoogleRatingBadge />
+          </div>
+
 
           {/* Hero Photos Grid */}
           <div className="relative mb-8 animate-fade-up">

@@ -664,14 +664,16 @@ const ProjectDetail = () => {
             <p className="text-foreground/60 mb-6 max-w-xl mx-auto">
               See floorplans, pricing, and full project details for hundreds of presales across the Lower Mainland and Fraser Valley.
             </p>
-            <a
-              href={`https://presaleproperties.com/projects/${project.slug}`}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
-            >
-              View this project on PresaleProperties.com →
-            </a>
+            {project.source_url && (
+              <a
+                href={project.source_url}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+              >
+                View this project on PresaleProperties.com →
+              </a>
+            )}
           </div>
         </section>
       </main>

@@ -369,6 +369,11 @@ export async function resolve(pathname: string, env: Record<string, string | und
     return { meta: { title: f.title, description: f.description, image: DEFAULT_IMAGE }, body: funnelBody(path) + ABOUT_BLOCK };
   }
   if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
+  if (FUNNEL[path]) {
+    const f = FUNNEL[path];
+    return { meta: { title: f.title, description: f.description, image: funnelImage(path) }, body: funnelBody(path) + ABOUT_BLOCK };
+  }
+  if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");
     const cityImage = `${SITE}/images/heroes/${citySlug}-hero.jpg`;

@@ -146,6 +146,12 @@ interface FunnelPage {
   faqs: { q: string; a: string }[];
   breadcrumbName: string;
   related: { href: string; label: string }[];
+  image?: string;
+}
+
+function funnelImage(path: string): string {
+  const slug = path.replace(/^\//, "");
+  return `${SITE}/og/${slug}.png`;
 }
 
 const TRACK_RECORD_LINE =

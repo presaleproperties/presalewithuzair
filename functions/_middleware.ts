@@ -149,9 +149,22 @@ interface FunnelPage {
   image?: string;
 }
 
+// Slugs that have a real 1200x630 PNG committed at public/og/<slug>.png.
+// Any FUNNEL page NOT in this set falls back to DEFAULT_IMAGE so we never
+// ship a broken link-preview.
+const FUNNEL_OG_SLUGS = new Set<string>([
+  "new-to-presale-start-here",
+  "buy-presale-fraser-valley",
+  "presale-mistakes-fraser-valley",
+  "fraser-valley-presale-investment-advice",
+  "best-presale-realtor-fraser-valley",
+  "buyer-representation-presale-fraser-valley",
+]);
+
 function funnelImage(path: string): string {
   const slug = path.replace(/^\//, "");
-  return `${SITE}/og/${slug}.png`;
+  if (FUNNEL_OG_SLUGS.has(slug)) return `${SITE}/og/${slug}.png`;
+  return DEFAULT_IMAGE;
 }
 
 const TRACK_RECORD_LINE =

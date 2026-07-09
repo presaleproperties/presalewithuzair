@@ -1,12 +1,12 @@
 # Presale With Uzair
 
-> Fraser Valley's leading presale expert. Uzair Muhammad helps first-time buyers and investors secure new construction condos and townhomes in Surrey, Langley, Abbotsford, Chilliwack, and Maple Ridge with VIP access, exclusive incentives, and full contract protection.
+> Fraser Valley's leading buyer-only presale expert. Uzair Muhammad helps first-time buyers and investors secure new-construction condos and townhomes across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack, and Maple Ridge — with VIP developer access, line-by-line contract review, and no developer bias.
 
-Independent, buyer-only representation across BC's Fraser Valley. 400+ units sold, $200M+ in sales volume, 5+ years in the presale market. Available in English, Punjabi, Hindi, and Urdu.
+Independent, buyer-only representation across BC's Fraser Valley and Metro Vancouver. 450+ units sold, $200M+ in sales volume, 5 years in the presale market, 4.9★ from 36 Google reviews. Available in English, Punjabi, Hindi, and Urdu. Contact Uzair: +1 672-258-1100.
 
-## Pages
+## Core pages
 
-- [Home](/): Fraser Valley's #1 presale agent — VIP access, best pricing, contract protection.
+- [Home](/): Fraser Valley's buyer-only presale expert — VIP access, best pricing, contract protection.
 - [About](/about): Uzair Muhammad's background, track record, and buyer-protection approach.
 - [Services](/services): Buyer representation, contract review, and presale advisory.
 - [Contact](/contact): Get in touch by phone, email, or office visit in Surrey, BC.
@@ -14,10 +14,22 @@ Independent, buyer-only representation across BC's Fraser Valley. 400+ units sol
 - [Presale Guide](/presale-guide): Free guide — 7 costly mistakes presale buyers make.
 - [Blog](/blog): Market insights, presale tips, and buyer education.
 
+## SEO / AEO funnel pages (first-person, buyer-only)
+
+- [New to Presale? Start Here](/new-to-presale-start-here): Uzair's plain-English intro — what a presale is, presale vs resale, is it right for a first home.
+- [How to Buy a Presale in the Fraser Valley](/buy-presale-fraser-valley): Step-by-step — deposits, 7-day rescission, GST, when to call Uzair (before the sales centre).
+- [Presale Mistakes I See Fraser Valley Buyers Make](/presale-mistakes-fraser-valley): Registering with the developer first, skipping the disclosure statement, bad floor plans, no exit plan.
+- [Fraser Valley Presale Investment Advice](/fraser-valley-presale-investment-advice): Uzair's honest take — which cities and unit types, rental demand, assignment/exit, when NOT to buy.
+- [Best Presale Realtor in the Fraser Valley](/best-presale-realtor-fraser-valley): Talk to Uzair before any developer. Track record, buyer-only, languages, service area.
+- [Do You Need Your Own Realtor for a Presale?](/buyer-representation-presale-fraser-valley): The $0-cost buyer-representation thesis — who the sales rep really works for.
+
 ## City landing pages
 
 - [Surrey Presales](/surrey): New construction condos and townhomes in Surrey, BC.
 - [Langley Presales](/langley): Presale projects in Langley, BC.
 - [Abbotsford Presales](/abbotsford): Presale projects in Abbotsford, BC.
+- [Coquitlam Presales](/coquitlam): Presale projects in Coquitlam, BC.
+- [Delta Presales](/delta): Presale projects in Delta, BC.
+- [Burnaby Presales](/burnaby): Presale projects in Burnaby, BC.
 - [Chilliwack Presales](/chilliwack): Presale projects in Chilliwack, BC.
 - [Maple Ridge Presales](/maple-ridge): Presale projects in Maple Ridge, BC.

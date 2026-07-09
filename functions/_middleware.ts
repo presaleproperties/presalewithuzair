@@ -51,7 +51,7 @@ const ABOUT_BLOCK = `
     <a href="${SITE}/maple-ridge">Maple Ridge presales</a>
   </nav>`;
 
-const STATIC_META: Record<string, Meta> = {
+export const STATIC_META: Record<string, Meta> = {
   "/": { title: "Uzair Muhammad | Fraser Valley's Leading Presale Expert", description: "Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley.", image: DEFAULT_IMAGE },
   "/about": { title: "About Uzair Muhammad — Vancouver Presale Buyer's Agent", description: "Former City of Surrey planning & bylaws professional turned buyer-only presale specialist. 450+ units sold for first-time buyers and investors across Metro Vancouver & the Fraser Valley.", image: DEFAULT_IMAGE },
   "/services": { title: "Buyer-Only Presale Services" + SUFFIX, description: "VIP developer access, contract review, and no developer bias. How Uzair Muhammad protects first-time buyers and investors buying presale & new-construction homes in BC.", image: DEFAULT_IMAGE },
@@ -73,7 +73,7 @@ const STATIC_BODY: Record<string, string> = {
   "/blog": `<h1>Presale Buying Guides &amp; BC Market Insights</h1><p>Expert, buyer-first guides on presale and new construction in British Columbia — deposits, GST and rebates, assignment sales, the BC flipping tax, neighbourhood breakdowns, developer risk, and market timing.</p>`,
 };
 
-const CITY_META: Record<string, Meta> = {
+export const CITY_META: Record<string, Meta> = {
   "/surrey": { title: "Surrey Presale Condos & New Construction" + SUFFIX, description: "Your buyer-only Surrey presale expert. VIP access to new condos & townhomes for first-time buyers and investors — floor plans, pricing, and honest advice. 450+ units sold.", image: DEFAULT_IMAGE },
   "/langley": { title: "Langley Presale Condos & Townhomes" + SUFFIX, description: "Buyer-only Langley presale specialist. VIP access to Willoughby & Yorkson new construction for first-time buyers and investors ahead of the SkyTrain extension.", image: DEFAULT_IMAGE },
   "/abbotsford": { title: "Abbotsford Presale Condos — New Construction" + SUFFIX, description: "The Fraser Valley's most affordable presale market. Buyer-only access to Abbotsford new condos for first-time buyers and investors, from the high $200s.", image: DEFAULT_IMAGE },
@@ -151,7 +151,7 @@ interface FunnelPage {
 const TRACK_RECORD_LINE =
   "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9\u2605 from 36 Google reviews · Buyer-only representation.";
 
-const FUNNEL: Record<string, FunnelPage> = {
+export const FUNNEL: Record<string, FunnelPage> = {
   "/new-to-presale-start-here": {
     title: "New to Presale? Start Here — Uzair's Plain-English Guide",
     description: "New to presale condos in BC? I'm Uzair — buyer-only presale specialist. Learn what a presale is, how it differs from resale, and whether it's right for your first home.",
@@ -355,7 +355,7 @@ function anonKey(env: Record<string, string | undefined>): string | undefined {
   return env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY;
 }
 
-async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
+export async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
 
   if (FUNNEL[path]) {

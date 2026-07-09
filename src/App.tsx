@@ -34,6 +34,9 @@ const PresaleMistakes = lazy(() => import("./pages/funnel/PresaleMistakes"));
 const InvestmentAdvice = lazy(() => import("./pages/funnel/InvestmentAdvice"));
 const BestPresaleRealtor = lazy(() => import("./pages/funnel/BestPresaleRealtor"));
 const BuyerRepresentation = lazy(() => import("./pages/funnel/BuyerRepresentation"));
+const FirstTimeBuyers = lazy(() => import("./pages/funnel/FirstTimeBuyers"));
+const Investors = lazy(() => import("./pages/funnel/Investors"));
+const HowIHelp = lazy(() => import("./pages/funnel/HowIHelp"));
 
 const queryClient = new QueryClient();
 
@@ -81,6 +84,9 @@ const App = () => (
               <Route path="/fraser-valley-presale-investment-advice" element={<InvestmentAdvice />} />
               <Route path="/best-presale-realtor-fraser-valley" element={<BestPresaleRealtor />} />
               <Route path="/buyer-representation-presale-fraser-valley" element={<BuyerRepresentation />} />
+              <Route path="/first-time-buyers-fraser-valley" element={<FirstTimeBuyers />} />
+              <Route path="/investors-fraser-valley" element={<Investors />} />
+              <Route path="/how-i-help" element={<HowIHelp />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />

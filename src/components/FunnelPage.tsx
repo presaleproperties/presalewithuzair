@@ -20,10 +20,14 @@ interface FunnelPageProps {
   breadcrumbName: string;
   faqs: FunnelFAQ[];
   articleDatePublished?: string; // ISO date
+  /** Absolute URL for the page's OG/twitter image. Omit to auto-use /og/<slug>.png. */
+  image?: string;
   children: ReactNode;
 }
 
 const SITE = "https://presalewithuzair.com";
+export const DEFAULT_SOCIAL_IMAGE =
+  "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
 export const TRACK_RECORD =
   "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9★ from 36 Google reviews · Buyer-only representation.";
 const PHONE = "+1 672-258-1100";
@@ -39,10 +43,11 @@ export const FunnelPage = ({
   breadcrumbName,
   faqs,
   articleDatePublished = "2026-07-09",
+  image,
   children,
 }: FunnelPageProps) => {
   const canonical = `${SITE}${path}`;
-  const ogImage = `${SITE}/og${path}.png`;
+  const ogImage = image || `${SITE}/og${path}.png`;
 
   const faqLd = {
     "@context": "https://schema.org",

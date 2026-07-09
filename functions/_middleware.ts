@@ -146,6 +146,12 @@ interface FunnelPage {
   faqs: { q: string; a: string }[];
   breadcrumbName: string;
   related: { href: string; label: string }[];
+  image?: string;
+}
+
+function funnelImage(path: string): string {
+  const slug = path.replace(/^\//, "");
+  return `${SITE}/og/${slug}.png`;
 }
 
 const TRACK_RECORD_LINE =
@@ -360,7 +366,7 @@ export async function resolve(pathname: string, env: Record<string, string | und
 
   if (FUNNEL[path]) {
     const f = FUNNEL[path];
-    return { meta: { title: f.title, description: f.description, image: DEFAULT_IMAGE }, body: funnelBody(path) + ABOUT_BLOCK };
+    return { meta: { title: f.title, description: f.description, image: funnelImage(path) }, body: funnelBody(path) + ABOUT_BLOCK };
   }
   if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
   if (CITY_META[path]) {

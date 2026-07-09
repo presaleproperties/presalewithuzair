@@ -356,6 +356,10 @@ function anonKey(env: Record<string, string | undefined>): string | undefined {
 async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
 
+  if (FUNNEL[path]) {
+    const f = FUNNEL[path];
+    return { meta: { title: f.title, description: f.description, image: DEFAULT_IMAGE }, body: funnelBody(path) + ABOUT_BLOCK };
+  }
   if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");

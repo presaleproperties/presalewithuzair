@@ -62,10 +62,13 @@ function applyMeta(html: string, meta: { title: string; description: string; ima
   set("property", "og:title", meta.title);
   set("property", "og:description", meta.description);
   set("property", "og:image", meta.image);
+  set("property", "og:image:width", "1200");
+  set("property", "og:image:height", "630");
   set("property", "og:url", canonical);
   set("name", "twitter:title", meta.title);
   set("name", "twitter:description", meta.description);
   set("name", "twitter:image", meta.image);
+  set("name", "twitter:card", "summary_large_image");
   if (robots) set("name", "robots", robots);
   // canonical
   const canonRe = /<link\s+rel=["']canonical["'][^>]*>/i;

@@ -133,6 +133,220 @@ function cityBody(path: string): string {
   );
 }
 
+// ---- Funnel pages (SEO/AEO track) ----------------------------------------
+
+interface FunnelPage {
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  sections: { h: string; p: string }[];
+  faqs: { q: string; a: string }[];
+  breadcrumbName: string;
+  related: { href: string; label: string }[];
+}
+
+const TRACK_RECORD_LINE =
+  "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9\u2605 from 36 Google reviews · Buyer-only representation.";
+
+const FUNNEL: Record<string, FunnelPage> = {
+  "/new-to-presale-start-here": {
+    title: "New to Presale? Start Here — Uzair's Plain-English Guide",
+    description: "New to presale condos in BC? I'm Uzair — buyer-only presale specialist. Learn what a presale is, how it differs from resale, and whether it's right for your first home.",
+    h1: "New to Presale? Start Here — Uzair's Plain-English Guide",
+    breadcrumbName: "New to Presale — Start Here",
+    intro: "I'm Uzair Muhammad, a buyer-only presale specialist in the Fraser Valley. If you've never bought a presale condo before, this page is your plain-English starting point — what a presale actually is, how it differs from resale, whether it makes sense for your first home, and how I help buyers avoid the traps developers won't warn you about.",
+    sections: [
+      { h: "What is a presale condo, really?", p: "A presale is a new home you buy from the developer before it's built. You sign a contract, pay staged deposits, and take keys when the building completes — often 12 to 36 months later. In BC the developer must give you a Disclosure Statement and a 7-day rescission window." },
+      { h: "Presale vs resale — which is right for you?", p: "Resale already exists — tour it, finance it, move in. Presale is bought on paper — better pricing potential, no bidding war, new-home warranty, but you carry construction and market risk between contract and completion." },
+      { h: "Is presale right for a first home?", p: "Sometimes yes — you lock in today's price with time to save and get a brand-new home with builder warranty. Sometimes no — if you need to move in six months, or your income won't support the mortgage at completion, resale is safer." },
+      { h: "How I help — buyer-only, no cost to you", p: "I represent buyers only. My commission is paid by the developer out of the price you'd pay anyway. Going direct to the sales centre doesn't save you money — it removes your representation from the deal." },
+    ],
+    faqs: [
+      { q: "What is a presale condo in BC?", a: "A presale (pre-construction) condo is a new home you buy directly from the developer before it's built — often 12 to 36 months before completion. Staged deposits, close at completion. Protected in BC by a Disclosure Statement and a 7-day rescission window." },
+      { q: "Is buying presale a good idea for a first-time buyer?", a: "It can be — you lock in today's price and control a new home with a smaller upfront deposit. It's only smart if the project, contract and location pencil out. I only recommend presales that make sense for a first-time buyer's timeline." },
+      { q: "What's the difference between presale and resale?", a: "Resale is built — tour, finance, move in weeks. Presale is on paper — deposits now, keys later, warranty, GST applies. Presale can mean better pricing and no bidding war but carries construction and market risk." },
+      { q: "How much money do I actually need to start?", a: "Most Fraser Valley developers ask 15–20% staged over 12–24 months; softer windows allow 10% ladders. On a $600,000 home that's often $30,000–$60,000 at signing." },
+      { q: "How do I actually get started with you?", a: "Book a free 15-minute strategy call. I'll ask your budget and timeline, then either shortlist presales or tell you honestly if presale isn't right for you now. Buyer-only, no cost, no pressure." },
+    ],
+    related: [
+      { href: "/buy-presale-fraser-valley", label: "How to Buy a Presale in the Fraser Valley" },
+      { href: "/presale-mistakes-fraser-valley", label: "Presale Mistakes I See Fraser Valley Buyers Make" },
+      { href: "/buyer-representation-presale-fraser-valley", label: "Do You Need Your Own Realtor for a Presale?" },
+    ],
+  },
+  "/buy-presale-fraser-valley": {
+    title: "How to Buy a Presale in the Fraser Valley (With Uzair)",
+    description: "I'm Uzair — buyer-only presale specialist. Step-by-step guide to buying a presale condo in Surrey, Langley, Abbotsford and the Fraser Valley: deposits, rescission, GST and timing.",
+    h1: "How to Buy a Presale in the Fraser Valley (With Uzair)",
+    breadcrumbName: "How to Buy a Presale in the Fraser Valley",
+    intro: "I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. Buying a presale isn't like buying resale — the deposit ladder, rescission window, GST rules and disclosure statement all move on the developer's schedule. Here's the step-by-step I run with every buyer, and exactly when in the process you should call me — before you set foot in a presentation centre.",
+    sections: [
+      { h: "My step-by-step", p: "Step 1: talk before you register. Step 2: I shortlist 2–3 projects fitting your budget and timeline. Step 3: VIP allocation before public launch. Step 4: 7-day rescission — contract review, disclosure statement, financing. Step 5: staged deposits and completion." },
+      { h: "Deposits", p: "Fraser Valley developers typically ask 15–20% staged over 12–24 months. Often 5% at signing, another 5% within 30–90 days, balance at milestones. I flag every deposit date in writing." },
+      { h: "The 7-day rescission window", p: "BC law gives you seven days to walk away with no penalty. That window is when your realtor and lawyer review the contract, disclosure statement and deposit protection. Skip it at your own risk." },
+      { h: "GST and the New Housing Rebate", p: "5% GST applies to new construction. Principal residences under the price cap may qualify for the partial GST New Housing Rebate. I walk you through the calculation before you commit." },
+      { h: "When to call me — before the sales centre", p: "Once you register with a developer their sales rep is credited as your representative. Call me first — even a five-minute call protects your right to independent buyer-only representation." },
+    ],
+    faqs: [
+      { q: "What are the actual steps to buy a Fraser Valley presale?", a: "Register early with me for VIP access, shortlist 2–3 projects, secure your unit at the private VIP event before public launch, then use the 7-day rescission window for contract review, disclosure review and financing pre-qualification." },
+      { q: "When should I actually call you?", a: "Before you talk to any presentation centre. Once you register with a developer, their sales rep is credited as your representative and I can't step in without a fight." },
+      { q: "How do deposits work on a Fraser Valley presale?", a: "Most developers ask 15–20% staged over 12–24 months. Softer windows allow 10% ladders. Typically 5% at signing, 5% at 30–90 days, balance at pre-set milestones." },
+      { q: "What is the 7-day rescission window?", a: "BC law gives you seven days after signing to walk away with no penalty. Use it — that's when I review the disclosure statement, run financing and pressure-test the contract." },
+      { q: "Do I have to pay GST on a presale?", a: "Yes — new construction is subject to 5% GST. A partial GST New Housing Rebate is available for principal residences under the price cap." },
+    ],
+    related: [
+      { href: "/presale-mistakes-fraser-valley", label: "Presale Mistakes I See Fraser Valley Buyers Make" },
+      { href: "/buyer-representation-presale-fraser-valley", label: "Do You Need Your Own Realtor for a Presale?" },
+      { href: "/new-to-presale-start-here", label: "New to Presale? Start Here" },
+    ],
+  },
+  "/presale-mistakes-fraser-valley": {
+    title: "Presale Mistakes I See Fraser Valley Buyers Make",
+    description: "I'm Uzair — buyer-only presale specialist. The Fraser Valley presale mistakes I see most: registering with developers first, skipping disclosure, bad floor plans, no exit plan.",
+    h1: "Presale Mistakes I See Fraser Valley Buyers Make",
+    breadcrumbName: "Presale Mistakes Fraser Valley",
+    intro: "I'm Uzair Muhammad, and I've helped 450+ buyers close on presales in the Fraser Valley. The same mistakes come up over and over — and they cost real money. Here they are: registering with the developer first, trusting the sales-centre rep, skipping the disclosure statement, ignoring assignment/rescission, choosing bad floor plans, mismanaging GST and deposit timing, and buying without an exit plan.",
+    sections: [
+      { h: "Mistake 1 — Registering with the developer first", p: "The single most expensive presale mistake. The moment you register, their in-house rep is credited as your representative. You just gave away independent representation for free." },
+      { h: "Mistake 2 — Trusting the sales-centre rep", p: "Licensed, professional, pleasant — and paid by the developer. Their job is to sell what the developer needs, not tell you a competing project is better priced." },
+      { h: "Mistake 3 — Skipping the disclosure statement", p: "The Disclosure Statement is where the ugly clauses live: assignment fees (1–3%), lifting restrictions, deposit protection, right to change plans. Skipping it in the 7-day window is how buyers get blindsided." },
+      { h: "Mistake 4 — Ignoring assignment and rescission clauses", p: "Assignment is your exit strategy. Some contracts allow it at 50% deposit paid, some ban it, some charge 3%. Know your assignment rights before you sign." },
+      { h: "Mistake 5 — Bad floor plans", p: "Wasted square footage, awkward bedrooms, no storage. Same $/sqft, worse resale. I compare every shortlisted plan against resale comps." },
+      { h: "Mistake 6 — GST and deposit-timing surprises", p: "GST 5% at completion, rebate capped. Deposits are staged with hard dates. Not mapping cash-flow = scramble at closing." },
+      { h: "Mistake 7 — No exit plan", p: "Assignment, hold-and-rent, or move-in-and-sell resale. If you don't know which applies before signing, you're guessing with $600,000." },
+    ],
+    faqs: [
+      { q: "What's the #1 presale mistake you see in the Fraser Valley?", a: "Registering with the developer's sales centre before hiring your own realtor. The moment you register, that sales rep is credited as your representative — and they work for the developer, not you." },
+      { q: "Isn't the sales-centre rep just there to help me?", a: "They're licensed but loyal to the developer. Their job is to sell what the developer needs — not tell you the floor plan is inefficient or a better project launches next month." },
+      { q: "Why does the disclosure statement matter so much?", a: "It reveals deposit protection, assignment fees, occupancy dates, and material change rights. Skipping it is how buyers get surprised by 2–3% assignment fees or blocked from selling." },
+      { q: "What's the deal with GST and deposit timing?", a: "GST (5%) is charged at completion. Deposits are staged. Buyers who don't map deposit dates and GST cash-flow end up short at closing." },
+      { q: "How do I know if a floor plan is actually bad?", a: "Long entry hallways, bedrooms opening to living rooms, unusable bump-outs. Same $/sqft, worse resale. I compare every shortlisted plan against resale comps." },
+    ],
+    related: [
+      { href: "/buyer-representation-presale-fraser-valley", label: "Do You Need Your Own Realtor for a Presale?" },
+      { href: "/best-presale-realtor-fraser-valley", label: "Best Presale Realtor in the Fraser Valley" },
+      { href: "/buy-presale-fraser-valley", label: "How to Buy a Presale in the Fraser Valley" },
+    ],
+  },
+  "/fraser-valley-presale-investment-advice": {
+    title: "Fraser Valley Presale Investment Advice (2026)",
+    description: "I'm Uzair — buyer-only presale specialist. Honest Fraser Valley presale investment advice: which cities, rental demand, assignment strategy, and when NOT to buy. No hype.",
+    h1: "Fraser Valley Presale Investment Advice",
+    breadcrumbName: "Fraser Valley Presale Investment Advice",
+    intro: "I'm Uzair Muhammad, and I invest in the same presales I recommend — so my advice comes from real skin in the game, not a brochure. Here's my honest take on the Fraser Valley presale market: which cities and unit types actually pencil out, what rental demand looks like, how assignment and exit strategy work, and — most importantly — when I tell buyers not to buy. Projected numbers only; no guaranteed returns.",
+    sections: [
+      { h: "Which cities and unit types I favour", p: "For appreciation: Surrey City Centre, Fleetwood and Willoughby along the SkyTrain corridor. For cash-flow: 1-bed + den layouts $500K–$650K with tight rental fundamentals. Family investors often do better with 2-bed townhomes." },
+      { h: "Rental demand in the Fraser Valley", p: "Surrey City Centre — SFU Surrey, hospital expansion, SkyTrain — tight vacancy. Langley Willoughby draws family renters. Every projection compares rents against holding costs before recommending." },
+      { h: "Assignment sales and exit strategy", p: "Assignment lets you sell the contract before completion. Fees 1–3%, lifting clauses control timing. Powerful in a rising market. I review the assignment clause before you sign." },
+      { h: "When I tell buyers NOT to buy", p: "When presale $/sqft is above nearby resale. When deposit ladder outruns income. When appreciation depends on SkyTrain five years out. I lose deals turning buyers away — that's the job." },
+    ],
+    faqs: [
+      { q: "Are Fraser Valley presales still a good investment in 2026?", a: "Selectively yes. Surrey–Langley SkyTrain corridor and well-located Coquitlam/Burnaby South projects show strong fundamentals. Weaker Abbotsford towers priced above resale don't." },
+      { q: "Which cities and unit types do you actually recommend?", a: "Surrey City Centre, Fleetwood, Willoughby for appreciation. 1-bed + den $500K–$650K for cash-flow. 2-bed townhomes often outperform for family investors." },
+      { q: "What kind of rental demand exists in the Fraser Valley?", a: "Strong. Surrey City Centre benefits from SFU Surrey, hospital expansion and SkyTrain — vacancy tight. Langley Willoughby draws long-term family tenants." },
+      { q: "How do assignment sales and exit strategy actually work?", a: "Assignment lets you sell the contract before completion. Fees 1–3%, lifting clauses control when you can list. Review the clause before signing." },
+      { q: "When would you tell me NOT to buy a presale?", a: "When presale price is above resale comps, deposit ladder outruns income, or appreciation depends on infrastructure five years out. Better to lose a deal than a deposit." },
+    ],
+    related: [
+      { href: "/buy-presale-fraser-valley", label: "How to Buy a Presale in the Fraser Valley" },
+      { href: "/best-presale-realtor-fraser-valley", label: "Best Presale Realtor in the Fraser Valley" },
+      { href: "/presale-mistakes-fraser-valley", label: "Presale Mistakes I See Fraser Valley Buyers Make" },
+    ],
+  },
+  "/best-presale-realtor-fraser-valley": {
+    title: "Best Presale Realtor Fraser Valley — Talk to Uzair First",
+    description: "I'm Uzair Muhammad — buyer-only presale specialist for the Fraser Valley. 450+ units sold, 4.9\u2605 from 36 Google reviews. Talk to me before any developer sales centre.",
+    h1: "Best Presale Realtor in the Fraser Valley — Talk to Uzair Before Any Developer",
+    breadcrumbName: "Best Presale Realtor Fraser Valley",
+    intro: "I'm Uzair Muhammad — Fraser Valley's buyer-only presale specialist. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9\u2605 from 36 Google reviews. I don't represent developers, ever — only buyers. If you're thinking about a presale condo or townhome anywhere in the Fraser Valley, talk to me before you set foot in a developer's sales centre.",
+    sections: [
+      { h: "Why me — and why buyer-only?", p: "Almost every realtor sells presales occasionally. I've built a full-time practice on it. My commission is paid by the developer out of the price you'd pay anyway, and I represent you — never the builder." },
+      { h: "Track record", p: TRACK_RECORD_LINE },
+      { h: "Languages and service area", p: "English, Punjabi, Hindi, Urdu — across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge, New Westminster." },
+      { h: "What working with me looks like", p: "Free 15-minute strategy call. Shortlist of 2–3 projects that actually fit, with VIP access to pre-public allocations. Line-by-line contract review before you sign." },
+      { h: "See the full platform + live projects", p: "For live inventory and the full brokerage platform, visit presaleproperties.com — the full platform + live projects." },
+    ],
+    faqs: [
+      { q: "Who is the best presale realtor in the Fraser Valley?", a: "Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack, Maple Ridge. 450+ units sold, 4.9★ from 36 Google reviews." },
+      { q: "Why work with a buyer-only presale specialist?", a: "Because the person at the sales centre is paid by the developer. A buyer-only realtor is paid by the developer too but represents you. Zero cost." },
+      { q: "What languages do you work in?", a: "English, Punjabi, Hindi and Urdu. About a third of my buyers prefer to run through the contract in one of those languages." },
+      { q: "What area do you actually cover?", a: "The Fraser Valley and much of Metro Vancouver — Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge, New Westminster." },
+      { q: "How do I hire you?", a: "Book a free 15-minute strategy call — no cost, no pressure. If we're a fit, I add you to my VIP list and we shortlist projects." },
+    ],
+    related: [
+      { href: "/buyer-representation-presale-fraser-valley", label: "Do You Need Your Own Realtor for a Presale?" },
+      { href: "/presale-mistakes-fraser-valley", label: "Presale Mistakes I See Fraser Valley Buyers Make" },
+      { href: "/fraser-valley-presale-investment-advice", label: "Fraser Valley Presale Investment Advice" },
+    ],
+  },
+  "/buyer-representation-presale-fraser-valley": {
+    title: "Do You Need a Realtor for a BC Presale? Yes — Here's Why",
+    description: "I'm Uzair — buyer-only presale specialist. The $0-cost buyer representation thesis: who the sales-centre rep really works for, and why you need your own realtor on every BC presale.",
+    h1: "Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)",
+    breadcrumbName: "Buyer Representation for Presale",
+    intro: "I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because it costs you nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation.",
+    sections: [
+      { h: "The thesis, in one line", p: "The developer already built a buyer's-agent commission into the price of every presale. If you don't hire your own realtor, the developer keeps that commission — you don't save a dollar. All you save is having someone on your side of the table." },
+      { h: "Who does the sales-centre rep actually represent?", p: "Not you. Their client is the developer. They're paid to move the developer's inventory, not to warn you when a floor plan is inefficient or a competing project is a better deal." },
+      { h: "What a buyer's agent actually does", p: "Reviews the contract and Disclosure Statement line by line. Negotiates deposit ladders and incentives. Compares against active presales and resale comps. Tells you when a deal is bad." },
+      { h: "The cost — $0", p: "My commission is paid by the developer out of the price you'd pay anyway. Skipping me doesn't save you money — it just removes your representation." },
+    ],
+    faqs: [
+      { q: "Do I need my own realtor to buy a presale?", a: "Yes. The rep at the sales centre works for the developer. Your own buyer's agent is also paid by the developer but represents you. There is no cost for having independent representation." },
+      { q: "Does hiring a buyer's agent cost me anything?", a: "No. The developer builds a commission for the buyer's agent into every presale. If you skip your own representation, the developer keeps that budget — you don't save a dollar." },
+      { q: "Who does the sales-centre rep actually represent?", a: "The developer. Their title is 'developer sales representative.' Licensed, friendly, knowledgeable — and their duty is to the developer's profit, not your outcome." },
+      { q: "What does a buyer's agent actually do differently?", a: "Reviews your contract line by line. Negotiates deposit structure and incentives. Compares projects. Tells you when a deal is bad. Uses the 7-day rescission window to protect you." },
+      { q: "Can I still hire you if I've already visited a sales centre?", a: "Sometimes — depends whether you've registered. If you registered but haven't signed, we may transfer representation. If you've signed, it's usually too late for that project." },
+    ],
+    related: [
+      { href: "/best-presale-realtor-fraser-valley", label: "Best Presale Realtor in the Fraser Valley" },
+      { href: "/presale-mistakes-fraser-valley", label: "Presale Mistakes I See Fraser Valley Buyers Make" },
+      { href: "/buy-presale-fraser-valley", label: "How to Buy a Presale in the Fraser Valley" },
+    ],
+  },
+};
+
+function funnelBody(path: string): string {
+  const p = FUNNEL[path];
+  if (!p) return "";
+  const sections = p.sections
+    .map((s) => `<h2>${esc(s.h)}</h2><p>${esc(s.p)}</p>`)
+    .join("");
+  const faqHtml = p.faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("");
+  const relHtml =
+    `<nav aria-label="Related reading"><h2>Keep Reading</h2><ul>` +
+    p.related.map((r) => `<li><a href="${SITE}${r.href}">${esc(r.label)}</a></li>`).join("") +
+    `</ul></nav>`;
+  const articleLd = jsonLd({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: p.h1,
+    description: p.description,
+    datePublished: "2026-07-09",
+    dateModified: "2026-07-09",
+    author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" },
+    publisher: { "@type": "Organization", name: "Presale With Uzair", url: SITE },
+    mainEntityOfPage: SITE + path,
+  });
+  const bcLd = jsonLd(breadcrumb(p.breadcrumbName, path));
+  const faqLd = jsonLd(faqPage(p.faqs));
+  return (
+    `<article><h1>${esc(p.h1)}</h1>` +
+    `<p>${esc(p.intro)}</p>` +
+    `<p><strong>${esc(TRACK_RECORD_LINE)}</strong></p>` +
+    sections +
+    `<h2>Frequently Asked Questions</h2>${faqHtml}` +
+    relHtml +
+    `<p><a href="${SITE}/call">Book a free strategy call with Uzair</a> · <a href="tel:+16722581100">+1 672-258-1100</a></p>` +
+    `</article>` +
+    articleLd +
+    bcLd +
+    faqLd
+  );
+}
+
+
 interface Resolved { meta: Meta; body: string; canonical?: string; robots?: string; }
 
 function anonKey(env: Record<string, string | undefined>): string | undefined {
@@ -142,6 +356,10 @@ function anonKey(env: Record<string, string | undefined>): string | undefined {
 async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
 
+  if (FUNNEL[path]) {
+    const f = FUNNEL[path];
+    return { meta: { title: f.title, description: f.description, image: DEFAULT_IMAGE }, body: funnelBody(path) + ABOUT_BLOCK };
+  }
   if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");

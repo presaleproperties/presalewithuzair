@@ -28,6 +28,12 @@ const LandingPage = lazy(() => import("./pages/LandingPage"));
 const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
 const CityLanding = lazy(() => import("./pages/CityLanding"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const NewToPresale = lazy(() => import("./pages/funnel/NewToPresale"));
+const BuyPresaleFraserValley = lazy(() => import("./pages/funnel/BuyPresaleFraserValley"));
+const PresaleMistakes = lazy(() => import("./pages/funnel/PresaleMistakes"));
+const InvestmentAdvice = lazy(() => import("./pages/funnel/InvestmentAdvice"));
+const BestPresaleRealtor = lazy(() => import("./pages/funnel/BestPresaleRealtor"));
+const BuyerRepresentation = lazy(() => import("./pages/funnel/BuyerRepresentation"));
 
 const queryClient = new QueryClient();
 
@@ -69,6 +75,12 @@ const App = () => (
               <Route path="/delta" element={<CityLanding citySlug="delta" />} />
               <Route path="/burnaby" element={<CityLanding citySlug="burnaby" />} />
               <Route path="/projects/:slug" element={<ProjectDetail />} />
+              <Route path="/new-to-presale-start-here" element={<NewToPresale />} />
+              <Route path="/buy-presale-fraser-valley" element={<BuyPresaleFraserValley />} />
+              <Route path="/presale-mistakes-fraser-valley" element={<PresaleMistakes />} />
+              <Route path="/fraser-valley-presale-investment-advice" element={<InvestmentAdvice />} />
+              <Route path="/best-presale-realtor-fraser-valley" element={<BestPresaleRealtor />} />
+              <Route path="/buyer-representation-presale-fraser-valley" element={<BuyerRepresentation />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />

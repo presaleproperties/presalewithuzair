@@ -42,6 +42,7 @@ export const FunnelPage = ({
   children,
 }: FunnelPageProps) => {
   const canonical = `${SITE}${path}`;
+  const ogImage = `${SITE}/og${path}.png`;
 
   const faqLd = {
     "@context": "https://schema.org",

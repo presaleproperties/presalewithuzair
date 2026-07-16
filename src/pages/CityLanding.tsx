@@ -293,7 +293,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
     url: pageUrl,
     areaServed: { "@type": "City", name: config.city, containedInPlace: { "@type": "AdministrativeArea", name: "British Columbia" } },
     priceRange: "$$",
-    telephone: "+1-778-231-3592",
+    telephone: "+1-672-258-1100",
     address: { "@type": "PostalAddress", addressLocality: config.city, addressRegion: "BC", addressCountry: "CA" },
   };
 

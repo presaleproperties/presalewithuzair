@@ -39,60 +39,27 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Fraser Valley's Leading Presale Expert | Uzair Muhammad</title>
+        <title>Uzair Muhammad | Fraser Valley's Leading Presale Expert</title>
         <meta
           name="description"
-          content="Fraser Valley's #1 presale agent. VIP access, best pricing, and full contract protection on new condos & townhomes in Surrey, Langley & beyond."
+          content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley."
         />
         <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />
-        
+
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/" />
-        <meta property="og:title" content="Fraser Valley's Leading Presale Expert | Uzair Muhammad" />
-        <meta property="og:description" content="Fraser Valley's #1 presale agent. Helping first-time buyers and investors buy new construction condos and townhomes in Surrey, Langley, Abbotsford, and Chilliwack with VIP access, exclusive incentives, and full contract protection." />
-        <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
-        
+        <meta property="og:title" content="Uzair Muhammad | Fraser Valley's Leading Presale Expert" />
+        <meta property="og:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
+        <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
+
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Fraser Valley's Leading Presale Expert | Uzair Muhammad" />
-        <meta name="twitter:description" content="Fraser Valley's #1 presale agent. VIP access, exclusive incentives, and full contract protection for first-time buyers and investors." />
-        <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
-        
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "RealEstateAgent",
-            "name": "Uzair Muhammad",
-            "url": "https://presalewithuzair.com",
-            "logo": "https://presalewithuzair.com/favicon.jpeg",
-            "image": "https://presalewithuzair.com/favicon.jpeg",
-            "description": "Fraser Valley's leading presale expert helping first-time buyers and investors buy new construction condos and townhomes in Surrey, Langley, Abbotsford, and Chilliwack with VIP access, exclusive incentives, and full contract protection.",
-            "telephone": "+1-778-231-3592",
-            "email": "info@meetuzair.com",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "3211 152 St, Building C",
-              "addressLocality": "Surrey",
-              "addressRegion": "BC",
-              "postalCode": "V3Z 1H8",
-              "addressCountry": "CA"
-            },
-            "areaServed": [
-              "Surrey", "Langley", "Abbotsford", "Chilliwack", "Maple Ridge", "Coquitlam", "Fraser Valley"
-            ],
-            "sameAs": [
-              "https://www.instagram.com/presalewithuzair",
-              "https://www.tiktok.com/@presalewithuzair"
-            ],
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "5",
-              "reviewCount": "31"
-            }
-          })}
-        </script>
+        <meta name="twitter:title" content="Uzair Muhammad | Fraser Valley's Leading Presale Expert" />
+        <meta name="twitter:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
+        <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
+        {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
       </Helmet>
 
       <Navbar />

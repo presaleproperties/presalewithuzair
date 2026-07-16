@@ -41,7 +41,7 @@ const Contact = () => {
             "mainEntity": {
               "@type": "Person",
               "name": "Uzair Muhammad",
-              "telephone": "+1-778-231-3592",
+              "telephone": "+1-672-258-1100",
               "email": "info@meetuzair.com",
               "address": {
                 "@type": "PostalAddress",

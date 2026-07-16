@@ -612,17 +612,25 @@ export async function resolve(pathname: string, env: Record<string, string | und
 class AttrSetter { attr: string; value: string; constructor(a: string, v: string) { this.attr = a; this.value = v; } element(el: any) { el.setAttribute(this.attr, this.value); } }
 class TextSetter { text: string; constructor(t: string) { this.text = t; } element(el: any) { el.setInnerContent(this.text); } }
 class RootInjector { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.setInnerContent(this.html, { html: true }); } }
-class HeadAppender { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.append(this.html, { html: true }); } }
+
+function normalizePath(pathname: string): string {
+  return pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+}
+
+function shouldRewriteHtml(pathname: string, ua: string): boolean {
+  if (BOT_RE.test(ua)) return true;
+  const path = normalizePath(pathname);
+  return Boolean(STATIC_META[path] || CITY_META[path] || FUNNEL[path]);
+}
 
 export const onRequest: any = async (context: any) => {
   const { request, next, env } = context;
   if (request.method !== "GET") return next();
-  const ua = request.headers.get("user-agent") || "";
-  if (!BOT_RE.test(ua)) return next();
-
   const url = new URL(request.url);
   if (ASSET_RE.test(url.pathname)) return next();
   if (url.pathname.startsWith("/assets/") || url.pathname.startsWith("/api/") || url.pathname.startsWith("/functions/") || url.pathname.startsWith("/admin")) return next();
+  const ua = request.headers.get("user-agent") || "";
+  if (!shouldRewriteHtml(url.pathname, ua)) return next();
 
   try {
     const resolved = await resolve(url.pathname, env);
@@ -638,11 +646,13 @@ export const onRequest: any = async (context: any) => {
       .on('meta[property="og:title"]', new AttrSetter("content", meta.title))
       .on('meta[property="og:description"]', new AttrSetter("content", meta.description))
       .on('meta[property="og:image"]', new AttrSetter("content", meta.image))
+      .on('meta[property="og:image:width"]', new AttrSetter("content", "1200"))
+      .on('meta[property="og:image:height"]', new AttrSetter("content", "630"))
       .on('meta[property="og:url"]', new AttrSetter("content", canonical))
       .on('meta[name="twitter:title"]', new AttrSetter("content", meta.title))
       .on('meta[name="twitter:description"]', new AttrSetter("content", meta.description))
       .on('meta[name="twitter:image"]', new AttrSetter("content", meta.image))
-      .on("head", new HeadAppender(`<link rel="canonical" href="${canonical}">`))
+      .on('link[rel="canonical"]', new AttrSetter("href", canonical))
       .on("#root", new RootInjector(body));
     if (resolved.robots) rw = rw.on('meta[name="robots"]', new AttrSetter("content", resolved.robots));
     return rw.transform(res);

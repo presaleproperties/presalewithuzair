@@ -1,6 +1,52 @@
 import subprocess
 import re
 import json
+from html.parser import HTMLParser
+
+class MetaParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.title = None
+        self.h1 = None
+        self.canonical = False
+        self.faq = False
+        self.og_image = None
+        self.in_title = False
+        self.in_h1 = False
+        self.first_h1_found = False
+        self.full_content = ""
+        self.data_prerendered = False
+
+    def handle_starttag(self, tag, attrs):
+        attrs_dict = dict(attrs)
+        if tag == 'title':
+            self.in_title = True
+        if tag == 'h1' and not self.first_h1_found:
+            self.in_h1 = True
+            self.first_h1_found = True
+        if tag == 'link' and attrs_dict.get('rel') == 'canonical':
+            self.canonical = True
+        if tag == 'meta' and attrs_dict.get('property') == 'og:image':
+            self.og_image = attrs_dict.get('content')
+        if tag == 'meta' and attrs_dict.get('name') == 'og:image': # Fallback
+            self.og_image = attrs_dict.get('content')
+        if attrs_dict.get('data-prerendered') == 'true':
+            self.data_prerendered = True
+        
+    def handle_endtag(self, tag):
+        if tag == 'title':
+            self.in_title = False
+        if tag == 'h1':
+            self.in_h1 = False
+
+    def handle_data(self, data):
+        if self.in_title:
+            self.title = (self.title or "") + data
+        if self.in_h1:
+            self.h1 = (self.h1 or "") + data
+        if "FAQPage" in data:
+            self.faq = True
+        self.full_content += data
 
 urls = [
     "https://presalewithuzair.com/",
@@ -18,56 +64,58 @@ urls = [
 
 def fetch_info(url):
     cmd = [
-        "curl", "-s", "-i",
+        "curl", "-s", "-i", "-L",
         "-H", "Cache-Control: no-cache",
         "-H", "Pragma: no-cache",
         url
     ]
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, errors='ignore')
     
-    header_content = result.stdout.split('\r\n\r\n')[0]
-    body = '\r\n\r\n'.join(result.stdout.split('\r\n\r\n')[1:])
+    parts = result.stdout.split('\n\n', 1)
+    if len(parts) < 2:
+        # Try \r\n\r\n
+        parts = result.stdout.split('\r\n\r\n', 1)
+        
+    header_content = parts[0]
+    body = parts[1] if len(parts) > 1 else ""
     
     status_match = re.search(r"HTTP/\d(?:\.\d)?\s+(\d+)", header_content)
     status = status_match.group(1) if status_match else "Unknown"
     
-    title_match = re.search(r"<title>(.*?)</title>", body, re.IGNORECASE | re.DOTALL)
-    title = title_match.group(1).strip() if title_match else "None"
-    
-    h1_match = re.search(r"<h1.*?>(.*?)</h1>", body, re.IGNORECASE | re.DOTALL)
-    h1 = re.sub(r'<[^>]+>', '', h1_match.group(1)).strip() if h1_match else "None"
-    
-    canonical = "Yes" if re.search(r'<link\s+rel=["\']canonical["\']', body, re.IGNORECASE) else "No"
-    faq = "Yes" if "FAQPage" in body else "No"
-    
-    og_image_match = re.search(r'<meta\s+property=["\']og:image["\']\s+content=["\'](.*?)["\']', body, re.IGNORECASE)
-    if not og_image_match:
-        og_image_match = re.search(r'<meta\s+content=["\'](.*?)["\']\s+property=["\']og:image["\']', body, re.IGNORECASE)
-    og_image = og_image_match.group(1) if og_image_match else "None"
+    parser = MetaParser()
+    try:
+        parser.feed(body)
+    except:
+        pass
     
     # Heuristic for shell vs prerendered
-    # Look for common app roots and check if they are empty
-    # Also check if there's substantial text in the body
-    body_stripped = re.sub(r'<script.*?>.*?</script>', '', body, flags=re.IGNORECASE | re.DOTALL)
-    body_stripped = re.sub(r'<style.*?>.*?</style>', '', body_stripped, flags=re.IGNORECASE | re.DOTALL)
-    text_content = re.sub(r'<[^>]+>', '', body_stripped).strip()
-    
-    is_shell = len(text_content) < 500 # Threshold
-    shell_status = "Shell" if is_shell else "Prerendered"
+    # Look for data-prerendered="true" or significant text in body
+    is_prerendered = parser.data_prerendered or len(parser.full_content.strip()) > 500
     
     return {
         "URL": url,
         "Status": status,
-        "Title": title,
-        "H1": h1,
-        "Canonical": canonical,
-        "FAQ": faq,
-        "og:image": og_image,
-        "Type": shell_status
+        "Title": parser.title.strip() if parser.title else "None",
+        "H1": parser.h1.strip() if parser.h1 else "None",
+        "Canonical": "Yes" if parser.canonical else "No",
+        "FAQ": "Yes" if parser.faq else "No",
+        "og:image": parser.og_image or "None",
+        "Type": "Prerendered" if is_prerendered else "Shell"
     }
 
 results = []
 for url in urls:
     results.append(fetch_info(url))
 
-print(json.dumps(results, indent=2))
+# Print as a nice table
+print(f"{'URL':<60} | {'Stat':<4} | {'Type':<11} | {'H1':<30} | {'Can?':<4} | {'FAQ?':<4} | {'Title'}")
+print("-" * 150)
+for r in results:
+    url_short = r['URL'].replace('https://presalewithuzair.com', '')
+    if url_short == '': url_short = '/'
+    print(f"{url_short:<60} | {r['Status']:<4} | {r['Type']:<11} | {str(r['H1'])[:30]:<30} | {r['Canonical']:<4} | {r['FAQ']:<4} | {r['Title']}")
+
+print("\nog:image values:")
+for r in results:
+    print(f"{r['URL']}: {r['og:image']}")
+

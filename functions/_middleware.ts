@@ -62,73 +62,54 @@ export const STATIC_META: Record<string, Meta> = {
   "/blog": { title: "Presale Buying Guides & BC Market Insights" + SUFFIX, description: "Expert presale and new-construction guides for BC buyers and investors — deposits, GST, assignments, neighbourhoods, and market timing from Uzair Muhammad.", image: DEFAULT_IMAGE },
 };
 
-const ABOUT_FAQS: { q: string; a: string }[] = [
-  { q: "Who is Uzair Muhammad?", a: "Uzair Muhammad is a buyer-only presale and new-construction realtor based in Surrey, BC, serving the Fraser Valley and Metro Vancouver. He spent close to a decade with the City of Surrey in Bylaws and Planning before moving into real estate full-time. 450+ units sold, $200M+ in sales volume, 4.9\u2605 from 36 Google reviews, licensed with Real Broker." },
-  { q: "What did Uzair do before real estate?", a: "He worked for the City of Surrey for close to ten years, first in Bylaws and then in Planning. That background is why he reads presale contracts, disclosure statements, rezoning risk and completion schedules the way a municipality reads them \u2014 not the way a marketing brochure presents them." },
-  { q: "Does Uzair speak Punjabi, Hindi or Urdu?", a: "Yes. Uzair works fluently in English, Punjabi, Hindi and Urdu, and gets by in Telugu. A large share of his buyers prefer to review contracts and disclosure statements in their first language, and he reads every document with them in whichever language they are most comfortable in." },
-  { q: "Does Uzair represent developers?", a: "No. Uzair represents buyers only, on every deal, without exception. His commission is paid by the developer out of a budget already built into the price, so working with him costs the buyer nothing and puts a licensed advocate on the buyer\u2019s side of the contract." },
-  { q: "What areas does Uzair cover?", a: "The Fraser Valley and Metro Vancouver: Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, Chilliwack, Maple Ridge, White Rock, Cloverdale and New Westminster \u2014 including neighbourhoods like Willoughby, Latimer, Yorkson, Clayton, Fleetwood, Burke Mountain, Burquitlam, North Delta and Ladner." },
-  { q: "What does it cost to work with Uzair?", a: "Zero. The developer pays the buyer-agent commission out of a budget already built into the price of the home. Walking straight into a sales centre does not save you that money \u2014 it just removes independent representation from the transaction." },
-];
-
 const ABOUT_BODY: string = (() => {
   const body = `
 <article>
-  <h1>About Uzair Muhammad \u2014 Fraser Valley's Buyer-Only Presale Specialist</h1>
-  <p><em>I'm Uzair. If you're reading this, you're probably thinking about buying a presale or new-construction home in the Fraser Valley \u2014 and you want to know who the person on the other end of the phone actually is before you hand over a deposit. Fair. Here's the whole story.</em></p>
+  <h1>About Uzair Muhammad</h1>
+  <p>I'm Uzair Muhammad, a buyer-only presale and new-construction specialist working across the Fraser Valley — Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. I represent buyers on presale condos, townhomes and new-build homes, and I never promote or represent developers. Before real estate I spent ten years at the City of Surrey in Bylaws and Planning. I'm a father of two, and I've lived in Surrey almost my whole life.</p>
 
-  <h2>From Pakistan to Surrey \u2014 the long way in</h2>
-  <p>I was born in Pakistan and immigrated to Canada with my family in 2005. I grew up in Surrey, went to school here, and never really left. Two of my kids were born here. My accent, my street-food preferences and my hockey team are all Surrey.</p>
-  <p>Before I sold a single home, I spent close to a decade working for the City of Surrey \u2014 first in Bylaws, then in Planning. I left for real estate coming out of the COVID years. That decade at the City is the part of the story most realtors don't have, and it changes everything about the advice I give.</p>
+  <h2>From Pakistan to Surrey</h2>
+  <p>I was born in Pakistan and immigrated to Canada with my family in 2005. I grew up in Surrey \u2014 school here, friends here, first jobs here \u2014 and it's where I'm raising my two kids today. That matters when I'm sitting across from a newcomer family buying their first Canadian home. I've been the person in the room who didn't have a parent or an uncle in Canada to explain how a mortgage works, how a deposit ladder works, or what a completion date really means. Most of my clients don't have someone in their family who has already done this. I do the job I wish someone had done for my parents.</p>
 
-  <h2>Why a decade at the City matters when you buy a presale</h2>
-  <p>When you buy a presale you're not buying a finished home \u2014 you're buying a contract, a promise, and a set of drawings that still have to survive rezoning, development permits, building permits and a construction schedule. Most realtors read a disclosure statement the way a buyer reads it: as legal-looking prose to skim before signing. I read it the way the City reads it, because for ten years that was literally my job.</p>
-  <p>I know how long a rezoning actually takes in Surrey versus what a marketing brochure claims. I know which municipal approvals are pro-forma and which are where projects stall for eighteen months. I know why a "Q4 2026" completion is realistic in one municipality and a fantasy in another. When a developer's disclosure statement quietly gives them the right to push completion by twelve months and change the floor plan, I know what that actually costs you \u2014 because I've watched it happen from inside the building department.</p>
-  <p><strong>No other realtor in the Fraser Valley can honestly claim that background.</strong> It's the single biggest reason my buyers don't get surprised at completion.</p>
+  <h2>What a decade at the City of Surrey taught me about presale contracts</h2>
+  <p>Before I ever wrote a contract on the buyer's side, I spent close to ten years working for the City of Surrey \u2014 first in Bylaws, then in Planning. I left after the COVID years to go into real estate full-time. That decade is the single biggest reason my buyers don't get surprised at completion, and it's a background no other agent in this market can honestly claim.</p>
+  <p>A presale isn't a home yet. It's a set of drawings and a contract, and both of them still have to survive rezoning, development permits, building permits and a construction schedule before a key changes hands. I've watched that process from inside the building. I know how long a rezoning actually takes in Surrey versus what a marketing brochure claims. I know which municipal approvals are pro-forma and which are where projects quietly sit for eighteen months. When a developer's disclosure statement says "estimated completion Q4 2026" and quietly gives them the right to extend that date by twelve months and revise the floor plan, I read the clause with the eyes of someone who has watched those extensions happen. Most agents read the sales-centre version of a project. I read the municipal version.</p>
 
-  <h2>Why I only represent buyers \u2014 never developers</h2>
-  <p>Every presale sale has two commissions built into the price: the developer's in-house sales team, and the buyer's agent. If you walk into a sales centre without your own realtor, you don't save that money \u2014 the developer just keeps it. The friendly person offering you coffee is a licensed developer sales representative. Their client, legally and financially, is the developer. Their job is to move the developer's inventory, not to tell you that a competing project two blocks away is priced better or that this floor plan resells poorly.</p>
-  <p>I never sit on the developer's side of that table. I represent buyers, only ever buyers, on every project I touch \u2014 at zero cost to you, because the developer pays me out of a commission budget that already exists.</p>
+  <h2>Why I only represent buyers</h2>
+  <p>Every presale has two commissions built into the price: the developer's in-house sales team, and the buyer's agent. If you walk into a sales centre alone, you don't save that money \u2014 the developer just keeps it. The friendly person offering you coffee is a licensed developer representative whose client, legally, is the developer.</p>
+  <p>I never sit on the developer's side of that table. I don't promote developers, I don't take retainers from them, and I don't sell projects at launch parties. I represent buyers, on every deal, at no cost to you.</p>
 
-  <h2>Who I help</h2>
-  <p>Roughly 60% of my clients are investors and 40% are first-time buyers, and most of my work happens in the $500,000\u2013$1,000,000 range \u2014 the honest core of the Fraser Valley presale market. A first-time buyer stretching for a Willoughby townhome and a repeat investor stacking a fourth presale condo in Abbotsford get the same treatment: buyer-only, contract read line by line, and honest advice about when not to buy.</p>
-
-  <h2>The problems I actually solve</h2>
-  <p>Presale isn't just "picking a floor plan." Most of my work is quiet, unglamorous problem-solving on the situations nobody warns you about. A few kinds I see over and over:</p>
+  <h2>The situations I get called for</h2>
+  <p>Most of my work is unglamorous problem-solving on the situations nobody warns you about. A few kinds I see over and over:</p>
   <ul>
-    <li><strong>The buyer whose completion date moved twice.</strong> Rates had climbed, the mortgage they qualified for at signing didn't exist any more, and they needed to re-qualify from scratch. We restructured deposits, brought in a lender who took the delay in stride, and closed.</li>
-    <li><strong>The first-time buyer who thought the deposit was one cheque.</strong> They didn't realize the 20% was staged across 24 months on hard dates. We mapped every deposit against their income and set up automatic transfers so nothing was ever a scramble.</li>
-    <li><strong>The investor whose assignment clause would have blocked their exit.</strong> They were counting on assigning before completion. The disclosure statement quietly required 80% deposit paid plus a 3% assignment fee. We renegotiated the clause before they signed \u2014 a five-figure difference.</li>
-    <li><strong>The newcomer to Canada with a thin credit file.</strong> First presale, savings but no bureau score. I brought in a lender who does this every week and structured the deal around a larger down payment.</li>
-    <li><strong>The multigenerational family buying two units in the same building.</strong> One for parents, one for the adult child's family. We negotiated adjacent floor plans, aligned completion, and coordinated two separate mortgages.</li>
-    <li><strong>The self-employed buyer whose mortgage fell through.</strong> Two years of tax returns weren't enough for the bank the developer preferred. We moved the file to a lender who understands self-employed income and closed on time.</li>
-    <li><strong>The buyer who almost signed without reading the disclosure amendments.</strong> A quiet mid-contract amendment reduced the balcony by 30 sq ft and changed the parking allocation. We flagged it inside the 7-day rescission window and rescinded.</li>
+    <li><strong>The newcomer buying a first Canadian home.</strong> No family here who has already done this, a thin credit file, and forty pages of legal language in a second language. The job is slowing everything down and translating the deal \u2014 literally and figuratively \u2014 into something the buyer actually understands before they sign.</li>
+    <li><strong>The self-employed buyer whose income is hard to prove.</strong> Real income, real savings, but a tax return that doesn't tell the story the bank wants to hear. The work is choosing the right lender for the file long before completion, and structuring deposits so the financing actually holds together on closing day.</li>
+    <li><strong>The multigenerational family buying one home for three generations.</strong> Grandparents, parents and kids under one roof. Floor plan, legal-suite potential, mortgage structure and title all have to line up, and the conversation is slower on purpose.</li>
+    <li><strong>The investor holding several assignments who needs an exit before completion.</strong> The assignment clause in the disclosure statement decides whether that exit is possible or expensive. The job is reading that clause before signing, not after.</li>
+    <li><strong>The buyer whose completion date moved and whose financing needs restructuring.</strong> Rates shifted, the appraisal came in soft, or the developer pushed completion by nine months. Requalifying calmly, restructuring deposits and getting to close is the whole point of having a buyer's agent still on the file three years after launch.</li>
   </ul>
 
-  <h2>Languages \u2014 a real service, not a checkbox</h2>
-  <p>I work fluently in English, Punjabi, Hindi and Urdu, and I get by in Telugu. A meaningful share of my clients \u2014 especially newer Canadians and first-generation immigrant families \u2014 prefer to walk through a 40-page disclosure statement in their own language. That's not a marketing line. Reviewing a real-estate contract in your second language is exactly where expensive mistakes happen: an assignment clause misread, a deposit ladder misunderstood, a completion range overlooked. I read the document with you, in the language you actually think in, and I answer questions in the same language until every clause makes sense.</p>
+  <h2>Only 2 defaults</h2>
+  <p>Across 450+ families and $200M+ in new-construction sales over five years, only two buyers ever failed to complete. A default is the worst thing that can happen to a presale buyer \u2014 you lose the deposit and you lose the home. Two, in five years.</p>
+  <p>Anyone can sell a unit at launch. The real job is making sure the buyer can still close three years later: that the income still supports the mortgage, that the deposits are structured against a realistic budget, that the lender is the right one for the situation, and that nobody is walked into a project they can't actually complete. That's what "only 2 defaults" measures. It's the number I care about most and it's the number the industry never talks about.</p>
 
-  <h2>Where I work</h2>
-  <p>Fraser Valley first. Day to day, I'm working in Surrey (City Centre, Fleetwood, Clayton, South Surrey, Cloverdale), Langley (Willoughby, Latimer, Yorkson), Abbotsford, Coquitlam (Burquitlam, Burke Mountain), Burnaby South, Delta (North Delta, Ladner), Chilliwack, Maple Ridge, White Rock and New Westminster. If a project is a genuine buy in one of those markets, I know it and I've probably already vetted the developer.</p>
+  <h2>What languages do you speak?</h2>
+  <p>I work in English, Punjabi, Urdu and Hindi, and I get by in Telugu. A presale contract is a legal document. Every buyer should understand every clause in the language they think in \u2014 not a summary, not a translated headline, the actual document. I read disclosure statements with clients in whichever of those languages they're most comfortable in, and I answer questions in the same language until every clause makes sense. It isn't a translation service. It's making sure nobody signs something they don't fully understand.</p>
 
-  <h2>What I work on</h2>
-  <p>Presale condos are the majority of the business, but the practice is broader than that. Presale and new-construction <strong>townhomes</strong> \u2014 my favourite product for family buyers in Willoughby, Latimer and Burke Mountain \u2014 and new-construction <strong>detached and duplex</strong> homes in Cloverdale, South Surrey, Willoughby and Burke Mountain, including legal-suite and multigenerational layouts. Move-in-ready new-construction inventory when a presale timeline doesn't fit. Assignment buys and sells. If it's new, and you're the buyer, I can represent you on it.</p>
+  <h2>Where do you work?</h2>
+  <p>Fraser Valley. Day to day that's Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. If a presale or new-construction project is a genuine buy in one of those markets, I know it and I've usually already vetted the developer and the site.</p>
 
-  <h2>Track record</h2>
-  <p><strong>450+ Units Sold \u00b7 $200M+ in Sales Volume \u00b7 5 Years in the Presale Market \u00b7 4.9\u2605 from 36 Google reviews \u00b7 Buyer-only representation.</strong></p>
-  <p>The stat I'm quietly most proud of: <strong>out of 450+ units sold, only two buyers ever failed to complete.</strong> Two. That's not luck \u2014 it's what happens when you qualify buyers honestly before they sign, structure deposits against real income, choose the right lender for the situation, and stay on top of every completion date. The single most expensive thing that can happen to a presale buyer is losing a deposit at completion, and it almost never happens on my files.</p>
-  <p>I'm also the founder of the <strong>Vancouver Presale Expo</strong> \u2014 the region's independent presale event, built to give buyers direct access to developers without the sales-centre pressure.</p>
+  <h2>Founder, Vancouver Presale Expo</h2>
+  <p>I'm the founder of the Vancouver Presale Expo \u2014 an independent event built to give buyers direct access to developers and honest project information without the sales-centre pressure.</p>
 
-  <h2>Answers to the questions I get every week</h2>
-  ${ABOUT_FAQS.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join("")}
-
-  <p><a href="${SITE}/call">Book a free 15-minute strategy call</a> \u00b7 <a href="tel:+16722581100">+1 672-258-1100</a> \u00b7 <a href="${SITE}/services">See how I work</a></p>
+  <p><strong>450+ families \u00b7 $200M+ in new homes \u00b7 140+ projects \u00b7 5 years \u00b7 4.9\u2605 from 36 reviews \u00b7 only 2 defaults.</strong></p>
+  <p><a href="${SITE}/call">Book a free 15-minute strategy call</a> \u00b7 <a href="${SITE}/services">See how I work</a></p>
 </article>
 `.trim();
   const bcLd = jsonLd(breadcrumb("About Uzair Muhammad", "/about"));
-  const faqLd = jsonLd(faqPage(ABOUT_FAQS));
-  return body + bcLd + faqLd;
+  return body + bcLd;
 })();
+
 
 const STATIC_BODY: Record<string, string> = {
   "/": `<h1>Uzair Muhammad — Fraser Valley's Leading Presale &amp; New-Construction Expert</h1><p>Looking to buy a presale condo, townhome, or new-construction home in the Fraser Valley? Uzair Muhammad is a buyer-only presale specialist who represents buyers — never developers — across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, Chilliwack and Maple Ridge.</p><h2>Why buy new construction with Uzair</h2><ul><li>VIP early access to new projects before the general public, with developer incentives.</li><li>Line-by-line contract review to protect your deposit and your rights.</li><li>No developer bias — buyer-only representation, at no cost to you.</li><li>Strategy for both first-time buyers and investors, including assignments and taxes.</li></ul>`,

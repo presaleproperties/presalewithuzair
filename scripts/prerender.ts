@@ -53,7 +53,7 @@ function applyMeta(html: string, meta: { title: string; description: string; ima
   const set = (attr: "name" | "property", key: string, value: string) => {
     const re = new RegExp(`(<meta\\s+${attr}=["']${key}["'][^>]*content=["'])[^"']*(["'][^>]*>)`, "i");
     if (re.test(out)) {
-      out = out.replace(re, `$1${escAttr(value)}$2`);
+      out = out.replace(re, (m, g1, g2) => `${g1}${escAttr(value)}${g2}`);
     } else {
       out = out.replace(/<\/head>/i, `<meta ${attr}="${key}" content="${escAttr(value)}">\n</head>`);
     }

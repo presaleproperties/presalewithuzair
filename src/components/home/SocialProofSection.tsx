@@ -147,6 +147,22 @@ const staticReviews: StaticReview[] = [
     photo: hissanPhoto,
     rating: 5,
   },
+  {
+    name: "Miwa Karaki",
+    quote:
+      "Uzair's knowledge of presales is incredible. Whenever we find a presale project to invest in, he already knows about it and provides us with a lot of information. We know he is busy but he's always willing to help with anything. We truly appreciate his assistance!",
+    timeAgo: "a year ago",
+    photo: miwaPhoto,
+    rating: 5,
+  },
+  {
+    name: "Mona Alkurdi",
+    quote:
+      "Very honest realtor who speaks the best for his clients as a priority. We have been working with him for years and he never failed us. I advise anyone to work with this amazing person.",
+    timeAgo: "a year ago",
+    photo: monaPhoto,
+    rating: 5,
+  },
 ];
 
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";

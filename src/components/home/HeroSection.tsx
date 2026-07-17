@@ -124,7 +124,7 @@ export const HeroSection = () => {
 
               {/* Authority strip */}
               <p className="text-sm text-foreground/60 animate-fade-up">
-                450+ units sold · $200M+ sales · 4.9★ Google · English, Punjabi, Hindi, Urdu
+                {heroContent.proof}
               </p>
 
             </div>

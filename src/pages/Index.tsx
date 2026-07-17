@@ -74,10 +74,10 @@ const Index = () => {
         
         <Suspense fallback={<SectionFallback />}>
           <MidPageCTA 
-            quote="I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with."
-            clientName="Akhi"
+            quote="Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks."
+            clientName="Ray"
             clientRole="First-Time Buyer"
-            clientPhoto={akhiPhoto}
+            clientPhoto={rayPhoto}
           />
         </Suspense>
         

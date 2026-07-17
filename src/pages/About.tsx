@@ -321,13 +321,10 @@ const About = () => {
                   Community <span className="text-gradient">Leader</span>
                 </h2>
                 <p className="text-foreground/80 leading-relaxed mb-6">
-                  Uzair is on a mission to revolutionize presales, give back, and share his formula 
-                  for success to enable and motivate other real estate agents.
+                  I'm on a mission to raise the standard for presale buyers, give back to the community, and share what I've learned with other real estate agents.
                 </p>
                 <p className="text-foreground/80 leading-relaxed mb-8">
-                  He is the founder of Vancouver's Largest Presale Expo for real estate agents and 
-                  developers. Vancouver Presale Expo 2024 was a launchpad for groundbreaking presale 
-                  projects and invaluable training for 1,000+ realtors.
+                  I founded the Vancouver Presale Expo, one of BC's largest events for presale agents and developers. Vancouver Presale Expo 2024 was a launchpad for groundbreaking presale projects and delivered training for 1,000+ realtors.
                 </p>
                 <Button variant="outline" size="lg" className="gap-2" asChild>
                   <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer">

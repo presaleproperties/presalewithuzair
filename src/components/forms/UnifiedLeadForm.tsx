@@ -75,6 +75,8 @@ interface UnifiedLeadFormProps {
   defaultBuyerType?: string;
   /** Class name override for wrapper */
   className?: string;
+  /** Render select fields in two columns on sm+ */
+  twoColumn?: boolean;
 }
 
 export const UnifiedLeadForm = ({
@@ -86,6 +88,7 @@ export const UnifiedLeadForm = ({
   showTrust = true,
   defaultBuyerType = "",
   className = "",
+  twoColumn = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -203,12 +206,12 @@ export const UnifiedLeadForm = ({
   const isCard = variant === "card";
 
   const wrapperClasses = isCard
-    ? `bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-10 ${className}`
+    ? `bg-card/60 backdrop-blur-sm rounded-2xl border border-border shadow-sm p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
   const inputClasses = isDark
     ? "h-12 text-base bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-primary touch-manipulation"
-    : "h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation";
+    : "h-12 text-base bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation";
 
   const labelClasses = isDark
     ? "block text-xs sm:text-sm font-medium text-white/90 mb-1"
@@ -232,8 +235,9 @@ export const UnifiedLeadForm = ({
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" autoComplete="on">
-        <div>
+      <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
+        <div className={twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
+        <div className={twoColumn ? "sm:col-span-2" : ""}>
           <label htmlFor="ulc-fullName" className={labelClasses}>Full Name *</label>
           <Input
             id="ulc-fullName"
@@ -351,6 +355,8 @@ export const UnifiedLeadForm = ({
             </SelectContent>
           </Select>
         </div>
+        </div>
+
 
         <Button
           type="submit"

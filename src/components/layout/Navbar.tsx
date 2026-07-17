@@ -105,17 +105,8 @@ export const Navbar = () => {
             <img src={logo} alt="Presale with Uzair" className={logoClassName} />
           </Link>
 
-          {/* Mobile CTA + Menu */}
-          <div className="flex lg:hidden items-center gap-3">
-            <Button
-              variant="hero"
-              size="sm"
-              className="rounded-full px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300 gap-1.5"
-              onClick={handleFormCTA}
-            >
-              <Phone className="h-3.5 w-3.5" />
-              Book Strategy Call
-            </Button>
+          {/* Mobile menu toggle */}
+          <div className="flex lg:hidden items-center">
             <button
               className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

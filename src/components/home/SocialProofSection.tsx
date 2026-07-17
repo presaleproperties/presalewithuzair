@@ -73,96 +73,78 @@ const staticReviews: StaticReview[] = [
     highlight: true,
     rating: 5,
   },
-  // Additional verbatim reviews retained from previous static set to give the
-  // grid weight (36 total reviews on Google; Places API only exposes 5).
   {
-    name: "Sonali",
+    name: "Andres Jaramillo",
     quote:
-      "Uzair's knowledge and expertise made the entire process smooth and easy to understand for us. We are extremely grateful for his efforts in helping us get our first home and would absolutely recommend him.",
-    timeAgo: "1 year ago",
-    photo: sonaliPhoto,
+      "Uzair made what could have been a really difficult transaction as finding our first home in a new market we knew nothing about, he turned it into an easy and enjoyable process. Guided us through the process from the search all the way to completion.\nNext time we are back looking for properties, we will get him on our side for sure.\nI’d recommend Uzair and his team to anyone.",
+    timeAgo: "7 months ago",
+    photo: andresPhoto,
     rating: 5,
   },
   {
-    name: "M Hissan",
+    name: "Jamila Kirama",
     quote:
-      "Uzair guided me through my first home purchase and made sure I felt comfortable throughout the journey. Even after getting the house, he continued to help with upgrades and advice, which really stood out.",
-    timeAgo: "1 year ago",
-    photo: hissanPhoto,
-    rating: 5,
-  },
-  {
-    name: "Adam",
-    quote:
-      "Uzair helped me with my investment property and made sure I got the best deal. He's straightforward, knows the market, and will tell you directly if a project isn't right. No fluff, no hype — just honesty and expertise.",
-    timeAgo: "8 months ago",
-    photo: adamPhoto,
-    highlight: true,
-    rating: 5,
-  },
-  {
-    name: "Miwa",
-    quote:
-      "Uzair's knowledge of presales is incredible. Whenever we find a project to invest in, he already knows about it and provides detailed insights. Even though he's busy, he's always willing to help and guide us.",
-    timeAgo: "1 year ago",
-    photo: miwaPhoto,
-    rating: 5,
-  },
-  {
-    name: "Mehreen",
-    quote:
-      "Uzair is an expert when it comes to presales in Vancouver. His personalized approach and deep market knowledge make the process very easy. I highly recommend reaching out to him if you're considering a presale purchase.",
-    timeAgo: "1 year ago",
-    photo: mehreenPhoto,
-    rating: 5,
-  },
-  {
-    name: "Baldeep",
-    quote:
-      "Uzair made our home-selling process seamless and stress-free. He took the time to understand our needs, communicated clearly, and continues to support us as we search for our next home. His professionalism and market expertise are unmatched.",
-    timeAgo: "1 year ago",
-    photo: baldeepPhoto,
-    rating: 5,
-  },
-  {
-    name: "Jamila",
-    quote:
-      "Uzair was professional, knowledgeable, and always had my best interests at heart. He made the buying and selling process smooth, kept me informed at every step, and his attention to detail truly set him apart.",
-    timeAgo: "9 months ago",
+      "I had an amazing experience working with Uzair! From start to finish, he is professional, knowledgeable, and always had my best interests at heart. He made the entire buying/selling process smooth and stress-free, answering all my questions and keeping me informed every step of the way. His attention to detail, market expertise, and dedication truly set them apart. I highly recommend Uzair to anyone looking for a top-notch real estate professional!",
+    timeAgo: "a year ago",
     photo: jamilaPhoto,
     rating: 5,
   },
   {
-    name: "Mona",
+    name: "Exponential Real Estate",
     quote:
-      "Uzair is a very honest realtor who always puts his clients first. We've been working with him for years and he has never failed us. I would advise anyone to work with him.",
-    timeAgo: "10 months ago",
-    photo: monaPhoto,
+      "Uzair is an excellent agent who fights for his clients, writes a good contract that protects his clients yet is flexible enough to get the deal done. This was my first time working with Uzair and I am impressed by his professionalism and knowledge. Would love to do another deal soon with such a good agent.",
+    timeAgo: "a year ago",
+    photo: baldeepPhoto,
     highlight: true,
     rating: 5,
   },
   {
-    name: "Akhi",
+    name: "Adam Lai",
     quote:
-      "I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with.",
-    timeAgo: "1 year ago",
-    photo: akhiPhoto,
+      "Uzair helped me with my investment property, and I couldn’t be more grateful. He’s focused on making sure you get the best deal and\nguiding you through every step of the process. He’s straightforward, easy to work with, and truly knows the market. If a deal or project isn’t right, he’ll tell you exactly that, no fluff, no hype. You can always count on his honesty and expertise!",
+    timeAgo: "a year ago",
+    photo: adamPhoto,
     rating: 5,
   },
   {
-    name: "Bryant",
+    name: "Ehsan Khan",
     quote:
-      "From presale to closing, Uzair was extremely helpful throughout the entire process. He's talented, reliable, and someone I would recommend anytime.",
-    timeAgo: "7 months ago",
-    photo: bryantPhoto,
-    rating: 5,
-  },
-  {
-    name: "Rehman",
-    quote:
-      "Uzair is a true professional — very blunt, honest, and straight to the point. He doesn't beat around the bush, works long hours, and is extremely responsive. I truly respect his work ethic.",
-    timeAgo: "4 years ago",
+      "Uzair is a very professional, kind, and helpful realtor. Him and his team work diligently in the best interest of their clients. He is very reliable, honest, and communicates clearly and promptly. There is never any \"fine print\" or surprises. I would highly recommend him and his services to everybody. We will definitely contact him again for future buying and selling. Thank you for your excellent services and pleasant experience :)",
+    timeAgo: "3 years ago",
     photo: rehmanPhoto,
+    rating: 5,
+  },
+  {
+    name: "Mehreen Chaudry",
+    quote:
+      "I have been working with Uzair for a number of years he is an expert in his knowledge about presale in Vancouver. His personalized approach for his client is what makes it very easy to work with him. I would highly recommend that if you are considering presale to get in contact with Uzair.",
+    timeAgo: "a year ago",
+    photo: mehreenPhoto,
+    rating: 5,
+  },
+  {
+    name: "Ray M",
+    quote:
+      "Now I see why he's called the \"presale expert.\" Uzair's expertise in the presale market is exceptional. His strong relationships with developers enabled us to secure the best unit in the building at an incredible price. It was an outstanding experience. Thank you Uzair, for your hard work, transparency, and guidance in helping my family find our first home within 2 weeks!!",
+    timeAgo: "a year ago",
+    photo: rayPhoto,
+    highlight: true,
+    rating: 5,
+  },
+  {
+    name: "alladi tejaswini",
+    quote:
+      "Uzair is a very professional and agile realtor. Keeps your requirements in mind and works towards getting it done for you. He was our realtor for buying new property and selling ours. Highly recommend him and will be going with him for next purchase as well.",
+    timeAgo: "4 years ago",
+    photo: sonaliPhoto,
+    rating: 5,
+  },
+  {
+    name: "M Hissan Zafar",
+    quote:
+      "Uzair is brilliant to work with\nI had an amazing experience with him and as a first time home buyer he guided me throughout the journey and made sure i feel comfortable and even after getting the house he is there to help me on different upgrades",
+    timeAgo: "2 years ago",
+    photo: hissanPhoto,
     rating: 5,
   },
 ];

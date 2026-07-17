@@ -281,26 +281,52 @@ export const UnifiedLeadForm = ({
 
       <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
         <div className={twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
-        <div className={twoColumn ? "sm:col-span-2" : ""}>
-          <label htmlFor="ulc-fullName" className={labelClasses}>Full Name *</label>
+        <div>
+          <label htmlFor="ulc-firstName" className={labelClasses}>First name *</label>
           <Input
-            id="ulc-fullName"
-            name="name"
+            id="ulc-firstName"
+            name="given-name"
             type="text"
-            placeholder="Your full name"
-            value={formData.fullName}
-            onChange={(e) => updateField("fullName", e.target.value)}
+            placeholder="First name"
+            value={formData.firstName}
+            onChange={(e) => updateField("firstName", e.target.value)}
             onFocus={scrollFieldIntoView}
-            className={`${inputClasses} ${fieldErrors.fullName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
-            autoComplete="name"
-            aria-invalid={!!fieldErrors.fullName}
-            aria-describedby={fieldErrors.fullName ? "ulc-fullName-error" : undefined}
+            className={`${inputClasses} ${fieldErrors.firstName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
+            autoComplete="given-name"
+            autoCapitalize="words"
+            enterKeyHint="next"
+            aria-invalid={!!fieldErrors.firstName}
+            aria-describedby={fieldErrors.firstName ? "ulc-firstName-error" : undefined}
             required
           />
-          {fieldErrors.fullName && (
-            <p id="ulc-fullName-error" className="mt-1 text-xs text-destructive">{fieldErrors.fullName}</p>
+          {fieldErrors.firstName && (
+            <p id="ulc-firstName-error" className="mt-1 text-xs text-destructive">{fieldErrors.firstName}</p>
           )}
         </div>
+
+        <div>
+          <label htmlFor="ulc-lastName" className={labelClasses}>Last name *</label>
+          <Input
+            id="ulc-lastName"
+            name="family-name"
+            type="text"
+            placeholder="Last name"
+            value={formData.lastName}
+            onChange={(e) => updateField("lastName", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.lastName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
+            autoComplete="family-name"
+            autoCapitalize="words"
+            enterKeyHint="next"
+            aria-invalid={!!fieldErrors.lastName}
+            aria-describedby={fieldErrors.lastName ? "ulc-lastName-error" : undefined}
+            required
+          />
+          {fieldErrors.lastName && (
+            <p id="ulc-lastName-error" className="mt-1 text-xs text-destructive">{fieldErrors.lastName}</p>
+          )}
+        </div>
+
 
         <div>
           <label htmlFor="ulc-email" className={labelClasses}>Email *</label>

@@ -64,10 +64,10 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Have <span className="text-gradient">Questions</span>? Let's Talk.
+                Let's find the right presale <span className="text-gradient">before you commit.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Not sure if a presale makes sense right now? Have concerns about a specific developer? Reach out. I'm here to provide honest, unfiltered guidance.
+                If you're thinking about a presale condo, townhome, or new-construction home, start here. Send me your budget, preferred cities, timeline, and whether you're buying to live in or invest. I'll help you understand what's worth looking at — and what's worth avoiding.
               </p>
             </div>
           </div>

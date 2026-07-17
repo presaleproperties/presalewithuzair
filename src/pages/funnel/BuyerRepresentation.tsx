@@ -5,7 +5,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Do I need my own realtor to buy a presale?",
     answer:
-      "Yes. The rep at the developer's sales centre works for the developer — that's their client, that's who pays them. Your own buyer's agent is also paid by the developer out of the price you'd pay anyway, but represents you. There is no cost to you for having independent representation.",
+      "Yes. The rep at the developer's sales centre works for the developer — that's their client, that's who pays them. Your own buyer's agent is also paid by the developer out of the price you'd pay anyway, but represents you. My fee is paid by the developer's marketing budget, not added on top of the purchase price.",
   },
   {
     question: "Does hiring a buyer's agent cost me anything?",

@@ -19,7 +19,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "What is the 7-day rescission window?",
     answer:
-      "BC law gives you seven days after signing to walk away with no penalty. Use it. That's the window I use to review the disclosure statement, run financing, and pressure-test the contract. If anything looks wrong, we cancel — clean, no cost.",
+      "BC law gives you seven days after signing to walk away with no penalty. Use it. That's the window I use to review the disclosure statement, run financing, and pressure-test the contract. If anything looks wrong, we cancel — clean — no penalty.",
   },
   {
     question: "Do I have to pay GST on a presale?",
@@ -51,7 +51,7 @@ const BuyPresaleFraserValley = () => (
 
     <h2>Rescission — the 7-day window that matters</h2>
     <p>
-      BC law gives you seven days after signing to walk away without penalty. That window exists for a reason: it's when your realtor and lawyer review the contract, the disclosure statement and the deposit protection. If I spot something ugly, we cancel — clean, no cost. Buyers who skip this step are the ones who call me a year later with problems.
+      BC law gives you seven days after signing to walk away without penalty. That window exists for a reason: it's when your realtor and lawyer review the contract, the disclosure statement and the deposit protection. If I spot something ugly, we cancel — clean — no penalty. Buyers who skip this step are the ones who call me a year later with problems.
     </p>
 
     <h2>GST and the New Housing Rebate</h2>

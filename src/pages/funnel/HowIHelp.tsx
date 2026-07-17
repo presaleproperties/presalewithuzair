@@ -102,7 +102,7 @@ const HowIHelp = () => (
     eyebrow="How I Help"
     breadcrumbName="How I Help"
     image={DEFAULT_SOCIAL_IMAGE}
-    intro="I'm Uzair Muhammad, buyer-only presale and new-construction specialist for the Fraser Valley and Metro Vancouver. Whatever your situation — first home, first investment, upsizing, multigenerational, move-in-ready, or buying/selling an assignment — I'm the one advisor who handles all of it. Buyer-only, $0 to you, in English, Hindi, Urdu, and Punjabi."
+    intro="I'm Uzair Muhammad, buyer-only presale and new-construction specialist for the Fraser Valley and Metro Vancouver. Whatever your situation — first home, first investment, upsizing, multigenerational, move-in-ready, or buying/selling an assignment — I'm the one advisor who handles all of it. Buyer-only representation, in English, Hindi, Urdu, and Punjabi."
     faqs={faqs}
   >
     <h2>Every scenario I handle</h2>

@@ -7,7 +7,7 @@ import { Check, X } from "lucide-react";
 
 const rows: { label: string; dev: string; buyer: string }[] = [
   { label: "Who they represent", dev: "The developer", buyer: "You, the buyer" },
-  { label: "Who pays them", dev: "The developer", buyer: "The developer — $0 to you" },
+  { label: "Who pays them", dev: "The developer", buyer: "The developer's marketing budget" },
   { label: "Whose interest comes first", dev: "Developer's sales targets", buyer: "Your outcome" },
   { label: "Reviews your contract", dev: "No", buyer: "Yes — line by line" },
   { label: "Negotiates your incentives", dev: "No", buyer: "Yes" },

@@ -12,7 +12,7 @@ const segments = [
       "Not understanding contracts, GST, and timelines",
       "Getting locked into unfavorable deposit structures",
     ],
-    solution: "Uzair reviews every disclosure document, negotiates deposits, and ensures you're buying into a project with real value potential — at no cost to you.",
+    solution: "Uzair reviews every disclosure document, negotiates deposits, and ensures you're buying into a project with real value potential — my fee comes from the developer's marketing budget.",
     cta: "See How I Help First-Time Buyers",
     note: "Working with a presale expert costs you $0 — the developer pays the commission.",
   },

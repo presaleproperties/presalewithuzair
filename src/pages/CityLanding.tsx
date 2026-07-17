@@ -103,7 +103,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     title: "Presale Condos Abbotsford BC | New Developments 2026 | Uzair Muhammad",
     metaDescription: "Discover 2026 presale condos and townhomes in Abbotsford, BC. Expert buyer's agent offering VIP access, floor plans, and pricing for new developments.",
     heroEyebrow: "ABBOTSFORD PRESALE CONDOS & TOWNHOMES",
-    heroHeadline: "Abbotsford's Top Presale Condos and New Developments.",
+    heroHeadline: "Presale Condos and New Construction in Abbotsford",
     heroSubheadline: "Investor-Grade Advice. First-Time Buyer Focus.",
     heroBody: "Abbotsford is the Fraser Valley's hidden gem for new construction. From the University District to Historic Downtown — get early access to pricing, floor plans, and exclusive incentives.",
     heroCta: "Get Abbotsford VIP Access",

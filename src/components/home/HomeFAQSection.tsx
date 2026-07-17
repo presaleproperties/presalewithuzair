@@ -4,7 +4,7 @@ const HOMEPAGE_FAQS: FAQItem[] = [
   {
     question: "Do I really need a realtor to buy a presale, or can I just walk into the presentation centre?",
     answer:
-      "You can walk in — but the sales reps at the presentation centre work for the developer, not for you. A buyer-side presale specialist costs you nothing (the developer pays the commission) and unlocks VIP pricing, hidden incentives, decorating allowances, and assignment fee waivers that aren't offered to walk-in buyers. Going direct almost always means paying more for fewer perks.",
+      "You can walk in — but the sales reps at the presentation centre work for the developer, not for you. For many presale projects the developer pays the buyer commission, so a buyer-side specialist typically costs you nothing and unlocks VIP pricing, hidden incentives, decorating allowances, and assignment fee waivers that aren't offered to walk-in buyers. Going direct almost always means paying more for fewer perks.",
   },
   {
     question: "How much deposit do I actually need for a presale condo in BC?",

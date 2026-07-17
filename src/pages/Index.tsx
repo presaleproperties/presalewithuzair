@@ -78,33 +78,41 @@ const Index = () => {
         <HeroSection />
         
         {/* Below-fold sections lazy loaded */}
+        {/* 1. Trust: what clients say */}
         <Suspense fallback={<SectionFallback />}>
           <SocialProofSection />
         </Suspense>
 
+        {/* 2. Why Uzair (positioning) */}
         <Suspense fallback={<SectionFallback />}>
           <DifferentiationSection />
         </Suspense>
 
+        {/* 3. How it works */}
         <Suspense fallback={<SectionFallback />}>
           <ProcessSection />
         </Suspense>
 
-        <Suspense fallback={<SectionFallback />}>
-          <PresaleGuideBanner />
-        </Suspense>
-
+        {/* 4. Answers to common buyer questions */}
         <Suspense fallback={<SectionFallback />}>
           <HomeFAQSection />
         </Suspense>
 
+        {/* 5. Free lead magnet */}
+        <Suspense fallback={<SectionFallback />}>
+          <PresaleGuideBanner />
+        </Suspense>
+
+        {/* 6. Book a call */}
         <Suspense fallback={<SectionFallback />}>
           <BookingContextSection />
         </Suspense>
 
+        {/* 7. Final CTA */}
         <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
+
       </main>
 
       <Footer />

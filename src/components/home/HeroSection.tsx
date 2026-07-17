@@ -7,12 +7,7 @@ const heroContent = {
   subheadline: "Presale advice before you sign.",
   body: "Buyer-side guidance for new condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.",
   proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
-  cta: "Book a Buyer Strategy Call",
-  ctaSecondary: "Get Presale Guide"
-};
-
-const openPresaleGuide = () => {
-  window.dispatchEvent(new CustomEvent("open-presale-guide"));
+  cta: "Book a Buyer Strategy Call"
 };
 
 export const HeroSection = () => {
@@ -75,9 +70,6 @@ export const HeroSection = () => {
             <Button variant="hero" size="lg" className="rounded-full px-8 py-6 md:px-10 md:py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 md:px-10 md:py-7 text-base font-semibold" onClick={openPresaleGuide}>
-              {heroContent.ctaSecondary}
-            </Button>
           </div>
 
 
@@ -133,9 +125,6 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-3 animate-fade-up">
               <Button variant="hero" size="xl" className="rounded-full px-10 py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
                 {heroContent.cta}
-              </Button>
-              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={openPresaleGuide}>
-                {heroContent.ctaSecondary}
               </Button>
             </div>
           </div>

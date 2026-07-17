@@ -102,8 +102,16 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (min-width: 640px) {
+    body { font-size: 17px; }
   }
 
   h1, h2, h3, h4 {
@@ -111,6 +119,23 @@
     font-weight: 700;
     text-transform: none;
     letter-spacing: -0.02em;
+  }
+
+  /* Unified section rhythm */
+  .section-y   { @apply py-20 sm:py-24 lg:py-28; }
+  .section-y-sm { @apply py-14 sm:py-20; }
+  .section-y-lg { @apply py-24 sm:py-32; }
+
+  /* Typography scale — one canonical set */
+  .h-display   { @apply font-display font-bold tracking-tight leading-[1.08] text-4xl sm:text-5xl lg:text-[3.25rem]; }
+  .h-section   { @apply font-display font-bold tracking-tight leading-[1.1] text-3xl sm:text-4xl lg:text-[2.5rem]; }
+  .h-card      { @apply font-display font-bold tracking-tight leading-snug text-xl sm:text-2xl; }
+  .eyebrow     { @apply text-xs font-bold tracking-[0.18em] uppercase text-primary; }
+  .lede        { @apply text-base sm:text-lg text-foreground/70 leading-relaxed; }
+
+  /* Section divider */
+  .section-divider {
+    @apply border-t border-border/40;
   }
 }
 

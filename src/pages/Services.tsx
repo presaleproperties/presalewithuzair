@@ -131,14 +131,14 @@ const Services = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-card">
+        <section className="relative pt-32 pb-20 bg-card border-b border-border/40">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">How I Can Help</p>
-              <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Expert Guidance. <span className="text-gradient">No Sales Pressure.</span>
+              <p className="eyebrow mb-4 animate-fade-up">How I Can Help</p>
+              <h1 className="h-display text-foreground animate-fade-up delay-100">
+                Expert guidance. No sales pressure.
               </h1>
-              <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
+              <p className="mt-6 lede animate-fade-up delay-200">
                 Whether you are buying your first presale, assigning a contract, or looking for an investment property, you get honest, buyer-first advice designed to protect your capital.
               </p>
             </div>
@@ -150,17 +150,16 @@ const Services = () => {
           <section
             key={service.id}
             id={service.id}
-            className={`py-24 ${index % 2 === 0 ? "bg-background" : "bg-card"}`}
+            className={`section-y ${index % 2 === 0 ? "bg-background" : "bg-card"} section-divider`}
           >
             <div className="container-xl">
-              <div className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
+              <div className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${index % 2 === 1 ? "lg:grid-flow-dense" : ""}`}>
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <p className="section-label mb-4">{service.subtitle}</p>
-                  <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                    {service.title.split(" ")[0]}{" "}
-                    <span className="text-gradient">{service.title.split(" ").slice(1).join(" ")}</span>
+                  <p className="eyebrow mb-4">{service.subtitle}</p>
+                  <h2 className="h-section text-foreground mb-6">
+                    {service.title}
                   </h2>
-                  <p className="text-foreground/80 leading-relaxed mb-8">
+                  <p className="lede mb-8">
                     {service.description}
                   </p>
 
@@ -179,7 +178,7 @@ const Services = () => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-[500px] object-cover saturate-[1.15] contrast-[1.05] brightness-95"
+                    className="w-full h-[420px] lg:h-[500px] object-cover"
                   />
                 </div>
               </div>
@@ -188,33 +187,24 @@ const Services = () => {
         ))}
 
         {/* CTA */}
-        <section className="py-24 bg-card">
+        <section className="section-y bg-card section-divider">
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Before you walk into a developer sales centre, <span className="text-gradient">talk to someone who works for you.</span>
+              <h2 className="h-section text-foreground mb-6">
+                Before you walk into a developer sales centre, talk to someone who works for you.
               </h2>
-              <p className="text-foreground/80 mb-8">
+              <p className="lede mb-8">
                 No pressure. No pitch. Just a clear conversation about your goals, budget, and the projects worth comparing.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Button
                   variant="hero"
                   size="xl"
-                  className="gap-2 w-full sm:w-auto"
+                  className="gap-2 rounded-full px-8"
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
                   Book a Buyer Strategy Call
-                </Button>
-                <Button
-                  variant="outline"
-                  size="xl"
-                  className="gap-2 w-full sm:w-auto"
-                  onClick={handleCTA}
-                >
-                  <Search className="h-5 w-5" />
-                  Get My Presale Shortlist
                 </Button>
               </div>
             </div>

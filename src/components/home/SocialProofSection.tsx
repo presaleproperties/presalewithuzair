@@ -262,12 +262,10 @@ const ReviewCard = ({
   mobile?: boolean;
 }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col"
-    : "rounded-xl p-6 h-[380px] transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer flex flex-col";
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col"
+    : "rounded-xl p-6 h-[380px] transition-all hover:shadow-lg cursor-pointer flex flex-col";
 
-  const themeClass = testimonial.highlight
-    ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-    : "bg-card border border-border";
+  const themeClass = "bg-card border border-border hover:border-primary/30";
 
   return (
     <a
@@ -281,33 +279,25 @@ const ReviewCard = ({
         <img
           src={testimonial.photo}
           alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+          className="w-11 h-11 rounded-full object-cover border border-border"
           loading="lazy"
           referrerPolicy="no-referrer"
         />
         <div className="flex-1 min-w-0">
-          <p className={mobile ? "font-semibold text-sm text-foreground" : "font-semibold text-foreground"}>
+          <p className="font-semibold text-sm text-foreground">
             {testimonial.name}
           </p>
           <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
         </div>
       </div>
 
-      <StarRating rating={testimonial.rating ?? 5} size={mobile ? "sm" : "sm"} />
+      <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
       {!mobile && (
-        <Quote
-          className={`h-5 w-5 mb-2 shrink-0 ${
-            testimonial.highlight ? "text-primary/50" : "text-muted-foreground/30"
-          }`}
-        />
+        <Quote className="h-5 w-5 mb-2 mt-3 shrink-0 text-muted-foreground/30" />
       )}
 
-      <p
-        className={`text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 ${
-          mobile ? "" : "lg:text-[15px]"
-        }`}
-      >
+      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-2">
         “{highlightKeywords(testimonial.quote)}”
       </p>
       <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
@@ -350,11 +340,11 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
-    className={`group rounded-xl snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col items-center justify-center text-center border border-dashed border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 ${
+    className={`group rounded-xl snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col items-center justify-center text-center border border-border bg-card hover:border-primary/30 ${
       mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
     }`}
   >
-    <div className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
+    <div className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
       <GoogleLogo className="h-4 object-contain" />
     </div>
     <div className="flex items-center gap-1.5 mb-3">

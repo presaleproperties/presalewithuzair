@@ -374,7 +374,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
                 {config.heroEyebrow}
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-white mb-4 animate-fade-up">
+              <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white mb-4 animate-fade-up">
                 {projectCount > 0 ? dynamicH1 : config.heroHeadline}
               </h1>
               <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">
@@ -386,10 +386,11 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               </p>
               <button
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/80 text-white bg-transparent hover:bg-white hover:text-black font-semibold text-base transition-all duration-300 animate-fade-up"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base shadow-lg shadow-primary/30 transition-all duration-300 animate-fade-up"
               >
                 {config.heroCta}
               </button>
+
             </div>
           </div>
         </section>

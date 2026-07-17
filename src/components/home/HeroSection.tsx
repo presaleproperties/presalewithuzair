@@ -16,7 +16,7 @@ export const HeroSection = () => {
       behavior: 'smooth'
     });
   };
-  return <section className="dark-section relative min-h-screen overflow-hidden">
+  return <section className="dark-section relative overflow-hidden">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary/30" />
       
@@ -35,9 +35,10 @@ export const HeroSection = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-t from-primary/5 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 container-xl min-h-screen px-4 sm:px-6">
+      <div className="relative z-10 container-xl px-4 sm:px-6">
         {/* Mobile & Tablet Layout */}
-        <div className="lg:hidden flex flex-col min-h-screen pt-20 pb-8 md:pt-28 md:pb-12 md:max-w-2xl md:mx-auto">
+        <div className="lg:hidden flex flex-col pt-20 pb-12 md:pt-24 md:pb-16 md:max-w-2xl md:mx-auto">
+
           {/* Eyebrow */}
           <p className="text-foreground font-bold tracking-[0.2em] text-xs md:text-sm uppercase mb-4 animate-fade-up">
             {heroContent.eyebrow}
@@ -89,7 +90,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Desktop Layout - Keep existing side-by-side */}
-        <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center min-h-screen pt-24 pb-16">
+        <div className="hidden lg:grid lg:grid-cols-2 gap-16 items-center pt-24 pb-20 xl:pt-28 xl:pb-24">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-6">

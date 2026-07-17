@@ -5,7 +5,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Who is the best presale realtor in the Fraser Valley?",
     answer:
-      "I'm Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack and Maple Ridge. 450+ units sold, $200M+ in sales volume, 4.9★ Google rating. I don't represent developers — only buyers.",
+      "I'm Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack and Maple Ridge. 450+ units sold, $200M+ in sales volume, 4.9 stars from 36 Google reviews. I don't represent developers — only buyers.",
   },
   {
     question: "Why work with a buyer-only presale specialist?",
@@ -54,6 +54,7 @@ const BestPresaleRealtor = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 4.9,
+      reviewCount: 36,
       bestRating: 5,
     },
   };
@@ -66,11 +67,11 @@ const BestPresaleRealtor = () => {
       <FunnelPage
         path="/best-presale-realtor-fraser-valley"
         title="Best Presale Realtor Fraser Valley — Talk to Uzair First"
-        description="I'm Uzair Muhammad — buyer-only presale specialist for the Fraser Valley. 450+ units sold, 4.9★ Google rating. Talk to me before any developer sales centre."
+        description="I'm Uzair Muhammad — buyer-only presale specialist for the Fraser Valley. 450+ units sold, 4.9 stars from 36 Google reviews. Talk to me before any developer sales centre."
         h1="Best Presale Realtor in the Fraser Valley — Talk to Uzair Before Any Developer"
         eyebrow="Talk to Uzair"
         breadcrumbName="Best Presale Realtor Fraser Valley"
-        intro="I'm Uzair Muhammad — Fraser Valley's buyer-only presale specialist. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9★ Google rating. I don't represent developers, ever — only buyers. If you're thinking about a presale condo or townhome anywhere in the Fraser Valley, talk to me before you set foot in a developer's sales centre."
+        intro="I'm Uzair Muhammad — Fraser Valley's buyer-only presale specialist. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9 stars from 36 Google reviews. I don't represent developers, ever — only buyers. If you're thinking about a presale condo or townhome anywhere in the Fraser Valley, talk to me before you set foot in a developer's sales centre."
         faqs={faqs}
       >
         <h2>Why me — and why buyer-only?</h2>

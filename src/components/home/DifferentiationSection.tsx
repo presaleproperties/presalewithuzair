@@ -26,7 +26,7 @@ const blocks: Block[] = [
   },
   {
     heading: "The person showing you the floor plans is paid by the developer.",
-    body: "At a presale sales centre, every person in the room is paid by the developer. That's normal, but it means a buyer who walks in alone has no one representing their side of the contract. I only represent buyers. I don't promote or hype projects, and I don't work for developers. Most realtors push every new launch to build relationships with developers; that may help their pipeline, but it does a disservice to buyers. My job is to protect your side of the deal, not to move inventory. For many presale projects my fee is paid through the project's sales structure, so representation usually costs you nothing — I'll confirm exactly how it works on your project before you commit.",
+    body: "At a presale sales centre, every person in the room is paid by the developer. That's normal, but it means a buyer who walks in alone has no one representing their side of the contract. I only represent buyers. I don't promote or hype projects, and I don't work for developers. Most realtors push every new launch to build relationships with developers; that may help their pipeline, but it does a disservice to buyers. My job is to protect your side of the deal, not to move inventory. For many presale projects my fee is paid through the project's sales structure, so representation is usually paid through the project's sales structure — I'll confirm exactly how it works on your project before you commit.",
     wide: true,
   },
   {
@@ -34,8 +34,9 @@ const blocks: Block[] = [
     body: (
       <div className="space-y-4">
         <p>
-          I've sold 450+ presale units and more than $200M in new construction. I've worked in
-          presale exclusively for 5 years and hold a 4.9-star Google rating.
+          I've sold 450+ presale units and more than $200M in new construction. Presale and new
+          construction is 80%+ of my business, and I've worked in the presale market for 5 years.
+          I hold 4.9 stars from 36 Google reviews.
         </p>
         <p>
           I lead{" "}

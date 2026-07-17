@@ -86,6 +86,19 @@ const BlogPost = () => {
 
   const mins = readTime(post.content);
 
+  // Blog slugs that duplicate a top-level funnel page. Canonicalize the blog
+  // post to the top-level page (the money page) so they stop competing in SERP.
+  const FUNNEL_CANONICAL_SLUGS = new Set([
+    "best-presale-realtor-fraser-valley",
+    "buyer-representation-presale-fraser-valley",
+    "presale-mistakes-fraser-valley",
+    "buy-presale-fraser-valley",
+    "fraser-valley-presale-investment-advice",
+  ]);
+  const canonicalUrl = slug && FUNNEL_CANONICAL_SLUGS.has(slug)
+    ? `https://presalewithuzair.com/${slug}`
+    : `https://presalewithuzair.com/blog/${slug}`;
+
   return (
     <>
       <Helmet>

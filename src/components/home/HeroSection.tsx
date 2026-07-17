@@ -9,7 +9,7 @@ const heroContent = {
   supportingLine: "",
   cta: "Book a free 15-min call"
 };
-const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
+
 export const HeroSection = () => {
   const handleBookClick = () => {
     document.getElementById('book-section')?.scrollIntoView({

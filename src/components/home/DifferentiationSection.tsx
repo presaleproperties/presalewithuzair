@@ -70,10 +70,10 @@ export const DifferentiationSection = () => {
         <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
           <p className="section-label mb-3 sm:mb-4">Why Uzair</p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            Buyer-side thinking, in plain English.
+            I represent your side of the deal.
           </h2>
           <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Eight things every Fraser Valley presale buyer should understand before they sign — from someone paid to protect your side of the deal.
+            Eight things every Fraser Valley presale buyer should know before signing — from someone who gets paid to protect the buyer, not to sell the project.
           </p>
           <div className="mt-8 mx-auto h-px w-16 bg-primary/40" />
         </div>

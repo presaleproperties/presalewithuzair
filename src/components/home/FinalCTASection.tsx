@@ -1,10 +1,7 @@
-import { Button } from "@/components/ui/button";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 export const FinalCTASection = () => {
-  const handleBookClick = () => {
-    document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
-  };
+
 
   return (
     <section className="dark-section py-20 sm:py-28 bg-[hsl(222,20%,8%)]">
@@ -29,24 +26,17 @@ export const FinalCTASection = () => {
               Get guidance from the same expert who educates the industry.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                variant="hero"
-                size="lg"
-                className="rounded-full px-8 py-6 text-base font-semibold"
-                onClick={handleBookClick}
-              >
-                Book a Buyer Strategy Call
-              </Button>
+            <div>
               <a
                 href="https://vancouverpresaleexpo.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors px-4 py-3"
+                className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
               >
                 vancouverpresaleexpo.com ↗
               </a>
             </div>
+
           </div>
 
           {/* Image */}

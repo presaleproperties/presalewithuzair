@@ -78,7 +78,7 @@ const About = () => {
               <div className="lg:col-span-7">
                 <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
                 <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-[1.05]">
-                  One of the Fraser Valley's buyer-side presale authorities.
+                  Fraser Valley's leading Presale Expert
                 </h1>
                 <div className="mt-8 space-y-5 text-foreground/80 animate-fade-up delay-200">
                   <p className="text-xl leading-relaxed">

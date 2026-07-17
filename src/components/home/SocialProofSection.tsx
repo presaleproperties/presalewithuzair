@@ -242,7 +242,6 @@ export const SocialProofSection = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: liveData?.overallRating ?? 4.9,
-      reviewCount: liveData?.totalReviews ?? 36,
       bestRating: 5,
     },
     review: displayed.map((r) => ({
@@ -294,7 +293,7 @@ export const SocialProofSection = () => {
               rel="noopener noreferrer"
               className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors underline underline-offset-2"
             >
-              {liveData?.overallRating ?? 4.9} · {liveData?.totalReviews ?? 36} reviews → See all on Google
+              {liveData?.overallRating ?? 4.9} · Google rating → See all on Google
             </a>
           </div>
         </div>

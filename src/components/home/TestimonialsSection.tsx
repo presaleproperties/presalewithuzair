@@ -234,7 +234,7 @@ export const TestimonialsSection = () => {
               ))}
             </div>
             <span className="text-muted-foreground text-xs md:text-sm">
-              5.0 (15+ reviews)
+              5.0 Google rating
             </span>
           </div>
         </div>
@@ -317,10 +317,6 @@ export const TestimonialsSection = () => {
             ))}
           </div>
 
-          {/* Testimonial Count */}
-          <p className="text-center text-muted-foreground text-sm mt-6">
-            {currentIndex + 1} of {testimonials.length} reviews
-          </p>
         </div>
       </div>
     </section>

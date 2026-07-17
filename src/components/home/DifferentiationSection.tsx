@@ -3,12 +3,20 @@ import { Link } from "react-router-dom";
 
 const PPG_URL = "https://presaleproperties.com";
 
-type Block = { heading: string; body: ReactNode; cta?: { to: string; label: string } };
+type Block = {
+  heading: string;
+  body: ReactNode;
+  cta?: { to: string; label: string };
+  feature?: boolean;
+  wide?: boolean;
+};
 
 const blocks: Block[] = [
   {
-    heading: "The sales centre is built to sell the project. I'm here to help you decide if it's actually right for you.",
+    heading:
+      "The sales centre is built to sell the project. I'm here to help you decide if it's actually right for you.",
     body: "Presale can be a smart move. It can also be an expensive mistake if you buy the wrong floor plan, the wrong building, the wrong location, or the wrong contract without understanding the risks. My job is to slow the decision down, compare the options, and help you understand what you're really buying — not the polished sales-centre version.",
+    feature: true,
   },
   {
     heading: "Talk to me before you register at the sales centre.",
@@ -18,13 +26,15 @@ const blocks: Block[] = [
   {
     heading: "The person showing you the floor plans is paid by the developer.",
     body: "At a presale sales centre, every person in the room is paid by the developer. That's normal, but it means a buyer who walks in alone has no one representing their side of the contract. I only represent buyers. I don't promote or hype projects, and I don't work for developers. Most realtors push every new launch to build relationships with developers; that may help their pipeline, but it does a disservice to buyers. My job is to protect your side of the deal, not to move inventory. For many presale projects my fee is paid through the project's sales structure, so representation usually costs you nothing — I'll confirm exactly how it works on your project before you commit.",
+    wide: true,
   },
   {
     heading: "Track record",
     body: (
       <>
         <p>
-          I've sold 450+ presale units and more than $200M in new construction. I've worked in presale exclusively for 5 years and hold a 4.9-star Google rating.
+          I've sold 450+ presale units and more than $200M in new construction. I've worked in
+          presale exclusively for 5 years and hold a 4.9-star Google rating.
         </p>
         <p className="mt-4">
           I lead{" "}
@@ -36,13 +46,16 @@ const blocks: Block[] = [
           >
             The Presale Properties Group
           </a>
-          , a team of agents working the Fraser Valley presale market, and I founded the Vancouver Presale Expo. I'm a licensed BC REALTOR® under Real Broker and regulated by the BC Financial Services Authority.
+          , a team of agents working the Fraser Valley presale market, and I founded the Vancouver
+          Presale Expo. I'm a licensed BC REALTOR® under Real Broker and regulated by the BC
+          Financial Services Authority.
         </p>
         <p className="mt-4">
           Before real estate, I spent 10 years with the City of Surrey in planning and bylaws.
         </p>
       </>
     ),
+    wide: true,
   },
   {
     heading: "The contract is explained in Punjabi, Hindi, and Urdu — not just English.",
@@ -63,61 +76,91 @@ const blocks: Block[] = [
 ];
 
 export const DifferentiationSection = () => {
+  const feature = blocks.find((b) => b.feature)!;
+  const rest = blocks.filter((b) => !b.feature);
+
   return (
-    <section className="section-y bg-background border-t border-border/40">
+    <section className="section-y bg-muted/40 border-y border-border">
       <div className="container-xl px-4 sm:px-6">
-        {/* Section header — matches Process framing */}
-        <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
+        {/* Section header */}
+        <div className="max-w-3xl mb-12 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">Why Uzair</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight">
             I represent your side of the deal.
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed">
-            Eight things every Fraser Valley presale buyer should know before signing — from someone who gets paid to protect the buyer, not to sell the project.
+          <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+            Eight things every Fraser Valley presale buyer should know before signing — from someone
+            who gets paid to protect the buyer, not to sell the project.
           </p>
-          <div className="mt-8 mx-auto h-px w-16 bg-primary/40" />
         </div>
 
-        {/* Blocks — numbered, divided, rhythmic */}
-        <div className="max-w-3xl mx-auto">
-          {blocks.map((block, i) => (
-            <article
-              key={i}
-              className={`grid grid-cols-[auto_1fr] gap-5 sm:gap-8 py-10 sm:py-14 ${
-                i !== 0 ? "border-t border-border/50" : ""
-              }`}
-            >
-              <div className="pt-1">
-                <span className="font-display text-sm sm:text-base font-semibold text-primary tabular-nums tracking-wider">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <div>
-                <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-4">
+        {/* Featured statement — asymmetric quote-style card */}
+        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card">
+          <div className="absolute inset-0 opacity-[0.04]" aria-hidden>
+            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
+          </div>
+          <div className="relative grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 p-8 sm:p-12 lg:p-16">
+            <div className="flex lg:flex-col items-start gap-3">
+              <span className="font-display text-xs font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
+                01
+              </span>
+              <span className="hidden lg:block h-16 w-px bg-background/20" />
+              <span className="lg:hidden h-px w-16 bg-background/20 self-center" />
+            </div>
+            <div>
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-bold leading-[1.15] tracking-tight text-background">
+                {feature.heading}
+              </h3>
+              <p className="mt-6 text-base sm:text-lg text-background/75 leading-relaxed max-w-3xl">
+                {feature.body}
+              </p>
+            </div>
+          </div>
+        </article>
+
+        {/* Bento grid of remaining blocks */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {rest.map((block, i) => {
+            const number = String(i + 2).padStart(2, "0");
+            return (
+              <article
+                key={number}
+                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft hover:shadow-card hover:border-primary/30 transition-all duration-300 ${
+                  block.wide ? "lg:col-span-2" : ""
+                }`}
+              >
+                <div className="flex items-start justify-between gap-4 mb-5">
+                  <span className="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+                    {number}
+                  </span>
+                  <span className="h-px flex-1 bg-border mt-2.5" />
+                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground leading-[1.2] tracking-tight mb-4">
                   {block.heading}
                 </h3>
                 {typeof block.body === "string" ? (
-                  <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                  <p className="text-[0.975rem] sm:text-base text-foreground/70 leading-relaxed">
                     {block.body}
                   </p>
                 ) : (
-                  <div className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                  <div className="text-[0.975rem] sm:text-base text-foreground/70 leading-relaxed">
                     {block.body}
                   </div>
                 )}
                 {block.cta && (
-                  <div className="mt-5">
+                  <div className="mt-6">
                     <Link
                       to={block.cta.to}
                       className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
                     >
                       {block.cta.label}
+                      <span aria-hidden>→</span>
                     </Link>
                   </div>
                 )}
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

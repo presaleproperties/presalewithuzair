@@ -7,7 +7,7 @@ export const AgentContactForm = () => {
         eyebrow=""
         heading="Start Your Presale Journey"
         subheading="Tell us about yourself and your goals"
-        buttonText="Submit & Schedule a Call"
+        buttonText="Book a Buyer Strategy Call"
         variant="default"
         showTrust={true}
       />

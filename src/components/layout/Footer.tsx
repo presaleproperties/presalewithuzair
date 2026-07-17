@@ -152,7 +152,7 @@ export const Footer = () => {
                     rel="noopener noreferrer"
                     className="text-white/50 hover:text-white transition-colors text-sm"
                   >
-                    Search Presale Projects ↗
+                    Get My Presale Shortlist ↗
                   </a>
                 </li>
               </ul>

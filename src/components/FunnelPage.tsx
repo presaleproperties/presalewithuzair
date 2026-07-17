@@ -189,7 +189,7 @@ export const FunnelPage = ({
               Talk to Uzair before you talk to any developer.
             </h2>
             <p className="mt-4 text-sm sm:text-base text-background/70 leading-relaxed">
-              Buyer-only, no cost to you, no developer bias. I'll review the project,
+              Buyer-only, no developer bias — my fee comes from the developer's marketing budget. I'll review the project,
               the contract, and the deposit structure before you sign anything.
             </p>
             <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-background/70">

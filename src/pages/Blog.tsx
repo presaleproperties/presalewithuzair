@@ -241,7 +241,7 @@ const Blog = () => {
               Ready to Buy Smart?
             </h2>
             <p className="max-w-lg mx-auto mb-7 text-sm text-white/60">
-              Get unfiltered, no-BS presale advice from BC's top specialist — at no cost to you.
+              Get unfiltered, no-BS presale advice from a buyer-only presale specialist — my fee comes from the developer's marketing budget.
             </p>
             <a
               href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%20read%20your%20blog%20and%20would%20like%20a%20free%20strategy%20call"

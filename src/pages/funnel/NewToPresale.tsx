@@ -24,7 +24,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "How do I actually get started with you?",
     answer:
-      "Book a free 15-minute strategy call. I'll ask what you're looking for, your budget and timeline, then either point you to the right presale shortlist for the Fraser Valley or tell you honestly if presale isn't the right move for you right now. Buyer-only, no cost, no pressure.",
+      "Book a free 15-minute strategy call. I'll ask what you're looking for, your budget and timeline, then either point you to the right presale shortlist for the Fraser Valley or tell you honestly if presale isn't the right move for you right now. Buyer-only, no pressure — my fee comes from the developer's marketing budget.",
   },
 ];
 
@@ -54,7 +54,7 @@ const NewToPresale = () => (
       Sometimes yes — you lock in today's price with time to save, and you get a brand-new home with builder warranty. Sometimes no — if you need to move in six months, or your income won't support the mortgage at completion, resale is safer. I'll tell you honestly which side you're on before you register with anyone.
     </p>
 
-    <h2>How I help — buyer-only, no cost to you</h2>
+    <h2>How I help — buyer-only, paid by the developer's marketing budget</h2>
     <p>
       I represent buyers only. My commission is paid by the developer out of the price you'd pay anyway — going direct to the sales centre doesn't save you money, it just removes your representation from the deal. I review every contract line by line, negotiate incentives, and only recommend projects that pencil out for you.
     </p>

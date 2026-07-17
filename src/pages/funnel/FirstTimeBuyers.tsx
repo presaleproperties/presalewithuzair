@@ -17,9 +17,9 @@ const faqs: FunnelFAQ[] = [
       "Canada's enhanced GST rebate for first-time buyers of new construction can save up to $50,000 on qualifying homes under the price cap. Combined with BC's Newly-Built Home PTT exemption (to $1.1M), it's a real five-figure closing benefit — I model it before you commit.",
   },
   {
-    question: "Does using you cost me anything?",
+    question: "How is your fee paid?",
     answer:
-      "No. My commission is paid by the developer out of the price you'd pay anyway. Skipping me doesn't save you money — it just removes your representation.",
+      "My fee comes from the developer's marketing budget — it isn't added on top of the purchase price. Skipping independent representation doesn't reduce your price; it just leaves you without someone on your side of the table.",
   },
   {
     question: "What if my income or life changes before completion?",
@@ -37,7 +37,7 @@ const FirstTimeBuyers = () => (
     eyebrow="First-Time Buyers"
     breadcrumbName="First-Time Buyers Fraser Valley"
     image={DEFAULT_SOCIAL_IMAGE}
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. First-time buyers are half of who I represent — because presale and new construction are built for you. Lock today's price with a brand-new home, stage deposits over 12–24 months while you save, stack the up-to-$50,000 First-Time Buyer GST rebate and BC's Newly-Built Home PTT exemption, and get a full new-home warranty. My representation costs you $0."
+    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. Before you walk into a developer sales centre, talk to someone who works for you. First-time buyers are a big part of who I represent — because presale and new construction are built for how you actually buy: lock today's price on a brand-new home, stage deposits over 12–24 months while you save, and consider federal/provincial new-construction incentives you may qualify for. My fee comes from the developer's marketing budget."
     faqs={faqs}
   >
     <h2>Why presale suits a first home</h2>
@@ -63,9 +63,9 @@ const FirstTimeBuyers = () => (
     <h2>Track record</h2>
     <p className="font-semibold">{TRACK_RECORD}</p>
 
-    <h2>$0 to you — always</h2>
+    <h2>How my fee works</h2>
     <p>
-      My commission is paid by the developer out of the price you'd pay anyway. Going direct to a sales centre doesn't save you money — it just removes your representation. First-time buyers get the same buyer-only treatment as my repeat investor clients.
+      My fee comes from the developer's marketing budget — it isn't added on top of the purchase price you'd pay walking in on your own. First-time buyers get the same buyer-only representation, contract review, and shortlist process as my repeat clients.
     </p>
 
     <h2>See the full platform + live projects</h2>

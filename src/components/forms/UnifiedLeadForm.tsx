@@ -228,7 +228,7 @@ export const UnifiedLeadForm = ({
     if (isSuccess) {
       const timer = setTimeout(() => {
         setIsSuccess(false);
-        setFormData({ fullName: "", email: "", phone: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
       }, 4000);
       return () => clearTimeout(timer);
     }

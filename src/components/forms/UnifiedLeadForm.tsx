@@ -94,7 +94,8 @@ export const UnifiedLeadForm = ({
   twoColumn = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     buyerType: defaultBuyerType,
@@ -102,6 +103,7 @@ export const UnifiedLeadForm = ({
     timeline: "",
     leadSource: "",
   });
+
   const [trackingData, setTrackingData] = useState(getTrackingData());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

@@ -75,27 +75,13 @@ export const HeroSection = () => {
           </p>
 
 
-          {/* Proof bar */}
-          <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-6 animate-fade-up text-xs md:text-sm text-foreground/70 font-medium">
-            {proofBar.map((item) => (
-              <li key={item} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                {item}
-              </li>
-            ))}
-          </ul>
-
           {/* CTA Button */}
-          <div className="mb-4 animate-fade-up">
+          <div className="mb-4 mt-2 animate-fade-up">
             <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 md:px-10 md:py-7 text-base font-semibold" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>
 
-          {/* Trust Bar */}
-          <p className="text-xs md:text-sm text-foreground/50 mb-4 animate-fade-up">
-            {heroContent.trustBar}
-          </p>
 
           {/* Google Rating */}
           <div className="mb-8 animate-fade-up">

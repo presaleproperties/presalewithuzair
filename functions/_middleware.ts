@@ -89,7 +89,7 @@ function languagePageBody(lang: string, h1: string, leadSentence: string, path: 
   ];
   return (
     `<h1>${esc(h1)}</h1>` +
-    `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9 stars from 36 Google reviews.</p>` +
+    `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9-star rating from 36 Google reviews.</p>` +
     `<h2>The deposit is usually a family decision. The contract is usually only in English.</h2>` +
     `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in ${esc(lang)}. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.</p>` +
     `<h2>What Uzair does for ${esc(lang)} speaking buyers</h2>` +

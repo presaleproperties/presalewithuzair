@@ -50,14 +50,14 @@ const Index = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/" />
-        <meta property="og:title" content="Uzair Muhammad — Buyer-Only Presale Specialist" />
-        <meta property="og:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
+        <meta property="og:title" content="Uzair Muhammad | Fraser Valley Presale and New Construction Advisor" />
+        <meta property="og:description" content="Buyer-side presale and new-construction guidance for first-time buyers and investors across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Uzair Muhammad — Buyer-Only Presale Specialist" />
-        <meta name="twitter:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
+        <meta name="twitter:title" content="Uzair Muhammad | Fraser Valley Presale and New Construction Advisor" />
+        <meta name="twitter:description" content="Buyer-side presale and new-construction guidance for first-time buyers and investors across the Fraser Valley." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
         {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
       </Helmet>

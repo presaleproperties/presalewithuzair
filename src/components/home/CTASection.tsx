@@ -21,30 +21,33 @@ export const CTASection = () => {
 
       <div className="container-xl relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="section-label mb-4">Ready to Invest?</p>
+          <p className="section-label mb-4">Before you sign</p>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Connect with <span className="text-gradient">Uzair</span>
+            Before you walk into a developer sales centre, <span className="text-gradient">talk to someone who works for you.</span>
           </h2>
           <p className="text-xl text-foreground/80 mb-10">
-            Book a 1-on-1 call to discuss your real estate goals and discover exclusive presale opportunities in Vancouver.
+            Send me your budget, city, timeline, and what you are trying to buy. I will help you understand what is worth seeing and what is worth skipping.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="hero" 
-              size="xl" 
+            <Button
+              variant="hero"
+              size="xl"
               className="gap-2 w-full sm:w-auto"
               onClick={handleBookClick}
             >
               <Mail className="h-5 w-5" />
-              Schedule a Call
+              Book a Buyer Strategy Call
             </Button>
-            <a href="https://presaleproperties.com" target="_blank" rel="noopener">
-              <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
-                <Search className="h-5 w-5" />
-                Search Presale Projects
-              </Button>
-            </a>
+            <Button
+              variant="outline"
+              size="xl"
+              className="gap-2 w-full sm:w-auto"
+              onClick={handleBookClick}
+            >
+              <Search className="h-5 w-5" />
+              Get My Presale Shortlist
+            </Button>
           </div>
 
           {/* Community Info */}

@@ -186,21 +186,24 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <Button 
-                    variant="hero" 
-                    size="xl" 
+                  <Button
+                    variant="hero"
+                    size="xl"
                     className="w-full gap-2"
                     onClick={handleCTA}
                   >
                     <Mail className="h-5 w-5" />
-                    Work With Uzair
+                    Book a Buyer Strategy Call
                   </Button>
-                  <a href="https://presaleproperties.com" target="_blank" rel="noopener" className="block">
-                    <Button variant="outline" size="xl" className="w-full gap-2">
-                      <Search className="h-5 w-5" />
-                      Search Presale Projects
-                    </Button>
-                  </a>
+                  <Button
+                    variant="outline"
+                    size="xl"
+                    className="w-full gap-2"
+                    onClick={handleCTA}
+                  >
+                    <Search className="h-5 w-5" />
+                    Get My Presale Shortlist
+                  </Button>
                 </div>
 
                 {/* Trust Signals */}

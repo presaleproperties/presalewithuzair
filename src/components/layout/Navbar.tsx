@@ -268,7 +268,7 @@ export const Navbar = () => {
               </a>
             </Button>
             <Button variant="outline" size="lg" className="w-full rounded-full" onClick={handleFormCTA}>
-              Work With Uzair
+              Book a Buyer Strategy Call
             </Button>
           </div>
         </div>

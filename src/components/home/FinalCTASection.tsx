@@ -31,12 +31,12 @@ export const FinalCTASection = () => {
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
-                variant="outline"
+                variant="hero"
                 size="lg"
-                className="rounded-full border-2 border-white/80 text-white bg-transparent hover:bg-white hover:text-black px-8 py-6 text-base font-semibold"
+                className="rounded-full px-8 py-6 text-base font-semibold"
                 onClick={handleBookClick}
               >
-                Work With Uzair
+                Book a Buyer Strategy Call
               </Button>
               <a
                 href="https://vancouverpresaleexpo.com"

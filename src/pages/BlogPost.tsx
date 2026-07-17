@@ -157,7 +157,7 @@ const BlogPost = () => {
     description: post.excerpt || "",
     image: post.image_url || "https://presalewithuzair.com/og-image.jpg",
     datePublished: post.published_at,
-    dateModified: post.published_at,
+    dateModified: post.updated_at || post.published_at,
     author: { "@type": "Person", name: "Uzair Muhammad", url: "https://presalewithuzair.com/about" },
     publisher: {
       "@type": "Organization",
@@ -176,18 +176,27 @@ const BlogPost = () => {
         <title>{post.title} | Presale Blog | Uzair Muhammad</title>
         <meta name="description" content={post.excerpt || ""} />
         <meta name="keywords" content={`${post.title.toLowerCase().split(" ").slice(0, 5).join(", ")}, presale Vancouver, real estate tips`} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
         <link rel="canonical" href={`https://presalewithuzair.com/blog/${slug}`} />
+        <meta property="og:site_name" content="Presale With Uzair" />
+        <meta property="og:locale" content="en_CA" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://presalewithuzair.com/blog/${slug}`} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt || ""} />
         {post.image_url && <meta property="og:image" content={post.image_url} />}
+        {post.image_url && <meta property="og:image:alt" content={post.title} />}
         <meta property="article:published_time" content={post.published_at || ""} />
+        {post.updated_at && <meta property="article:modified_time" content={post.updated_at} />}
         <meta property="article:author" content="Uzair Muhammad" />
+        <meta property="article:section" content="Presale Real Estate" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@presalewithuzair" />
+        <meta name="twitter:url" content={`https://presalewithuzair.com/blog/${slug}`} />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || ""} />
         {post.image_url && <meta name="twitter:image" content={post.image_url} />}
+        {post.image_url && <meta name="twitter:image:alt" content={post.title} />}
         <script type="application/ld+json">{JSON.stringify(articleStructuredData)}</script>
       </Helmet>
 

@@ -10,6 +10,7 @@ export interface BlogPost {
   image_url: string | null;
   published: boolean;
   published_at: string | null;
+  updated_at: string | null;
   created_at: string;
   category: { name: string; slug: string } | null;
 }
@@ -29,6 +30,7 @@ export function useBlogPosts() {
           image_url,
           published,
           published_at,
+          updated_at,
           created_at,
           category:blog_categories(name, slug)
         `)
@@ -56,6 +58,7 @@ export function useBlogPost(slug: string) {
           image_url,
           published,
           published_at,
+          updated_at,
           created_at,
           category:blog_categories(name, slug)
         `)

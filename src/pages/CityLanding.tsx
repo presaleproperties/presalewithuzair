@@ -386,10 +386,11 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               </p>
               <button
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white/80 text-white bg-transparent hover:bg-white hover:text-black font-semibold text-base transition-all duration-300 animate-fade-up"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base shadow-lg shadow-primary/30 transition-all duration-300 animate-fade-up"
               >
                 {config.heroCta}
               </button>
+
             </div>
           </div>
         </section>

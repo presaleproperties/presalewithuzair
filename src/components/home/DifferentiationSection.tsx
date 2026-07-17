@@ -1,7 +1,38 @@
-const blocks = [
+import type { ReactNode } from "react";
+
+const PPG_URL = "https://presaleproperties.com";
+
+type Block = { heading: string; body: ReactNode };
+
+const blocks: Block[] = [
   {
     heading: "The person showing the floor plans is paid by the developer.",
     body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. His fee is paid by the developer out of a price the buyer pays either way, so having him costs the buyer nothing.",
+  },
+  {
+    heading: "Track record",
+    body: (
+      <>
+        <p>
+          Uzair Muhammad has sold 450+ presale units and more than $200M in new construction. He has worked in presale exclusively for 5 years and holds a 4.9 star rating from 36 Google reviews.
+        </p>
+        <p className="mt-4">
+          He leads{" "}
+          <a
+            href={PPG_URL}
+            target="_blank"
+            rel="noopener"
+            className="text-primary underline underline-offset-4 hover:text-primary/80"
+          >
+            The Presale Properties Group
+          </a>
+          , a team of agents working the Fraser Valley presale market, and he founded the Vancouver Presale Expo. He is a licensed BC REALTOR® under Real Broker and regulated by the BC Financial Services Authority.
+        </p>
+        <p className="mt-4">
+          Before real estate, Uzair spent 10 years with the City of Surrey in planning and bylaws.
+        </p>
+      </>
+    ),
   },
   {
     heading: "The deposit is usually a family decision, and the family is often not given the contract in their language.",
@@ -31,9 +62,15 @@ export const DifferentiationSection = () => {
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-4">
                 {block.heading}
               </h2>
-              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-                {block.body}
-              </p>
+              {typeof block.body === "string" ? (
+                <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                  {block.body}
+                </p>
+              ) : (
+                <div className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                  {block.body}
+                </div>
+              )}
             </article>
           ))}
         </div>

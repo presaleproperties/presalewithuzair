@@ -110,6 +110,18 @@ const About = () => {
                     When he started in real estate he made one rule he has never broken: he represents buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
                   </p>
                   <p>
+                    Uzair also leads{" "}
+                    <a
+                      href="https://presaleproperties.com"
+                      target="_blank"
+                      rel="noopener"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      The Presale Properties Group
+                    </a>
+                    , a team of agents working the Fraser Valley presale market. The team covers Surrey, Langley, Abbotsford, Delta, Coquitlam and Burnaby South, and works in English, Punjabi, Hindi and Urdu.
+                  </p>
+                  <p>
                     He works in Punjabi, Hindi, Urdu and English. He founded the Vancouver Presale Expo. He is a father of two and lives in the community he sells in.
                   </p>
                 </div>
@@ -160,6 +172,7 @@ const About = () => {
               <ul className="grid sm:grid-cols-2 gap-3 text-foreground/80">
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Former City of Surrey, Planning &amp; Bylaws (10 years)</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Founder, Vancouver Presale Expo</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Leads The Presale Properties Group</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Licensed BC REALTOR® under Real Broker (BCFSA)</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>450+ units · $200M+ in sales</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>4.9 stars from 36 Google reviews</span></li>

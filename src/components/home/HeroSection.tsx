@@ -4,13 +4,15 @@ import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Fraser Valley's Leading Presale Expert.",
-  subheadline: "450+ Units Sold · $200M+ in Sales Volume",
-  body: "Before the public. At the best price. No developer bias — ever. I secure VIP access, negotiate your terms, and review every contract so you're protected from day one.",
-  supportingLine: "Buyer-only representation. Always in your corner.",
-  cta: "Let's Connect",
-  trustBar: "Available: English, Punjabi, Hindi & Urdu."
+  headline: "Uzair Muhammad helps Fraser Valley buyers purchase presale condos and townhomes.",
+  subheadline: "First-time buyers and investors in Surrey, Langley, Abbotsford and across the Fraser Valley.",
+  body: "Uzair represents buyers only, never developers. The developer pays his fee, so his help costs the buyer nothing. He works in Punjabi, Hindi, Urdu and English.",
+  supportingLine: "",
+  cta: "Book a free 15-minute call",
+  trustBar: "Punjabi · Hindi · Urdu · English"
 };
+const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
+const proofBar = ["450+ units sold", "$200M+ in sales", "4.9★ from 36 Google reviews", "$0 cost to the buyer"];
 export const HeroSection = () => {
   const handleBookClick = () => {
     document.getElementById('book-section')?.scrollIntoView({
@@ -50,21 +52,33 @@ export const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl font-semibold text-foreground/50 mb-4 animate-fade-up">
+          <p className="text-xl md:text-2xl font-semibold text-foreground/70 mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
           {/* Body */}
-          <p className="text-base md:text-lg text-foreground/60 mb-3 animate-fade-up leading-relaxed">
+          <p className="text-base md:text-lg text-foreground/60 mb-4 animate-fade-up leading-relaxed">
             {heroContent.body}
           </p>
-          
-          {/* Supporting Line */}
-          {heroContent.supportingLine && (
-            <p className="text-xs md:text-sm text-foreground/40 mb-8 animate-fade-up font-medium">
-              {heroContent.supportingLine}
-            </p>
-          )}
+
+          {/* Audience chips */}
+          <div className="flex flex-wrap gap-2 mb-6 animate-fade-up">
+            {audienceChips.map((chip) => (
+              <span key={chip} className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* Proof bar */}
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-6 animate-fade-up text-xs md:text-sm text-foreground/70 font-medium">
+            {proofBar.map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                {item}
+              </li>
+            ))}
+          </ul>
 
           {/* CTA Button */}
           <div className="mb-4 animate-fade-up">
@@ -88,30 +102,13 @@ export const HeroSection = () => {
           <div className="relative mb-8 animate-fade-up">
             {/* Main hero image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-4">
-              <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[4/5] md:aspect-[3/4]" priority />
+              <OptimizedImage src={heroImage} alt="Uzair Muhammad - Fraser Valley presale specialist" className="w-full aspect-[4/5] md:aspect-[3/4]" priority />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
-              
-              {/* Floating badge on image */}
-              <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-6">
-                <div className="bg-background/90 backdrop-blur-sm rounded-xl p-4 md:p-5 border border-foreground/10">
-                  <p className="text-xs md:text-sm text-foreground/60 font-semibold uppercase tracking-wider mb-1">Fraser Valley's #1</p>
-                  <p className="text-sm md:text-base font-bold text-foreground">Presale Expert & Strategist</p>
-                </div>
-              </div>
             </div>
 
           </div>
 
-          {/* Trust Badge */}
-          <div className="pt-6 border-t border-foreground/10 mt-auto animate-fade-up text-center">
-            <p className="text-lg md:text-xl font-display font-bold text-foreground">
-              <span className="text-foreground">450+</span> Units Sold
-            </p>
-            <p className="text-xs md:text-sm text-foreground/50 mt-2">
-              $200M+ in Sales Volume • 5 Years in the Presale Market
-            </p>
-          </div>
         </div>
 
         {/* Desktop Layout - Keep existing side-by-side */}
@@ -130,7 +127,7 @@ export const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-foreground/50 animate-fade-up">
+              <p className="text-2xl font-semibold text-foreground/70 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
@@ -138,13 +135,25 @@ export const HeroSection = () => {
               <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
-              
-              {/* Supporting Line */}
-              {heroContent.supportingLine && (
-                <p className="text-sm text-foreground/40 animate-fade-up font-medium">
-                  {heroContent.supportingLine}
-                </p>
-              )}
+
+              {/* Audience chips */}
+              <div className="flex flex-wrap gap-2 animate-fade-up">
+                {audienceChips.map((chip) => (
+                  <span key={chip} className="px-3 py-1.5 rounded-full text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+
+              {/* Proof bar */}
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2 animate-fade-up text-sm text-foreground/70 font-medium">
+                {proofBar.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* CTA Section */}
@@ -161,18 +170,8 @@ export const HeroSection = () => {
               {/* Google Rating */}
               <GoogleRatingBadge />
             </div>
-
-
-            {/* Trust Badge */}
-            <div className="pt-8 border-t border-foreground/10 animate-fade-up">
-              <p className="text-xl font-display font-bold text-foreground">
-                <span className="text-foreground">450+</span> Units Sold
-              </p>
-              <p className="text-sm text-foreground/50 mt-2">
-                $200M+ in Sales Volume • 5 Years in the Presale Market
-              </p>
-            </div>
           </div>
+
 
           {/* Right Column - Image + Who I Help */}
           <div className="relative animate-fade-up delay-200 space-y-6 flex flex-col items-center">

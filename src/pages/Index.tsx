@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { lazy, Suspense, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -105,6 +105,18 @@ const Index = () => {
         <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
+
+        <div className="bg-background py-8 border-t border-border">
+          <div className="container-xl px-4 sm:px-6 text-center">
+            <p className="text-sm sm:text-base text-foreground/70">
+              Buying as an investment rather than a home?{" "}
+              <Link to="/services" className="text-primary font-medium underline underline-offset-4 hover:text-primary/80">
+                See the investor track
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
       </main>
       <Footer />
       <Suspense fallback={null}>

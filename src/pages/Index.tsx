@@ -39,10 +39,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Uzair Muhammad — Buyer-Only Presale Specialist</title>
+        <title>Uzair Muhammad | Fraser Valley Presale and New Construction Advisor</title>
         <meta
           name="description"
-          content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley."
+          content="Buyer-side presale and new-construction guidance for first-time buyers and investors in Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley."
         />
         <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />

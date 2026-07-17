@@ -106,11 +106,11 @@ const BlogPost = () => {
         <meta name="description" content={post.excerpt || ""} />
         <meta name="keywords" content={`${post.title.toLowerCase().split(" ").slice(0, 5).join(", ")}, presale Vancouver, real estate tips`} />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
-        <link rel="canonical" href={`https://presalewithuzair.com/blog/${slug}`} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta property="og:site_name" content="Presale With Uzair" />
         <meta property="og:locale" content="en_CA" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://presalewithuzair.com/blog/${slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt || ""} />
         {post.image_url && <meta property="og:image" content={post.image_url} />}
@@ -121,7 +121,7 @@ const BlogPost = () => {
         <meta property="article:section" content="Presale Real Estate" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@presalewithuzair" />
-        <meta name="twitter:url" content={`https://presalewithuzair.com/blog/${slug}`} />
+        <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.excerpt || ""} />
         {post.image_url && <meta name="twitter:image" content={post.image_url} />}

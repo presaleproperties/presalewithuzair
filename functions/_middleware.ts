@@ -528,7 +528,7 @@ function funnelBody(path: string): string {
     sections +
     `<h2>Frequently Asked Questions</h2>${faqHtml}` +
     relHtml +
-    `<p><a href="${SITE}/call">Book a free strategy call with Uzair</a> · <a href="tel:+16722581100">+1 672-258-1100</a></p>` +
+    `<p><a href="${SITE}/call">Book a free strategy call with Uzair</a> · <a href="tel:+17782313592">+1 778-231-3592</a></p>` +
     `</article>` +
     articleLd +
     bcLd +

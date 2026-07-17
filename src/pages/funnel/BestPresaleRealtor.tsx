@@ -38,7 +38,7 @@ const BestPresaleRealtor = () => {
     "@id": `${SITE}/best-presale-realtor-fraser-valley#agent`,
     name: "Uzair Muhammad — Best Presale Realtor Fraser Valley",
     url: `${SITE}/best-presale-realtor-fraser-valley`,
-    telephone: "+1-672-258-1100",
+    telephone: "+1-778-231-3592",
     priceRange: "$400,000 - $3,000,000",
     areaServed: [
       "Surrey", "Langley", "Abbotsford", "Coquitlam", "Delta",

@@ -201,27 +201,30 @@ const Services = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Let's Discuss Your <span className="text-gradient">Next Move</span>
+                Before you walk into a developer sales centre, <span className="text-gradient">talk to someone who works for you.</span>
               </h2>
               <p className="text-foreground/80 mb-8">
-                No pressure. No pitch. Just a clear conversation about your real estate goals.
+                No pressure. No pitch. Just a clear conversation about your goals, budget, and the projects worth comparing.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  variant="hero" 
-                  size="xl" 
+                <Button
+                  variant="hero"
+                  size="xl"
                   className="gap-2 w-full sm:w-auto"
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Work With Uzair
+                  Book a Buyer Strategy Call
                 </Button>
-                <a href="https://presaleproperties.com" target="_blank" rel="noopener">
-                  <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
-                    <Search className="h-5 w-5" />
-                    Search Presale Projects
-                  </Button>
-                </a>
+                <Button
+                  variant="outline"
+                  size="xl"
+                  className="gap-2 w-full sm:w-auto"
+                  onClick={handleCTA}
+                >
+                  <Search className="h-5 w-5" />
+                  Get My Presale Shortlist
+                </Button>
               </div>
             </div>
           </div>

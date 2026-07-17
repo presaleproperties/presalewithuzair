@@ -12,7 +12,6 @@ const heroContent = {
   trustBar: "Punjabi · Hindi · Urdu · English"
 };
 const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
-const proofBar = ["450+ units sold", "$200M+ in sales", "4.9★ from 36 Google reviews", "5 years presale only"];
 export const HeroSection = () => {
   const handleBookClick = () => {
     document.getElementById('book-section')?.scrollIntoView({

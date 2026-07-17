@@ -75,6 +75,8 @@ interface UnifiedLeadFormProps {
   defaultBuyerType?: string;
   /** Class name override for wrapper */
   className?: string;
+  /** Render select fields in two columns on sm+ */
+  twoColumn?: boolean;
 }
 
 export const UnifiedLeadForm = ({
@@ -86,6 +88,7 @@ export const UnifiedLeadForm = ({
   showTrust = true,
   defaultBuyerType = "",
   className = "",
+  twoColumn = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",

@@ -37,7 +37,7 @@ const BuyerRepresentation = () => (
     h1="Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)"
     eyebrow="Buyer Representation"
     breadcrumbName="Buyer Representation for Presale"
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because it costs you nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation."
+    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation."
     faqs={faqs}
   >
     <h2>The thesis, in one line</h2>

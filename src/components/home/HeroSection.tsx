@@ -143,7 +143,7 @@ export const HeroSection = () => {
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-2 translate-y-2" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[3/4]" priority />
+                <OptimizedImage src={heroImage} alt="Uzair Muhammad - Fraser Valley presale specialist" className="w-full aspect-[3/4]" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
             </div>

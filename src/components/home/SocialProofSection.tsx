@@ -1,6 +1,8 @@
 import { Quote, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import type { ReactNode } from "react";
 import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
+
 
 // Fallback client photos (used only when Google photo URL is missing)
 import michellePhoto from "@/assets/testimonials/michelle.jpg";

@@ -14,15 +14,6 @@ import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
-const byTheNumbers = [
-  { value: "450+", label: "new-construction units sold" },
-  { value: "$200M+", label: "in sales volume" },
-  { value: "5", label: "years focused on presale real estate" },
-  { value: "10", label: "years City of Surrey planning and bylaws" },
-  { value: "4.9★", label: "Google review rating" },
-  { value: "4", label: "languages: English, Punjabi, Hindi, Urdu" },
-];
-
 const buyerQuestions = [
   "Is this project priced fairly?",
   "Is this floor plan good for living, renting, or resale?",
@@ -32,19 +23,6 @@ const buyerQuestions = [
   "What happens if the market changes before completion?",
   "Is this city right for my goal?",
   "Should I buy now, wait, or compare another project?",
-];
-
-const cities = [
-  "Surrey",
-  "Langley",
-  "South Surrey",
-  "White Rock",
-  "Delta",
-  "Abbotsford",
-  "Coquitlam",
-  "Burnaby",
-  "Maple Ridge",
-  "Chilliwack",
 ];
 
 const About = () => {
@@ -76,128 +54,144 @@ const About = () => {
 
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-card">
+        {/* Hero — one key section: portrait + detailed bio */}
+        <section className="relative pt-32 pb-24 bg-card overflow-hidden">
           <div className="container-xl">
-            <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
-              <h1 className="font-display text-4xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-tight">
-                One of the Fraser Valley's buyer-side presale authorities.
-              </h1>
-              <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                I help buyers understand presale before they sign. That means comparing the project, price, floor plan, deposit, contract, location, incentives, and resale potential before the sales centre pressure starts.
-              </p>
-              <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                I have helped buyers and investors purchase 450+ new-construction homes, with more than $200M in sales volume across the Fraser Valley and Metro Vancouver.
-              </p>
-              <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                I also lead The Presale Properties Group, a multilingual team focused on presale condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, Coquitlam, and Burnaby.
-              </p>
-              <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                Before real estate, I spent 10 years with the City of Surrey in planning and bylaws. I also founded the Vancouver Presale Expo to help raise the standard of presale education in BC.
-              </p>
-              <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                My job is simple: help you choose the right project, avoid the wrong one, and understand the decision before you commit.
-              </p>
-              <div className="mt-8 animate-fade-up delay-300">
-                <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
-                  <Phone className="h-4 w-4" />
-                  Book a Buyer Strategy Call
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* By the numbers */}
-        <section className="py-16 bg-background">
-          <div className="container-xl">
-            <div className="max-w-3xl mx-auto text-center mb-10">
-              <p className="section-label mb-4">By the numbers</p>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              {byTheNumbers.map((stat) => (
-                <div key={stat.label} className="stat-card text-center">
-                  <p className="text-3xl lg:text-4xl font-display font-bold text-gradient">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              {/* Portrait */}
+              <div className="lg:col-span-5 relative animate-fade-up">
+                <div className="image-reveal rounded-2xl overflow-hidden shadow-2xl">
+                  <OptimizedImage
+                    src={heroImage}
+                    alt="Uzair Muhammad — Buyer-side presale specialist"
+                    className="w-full h-[560px] lg:h-[680px]"
+                    priority
+                  />
                 </div>
-              ))}
-            </div>
-          </div>
-        </section>
+                <div className="hidden lg:block absolute -bottom-6 -right-6 bg-card rounded-xl px-6 py-5 border border-border shadow-xl">
+                  <p className="text-3xl font-display font-bold text-gradient leading-none">450+</p>
+                  <p className="text-xs text-muted-foreground mt-1.5 uppercase tracking-wider">units sold · $200M+ volume</p>
+                </div>
+              </div>
 
-
-        {/* Buyer-side advice */}
-        <section className="py-20 bg-background">
-          <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Buyer-side advice, not developer-side pressure.
-              </h2>
-              <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
-                <p>When you walk into a developer sales centre, the project already has representation.</p>
-                <p>You should too.</p>
-                <p>
-                  The sales team knows the project, the pricing, the incentives, and the urgency. But their job is to sell the development.
-                </p>
-                <p>My job is different.</p>
-                <p>
-                  I work with buyers to compare the opportunity clearly. If a project makes sense, I’ll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I’ll tell you before you move forward.
-                </p>
-                <p className="font-semibold text-foreground">Good advice should protect the buyer, not just close the deal.</p>
+              {/* Detailed bio */}
+              <div className="lg:col-span-7">
+                <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
+                <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-[1.05]">
+                  One of the Fraser Valley's buyer-side presale authorities.
+                </h1>
+                <div className="mt-8 space-y-5 text-foreground/80 animate-fade-up delay-200">
+                  <p className="text-xl leading-relaxed">
+                    I help buyers understand presale before they sign. That means comparing the project, price, floor plan, deposit, contract, location, incentives, and resale potential before the sales centre pressure starts.
+                  </p>
+                  <p className="text-lg leading-relaxed text-foreground/70">
+                    I have helped buyers and investors purchase 450+ new-construction homes, with more than $200M in sales volume across the Fraser Valley and Metro Vancouver.
+                  </p>
+                  <p className="text-lg leading-relaxed text-foreground/70">
+                    I also lead The Presale Properties Group, a multilingual team focused on presale condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, Coquitlam, and Burnaby.
+                  </p>
+                  <p className="text-lg leading-relaxed text-foreground/70">
+                    Before real estate, I spent 10 years with the City of Surrey in planning and bylaws. I also founded the Vancouver Presale Expo to help raise the standard of presale education in BC.
+                  </p>
+                  <p className="text-lg leading-relaxed text-foreground font-medium">
+                    My job is simple: help you choose the right project, avoid the wrong one, and understand the decision before you commit.
+                  </p>
+                </div>
+                <div className="mt-10 animate-fade-up delay-300">
+                  <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
+                    <Phone className="h-4 w-4" />
+                    Book a Buyer Strategy Call
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* What I help buyers understand */}
-        <section className="py-20 bg-card">
+        {/* Buyer-side advice — image left, copy right */}
+        <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                What I help buyers understand
-              </h2>
-              <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                Most buyers do not need more listings. They need someone who can help them understand what they are actually buying.
-              </p>
-              <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                I help buyers answer questions like:
-              </p>
-              <ul className="grid gap-3 text-foreground/80 text-lg">
-                {buyerQuestions.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-foreground/80 leading-relaxed text-lg">
-                Presale can be a smart move, but only when the project, timing, budget, and risk all make sense together.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
+                <OptimizedImage
+                  src={clientMeetingImage}
+                  alt="Uzair meeting with buyers"
+                  className="w-full h-[480px]"
+                />
+              </div>
+              <div className="order-1 lg:order-2">
+                <p className="section-label mb-4">Buyer-side, not developer-side</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  Buyer-side advice, not developer-side pressure.
+                </h2>
+                <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
+                  <p>When you walk into a developer sales centre, the project already has representation.</p>
+                  <p>You should too.</p>
+                  <p>
+                    The sales team knows the project, the pricing, the incentives, and the urgency. But their job is to sell the development.
+                  </p>
+                  <p>My job is different.</p>
+                  <p>
+                    I work with buyers to compare the opportunity clearly. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
+                  </p>
+                  <p className="font-semibold text-foreground">Good advice should protect the buyer, not just close the deal.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What I help buyers understand — image right, copy left */}
+        <section className="py-24 bg-card">
+          <div className="container-xl">
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div>
+                <p className="section-label mb-4">The questions that matter</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  What I help buyers understand
+                </h2>
+                <p className="text-foreground/80 leading-relaxed text-lg mb-4">
+                  Most buyers do not need more listings. They need someone who can help them understand what they are actually buying.
+                </p>
+                <p className="text-foreground/80 leading-relaxed text-lg mb-6">
+                  I help buyers answer questions like:
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-3 text-foreground/80">
+                  {buyerQuestions.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-foreground/80 leading-relaxed text-lg">
+                  Presale can be a smart move, but only when the project, timing, budget, and risk all make sense together.
+                </p>
+              </div>
+              <div className="image-reveal rounded-2xl overflow-hidden">
+                <OptimizedImage
+                  src={brochureReviewImage}
+                  alt="Reviewing project brochures with buyers"
+                  className="w-full h-[540px]"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         {/* A different lens on development */}
-        <section className="py-20 bg-background">
+        <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative">
-                <div className="image-reveal rounded-2xl overflow-hidden">
-                  <OptimizedImage
-                    src={heroImage}
-                    alt="Uzair Muhammad"
-                    className="w-full h-[600px]"
-                    priority
-                  />
-                </div>
-                <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
-                  <p className="text-4xl font-display font-bold text-gradient">450+</p>
-                  <p className="text-sm text-muted-foreground">New-construction units sold</p>
-                </div>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
+                <OptimizedImage
+                  src={officeWideImage}
+                  alt="Uzair reviewing a development plan"
+                  className="w-full h-[540px]"
+                />
               </div>
-
-              <div>
+              <div className="order-1 lg:order-2">
+                <p className="section-label mb-4">A planner's background</p>
                 <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
                   A different lens on development.
                 </h2>
@@ -218,99 +212,129 @@ const About = () => {
           </div>
         </section>
 
-        {/* Who I help */}
-        <section className="py-20 bg-card">
+        {/* Who I help — image right */}
+        <section className="py-24 bg-card">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Who I help
-              </h2>
-              <div className="space-y-8 text-foreground/80 leading-relaxed text-lg">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
-                  <p>
-                    If you are buying your first home, I help you slow the decision down and understand what you are actually buying.
-                  </p>
-                  <p className="mt-2">
-                    We look at affordability, deposit timing, completion costs, floor plan, location, and whether presale is the right move for your life right now.
-                  </p>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div>
+                <p className="section-label mb-4">Who I work with</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8 leading-tight">
+                  Who I help
+                </h2>
+                <div className="space-y-8 text-foreground/80 leading-relaxed text-lg">
+                  <div className="border-l-2 border-primary/40 pl-5">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
+                    <p>
+                      If you are buying your first home, I help you slow the decision down and understand what you are actually buying.
+                    </p>
+                    <p className="mt-2">
+                      We look at affordability, deposit timing, completion costs, floor plan, location, and whether presale is the right move for your life right now.
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-primary/40 pl-5">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
+                    <p>
+                      If you are buying as an investment, I help you look past the brochure.
+                    </p>
+                    <p className="mt-2">
+                      We compare rental demand, resale potential, price per square foot, incentives, assignment options, completion risk, and exit strategy.
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-primary/40 pl-5">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
+                    <p>
+                      If you are moving from a condo to a townhome, or from resale into new construction, I help you think through timing, financing, completion, and whether the new home fits your long-term plan.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
-                  <p>
-                    If you are buying as an investment, I help you look past the brochure.
-                  </p>
-                  <p className="mt-2">
-                    We compare rental demand, resale potential, price per square foot, incentives, assignment options, completion risk, and exit strategy.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
-                  <p>
-                    If you are moving from a condo to a townhome, or from resale into new construction, I help you think through timing, financing, completion, and whether the new home fits your long-term plan.
-                  </p>
-                </div>
+              </div>
+              <div className="image-reveal rounded-2xl overflow-hidden lg:sticky lg:top-24">
+                <OptimizedImage
+                  src={showroomTourImage}
+                  alt="Uzair touring a presale showroom with clients"
+                  className="w-full h-[620px]"
+                />
               </div>
             </div>
           </div>
         </section>
 
-
-        {/* Local market focus */}
-        <section className="py-20 bg-card">
+        {/* Local market focus — image left */}
+        <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Local market focus
-              </h2>
-              <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                I focus on presale and new construction across the Fraser Valley and Metro Vancouver, with a strong focus on:
-              </p>
-              <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                Surrey, Langley, South Surrey, White Rock, Delta, Abbotsford, Coquitlam, Burnaby, Maple Ridge, Chilliwack, and surrounding communities.
-              </p>
-              <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                Each city attracts different buyers, different renters, and different long-term demand.
-              </p>
-              <p className="text-foreground/80 leading-relaxed text-lg">
-                A good presale in Surrey may not be the same as a good presale in Langley. A strong investor unit may not be the best first home. A townhome that works for a family may not work as a rental.
-              </p>
-              <p className="mt-4 text-foreground/80 leading-relaxed text-lg">
-                My job is to help you understand those differences before choosing a project.
-              </p>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
+                <OptimizedImage
+                  src={showroomEntranceImage}
+                  alt="Presale showroom in the Fraser Valley"
+                  className="w-full h-[520px]"
+                />
+              </div>
+              <div className="order-1 lg:order-2">
+                <p className="section-label mb-4">Fraser Valley &amp; Metro Vancouver</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  Local market focus
+                </h2>
+                <p className="text-foreground/80 leading-relaxed text-lg mb-4">
+                  I focus on presale and new construction across the Fraser Valley and Metro Vancouver, with a strong focus on:
+                </p>
+                <p className="text-foreground/80 leading-relaxed text-lg mb-6">
+                  Surrey, Langley, South Surrey, White Rock, Delta, Abbotsford, Coquitlam, Burnaby, Maple Ridge, Chilliwack, and surrounding communities.
+                </p>
+                <p className="text-foreground/80 leading-relaxed text-lg mb-4">
+                  Each city attracts different buyers, different renters, and different long-term demand.
+                </p>
+                <p className="text-foreground/80 leading-relaxed text-lg">
+                  A good presale in Surrey may not be the same as a good presale in Langley. A strong investor unit may not be the best first home. A townhome that works for a family may not work as a rental.
+                </p>
+                <p className="mt-4 text-foreground/80 leading-relaxed text-lg font-medium">
+                  My job is to help you understand those differences before choosing a project.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* The Presale Properties Group */}
-        <section className="py-20 bg-background">
+        {/* The Presale Properties Group — image right */}
+        <section className="py-24 bg-card">
           <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                The Presale Properties Group
-              </h2>
-              <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
-                <p>
-                  I lead The Presale Properties Group, a multilingual team focused on helping buyers compare presale condos, townhomes, and new homes across the Fraser Valley and Metro Vancouver.
-                </p>
-                <p>Our team works in English, Punjabi, Hindi, and Urdu.</p>
-                <p>
-                  We help buyers understand projects before they commit, including pricing, layouts, deposits, incentives, completion timelines, and buyer-side representation.
-                </p>
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+              <div>
+                <p className="section-label mb-4">Our team</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  The Presale Properties Group
+                </h2>
+                <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
+                  <p>
+                    I lead The Presale Properties Group, a multilingual team focused on helping buyers compare presale condos, townhomes, and new homes across the Fraser Valley and Metro Vancouver.
+                  </p>
+                  <p>Our team works in English, Punjabi, Hindi, and Urdu.</p>
+                  <p>
+                    We help buyers understand projects before they commit, including pricing, layouts, deposits, incentives, completion timelines, and buyer-side representation.
+                  </p>
+                </div>
+              </div>
+              <div className="image-reveal rounded-2xl overflow-hidden">
+                <OptimizedImage
+                  src={floorplanImage}
+                  alt="Reviewing a floor plan with buyers"
+                  className="w-full h-[500px]"
+                />
               </div>
             </div>
           </div>
         </section>
 
         {/* Vancouver Presale Expo */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
-                <h2 className="font-display text-4xl font-bold text-foreground mb-6">
+                <p className="section-label mb-4">Industry leadership</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
                   Vancouver Presale Expo
                 </h2>
-                <div className="space-y-4 text-foreground/80 leading-relaxed">
+                <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                   <p>
                     I founded the Vancouver Presale Expo to help raise the standard of presale education in BC.
                   </p>
@@ -330,60 +354,19 @@ const About = () => {
                   </Button>
                 </div>
               </div>
-
               <div className="image-reveal rounded-2xl overflow-hidden">
-                <img
+                <OptimizedImage
                   src={expoImage}
                   alt="Vancouver Presale Expo"
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-[500px]"
                 />
               </div>
             </div>
           </div>
         </section>
 
-
-
-
-        {/* Short version */}
-        <section className="py-20 bg-background">
-          <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Short version
-              </h2>
-              <p className="text-foreground/80 leading-relaxed text-lg">
-                Uzair Muhammad is a Surrey-based buyer-side presale and new-construction advisor with Presale Properties Group at Real Broker. He helps first-time buyers and investors compare condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley before they sign with a developer.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Photo Gallery */}
-        <section className="py-16 bg-card">
-          <div className="container-xl">
-            <div className="text-center mb-10">
-              <p className="section-label mb-3">Working With Buyers</p>
-              <h2 className="font-display text-3xl font-bold text-foreground">
-                How I work <span className="text-gradient">day to day</span>
-              </h2>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              {[clientMeetingImage, showroomTourImage, brochureReviewImage, officeWideImage, showroomEntranceImage, floorplanImage].map((img, i) => (
-                <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                  <OptimizedImage
-                    src={img}
-                    alt="Uzair working with buyers"
-                    className="w-full h-full hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* CTA */}
-        <section className="py-24 bg-background">
+        <section className="py-24 bg-card">
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <p className="section-label mb-4">Before you choose a project, choose your advisor.</p>

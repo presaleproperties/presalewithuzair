@@ -104,15 +104,6 @@ export const ProcessSection = () => {
           ))}
         </div>
 
-        {/* Timeline Note */}
-        <div className="mt-8 sm:mt-12 text-center max-w-3xl mx-auto">
-          <p className="text-sm sm:text-base font-semibold text-foreground mb-2">
-            Typical presale timeline
-          </p>
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            Most presale purchases take months to several years from contract to completion. The goal is to make sure the decision still makes sense when the keys are ready.
-          </p>
-        </div>
       </div>
     </section>
   );

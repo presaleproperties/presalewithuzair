@@ -174,6 +174,7 @@ export const SocialProofSection = () => {
 
   const displayed = merged.length > 0 ? merged : staticReviews;
 
+
   // Review JSON-LD so AI crawlers (ChatGPT, Perplexity, Google AI Overviews)
   // read verbatim reviews without executing JS.
   const reviewSchema = {

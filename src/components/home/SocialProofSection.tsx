@@ -153,6 +153,62 @@ const fallbackPhotos = [
   andresPhoto,
 ];
 
+// Buyer-intent keywords surfaced inside review copy so the value props stand out
+// on skim, and so AI/SEO crawlers see topical density around these terms.
+const KEYWORD_PATTERNS: RegExp[] = [
+  /first[- ]time home buyer/gi,
+  /presale[s]?/gi,
+  /honest(?:y)?/gi,
+  /transparen(?:t|cy)/gi,
+  /developer[s]?/gi,
+  /investment property|investment/gi,
+  /market/gi,
+  /expert(?:ise)?/gi,
+  /knowledge(?:able)?/gi,
+  /professional(?:ism)?/gi,
+  /best interest[s]?/gi,
+  /best deal/gi,
+  /best unit/gi,
+  /protect(?:ed|s|ing)?/gi,
+  /guided|guide/gi,
+  /new construction|new purchase|new property/gi,
+  /trust(?:ed|worthy)?/gi,
+  /reliable/gi,
+];
+
+function highlightKeywords(text: string): ReactNode[] {
+  let parts: Array<string | ReactNode> = [text];
+  KEYWORD_PATTERNS.forEach((re, kIdx) => {
+    const next: Array<string | ReactNode> = [];
+    parts.forEach((part, pIdx) => {
+      if (typeof part !== "string") {
+        next.push(part);
+        return;
+      }
+      let lastIndex = 0;
+      let match: RegExpExecArray | null;
+      re.lastIndex = 0;
+      while ((match = re.exec(part)) !== null) {
+        if (match.index > lastIndex) next.push(part.slice(lastIndex, match.index));
+        next.push(
+          <mark
+            key={`kw-${kIdx}-${pIdx}-${match.index}`}
+            className="bg-primary/10 text-primary font-semibold rounded-sm px-0.5"
+          >
+            {match[0]}
+          </mark>,
+        );
+        lastIndex = match.index + match[0].length;
+        if (match[0].length === 0) re.lastIndex++;
+      }
+      if (lastIndex < part.length) next.push(part.slice(lastIndex));
+    });
+    parts = next;
+  });
+  return parts;
+}
+
+
 export const SocialProofSection = () => {
   const { data: liveData } = useGoogleReviews();
 

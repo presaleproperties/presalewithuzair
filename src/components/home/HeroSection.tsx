@@ -1,17 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Uzair Muhammad helps Fraser Valley buyers purchase presale condos and townhomes.",
-  subheadline: "First-time buyers and investors in Surrey, Langley, Abbotsford and across the Fraser Valley.",
-  body: "Uzair represents buyers only, never developers. For many presale projects, his fee is paid through the project's sales structure — he'll explain exactly how it works before you move forward. He works in Punjabi, Hindi, Urdu and English.",
-  supportingLine: "",
-  cta: "Book a free 15-minute call",
-  trustBar: "Punjabi · Hindi · Urdu · English"
+  headline: "Buyer-only presale specialist for Fraser Valley.",
+  subheadline: "First-time buyers and investors across Surrey, Langley, Abbotsford and beyond.",
+  body: "Uzair represents buyers only, never developers. Fees are usually covered by the builder. He works in Punjabi, Hindi, Urdu and English.",
+  cta: "Book a free 15-min call"
 };
-const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
+
 export const HeroSection = () => {
   const handleBookClick = () => {
     document.getElementById('book-section')?.scrollIntoView({
@@ -60,14 +57,6 @@ export const HeroSection = () => {
             {heroContent.body}
           </p>
 
-          {/* Audience chips */}
-          <div className="flex flex-wrap gap-2 mb-3 animate-fade-up">
-            {audienceChips.map((chip) => (
-              <span key={chip} className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
-                {chip}
-              </span>
-            ))}
-          </div>
 
           {/* Authority strip */}
           <p className="text-xs md:text-sm text-foreground/60 mb-6 animate-fade-up">
@@ -83,10 +72,6 @@ export const HeroSection = () => {
           </div>
 
 
-          {/* Google Rating */}
-          <div className="mb-8 animate-fade-up">
-            <GoogleRatingBadge />
-          </div>
 
 
           {/* Hero Photos Grid */}
@@ -127,14 +112,6 @@ export const HeroSection = () => {
                 {heroContent.body}
               </p>
 
-              {/* Audience chips */}
-              <div className="flex flex-wrap gap-2 animate-fade-up">
-                {audienceChips.map((chip) => (
-                  <span key={chip} className="px-3 py-1.5 rounded-full text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
-                    {chip}
-                  </span>
-                ))}
-              </div>
 
               {/* Authority strip */}
               <p className="text-sm text-foreground/60 animate-fade-up">
@@ -150,8 +127,6 @@ export const HeroSection = () => {
               </Button>
 
 
-              {/* Google Rating */}
-              <GoogleRatingBadge />
             </div>
           </div>
 
@@ -167,7 +142,7 @@ export const HeroSection = () => {
               <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-2 translate-y-2" />
               
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <OptimizedImage src={heroImage} alt="Uzair Muhammad - Vancouver's Top Presale Expert" className="w-full aspect-[3/4]" priority />
+                <OptimizedImage src={heroImage} alt="Uzair Muhammad - Fraser Valley presale specialist" className="w-full aspect-[3/4]" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
               </div>
             </div>

@@ -52,7 +52,7 @@ const ABOUT_BLOCK = `
   </nav>`;
 
 export const STATIC_META: Record<string, Meta> = {
-  "/": { title: "Buyer-Only Presale Specialist — Surrey, Langley & Fraser Valley | Uzair Muhammad", description: "Uzair Muhammad helps first-time buyers and investors buy presale condos and townhomes in Surrey, Langley, Abbotsford and the Fraser Valley. Buyer-only, never developers. Punjabi, Hindi, Urdu and English. No cost to the buyer.", image: DEFAULT_IMAGE },
+  "/": { title: "Buyer-Only Presale Specialist — Surrey, Langley & Fraser Valley | Uzair Muhammad", description: "Uzair Muhammad helps first-time buyers and investors buy presale condos and townhomes in Surrey, Langley, Abbotsford and the Fraser Valley. Buyer-only, never developers. Punjabi, Hindi, Urdu and English.", image: DEFAULT_IMAGE },
   "/about": { title: "About Uzair Muhammad — Buyer-Only Presale Specialist, Surrey BC", description: "Born in Pakistan, raised in Surrey. Former City of Surrey planning and bylaws professional turned buyer-only presale specialist. 450+ units sold. Works in Punjabi, Hindi, Urdu and English.", image: DEFAULT_IMAGE },
   "/services": { title: "Buyer-Only Presale Services" + SUFFIX, description: "VIP developer access, contract review, and no developer bias. How Uzair Muhammad protects first-time buyers and investors buying presale & new-construction homes in BC.", image: DEFAULT_IMAGE },
   "/contact": { title: "Contact Uzair Muhammad — Free Presale Strategy Call", description: "Book a free, no-pressure presale strategy call with Uzair Muhammad. Buyer-only advice for first-time buyers and investors. English, Punjabi, Hindi & Urdu.", image: DEFAULT_IMAGE },

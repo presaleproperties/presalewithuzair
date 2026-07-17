@@ -3,11 +3,16 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Buy presale with someone who works for you, not the developer.",
-  subheadline: "Before you walk into a developer sales centre, talk to someone who works for you.",
-  body: "I help first-time buyers and investors compare new-construction condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, and Abbotsford before they sign, deposit, or get pressured into the wrong project. I work in Punjabi, Hindi, Urdu, and English.",
+  headline: "FRASER VALLEY PRESALE ADVISOR",
+  subheadline: "Presale advice before you sign.",
+  body: "Buyer-side guidance for condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, and Abbotsford.",
+  bodySecondary: "Compare the project, deposit, contract, and risks before the sales centre sells you.",
   cta: "Book a Buyer Strategy Call",
-  ctaSecondary: "Get My Presale Shortlist"
+  ctaSecondary: "Get Presale Guide"
+};
+
+const openPresaleGuide = () => {
+  window.dispatchEvent(new CustomEvent("open-presale-guide"));
 };
 
 export const HeroSection = () => {
@@ -54,14 +59,17 @@ export const HeroSection = () => {
           </p>
 
           {/* Body */}
-          <p className="text-base md:text-lg text-foreground/60 mb-4 animate-fade-up leading-relaxed">
+          <p className="text-base md:text-lg text-foreground/60 mb-2 animate-fade-up leading-relaxed">
             {heroContent.body}
+          </p>
+          <p className="text-base md:text-lg text-foreground/60 mb-4 animate-fade-up leading-relaxed">
+            {heroContent.bodySecondary}
           </p>
 
 
           {/* Authority strip */}
           <p className="text-xs md:text-sm text-foreground/60 mb-6 animate-fade-up">
-            450+ units sold · $200M+ in new construction · 5 years presale only · 4.9★ from 36 Google reviews
+            450+ units sold · $200M+ sales · 4.9★ Google · English, Punjabi, Hindi, Urdu
           </p>
 
 
@@ -70,7 +78,7 @@ export const HeroSection = () => {
             <Button variant="hero" size="lg" className="rounded-full px-8 py-6 md:px-10 md:py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 md:px-10 md:py-7 text-base font-semibold" onClick={handleBookClick}>
+            <Button variant="outline" size="lg" className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 md:px-10 md:py-7 text-base font-semibold" onClick={openPresaleGuide}>
               {heroContent.ctaSecondary}
             </Button>
           </div>
@@ -115,11 +123,14 @@ export const HeroSection = () => {
               <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
+              <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
+                {heroContent.bodySecondary}
+              </p>
 
 
               {/* Authority strip */}
               <p className="text-sm text-foreground/60 animate-fade-up">
-                450+ units sold · $200M+ in new construction · 5 years presale only · 4.9★ from 36 Google reviews
+                450+ units sold · $200M+ sales · 4.9★ Google · English, Punjabi, Hindi, Urdu
               </p>
 
             </div>
@@ -129,7 +140,7 @@ export const HeroSection = () => {
               <Button variant="hero" size="xl" className="rounded-full px-10 py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
-              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
+              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={openPresaleGuide}>
                 {heroContent.ctaSecondary}
               </Button>
             </div>

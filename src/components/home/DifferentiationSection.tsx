@@ -7,7 +7,7 @@ type Block = { heading: string; body: ReactNode };
 const blocks: Block[] = [
   {
     heading: "The person showing the floor plans is paid by the developer.",
-    body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. His fee is paid by the developer out of a price the buyer pays either way, so having him costs the buyer nothing.",
+    body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. For many presale projects his fee is paid through the project's sales structure, so representation usually costs the buyer nothing — he'll confirm exactly how it works on your project before you commit.",
   },
   {
     heading: "Track record",

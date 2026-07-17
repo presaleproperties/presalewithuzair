@@ -37,7 +37,7 @@ const FirstTimeBuyers = () => (
     eyebrow="First-Time Buyers"
     breadcrumbName="First-Time Buyers Fraser Valley"
     image={DEFAULT_SOCIAL_IMAGE}
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. First-time buyers are half of who I represent — because presale and new construction are built for you. Lock today's price with a brand-new home, stage deposits over 12–24 months while you save, stack the up-to-$50,000 First-Time Buyer GST rebate and BC's Newly-Built Home PTT exemption, and get a full new-home warranty. My representation costs you $0."
+    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. Before you walk into a developer sales centre, talk to someone who works for you. First-time buyers are a big part of who I represent — because presale and new construction are built for how you actually buy: lock today's price on a brand-new home, stage deposits over 12–24 months while you save, and consider federal/provincial new-construction incentives you may qualify for. My fee comes from the developer's marketing budget."
     faqs={faqs}
   >
     <h2>Why presale suits a first home</h2>

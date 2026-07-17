@@ -36,14 +36,14 @@ const SouthAsianBuyers = () => (
       Most of Uzair's clients are South Asian, and many are the first in their family to buy a home in Canada. There is no parent who has already done this here to ask. Every step is new, and the sales centre is not going to slow down and explain it.
     </p>
 
-    <h2>The deposit is a family decision.</h2>
+    <h2>The contract is explained in Punjabi, Hindi, and Urdu — not just English.</h2>
     <p>
-      In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to explain a hundred-page disclosure statement in Punjabi, Hindi or Urdu. Uzair sits down with the whole family and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque.
+      The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi, Hindi, or Urdu. Uzair works in all four languages. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.
     </p>
 
-    <h2>What to tell your parents.</h2>
+    <h2>The people writing the cheque get the contract in their language.</h2>
     <p>
-      Uzair will explain the deposit schedule, the completion timeline and the contract terms directly to them, in Punjabi, Hindi or Urdu. He was born in Pakistan and raised in Surrey, and most of his business comes from referrals by families he has already sat down with.
+      Uzair explains the deposit schedule, the completion timeline, and the contract terms directly to them, in Punjabi, Hindi, or Urdu. Most of his business comes from referrals by families he has already sat down with.
     </p>
 
     <h2>The money most first-time buyers miss.</h2>

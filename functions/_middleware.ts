@@ -75,7 +75,82 @@ const STATIC_BODY: Record<string, string> = {
   "/agents": `<h1>The Team Behind Presale With Uzair</h1><p>A buyer-only presale team led by Uzair Muhammad, helping first-time buyers and investors secure new construction across Metro Vancouver and the Fraser Valley.</p>`,
   "/presale-guide": `<h1>Free Presale Buyer's Guide — 7 Costly Mistakes to Avoid</h1><p>Download Uzair Muhammad's free presale buyer's guide and learn how to spot contract traps, hidden closing costs, GST surprises, and developer red flags before you sign your deposit.</p>`,
   "/blog": `<h1>Presale Buying Guides &amp; BC Market Insights</h1><p>Expert, buyer-first guides on presale and new construction in British Columbia — deposits, GST and rebates, assignment sales, the BC flipping tax, neighbourhood breakdowns, developer risk, and market timing.</p>`,
+  "/punjabi-speaking-realtor": languagePageBody("Punjabi", "A Punjabi speaking realtor who works for the buyer, not the developer.", "Is there a Punjabi speaking realtor for presales in Surrey? Yes.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
+  "/hindi-speaking-realtor": languagePageBody("Hindi", "A Hindi speaking realtor for presale buyers in the Fraser Valley.", "Is there a Hindi speaking realtor for presales in the Fraser Valley? Yes.", "/hindi-speaking-realtor", "Hindi Speaking Realtor"),
+  "/urdu-speaking-realtor": languagePageBody("Urdu", "An Urdu speaking realtor for presale buyers in Surrey and the Fraser Valley.", "Is there an Urdu speaking realtor for presales in Surrey? Yes. Urdu is Uzair's own first language. He was born in Pakistan and raised in Surrey.", "/urdu-speaking-realtor", "Urdu Speaking Realtor"),
+  "/south-asian-buyers": southAsianBuyersBody(),
 };
+
+function languagePageBody(lang: string, h1: string, leadSentence: string, path: string, crumb: string): string {
+  const faqs = [
+    { q: `Does Uzair speak ${lang}?`, a: `Yes. Uzair Muhammad works in ${lang === "Urdu" ? "Urdu, Punjabi, Hindi" : lang === "Hindi" ? "Hindi, Punjabi, Urdu" : "Punjabi, Hindi, Urdu"} and English, and regularly explains presale contracts and deposit schedules to buyers' parents in ${lang}.` },
+    { q: `Is there a ${lang} realtor for presale condos in Surrey?`, a: `Yes. Uzair Muhammad is a buyer-side presale specialist covering Surrey, Langley, Abbotsford, Delta and the Fraser Valley, working in ${lang}, and other South Asian languages plus English.` },
+    { q: `Does it cost extra to work with a ${lang} speaking realtor?`, a: `No. For many presale projects, buyer representation is paid through the project's sales structure. Uzair explains exactly how it works before you move forward.` },
+  ];
+  return (
+    `<h1>${esc(h1)}</h1>` +
+    `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9 star rating from 36 Google reviews.</p>` +
+    `<h2>The deposit is usually a family decision. The contract is usually only in English.</h2>` +
+    `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in ${esc(lang)}. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.</p>` +
+    `<h2>What Uzair does for ${esc(lang)} speaking buyers</h2>` +
+    `<ul>` +
+    `<li>Explains the contract and disclosure statement in ${esc(lang)}, to the buyer and their parents.</li>` +
+    `<li>Reads the whole document inside BC's 7-day rescission window, before it is binding.</li>` +
+    `<li>Works out the real cost: GST, property transfer tax, rebates, deposit dates, and the mortgage at completion.</li>` +
+    `<li>Represents buyers only. He has never represented a developer.</li>` +
+    `</ul>` +
+    `<h2>Talk to Uzair before registering at the sales centre.</h2>` +
+    `<p>Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.</p>` +
+    `<p><a href="${SITE}/contact">Talk to Uzair first</a>.</p>` +
+    `<h2>Frequently Asked Questions</h2>` +
+    faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("") +
+    `<nav aria-label="Related"><h2>Related</h2><ul>` +
+    `<li><a href="${SITE}/surrey">Surrey Presale Condos</a></li>` +
+    `<li><a href="${SITE}/langley">Langley Presale Townhomes</a></li>` +
+    `<li><a href="${SITE}/abbotsford">Abbotsford Presale Condos</a></li>` +
+    `<li><a href="${SITE}/south-asian-buyers">South Asian Buyers — First-Generation Guide</a></li>` +
+    `<li><a href="${SITE}/contact">Contact Uzair</a></li>` +
+    `</ul></nav>` +
+    jsonLd(breadcrumb(crumb, path)) +
+    jsonLd(faqPage(faqs))
+  );
+}
+
+function southAsianBuyersBody(): string {
+  const path = "/south-asian-buyers";
+  const faqs = [
+    { q: "Is Uzair used to working with first-generation South Asian buyers?", a: "Yes. Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. He works in Punjabi, Hindi, Urdu and English, and regularly sits down with parents to walk through the contract in their own language." },
+    { q: "What government programs can first-time buyers stack on a new home?", a: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption can remove property transfer tax on qualifying homes up to $1.1M. Eligibility depends on the buyer's situation and the rules change — Uzair models whether it is likely to apply, and buyers should confirm with a tax professional or lawyer." },
+    { q: "Does it cost extra to have Uzair represent the buyer?", a: "No. For many presale projects, buyer representation is paid through the project's sales structure. Uzair explains exactly how it works before you move forward." },
+  ];
+  return (
+    `<h1>Buying a presale when nobody in the family has done it in Canada before.</h1>` +
+    `<p>Most of Uzair Muhammad's clients are South Asian, and many are the first in their family to buy a home in Canada. Uzair works in Punjabi, Hindi, Urdu and English, represents buyers only, and sits down with the whole family — including the parents funding the deposit — to walk through the contract.</p>` +
+    `<h2>There is no family playbook.</h2>` +
+    `<p>Most of Uzair's clients are South Asian, and many are the first in their family to buy a home in Canada. There is no parent who has already done this here to ask. Every step is new, and the sales centre is not going to slow down and explain it.</p>` +
+    `<h2>The deposit is a family decision.</h2>` +
+    `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to explain a hundred-page disclosure statement in Punjabi, Hindi or Urdu. Uzair sits down with the whole family and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque.</p>` +
+    `<h2>What to tell your parents.</h2>` +
+    `<p>Uzair will explain the deposit schedule, the completion timeline and the contract terms directly to them, in Punjabi, Hindi or Urdu. He was born in Pakistan and raised in Surrey, and most of his business comes from referrals by families he has already sat down with.</p>` +
+    `<h2>The money most first-time buyers miss.</h2>` +
+    `<p>Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap, and BC's Newly-Built Home PTT exemption can remove property transfer tax on qualifying homes up to $1.1M. Eligibility depends on the buyer's situation and the rules change — Uzair models whether it is likely to apply, and buyers should confirm with a tax professional or lawyer.</p>` +
+    `<h2>Talk to Uzair before registering at the sales centre.</h2>` +
+    `<p>Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.</p>` +
+    `<p><a href="${SITE}/contact">Talk to Uzair first</a>.</p>` +
+    `<h2>Frequently Asked Questions</h2>` +
+    faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("") +
+    `<nav aria-label="Related"><h2>Related</h2><ul>` +
+    `<li><a href="${SITE}/punjabi-speaking-realtor">Punjabi Speaking Realtor</a></li>` +
+    `<li><a href="${SITE}/hindi-speaking-realtor">Hindi Speaking Realtor</a></li>` +
+    `<li><a href="${SITE}/urdu-speaking-realtor">Urdu Speaking Realtor</a></li>` +
+    `<li><a href="${SITE}/surrey">Surrey Presale Condos</a></li>` +
+    `<li><a href="${SITE}/langley">Langley Presale Townhomes</a></li>` +
+    `<li><a href="${SITE}/abbotsford">Abbotsford Presale Condos</a></li>` +
+    `</ul></nav>` +
+    jsonLd(breadcrumb("South Asian Buyers", path)) +
+    jsonLd(faqPage(faqs))
+  );
+}
 
 export const CITY_META: Record<string, Meta> = {
   "/surrey": { title: "Surrey Presale Condos & New Construction" + SUFFIX, description: "Your buyer-only Surrey presale expert. VIP access to new condos & townhomes for first-time buyers and investors — floor plans, pricing, and honest advice. 450+ units sold.", image: DEFAULT_IMAGE },

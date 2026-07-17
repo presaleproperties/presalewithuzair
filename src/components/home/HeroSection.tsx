@@ -128,8 +128,6 @@ export const HeroSection = () => {
               </Button>
 
 
-              {/* Google Rating */}
-              <GoogleRatingBadge />
             </div>
           </div>
 

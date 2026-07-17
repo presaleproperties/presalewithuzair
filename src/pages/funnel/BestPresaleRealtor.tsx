@@ -54,6 +54,7 @@ const BestPresaleRealtor = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 4.9,
+      reviewCount: 36,
       bestRating: 5,
     },
   };

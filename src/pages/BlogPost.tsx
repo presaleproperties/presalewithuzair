@@ -157,7 +157,7 @@ const BlogPost = () => {
     description: post.excerpt || "",
     image: post.image_url || "https://presalewithuzair.com/og-image.jpg",
     datePublished: post.published_at,
-    dateModified: post.published_at,
+    dateModified: post.updated_at || post.published_at,
     author: { "@type": "Person", name: "Uzair Muhammad", url: "https://presalewithuzair.com/about" },
     publisher: {
       "@type": "Organization",

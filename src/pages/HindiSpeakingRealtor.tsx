@@ -27,7 +27,7 @@ const HindiSpeakingRealtor = () => (
     h1="A Hindi speaking realtor for presale buyers in the Fraser Valley."
     eyebrow="Hindi Speaking Realtor"
     breadcrumbName="Hindi Speaking Realtor"
-    intro="Yes — there is a Hindi speaking realtor for presales in the Fraser Valley. Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Hindi, Punjabi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9 star rating from 36 Google reviews."
+    intro="Yes — there is a Hindi speaking realtor for presales in the Fraser Valley. Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Hindi, Punjabi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9-star Google rating."
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >

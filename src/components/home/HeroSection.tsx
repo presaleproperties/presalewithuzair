@@ -1,15 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Uzair Muhammad helps Fraser Valley buyers purchase presale condos and townhomes.",
-  subheadline: "First-time buyers and investors in Surrey, Langley, Abbotsford and across the Fraser Valley.",
-  body: "Uzair represents buyers only, never developers. For many presale projects, his fee is paid through the project's sales structure — he'll explain exactly how it works before you move forward. He works in Punjabi, Hindi, Urdu and English.",
+  headline: "Buyer-only presale specialist for Fraser Valley.",
+  subheadline: "First-time buyers and investors across Surrey, Langley, Abbotsford and beyond.",
+  body: "Uzair represents buyers only, never developers. Project fees are typically covered by the builder. He works in Punjabi, Hindi, Urdu and English.",
   supportingLine: "",
-  cta: "Book a free 15-minute call",
-  trustBar: "Punjabi · Hindi · Urdu · English"
+  cta: "Book a free 15-min call"
 };
 const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
 export const HeroSection = () => {

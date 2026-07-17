@@ -22,6 +22,7 @@ const blocks: Block[] = [
     heading: "Talk to me before you register at the sales centre.",
     body: "Once you register directly with a project, your representation options can become more limited depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you've already registered, tell me — I'll explain what options may still be open.",
     cta: { to: "/contact", label: "Talk To Uzair First" },
+    wide: true,
   },
   {
     heading: "The person showing you the floor plans is paid by the developer.",

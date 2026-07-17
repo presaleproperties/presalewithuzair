@@ -4,9 +4,10 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "Buy presale with someone who works for you, not the developer.",
-  subheadline: "Buyer-side guidance for first-time buyers and investors across the Fraser Valley.",
-  body: "I help you compare new-construction condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, and Abbotsford before you sign, deposit, or get pressured into the wrong project. I work in Punjabi, Hindi, Urdu, and English.",
-  cta: "Book a Buyer Strategy Call"
+  subheadline: "Before you walk into a developer sales centre, talk to someone who works for you.",
+  body: "I help first-time buyers and investors compare new-construction condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, and Abbotsford before they sign, deposit, or get pressured into the wrong project. I work in Punjabi, Hindi, Urdu, and English.",
+  cta: "Book a Buyer Strategy Call",
+  ctaSecondary: "Get My Presale Shortlist"
 };
 
 export const HeroSection = () => {

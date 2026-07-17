@@ -103,6 +103,7 @@ export const UnifiedLeadForm = ({
   const [trackingData, setTrackingData] = useState(getTrackingData());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const { toast } = useToast();
 
   useEffect(() => {
@@ -121,11 +122,44 @@ export const UnifiedLeadForm = ({
     return () => window.removeEventListener("hashchange", checkHash);
   }, []);
 
+  const updateField = <K extends keyof FormData>(key: K, value: FormData[K]) => {
+    setFormData((prev) => ({ ...prev, [key]: value }));
+    if (fieldErrors[key]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  };
+
+  const scrollFieldIntoView = (e: React.FocusEvent<HTMLElement>) => {
+    // Mobile keyboards cover inputs — nudge them into view after the keyboard opens.
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+    const el = e.currentTarget;
+    window.setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const validation = formSchema.safeParse(formData);
     if (!validation.success) {
+      const errors: Partial<Record<keyof FormData, string>> = {};
+      for (const issue of validation.error.errors) {
+        const key = issue.path[0] as keyof FormData;
+        if (key && !errors[key]) errors[key] = issue.message;
+      }
+      setFieldErrors(errors);
+      // Focus the first invalid field so mobile users see what's wrong.
+      const firstKey = Object.keys(errors)[0];
+      if (firstKey) {
+        const el = document.getElementById(`ulc-${firstKey}`) as HTMLElement | null;
+        el?.focus?.();
+        el?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      }
       toast({
         title: "Please check your information",
         description: validation.error.errors[0].message,
@@ -134,6 +168,7 @@ export const UnifiedLeadForm = ({
       return;
     }
 
+    setFieldErrors({});
     setIsSubmitting(true);
 
     try {
@@ -151,7 +186,10 @@ export const UnifiedLeadForm = ({
         },
       });
 
-      if (error) throw new Error(error.message || "Failed to submit");
+      if (error) {
+        const msg = await readFunctionError(error);
+        throw new Error(msg);
+      }
 
       // GA4 conversion event
       try {
@@ -173,7 +211,7 @@ export const UnifiedLeadForm = ({
       console.error("Form submission error:", err);
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: err instanceof Error ? err.message : "Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {

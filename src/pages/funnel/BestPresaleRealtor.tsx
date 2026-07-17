@@ -25,7 +25,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "How do I hire you?",
     answer:
-      "Book a free 15-minute strategy call — no cost, no pressure. If we're a fit, I add you to my VIP list and we start shortlisting projects. If we're not, you'll still leave with better questions to ask any realtor you interview.",
+      "Book a free 15-minute strategy call — no pressure. If we're a fit, I add you to my VIP list and we start shortlisting projects. If we're not, you'll still leave with better questions to ask any realtor you interview.",
   },
 ];
 

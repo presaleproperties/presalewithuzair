@@ -81,45 +81,32 @@ const Index = () => {
         <Suspense fallback={<SectionFallback />}>
           <SocialProofSection />
         </Suspense>
-        
-        
+
         <Suspense fallback={<SectionFallback />}>
           <DifferentiationSection />
         </Suspense>
-        
+
         <Suspense fallback={<SectionFallback />}>
           <ProcessSection />
         </Suspense>
-        
+
         <Suspense fallback={<SectionFallback />}>
           <PresaleGuideBanner />
         </Suspense>
-        
-        <Suspense fallback={<SectionFallback />}>
-          <BookingContextSection />
-        </Suspense>
-        
-        
+
         <Suspense fallback={<SectionFallback />}>
           <HomeFAQSection />
         </Suspense>
 
         <Suspense fallback={<SectionFallback />}>
-          <FinalCTASection />
+          <BookingContextSection />
         </Suspense>
 
-        <div className="bg-background py-8 border-t border-border">
-          <div className="container-xl px-4 sm:px-6 text-center">
-            <p className="text-sm sm:text-base text-foreground/70">
-              Buying as an investment rather than a home?{" "}
-              <Link to="/services" className="text-primary font-medium underline underline-offset-4 hover:text-primary/80">
-                See the investor track
-              </Link>
-              .
-            </p>
-          </div>
-        </div>
+        <Suspense fallback={<SectionFallback />}>
+          <FinalCTASection />
+        </Suspense>
       </main>
+
       <Footer />
       <PresaleGuidePopup />
     </>

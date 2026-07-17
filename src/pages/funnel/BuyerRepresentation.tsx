@@ -50,6 +50,11 @@ const BuyerRepresentation = () => (
       Not you. Their client is the developer. That doesn't make them dishonest — it makes them exactly what their job title says: developer sales representatives. They're paid to move the developer's inventory, not to warn you when a floor plan is inefficient or a competing project is a better deal.
     </p>
 
+    <h2>Why I don't promote or hype projects</h2>
+    <p>
+      I don't work for developers, and I never will. Most realtors promote every new launch that hits the market because that builds their relationship with developers and brings more deals later. But you can't push inventory and protect the buyer at the same time. I represent buyers only. If a project is overpriced, poorly laid out, or from a builder I don't trust, I'll tell you to walk away — even if it means losing the commission.
+    </p>
+
     <BuyerRepTable />
 
     <h2>What a buyer's agent actually does</h2>

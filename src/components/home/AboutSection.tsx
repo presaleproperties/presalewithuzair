@@ -48,7 +48,7 @@ export const AboutSection = () => {
                 Early in my career, I noticed a massive problem in the real estate industry: most agents treat presales like an afterthought. They sell the hype of a shiny brochure without understanding the contracts, the developers, or the real risks involved.
               </p>
               <p>
-                I built my entire practice around fixing that. Every project I recommend, I've personally vetted. Every contract I review, I read line-by-line. And if a deal doesn't make financial sense, I'll tell you — even if it means losing the sale.
+                I will never promote or hype a project just because it launched. I don't work for developers, and I never will. Most realtors promote every new product that hits the market to build leverage with developers. That may help their pipeline, but it does a disservice to buyers — because you can't simultaneously push inventory and protect the buyer from it. I represent buyers only. If a project isn't right for you, I'll say so — even if it means losing the sale.
               </p>
             </div>
 

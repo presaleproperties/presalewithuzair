@@ -173,13 +173,13 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <Button 
-                    variant="hero" 
-                    size="lg" 
+                  <Button
+                    variant="hero"
+                    size="lg"
                     className="gap-2"
                     onClick={handleCTA}
                   >
-                    Work With Uzair
+                    Book a Buyer Strategy Call
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>

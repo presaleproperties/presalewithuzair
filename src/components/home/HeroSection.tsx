@@ -127,7 +127,7 @@ export const HeroSection = () => {
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-foreground/50 animate-fade-up">
+              <p className="text-2xl font-semibold text-foreground/70 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
@@ -135,13 +135,25 @@ export const HeroSection = () => {
               <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
-              
-              {/* Supporting Line */}
-              {heroContent.supportingLine && (
-                <p className="text-sm text-foreground/40 animate-fade-up font-medium">
-                  {heroContent.supportingLine}
-                </p>
-              )}
+
+              {/* Audience chips */}
+              <div className="flex flex-wrap gap-2 animate-fade-up">
+                {audienceChips.map((chip) => (
+                  <span key={chip} className="px-3 py-1.5 rounded-full text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
+                    {chip}
+                  </span>
+                ))}
+              </div>
+
+              {/* Proof bar */}
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2 animate-fade-up text-sm text-foreground/70 font-medium">
+                {proofBar.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* CTA Section */}
@@ -158,18 +170,8 @@ export const HeroSection = () => {
               {/* Google Rating */}
               <GoogleRatingBadge />
             </div>
-
-
-            {/* Trust Badge */}
-            <div className="pt-8 border-t border-foreground/10 animate-fade-up">
-              <p className="text-xl font-display font-bold text-foreground">
-                <span className="text-foreground">450+</span> Units Sold
-              </p>
-              <p className="text-sm text-foreground/50 mt-2">
-                $200M+ in Sales Volume • 5 Years in the Presale Market
-              </p>
-            </div>
           </div>
+
 
           {/* Right Column - Image + Who I Help */}
           <div className="relative animate-fade-up delay-200 space-y-6 flex flex-col items-center">

@@ -3,11 +3,16 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Buy presale with someone who works for you, not the developer.",
-  subheadline: "Before you walk into a developer sales centre, talk to someone who works for you.",
-  body: "I help first-time buyers and investors compare new-construction condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, and Abbotsford before they sign, deposit, or get pressured into the wrong project. I work in Punjabi, Hindi, Urdu, and English.",
+  headline: "FRASER VALLEY PRESALE ADVISOR",
+  subheadline: "Presale advice before you sign.",
+  body: "Buyer-side guidance for condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, and Abbotsford.",
+  bodySecondary: "Compare the project, deposit, contract, and risks before the sales centre sells you.",
   cta: "Book a Buyer Strategy Call",
-  ctaSecondary: "Get My Presale Shortlist"
+  ctaSecondary: "Get Presale Guide"
+};
+
+const openPresaleGuide = () => {
+  window.dispatchEvent(new CustomEvent("open-presale-guide"));
 };
 
 export const HeroSection = () => {

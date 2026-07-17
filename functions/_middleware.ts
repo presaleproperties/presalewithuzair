@@ -390,7 +390,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { h: "The thesis, in one line", p: "The developer already built a buyer's-agent commission into the price of every presale. If you don't hire your own realtor, the developer keeps that commission — you don't save a dollar. All you save is having someone on your side of the table." },
       { h: "Who does the sales-centre rep actually represent?", p: "Not you. Their client is the developer. They're paid to move the developer's inventory, not to warn you when a floor plan is inefficient or a competing project is a better deal." },
       { h: "What a buyer's agent actually does", p: "Reviews the contract and Disclosure Statement line by line. Negotiates deposit ladders and incentives. Compares against active presales and resale comps. Tells you when a deal is bad." },
-      { h: "The cost — $0", p: "My commission is paid by the developer out of the price you'd pay anyway. Skipping me doesn't save you money — it just removes your representation." },
+      { h: "How the fee works", p: "For many presale projects, buyer representation is paid through the project's sales structure. I'll explain exactly how it works on your project before you commit." },
     ],
     faqs: [
       { q: "Do I need my own realtor to buy a presale?", a: "Yes. The rep at the sales centre works for the developer. Your own buyer's agent is also paid by the developer but represents you. There is no cost for having independent representation." },

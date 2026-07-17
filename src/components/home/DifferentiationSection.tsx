@@ -45,8 +45,8 @@ const blocks: Block[] = [
     ),
   },
   {
-    heading: "The deposit is usually a family decision, and the family is often not given the contract in their language.",
-    body: "In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often don't. Nobody at the sales centre is going to explain a disclosure statement in Punjabi. I work in Punjabi, Hindi, Urdu, and English. I sit down with the whole family and explain the deposit schedule, the completion date, and the contract terms to the people actually writing the cheque. I was born in Pakistan and raised in Surrey.",
+    heading: "The contract is explained in Punjabi, Hindi, and Urdu — not just English.",
+    body: "The buyer usually speaks English. The parents helping with the deposit often don't. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi, Hindi, or Urdu. I work in all four languages. I sit down with the people actually writing the cheque and walk through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. I was born in Pakistan and raised in Surrey.",
   },
   {
     heading: "BC gives buyers 7 days to cancel. Most buyers spend it doing nothing.",

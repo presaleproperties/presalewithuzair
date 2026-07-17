@@ -30,46 +30,14 @@ interface StaticReview {
   highlight?: boolean;
 }
 
+// Verbatim Google reviews (originals only — no rewrites, no paraphrasing).
 const staticReviews: StaticReview[] = [
-  {
-    name: "Anish Bhalla",
-    quote:
-      "We had an absolutely fantastic experience working with Uzair, and we couldn’t be happier with how everything turned out. As first-time home buyers, we were understandably nervous about the process, but from day one he made everything feel clear, manageable, and stress-free.\n\nUzair is incredibly knowledgeable about the market and took the time to truly understand what we were looking for in a townhouse for our family. Every question we had was answered thoroughly, and they always explained things in a way that made us feel confident and informed at every step. We never once felt rushed or pressured only supported.\n\nWhat really stood out was his professionalism and attention to detail throughout the entire process, from viewings to offers to closing. He was proactive, responsive, and always had our best interests in mind. Thanks to his guidance and expertise, we found the right townhouse that perfectly fits our family’s needs.\n\nWe are so grateful for the care, patience, and dedication Uzair showed us during such an important milestone. We would highly recommend Uzair especially first-time buyers looking for a realtor who is trustworthy, knowledgeable, and genuinely invested in their clients’ success.",
-    timeAgo: "6 months ago",
-    photo: anishPhoto,
-    highlight: true,
-    rating: 5,
-  },
-  {
-    name: "Michelle Li",
-    quote:
-      "Uzair was very knowledgeable when I first approached him about purchasing my first home. I had some questions about presale homes and homes already in the market. Uzair was able to answer my questions honestly and provide me options for both. After discussing my specific circumstances, I decided to go with a presale. We took a look at a few showrooms and discussed what was more suited to me, both presently and for the future. Uzair made sure I was kept up to date throughout the process and ensured my possession went smoothly. I definitely recommend reaching out to him if you're thinking about purchasing a presale property. He's not one to pressure you into making a decision if it's not the right one for you.",
-    timeAgo: "7 months ago",
-    photo: michellePhoto,
-    rating: 5,
-  },
   {
     name: "Amarpal Singh",
     quote:
       "Had an greatest experience working with Uzair for our new purchase. Very knowledgeable and professional. Great realtor and an awesome person. Guide me with all information needed. As I was moving from Alberta give me all the best information and knowledge you need to start in new province. Purchasing a house is a big decision. I'll highly recommend Uzair.",
     timeAgo: "3 months ago",
     photo: rayPhoto,
-    rating: 5,
-  },
-  {
-    name: "Ammar Ahmad",
-    quote:
-      "Had the honour of having Uzair as our real estate agent and he had offered great customers service for buying a home. He guided us through everything, mortgage and notary etc. guided us where to go, which is really great for customers. On the completion date, he greeted us with the gift box at door. Would recommend.",
-    timeAgo: "3 months ago",
-    photo: hissanPhoto,
-    rating: 5,
-  },
-  {
-    name: "Zain Waheed",
-    quote:
-      "Uzair made the process easy from start to finish. We couldn’t be happier with our place and if it wasn’t for Uzair we wouldn’t have found it at the time we did. He explained things throughly and went out of his way to make sure we got exactly what we were looking for. Apart from that after we completed the process for the house, Uzair went a step beyond and provided us with loads of resources that we took full advantage of to maximize our home.",
-    timeAgo: "5 months ago",
-    photo: andresPhoto,
     highlight: true,
     rating: 5,
   },
@@ -206,6 +174,7 @@ export const SocialProofSection = () => {
 
   const displayed = merged.length > 0 ? merged : staticReviews;
 
+
   // Review JSON-LD so AI crawlers (ChatGPT, Perplexity, Google AI Overviews)
   // read verbatim reviews without executing JS.
   const reviewSchema = {
@@ -218,7 +187,7 @@ export const SocialProofSection = () => {
       reviewCount: liveData?.totalReviews ?? 36,
       bestRating: 5,
     },
-    review: displayed.slice(0, 10).map((r) => ({
+    review: displayed.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.name },
       reviewRating: {
@@ -227,6 +196,10 @@ export const SocialProofSection = () => {
         bestRating: 5,
       },
       reviewBody: r.quote,
+      itemReviewed: {
+        "@type": "RealEstateAgent",
+        name: "Uzair Muhammad | Vancouver Presale Expert",
+      },
     })),
   };
 

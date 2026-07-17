@@ -36,7 +36,7 @@ const blocks: Block[] = [
         <p>
           I've sold 450+ presale units and more than $200M in new construction. Presale and new
           construction is 80%+ of my business, and I've worked in the presale market for 5 years.
-          I hold a 4.9 stars from 36 Google reviews rating.
+          I hold 4.9 stars from 36 Google reviews.
         </p>
         <p>
           I lead{" "}

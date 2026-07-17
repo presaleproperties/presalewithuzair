@@ -36,14 +36,13 @@ function FeaturedCard({ post }: { post: BlogPost }) {
       className="group grid md:grid-cols-2 rounded-xl overflow-hidden border border-border bg-card transition-all duration-400 hover:-translate-y-0.5"
     >
       <div className="relative h-56 md:h-full overflow-hidden bg-muted">
-        {post.image_url && (
-          <img
-            src={post.image_url}
-            alt={post.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            style={{ filter: "saturate(1.1) contrast(1.05)" }}
-          />
-        )}
+        <img
+          src={post.image_url || blogHero}
+          alt={post.title}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          style={{ filter: "saturate(1.1) contrast(1.05)" }}
+          loading="lazy"
+        />
       </div>
       <div className="p-6 md:p-8 flex flex-col justify-center">
         <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">

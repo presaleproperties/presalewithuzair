@@ -20,7 +20,8 @@ Deno.serve(async (req) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
   const authHeader = req.headers.get("Authorization") || "";
   const syncSecret = req.headers.get("x-sync-secret") || "";
-  const expectedSecret = Deno.env.get("SYNC_SECRET") || "";
+  const expectedSecret =
+    Deno.env.get("SYNC_SECRET") || Deno.env.get("PROJECT_SYNC_SECRET") || "";
   const isServiceRole = authHeader === `Bearer ${serviceKey}`;
   const isSecretOk = expectedSecret.length > 0 && syncSecret === expectedSecret;
   if (!isServiceRole && !isSecretOk) {
@@ -40,24 +41,13 @@ Deno.serve(async (req) => {
     // Connect to local (this project) with service role to bypass RLS
     const local = createClient(localUrl, serviceKey);
 
-    // Fetch published blog posts from presaleproperties.com (last 10 + any newer)
-    // Check what we already have synced
-    const { data: existingSlugs } = await local
-      .from("blog_posts")
-      .select("slug")
-      .order("created_at", { ascending: false });
-
-    const existingSlugSet = new Set(
-      (existingSlugs || []).map((p: { slug: string }) => p.slug)
-    );
-
     // Fetch published posts from source, ordered by newest first
     const { data: sourcePosts, error: sourceError } = await source
       .from("blog_posts")
       .select("*")
       .eq("is_published", true)
       .order("publish_date", { ascending: false })
-      .limit(50);
+      .limit(100);
 
     if (sourceError) {
       throw new Error(`Failed to fetch from source: ${sourceError.message}`);
@@ -85,11 +75,6 @@ Deno.serve(async (req) => {
     const errors: string[] = [];
 
     for (const post of sourcePosts) {
-      // Skip if already exists
-      if (existingSlugSet.has(post.slug)) {
-        continue;
-      }
-
       // Map category
       let categoryId: string | null = null;
       if (post.category) {
@@ -106,20 +91,21 @@ Deno.serve(async (req) => {
         published: true,
         published_at: post.publish_date || post.created_at,
         category_id: categoryId,
-        created_at: post.created_at,
         updated_at: post.updated_at,
       };
 
-      const { error: insertError } = await local
+      // Upsert on slug so image_url and content stay in sync with the source
+      const { error: upsertError } = await local
         .from("blog_posts")
-        .insert(mapped);
+        .upsert(mapped, { onConflict: "slug" });
 
-      if (insertError) {
-        errors.push(`Failed to sync "${post.slug}": ${insertError.message}`);
+      if (upsertError) {
+        errors.push(`Failed to sync "${post.slug}": ${upsertError.message}`);
       } else {
         syncedCount++;
       }
     }
+
 
     return new Response(
       JSON.stringify({

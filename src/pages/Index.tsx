@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { lazy, Suspense, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import akhiPhoto from "@/assets/testimonials/akhi.jpg";
+import rayPhoto from "@/assets/testimonials/ray.jpg";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
@@ -39,7 +39,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Uzair Muhammad | Fraser Valley's Leading Presale Expert</title>
+        <title>Uzair Muhammad — Buyer-Only Presale Specialist</title>
         <meta
           name="description"
           content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley."
@@ -50,13 +50,13 @@ const Index = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/" />
-        <meta property="og:title" content="Uzair Muhammad | Fraser Valley's Leading Presale Expert" />
+        <meta property="og:title" content="Uzair Muhammad — Buyer-Only Presale Specialist" />
         <meta property="og:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Uzair Muhammad | Fraser Valley's Leading Presale Expert" />
+        <meta name="twitter:title" content="Uzair Muhammad — Buyer-Only Presale Specialist" />
         <meta name="twitter:description" content="Buyer-only presale & new-construction specialist. 450+ units sold, $200M+ in sales. VIP early access for first-time buyers & investors in Surrey, Langley, Abbotsford & the Fraser Valley." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
         {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
@@ -74,10 +74,10 @@ const Index = () => {
         
         <Suspense fallback={<SectionFallback />}>
           <MidPageCTA 
-            quote="I've been working with Uzair for nearly three years now and would highly recommend him for any property purchase or sale. He's consistent, reliable, and great to work with."
-            clientName="Akhi"
+            quote="Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks."
+            clientName="Ray"
             clientRole="First-Time Buyer"
-            clientPhoto={akhiPhoto}
+            clientPhoto={rayPhoto}
           />
         </Suspense>
         

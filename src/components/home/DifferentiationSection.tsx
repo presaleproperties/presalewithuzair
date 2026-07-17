@@ -32,12 +32,12 @@ const blocks: Block[] = [
   {
     heading: "Track record",
     body: (
-      <>
+      <div className="space-y-4">
         <p>
           I've sold 450+ presale units and more than $200M in new construction. I've worked in
           presale exclusively for 5 years and hold a 4.9-star Google rating.
         </p>
-        <p className="mt-4">
+        <p>
           I lead{" "}
           <a
             href={PPG_URL}
@@ -51,10 +51,10 @@ const blocks: Block[] = [
           Presale Expo. I'm a licensed BC REALTOR® under Real Broker and regulated by the BC
           Financial Services Authority.
         </p>
-        <p className="mt-4">
+        <p>
           Before real estate, I spent 10 years with the City of Surrey in planning and bylaws.
         </p>
-      </>
+      </div>
     ),
     wide: true,
   },

@@ -62,13 +62,19 @@ export const HeroSection = () => {
           </p>
 
           {/* Audience chips */}
-          <div className="flex flex-wrap gap-2 mb-6 animate-fade-up">
+          <div className="flex flex-wrap gap-2 mb-3 animate-fade-up">
             {audienceChips.map((chip) => (
               <span key={chip} className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
                 {chip}
               </span>
             ))}
           </div>
+
+          {/* Authority strip */}
+          <p className="text-xs md:text-sm text-foreground/60 mb-6 animate-fade-up">
+            450+ units sold · $200M+ in new construction · 5 years presale only · 4.9★ from 36 Google reviews
+          </p>
+
 
           {/* Proof bar */}
           <ul className="flex flex-wrap gap-x-4 gap-y-2 mb-6 animate-fade-up text-xs md:text-sm text-foreground/70 font-medium">

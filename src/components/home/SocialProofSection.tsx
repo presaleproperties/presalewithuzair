@@ -213,18 +213,43 @@ const GoogleLogo = ({ className = "h-5" }: { className?: string }) => (
   />
 );
 
+const FractionalStar = ({
+  fill,
+  className,
+}: {
+  fill: number;
+  className: string;
+}) => {
+  const clamped = Math.max(0, Math.min(1, fill));
+  return (
+    <div className={`relative ${className}`}>
+      <Star className="h-full w-full text-muted-foreground/30" />
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{ width: `${clamped * 100}%` }}
+      >
+        <Star className="h-full w-full fill-yellow-400 text-yellow-400" />
+      </div>
+    </div>
+  );
+};
+
 const StarRating = ({ rating, size = "sm" }: { rating: number; size?: "sm" | "md" }) => {
   const starClass = size === "md" ? "h-4 w-4" : "h-3.5 w-3.5";
   return (
     <div className="flex gap-0.5" aria-label={`Rated ${rating} out of 5`}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          className={`${starClass} ${
-            star <= rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
-          }`}
-        />
-      ))}
+      {[1, 2, 3, 4, 5].map((star) => {
+        const fill = Math.min(1, Math.max(0, rating - (star - 1)));
+        if (fill >= 1) {
+          return (
+            <Star
+              key={star}
+              className={`${starClass} fill-yellow-400 text-yellow-400`}
+            />
+          );
+        }
+        return <FractionalStar key={star} fill={fill} className={starClass} />;
+      })}
     </div>
   );
 };

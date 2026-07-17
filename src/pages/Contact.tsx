@@ -59,14 +59,14 @@ const Contact = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-card">
+        <section className="relative pt-32 pb-20 bg-card border-b border-border/40">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
-              <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Let's find the right presale <span className="text-gradient">before you commit.</span>
+              <p className="eyebrow mb-4 animate-fade-up">Get In Touch</p>
+              <h1 className="h-display text-foreground animate-fade-up delay-100">
+                Let's find the right presale before you commit.
               </h1>
-              <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
+              <p className="mt-6 lede animate-fade-up delay-200">
                 If you're thinking about a presale condo, townhome, or new-construction home, start here. Send me your budget, preferred cities, timeline, and whether you're buying to live in or invest. I'll help you understand what's worth looking at — and what's worth avoiding.
               </p>
             </div>

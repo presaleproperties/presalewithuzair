@@ -5,8 +5,7 @@ const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "Buyer-only presale specialist for Fraser Valley.",
   subheadline: "First-time buyers and investors across Surrey, Langley, Abbotsford and beyond.",
-  body: "Uzair represents buyers only, never developers. Project fees are typically covered by the builder. He works in Punjabi, Hindi, Urdu and English.",
-  supportingLine: "",
+  body: "Uzair represents buyers only, never developers. Fees are usually covered by the builder. He works in Punjabi, Hindi, Urdu and English.",
   cta: "Book a free 15-min call"
 };
 

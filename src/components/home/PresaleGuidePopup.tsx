@@ -72,7 +72,10 @@ export const PresaleGuidePopup = () => {
         },
       });
 
-      if (error) throw new Error(error.message || "Failed to submit");
+      if (error) {
+        const msg = await readFunctionError(error);
+        throw new Error(msg);
+      }
 
       setIsSuccess(true);
 
@@ -87,7 +90,7 @@ export const PresaleGuidePopup = () => {
       console.error("Form submission error:", err);
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: err instanceof Error ? err.message : "Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {

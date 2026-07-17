@@ -65,11 +65,11 @@ const About = () => {
           <div className="container-xl">
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Meet Uzair Muhammad</p>
-              <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
+              <h1 className="font-display text-4xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-tight">
+                Uzair Muhammad represents presale buyers. <span className="text-gradient">Only buyers. Never developers.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                450+ Units Sold. $200M+ in Sales Volume. 5 Years in the Presale Market.
+                Born in Pakistan. Raised in Surrey. 10 years at the City of Surrey in planning and bylaws before real estate. 450+ units sold. $200M+. Works in Punjabi, Hindi, Urdu and English.
               </p>
             </div>
           </div>
@@ -96,27 +96,21 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                  I Don't Sell Hype. I Protect You <span className="text-gradient">Against It.</span>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  A decade reading development applications, not marketing renderings.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    I got into presales because I saw buyers getting burned — signing contracts they didn't understand, buying into projects that never should have been sold to them, and working with agents who were more loyal to the developer than the client.
+                    Uzair Muhammad was born in Pakistan and raised in Surrey. He spent 10 years with the City of Surrey in planning and bylaws, reading development applications, zoning and building plans, before moving into real estate after COVID.
                   </p>
                   <p>
-                    I built my entire practice to fix that.
+                    That decade is why he reads a project differently. When a presale launches, Uzair looks at what has actually been approved and what the contract actually commits the developer to — not the rendering.
                   </p>
                   <p>
-                    I focus exclusively on new construction and presales across the Fraser Valley — Surrey, Langley, Abbotsford, Chilliwack, and Maple Ridge. This is the only market I work in, which means I know every active developer, every project in the pipeline, and exactly which ones are worth your money before you ever walk into a showroom.
+                    When he started in real estate he made one rule he has never broken: he represents buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
                   </p>
                   <p>
-                    Every project I recommend, I've personally vetted. Every contract I put in front of you, I've read line-by-line. I know where developers hide the fees, where the assignment clauses can hurt you, and what questions to ask before you commit a single dollar.
-                  </p>
-                  <p>
-                    And if a deal doesn't make financial sense for you — I'll tell you to walk away. Even if it costs me the sale.
-                  </p>
-                  <p>
-                    That's the only way I know how to do this.
+                    He works in Punjabi, Hindi, Urdu and English. He founded the Vancouver Presale Expo. He is a father of two and lives in the community he sells in.
                   </p>
                 </div>
 
@@ -128,18 +122,53 @@ const About = () => {
                     onClick={handleCTA}
                   >
                     <Phone className="h-4 w-4" />
-                    Work With Uzair
+                    Book a free 15-minute call
                   </Button>
-                  <a href="https://presaleproperties.com" target="_blank" rel="noopener">
-                    <Button variant="outline" size="lg" className="gap-2">
-                      Search Presale Projects
-                    </Button>
-                  </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Why families send Uzair their relatives */}
+        <section className="py-20 bg-background">
+          <div className="container-xl">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                Why families send Uzair their relatives
+              </h2>
+              <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
+                <p>
+                  Most of Uzair's clients are South Asian, and many are the first in their family to buy a home in Canada. There is no family playbook to follow.
+                </p>
+                <p>
+                  The deposit is often a family decision, and the people funding it frequently do not speak English. Uzair explains the contract to the parents in Punjabi, Hindi or Urdu.
+                </p>
+                <p>
+                  Most of his business comes from referrals by families he has already sat down with.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Credentials */}
+        <section className="py-16 bg-card">
+          <div className="container-xl">
+            <div className="max-w-3xl mx-auto">
+              <p className="section-label mb-4 text-center">Credentials</p>
+              <ul className="grid sm:grid-cols-2 gap-3 text-foreground/80">
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Former City of Surrey, Planning &amp; Bylaws (10 years)</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Founder, Vancouver Presale Expo</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Licensed BC REALTOR® under Real Broker (BCFSA)</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>450+ units · $200M+ in sales</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>4.9 stars from 36 Google reviews</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Punjabi, Hindi, Urdu, English</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
 
         {/* Stats */}
         <section className="py-16 bg-card">

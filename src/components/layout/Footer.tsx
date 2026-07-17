@@ -69,6 +69,10 @@ export const Footer = () => {
             >
               Search Projects
             </a>
+            <Link to="/punjabi-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Punjabi Realtor</Link>
+            <Link to="/hindi-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Hindi Realtor</Link>
+            <Link to="/urdu-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Urdu Realtor</Link>
+            <Link to="/south-asian-buyers" className="text-white/50 hover:text-primary transition-colors">South Asian Buyers</Link>
           </div>
 
           <div className="flex items-center gap-2.5 mb-5">
@@ -83,7 +87,7 @@ export const Footer = () => {
 
         {/* ── Desktop ── */}
         <div className="hidden md:block">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-14">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14">
             {/* Brand */}
             <div className="lg:col-span-1">
               <Link to="/" className="inline-block mb-5">
@@ -167,6 +171,28 @@ export const Footer = () => {
                   { href: "/burnaby", label: "Burnaby" },
                   { href: "/chilliwack", label: "Chilliwack" },
                   { href: "/maple-ridge", label: "Maple Ridge" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      to={link.href}
+                      className="text-white/50 hover:text-white transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Your language */}
+            <div>
+              <h4 className="font-display text-sm font-bold tracking-[0.15em] uppercase text-white/80 mb-6">Your Language</h4>
+              <ul className="space-y-3">
+                {[
+                  { href: "/punjabi-speaking-realtor", label: "Punjabi Speaking Realtor" },
+                  { href: "/hindi-speaking-realtor", label: "Hindi Speaking Realtor" },
+                  { href: "/urdu-speaking-realtor", label: "Urdu Speaking Realtor" },
+                  { href: "/south-asian-buyers", label: "South Asian Buyers" },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link

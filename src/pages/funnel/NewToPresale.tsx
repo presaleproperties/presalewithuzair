@@ -56,7 +56,7 @@ const NewToPresale = () => (
 
     <h2>How I help — buyer-only, paid by the developer's marketing budget</h2>
     <p>
-      I represent buyers only. My commission is paid by the developer out of the price you'd pay anyway — going direct to the sales centre doesn't save you money, it just removes your representation from the deal. I review every contract line by line, negotiate incentives, and only recommend projects that pencil out for you.
+      I represent buyers only. For many presale projects my commission is paid through the project's sales structure, and I represent you — never the builder. I'll explain exactly how it works on your project before you move forward. Going direct to the sales centre doesn't save you money — it removes your representation from the deal. I review every contract line by line, negotiate incentives, and only recommend projects that pencil out for you.
     </p>
 
     <RelatedLinks

@@ -389,6 +389,7 @@ export const SocialProofSection = () => {
                   <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
                 </a>
               ))}
+              <SeeAllReviewsCard mobile />
             </div>
           </div>
 
@@ -446,6 +447,7 @@ export const SocialProofSection = () => {
                 <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
               </a>
             ))}
+            <SeeAllReviewsCard />
           </div>
         </div>
 

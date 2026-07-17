@@ -119,6 +119,19 @@ async function fetchBlogSlugs(): Promise<string[]> {
   }
 }
 
+async function fetchProjectSlugs(): Promise<string[]> {
+  try {
+    const url = `${SUPABASE_REST_URL}/rest/v1/presale_projects?is_published=eq.true&select=slug&limit=1000`;
+    const r = await fetch(url, { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } });
+    if (!r.ok) return [];
+    const rows = (await r.json()) as Array<{ slug: string }>;
+    return rows.map((r) => r.slug).filter(Boolean);
+  } catch (e) {
+    console.warn("[prerender] project fetch failed:", (e as Error).message);
+    return [];
+  }
+}
+
 async function main() {
   const paths = new Set<string>();
   Object.keys(STATIC_META).forEach((p) => paths.add(p));
@@ -126,6 +139,8 @@ async function main() {
   Object.keys(FUNNEL).forEach((p) => paths.add(p));
   const blogSlugs = await fetchBlogSlugs();
   blogSlugs.forEach((s) => paths.add(`/blog/${s}`));
+  const projectSlugs = await fetchProjectSlugs();
+  projectSlugs.forEach((s) => paths.add(`/projects/${s}`));
 
   let ok = 0;
   let fail = 0;
@@ -138,7 +153,8 @@ async function main() {
       console.warn(`[prerender] ${p} failed:`, (e as Error).message);
     }
   }
-  console.log(`[prerender] wrote ${ok} routes (${blogSlugs.length} blog posts), ${fail} failed`);
+  console.log(`[prerender] wrote ${ok} routes (${blogSlugs.length} blog posts, ${projectSlugs.length} projects), ${fail} failed`);
 }
 
 main();
+

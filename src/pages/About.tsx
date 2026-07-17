@@ -82,11 +82,20 @@ const About = () => {
                 I help buyers make better presale decisions <span className="text-gradient">before they sign.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                My focus is simple: buyer-side presale and new-construction guidance across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
+                I'm Uzair Muhammad, a Surrey-raised presale and new-construction advisor helping buyers compare condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
               </p>
               <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                That means I help you compare projects, understand tradeoffs, ask better questions, and avoid buying only because a sales centre made a project feel urgent.
+                My job is simple: help you understand the project, the contract, the risks, and the real tradeoffs before you commit.
               </p>
+              <p className="mt-4 text-base italic text-foreground/60 animate-fade-up delay-300">
+                Before you walk into a developer sales centre, talk to someone who works for you.
+              </p>
+              <div className="mt-8 animate-fade-up delay-300">
+                <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
+                  <Phone className="h-4 w-4" />
+                  Book a Buyer Strategy Call
+                </Button>
+              </div>
             </div>
           </div>
         </section>

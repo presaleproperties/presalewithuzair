@@ -7,12 +7,7 @@ const heroContent = {
   subheadline: "Presale advice before you sign.",
   body: "Buyer-side guidance for new condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.",
   proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
-  cta: "Book a Buyer Strategy Call",
-  ctaSecondary: "Get Presale Guide"
-};
-
-const openPresaleGuide = () => {
-  window.dispatchEvent(new CustomEvent("open-presale-guide"));
+  cta: "Book a Buyer Strategy Call"
 };
 
 export const HeroSection = () => {

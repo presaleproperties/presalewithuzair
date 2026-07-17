@@ -99,17 +99,17 @@ export const HeroSection = () => {
               </p>
               
               {/* Headline */}
-              <h1 className="font-display text-[2.75rem] xl:text-[3.25rem] font-black leading-[1.1] animate-fade-up text-foreground">
+              <h1 className="font-display text-[2.5rem] xl:text-[3rem] font-black leading-[1.08] tracking-tight animate-fade-up text-foreground">
                 {heroContent.headline}
               </h1>
 
               {/* Subheadline */}
-              <p className="text-2xl font-semibold text-foreground/70 animate-fade-up">
+              <p className="text-xl xl:text-2xl font-semibold text-foreground/75 animate-fade-up">
                 {heroContent.subheadline}
               </p>
 
               {/* Body */}
-              <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
+              <p className="text-lg text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
               </p>
 
@@ -123,23 +123,21 @@ export const HeroSection = () => {
 
             {/* CTA Section */}
             <div className="flex flex-col sm:flex-row gap-3 animate-fade-up">
-              <Button variant="hero" size="xl" className="rounded-full px-10 py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
+              <Button variant="hero" size="xl" className="rounded-full px-10 py-6 text-base font-semibold shadow-md hover:shadow-lg transition-shadow" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
             </div>
           </div>
 
 
-          {/* Right Column - Image + Who I Help */}
+          {/* Right Column - Image */}
           <div className="relative animate-fade-up delay-200 space-y-6 flex flex-col items-center">
-            {/* Decorative elements */}
+            {/* Ambient glow */}
             <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-accent/10 rounded-full blur-2xl" />
             
             {/* Main image container */}
             <div className="relative w-full max-w-md mx-auto">
-              <div className="absolute inset-0 border-2 border-primary/20 rounded-2xl translate-x-2 translate-y-2" />
-              
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <OptimizedImage src={heroImage} alt="Uzair Muhammad - Fraser Valley presale specialist" className="w-full aspect-[3/4]" priority />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />

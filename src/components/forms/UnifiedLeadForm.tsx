@@ -206,12 +206,12 @@ export const UnifiedLeadForm = ({
   const isCard = variant === "card";
 
   const wrapperClasses = isCard
-    ? `bg-card/50 backdrop-blur-sm rounded-2xl border border-border p-6 sm:p-10 ${className}`
+    ? `bg-card/60 backdrop-blur-sm rounded-2xl border border-border shadow-sm p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
   const inputClasses = isDark
     ? "h-12 text-base bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-primary touch-manipulation"
-    : "h-12 text-base bg-card/50 border-border/50 focus:border-primary touch-manipulation";
+    : "h-12 text-base bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation";
 
   const labelClasses = isDark
     ? "block text-xs sm:text-sm font-medium text-white/90 mb-1"

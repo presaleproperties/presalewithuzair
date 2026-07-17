@@ -23,10 +23,6 @@ const cityLinks = [
   { href: "/maple-ridge", label: "Maple Ridge" },
 ];
 
-const trackPhone = () => {
-  try { (window as any).gtag?.("event", "click_phone", { location: "navbar" }); } catch {}
-};
-
 const trackBookCall = (loc: string) => {
   try { (window as any).gtag?.("event", "book_call", { location: loc }); } catch {}
 };
@@ -65,6 +61,15 @@ export const Navbar = () => {
       navigate('/?scroll=book-section');
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const handleGuideClick = () => {
+    setIsMobileMenuOpen(false);
+    if (location.pathname === '/') {
+      window.dispatchEvent(new CustomEvent('open-presale-guide'));
+    } else {
+      navigate('/?open-guide=1');
+    }
   };
 
   const navBg = isScrolled
@@ -106,12 +111,10 @@ export const Navbar = () => {
               variant="hero"
               size="sm"
               className="rounded-full px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transition-shadow duration-300 gap-1.5"
-              asChild
+              onClick={handleFormCTA}
             >
-              <a href="tel:+17782313592" onClick={trackPhone}>
-                <Phone className="h-3.5 w-3.5" />
-                Call Now
-              </a>
+              <Phone className="h-3.5 w-3.5" />
+              Book Strategy Call
             </Button>
             <button
               className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
@@ -185,12 +188,10 @@ export const Navbar = () => {
               variant="hero"
               size="lg"
               className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 gap-2"
-              asChild
+              onClick={handleFormCTA}
             >
-              <a href="tel:+17782313592" onClick={trackPhone}>
-                <Phone className="h-4 w-4" />
-                Call Now
-              </a>
+              <Phone className="h-4 w-4" />
+              Book Strategy Call
             </Button>
           </div>
         </div>
@@ -261,14 +262,12 @@ export const Navbar = () => {
           ))}
 
           <div className="pt-4 space-y-3">
-            <Button variant="hero" size="lg" className="w-full rounded-full gap-2" asChild>
-              <a href="tel:+17782313592" onClick={trackPhone}>
-                <Phone className="h-4 w-4" />
-                Call Now
-              </a>
+            <Button variant="hero" size="lg" className="w-full rounded-full gap-2" onClick={handleFormCTA}>
+              <Phone className="h-4 w-4" />
+              Book Strategy Call
             </Button>
-            <Button variant="outline" size="lg" className="w-full rounded-full" onClick={handleFormCTA}>
-              Book a Buyer Strategy Call
+            <Button variant="outline" size="lg" className="w-full rounded-full" onClick={handleGuideClick}>
+              Get Presale Guide
             </Button>
           </div>
         </div>

@@ -6,7 +6,6 @@ const heroContent = {
   headline: "FRASER VALLEY PRESALE ADVISOR",
   subheadline: "Presale advice before you sign.",
   body: "Buyer-side guidance for condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, and Abbotsford.",
-  bodySecondary: "Compare the project, deposit, contract, and risks before the sales centre sells you.",
   cta: "Book a Buyer Strategy Call",
   ctaSecondary: "Get Presale Guide"
 };
@@ -49,7 +48,7 @@ export const HeroSection = () => {
           </p>
           
           {/* Headline */}
-          <h1 className="font-display text-[2.5rem] md:text-5xl leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
+          <h1 className="font-display text-[2.25rem] md:text-[2.75rem] leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
             {heroContent.headline}
           </h1>
 
@@ -59,11 +58,8 @@ export const HeroSection = () => {
           </p>
 
           {/* Body */}
-          <p className="text-base md:text-lg text-foreground/60 mb-2 animate-fade-up leading-relaxed">
-            {heroContent.body}
-          </p>
           <p className="text-base md:text-lg text-foreground/60 mb-4 animate-fade-up leading-relaxed">
-            {heroContent.bodySecondary}
+            {heroContent.body}
           </p>
 
 
@@ -110,7 +106,7 @@ export const HeroSection = () => {
               </p>
               
               {/* Headline */}
-              <h1 className="font-display text-5xl xl:text-6xl font-black leading-[1.1] animate-fade-up text-foreground">
+              <h1 className="font-display text-[2.75rem] xl:text-[3.25rem] font-black leading-[1.1] animate-fade-up text-foreground">
                 {heroContent.headline}
               </h1>
 
@@ -122,9 +118,6 @@ export const HeroSection = () => {
               {/* Body */}
               <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
                 {heroContent.body}
-              </p>
-              <p className="text-lg md:text-xl text-foreground/60 max-w-xl animate-fade-up leading-relaxed">
-                {heroContent.bodySecondary}
               </p>
 
 

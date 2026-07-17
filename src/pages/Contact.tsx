@@ -159,12 +159,20 @@ const Contact = () => {
                 </div>
                 <div className="p-8 lg:p-12">
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6">
-                  Get Clear Guidance
+                  What to include when you reach out
                 </h3>
-                <p className="text-foreground/70 mb-8">
-                  Whether you're exploring your first presale or have questions about a specific project, 
-                  I'm here to provide honest advice — not a sales pitch.
+                <p className="text-foreground/70 mb-6">
+                  A few details help me give you a useful answer instead of a generic one:
                 </p>
+                <ul className="text-foreground/80 space-y-1.5 mb-8 list-disc pl-5 text-sm">
+                  <li>Your budget</li>
+                  <li>Preferred city or cities</li>
+                  <li>Condo, townhome, or detached</li>
+                  <li>First-time buyer, investor, or move-up</li>
+                  <li>Ideal move-in timeline</li>
+                  <li>Any projects you're already considering</li>
+                  <li>Whether you've registered with a sales centre</li>
+                </ul>
 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3 text-foreground/80">

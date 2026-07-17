@@ -74,72 +74,72 @@ const Contact = () => {
         </section>
 
         {/* Contact Options */}
-        <section className="py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl">
-            <div className="grid lg:grid-cols-2 gap-16">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Contact Info */}
               <div>
-                <h2 className="font-display text-3xl font-bold text-foreground mb-8">
-                  Reach <span className="text-gradient">Out</span>
+                <h2 className="h-section text-foreground mb-8">
+                  Reach out
                 </h2>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {/* WhatsApp - Primary */}
                   <a
                     href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-colors group"
+                    className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border hover:border-primary/40 transition-colors group"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <MessageCircle className="h-6 w-6" />
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                      <MessageCircle className="h-5 w-5" />
                     </div>
                     <div>
                      <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
-                      <p className="text-muted-foreground text-sm mb-2">Fastest response time for quick questions.</p>
-                      <p className="text-primary font-medium">Chat on WhatsApp</p>
+                      <p className="text-muted-foreground text-sm mb-1">Fastest response time for quick questions.</p>
+                      <p className="text-primary font-medium text-sm">Chat on WhatsApp</p>
                     </div>
                   </a>
 
                   {/* Phone */}
                   <a
                     href="tel:+17782313592"
-                    className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-colors group"
+                    className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border hover:border-primary/40 transition-colors group"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Phone className="h-6 w-6" />
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                      <Phone className="h-5 w-5" />
                     </div>
                     <div>
                      <p className="font-semibold text-foreground mb-1">Phone</p>
-                      <p className="text-muted-foreground text-sm mb-2">Call me directly.</p>
-                      <p className="text-primary font-medium">+1 (778) 231-3592</p>
+                      <p className="text-muted-foreground text-sm mb-1">Call me directly.</p>
+                      <p className="text-primary font-medium text-sm">+1 (778) 231-3592</p>
                     </div>
                   </a>
 
                   {/* Email */}
                   <a
                     href="mailto:info@meetuzair.com"
-                    className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary/50 transition-colors group"
+                    className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border hover:border-primary/40 transition-colors group"
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Mail className="h-6 w-6" />
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                      <Mail className="h-5 w-5" />
                     </div>
                     <div>
                      <p className="font-semibold text-foreground mb-1">Email</p>
-                      <p className="text-muted-foreground text-sm mb-2">Send a detailed inquiry or project question.</p>
-                      <p className="text-primary font-medium">info@meetuzair.com</p>
+                      <p className="text-muted-foreground text-sm mb-1">Send a detailed inquiry or project question.</p>
+                      <p className="text-primary font-medium text-sm">info@meetuzair.com</p>
                     </div>
                   </a>
 
                   {/* Office */}
-                  <div className="flex items-start gap-4 p-6 bg-card rounded-xl border border-border">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                      <MapPin className="h-6 w-6" />
+                  <div className="flex items-start gap-4 p-5 bg-card rounded-xl border border-border">
+                    <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                      <MapPin className="h-5 w-5" />
                     </div>
                     <div>
                       <p className="font-semibold text-foreground mb-1">Office</p>
-                      <p className="text-muted-foreground text-sm mb-2">Real Broker</p>
-                      <p className="text-foreground">
+                      <p className="text-muted-foreground text-sm mb-1">Real Broker</p>
+                      <p className="text-foreground text-sm">
                         3211 152 St, Building C<br />
                         Surrey, BC V3Z 1H8
                       </p>
@@ -157,11 +157,11 @@ const Contact = () => {
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
-                <div className="p-8 lg:p-12">
-                <h3 className="font-display text-2xl font-bold text-foreground mb-6">
+                <div className="p-8 lg:p-10">
+                <h3 className="h-card text-foreground mb-5">
                   What to include when you reach out
                 </h3>
-                <p className="text-foreground/70 mb-6">
+                <p className="text-foreground/70 mb-5 text-sm">
                   A few details help me give you a useful answer instead of a generic one:
                 </p>
                 <ul className="text-foreground/80 space-y-1.5 mb-8 list-disc pl-5 text-sm">
@@ -174,52 +174,41 @@ const Contact = () => {
                   <li>Whether you've registered with a sales centre</li>
                 </ul>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-3 mb-8 text-sm">
                   <div className="flex items-center gap-3 text-foreground/80">
-                    <Clock className="h-5 w-5 text-primary" />
+                    <Clock className="h-4 w-4 text-primary" />
                     <span>Typically responds within 2 hours.</span>
                   </div>
                   <div className="flex items-center gap-3 text-foreground/80">
-                    <MessageCircle className="h-5 w-5 text-primary" />
+                    <MessageCircle className="h-4 w-4 text-primary" />
                     <span>Zero obligation — just an honest conversation.</span>
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <Button
-                    variant="hero"
-                    size="xl"
-                    className="w-full gap-2"
-                    onClick={handleCTA}
-                  >
-                    <Mail className="h-5 w-5" />
-                    Book a Buyer Strategy Call
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="xl"
-                    className="w-full gap-2"
-                    onClick={handleCTA}
-                  >
-                    <Search className="h-5 w-5" />
-                    Get My Presale Shortlist
-                  </Button>
-                </div>
+                <Button
+                  variant="hero"
+                  size="xl"
+                  className="w-full gap-2 rounded-full"
+                  onClick={handleCTA}
+                >
+                  <Mail className="h-5 w-5" />
+                  Book a Buyer Strategy Call
+                </Button>
 
                 {/* Trust Signals */}
-                <div className="mt-10 pt-8 border-t border-border">
+                <div className="mt-8 pt-6 border-t border-border">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">450+</p>
-                      <p className="text-xs text-muted-foreground">Units Sold</p>
+                      <p className="text-xl font-display font-bold text-foreground">450+</p>
+                      <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">Units Sold</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">$200M+</p>
-                      <p className="text-xs text-muted-foreground">in Sales Volume</p>
+                      <p className="text-xl font-display font-bold text-foreground">$200M+</p>
+                      <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">Volume</p>
                     </div>
                     <div>
-                      <p className="text-2xl font-display font-bold text-gradient">5 Yrs</p>
-                      <p className="text-xs text-muted-foreground">in Presale Market</p>
+                      <p className="text-xl font-display font-bold text-foreground">5 Yrs</p>
+                      <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">Presale Focus</p>
                     </div>
                   </div>
                 </div>

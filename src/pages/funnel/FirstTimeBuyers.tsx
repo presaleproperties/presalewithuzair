@@ -17,9 +17,9 @@ const faqs: FunnelFAQ[] = [
       "Canada's enhanced GST rebate for first-time buyers of new construction can save up to $50,000 on qualifying homes under the price cap. Combined with BC's Newly-Built Home PTT exemption (to $1.1M), it's a real five-figure closing benefit — I model it before you commit.",
   },
   {
-    question: "Does using you cost me anything?",
+    question: "How is your fee paid?",
     answer:
-      "No. My commission is paid by the developer out of the price you'd pay anyway. Skipping me doesn't save you money — it just removes your representation.",
+      "My fee comes from the developer's marketing budget — it isn't added on top of the purchase price. Skipping independent representation doesn't reduce your price; it just leaves you without someone on your side of the table.",
   },
   {
     question: "What if my income or life changes before completion?",

@@ -187,7 +187,7 @@ export const SocialProofSection = () => {
       reviewCount: liveData?.totalReviews ?? 36,
       bestRating: 5,
     },
-    review: displayed.slice(0, 10).map((r) => ({
+    review: displayed.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.name },
       reviewRating: {
@@ -196,6 +196,10 @@ export const SocialProofSection = () => {
         bestRating: 5,
       },
       reviewBody: r.quote,
+      itemReviewed: {
+        "@type": "RealEstateAgent",
+        name: "Uzair Muhammad | Vancouver Presale Expert",
+      },
     })),
   };
 

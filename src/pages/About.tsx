@@ -32,23 +32,23 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Buyer-Side Presale Specialist for the Fraser Valley</title>
+        <title>Fraser Valley's leading Presale Expert | About Uzair Muhammad</title>
         <meta
           name="description"
-          content="I help buyers understand presale before they sign. I have helped buyers purchase 450+ new-construction homes with more than $200M in sales volume across the Fraser Valley and Metro Vancouver."
+          content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume · buyer-side only."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Surrey presale specialist, Fraser Valley buyer's agent, buyer-side presale advisor, new construction Surrey" />
-        <link rel="canonical" href="https://presalewithuzair.com/about" />
+        <link rel="canonical" href="https://presalewithuzair.lovable.app/about" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad | Buyer-Side Presale Specialist for the Fraser Valley" />
-        <meta property="og:description" content="I help buyers understand presale before they sign. 450+ new-construction units sold across the Fraser Valley and Metro Vancouver." />
+        <meta property="og:url" content="https://presalewithuzair.lovable.app/about" />
+        <meta property="og:title" content="Fraser Valley's leading Presale Expert | About Uzair Muhammad" />
+        <meta property="og:description" content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad | Buyer-Side Presale Specialist for the Fraser Valley" />
-        <meta name="twitter:description" content="I help buyers understand presale before they sign. 450+ new-construction units sold across the Fraser Valley and Metro Vancouver." />
+        <meta name="twitter:title" content="Fraser Valley's leading Presale Expert | About Uzair Muhammad" />
+        <meta name="twitter:description" content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
       </Helmet>
 

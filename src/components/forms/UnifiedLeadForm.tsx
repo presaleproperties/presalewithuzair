@@ -377,7 +377,7 @@ export const UnifiedLeadForm = ({
             </div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <CheckCircle className="h-3.5 w-3.5 text-primary" />
-              <span>5-star reviews</span>
+              <span>5-star Google rating</span>
             </div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <CheckCircle className="h-3.5 w-3.5 text-primary" />

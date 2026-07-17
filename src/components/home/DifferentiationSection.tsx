@@ -24,7 +24,7 @@ const blocks: Block[] = [
     body: (
       <>
         <p>
-          I've sold 450+ presale units and more than $200M in new construction. I've worked in presale exclusively for 5 years and hold a 4.9-star rating from 36 Google reviews.
+          I've sold 450+ presale units and more than $200M in new construction. I've worked in presale exclusively for 5 years and hold a 4.9-star Google rating.
         </p>
         <p className="mt-4">
           I lead{" "}

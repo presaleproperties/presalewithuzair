@@ -13,7 +13,7 @@ const services = [
     id: "presales",
     title: "Presale Purchasing & VIP Access",
     subtitle: "Presale Acquisitions",
-    description: "Stop waiting in line at public launches. I get my clients front-of-the-line access to the best floor plans and pricing across the Fraser Valley. But more importantly, I act as your filter — the unfiltered truth on whether to buy or walk away.",
+    description: "Stop waiting in line at public launches. I get my clients front-of-the-line access to the best floor plans and pricing across the Fraser Valley. But more importantly, I act as your filter — the unfiltered truth on whether to buy or walk away. I don't promote or hype projects; I don't work for developers. My only job is to help you decide if the project is actually right for you.",
     image: showroomTourImage,
     benefits: [
       "VIP pricing and early floor plan access",

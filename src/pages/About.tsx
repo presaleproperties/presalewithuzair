@@ -132,7 +132,7 @@ const About = () => {
                   </p>
                   <p>My job is different.</p>
                   <p>
-                    I work with buyers to compare the opportunity clearly. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
+                    I will never promote or hype a project because I don't work for developers. I represent buyers only. Most realtors push every new launch to build leverage with developers. That approach turns them into a marketing arm, and it costs the buyer independent advice. I won't do that. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
                   </p>
                   <p className="font-semibold text-foreground">Good advice should protect the buyer, not just close the deal.</p>
                 </div>

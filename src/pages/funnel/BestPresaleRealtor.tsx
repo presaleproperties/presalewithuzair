@@ -75,7 +75,7 @@ const BestPresaleRealtor = () => {
       >
         <h2>Why me — and why buyer-only?</h2>
         <p>
-          Almost every realtor sells presales occasionally. I've built a full-time practice on it. My commission is paid by the developer out of the price you'd pay anyway, and I represent you — never the builder. That means I lose deals when a project doesn't pencil out. That's the job.
+          Almost every realtor sells presales occasionally. I've built a full-time practice on it. My commission is paid by the developer out of the price you'd pay anyway, and I represent you — never the builder. I don't promote or hype projects; I don't work for developers. Most realtors push every launch to build leverage with developers, but that turns them into a marketing channel instead of an advisor. I represent buyers only. That means I lose deals when a project doesn't pencil out. That's the job.
         </p>
 
         <h2>Track record</h2>

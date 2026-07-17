@@ -437,7 +437,9 @@ export const SocialProofSection = () => {
               <p className="font-display text-3xl sm:text-4xl font-black text-foreground leading-none">
                 {liveData?.overallRating ?? 4.9}
               </p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">out of 5</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
+                from {liveData?.totalReviews ?? 36} reviews
+              </p>
             </div>
             <div className="w-px h-10 bg-border" />
             <div>

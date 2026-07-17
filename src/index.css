@@ -237,6 +237,12 @@
     @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
+  /* Narrow readable text column (articles, form intros, FAQ copy) */
+  .container-prose {
+    @apply max-w-3xl mx-auto px-4 sm:px-6;
+  }
+
+
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;

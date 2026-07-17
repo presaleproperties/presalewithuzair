@@ -1,4 +1,4 @@
-import { Quote, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Quote, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import type { ReactNode } from "react";
 import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";

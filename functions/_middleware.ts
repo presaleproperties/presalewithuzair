@@ -393,8 +393,8 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { h: "How the fee works", p: "For many presale projects, buyer representation is paid through the project's sales structure. I'll explain exactly how it works on your project before you commit." },
     ],
     faqs: [
-      { q: "Do I need my own realtor to buy a presale?", a: "Yes. The rep at the sales centre works for the developer. Your own buyer's agent is also paid by the developer but represents you. There is no cost for having independent representation." },
-      { q: "Does hiring a buyer's agent cost me anything?", a: "No. The developer builds a commission for the buyer's agent into every presale. If you skip your own representation, the developer keeps that budget — you don't save a dollar." },
+      { q: "Do I need my own realtor to buy a presale?", a: "Yes. The rep at the sales centre works for the developer. For many presale projects your own buyer's agent is paid through the project's sales structure — I'll explain exactly how it works on your project." },
+      { q: "Does hiring a buyer's agent cost me anything?", a: "For many presale projects, buyer representation is paid through the project's sales structure. I'll walk you through the specific arrangement on your project before you commit." },
       { q: "Who does the sales-centre rep actually represent?", a: "The developer. Their title is 'developer sales representative.' Licensed, friendly, knowledgeable — and their duty is to the developer's profit, not your outcome." },
       { q: "What does a buyer's agent actually do differently?", a: "Reviews your contract line by line. Negotiates deposit structure and incentives. Compares projects. Tells you when a deal is bad. Uses the 7-day rescission window to protect you." },
       { q: "Can I still hire you if I've already visited a sales centre?", a: "Sometimes — depends whether you've registered. If you registered but haven't signed, we may transfer representation. If you've signed, it's usually too late for that project." },

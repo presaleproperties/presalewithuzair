@@ -73,10 +73,6 @@ export const HeroSection = () => {
           </div>
 
 
-          {/* Google Rating */}
-          <div className="mb-8 animate-fade-up">
-            <GoogleRatingBadge />
-          </div>
 
 
           {/* Hero Photos Grid */}

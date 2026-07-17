@@ -141,16 +141,6 @@ export const HeroSection = () => {
                 450+ units sold · $200M+ in new construction · 5 years presale only · 4.9★ from 36 Google reviews
               </p>
 
-
-              {/* Proof bar */}
-              <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2 animate-fade-up text-sm text-foreground/70 font-medium">
-                {proofBar.map((item) => (
-                  <li key={item} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
 
             {/* CTA Section */}
@@ -158,11 +148,7 @@ export const HeroSection = () => {
               <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
-              
-              {/* Trust Bar */}
-              <p className="text-sm text-foreground/50">
-                {heroContent.trustBar}
-              </p>
+
 
               {/* Google Rating */}
               <GoogleRatingBadge />

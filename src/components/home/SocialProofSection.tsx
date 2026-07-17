@@ -350,11 +350,11 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
-    className={`group rounded-xl snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col items-center justify-center text-center border border-dashed border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 ${
+    className={`group rounded-xl snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col items-center justify-center text-center border border-border bg-card hover:border-primary/30 ${
       mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
     }`}
   >
-    <div className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
+    <div className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
       <GoogleLogo className="h-4 object-contain" />
     </div>
     <div className="flex items-center gap-1.5 mb-3">

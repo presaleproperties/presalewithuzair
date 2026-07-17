@@ -37,7 +37,7 @@ const SUFFIX = " | Uzair Muhammad";
 const ABOUT_BLOCK = `
   <section>
     <h2>About Uzair Muhammad — Buyer-Only Presale Specialist</h2>
-    <p>Uzair Muhammad is a buyer-only presale and new-construction specialist serving Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, Chilliwack and Maple Ridge in British Columbia's Fraser Valley. He has helped 450+ buyers and investors purchase more than $200M in new-construction condos and townhomes, and he never represents developers — only buyers. A former City of Surrey planning and bylaws professional and founder of the Vancouver Presale Expo, Uzair reviews every developer contract line by line to protect your deposit. He works in English, Punjabi, Hindi and Urdu.</p>
+    <p>Uzair Muhammad is a buyer-only presale and new-construction specialist serving Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, Chilliwack and Maple Ridge in British Columbia's Fraser Valley. He has helped 450+ buyers and investors purchase more than $200M in new-construction condos and townhomes, and he never represents developers — only buyers. A former City of Surrey planning and bylaws professional and founder of the Vancouver Presale Expo, Uzair reviews every developer contract line by line to protect the buyer's deposit. He works in English, Punjabi, Hindi and Urdu.</p>
     <p>Learn more: <a href="${SITE}/about">About Uzair</a> &middot; <a href="${SITE}/services">Buyer-only services</a> &middot; <a href="${SITE}/blog">Presale guides</a> &middot; <a href="${SITE}/contact">Book a free strategy call</a>.</p>
   </section>
   <nav aria-label="Fraser Valley presale markets">

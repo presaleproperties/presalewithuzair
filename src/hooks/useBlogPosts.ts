@@ -30,6 +30,7 @@ export function useBlogPosts() {
           image_url,
           published,
           published_at,
+          updated_at,
           created_at,
           category:blog_categories(name, slug)
         `)
@@ -57,6 +58,7 @@ export function useBlogPost(slug: string) {
           image_url,
           published,
           published_at,
+          updated_at,
           created_at,
           category:blog_categories(name, slug)
         `)

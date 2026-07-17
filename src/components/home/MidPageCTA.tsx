@@ -62,12 +62,12 @@ export const MidPageCTA = ({ quote, clientName, clientRole, clientPhoto }: MidPa
 
           {/* CTA */}
           <Button
-            variant="outline"
+            variant="hero"
             size="lg"
-            className="rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-8 py-6 text-base font-semibold"
+            className="rounded-full px-8 py-6 text-base font-semibold"
             onClick={handleBookClick}
           >
-            Work With Uzair
+            Book a Buyer Strategy Call
           </Button>
         </div>
       </div>

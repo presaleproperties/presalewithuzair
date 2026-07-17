@@ -89,7 +89,7 @@ function languagePageBody(lang: string, h1: string, leadSentence: string, path: 
   ];
   return (
     `<h1>${esc(h1)}</h1>` +
-    `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9-star Google rating.</p>` +
+    `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9 stars from 36 Google reviews.</p>` +
     `<h2>The deposit is usually a family decision. The contract is usually only in English.</h2>` +
     `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in ${esc(lang)}. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.</p>` +
     `<h2>What Uzair does for ${esc(lang)} speaking buyers</h2>` +
@@ -368,7 +368,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { h: "See the full platform + live projects", p: "For live inventory and the full brokerage platform, visit presaleproperties.com — the full platform + live projects." },
     ],
     faqs: [
-      { q: "Who is the best presale realtor in the Fraser Valley?", a: "Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack, Maple Ridge. 450+ units sold, 4.9★ Google rating." },
+      { q: "Who is the best presale realtor in the Fraser Valley?", a: "Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack, Maple Ridge. 450+ units sold, 4.9 stars from 36 Google reviews." },
       { q: "Why work with a buyer-only presale specialist?", a: "Because the person at the sales centre is paid by the developer. A buyer-only realtor is paid by the developer too but represents you. Zero cost." },
       { q: "What languages do you work in?", a: "English, Punjabi, Hindi and Urdu. About a third of my buyers prefer to run through the contract in one of those languages." },
       { q: "What area do you actually cover?", a: "The Fraser Valley and much of Metro Vancouver — Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge, New Westminster." },
@@ -467,7 +467,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
     description: "I'm Uzair — buyer-only presale specialist. Every scenario I handle: first-time buyer, investor, upsizing, new detached, move-in-ready, assignments (buy or sell), VIP access, contract review.",
     h1: "How I Help — Every Presale & New-Construction Scenario, One Advisor",
     breadcrumbName: "How I Help",
-    intro: "I'm Uzair Muhammad, buyer-only presale and new-construction specialist for the Fraser Valley and Metro Vancouver. Whatever your situation — first home, first investment, upsizing, multigenerational, move-in-ready, or buying/selling an assignment — I'm the one advisor who handles all of it. Buyer-only, in English, Hindi, Urdu and Punjabi. 450+ units sold, $200M+ in sales volume, 4.9★ Google rating.",
+    intro: "I'm Uzair Muhammad, buyer-only presale and new-construction specialist for the Fraser Valley and Metro Vancouver. Whatever your situation — first home, first investment, upsizing, multigenerational, move-in-ready, or buying/selling an assignment — I'm the one advisor who handles all of it. Buyer-only, in English, Hindi, Urdu and Punjabi. 450+ units sold, $200M+ in sales volume, 4.9 stars from 36 Google reviews.",
     sections: [
       { h: "First-time buyer", p: "Presale lets you lock today's price with staged deposits, stack the up-to-$50,000 GST rebate and BC's Newly-Built PTT exemption, and get a warrantied brand-new home. Full walkthrough on the first-time buyer page." },
       { h: "Investor — cash flow or appreciation", p: "Abbotsford for near-break-even cash flow. Surrey-Langley SkyTrain corridor (Willoughby, Latimer, ~2028/29) for appreciation. I model each project against resale comps before recommending. Assignment structure and BC's 2025 flipping tax built into every plan." },
@@ -478,7 +478,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { h: "Selling your assignment", p: "If life changed and you need out before completion, I list your assignment through my buyer network and handle the developer approval, lifting date, and the 2025 flipping-tax calculation. Full advisor, not just a form-filler." },
       { h: "VIP early access", p: "My VIP list gets pre-public allocation on new project launches across the Fraser Valley and Metro Vancouver — usually the best pricing, incentives and floor-plan choice of the launch cycle." },
       { h: "Contract and deposit review", p: "Every contract I touch gets a line-by-line review: disclosure statement, deposit structure, assignment rights, material change clauses, completion window. Even if you've already found the project on your own, I'll review the contract before you sign." },
-      { h: "Languages and track record", p: "English, Hindi, Urdu and Punjabi. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9★ Google rating. Buyer-only, always." },
+      { h: "Languages and track record", p: "English, Hindi, Urdu and Punjabi. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9 stars from 36 Google reviews. Buyer-only, always." },
     ],
     faqs: [
       { q: "What scenarios do you actually handle?", a: "First-time buyer, investor (cash flow or appreciation), upsizing family, new detached / multigenerational, move-in-ready new construction, buying an assignment, selling an assignment, VIP early access, and standalone contract review. All buyer-only, all Fraser Valley and Metro Vancouver." },

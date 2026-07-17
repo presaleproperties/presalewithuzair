@@ -36,6 +36,16 @@ const Index = () => {
     }
   }, [location.search]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('open-guide') === '1') {
+      const timer = setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('open-presale-guide'));
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [location.search]);
+
   return (
     <>
       <Helmet>

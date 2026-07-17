@@ -5,7 +5,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Is Uzair used to working with first-generation South Asian buyers?",
     answer:
-      "Yes. Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. He works in Punjabi, Hindi, Urdu and English, and regularly sits down with parents to walk through the contract in their own language.",
+      "Yes. Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. He works in Punjabi, Hindi, Urdu and English, and regularly sits down with the people writing the cheque to walk through the contract and deposit schedule in their own language.",
   },
   {
     question: "What government programs can first-time buyers stack on a new home?",

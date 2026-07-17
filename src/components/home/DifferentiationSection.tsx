@@ -1,10 +1,16 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 const PPG_URL = "https://presaleproperties.com";
 
-type Block = { heading: string; body: ReactNode };
+type Block = { heading: string; body: ReactNode; cta?: { to: string; label: string } };
 
 const blocks: Block[] = [
+  {
+    heading: "Talk to Uzair before registering at the sales centre.",
+    body: "Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.",
+    cta: { to: "/contact", label: "Talk To Uzair First" },
+  },
   {
     heading: "The person showing the floor plans is paid by the developer.",
     body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. For many presale projects his fee is paid through the project's sales structure, so representation usually costs the buyer nothing — he'll confirm exactly how it works on your project before you commit.",
@@ -69,6 +75,16 @@ export const DifferentiationSection = () => {
               ) : (
                 <div className="text-base sm:text-lg text-foreground/70 leading-relaxed">
                   {block.body}
+                </div>
+              )}
+              {block.cta && (
+                <div className="mt-5">
+                  <Link
+                    to={block.cta.to}
+                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                  >
+                    {block.cta.label}
+                  </Link>
                 </div>
               )}
             </article>

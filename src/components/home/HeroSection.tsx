@@ -58,14 +58,6 @@ export const HeroSection = () => {
             {heroContent.body}
           </p>
 
-          {/* Audience chips */}
-          <div className="flex flex-wrap gap-2 mb-3 animate-fade-up">
-            {audienceChips.map((chip) => (
-              <span key={chip} className="px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-foreground/10 text-foreground border border-foreground/15">
-                {chip}
-              </span>
-            ))}
-          </div>
 
           {/* Authority strip */}
           <p className="text-xs md:text-sm text-foreground/60 mb-6 animate-fade-up">

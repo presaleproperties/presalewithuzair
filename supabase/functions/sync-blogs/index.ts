@@ -20,10 +20,12 @@ Deno.serve(async (req) => {
   const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
   const authHeader = req.headers.get("Authorization") || "";
   const syncSecret = req.headers.get("x-sync-secret") || "";
-  const expectedSecret =
-    Deno.env.get("SYNC_SECRET") || Deno.env.get("PROJECT_SYNC_SECRET") || "";
+  const acceptedSecrets = [
+    Deno.env.get("PROJECT_SYNC_SECRET") || "",
+    Deno.env.get("SYNC_SECRET") || "",
+  ].filter((s) => s.length > 0);
   const isServiceRole = authHeader === `Bearer ${serviceKey}`;
-  const isSecretOk = expectedSecret.length > 0 && syncSecret === expectedSecret;
+  const isSecretOk = acceptedSecrets.includes(syncSecret);
   if (!isServiceRole && !isSecretOk) {
     return new Response(JSON.stringify({ error: "Forbidden" }), {
       status: 403,

@@ -145,6 +145,46 @@ const staticReviews: StaticReview[] = [
 
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 
+// Final card in the reviews grid — fills the empty slot and sends visitors to Google.
+const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
+  <a
+    href={GOOGLE_BUSINESS_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="See all reviews on Google"
+    className={`group rounded-xl snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col items-center justify-center text-center border border-dashed border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 ${
+      mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
+    }`}
+  >
+    <div className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
+      <img
+        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+        alt="Google"
+        className="h-4 object-contain"
+      />
+    </div>
+    <div className="flex items-center gap-1.5 mb-3">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star
+          key={star}
+          className="h-4 w-4 fill-yellow-400 text-yellow-400"
+        />
+      ))}
+      <span className="ml-1 text-sm font-semibold text-foreground">4.9</span>
+    </div>
+    <p className="font-display text-lg font-bold text-foreground mb-2">
+      See all reviews
+    </p>
+    <p className="text-sm text-muted-foreground mb-5 max-w-[220px]">
+      Read every verified client review on Google.
+    </p>
+    <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
+      View on Google
+      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+    </span>
+  </a>
+);
+
 const fallbackPhotos = [
   anishPhoto,
   michellePhoto,

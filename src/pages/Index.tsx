@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { lazy, Suspense, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import rayPhoto from "@/assets/testimonials/ray.jpg";
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
@@ -10,7 +10,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
 const DifferentiationSection = lazy(() => import("@/components/home/DifferentiationSection").then(m => ({ default: m.DifferentiationSection })));
 const ProcessSection = lazy(() => import("@/components/home/ProcessSection").then(m => ({ default: m.ProcessSection })));
-const MidPageCTA = lazy(() => import("@/components/home/MidPageCTA").then(m => ({ default: m.MidPageCTA })));
+
 const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
 
 
@@ -72,14 +72,6 @@ const Index = () => {
           <SocialProofSection />
         </Suspense>
         
-        <Suspense fallback={<SectionFallback />}>
-          <MidPageCTA 
-            quote="Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks."
-            clientName="Ray"
-            clientRole="First-Time Buyer"
-            clientPhoto={rayPhoto}
-          />
-        </Suspense>
         
         <Suspense fallback={<SectionFallback />}>
           <DifferentiationSection />

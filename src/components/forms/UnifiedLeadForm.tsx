@@ -6,6 +6,7 @@ import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { readFunctionError } from "@/lib/functionError";
 
 const formSchema = z.object({
   fullName: z.string().trim().min(1, "Name is required").max(100),

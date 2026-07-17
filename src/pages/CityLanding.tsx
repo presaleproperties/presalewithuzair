@@ -374,7 +374,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
                 {config.heroEyebrow}
               </p>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] text-white mb-4 animate-fade-up">
+              <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white mb-4 animate-fade-up">
                 {projectCount > 0 ? dynamicH1 : config.heroHeadline}
               </h1>
               <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">

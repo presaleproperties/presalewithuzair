@@ -110,6 +110,18 @@ const About = () => {
                     When he started in real estate he made one rule he has never broken: he represents buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
                   </p>
                   <p>
+                    Uzair also leads{" "}
+                    <a
+                      href="https://presaleproperties.com"
+                      target="_blank"
+                      rel="noopener"
+                      className="text-primary underline underline-offset-4 hover:text-primary/80"
+                    >
+                      The Presale Properties Group
+                    </a>
+                    , a team of agents working the Fraser Valley presale market. The team covers Surrey, Langley, Abbotsford, Delta, Coquitlam and Burnaby South, and works in English, Punjabi, Hindi and Urdu.
+                  </p>
+                  <p>
                     He works in Punjabi, Hindi, Urdu and English. He founded the Vancouver Presale Expo. He is a father of two and lives in the community he sells in.
                   </p>
                 </div>

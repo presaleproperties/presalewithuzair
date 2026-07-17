@@ -42,7 +42,7 @@ const BuyerRepresentation = () => (
   >
     <h2>The thesis, in one line</h2>
     <p>
-      The developer already built a buyer's-agent commission into the price of every presale. If you don't hire your own realtor, the developer simply keeps that commission — you don't save a dollar. All you save is having someone on your side of the table.
+      For many presale projects, buyer representation is paid through the project's sales structure — so it typically costs the buyer nothing to have someone on their side of the table. Skipping your own realtor doesn't put money back in your pocket; it just removes your representation.
     </p>
 
     <h2>Who does the sales-centre rep actually represent?</h2>

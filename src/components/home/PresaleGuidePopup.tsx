@@ -34,6 +34,12 @@ export const PresaleGuidePopup = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleOpen = () => setIsOpen(true);
+    window.addEventListener("open-presale-guide", handleOpen);
+    return () => window.removeEventListener("open-presale-guide", handleOpen);
+  }, []);
+
   const handleClose = () => {
     setIsOpen(false);
     sessionStorage.setItem("presale-guide-dismissed", "true");

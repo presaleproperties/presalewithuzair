@@ -5,7 +5,8 @@ const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY PRESALE ADVISOR",
   subheadline: "Presale advice before you sign.",
-  body: "Buyer-side guidance for condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, and Abbotsford.",
+  body: "Buyer-side guidance for new condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.",
+  proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
   cta: "Book a Buyer Strategy Call",
   ctaSecondary: "Get Presale Guide"
 };
@@ -65,7 +66,7 @@ export const HeroSection = () => {
 
           {/* Authority strip */}
           <p className="text-xs md:text-sm text-foreground/60 mb-6 animate-fade-up">
-            450+ units sold · $200M+ sales · 4.9★ Google · English, Punjabi, Hindi, Urdu
+            {heroContent.proof}
           </p>
 
 
@@ -123,7 +124,7 @@ export const HeroSection = () => {
 
               {/* Authority strip */}
               <p className="text-sm text-foreground/60 animate-fade-up">
-                450+ units sold · $200M+ sales · 4.9★ Google · English, Punjabi, Hindi, Urdu
+                {heroContent.proof}
               </p>
 
             </div>

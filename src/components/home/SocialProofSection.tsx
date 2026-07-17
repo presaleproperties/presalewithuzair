@@ -299,7 +299,7 @@ export const SocialProofSection = () => {
           </div>
         </div>
 
-        {/* All Testimonials Grid */}
+        {/* All Testimonials Grid — uniform card size, every card links to Google */}
         <div className="mb-10 sm:mb-14">
           {/* Mobile: Horizontal Scroll */}
           <div className="sm:hidden">
@@ -310,7 +310,8 @@ export const SocialProofSection = () => {
                   href={GOOGLE_BUSINESS_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex-shrink-0 w-[300px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg ${
+                  aria-label={`Read ${testimonial.name}'s review on Google`}
+                  className={`flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col ${
                     testimonial.highlight
                       ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
                       : "bg-card border border-border"
@@ -343,8 +344,8 @@ export const SocialProofSection = () => {
                     ))}
                   </div>
 
-                  <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6">
-                    “{testimonial.quote}”
+                  <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-7 flex-1">
+                    “{highlightKeywords(testimonial.quote)}”
                   </p>
                   <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
                 </a>
@@ -352,15 +353,16 @@ export const SocialProofSection = () => {
             </div>
           </div>
 
-          {/* Desktop: Masonry-style Grid */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+          {/* Desktop: Uniform grid — auto-rows-fr forces equal height rows */}
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
             {displayed.map((testimonial, index) => (
               <a
                 key={index}
                 href={GOOGLE_BUSINESS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`rounded-xl p-6 transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer block ${
+                aria-label={`Read ${testimonial.name}'s review on Google`}
+                className={`rounded-xl p-6 h-[380px] transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer flex flex-col ${
                   testimonial.highlight
                     ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
                     : "bg-card border border-border"
@@ -394,19 +396,20 @@ export const SocialProofSection = () => {
                 </div>
 
                 <Quote
-                  className={`h-5 w-5 mb-2 ${
+                  className={`h-5 w-5 mb-2 shrink-0 ${
                     testimonial.highlight ? "text-primary/50" : "text-muted-foreground/30"
                   }`}
                 />
 
-                <p className="text-sm lg:text-base text-foreground/90 leading-relaxed whitespace-pre-line">
-                  “{testimonial.quote}”
+                <p className="text-sm lg:text-[15px] text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-7 flex-1">
+                  “{highlightKeywords(testimonial.quote)}”
                 </p>
-                <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
+                <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
               </a>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

@@ -8,13 +8,14 @@
   :root {
     /* Clean white base — Serhant-inspired luxury real estate aesthetic */
     --background: 0 0% 100%;
-    --foreground: 222 20% 12%;
+    --foreground: 222 22% 10%;
 
-    --card: 220 20% 97%;
-    --card-foreground: 222 20% 12%;
+    /* Cards are pure white — real separation from the muted page bands */
+    --card: 0 0% 100%;
+    --card-foreground: 222 22% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 20% 12%;
+    --popover-foreground: 222 22% 10%;
 
     /* Vibrant royal blue primary — legible as text, strong as buttons */
     --primary: 225 70% 45%;
@@ -22,11 +23,11 @@
 
     /* Cool neutral secondary */
     --secondary: 220 16% 95%;
-    --secondary-foreground: 222 15% 30%;
+    --secondary-foreground: 222 18% 22%;
 
-    /* Cool muted tones */
-    --muted: 220 14% 93%;
-    --muted-foreground: 220 10% 50%;
+    /* Cool muted tones — bumped for a visible section band behind white cards */
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 12% 38%;
 
     /* Slightly lighter blue accent */
     --accent: 225 65% 52%;
@@ -35,26 +36,28 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 16% 90%;
-    --input: 220 16% 93%;
+    /* Borders that actually read against white and muted bands */
+    --border: 220 15% 82%;
+    --input: 220 15% 85%;
     --ring: 225 70% 45%;
 
     --radius: 0.5rem;
 
     /* Custom tokens */
     --hero-gradient: linear-gradient(180deg, hsl(222 25% 6%) 0%, hsl(222 20% 12%) 100%);
-    --card-gradient: linear-gradient(180deg, hsl(220 20% 98%) 0%, hsl(220 20% 95%) 100%);
+    --card-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 20% 98%) 100%);
     --text-gradient: linear-gradient(135deg, hsl(225 70% 45%) 0%, hsl(225 65% 55%) 100%);
     --overlay-dark: linear-gradient(180deg, hsla(222, 25%, 6%, 0.85) 0%, hsla(222, 25%, 6%, 0.95) 100%);
     --overlay-hero: linear-gradient(90deg, hsla(222, 25%, 6%, 0.92) 0%, hsla(222, 25%, 6%, 0.55) 50%, transparent 100%);
-    
+
     /* Blue shimmer */
     --gold-shimmer: linear-gradient(90deg, hsl(225 70% 45%) 0%, hsl(225 65% 55%) 50%, hsl(225 70% 45%) 100%);
-    
-    /* Clean shadows */
-    --shadow-soft: 0 4px 24px -8px hsla(222, 20%, 10%, 0.06);
+
+    /* Cleaner, more present shadows so cards lift off muted bands */
+    --shadow-soft: 0 1px 2px hsla(222, 20%, 10%, 0.04), 0 4px 16px -6px hsla(222, 20%, 10%, 0.08);
     --shadow-glow: 0 0 40px hsla(225, 70%, 45%, 0.12);
-    --shadow-card: 0 8px 32px -12px hsla(222, 20%, 10%, 0.05);
+    --shadow-card: 0 1px 2px hsla(222, 20%, 10%, 0.05), 0 8px 24px -10px hsla(222, 20%, 10%, 0.10);
+
 
     --sidebar-background: 222 25% 6%;
     --sidebar-foreground: 0 0% 97%;

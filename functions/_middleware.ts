@@ -382,7 +382,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/buyer-representation-presale-fraser-valley": {
     title: "Do You Need a Realtor for a BC Presale? Yes — Here's Why",
-    description: "I'm Uzair — buyer-only presale specialist. The $0-cost buyer representation thesis: who the sales-centre rep really works for, and why you need your own realtor on every BC presale.",
+    description: "I'm Uzair — buyer-only presale specialist. who the sales-centre rep really works for, and why you need your own realtor on every BC presale.",
     h1: "Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)",
     breadcrumbName: "Buyer Representation for Presale",
     intro: "I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation.",

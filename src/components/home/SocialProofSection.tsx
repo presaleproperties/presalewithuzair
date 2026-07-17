@@ -273,7 +273,7 @@ export const SocialProofSection = () => {
             What Uzair's clients say
           </h2>
           <p className="text-primary font-semibold text-base sm:text-lg mb-4">
-            Verbatim Google reviews — nothing rewritten.
+            {"\n"}
           </p>
 
           {/* Google Rating Badge */}

@@ -5,7 +5,7 @@ const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
   subheadline: "Presale advice before you sign.",
-  body: "For first-time buyers and investors across Surrey, Langley, Delta, South Surrey, Abbotsford and the Fraser Valley. Uzair represents buyers only, never developers, and works in Punjabi, Hindi, Urdu and English.",
+  body: "Buyer-side guidance for new condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.",
   proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
   cta: "Book a Buyer Strategy Call"
 };

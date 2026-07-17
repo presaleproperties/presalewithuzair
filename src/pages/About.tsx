@@ -2,8 +2,8 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { CheckCircle, ArrowRight, Phone } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -15,83 +15,126 @@ import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const stats = [
-  { value: "450+", label: "Families Helped" },
-  { value: "$200M+", label: "in New Homes" },
-  { value: "5 Years", label: "in the Presale Market" },
-  { value: "Only 2", label: "Defaults, Ever" },
+  { value: "450+", label: "Units Sold" },
+  { value: "$200M+", label: "in Sales Volume" },
+  { value: "5 Yrs", label: "in the Presale Market" },
+  { value: "4", label: "Languages Spoken" },
+];
+
+const values = [
+  "Never hypes or pumps up presale projects — consistent for 5+ years",
+  "Buys the same products I sell — 5 personal presale investments",
+  "Provides honest advice — even when it means saying no",
+  "Reviews every contract line-by-line for red flags",
 ];
 
 const About = () => {
   const navigate = useNavigate();
-  const handleCTA = () => navigate("/?scroll=book-section");
+  const handleCTA = () => navigate('/?scroll=book-section');
 
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad — Vancouver Presale Buyer's Agent</title>
+        <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
         <meta
           name="description"
-          content="Former City of Surrey planning & bylaws professional turned buyer-only presale specialist. 450+ families helped, $200M+ in new homes across the Fraser Valley."
+          content="Meet Uzair Muhammad — Fraser Valley's leading presale expert. 450+ units sold, $200M+ in volume across Surrey, Langley & Abbotsford."
         />
+        <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
+        
+        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad — Vancouver Presale Buyer's Agent" />
-        <meta property="og:description" content="Buyer-only presale specialist. 450+ families helped, $200M+ in new homes, only 2 defaults across five years. Fraser Valley presales, done honestly." />
+        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 450+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack." />
+        <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad — Vancouver Presale Buyer's Agent" />
-        <meta name="twitter:description" content="Buyer-only presale specialist. 450+ families helped, $200M+ in new homes, only 2 defaults across five years." />
+        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
+        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 450+ units sold and $200M+ in sales volume." />
+        <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
+        {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
       </Helmet>
 
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-16 bg-card">
+        <section className="relative pt-32 pb-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl">
-              <p className="section-label mb-4">About Uzair Muhammad</p>
-              <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground">
-                Buyer-only presale specialist for the <span className="text-gradient">Fraser Valley.</span>
+              <p className="section-label mb-4 animate-fade-up">Meet Uzair Muhammad</p>
+              <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
+                Vancouver's Premier <span className="text-gradient">Presale Expert.</span>
               </h1>
-              <p className="mt-6 text-xl text-foreground/80">
-                450+ families helped · $200M+ in new homes · 140+ projects · 5 Years · 4.9★ from 36 reviews · only 2 defaults.
+              <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
+                450+ Units Sold. $200M+ in Sales Volume. 5 Years in the Presale Market.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Bio */}
-        <section className="py-20 bg-background">
+        {/* Bio Section */}
+        <section className="py-24 bg-background">
           <div className="container-xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="relative">
                 <div className="image-reveal rounded-2xl overflow-hidden">
-                  <OptimizedImage src={heroImage} alt="Uzair Muhammad" className="w-full h-[600px]" priority />
+                  <OptimizedImage
+                    src={heroImage}
+                    alt="Uzair Muhammad"
+                    className="w-full h-[600px]"
+                    priority
+                  />
+                </div>
+                {/* Stats overlay */}
+                <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
+                  <p className="text-4xl font-display font-bold text-gradient">450+</p>
+                  <p className="text-sm text-muted-foreground">Units Sold</p>
                 </div>
               </div>
 
-              <div className="space-y-10 text-foreground/85 leading-relaxed">
-                <p className="text-lg">
-                  I'm Uzair Muhammad, a buyer-only presale and new-construction specialist working across the Fraser Valley — Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. I represent buyers on presale condos, townhomes and new-build homes, and I never promote or represent developers. Before real estate I spent ten years at the City of Surrey in Bylaws and Planning. I'm a father of two, and I've lived in Surrey almost my whole life.
-                </p>
-
-                <div>
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-3">From Pakistan to Surrey</h2>
+              <div>
+                <h2 className="font-display text-4xl font-bold text-foreground mb-6">
+                  I Don't Sell Hype. I Protect You <span className="text-gradient">Against It.</span>
+                </h2>
+                <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    I was born in Pakistan and immigrated to Canada with my family in 2005. I grew up in Surrey — school here, friends here, first jobs here — and it's where I'm raising my two kids today. That matters when I'm sitting across from a newcomer family buying their first Canadian home. I've been the person in the room who didn't have a parent or an uncle in Canada to explain how a mortgage works, how a deposit ladder works, or what a completion date really means. Most of my clients don't have someone in their family who has already done this. I do the job I wish someone had done for my parents.
+                    I got into presales because I saw buyers getting burned — signing contracts they didn't understand, buying into projects that never should have been sold to them, and working with agents who were more loyal to the developer than the client.
+                  </p>
+                  <p>
+                    I built my entire practice to fix that.
+                  </p>
+                  <p>
+                    I focus exclusively on new construction and presales across the Fraser Valley — Surrey, Langley, Abbotsford, Chilliwack, and Maple Ridge. This is the only market I work in, which means I know every active developer, every project in the pipeline, and exactly which ones are worth your money before you ever walk into a showroom.
+                  </p>
+                  <p>
+                    Every project I recommend, I've personally vetted. Every contract I put in front of you, I've read line-by-line. I know where developers hide the fees, where the assignment clauses can hurt you, and what questions to ask before you commit a single dollar.
+                  </p>
+                  <p>
+                    And if a deal doesn't make financial sense for you — I'll tell you to walk away. Even if it costs me the sale.
+                  </p>
+                  <p>
+                    That's the only way I know how to do this.
                   </p>
                 </div>
 
-                <div>
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-3">
-                    What a decade at the City of Surrey taught me about presale contracts
-                  </h2>
-                  <p>
-                    Before I ever wrote a contract on the buyer's side, I spent close to ten years working for the City of Surrey — first in Bylaws, then in Planning. I left after the COVID years to go into real estate full-time. That decade is the single biggest reason my buyers don't get surprised at completion, and it's a background no other agent in this market can honestly claim.
-                  </p>
-                  <p className="mt-4">
-                    A presale isn't a home yet. It's a set of drawings and a contract, and both of them still have to survive rezoning, development permits, building permits and a construction schedule before a key changes hands. I've watched that process from inside the building. I know how long a rezoning actually takes in Surrey versus what a marketing brochure claims. I know which municipal approvals are pro-forma and which are where projects quietly sit for eighteen months. When a developer's disclosure statement says "estimated completion Q4 2026" and quietly gives them the right to extend that date by twelve months and revise the floor plan, I read the clause with the eyes of someone who has watched those extensions happen. Most agents read the sales-centre version. I read the municipal version.
-                  </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="gap-2"
+                    onClick={handleCTA}
+                  >
+                    <Phone className="h-4 w-4" />
+                    Work With Uzair
+                  </Button>
+                  <a href="https://presaleproperties.com" target="_blank" rel="noopener">
+                    <Button variant="outline" size="lg" className="gap-2">
+                      Search Presale Projects
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -99,102 +142,137 @@ const About = () => {
         </section>
 
         {/* Stats */}
-        <section className="py-14 bg-card">
+        <section className="py-16 bg-card">
           <div className="container-xl">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {stats.map((s) => (
-                <div key={s.label} className="stat-card text-center">
-                  <p className="text-3xl lg:text-4xl font-display font-bold text-gradient">{s.value}</p>
-                  <p className="text-sm text-muted-foreground mt-2">{s.label}</p>
+              {stats.map((stat) => (
+                <div key={stat.label} className="stat-card text-center">
+                  <p className="text-3xl lg:text-4xl font-display font-bold text-gradient">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Buyer-only + situations + defaults */}
-        <section className="py-20 bg-background">
-          <div className="container-xl max-w-4xl mx-auto space-y-14 text-foreground/85 leading-relaxed">
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Why I only <span className="text-gradient">represent buyers</span>
-              </h2>
-              <p>
-                Every presale has two commissions built into the price: the developer's in-house sales team, and the buyer's agent. If you walk into a sales centre alone, you don't save that money — the developer just keeps it. The friendly person offering you coffee is a licensed developer representative whose client, legally, is the developer.
-              </p>
-              <p className="mt-4">
-                I never sit on the developer's side of that table. I don't promote developers, I don't take retainers from them, and I don't sell projects at launch parties. I represent buyers, on every deal, at no cost to you.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                The situations I <span className="text-gradient">get called for</span>
-              </h2>
-              <p className="mb-4">
-                Most of my work is unglamorous problem-solving on the situations nobody warns you about. A few kinds I see over and over:
-              </p>
-              <ul className="space-y-4">
-                <li><strong className="text-foreground">The newcomer buying a first Canadian home.</strong> No family here who has already done this, a thin credit file, and forty pages of legal language in a second language. The job is slowing everything down and translating the deal — literally and figuratively — into something the buyer actually understands before they sign.</li>
-                <li><strong className="text-foreground">The self-employed buyer whose income is hard to prove.</strong> Real income, real savings, but a tax return that doesn't tell the story the bank wants to hear. The work is choosing the right lender for the file long before completion, and structuring deposits so financing actually holds together on closing day.</li>
-                <li><strong className="text-foreground">The multigenerational family buying one home for three generations.</strong> Grandparents, parents and kids under one roof. Floor plan, legal-suite potential, mortgage structure and title all have to line up, and the conversation is slower on purpose.</li>
-                <li><strong className="text-foreground">The investor holding several assignments who needs an exit before completion.</strong> The assignment clause in the disclosure statement decides whether that exit is possible or expensive. The job is reading that clause before signing, not after.</li>
-                <li><strong className="text-foreground">The buyer whose completion date moved and whose financing needs restructuring.</strong> Rates shifted, the appraisal came in soft, or the developer pushed completion by nine months. Requalifying calmly, restructuring deposits and getting to close is the whole point of having a buyer's agent still on the file three years after launch.</li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Only <span className="text-gradient">2 defaults</span>
-              </h2>
-              <p>
-                Across 450+ families and $200M+ in new-construction sales over five years, only two buyers ever failed to complete. A default is the worst thing that can happen to a presale buyer — you lose the deposit and you lose the home. Two, in five years.
-              </p>
-              <p className="mt-4">
-                Anyone can sell a unit at launch. The real job is making sure the buyer can still close three years later: that the income still supports the mortgage, that the deposits are structured against a realistic budget, that the lender is the right one for the situation, and that nobody is walked into a project they can't actually complete. That's what "only 2 defaults" measures. It's the number I care about most and it's the number the industry never talks about.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">What languages do you speak?</h2>
-              <p>
-                I work in English, Punjabi, Urdu and Hindi, and I get by in Telugu. A presale contract is a legal document. Every buyer should understand every clause in the language they think in — not a summary, not a translated headline, the actual document. I read disclosure statements with clients in whichever of those languages they're most comfortable in, and I answer questions in the same language until every clause makes sense. It isn't a translation service. It's making sure nobody signs something they don't fully understand.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">Where do you work?</h2>
-              <p>
-                Fraser Valley. Day to day that's Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. If a presale or new-construction project is a genuine buy in one of those markets, I know it and I've usually already vetted the developer and the site.
-              </p>
             </div>
           </div>
         </section>
 
         {/* Photo Gallery */}
-        <section className="py-16 bg-card">
+        <section className="py-16 bg-background">
           <div className="container-xl">
+            <div className="text-center mb-10">
+              <p className="section-label mb-3">Working With Clients</p>
+              <h2 className="font-display text-3xl font-bold text-foreground">
+                Real <span className="text-gradient">Results</span>
+              </h2>
+            </div>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              {[clientMeetingImage, showroomTourImage, brochureReviewImage, officeWideImage, showroomEntranceImage, floorplanImage].map((img, i) => (
-                <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                  <OptimizedImage src={img} alt="Uzair with clients" className="w-full h-full hover:scale-105 transition-transform duration-500" />
-                </div>
-              ))}
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={clientMeetingImage}
+                  alt="Uzair consulting with clients"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={showroomTourImage}
+                  alt="Uzair guiding showroom tour"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={brochureReviewImage}
+                  alt="Uzair reviewing project details"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={officeWideImage}
+                  alt="Uzair in strategy meeting"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={showroomEntranceImage}
+                  alt="Uzair welcoming clients"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="relative rounded-xl overflow-hidden aspect-[4/3]">
+                <OptimizedImage
+                  src={floorplanImage}
+                  alt="Uzair explaining floor plans"
+                  className="w-full h-full hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Expo */}
-        <section className="py-20 bg-background">
+        {/* Values & Approach */}
+        <section className="py-24 bg-card">
+          <div className="container-xl">
+            <div className="grid lg:grid-cols-2 gap-16">
+              <div>
+                <h2 className="font-display text-3xl font-bold text-foreground mb-6">
+                  My <span className="text-gradient">Principles</span>
+                </h2>
+                <p className="text-foreground/80 leading-relaxed mb-8">
+                  Presale purchases are significant decisions. My role is to ensure you have the 
+                  information and guidance needed to make the right choice — even if that choice is to wait.
+                </p>
+                <ul className="space-y-4">
+                  {values.map((value) => (
+                    <li key={value} className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                      <span className="text-foreground/90">{value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h2 className="font-display text-3xl font-bold text-foreground mb-6">
+                  My <span className="text-gradient">Approach</span>
+                </h2>
+                <p className="text-foreground/80 leading-relaxed">
+                  I take a buyer-first approach to presales. Before recommending any project, I review 
+                  disclosures, assess developer track records, and evaluate whether the deal genuinely 
+                  serves your interests.
+                </p>
+                <p className="text-foreground/80 leading-relaxed mt-4">
+                  If a project has concerning clauses, questionable pricing, or a developer I don't trust, 
+                  I'll tell you directly. My job isn't to close deals — it's to help you avoid bad ones 
+                  and find the right opportunities.
+                </p>
+                <p className="text-foreground/80 leading-relaxed mt-4">
+                  This means some conversations end with "this isn't the right fit for you." That's not 
+                  a failure — that's honest guidance doing its job.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Community Leader */}
+        <section className="py-24 bg-card">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <p className="section-label mb-4">Vancouver Presale Expo</p>
+                <p className="section-label mb-4">Community Impact</p>
                 <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                  Founder, <span className="text-gradient">Vancouver Presale Expo</span>
+                  Community <span className="text-gradient">Leader</span>
                 </h2>
+                <p className="text-foreground/80 leading-relaxed mb-6">
+                  Uzair is on a mission to revolutionize presales, give back, and share his formula 
+                  for success to enable and motivate other real estate agents.
+                </p>
                 <p className="text-foreground/80 leading-relaxed mb-8">
-                  I'm the founder of the Vancouver Presale Expo — an independent event built to give buyers direct access to developers and honest project information without the sales-centre pressure.
+                  He is the founder of Vancouver's Largest Presale Expo for real estate agents and 
+                  developers. Vancouver Presale Expo 2024 was a launchpad for groundbreaking presale 
+                  projects and invaluable training for 1,000+ realtors.
                 </p>
                 <Button variant="outline" size="lg" className="gap-2" asChild>
                   <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer">
@@ -203,27 +281,45 @@ const About = () => {
                   </a>
                 </Button>
               </div>
+
               <div className="image-reveal rounded-2xl overflow-hidden">
-                <img src={expoImage} alt="Vancouver Presale Expo" className="w-full h-[500px] object-cover" />
+                <img
+                  src={expoImage}
+                  alt="Vancouver Presale Expo"
+                  className="w-full h-[500px] object-cover"
+                />
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-background">
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Ready to talk?
+                Get Clear Guidance Before You Buy
               </h2>
               <p className="text-foreground/80 mb-8">
-                Have questions about a presale? Want to know if it's the right move for you? Book a free 15-minute call — no pressure, no sales pitch.
+                Have questions about a presale? Want to understand if it's the right move for you? 
+                Let's have an honest conversation — no pressure, no sales pitch.
               </p>
-              <Button variant="hero" size="xl" className="gap-2" onClick={handleCTA}>
-                <Phone className="h-5 w-5" />
-                Book a Free Strategy Call
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  variant="hero" 
+                  size="xl" 
+                  className="gap-2 w-full sm:w-auto"
+                  onClick={handleCTA}
+                >
+                  <Phone className="h-5 w-5" />
+                  Work With Uzair
+                </Button>
+                <a href="https://presaleproperties.com" target="_blank" rel="noopener">
+                  <Button variant="outline" size="xl" className="gap-2 w-full sm:w-auto">
+                    Search Presale Projects
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>

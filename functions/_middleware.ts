@@ -62,58 +62,9 @@ export const STATIC_META: Record<string, Meta> = {
   "/blog": { title: "Presale Buying Guides & BC Market Insights" + SUFFIX, description: "Expert presale and new-construction guides for BC buyers and investors — deposits, GST, assignments, neighbourhoods, and market timing from Uzair Muhammad.", image: DEFAULT_IMAGE },
 };
 
-const ABOUT_BODY: string = (() => {
-  const body = `
-<article>
-  <h1>About Uzair Muhammad</h1>
-  <p>I'm Uzair Muhammad, a buyer-only presale and new-construction specialist working across the Fraser Valley — Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. I represent buyers on presale condos, townhomes and new-build homes, and I never promote or represent developers. Before real estate I spent ten years at the City of Surrey in Bylaws and Planning. I'm a father of two, and I've lived in Surrey almost my whole life.</p>
-
-  <h2>From Pakistan to Surrey</h2>
-  <p>I was born in Pakistan and immigrated to Canada with my family in 2005. I grew up in Surrey \u2014 school here, friends here, first jobs here \u2014 and it's where I'm raising my two kids today. That matters when I'm sitting across from a newcomer family buying their first Canadian home. I've been the person in the room who didn't have a parent or an uncle in Canada to explain how a mortgage works, how a deposit ladder works, or what a completion date really means. Most of my clients don't have someone in their family who has already done this. I do the job I wish someone had done for my parents.</p>
-
-  <h2>What a decade at the City of Surrey taught me about presale contracts</h2>
-  <p>Before I ever wrote a contract on the buyer's side, I spent close to ten years working for the City of Surrey \u2014 first in Bylaws, then in Planning. I left after the COVID years to go into real estate full-time. That decade is the single biggest reason my buyers don't get surprised at completion, and it's a background no other agent in this market can honestly claim.</p>
-  <p>A presale isn't a home yet. It's a set of drawings and a contract, and both of them still have to survive rezoning, development permits, building permits and a construction schedule before a key changes hands. I've watched that process from inside the building. I know how long a rezoning actually takes in Surrey versus what a marketing brochure claims. I know which municipal approvals are pro-forma and which are where projects quietly sit for eighteen months. When a developer's disclosure statement says "estimated completion Q4 2026" and quietly gives them the right to extend that date by twelve months and revise the floor plan, I read the clause with the eyes of someone who has watched those extensions happen. Most agents read the sales-centre version of a project. I read the municipal version.</p>
-
-  <h2>Why I only represent buyers</h2>
-  <p>Every presale has two commissions built into the price: the developer's in-house sales team, and the buyer's agent. If you walk into a sales centre alone, you don't save that money \u2014 the developer just keeps it. The friendly person offering you coffee is a licensed developer representative whose client, legally, is the developer.</p>
-  <p>I never sit on the developer's side of that table. I don't promote developers, I don't take retainers from them, and I don't sell projects at launch parties. I represent buyers, on every deal, at no cost to you.</p>
-
-  <h2>The situations I get called for</h2>
-  <p>Most of my work is unglamorous problem-solving on the situations nobody warns you about. A few kinds I see over and over:</p>
-  <ul>
-    <li><strong>The newcomer buying a first Canadian home.</strong> No family here who has already done this, a thin credit file, and forty pages of legal language in a second language. The job is slowing everything down and translating the deal \u2014 literally and figuratively \u2014 into something the buyer actually understands before they sign.</li>
-    <li><strong>The self-employed buyer whose income is hard to prove.</strong> Real income, real savings, but a tax return that doesn't tell the story the bank wants to hear. The work is choosing the right lender for the file long before completion, and structuring deposits so the financing actually holds together on closing day.</li>
-    <li><strong>The multigenerational family buying one home for three generations.</strong> Grandparents, parents and kids under one roof. Floor plan, legal-suite potential, mortgage structure and title all have to line up, and the conversation is slower on purpose.</li>
-    <li><strong>The investor holding several assignments who needs an exit before completion.</strong> The assignment clause in the disclosure statement decides whether that exit is possible or expensive. The job is reading that clause before signing, not after.</li>
-    <li><strong>The buyer whose completion date moved and whose financing needs restructuring.</strong> Rates shifted, the appraisal came in soft, or the developer pushed completion by nine months. Requalifying calmly, restructuring deposits and getting to close is the whole point of having a buyer's agent still on the file three years after launch.</li>
-  </ul>
-
-  <h2>Only 2 defaults</h2>
-  <p>Across 450+ families and $200M+ in new-construction sales over five years, only two buyers ever failed to complete. A default is the worst thing that can happen to a presale buyer \u2014 you lose the deposit and you lose the home. Two, in five years.</p>
-  <p>Anyone can sell a unit at launch. The real job is making sure the buyer can still close three years later: that the income still supports the mortgage, that the deposits are structured against a realistic budget, that the lender is the right one for the situation, and that nobody is walked into a project they can't actually complete. That's what "only 2 defaults" measures. It's the number I care about most and it's the number the industry never talks about.</p>
-
-  <h2>What languages do you speak?</h2>
-  <p>I work in English, Punjabi, Urdu and Hindi, and I get by in Telugu. A presale contract is a legal document. Every buyer should understand every clause in the language they think in \u2014 not a summary, not a translated headline, the actual document. I read disclosure statements with clients in whichever of those languages they're most comfortable in, and I answer questions in the same language until every clause makes sense. It isn't a translation service. It's making sure nobody signs something they don't fully understand.</p>
-
-  <h2>Where do you work?</h2>
-  <p>Fraser Valley. Day to day that's Surrey, Langley, Delta, Abbotsford, Coquitlam and Burnaby South. If a presale or new-construction project is a genuine buy in one of those markets, I know it and I've usually already vetted the developer and the site.</p>
-
-  <h2>Founder, Vancouver Presale Expo</h2>
-  <p>I'm the founder of the Vancouver Presale Expo \u2014 an independent event built to give buyers direct access to developers and honest project information without the sales-centre pressure.</p>
-
-  <p><strong>450+ families \u00b7 $200M+ in new homes \u00b7 140+ projects \u00b7 5 years \u00b7 4.9\u2605 from 36 reviews \u00b7 only 2 defaults.</strong></p>
-  <p><a href="${SITE}/call">Book a free 15-minute strategy call</a> \u00b7 <a href="${SITE}/services">See how I work</a></p>
-</article>
-`.trim();
-  const bcLd = jsonLd(breadcrumb("About Uzair Muhammad", "/about"));
-  return body + bcLd;
-})();
-
-
 const STATIC_BODY: Record<string, string> = {
   "/": `<h1>Uzair Muhammad — Fraser Valley's Leading Presale &amp; New-Construction Expert</h1><p>Looking to buy a presale condo, townhome, or new-construction home in the Fraser Valley? Uzair Muhammad is a buyer-only presale specialist who represents buyers — never developers — across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, Chilliwack and Maple Ridge.</p><h2>Why buy new construction with Uzair</h2><ul><li>VIP early access to new projects before the general public, with developer incentives.</li><li>Line-by-line contract review to protect your deposit and your rights.</li><li>No developer bias — buyer-only representation, at no cost to you.</li><li>Strategy for both first-time buyers and investors, including assignments and taxes.</li></ul>`,
-  "/about": ABOUT_BODY,
+  "/about": `<h1>About Uzair Muhammad</h1><p>Uzair Muhammad spent a decade with the City of Surrey in planning and bylaws before becoming a buyer-only presale and new-construction specialist. He is the founder of the Vancouver Presale Expo and has helped 450+ buyers and investors purchase over $200M in new homes across Metro Vancouver and the Fraser Valley.</p>`,
   "/services": `<h1>Buyer-Only Presale &amp; New-Construction Services</h1><p>Uzair represents buyers only. Services include VIP early access to new-construction projects, line-by-line contract and disclosure-statement review, deposit-structure and assignment guidance, and independent advice for first-time buyers and investors — with no developer bias.</p>`,
   "/contact": `<h1>Contact Uzair Muhammad</h1><p>Book a free, no-pressure presale strategy call. Buyer-only advice for first-time buyers and investors buying new construction in the Fraser Valley, in English, Punjabi, Hindi and Urdu. <a href="${SITE}/call">Book a call</a>.</p>`,
   "/call": `<h1>Book a Free Presale Strategy Call</h1><p>Schedule a free 15-minute presale strategy call with Uzair Muhammad — buyer-only guidance for first-time buyers and investors across the Fraser Valley.</p>`,
@@ -520,7 +471,7 @@ export async function resolve(pathname: string, env: Record<string, string | und
     const f = FUNNEL[path];
     return { meta: { title: f.title, description: f.description, image: funnelImage(path) }, body: funnelBody(path) + ABOUT_BLOCK };
   }
-  if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + (path === "/about" ? "" : ABOUT_BLOCK) };
+  if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");
     const cityImage = `${SITE}/images/heroes/${citySlug}-hero.jpg`;
@@ -593,25 +544,17 @@ export async function resolve(pathname: string, env: Record<string, string | und
 class AttrSetter { attr: string; value: string; constructor(a: string, v: string) { this.attr = a; this.value = v; } element(el: any) { el.setAttribute(this.attr, this.value); } }
 class TextSetter { text: string; constructor(t: string) { this.text = t; } element(el: any) { el.setInnerContent(this.text); } }
 class RootInjector { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.setInnerContent(this.html, { html: true }); } }
-
-function normalizePath(pathname: string): string {
-  return pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
-}
-
-function shouldRewriteHtml(pathname: string, ua: string): boolean {
-  if (BOT_RE.test(ua)) return true;
-  const path = normalizePath(pathname);
-  return Boolean(STATIC_META[path] || CITY_META[path] || FUNNEL[path]);
-}
+class HeadAppender { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.append(this.html, { html: true }); } }
 
 export const onRequest: any = async (context: any) => {
   const { request, next, env } = context;
   if (request.method !== "GET") return next();
+  const ua = request.headers.get("user-agent") || "";
+  if (!BOT_RE.test(ua)) return next();
+
   const url = new URL(request.url);
   if (ASSET_RE.test(url.pathname)) return next();
   if (url.pathname.startsWith("/assets/") || url.pathname.startsWith("/api/") || url.pathname.startsWith("/functions/") || url.pathname.startsWith("/admin")) return next();
-  const ua = request.headers.get("user-agent") || "";
-  if (!shouldRewriteHtml(url.pathname, ua)) return next();
 
   try {
     const resolved = await resolve(url.pathname, env);
@@ -627,13 +570,11 @@ export const onRequest: any = async (context: any) => {
       .on('meta[property="og:title"]', new AttrSetter("content", meta.title))
       .on('meta[property="og:description"]', new AttrSetter("content", meta.description))
       .on('meta[property="og:image"]', new AttrSetter("content", meta.image))
-      .on('meta[property="og:image:width"]', new AttrSetter("content", "1200"))
-      .on('meta[property="og:image:height"]', new AttrSetter("content", "630"))
       .on('meta[property="og:url"]', new AttrSetter("content", canonical))
       .on('meta[name="twitter:title"]', new AttrSetter("content", meta.title))
       .on('meta[name="twitter:description"]', new AttrSetter("content", meta.description))
       .on('meta[name="twitter:image"]', new AttrSetter("content", meta.image))
-      .on('link[rel="canonical"]', new AttrSetter("href", canonical))
+      .on("head", new HeadAppender(`<link rel="canonical" href="${canonical}">`))
       .on("#root", new RootInjector(body));
     if (resolved.robots) rw = rw.on('meta[name="robots"]', new AttrSetter("content", resolved.robots));
     return rw.transform(res);

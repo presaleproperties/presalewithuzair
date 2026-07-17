@@ -96,7 +96,7 @@ export const DifferentiationSection = () => {
         </div>
 
         {/* Featured statement — asymmetric quote-style card */}
-        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card">
+        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card transition-all duration-300 hover:shadow-glow focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background">
           <div className="absolute inset-0 opacity-[0.04]" aria-hidden>
             <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
           </div>

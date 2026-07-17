@@ -30,10 +30,20 @@ const HOMEPAGE_FAQS: FAQItem[] = [
 
 export const HomeFAQSection = () => {
   return (
-    <section className="bg-background py-20 sm:py-28">
+    <section className="bg-card py-20 sm:py-28 border-t border-border/40">
       <div className="container-xl px-5 sm:px-8 lg:px-16">
         <div className="max-w-3xl mx-auto">
-          <FAQSchema faqs={HOMEPAGE_FAQS} heading="Presale Questions, Answered" />
+          <div className="text-center mb-12 sm:mb-16">
+            <p className="section-label mb-3 sm:mb-4">Questions, Answered</p>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+              The questions buyers ask before they sign.
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed">
+              Straight answers on deposits, cancellations, assignments, and whether presale is actually the right move for you.
+            </p>
+            <div className="mt-8 mx-auto h-px w-16 bg-primary/40" />
+          </div>
+          <FAQSchema faqs={HOMEPAGE_FAQS} heading="" />
         </div>
       </div>
     </section>

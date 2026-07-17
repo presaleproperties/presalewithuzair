@@ -151,6 +151,12 @@ export const HeroSection = () => {
                 ))}
               </div>
 
+              {/* Authority strip */}
+              <p className="text-sm text-foreground/60 animate-fade-up">
+                450+ units sold · $200M+ in new construction · 5 years presale only · 4.9★ from 36 Google reviews
+              </p>
+
+
               {/* Proof bar */}
               <ul className="flex flex-wrap gap-x-5 gap-y-2 pt-2 animate-fade-up text-sm text-foreground/70 font-medium">
                 {proofBar.map((item) => (

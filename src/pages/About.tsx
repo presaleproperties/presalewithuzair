@@ -34,14 +34,14 @@ const cities = [
   "The broader Fraser Valley",
 ];
 
-const buyerSideChoices = [
-  "Wait.",
-  "Compare another city.",
-  "Choose a different floor plan.",
-  "Don't stretch that far.",
-  "Get financing clarity first.",
-  "Review the contract before committing.",
-  "This project isn't the right fit for your goal.",
+const buyerUnderstand = [
+  "Which presale projects are worth shortlisting",
+  "Which floor plans are easier to live in, rent, or resell",
+  "What the deposit structure actually means",
+  "What costs may show up at completion",
+  "What incentives are real and what is just marketing",
+  "What to ask before signing a developer contract",
+  "Whether Surrey, Langley, Delta, South Surrey, or Abbotsford fits your goal better",
 ];
 
 const About = () => {
@@ -82,11 +82,20 @@ const About = () => {
                 I help buyers make better presale decisions <span className="text-gradient">before they sign.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                My focus is simple: buyer-side presale and new-construction guidance across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
+                I'm Uzair Muhammad, a Surrey-raised presale and new-construction advisor helping buyers compare condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
               </p>
               <p className="mt-4 text-lg text-foreground/70 animate-fade-up delay-300">
-                That means I help you compare projects, understand tradeoffs, ask better questions, and avoid buying only because a sales centre made a project feel urgent.
+                My job is simple: help you understand the project, the contract, the risks, and the real tradeoffs before you commit.
               </p>
+              <p className="mt-4 text-base italic text-foreground/60 animate-fade-up delay-300">
+                Before you walk into a developer sales centre, talk to someone who works for you.
+              </p>
+              <div className="mt-8 animate-fade-up delay-300">
+                <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
+                  <Phone className="h-4 w-4" />
+                  Book a Buyer Strategy Call
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -116,13 +125,11 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    I was born in Pakistan and raised in Surrey. I spent 10 years with the City of Surrey in planning and bylaws — reading development applications, zoning, and building plans — before moving into real estate after COVID.
+                    I was born in Pakistan and raised in Surrey. Before real estate, I spent 10 years with the City of Surrey in planning and bylaws, reviewing development applications, zoning, and building plans.
                   </p>
+                  <p>That background is why I read presales differently.</p>
                   <p>
-                    That decade is why I read a project differently. When a presale launches, I look at what has actually been approved and what the contract actually commits the developer to — not the rendering.
-                  </p>
-                  <p>
-                    When I started in real estate I made one rule I've never broken: I represent buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
+                    When a project launches, I'm not just looking at the rendering, the incentives, or the sales pitch. I'm looking at what has actually been approved, what the floor plan really offers, what the contract says, and whether the project makes sense for your goal.
                   </p>
                   <p>
                     I also lead{" "}
@@ -134,10 +141,7 @@ const About = () => {
                     >
                       The Presale Properties Group
                     </a>
-                    , a team of agents working the Fraser Valley presale market. We cover Surrey, Langley, Abbotsford, Delta, Coquitlam, and Burnaby South, and work in English, Punjabi, Hindi, and Urdu.
-                  </p>
-                  <p>
-                    I founded the Vancouver Presale Expo. I'm a father of two and I live in the community I sell in.
+                    , a team of agents working the Fraser Valley presale market in English, Punjabi, Hindi, and Urdu.
                   </p>
                 </div>
 
@@ -152,34 +156,42 @@ const About = () => {
           </div>
         </section>
 
-        {/* Why I focus on presale + My buyer-side approach */}
+        {/* Buyer-side only */}
         <section className="py-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Why I focus on presale
+                Buyer-side only.
               </h2>
               <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                 <p>
-                  Presale is one of the most misunderstood parts of real estate. The display suite looks finished. The renderings look beautiful. The incentives sound limited. The sales team is polished.
+                  When I moved into real estate after COVID, I made one rule: I represent buyers, not developers.
                 </p>
+                <p>That means my advice is built around your side of the decision.</p>
                 <p>
-                  But the buyer still has to understand the deposit, timeline, floor plan, contract, financing, taxes, developer, completion risk, and future resale demand. That's where I help.
+                  If a project makes sense, I'll tell you why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you that too.
                 </p>
+                <p className="font-semibold text-foreground">A missed bad deal is still a win.</p>
               </div>
+            </div>
+          </div>
+        </section>
 
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mt-14 mb-6 leading-tight">
-                My buyer-side approach
+        {/* What I help buyers understand */}
+        <section className="py-20 bg-background">
+          <div className="container-xl">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                What I help buyers understand
               </h2>
-              <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
-                <p>I don't believe every launch is worth buying. Sometimes the best advice I can give is:</p>
-                <ul className="list-disc pl-6 space-y-1">
-                  {buyerSideChoices.map((c) => (
-                    <li key={c}>{c}</li>
-                  ))}
-                </ul>
-                <p>Good advice should protect the buyer, not just close the deal.</p>
-              </div>
+              <ul className="grid gap-3 text-foreground/80 text-lg">
+                {buyerUnderstand.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

@@ -215,7 +215,7 @@ const Agents = () => {
         </section>
 
         {/* Proof Stats */}
-        <section className="py-10 sm:py-12 md:py-16 bg-card border-y border-border">
+        <section className="section-y-sm bg-card border-y border-border">
           <div className="container-xl px-4 sm:px-6">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
               <div>
@@ -239,7 +239,7 @@ const Agents = () => {
         </section>
 
         {/* Day 1 Curriculum */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-16">
               <p className="section-label mb-3 sm:mb-4">Day 1 Curriculum</p>
@@ -277,7 +277,7 @@ const Agents = () => {
         </section>
 
         {/* Day 2 Curriculum */}
-        <section className="py-16 md:py-20 lg:py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-16">
               <p className="section-label mb-3 sm:mb-4">Day 2 Curriculum</p>
@@ -315,7 +315,7 @@ const Agents = () => {
         </section>
 
         {/* About Uzair */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="max-w-3xl mx-auto">
               <p className="section-label mb-3 sm:mb-4 text-center">Founder & Coach</p>
@@ -352,7 +352,7 @@ const Agents = () => {
         </section>
 
         {/* Contact Form */}
-        <section className="py-16 md:py-20 lg:py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl px-4 sm:px-6">
             <div className="max-w-2xl mx-auto">
               <AgentContactForm />
@@ -361,7 +361,7 @@ const Agents = () => {
         </section>
 
         {/* Final CTA */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">

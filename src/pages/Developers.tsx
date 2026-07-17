@@ -185,7 +185,7 @@ const Developers = () => {
         </section>
 
         {/* Trust Stats Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-card border-y border-border">
+        <section className="section-y bg-card border-y border-border">
           <div className="container-xl px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-14">
               <p className="section-label mb-3">Track Record</p>
@@ -242,7 +242,7 @@ const Developers = () => {
 
 
         {/* Why Developers Work With Me */}
-        <section id="why-developers" className="py-16 md:py-24 lg:py-32 bg-background">
+        <section id="why-developers" className="section-y-lg bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="max-w-3xl">
               <p className="section-label mb-3 sm:mb-4">The Challenge</p>
@@ -266,7 +266,7 @@ const Developers = () => {
         </section>
 
         {/* What I Advise On */}
-        <section className="py-16 md:py-24 lg:py-32 bg-card">
+        <section className="section-y-lg bg-card">
           <div className="container-xl px-4 sm:px-6">
             <div className="mb-12 md:mb-16">
               <p className="section-label mb-3 sm:mb-4">Advisory Focus</p>
@@ -302,7 +302,7 @@ const Developers = () => {
         </section>
 
         {/* Independent Advisory Positioning */}
-        <section className="py-16 md:py-24 lg:py-32 bg-background">
+        <section className="section-y-lg bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
@@ -345,7 +345,7 @@ const Developers = () => {
         </section>
 
         {/* Who This Is For */}
-        <section className="py-16 md:py-24 lg:py-32 bg-card">
+        <section className="section-y-lg bg-card">
           <div className="container-xl px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
@@ -391,7 +391,7 @@ const Developers = () => {
         </section>
 
         {/* Final CTA Section */}
-        <section className="dark-section relative py-20 md:py-28 lg:py-36 bg-background overflow-hidden">
+        <section className="dark-section relative section-y-lg bg-background overflow-hidden">
           {/* Subtle blue glow effects */}
           <div className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none">
             <div className="absolute bottom-10 left-[15%] w-24 h-24 md:w-40 md:h-40 rounded-full bg-primary/12 blur-3xl" />

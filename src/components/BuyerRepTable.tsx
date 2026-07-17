@@ -22,7 +22,7 @@ export const BuyerRepTable = ({
   heading = "Developer's Sales Rep vs Your Buyer's Agent",
 }: Props) => {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="section-y-sm">
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 sm:mb-8">
           <p className="section-label mb-3">Side by Side</p>

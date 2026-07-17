@@ -3,7 +3,7 @@ import { CheckCircle, Clock, Shield, Languages } from "lucide-react";
 
 export const BookingContextSection = () => {
   return (
-    <section id="book-section" className="py-16 sm:py-24 bg-background relative overflow-hidden">
+    <section id="book-section" className="section-y bg-background relative overflow-hidden">
       {/* Subtle blue glow effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-[5%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/8 blur-3xl" />

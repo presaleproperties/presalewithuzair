@@ -412,7 +412,7 @@ export const SocialProofSection = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-card">
+    <section className="section-y bg-card">
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       </Helmet>

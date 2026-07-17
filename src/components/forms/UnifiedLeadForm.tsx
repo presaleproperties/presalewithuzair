@@ -6,6 +6,7 @@ import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { readFunctionError } from "@/lib/functionError";
 
 const formSchema = z.object({
   fullName: z.string().trim().min(1, "Name is required").max(100),
@@ -102,6 +103,7 @@ export const UnifiedLeadForm = ({
   const [trackingData, setTrackingData] = useState(getTrackingData());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const { toast } = useToast();
 
   useEffect(() => {
@@ -120,11 +122,44 @@ export const UnifiedLeadForm = ({
     return () => window.removeEventListener("hashchange", checkHash);
   }, []);
 
+  const updateField = <K extends keyof FormData>(key: K, value: FormData[K]) => {
+    setFormData((prev) => ({ ...prev, [key]: value }));
+    if (fieldErrors[key]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  };
+
+  const scrollFieldIntoView = (e: React.FocusEvent<HTMLElement>) => {
+    // Mobile keyboards cover inputs — nudge them into view after the keyboard opens.
+    if (typeof window === "undefined" || window.innerWidth >= 768) return;
+    const el = e.currentTarget;
+    window.setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 300);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const validation = formSchema.safeParse(formData);
     if (!validation.success) {
+      const errors: Partial<Record<keyof FormData, string>> = {};
+      for (const issue of validation.error.errors) {
+        const key = issue.path[0] as keyof FormData;
+        if (key && !errors[key]) errors[key] = issue.message;
+      }
+      setFieldErrors(errors);
+      // Focus the first invalid field so mobile users see what's wrong.
+      const firstKey = Object.keys(errors)[0];
+      if (firstKey) {
+        const el = document.getElementById(`ulc-${firstKey}`) as HTMLElement | null;
+        el?.focus?.();
+        el?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      }
       toast({
         title: "Please check your information",
         description: validation.error.errors[0].message,
@@ -133,6 +168,7 @@ export const UnifiedLeadForm = ({
       return;
     }
 
+    setFieldErrors({});
     setIsSubmitting(true);
 
     try {
@@ -150,7 +186,10 @@ export const UnifiedLeadForm = ({
         },
       });
 
-      if (error) throw new Error(error.message || "Failed to submit");
+      if (error) {
+        const msg = await readFunctionError(error);
+        throw new Error(msg);
+      }
 
       // GA4 conversion event
       try {
@@ -172,7 +211,7 @@ export const UnifiedLeadForm = ({
       console.error("Form submission error:", err);
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: err instanceof Error ? err.message : "Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -245,11 +284,17 @@ export const UnifiedLeadForm = ({
             type="text"
             placeholder="Your full name"
             value={formData.fullName}
-            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("fullName", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.fullName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="name"
+            aria-invalid={!!fieldErrors.fullName}
+            aria-describedby={fieldErrors.fullName ? "ulc-fullName-error" : undefined}
             required
           />
+          {fieldErrors.fullName && (
+            <p id="ulc-fullName-error" className="mt-1 text-xs text-destructive">{fieldErrors.fullName}</p>
+          )}
         </div>
 
         <div>
@@ -258,13 +303,20 @@ export const UnifiedLeadForm = ({
             id="ulc-email"
             name="email"
             type="email"
+            inputMode="email"
             placeholder="you@email.com"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("email", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.email ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="email"
+            aria-invalid={!!fieldErrors.email}
+            aria-describedby={fieldErrors.email ? "ulc-email-error" : undefined}
             required
           />
+          {fieldErrors.email && (
+            <p id="ulc-email-error" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
+          )}
         </div>
 
         <div>
@@ -273,22 +325,33 @@ export const UnifiedLeadForm = ({
             id="ulc-phone"
             name="phone"
             type="tel"
+            inputMode="tel"
             placeholder="(604) 555-1234"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("phone", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.phone ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="tel"
+            aria-invalid={!!fieldErrors.phone}
+            aria-describedby={fieldErrors.phone ? "ulc-phone-error" : undefined}
             required
           />
+          {fieldErrors.phone && (
+            <p id="ulc-phone-error" className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-buyerType" className={labelClasses}>I am a... *</label>
           <Select
             value={formData.buyerType}
-            onValueChange={(value) => setFormData({ ...formData, buyerType: value })}
+            onValueChange={(value) => updateField("buyerType", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-buyerType"
+              className={`${inputClasses} ${fieldErrors.buyerType ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.buyerType}
+            >
               <SelectValue placeholder="Select one" />
             </SelectTrigger>
             <SelectContent>
@@ -297,15 +360,22 @@ export const UnifiedLeadForm = ({
               <SelectItem value="seller">Seller</SelectItem>
             </SelectContent>
           </Select>
+          {fieldErrors.buyerType && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.buyerType}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-budget" className={labelClasses}>Budget *</label>
           <Select
             value={formData.budget}
-            onValueChange={(value) => setFormData({ ...formData, budget: value })}
+            onValueChange={(value) => updateField("budget", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-budget"
+              className={`${inputClasses} ${fieldErrors.budget ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.budget}
+            >
               <SelectValue placeholder="Select your budget" />
             </SelectTrigger>
             <SelectContent>
@@ -316,15 +386,22 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.budget && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.budget}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-timeline" className={labelClasses}>When are you looking to buy? *</label>
           <Select
             value={formData.timeline}
-            onValueChange={(value) => setFormData({ ...formData, timeline: value })}
+            onValueChange={(value) => updateField("timeline", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-timeline"
+              className={`${inputClasses} ${fieldErrors.timeline ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.timeline}
+            >
               <SelectValue placeholder="Select your timeline" />
             </SelectTrigger>
             <SelectContent>
@@ -335,15 +412,22 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.timeline && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.timeline}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-leadSource" className={labelClasses}>How did you find me? *</label>
           <Select
             value={formData.leadSource}
-            onValueChange={(value) => setFormData({ ...formData, leadSource: value })}
+            onValueChange={(value) => updateField("leadSource", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-leadSource"
+              className={`${inputClasses} ${fieldErrors.leadSource ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.leadSource}
+            >
               <SelectValue placeholder="Select one" />
             </SelectTrigger>
             <SelectContent>
@@ -354,8 +438,13 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.leadSource && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.leadSource}</p>
+          )}
         </div>
         </div>
+
+
 
 
         <Button

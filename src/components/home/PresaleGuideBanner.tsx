@@ -5,6 +5,7 @@ import { Loader2, CheckCircle, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
+import { readFunctionError } from "@/lib/functionError";
 import guideCover from "@/assets/presale-guide-cover.png";
 
 const formSchema = z.object({
@@ -52,7 +53,10 @@ export const PresaleGuideBanner = () => {
           landingPage: window.location.pathname,
         },
       });
-      if (error) throw new Error(error.message);
+      if (error) {
+        const msg = await readFunctionError(error);
+        throw new Error(msg);
+      }
       setIsSuccess(true);
 
       // Trigger immediate PDF download
@@ -62,10 +66,10 @@ export const PresaleGuideBanner = () => {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch {
+    } catch (err) {
       toast({
         title: "Something went wrong",
-        description: "Please try again.",
+        description: err instanceof Error ? err.message : "Please try again.",
         variant: "destructive",
       });
     } finally {

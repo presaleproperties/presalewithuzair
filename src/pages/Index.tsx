@@ -72,14 +72,6 @@ const Index = () => {
           <SocialProofSection />
         </Suspense>
         
-        <Suspense fallback={<SectionFallback />}>
-          <MidPageCTA 
-            quote="Now I see why he's called the presale expert. Uzair's relationships with developers helped us secure the best unit in the building at an incredible price. His transparency and guidance helped our family find our first home in just two weeks."
-            clientName="Ray"
-            clientRole="First-Time Buyer"
-            clientPhoto={rayPhoto}
-          />
-        </Suspense>
         
         <Suspense fallback={<SectionFallback />}>
           <DifferentiationSection />

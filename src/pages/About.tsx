@@ -34,14 +34,14 @@ const cities = [
   "The broader Fraser Valley",
 ];
 
-const buyerSideChoices = [
-  "Wait.",
-  "Compare another city.",
-  "Choose a different floor plan.",
-  "Don't stretch that far.",
-  "Get financing clarity first.",
-  "Review the contract before committing.",
-  "This project isn't the right fit for your goal.",
+const buyerUnderstand = [
+  "Which presale projects are worth shortlisting",
+  "Which floor plans are easier to live in, rent, or resell",
+  "What the deposit structure actually means",
+  "What costs may show up at completion",
+  "What incentives are real and what is just marketing",
+  "What to ask before signing a developer contract",
+  "Whether Surrey, Langley, Delta, South Surrey, or Abbotsford fits your goal better",
 ];
 
 const About = () => {

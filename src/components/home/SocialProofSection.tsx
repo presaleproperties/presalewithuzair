@@ -344,7 +344,7 @@ export const SocialProofSection = () => {
                     ))}
                   </div>
 
-                  <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-7 flex-1">
+                  <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1">
                     “{highlightKeywords(testimonial.quote)}”
                   </p>
                   <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
@@ -401,7 +401,7 @@ export const SocialProofSection = () => {
                   }`}
                 />
 
-                <p className="text-sm lg:text-[15px] text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-7 flex-1">
+                <p className="text-sm lg:text-[15px] text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1">
                   “{highlightKeywords(testimonial.quote)}”
                 </p>
                 <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>

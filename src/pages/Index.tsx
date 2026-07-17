@@ -10,7 +10,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
 const DifferentiationSection = lazy(() => import("@/components/home/DifferentiationSection").then(m => ({ default: m.DifferentiationSection })));
 const ProcessSection = lazy(() => import("@/components/home/ProcessSection").then(m => ({ default: m.ProcessSection })));
-const MidPageCTA = lazy(() => import("@/components/home/MidPageCTA").then(m => ({ default: m.MidPageCTA })));
+
 const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
 
 

@@ -10,7 +10,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Why work with a buyer-only presale specialist?",
     answer:
-      "Because the person at the sales centre is paid by the developer. A buyer-only realtor is paid by the developer too — but represents you. My job is to review the contract, negotiate incentives, and tell you honestly when a project is a bad deal. Zero cost to you.",
+      "Because the person at the sales centre is paid by the developer. A buyer-only realtor represents you instead. For many presale projects that representation is paid through the project's sales structure, so it typically costs the buyer nothing — I'll confirm exactly how it works on your specific project.",
   },
   {
     question: "What languages do you work in?",
@@ -76,7 +76,7 @@ const BestPresaleRealtor = () => {
       >
         <h2>Why me — and why buyer-only?</h2>
         <p>
-          Almost every realtor sells presales occasionally. I've built a full-time practice on it. My commission is paid by the developer out of the price you'd pay anyway, and I represent you — never the builder. I don't promote or hype projects; I don't work for developers. Most realtors push every launch to build leverage with developers, but that turns them into a marketing channel instead of an advisor. I represent buyers only. That means I lose deals when a project doesn't pencil out. That's the job.
+          Almost every realtor sells presales occasionally. I've built a full-time practice on it. For many presale projects my commission is paid through the project's sales structure, and I represent you — never the builder. I'll explain exactly how it works on your project before you move forward. I don't promote or hype projects; I don't work for developers. Most realtors push every launch to build leverage with developers, but that turns them into a marketing channel instead of an advisor. I represent buyers only. That means I lose deals when a project doesn't pencil out. That's the job.
         </p>
 
         <h2>Track record</h2>

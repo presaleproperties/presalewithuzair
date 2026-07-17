@@ -4,13 +4,15 @@ import { GoogleRatingBadge } from "@/components/home/GoogleRatingBadge";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "Fraser Valley's Leading Presale Expert.",
-  subheadline: "450+ Units Sold · $200M+ in Sales Volume",
-  body: "Before the public. At the best price. No developer bias — ever. I secure VIP access, negotiate your terms, and review every contract so you're protected from day one.",
-  supportingLine: "Buyer-only representation. Always in your corner.",
-  cta: "Let's Connect",
-  trustBar: "Available: English, Punjabi, Hindi & Urdu."
+  headline: "Uzair Muhammad helps Fraser Valley buyers purchase presale condos and townhomes.",
+  subheadline: "First-time buyers and investors in Surrey, Langley, Abbotsford and across the Fraser Valley.",
+  body: "Uzair represents buyers only, never developers. The developer pays his fee, so his help costs the buyer nothing. He works in Punjabi, Hindi, Urdu and English.",
+  supportingLine: "",
+  cta: "Book a free 15-minute call",
+  trustBar: "Punjabi · Hindi · Urdu · English"
 };
+const audienceChips = ["First-time buyers", "Investors", "Families buying together"];
+const proofBar = ["450+ units sold", "$200M+ in sales", "4.9★ from 36 Google reviews", "$0 cost to the buyer"];
 export const HeroSection = () => {
   const handleBookClick = () => {
     document.getElementById('book-section')?.scrollIntoView({

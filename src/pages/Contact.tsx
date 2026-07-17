@@ -41,7 +41,7 @@ const Contact = () => {
             "mainEntity": {
               "@type": "Person",
               "name": "Uzair Muhammad",
-              "telephone": "+1-672-258-1100",
+              "telephone": "+1-778-231-3592",
               "email": "info@meetuzair.com",
               "address": {
                 "@type": "PostalAddress",
@@ -64,10 +64,10 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="font-display text-5xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100">
-                Have <span className="text-gradient">Questions</span>? Let's Talk.
+                Let's find the right presale <span className="text-gradient">before you commit.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Not sure if a presale makes sense right now? Have concerns about a specific developer? Reach out. I'm here to provide honest, unfiltered guidance.
+                If you're thinking about a presale condo, townhome, or new-construction home, start here. Send me your budget, preferred cities, timeline, and whether you're buying to live in or invest. I'll help you understand what's worth looking at — and what's worth avoiding.
               </p>
             </div>
           </div>
@@ -159,12 +159,20 @@ const Contact = () => {
                 </div>
                 <div className="p-8 lg:p-12">
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6">
-                  Get Clear Guidance
+                  What to include when you reach out
                 </h3>
-                <p className="text-foreground/70 mb-8">
-                  Whether you're exploring your first presale or have questions about a specific project, 
-                  I'm here to provide honest advice — not a sales pitch.
+                <p className="text-foreground/70 mb-6">
+                  A few details help me give you a useful answer instead of a generic one:
                 </p>
+                <ul className="text-foreground/80 space-y-1.5 mb-8 list-disc pl-5 text-sm">
+                  <li>Your budget</li>
+                  <li>Preferred city or cities</li>
+                  <li>Condo, townhome, or detached</li>
+                  <li>First-time buyer, investor, or move-up</li>
+                  <li>Ideal move-in timeline</li>
+                  <li>Any projects you're already considering</li>
+                  <li>Whether you've registered with a sales centre</li>
+                </ul>
 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3 text-foreground/80">

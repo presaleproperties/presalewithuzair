@@ -66,10 +66,10 @@ const About = () => {
             <div className="max-w-3xl">
               <p className="section-label mb-4 animate-fade-up">Meet Uzair Muhammad</p>
               <h1 className="font-display text-4xl lg:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-tight">
-                Uzair Muhammad represents presale buyers. <span className="text-gradient">Only buyers. Never developers.</span>
+                I help buyers make better presale decisions <span className="text-gradient">before they sign.</span>
               </h1>
               <p className="mt-6 text-xl text-foreground/80 animate-fade-up delay-200">
-                Born in Pakistan. Raised in Surrey. 10 years at the City of Surrey in planning and bylaws before real estate. 450+ units sold. $200M+. Works in Punjabi, Hindi, Urdu and English.
+                Born in Pakistan. Raised in Surrey. 10 years at the City of Surrey in planning and bylaws before real estate. 450+ units sold. $200M+ in new construction. I work in Punjabi, Hindi, Urdu, and English.
               </p>
             </div>
           </div>
@@ -88,7 +88,6 @@ const About = () => {
                     priority
                   />
                 </div>
-                {/* Stats overlay */}
                 <div className="absolute -bottom-8 -right-8 bg-card rounded-xl p-6 border border-border shadow-lg">
                   <p className="text-4xl font-display font-bold text-gradient">450+</p>
                   <p className="text-sm text-muted-foreground">Units Sold</p>
@@ -101,16 +100,16 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed">
                   <p>
-                    Uzair Muhammad was born in Pakistan and raised in Surrey. He spent 10 years with the City of Surrey in planning and bylaws, reading development applications, zoning and building plans, before moving into real estate after COVID.
+                    I was born in Pakistan and raised in Surrey. I spent 10 years with the City of Surrey in planning and bylaws — reading development applications, zoning, and building plans — before moving into real estate after COVID.
                   </p>
                   <p>
-                    That decade is why he reads a project differently. When a presale launches, Uzair looks at what has actually been approved and what the contract actually commits the developer to — not the rendering.
+                    That decade is why I read a project differently. When a presale launches, I look at what has actually been approved and what the contract actually commits the developer to — not the rendering.
                   </p>
                   <p>
-                    When he started in real estate he made one rule he has never broken: he represents buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
+                    When I started in real estate I made one rule I've never broken: I represent buyers, never developers. Not once, across 450+ units and more than $200M in new-construction sales.
                   </p>
                   <p>
-                    Uzair also leads{" "}
+                    I also lead{" "}
                     <a
                       href="https://presaleproperties.com"
                       target="_blank"
@@ -119,10 +118,10 @@ const About = () => {
                     >
                       The Presale Properties Group
                     </a>
-                    , a team of agents working the Fraser Valley presale market. The team covers Surrey, Langley, Abbotsford, Delta, Coquitlam and Burnaby South, and works in English, Punjabi, Hindi and Urdu.
+                    , a team of agents working the Fraser Valley presale market. We cover Surrey, Langley, Abbotsford, Delta, Coquitlam, and Burnaby South, and work in English, Punjabi, Hindi, and Urdu.
                   </p>
                   <p>
-                    He works in Punjabi, Hindi, Urdu and English. He founded the Vancouver Presale Expo. He is a father of two and lives in the community he sells in.
+                    I founded the Vancouver Presale Expo. I'm a father of two and live in the community I sell in.
                   </p>
                 </div>
 
@@ -134,7 +133,7 @@ const About = () => {
                     onClick={handleCTA}
                   >
                     <Phone className="h-4 w-4" />
-                    Book a free 15-minute call
+                    Book a Buyer Strategy Call
                   </Button>
                 </div>
               </div>
@@ -142,23 +141,37 @@ const About = () => {
           </div>
         </section>
 
-        {/* Why families send Uzair their relatives */}
-        <section className="py-20 bg-background">
+        {/* Why I focus on presale */}
+        <section className="py-20 bg-card">
           <div className="container-xl">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Why families send Uzair their relatives
+                Why I focus on presale
               </h2>
               <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                 <p>
-                  Most of Uzair's clients are South Asian, and many are the first in their family to buy a home in Canada. There is no family playbook to follow.
+                  Presale is one of the most misunderstood parts of real estate. The display suite looks finished. The renderings look beautiful. The incentives sound limited. The sales team is polished.
                 </p>
                 <p>
-                  The deposit is often a family decision, and the people funding it frequently do not speak English. Uzair explains the contract to the parents in Punjabi, Hindi or Urdu.
+                  But the buyer still has to understand the deposit, timeline, floor plan, contract, financing, taxes, developer, completion risk, and future resale demand. That's where I help.
                 </p>
-                <p>
-                  Most of his business comes from referrals by families he has already sat down with.
-                </p>
+              </div>
+
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mt-14 mb-6 leading-tight">
+                My buyer-side approach
+              </h2>
+              <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
+                <p>I don't believe every launch is worth buying. Sometimes the best advice is:</p>
+                <ul className="list-disc pl-6 space-y-1">
+                  <li>Wait.</li>
+                  <li>Compare another city.</li>
+                  <li>Choose a different floor plan.</li>
+                  <li>Don't stretch that far.</li>
+                  <li>Get financing clarity first.</li>
+                  <li>Review the contract before committing.</li>
+                  <li>This project isn't the right fit for your goal.</li>
+                </ul>
+                <p>Good advice should protect the buyer, not just close the deal.</p>
               </div>
             </div>
           </div>
@@ -308,13 +321,10 @@ const About = () => {
                   Community <span className="text-gradient">Leader</span>
                 </h2>
                 <p className="text-foreground/80 leading-relaxed mb-6">
-                  Uzair is on a mission to revolutionize presales, give back, and share his formula 
-                  for success to enable and motivate other real estate agents.
+                  I'm on a mission to raise the standard for presale buyers, give back to the community, and share what I've learned with other real estate agents.
                 </p>
                 <p className="text-foreground/80 leading-relaxed mb-8">
-                  He is the founder of Vancouver's Largest Presale Expo for real estate agents and 
-                  developers. Vancouver Presale Expo 2024 was a launchpad for groundbreaking presale 
-                  projects and invaluable training for 1,000+ realtors.
+                  I founded the Vancouver Presale Expo, one of BC's largest events for presale agents and developers. Vancouver Presale Expo 2024 was a launchpad for groundbreaking presale projects and delivered training for 1,000+ realtors.
                 </p>
                 <Button variant="outline" size="lg" className="gap-2" asChild>
                   <a href="https://vancouverpresaleexpo.com/" target="_blank" rel="noopener noreferrer">

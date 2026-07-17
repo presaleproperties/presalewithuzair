@@ -31,9 +31,9 @@ const PunjabiSpeakingRealtor = () => (
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
-    <h2>The deposit is usually a family decision. The contract is usually only in English.</h2>
+    <h2>The contract is explained in Punjabi — not just English.</h2>
     <p>
-      In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in Punjabi. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.
+      The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi. Uzair works in Punjabi, Hindi, Urdu, and English. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.
     </p>
 
     <h2>What Uzair does for Punjabi speaking buyers</h2>

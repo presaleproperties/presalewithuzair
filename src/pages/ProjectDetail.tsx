@@ -521,7 +521,7 @@ const ProjectDetail = () => {
         )}
 
         {/* ── Content + Lead Form ── */}
-        <section className="container-xl px-5 sm:px-8 lg:px-16 py-12 md:py-16">
+        <section className="container-xl px-5 sm:px-8 lg:px-16 section-y-sm">
           <div className="grid lg:grid-cols-[1fr_380px] gap-10 lg:gap-16">
             {/* Left — Content */}
             <div className="space-y-12">
@@ -655,7 +655,7 @@ const ProjectDetail = () => {
         <RelatedProjects city={project.city} currentSlug={project.slug} />
 
         {/* ── Browse marketplace ── */}
-        <section className="py-12 border-t border-border/40 bg-muted/20">
+        <section className="section-y-sm border-t border-border/40 bg-muted/20">
           <div className="container-xl px-5 sm:px-8 lg:px-16 text-center">
             <p className="text-sm uppercase tracking-[0.2em] text-foreground/50 mb-2">Explore more</p>
             <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
@@ -702,7 +702,7 @@ const RelatedProjects = ({ city, currentSlug }: { city: string | null; currentSl
   if (related.length === 0) return null;
 
   return (
-    <section className="py-16 border-t border-border/70 bg-gradient-to-b from-background to-card/30">
+    <section className="section-y border-t border-border/70 bg-gradient-to-b from-background to-card/30">
       <div className="container-xl px-5 sm:px-8 lg:px-16">
         <div className="flex items-end justify-between mb-8">
           <div>

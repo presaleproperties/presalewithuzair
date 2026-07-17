@@ -177,7 +177,7 @@ const Blog = () => {
         </section>
 
         {/* ── Articles ── */}
-        <section className="py-12 pb-20 bg-background">
+        <section className="section-y-sm pb-20 bg-background">
           <div className="container-xl px-5 sm:px-8 lg:px-16">
             {isLoading ? (
               <div className="flex justify-center py-24">
@@ -229,7 +229,7 @@ const Blog = () => {
         </section>
 
         {/* ── Dark CTA strip ── */}
-        <section className="dark-section py-16 relative overflow-hidden">
+        <section className="dark-section section-y relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black/95 to-black/80" />
           <div className="container-xl text-center relative z-10 px-5">
             <span className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3 block">

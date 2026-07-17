@@ -151,7 +151,7 @@ export const FunnelPage = ({
         </section>
 
         {/* PAGE CONTENT */}
-        <section className="py-12 sm:py-16">
+        <section className="section-y-sm">
           <div className="container-xl px-4 sm:px-6 max-w-4xl">
             <article className="prose-uzair space-y-10 text-foreground">
               {children}
@@ -160,7 +160,7 @@ export const FunnelPage = ({
         </section>
 
         {/* FAQ */}
-        <section className="py-12 sm:py-16 bg-muted/20 border-t border-border">
+        <section className="section-y-sm bg-muted/20 border-t border-border">
           <div className="container-xl px-4 sm:px-6 max-w-4xl">
             <p className="section-label mb-3">FAQ</p>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground uppercase tracking-tight">
@@ -182,7 +182,7 @@ export const FunnelPage = ({
         </section>
 
         {/* CTA */}
-        <section className="py-14 sm:py-20 bg-foreground text-background">
+        <section className="section-y-sm bg-foreground text-background">
           <div className="container-xl px-4 sm:px-6 max-w-3xl text-center">
             <p className="section-label mb-3 !text-primary">Next Step</p>
             <h2 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight">

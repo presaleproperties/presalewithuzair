@@ -395,7 +395,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         </section>
 
         {/* ── Direct Answer Paragraph (AI-search / featured-snippet target) ── */}
-        <section className="py-12 sm:py-16 bg-background border-b border-border/60">
+        <section className="section-y-sm bg-background border-b border-border/60">
           <div className="container-xl px-4 sm:px-6 max-w-3xl">
             <p className="section-label mb-3">The Straight Answer</p>
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
@@ -408,7 +408,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         </section>
 
         {/* ── Active Projects Section ── */}
-        <section className="py-16 sm:py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6">
             <div className="mb-12">
               <p className="section-label mb-3">Active Projects</p>
@@ -431,7 +431,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         </section>
 
         {/* ── Why Buy Here Section ── */}
-        <section className="py-16 sm:py-24" style={{ background: "hsl(var(--card))" }}>
+        <section className="section-y" style={{ background: "hsl(var(--card))" }}>
           <div className="container-xl px-4 sm:px-6">
             <div className="mb-12 max-w-3xl">
               <p className="section-label mb-3">Why {config.city}</p>
@@ -457,7 +457,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         </section>
 
         {/* ── FAQ Section ── */}
-        <section className="py-16 sm:py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6 max-w-3xl">
             <p className="section-label mb-3">Answers</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8">

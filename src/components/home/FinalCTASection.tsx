@@ -4,7 +4,7 @@ export const FinalCTASection = () => {
 
 
   return (
-    <section className="dark-section py-20 sm:py-28 bg-[hsl(222,20%,8%)]">
+    <section className="dark-section section-y bg-[hsl(222,20%,8%)]">
       <div className="container-xl px-5 sm:px-8 lg:px-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Content */}

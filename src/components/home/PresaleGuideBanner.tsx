@@ -78,7 +78,7 @@ export const PresaleGuideBanner = () => {
   };
 
   return (
-    <section className="py-12 sm:py-20 bg-card">
+    <section className="section-y-sm bg-card">
       <div className="container-xl px-4 sm:px-6">
         <div className="rounded-2xl bg-background border border-border p-6 sm:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-14">

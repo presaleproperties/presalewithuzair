@@ -54,7 +54,7 @@ const steps = [
 
 export const ProcessSection = () => {
   return (
-    <section className="py-16 sm:py-24 bg-card">
+    <section className="section-y bg-card">
       <div className="container-xl px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">The Process</p>

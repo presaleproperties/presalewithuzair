@@ -242,7 +242,7 @@ const LandingPage = () => {
         </section>
 
         {/* Social Proof */}
-        <section className="px-4 py-12 border-t border-white/5">
+        <section className="px-4 section-y-sm border-t border-white/5">
           <div className="max-w-5xl mx-auto">
             <div className="text-left mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
@@ -303,7 +303,7 @@ const LandingPage = () => {
         </section>
 
         {/* Why Buyers Work With Uzair */}
-        <section className="px-4 py-14 bg-slate-900/50 border-y border-white/5">
+        <section className="px-4 section-y-sm bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
              <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{

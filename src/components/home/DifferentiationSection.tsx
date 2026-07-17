@@ -64,7 +64,7 @@ const blocks: Block[] = [
 
 export const DifferentiationSection = () => {
   return (
-    <section className="py-20 sm:py-28 bg-background border-t border-border/40">
+    <section className="section-y bg-background border-t border-border/40">
       <div className="container-xl px-4 sm:px-6">
         {/* Section header — matches Process framing */}
         <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">

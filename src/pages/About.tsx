@@ -109,7 +109,7 @@ const About = () => {
         </section>
 
         {/* Buyer-side advice — image left, copy right */}
-        <section className="py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
@@ -142,7 +142,7 @@ const About = () => {
         </section>
 
         {/* What I help buyers understand — image right, copy left */}
-        <section className="py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
@@ -180,7 +180,7 @@ const About = () => {
         </section>
 
         {/* A different lens on development */}
-        <section className="py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
@@ -213,7 +213,7 @@ const About = () => {
         </section>
 
         {/* Who I help — image right */}
-        <section className="py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
@@ -260,7 +260,7 @@ const About = () => {
         </section>
 
         {/* Local market focus — image left */}
-        <section className="py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div className="image-reveal rounded-2xl overflow-hidden order-2 lg:order-1">
@@ -296,7 +296,7 @@ const About = () => {
         </section>
 
         {/* The Presale Properties Group — image right */}
-        <section className="py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
@@ -326,7 +326,7 @@ const About = () => {
         </section>
 
         {/* Vancouver Presale Expo */}
-        <section className="py-24 bg-background">
+        <section className="section-y bg-background">
           <div className="container-xl">
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
@@ -366,7 +366,7 @@ const About = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-card">
+        <section className="section-y bg-card">
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <p className="section-label mb-4">Before you choose a project, choose your advisor.</p>

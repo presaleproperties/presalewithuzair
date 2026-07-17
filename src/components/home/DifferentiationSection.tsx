@@ -1,35 +1,23 @@
-import { Check, X } from "lucide-react";
-
-const comparisons = [
+const blocks = [
   {
-    category: "Business Focus",
-    presaleExpert: "100% focused on new construction & presales.",
-    regularRealtor: "Does the occasional presale deal.",
+    heading: "The person showing the floor plans is paid by the developer.",
+    body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. His fee is paid by the developer out of a price the buyer pays either way, so having him costs the buyer nothing.",
   },
   {
-    category: "Market Knowledge",
-    presaleExpert: "Knows the floor plans, pricing, and hidden clauses before public launch.",
-    regularRealtor: "Reads the same brochures you do.",
+    heading: "The deposit is usually a family decision, and the family is often not given the contract in their language.",
+    body: "In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to explain a disclosure statement in Punjabi. Uzair works in Punjabi, Hindi, Urdu and English. He sits down with the whole family and explains the deposit schedule, the completion date and the contract terms to the people actually writing the cheque. He was born in Pakistan and raised in Surrey.",
   },
   {
-    category: "Developer Connections",
-    presaleExpert: "VIP access. Gets you in first for the best pricing.",
-    regularRealtor: "Waits in line at the public grand opening.",
+    heading: "BC gives buyers 7 days to cancel. Most buyers spend it doing nothing.",
+    body: "The disclosure statement runs over a hundred pages and arrives at the same time as the deposit cheque. During those 7 days a buyer can cancel for any reason. After that, they cannot. Uzair reads the whole document inside that window: deposit schedule, assignment rights, completion dates, and what happens if the developer is late or changes the plans. He spent 10 years at the City of Surrey in planning and bylaws, so he reads the approved plans, not the marketing renderings.",
   },
   {
-    category: "Project Selectivity",
-    presaleExpert: "Rejects 8 out of 10 projects. Only recommends high-ROI assets.",
-    regularRealtor: "Will sell you whatever is available today.",
+    heading: "The sticker price is not the final price.",
+    body: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption removes property transfer tax on qualifying homes up to $1.1M. Together that is a five-figure difference at closing, and most first-time buyers never find out they qualified. Uzair works out the real number before a buyer commits: GST, PTT, rebates, deposit dates, and what the mortgage will look like at completion in 12 to 36 months.",
   },
   {
-    category: "Skin in the Game",
-    presaleExpert: "Personally invests in the same projects he recommends.",
-    regularRealtor: "Rarely invests in what they are selling.",
-  },
-  {
-    category: "Market Timing",
-    presaleExpert: "Tells you when to wait, and when to strike.",
-    regularRealtor: "Pushes to close the deal today, regardless of market conditions.",
+    heading: "Sometimes Uzair tells buyers not to buy.",
+    body: "Everyone else a presale buyer talks to gets paid only if the sale closes. Uzair has told clients to walk away from projects and lost the commission. Buyer-only representation is what makes that possible.",
   },
 ];
 
@@ -37,85 +25,17 @@ export const DifferentiationSection = () => {
   return (
     <section className="py-16 sm:py-24 bg-background">
       <div className="container-xl px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-10 sm:mb-14">
-          <p className="section-label mb-3 sm:mb-4">The Difference</p>
-          <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-foreground uppercase tracking-tight">
-            Why You Need a <span className="text-gradient">Presale Expert</span>
-          </h2>
-        </div>
-
-        {/* Side-by-Side Comparison */}
-        <div className="max-w-4xl mx-auto">
-          {/* Column Headers */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-6 mb-4 sm:mb-6">
-            <div className="bg-primary/10 border-2 border-primary rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-              <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary mb-2 sm:mb-3">
-                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" strokeWidth={3} />
-              </div>
-              <h3 className="font-display text-sm sm:text-xl font-bold text-foreground uppercase tracking-tight">
-                Presale Expert
-              </h3>
-              <p className="text-xs sm:text-sm text-primary font-medium mt-1">(Uzair)</p>
-            </div>
-            <div className="bg-muted/30 border border-border rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center">
-              <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-muted mb-2 sm:mb-3">
-                <X className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground" strokeWidth={3} />
-              </div>
-              <h3 className="font-display text-sm sm:text-xl font-bold text-muted-foreground uppercase tracking-tight">
-                Regular Agent
-              </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-1">(Most others)</p>
-            </div>
-          </div>
-
-          {/* Comparison Rows */}
-          <div className="space-y-2 sm:space-y-3">
-            {comparisons.map((row, index) => (
-              <div key={index} className="grid grid-cols-2 gap-3 sm:gap-6">
-                {/* Presale Expert */}
-                <div className="relative bg-primary/5 border border-primary/20 rounded-lg sm:rounded-xl p-3 sm:p-4">
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/20 flex items-center justify-center mt-0.5">
-                      <Check className="w-3 h-3 sm:w-4 sm:h-4 text-primary" strokeWidth={3} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] sm:text-xs text-primary font-semibold uppercase tracking-wider mb-0.5 sm:mb-1">
-                        {row.category}
-                      </p>
-                      <p className="text-xs sm:text-sm text-foreground font-medium leading-snug">
-                        {row.presaleExpert}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Regular Agent */}
-                <div className="relative bg-muted/20 border border-border rounded-lg sm:rounded-xl p-3 sm:p-4">
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <div className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-muted flex items-center justify-center mt-0.5">
-                      <X className="w-3 h-3 sm:w-4 sm:h-4 text-muted-foreground/60" strokeWidth={3} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-[10px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-wider mb-0.5 sm:mb-1">
-                        {row.category}
-                      </p>
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-snug">
-                        {row.regularRealtor}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Insight */}
-          <div className="mt-8 sm:mt-12 text-center">
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-              Presales require specialized knowledge. You deserve an advisor focused on your wealth, not the developer's quota.
-            </p>
-          </div>
+        <div className="max-w-3xl mx-auto space-y-12 sm:space-y-16">
+          {blocks.map((block, i) => (
+            <article key={i}>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-4">
+                {block.heading}
+              </h2>
+              <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                {block.body}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

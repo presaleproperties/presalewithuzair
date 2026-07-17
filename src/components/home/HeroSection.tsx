@@ -125,12 +125,13 @@ export const HeroSection = () => {
             </div>
 
             {/* CTA Section */}
-            <div className="space-y-3 animate-fade-up">
-              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
+            <div className="flex flex-col sm:flex-row gap-3 animate-fade-up">
+              <Button variant="hero" size="xl" className="rounded-full px-10 py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
                 {heroContent.cta}
               </Button>
-
-
+              <Button variant="outline" size="xl" className="gap-2 rounded-full border-2 border-foreground/80 text-foreground bg-transparent hover:bg-foreground hover:text-background px-10 py-7 text-base font-semibold" onClick={handleBookClick}>
+                {heroContent.ctaSecondary}
+              </Button>
             </div>
           </div>
 

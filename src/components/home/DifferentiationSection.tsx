@@ -96,7 +96,7 @@ export const DifferentiationSection = () => {
         </div>
 
         {/* Featured statement — asymmetric quote-style card */}
-        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card">
+        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card transition-all duration-300 hover:shadow-glow focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background">
           <div className="absolute inset-0 opacity-[0.04]" aria-hidden>
             <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
           </div>
@@ -124,7 +124,7 @@ export const DifferentiationSection = () => {
             return (
               <article
                 key={number}
-                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft hover:shadow-card hover:border-primary/30 transition-all duration-300 ${
+                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background focus-within:border-primary/40 ${
                   block.wide ? "lg:col-span-2" : ""
                 }`}
               >
@@ -148,7 +148,7 @@ export const DifferentiationSection = () => {
                   <div className="mt-6">
                     <Link
                       to={block.cta.to}
-                      className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                      className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       {block.cta.label}
                       <span aria-hidden>→</span>

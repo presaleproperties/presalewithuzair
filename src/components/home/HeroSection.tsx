@@ -4,7 +4,7 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY PRESALE ADVISOR",
-  subheadline: "# Presale advice before you sign.",
+  subheadline: "Presale advice before you sign.",
   body: "Buyer-side guidance for new condos, townhomes, and homes across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.",
   proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
   cta: "Book a Buyer Strategy Call",

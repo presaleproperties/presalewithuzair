@@ -86,10 +86,10 @@ export const DifferentiationSection = () => {
         {/* Section header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <p className="section-label mb-3 sm:mb-4">Why Uzair</p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] tracking-tight">
+          <h2 className="h-section text-foreground">
             I represent your side of the deal.
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed max-w-2xl">
+          <p className="lede mt-5 max-w-2xl">
             Eight things every Fraser Valley presale buyer should know before signing — from someone
             who gets paid to protect the buyer, not to sell the project.
           </p>
@@ -101,15 +101,13 @@ export const DifferentiationSection = () => {
             <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
           </div>
           <div className="relative grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 p-8 sm:p-12 lg:p-16">
-            <div className="flex lg:flex-col items-start gap-3">
-              <span className="font-display text-xs font-semibold tracking-[0.2em] text-primary-foreground/60 uppercase">
-                01
-              </span>
+            <div className="flex lg:flex-col items-center gap-3">
+              <span className="eyebrow text-primary-foreground/60">01</span>
               <span className="hidden lg:block h-16 w-px bg-background/20" />
               <span className="lg:hidden h-px w-16 bg-background/20 self-center" />
             </div>
             <div>
-              <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-bold leading-[1.15] tracking-tight text-background">
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-bold tracking-tight leading-[1.1] text-background">
                 {feature.heading}
               </h3>
               <p className="mt-6 text-base sm:text-lg text-background/75 leading-relaxed max-w-3xl">
@@ -130,21 +128,19 @@ export const DifferentiationSection = () => {
                   block.wide ? "lg:col-span-2" : ""
                 }`}
               >
-                <div className="flex items-start justify-between gap-4 mb-5">
-                  <span className="font-display text-xs font-semibold tracking-[0.2em] text-primary uppercase">
-                    {number}
-                  </span>
-                  <span className="h-px flex-1 bg-border mt-2.5" />
+                <div className="flex items-center gap-4 mb-4 sm:mb-5">
+                  <span className="eyebrow">{number}</span>
+                  <span className="h-px flex-1 bg-border" />
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground leading-[1.2] tracking-tight mb-4">
+                <h3 className="h-card text-foreground mb-4">
                   {block.heading}
                 </h3>
                 {typeof block.body === "string" ? (
-                  <p className="text-[0.975rem] sm:text-base text-foreground/70 leading-relaxed">
+                  <p className="lede">
                     {block.body}
                   </p>
                 ) : (
-                  <div className="text-[0.975rem] sm:text-base text-foreground/70 leading-relaxed">
+                  <div className="lede">
                     {block.body}
                   </div>
                 )}

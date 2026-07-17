@@ -163,6 +163,14 @@ const staticReviews: StaticReview[] = [
     photo: monaPhoto,
     rating: 5,
   },
+  {
+    name: "Akhi Thapar",
+    quote:
+      "I have been working with uzair for nearly 3 years now and will highly recommend him for any sale or purchase of the property.",
+    timeAgo: "2 years ago",
+    photo: akhiPhoto,
+    rating: 5,
+  },
 ];
 
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";

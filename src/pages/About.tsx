@@ -172,6 +172,7 @@ const About = () => {
               <ul className="grid sm:grid-cols-2 gap-3 text-foreground/80">
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Former City of Surrey, Planning &amp; Bylaws (10 years)</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Founder, Vancouver Presale Expo</span></li>
+                <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Leads The Presale Properties Group</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>Licensed BC REALTOR® under Real Broker (BCFSA)</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>450+ units · $200M+ in sales</span></li>
                 <li className="flex items-start gap-3"><CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" /><span>4.9 stars from 36 Google reviews</span></li>

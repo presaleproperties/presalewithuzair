@@ -393,6 +393,7 @@ export const SocialProofSection = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: liveData?.overallRating ?? 4.9,
+      reviewCount: liveData?.totalReviews ?? 36,
       bestRating: 5,
     },
     review: displayed.map((r) => ({

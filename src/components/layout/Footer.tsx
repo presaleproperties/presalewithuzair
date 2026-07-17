@@ -56,23 +56,23 @@ export const Footer = () => {
           </div>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2.5 mb-8 text-sm">
-            <Link to="/about" className="text-white/50 hover:text-primary transition-colors">About</Link>
-            <Link to="/services" className="text-white/50 hover:text-primary transition-colors">Services</Link>
-            <Link to="/blog" className="text-white/50 hover:text-primary transition-colors">Blog</Link>
-            <Link to="/contact" className="text-white/50 hover:text-primary transition-colors">Contact</Link>
+            <Link to="/about" className="text-white/75 hover:text-primary transition-colors">About</Link>
+            <Link to="/services" className="text-white/75 hover:text-primary transition-colors">Services</Link>
+            <Link to="/blog" className="text-white/75 hover:text-primary transition-colors">Blog</Link>
+            <Link to="/contact" className="text-white/75 hover:text-primary transition-colors">Contact</Link>
             <Link to="/book" className="text-white font-medium hover:text-primary transition-colors">Book a Buyer Strategy Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-primary transition-colors"
+              className="text-white/75 hover:text-primary transition-colors"
             >
               Search Projects
             </a>
-            <Link to="/punjabi-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Punjabi Realtor</Link>
-            <Link to="/hindi-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Hindi Realtor</Link>
-            <Link to="/urdu-speaking-realtor" className="text-white/50 hover:text-primary transition-colors">Urdu Realtor</Link>
-            <Link to="/south-asian-buyers" className="text-white/50 hover:text-primary transition-colors">South Asian Buyers</Link>
+            <Link to="/punjabi-speaking-realtor" className="text-white/75 hover:text-primary transition-colors">Punjabi Realtor</Link>
+            <Link to="/hindi-speaking-realtor" className="text-white/75 hover:text-primary transition-colors">Hindi Realtor</Link>
+            <Link to="/urdu-speaking-realtor" className="text-white/75 hover:text-primary transition-colors">Urdu Realtor</Link>
+            <Link to="/south-asian-buyers" className="text-white/75 hover:text-primary transition-colors">South Asian Buyers</Link>
           </div>
 
           <div className="flex items-center gap-2.5 mb-5">
@@ -80,7 +80,7 @@ export const Footer = () => {
             <img src={realBrokerLogo} alt="Real Broker" className="h-5 w-auto brightness-200 opacity-100" />
           </div>
 
-          <p className="text-xs text-white/30">
+          <p className="text-xs text-white/70">
             © {new Date().getFullYear()} Uzair Muhammad PREC. All rights reserved.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const Footer = () => {
               <Link to="/" className="inline-block mb-5">
                 <img src={logo} alt="Presale with Uzair" className="h-14 w-auto" />
               </Link>
-              <p className="text-white/50 text-sm leading-relaxed mb-5">
+              <p className="text-white/75 text-sm leading-relaxed mb-5">
                 Before you walk into a developer sales centre, talk to someone who works for you. Buyer-side presale and new-construction guidance across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
               </p>
               <div className="flex items-center gap-2 mb-5">
@@ -138,7 +138,7 @@ export const Footer = () => {
                       className={`transition-colors text-sm ${
                         'highlight' in link && link.highlight
                           ? "text-primary font-medium hover:text-primary/80"
-                          : "text-white/50 hover:text-white transition-colors"
+                          : "text-white/75 hover:text-white transition-colors"
                       }`}
                     >
                       {link.label}
@@ -150,7 +150,7 @@ export const Footer = () => {
                     href="https://presaleproperties.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/50 hover:text-white transition-colors text-sm"
+                    className="text-white/75 hover:text-white transition-colors text-sm"
                   >
                     Get My Presale Shortlist ↗
                   </a>
@@ -175,7 +175,7 @@ export const Footer = () => {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-white/50 hover:text-white transition-colors text-sm"
+                      className="text-white/75 hover:text-white transition-colors text-sm"
                     >
                       {link.label}
                     </Link>
@@ -197,7 +197,7 @@ export const Footer = () => {
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className="text-white/50 hover:text-white transition-colors text-sm"
+                      className="text-white/75 hover:text-white transition-colors text-sm"
                     >
                       {link.label}
                     </Link>
@@ -213,7 +213,7 @@ export const Footer = () => {
                 <li className="flex items-start gap-3">
                   <Phone className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Phone</p>
+                    <p className="text-xs text-white/70 mb-0.5">Phone</p>
                     <a href="tel:+17782313592" onClick={trackPhone} className="text-sm text-white/80 hover:text-white transition-colors">
                       +1 (778) 231-3592
                     </a>
@@ -222,7 +222,7 @@ export const Footer = () => {
                 <li className="flex items-start gap-3">
                   <Mail className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Email</p>
+                    <p className="text-xs text-white/70 mb-0.5">Email</p>
                     <a href="mailto:info@meetuzair.com" className="text-sm text-white/80 hover:text-white transition-colors">
                       info@meetuzair.com
                     </a>
@@ -231,7 +231,7 @@ export const Footer = () => {
                 <li className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 text-primary mt-1 shrink-0" />
                   <div>
-                    <p className="text-xs text-white/40 mb-0.5">Office</p>
+                    <p className="text-xs text-white/70 mb-0.5">Office</p>
                     <p className="text-sm text-white/80">
                       3211 152 St, Building C<br />
                       Surrey, BC V3Z 1H8
@@ -244,10 +244,10 @@ export const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-white/70">
               © {new Date().getFullYear()} Uzair Muhammad PREC | Brokered by Real Broker. All rights reserved.
             </p>
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-white/70">
               Fraser Valley's Premier Presale Expert
             </p>
           </div>

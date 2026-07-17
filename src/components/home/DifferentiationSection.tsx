@@ -64,33 +64,58 @@ const blocks: Block[] = [
 
 export const DifferentiationSection = () => {
   return (
-    <section className="py-16 sm:py-24 bg-background">
+    <section className="py-20 sm:py-28 bg-background border-t border-border/40">
       <div className="container-xl px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto space-y-12 sm:space-y-16">
+        {/* Section header — matches Process framing */}
+        <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
+          <p className="section-label mb-3 sm:mb-4">Why Uzair</p>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            Buyer-side thinking, in plain English.
+          </h2>
+          <p className="mt-5 text-base sm:text-lg text-foreground/70 leading-relaxed">
+            Eight things every Fraser Valley presale buyer should understand before they sign — from someone paid to protect your side of the deal.
+          </p>
+          <div className="mt-8 mx-auto h-px w-16 bg-primary/40" />
+        </div>
+
+        {/* Blocks — numbered, divided, rhythmic */}
+        <div className="max-w-3xl mx-auto">
           {blocks.map((block, i) => (
-            <article key={i}>
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground leading-tight mb-4">
-                {block.heading}
-              </h2>
-              {typeof block.body === "string" ? (
-                <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-                  {block.body}
-                </p>
-              ) : (
-                <div className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-                  {block.body}
-                </div>
-              )}
-              {block.cta && (
-                <div className="mt-5">
-                  <Link
-                    to={block.cta.to}
-                    className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
-                  >
-                    {block.cta.label}
-                  </Link>
-                </div>
-              )}
+            <article
+              key={i}
+              className={`grid grid-cols-[auto_1fr] gap-5 sm:gap-8 py-10 sm:py-14 ${
+                i !== 0 ? "border-t border-border/50" : ""
+              }`}
+            >
+              <div className="pt-1">
+                <span className="font-display text-sm sm:text-base font-semibold text-primary tabular-nums tracking-wider">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div>
+                <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-4">
+                  {block.heading}
+                </h3>
+                {typeof block.body === "string" ? (
+                  <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                    {block.body}
+                  </p>
+                ) : (
+                  <div className="text-base sm:text-lg text-foreground/70 leading-relaxed">
+                    {block.body}
+                  </div>
+                )}
+                {block.cta && (
+                  <div className="mt-5">
+                    <Link
+                      to={block.cta.to}
+                      className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                    >
+                      {block.cta.label}
+                    </Link>
+                  </div>
+                )}
+              </div>
             </article>
           ))}
         </div>

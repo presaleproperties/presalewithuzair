@@ -30,10 +30,13 @@ const HOMEPAGE_FAQS: FAQItem[] = [
 
 export const HomeFAQSection = () => {
   return (
-    <section className="bg-background py-20 sm:py-28">
+    <section className="bg-card py-20 sm:py-28 border-t border-border/40">
       <div className="container-xl px-5 sm:px-8 lg:px-16">
         <div className="max-w-3xl mx-auto">
-          <FAQSchema faqs={HOMEPAGE_FAQS} heading="Presale Questions, Answered" />
+          <FAQSchema
+            faqs={HOMEPAGE_FAQS}
+            heading="The questions buyers ask before they sign."
+          />
         </div>
       </div>
     </section>

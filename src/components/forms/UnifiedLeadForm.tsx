@@ -284,11 +284,17 @@ export const UnifiedLeadForm = ({
             type="text"
             placeholder="Your full name"
             value={formData.fullName}
-            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("fullName", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.fullName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="name"
+            aria-invalid={!!fieldErrors.fullName}
+            aria-describedby={fieldErrors.fullName ? "ulc-fullName-error" : undefined}
             required
           />
+          {fieldErrors.fullName && (
+            <p id="ulc-fullName-error" className="mt-1 text-xs text-destructive">{fieldErrors.fullName}</p>
+          )}
         </div>
 
         <div>
@@ -297,13 +303,20 @@ export const UnifiedLeadForm = ({
             id="ulc-email"
             name="email"
             type="email"
+            inputMode="email"
             placeholder="you@email.com"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("email", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.email ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="email"
+            aria-invalid={!!fieldErrors.email}
+            aria-describedby={fieldErrors.email ? "ulc-email-error" : undefined}
             required
           />
+          {fieldErrors.email && (
+            <p id="ulc-email-error" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
+          )}
         </div>
 
         <div>
@@ -312,22 +325,33 @@ export const UnifiedLeadForm = ({
             id="ulc-phone"
             name="phone"
             type="tel"
+            inputMode="tel"
             placeholder="(604) 555-1234"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            className={inputClasses}
+            onChange={(e) => updateField("phone", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.phone ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="tel"
+            aria-invalid={!!fieldErrors.phone}
+            aria-describedby={fieldErrors.phone ? "ulc-phone-error" : undefined}
             required
           />
+          {fieldErrors.phone && (
+            <p id="ulc-phone-error" className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-buyerType" className={labelClasses}>I am a... *</label>
           <Select
             value={formData.buyerType}
-            onValueChange={(value) => setFormData({ ...formData, buyerType: value })}
+            onValueChange={(value) => updateField("buyerType", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-buyerType"
+              className={`${inputClasses} ${fieldErrors.buyerType ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.buyerType}
+            >
               <SelectValue placeholder="Select one" />
             </SelectTrigger>
             <SelectContent>
@@ -336,15 +360,22 @@ export const UnifiedLeadForm = ({
               <SelectItem value="seller">Seller</SelectItem>
             </SelectContent>
           </Select>
+          {fieldErrors.buyerType && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.buyerType}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-budget" className={labelClasses}>Budget *</label>
           <Select
             value={formData.budget}
-            onValueChange={(value) => setFormData({ ...formData, budget: value })}
+            onValueChange={(value) => updateField("budget", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-budget"
+              className={`${inputClasses} ${fieldErrors.budget ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.budget}
+            >
               <SelectValue placeholder="Select your budget" />
             </SelectTrigger>
             <SelectContent>
@@ -355,15 +386,22 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.budget && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.budget}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-timeline" className={labelClasses}>When are you looking to buy? *</label>
           <Select
             value={formData.timeline}
-            onValueChange={(value) => setFormData({ ...formData, timeline: value })}
+            onValueChange={(value) => updateField("timeline", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-timeline"
+              className={`${inputClasses} ${fieldErrors.timeline ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.timeline}
+            >
               <SelectValue placeholder="Select your timeline" />
             </SelectTrigger>
             <SelectContent>
@@ -374,15 +412,22 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.timeline && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.timeline}</p>
+          )}
         </div>
 
         <div>
           <label htmlFor="ulc-leadSource" className={labelClasses}>How did you find me? *</label>
           <Select
             value={formData.leadSource}
-            onValueChange={(value) => setFormData({ ...formData, leadSource: value })}
+            onValueChange={(value) => updateField("leadSource", value)}
           >
-            <SelectTrigger className={inputClasses}>
+            <SelectTrigger
+              id="ulc-leadSource"
+              className={`${inputClasses} ${fieldErrors.leadSource ? "border-destructive" : ""}`}
+              aria-invalid={!!fieldErrors.leadSource}
+            >
               <SelectValue placeholder="Select one" />
             </SelectTrigger>
             <SelectContent>
@@ -393,8 +438,13 @@ export const UnifiedLeadForm = ({
               ))}
             </SelectContent>
           </Select>
+          {fieldErrors.leadSource && (
+            <p className="mt-1 text-xs text-destructive">{fieldErrors.leadSource}</p>
+          )}
         </div>
         </div>
+
+
 
 
         <Button

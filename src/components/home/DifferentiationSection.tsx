@@ -7,23 +7,27 @@ type Block = { heading: string; body: ReactNode; cta?: { to: string; label: stri
 
 const blocks: Block[] = [
   {
-    heading: "Talk to Uzair before registering at the sales centre.",
-    body: "Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.",
+    heading: "The sales centre is built to sell the project. I'm here to help you decide if it's actually right for you.",
+    body: "Presale can be a smart move. It can also be an expensive mistake if you buy the wrong floor plan, the wrong building, the wrong location, or the wrong contract without understanding the risks. My job is to slow the decision down, compare the options, and help you understand what you're really buying — not the polished sales-centre version.",
+  },
+  {
+    heading: "Talk to me before you register at the sales centre.",
+    body: "Once you register directly with a project, your representation options can become more limited depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you've already registered, tell me — I'll explain what options may still be open.",
     cta: { to: "/contact", label: "Talk To Uzair First" },
   },
   {
-    heading: "The person showing the floor plans is paid by the developer.",
-    body: "At a presale sales centre, every person in the room is paid by the developer. That is normal, but it means a buyer who walks in alone has no one representing their side of the contract. Uzair only represents buyers. He has never represented a developer. For many presale projects his fee is paid through the project's sales structure, so representation usually costs the buyer nothing — he'll confirm exactly how it works on your project before you commit.",
+    heading: "The person showing you the floor plans is paid by the developer.",
+    body: "At a presale sales centre, every person in the room is paid by the developer. That's normal, but it means a buyer who walks in alone has no one representing their side of the contract. I only represent buyers. I've never represented a developer. For many presale projects my fee is paid through the project's sales structure, so representation usually costs you nothing — I'll confirm exactly how it works on your project before you commit.",
   },
   {
     heading: "Track record",
     body: (
       <>
         <p>
-          Uzair Muhammad has sold 450+ presale units and more than $200M in new construction. He has worked in presale exclusively for 5 years and holds a 4.9 star rating from 36 Google reviews.
+          I've sold 450+ presale units and more than $200M in new construction. I've worked in presale exclusively for 5 years and hold a 4.9-star rating from 36 Google reviews.
         </p>
         <p className="mt-4">
-          He leads{" "}
+          I lead{" "}
           <a
             href={PPG_URL}
             target="_blank"
@@ -32,29 +36,29 @@ const blocks: Block[] = [
           >
             The Presale Properties Group
           </a>
-          , a team of agents working the Fraser Valley presale market, and he founded the Vancouver Presale Expo. He is a licensed BC REALTOR® under Real Broker and regulated by the BC Financial Services Authority.
+          , a team of agents working the Fraser Valley presale market, and I founded the Vancouver Presale Expo. I'm a licensed BC REALTOR® under Real Broker and regulated by the BC Financial Services Authority.
         </p>
         <p className="mt-4">
-          Before real estate, Uzair spent 10 years with the City of Surrey in planning and bylaws.
+          Before real estate, I spent 10 years with the City of Surrey in planning and bylaws.
         </p>
       </>
     ),
   },
   {
     heading: "The deposit is usually a family decision, and the family is often not given the contract in their language.",
-    body: "In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to explain a disclosure statement in Punjabi. Uzair works in Punjabi, Hindi, Urdu and English. He sits down with the whole family and explains the deposit schedule, the completion date and the contract terms to the people actually writing the cheque. He was born in Pakistan and raised in Surrey.",
+    body: "In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often don't. Nobody at the sales centre is going to explain a disclosure statement in Punjabi. I work in Punjabi, Hindi, Urdu, and English. I sit down with the whole family and explain the deposit schedule, the completion date, and the contract terms to the people actually writing the cheque. I was born in Pakistan and raised in Surrey.",
   },
   {
     heading: "BC gives buyers 7 days to cancel. Most buyers spend it doing nothing.",
-    body: "The disclosure statement runs over a hundred pages and arrives at the same time as the deposit cheque. During those 7 days a buyer can cancel for any reason. After that, they cannot. Uzair reads the whole document inside that window: deposit schedule, assignment rights, completion dates, and what happens if the developer is late or changes the plans. He spent 10 years at the City of Surrey in planning and bylaws, so he reads the approved plans, not the marketing renderings.",
+    body: "The disclosure statement runs over a hundred pages and arrives at the same time as the deposit cheque. During those 7 days you can cancel for any reason. After that, you can't. I read the whole document inside that window: deposit schedule, assignment rights, completion dates, and what happens if the developer is late or changes the plans. I spent 10 years at the City of Surrey in planning and bylaws, so I read the approved plans, not the marketing renderings.",
   },
   {
-    heading: "The sticker price is not the final price.",
-    body: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption removes property transfer tax on qualifying homes up to $1.1M. Together that is a five-figure difference at closing, and most first-time buyers never find out they qualified. Uzair works out the real number before a buyer commits: GST, PTT, rebates, deposit dates, and what the mortgage will look like at completion in 12 to 36 months.",
+    heading: "The sticker price isn't the final price.",
+    body: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption removes property transfer tax on qualifying homes up to $1.1M. Together that's a five-figure difference at closing, and most first-time buyers never find out they qualified. I work out the real number before you commit: GST, PTT, rebates, deposit dates, and what the mortgage will look like at completion in 12 to 36 months.",
   },
   {
-    heading: "Sometimes Uzair tells buyers not to buy.",
-    body: "Everyone else a presale buyer talks to gets paid only if the sale closes. Uzair has told clients to walk away from projects and lost the commission. Buyer-only representation is what makes that possible.",
+    heading: "Sometimes I tell buyers not to buy.",
+    body: "Everyone else a presale buyer talks to gets paid only if the sale closes. I've told clients to walk away from projects and lost the commission. Buyer-only representation is what makes that possible. A missed bad deal is still a win.",
   },
 ];
 

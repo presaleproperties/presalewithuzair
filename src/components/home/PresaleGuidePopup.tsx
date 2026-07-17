@@ -25,20 +25,11 @@ export const PresaleGuidePopup = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("presale-guide-dismissed");
-    if (dismissed) return;
-
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 15000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     const handleOpen = () => setIsOpen(true);
     window.addEventListener("open-presale-guide", handleOpen);
     return () => window.removeEventListener("open-presale-guide", handleOpen);
   }, []);
+
 
   const handleClose = () => {
     setIsOpen(false);
@@ -105,17 +96,8 @@ export const PresaleGuidePopup = () => {
 
   return (
     <>
-      {/* Floating CTA Button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-primary text-primary-foreground px-4 py-3 rounded-xl shadow-2xl hover:scale-105 transition-transform duration-200 flex items-center gap-2 font-semibold text-sm animate-bounce-subtle"
-        aria-label="Download free presale guide"
-      >
-        <Download className="h-4 w-4" />
-        Presale Guide
-      </button>
-
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
+
         <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-2xl max-h-[85vh] overflow-y-auto fixed top-[5vh] sm:top-[50%] translate-y-0 sm:-translate-y-1/2 [&>button]:top-3 [&>button]:right-3">
           <DialogTitle className="sr-only">Download Free Presale Guide</DialogTitle>
 

@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Mail, Search } from "lucide-react";
+import { CheckCircle, Mail, Search } from "lucide-react";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
@@ -164,7 +164,7 @@ const Services = () => {
                     {service.description}
                   </p>
 
-                  <ul className="grid sm:grid-cols-2 gap-4 mb-8">
+                  <ul className="grid sm:grid-cols-2 gap-4">
                     {service.benefits.map((benefit) => (
                       <li key={benefit} className="flex items-start gap-3">
                         <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -173,15 +173,6 @@ const Services = () => {
                     ))}
                   </ul>
 
-                  <Button
-                    variant="hero"
-                    size="lg"
-                    className="gap-2"
-                    onClick={handleCTA}
-                  >
-                    Book a Buyer Strategy Call
-                    <ArrowRight className="h-4 w-4" />
-                  </Button>
                 </div>
 
                 <div className={`image-reveal rounded-2xl overflow-hidden ${index % 2 === 1 ? "lg:col-start-1" : ""}`}>

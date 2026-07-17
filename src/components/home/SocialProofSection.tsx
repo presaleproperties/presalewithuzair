@@ -1,8 +1,8 @@
-import { ArrowRight, ExternalLink, Quote, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Loader2, Quote, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import type { ReactNode } from "react";
 import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
-
+import { Skeleton } from "@/components/ui/skeleton";
 
 // Fallback client photos (used only when Google photo URL is missing)
 import michellePhoto from "@/assets/testimonials/michelle.jpg";
@@ -21,11 +21,9 @@ import akhiPhoto from "@/assets/testimonials/akhi.jpg";
 import bryantPhoto from "@/assets/testimonials/bryant.jpg";
 import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
 
-// Verbatim Google reviews (mirrored so crawlers/AI bots always see original text
-// in the static HTML, even before the client-side fetch resolves).
 interface StaticReview {
   name: string;
-  quote: string; // verbatim
+  quote: string;
   timeAgo: string;
   photo: string;
   rating?: number;
@@ -144,46 +142,7 @@ const staticReviews: StaticReview[] = [
 ];
 
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
-
-// Final card in the reviews grid — fills the empty slot and sends visitors to Google.
-const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
-  <a
-    href={GOOGLE_BUSINESS_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="See all reviews on Google"
-    className={`group rounded-xl snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col items-center justify-center text-center border border-dashed border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 ${
-      mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
-    }`}
-  >
-    <div className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
-      <img
-        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-        alt="Google"
-        className="h-4 object-contain"
-      />
-    </div>
-    <div className="flex items-center gap-1.5 mb-3">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <Star
-          key={star}
-          className="h-4 w-4 fill-yellow-400 text-yellow-400"
-        />
-      ))}
-      <span className="ml-1 text-sm font-semibold text-foreground">4.9</span>
-    </div>
-    <p className="font-display text-lg font-bold text-foreground mb-2">
-      See all reviews
-    </p>
-    <p className="text-sm text-muted-foreground mb-5 max-w-[220px]">
-      Read every verified client review on Google.
-    </p>
-    <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
-      View on Google
-      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-    </span>
-  </a>
-);
+const MAX_VISIBLE_REVIEWS = 5;
 
 const fallbackPhotos = [
   anishPhoto,
@@ -193,8 +152,6 @@ const fallbackPhotos = [
   andresPhoto,
 ];
 
-// Buyer-intent keywords surfaced inside review copy so the value props stand out
-// on skim, and so AI/SEO crawlers see topical density around these terms.
 const KEYWORD_PATTERNS: RegExp[] = [
   /first[- ]time home buyer/gi,
   /presale[s]?/gi,
@@ -248,12 +205,153 @@ function highlightKeywords(text: string): ReactNode[] {
   return parts;
 }
 
+const GoogleLogo = ({ className = "h-5" }: { className?: string }) => (
+  <img
+    src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+    alt="Google"
+    className={className}
+  />
+);
+
+const StarRating = ({ rating, size = "sm" }: { rating: number; size?: "sm" | "md" }) => {
+  const starClass = size === "md" ? "h-4 w-4" : "h-3.5 w-3.5";
+  return (
+    <div className="flex gap-0.5" aria-label={`Rated ${rating} out of 5`}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star
+          key={star}
+          className={`${starClass} ${
+            star <= rating ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground/30"
+          }`}
+        />
+      ))}
+    </div>
+  );
+};
+
+const ReviewCard = ({
+  testimonial,
+  mobile = false,
+}: {
+  testimonial: StaticReview;
+  mobile?: boolean;
+}) => {
+  const className = mobile
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col"
+    : "rounded-xl p-6 h-[380px] transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer flex flex-col";
+
+  const themeClass = testimonial.highlight
+    ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
+    : "bg-card border border-border";
+
+  return (
+    <a
+      href={GOOGLE_BUSINESS_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Read ${testimonial.name}'s review on Google`}
+      className={`${className} ${themeClass}`}
+    >
+      <div className="flex items-center gap-3 mb-4">
+        <img
+          src={testimonial.photo}
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
+          loading="lazy"
+          referrerPolicy="no-referrer"
+        />
+        <div className="flex-1 min-w-0">
+          <p className={mobile ? "font-semibold text-sm text-foreground" : "font-semibold text-foreground"}>
+            {testimonial.name}
+          </p>
+          <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
+        </div>
+      </div>
+
+      <StarRating rating={testimonial.rating ?? 5} size={mobile ? "sm" : "sm"} />
+
+      {!mobile && (
+        <Quote
+          className={`h-5 w-5 mb-2 shrink-0 ${
+            testimonial.highlight ? "text-primary/50" : "text-muted-foreground/30"
+          }`}
+        />
+      )}
+
+      <p
+        className={`text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 ${
+          mobile ? "" : "lg:text-[15px]"
+        }`}
+      >
+        “{highlightKeywords(testimonial.quote)}”
+      </p>
+      <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
+    </a>
+  );
+};
+
+const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
+  const className = mobile
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center flex flex-col bg-card border border-border"
+    : "rounded-xl p-6 h-[380px] flex flex-col bg-card border border-border";
+  return (
+    <div className={className}>
+      <div className="flex items-center gap-3 mb-4">
+        <Skeleton className="w-12 h-12 rounded-full" />
+        <div className="flex-1 space-y-2">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-3 w-16" />
+        </div>
+      </div>
+      <div className="flex gap-0.5 mb-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Skeleton key={i} className="h-3.5 w-3.5 rounded-full" />
+        ))}
+      </div>
+      <div className="flex-1 space-y-2">
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-full" />
+        <Skeleton className="h-4 w-5/6" />
+        <Skeleton className="h-4 w-4/6" />
+        <Skeleton className="h-4 w-3/6" />
+      </div>
+    </div>
+  );
+};
+
+const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
+  <a
+    href={GOOGLE_BUSINESS_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="See all reviews on Google"
+    className={`group rounded-xl snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col items-center justify-center text-center border border-dashed border-primary/40 bg-gradient-to-br from-primary/10 to-primary/5 ${
+      mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
+    }`}
+  >
+    <div className="w-14 h-14 rounded-full bg-white border border-primary/20 flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
+      <GoogleLogo className="h-4 object-contain" />
+    </div>
+    <div className="flex items-center gap-1.5 mb-3">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+      ))}
+      <span className="ml-1 text-sm font-semibold text-foreground">4.9</span>
+    </div>
+    <p className="font-display text-lg font-bold text-foreground mb-2">See all reviews</p>
+    <p className="text-sm text-muted-foreground mb-5 max-w-[220px]">
+      Read every verified client review on Google.
+    </p>
+    <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
+      View on Google
+      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+    </span>
+  </a>
+);
 
 export const SocialProofSection = () => {
-  const { data: liveData } = useGoogleReviews();
+  const { data: liveData, isLoading, error } = useGoogleReviews();
 
-  // Merge: prefer live Google reviews for the first N slots, then fill the
-  // rest from the verbatim static list (deduped by author name).
   const liveReviews: StaticReview[] =
     liveData?.reviews?.map((r: GoogleReview, i: number) => ({
       name: r.authorName,
@@ -261,7 +359,7 @@ export const SocialProofSection = () => {
       timeAgo: r.relativeTime,
       photo: r.authorPhoto || fallbackPhotos[i % fallbackPhotos.length],
       rating: r.rating,
-      highlight: i === 0 || i === 4,
+      highlight: i === 0,
     })) ?? [];
 
   const liveNames = new Set(liveReviews.map((r) => r.name.toLowerCase().split(" ")[0]));
@@ -270,11 +368,9 @@ export const SocialProofSection = () => {
     ...staticReviews.filter((r) => !liveNames.has(r.name.toLowerCase().split(" ")[0])),
   ];
 
-  const displayed = merged.length > 0 ? merged : staticReviews;
+  // Keep the widget layout clean: 5 reviews + 1 "See all" card.
+  const displayed = merged.slice(0, MAX_VISIBLE_REVIEWS);
 
-
-  // Review JSON-LD so AI crawlers (ChatGPT, Perplexity, Google AI Overviews)
-  // read verbatim reviews without executing JS.
   const reviewSchema = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
@@ -306,151 +402,92 @@ export const SocialProofSection = () => {
         <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       </Helmet>
       <div className="container-xl px-4 sm:px-6">
-        {/* Header */}
-        <div className="text-center mb-10 sm:mb-14">
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-foreground uppercase tracking-tight mb-3">
-            What Uzair's clients say
-          </h2>
-          <p className="text-primary font-semibold text-base sm:text-lg mb-4">
-            {"\n"}
-          </p>
-
-          {/* Google Rating Badge */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <img
-              src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-              alt="Google"
-              className="h-4 md:h-5"
-            />
-            <div className="flex gap-0.5" aria-label="Rated 4.9 out of 5">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              ))}
+        {/* Google Reviews Widget Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-10">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <GoogleLogo className="h-4 md:h-5" />
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Google Reviews
+              </span>
             </div>
-            <a
-              href={GOOGLE_BUSINESS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground text-xs md:text-sm hover:text-primary transition-colors underline underline-offset-2"
-            >
-              {liveData?.overallRating ?? 4.9} · Google rating → See all on Google
-            </a>
-          </div>
-        </div>
-
-        {/* All Testimonials Grid — uniform card size, every card links to Google */}
-        <div className="mb-10 sm:mb-14">
-          {/* Mobile: Horizontal Scroll */}
-          <div className="sm:hidden">
-            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
-              {displayed.map((testimonial, index) => (
-                <a
-                  key={index}
-                  href={GOOGLE_BUSINESS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Read ${testimonial.name}'s review on Google`}
-                  className={`flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:scale-[1.02] hover:shadow-lg flex flex-col ${
-                    testimonial.highlight
-                      ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-                      : "bg-card border border-border"
-                  }`}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <img
-                      src={testimonial.photo}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-sm text-foreground">{testimonial.name}</p>
-                      <span className="text-[10px] text-muted-foreground">{testimonial.timeAgo}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-0.5 mb-3">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star
-                        key={star}
-                        className={`h-3 w-3 ${
-                          star <= (testimonial.rating ?? 5)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-muted-foreground/30"
-                        }`}
-                      />
-                    ))}
-                  </div>
-
-                  <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1">
-                    “{highlightKeywords(testimonial.quote)}”
-                  </p>
-                  <p className="text-xs text-primary mt-3 font-medium">View on Google →</p>
-                </a>
-              ))}
-              <SeeAllReviewsCard mobile />
-            </div>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+              What Uzair's clients say
+            </h2>
           </div>
 
-          {/* Desktop: Uniform grid — auto-rows-fr forces equal height rows */}
-          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
-            {displayed.map((testimonial, index) => (
+          <div className="flex items-center gap-3 sm:gap-4 bg-card border border-border rounded-xl px-4 py-3 shadow-sm">
+            <div className="text-center">
+              <p className="font-display text-3xl sm:text-4xl font-black text-foreground leading-none">
+                {liveData?.overallRating ?? 4.9}
+              </p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">out of 5</p>
+            </div>
+            <div className="w-px h-10 bg-border" />
+            <div>
+              <StarRating rating={liveData?.overallRating ?? 4.9} size="md" />
               <a
-                key={index}
                 href={GOOGLE_BUSINESS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Read ${testimonial.name}'s review on Google`}
-                className={`rounded-xl p-6 h-[380px] transition-all hover:scale-[1.02] hover:shadow-lg cursor-pointer flex flex-col ${
-                  testimonial.highlight
-                    ? "bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
-                    : "bg-card border border-border"
-                }`}
+                className="inline-flex items-center gap-1 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors mt-1 underline underline-offset-2"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <img
-                    src={testimonial.photo}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-primary/30"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
-                  </div>
-                </div>
-
-                <div className="flex gap-0.5 mb-3">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      className={`h-3.5 w-3.5 ${
-                        star <= (testimonial.rating ?? 5)
-                          ? "fill-yellow-400 text-yellow-400"
-                          : "text-muted-foreground/30"
-                      }`}
-                    />
-                  ))}
-                </div>
-
-                <Quote
-                  className={`h-5 w-5 mb-2 shrink-0 ${
-                    testimonial.highlight ? "text-primary/50" : "text-muted-foreground/30"
-                  }`}
-                />
-
-                <p className="text-sm lg:text-[15px] text-foreground/90 leading-relaxed whitespace-pre-line line-clamp-6 flex-1">
-                  “{highlightKeywords(testimonial.quote)}”
-                </p>
-                <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
+                See all on Google
+                <ExternalLink className="h-3 w-3" />
               </a>
-            ))}
-            <SeeAllReviewsCard />
+            </div>
           </div>
         </div>
 
+        {/* Loading State */}
+        {isLoading && (
+          <div className="mb-10 sm:mb-14">
+            <div className="sm:hidden">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <ReviewSkeletonCard key={i} mobile />
+                ))}
+                <SeeAllReviewsCard mobile />
+              </div>
+            </div>
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <ReviewSkeletonCard key={i} />
+              ))}
+              <SeeAllReviewsCard />
+            </div>
+          </div>
+        )}
+
+        {/* Error State */}
+        {!isLoading && error && (
+          <div className="mb-10 sm:mb-14 rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-center">
+            <p className="text-sm text-muted-foreground">
+              Unable to load the latest Google reviews right now. Showing verified client reviews instead.
+            </p>
+          </div>
+        )}
+
+        {/* Reviews Grid */}
+        {!isLoading && displayed.length > 0 && (
+          <div className="mb-10 sm:mb-14">
+            <div className="sm:hidden">
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
+                {displayed.map((testimonial, index) => (
+                  <ReviewCard key={index} testimonial={testimonial} mobile />
+                ))}
+                <SeeAllReviewsCard mobile />
+              </div>
+            </div>
+
+            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
+              {displayed.map((testimonial, index) => (
+                <ReviewCard key={index} testimonial={testimonial} />
+              ))}
+              <SeeAllReviewsCard />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -75,7 +75,7 @@ export const BookingContextSection = () => {
               eyebrow=""
               heading=""
               subheading=""
-              buttonText="Get My Free Strategy Call"
+              buttonText="Book a Buyer Strategy Call"
               showTrust={false}
               twoColumn
             />

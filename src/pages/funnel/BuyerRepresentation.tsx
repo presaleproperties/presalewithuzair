@@ -5,12 +5,12 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Do I need my own realtor to buy a presale?",
     answer:
-      "Yes. The rep at the developer's sales centre works for the developer — that's their client, that's who pays them. Your own buyer's agent is also paid by the developer out of the price you'd pay anyway, but represents you. My fee is paid by the developer's marketing budget, not added on top of the purchase price.",
+      "Yes. The rep at the developer's sales centre works for the developer — that's their client, that's who pays them. Your own buyer's agent represents you. For many presale projects, buyer representation is paid through the project's sales structure. Uzair confirms exactly how it works on your specific project before you commit.",
   },
   {
     question: "Does hiring a buyer's agent cost me anything?",
     answer:
-      "No. The developer builds a commission for the buyer's agent into every presale, whether you use one or not. If you skip your own representation, the developer keeps that budget — you don't save a dollar. All you lose is having someone on your side of the table.",
+      "For many presale projects, buyer representation is paid through the project's sales structure, so it typically costs the buyer nothing. Uzair confirms exactly how it works on your specific project before you commit — and tells you upfront if anything is different.",
   },
   {
     question: "Who does the sales-centre rep actually represent?",
@@ -33,16 +33,16 @@ const BuyerRepresentation = () => (
   <FunnelPage
     path="/buyer-representation-presale-fraser-valley"
     title="Do You Need a Realtor for a BC Presale? Yes — Here's Why"
-    description="I'm Uzair — buyer-only presale specialist. The $0-cost buyer representation thesis: who the sales-centre rep really works for, and why you need your own realtor on every BC presale."
+    description="I'm Uzair — buyer-only presale specialist. Who the sales-centre rep really works for, and why you need your own realtor on every BC presale."
     h1="Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)"
     eyebrow="Buyer Representation"
     breadcrumbName="Buyer Representation for Presale"
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation."
+    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, how the developer's sales structure works, and what you lose by skipping representation."
     faqs={faqs}
   >
     <h2>The thesis, in one line</h2>
     <p>
-      The developer already built a buyer's-agent commission into the price of every presale. If you don't hire your own realtor, the developer simply keeps that commission — you don't save a dollar. All you save is having someone on your side of the table.
+      For many presale projects, buyer representation is paid through the project's sales structure — so it typically costs the buyer nothing to have someone on their side of the table. Skipping your own realtor doesn't put money back in your pocket; it just removes your representation.
     </p>
 
     <h2>Who does the sales-centre rep actually represent?</h2>
@@ -62,9 +62,9 @@ const BuyerRepresentation = () => (
       Reviews the contract and Disclosure Statement line by line. Negotiates deposit ladders and incentives that don't reach public buyers. Compares your shortlisted project against other active presales and resale comps. Tells you when a deal is bad. Uses the 7-day rescission window to protect your deposit. Represents your interests, not a sales quota.
     </p>
 
-    <h2>The cost — $0</h2>
+    <h2>What representation costs you</h2>
     <p>
-      My commission is paid by the developer out of the price you'd pay anyway. Skipping me doesn't save you money — it just removes your representation. That's it. That's the entire trade-off.
+      For many presale projects, buyer representation is paid through the project's sales structure. Uzair will explain exactly how it works before you move forward, and tell you upfront if anything is different.
     </p>
 
     <RelatedLinks

@@ -79,14 +79,13 @@ function PostCard({ post }: { post: BlogPost }) {
       className="group rounded-xl overflow-hidden flex flex-col border border-border bg-card transition-all duration-400 hover:-translate-y-0.5"
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-muted">
-        {post.image_url && (
-          <img
-            src={post.image_url}
-            alt={post.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            style={{ filter: "saturate(1.08) contrast(1.04)" }}
-          />
-        )}
+        <img
+          src={post.image_url || blogHero}
+          alt={post.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          style={{ filter: "saturate(1.08) contrast(1.04)" }}
+          loading="lazy"
+        />
       </div>
       <div className="p-5 flex flex-col flex-1">
         <h2 className="font-display text-base leading-snug text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 flex-1">

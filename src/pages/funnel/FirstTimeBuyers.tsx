@@ -63,9 +63,9 @@ const FirstTimeBuyers = () => (
     <h2>Track record</h2>
     <p className="font-semibold">{TRACK_RECORD}</p>
 
-    <h2>$0 to you — always</h2>
+    <h2>How my fee works</h2>
     <p>
-      My commission is paid by the developer out of the price you'd pay anyway. Going direct to a sales centre doesn't save you money — it just removes your representation. First-time buyers get the same buyer-only treatment as my repeat investor clients.
+      My fee comes from the developer's marketing budget — it isn't added on top of the purchase price you'd pay walking in on your own. First-time buyers get the same buyer-only representation, contract review, and shortlist process as my repeat clients.
     </p>
 
     <h2>See the full platform + live projects</h2>

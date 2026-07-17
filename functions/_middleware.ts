@@ -653,7 +653,7 @@ export const onRequest: any = async (context: any) => {
       .on('meta[name="twitter:title"]', new AttrSetter("content", meta.title))
       .on('meta[name="twitter:description"]', new AttrSetter("content", meta.description))
       .on('meta[name="twitter:image"]', new AttrSetter("content", meta.image))
-      .on("head", new HeadAppender(`<link rel="canonical" href="${canonical}">`))
+      .on('link[rel="canonical"]', new AttrSetter("href", canonical))
       .on("#root", new RootInjector(body));
     if (resolved.robots) rw = rw.on('meta[name="robots"]', new AttrSetter("content", resolved.robots));
     return rw.transform(res);

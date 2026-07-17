@@ -109,6 +109,24 @@ const About = () => {
           </div>
         </section>
 
+        {/* By the numbers */}
+        <section className="py-16 bg-background">
+          <div className="container-xl">
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <p className="section-label mb-4">By the numbers</p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              {byTheNumbers.map((stat) => (
+                <div key={stat.label} className="stat-card text-center">
+                  <p className="text-3xl lg:text-4xl font-display font-bold text-gradient">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
         {/* Buyer-side advice */}
         <section className="py-20 bg-background">
           <div className="container-xl">
@@ -200,6 +218,44 @@ const About = () => {
           </div>
         </section>
 
+        {/* Who I help */}
+        <section className="py-20 bg-card">
+          <div className="container-xl">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                Who I help
+              </h2>
+              <div className="space-y-8 text-foreground/80 leading-relaxed text-lg">
+                <div>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
+                  <p>
+                    If you are buying your first home, I help you slow the decision down and understand what you are actually buying.
+                  </p>
+                  <p className="mt-2">
+                    We look at affordability, deposit timing, completion costs, floor plan, location, and whether presale is the right move for your life right now.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
+                  <p>
+                    If you are buying as an investment, I help you look past the brochure.
+                  </p>
+                  <p className="mt-2">
+                    We compare rental demand, resale potential, price per square foot, incentives, assignment options, completion risk, and exit strategy.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
+                  <p>
+                    If you are moving from a condo to a townhome, or from resale into new construction, I help you think through timing, financing, completion, and whether the new home fits your long-term plan.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {/* Local market focus */}
         <section className="py-20 bg-card">
           <div className="container-xl">
@@ -286,59 +342,8 @@ const About = () => {
           </div>
         </section>
 
-        {/* By the numbers */}
-        <section className="py-16 bg-background">
-          <div className="container-xl">
-            <div className="max-w-3xl mx-auto text-center mb-10">
-              <p className="section-label mb-4">By the numbers</p>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              {byTheNumbers.map((stat) => (
-                <div key={stat.label} className="stat-card text-center">
-                  <p className="text-3xl lg:text-4xl font-display font-bold text-gradient">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-2">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Who I help */}
-        <section className="py-20 bg-card">
-          <div className="container-xl">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                Who I help
-              </h2>
-              <div className="space-y-8 text-foreground/80 leading-relaxed text-lg">
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
-                  <p>
-                    If you are buying your first home, I help you slow the decision down and understand what you are actually buying.
-                  </p>
-                  <p className="mt-2">
-                    We look at affordability, deposit timing, completion costs, floor plan, location, and whether presale is the right move for your life right now.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
-                  <p>
-                    If you are buying as an investment, I help you look past the brochure.
-                  </p>
-                  <p className="mt-2">
-                    We compare rental demand, resale potential, price per square foot, incentives, assignment options, completion risk, and exit strategy.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
-                  <p>
-                    If you are moving from a condo to a townhome, or from resale into new construction, I help you think through timing, financing, completion, and whether the new home fits your long-term plan.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
         {/* Short version */}
         <section className="py-20 bg-background">

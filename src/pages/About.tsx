@@ -35,25 +35,25 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Fraser Valley Presale Specialist</title>
+        <title>About Uzair Muhammad — Buyer-Only Presale Specialist, Surrey BC</title>
         <meta
           name="description"
-          content="Meet Uzair Muhammad — Fraser Valley's leading presale expert. 450+ units sold, $200M+ in volume across Surrey, Langley & Abbotsford."
+          content="Born in Pakistan, raised in Surrey. Former City of Surrey planning and bylaws professional turned buyer-only presale specialist. 450+ units sold. Works in Punjabi, Hindi, Urdu and English."
         />
-        <meta name="keywords" content="Uzair Muhammad realtor, Fraser Valley presale specialist, Surrey presale agent, Langley new construction, Abbotsford presale condos, Chilliwack new builds, Maple Ridge presale, presale specialist BC, Vancouver presale expert" />
+        <meta name="keywords" content="Uzair Muhammad realtor, Surrey presale specialist, Fraser Valley buyer's agent, Punjabi realtor Surrey, Hindi realtor Fraser Valley, Urdu realtor BC, buyer-only presale agent, new construction Surrey" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
-        <meta property="og:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 450+ units sold and $200M+ in sales volume across Surrey, Langley, Abbotsford, and Chilliwack." />
+        <meta property="og:title" content="About Uzair Muhammad — Buyer-Only Presale Specialist, Surrey BC" />
+        <meta property="og:description" content="Born in Pakistan, raised in Surrey. Former City of Surrey planning and bylaws professional turned buyer-only presale specialist. 450+ units sold." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley Presale Specialist" />
-        <meta name="twitter:description" content="Learn about Uzair Muhammad — Fraser Valley's leading presale expert with 450+ units sold and $200M+ in sales volume." />
+        <meta name="twitter:title" content="About Uzair Muhammad — Buyer-Only Presale Specialist, Surrey BC" />
+        <meta name="twitter:description" content="Buyer-only presale specialist in the Fraser Valley. 450+ units sold. Punjabi, Hindi, Urdu and English." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
         {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
       </Helmet>

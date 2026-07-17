@@ -124,7 +124,7 @@ export const DifferentiationSection = () => {
             return (
               <article
                 key={number}
-                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft hover:shadow-card hover:border-primary/30 transition-all duration-300 ${
+                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background focus-within:border-primary/40 ${
                   block.wide ? "lg:col-span-2" : ""
                 }`}
               >

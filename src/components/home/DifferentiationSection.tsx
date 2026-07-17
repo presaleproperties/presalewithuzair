@@ -57,8 +57,8 @@ const blocks: Block[] = [
     body: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption removes property transfer tax on qualifying homes up to $1.1M. Together that's a five-figure difference at closing, and most first-time buyers never find out they qualified. I work out the real number before you commit: GST, PTT, rebates, deposit dates, and what the mortgage will look like at completion in 12 to 36 months.",
   },
   {
-    heading: "Sometimes I tell buyers not to buy.",
-    body: "Everyone else a presale buyer talks to gets paid only if the sale closes. I've told clients to walk away from projects and lost the commission. Buyer-only representation is what makes that possible. A missed bad deal is still a win.",
+    heading: "Sometimes the right move is to wait.",
+    body: "Not every presale project is worth buying into. I look at the location, the price per square foot, the floor plan and layout, the builder's track record, and whether the project actually makes sense for your goal. If the numbers don't work, the layout is wrong, the location is weak, or the builder is a risk, I tell buyers to sit this one out. Sitting on the sideline is often how you get the better deal — when the right project launches at the right time. For me it's not about doing a deal. It's about getting the right deal, in the right project, at the right time.",
   },
 ];
 

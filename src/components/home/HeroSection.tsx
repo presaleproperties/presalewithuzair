@@ -44,17 +44,17 @@ export const HeroSection = () => {
           </p>
           
           {/* Headline */}
-          <h1 className="font-display text-[2.25rem] md:text-[2.75rem] leading-[1.05] font-black mb-3 animate-fade-up text-foreground">
+          <h1 className="font-display text-[2rem] md:text-[2.5rem] leading-[1.08] font-black mb-4 animate-fade-up text-foreground tracking-tight">
             {heroContent.headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl font-semibold text-foreground/70 mb-4 animate-fade-up">
+          <p className="text-lg md:text-xl font-semibold text-foreground/75 mb-4 animate-fade-up">
             {heroContent.subheadline}
           </p>
 
           {/* Body */}
-          <p className="text-base md:text-lg text-foreground/60 mb-4 animate-fade-up leading-relaxed">
+          <p className="text-base md:text-lg text-foreground/60 mb-5 animate-fade-up leading-relaxed">
             {heroContent.body}
           </p>
 
@@ -66,8 +66,8 @@ export const HeroSection = () => {
 
 
           {/* CTA Buttons */}
-          <div className="mb-4 mt-2 flex flex-col sm:flex-row gap-3 animate-fade-up">
-            <Button variant="hero" size="lg" className="rounded-full px-8 py-6 md:px-10 md:py-7 text-base font-semibold shadow-lg" onClick={handleBookClick}>
+          <div className="mb-6 mt-1 flex flex-col sm:flex-row gap-3 animate-fade-up">
+            <Button variant="hero" size="lg" className="rounded-full px-8 py-6 md:px-10 md:py-6 text-base font-semibold shadow-md hover:shadow-lg transition-shadow" onClick={handleBookClick}>
               {heroContent.cta}
             </Button>
           </div>

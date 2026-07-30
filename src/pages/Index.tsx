@@ -10,14 +10,6 @@ import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
 // Lazy load below-fold sections to reduce initial bundle
 const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
 const DifferentiationSection = lazy(() => import("@/components/home/DifferentiationSection").then(m => ({ default: m.DifferentiationSection })));
-const ProcessSection = lazy(() => import("@/components/home/ProcessSection").then(m => ({ default: m.ProcessSection })));
-
-const BookingContextSection = lazy(() => import("@/components/home/BookingContextSection").then(m => ({ default: m.BookingContextSection })));
-
-
-const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
-const HomeFAQSection = lazy(() => import("@/components/home/HomeFAQSection").then(m => ({ default: m.HomeFAQSection })));
-const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 
 const SectionFallback = () => <div className="min-h-[200px]" />;
 
@@ -73,7 +65,7 @@ const Index = () => {
       </Helmet>
 
       <Navbar />
-      <main>
+        <main>
         {/* Hero - loads immediately (above fold) */}
         <HeroSection />
         
@@ -86,31 +78,6 @@ const Index = () => {
         {/* 2. Why Uzair (positioning) */}
         <Suspense fallback={<SectionFallback />}>
           <DifferentiationSection />
-        </Suspense>
-
-        {/* 3. How it works */}
-        <Suspense fallback={<SectionFallback />}>
-          <ProcessSection />
-        </Suspense>
-
-        {/* 4. Answers to common buyer questions */}
-        <Suspense fallback={<SectionFallback />}>
-          <HomeFAQSection />
-        </Suspense>
-
-        {/* 5. Free lead magnet */}
-        <Suspense fallback={<SectionFallback />}>
-          <PresaleGuideBanner />
-        </Suspense>
-
-        {/* 6. Book a call */}
-        <Suspense fallback={<SectionFallback />}>
-          <BookingContextSection />
-        </Suspense>
-
-        {/* 7. Final CTA */}
-        <Suspense fallback={<SectionFallback />}>
-          <FinalCTASection />
         </Suspense>
 
       </main>

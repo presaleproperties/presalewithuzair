@@ -170,7 +170,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Nature + Convenience", description: "Mountain trails, river parks, and West Coast Express access." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Maple Ridge?", answer: "Uzair Muhammad — buyer-only representation across the Fraser Valley, 450+ presale units sold. In Maple Ridge I focus on projects where the developer has proven Metro Vancouver delivery and the resale liquidity supports your exit plan." },
+      { question: "Who is the best presale realtor in Maple Ridge?", answer: "Uzair Muhammad — representing buyers, not developers, across the Fraser Valley, 450+ families helped. In Maple Ridge I focus on projects where the developer has proven Metro Vancouver delivery and the resale liquidity supports your exit plan." },
       { question: "How do I buy a presale in Maple Ridge?", answer: "Join VIP lists, review the disclosure statement and deposit ladder together, secure your unit at the private VIP event, then use the 7-day rescission period for contract review and financing pre-approval. I coordinate the whole process." },
       { question: "Is Maple Ridge a good area for first-time buyers?", answer: "Yes — pricing sits well below Coquitlam and Port Moody, first-time buyer exemptions apply to eligible units, and the West Coast Express keeps commuting realistic. I'll show you exactly how the numbers work versus renting or resale." },
       { question: "What deposit should I plan for?", answer: "Most Maple Ridge presales are 15% staged. Newer launches sometimes structure 10% ladders — I always ask." },

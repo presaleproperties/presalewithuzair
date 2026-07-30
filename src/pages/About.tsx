@@ -32,23 +32,23 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>Fraser Valley's leading Presale Expert | About Uzair Muhammad</title>
+        <title>About Uzair Muhammad | Fraser Valley's Leading Presale Agent</title>
         <meta
           name="description"
-          content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume · buyer-side only."
+          content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Surrey presale specialist, Fraser Valley buyer's agent, buyer-side presale advisor, new construction Surrey" />
-        <link rel="canonical" href="https://presalewithuzair.lovable.app/about" />
+        <link rel="canonical" href="https://presalewithuzair.com/about" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.lovable.app/about" />
-        <meta property="og:title" content="Fraser Valley's leading Presale Expert | About Uzair Muhammad" />
-        <meta property="og:description" content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume." />
+        <meta property="og:url" content="https://presalewithuzair.com/about" />
+        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley's Leading Presale Agent" />
+        <meta property="og:description" content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Fraser Valley's leading Presale Expert | About Uzair Muhammad" />
-        <meta name="twitter:description" content="Fraser Valley's leading presale expert. Uzair Muhammad helps buyers understand presale condos, townhomes, and new homes before they sign. 450+ units sold · $200M+ volume." />
+        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley's Leading Presale Agent" />
+        <meta name="twitter:description" content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
       </Helmet>
 
@@ -70,7 +70,7 @@ const About = () => {
                 </div>
                 <div className="hidden lg:block absolute -bottom-6 -right-6 bg-card rounded-xl px-6 py-5 border border-border shadow-xl">
                   <p className="text-3xl font-display font-bold text-gradient leading-none">450+</p>
-                  <p className="text-xs text-muted-foreground mt-1.5 uppercase tracking-wider">units sold · $200M+ volume</p>
+                  <p className="text-xs text-muted-foreground mt-1.5 uppercase tracking-wider">families helped · $200M+ in new homes</p>
                 </div>
               </div>
 
@@ -78,14 +78,14 @@ const About = () => {
               <div className="lg:col-span-7">
                 <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
                 <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-[1.05]">
-                  Fraser Valley's leading Presale Expert
+                  Fraser Valley's Leading Presale Agent
                 </h1>
                 <div className="mt-8 space-y-5 text-foreground/80 animate-fade-up delay-200">
                   <p className="text-xl leading-relaxed">
                     I help buyers understand presale before they sign. That means comparing the project, price, floor plan, deposit, contract, location, incentives, and resale potential before the sales centre pressure starts.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I have helped buyers and investors purchase 450+ new-construction homes, with more than $200M in sales volume across the Fraser Valley and Metro Vancouver.
+                    I've helped 450+ families purchase more than $200M in new homes across the Fraser Valley and Metro Vancouver — and I stay with every buyer from finding the right project to keys in hand. I'm licensed with Real Broker B.C. Ltd. (Uzair Muhammad PREC*) and regulated by the BC Financial Services Authority.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
                     I also lead The Presale Properties Group, a multilingual team focused on presale condos, townhomes, and new homes across Surrey, Langley, Delta, South Surrey, Abbotsford, Coquitlam, and Burnaby.
@@ -132,7 +132,7 @@ const About = () => {
                   </p>
                   <p>My job is different.</p>
                   <p>
-                    I will never promote or hype a project because I don't work for developers. I represent buyers only. Most realtors push every new launch to build leverage with developers. That approach turns them into a marketing arm, and it costs the buyer independent advice. I won't do that. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
+                    I will never promote or hype a project because I don't work for developers. I represent buyers, not developers. Most realtors push every new launch to build leverage with developers. That approach turns them into a marketing arm, and it costs the buyer independent advice. I won't do that. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
                   </p>
                   <p className="font-semibold text-foreground">Good advice should protect the buyer, not just close the deal.</p>
                 </div>

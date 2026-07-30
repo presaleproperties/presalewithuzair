@@ -293,10 +293,6 @@ const ReviewCard = ({
 
       <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
-      {!mobile && (
-        <Quote className="h-5 w-5 mb-2 mt-3 shrink-0 text-muted-foreground/30" />
-      )}
-
       <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-2">
         “{highlightKeywords(testimonial.quote)}”
       </p>

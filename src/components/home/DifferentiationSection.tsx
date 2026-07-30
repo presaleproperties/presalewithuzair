@@ -15,7 +15,15 @@ const blocks: Block[] = [
   {
     heading:
       "The sales centre is built to sell the project. I'm here to help you decide if it's actually right for you.",
-    body: "Presale can be a smart move. It can also be an expensive mistake if you buy the wrong floor plan, the wrong building, the wrong location, or the wrong contract without understanding the risks. My job is to slow the decision down, compare the options, and help you understand what you're really buying — not the polished sales-centre version.",
+    body: (
+      <>
+        Presale can be a smart move. It can also be an expensive mistake if you buy the wrong{" "}
+        <strong>floor plan</strong>, <strong>building</strong>, <strong>location</strong>, or{" "}
+        <strong>contract</strong> without understanding the risks. My job is to slow the decision
+        down, compare the options, and help you understand what you're really buying — not the
+        polished sales-centre version.
+      </>
+    ),
     feature: true,
   },
   {
@@ -23,12 +31,14 @@ const blocks: Block[] = [
     body: (
       <div className="space-y-4">
         <p>
-          At the sales centre, everyone in the room is paid by the developer. That leaves the buyer
-          without anyone on their side of the contract. I only represent buyers. I don't hype
-          projects and I don't chase developer relationships at your expense.
+          At the sales centre, everyone in the room is paid by the <strong>developer</strong>. That
+          leaves the buyer without anyone on their side of the <strong>contract</strong>. I only
+          represent <strong>buyers</strong>. I don't hype projects and I don't chase{" "}
+          <strong>developer relationships</strong> at your expense.
         </p>
         <p>
-          I've sold 450+ presale units and more than $200M in new construction. I lead{" "}
+          I've sold <strong>450+ presale units</strong> and more than{" "}
+          <strong>$200M in new construction</strong>. I lead{" "}
           <a
             href={PPG_URL}
             target="_blank"
@@ -37,14 +47,15 @@ const blocks: Block[] = [
           >
             The Presale Properties Group
           </a>{" "}
-          and founded the Vancouver Presale Expo. I'm a licensed BC REALTOR® under Real Broker.
-          Before real estate, I spent 10 years with the City of Surrey in planning and bylaws. I
-          also work in Punjabi, Hindi, and Urdu, so the people writing the cheque can understand
-          the contract in their own language.
+          and founded the <strong>Vancouver Presale Expo</strong>. I'm a licensed{" "}
+          <strong>BC REALTOR®</strong> under <strong>Real Broker</strong>. Before real estate, I spent{" "}
+          <strong>10 years</strong> with the <strong>City of Surrey</strong> in planning and bylaws. I
+          also work in <strong>Punjabi, Hindi, and Urdu</strong>, so the people writing the cheque
+          can understand the contract in their own language.
         </p>
         <p>
-          Talk to me before you register at a sales centre — once you register directly, your
-          representation options can become more limited.
+          Talk to me before you <strong>register</strong> at a sales centre — once you register
+          directly, your representation options can become more limited.
         </p>
       </div>
     ),
@@ -52,22 +63,25 @@ const blocks: Block[] = [
     wide: true,
   },
   {
-    heading: "I read the contract, run the real numbers, and tell you if you should wait.",
+    heading:
+      "I help you understand the contract, the real numbers, and whether a project is worth waiting for.",
     body: (
       <div className="space-y-4">
         <p>
-          I translate the disclosure statement into plain language so you understand what you're
-          actually committing to: the deposit schedule, completion date, assignment rights, and
-          what happens if the developer is late or changes the plans.
+          I help you understand the <strong>disclosure statement</strong> in plain language: what
+          the <strong>deposit schedule</strong>, <strong>completion date</strong>,{" "}
+          <strong>assignment rights</strong>, and <strong>developer delays</strong> actually mean for
+          you.
         </p>
         <p>
-          I model the real cost of ownership — deposits, mortgage at completion, and closing
-          costs — so you know the full number before you sign, not after.
+          I walk you through the <strong>real cost of ownership</strong> — deposits, mortgage at
+          completion, and closing costs — so you see the full picture before you decide.
         </p>
         <p>
-          I compare projects on location, price per square foot, builder track record, floor plan,
-          and fit for your goal. If the numbers don't work or the project is wrong for you, I'll
-          tell you to wait. The right deal in the right project beats any deal.
+          I compare projects on <strong>location</strong>, <strong>price per square foot</strong>,{" "}
+          <strong>builder track record</strong>, <strong>floor plan</strong>, and fit for your{" "}
+          <strong>goal</strong>. If the numbers don't work or the project is wrong for you, I'll tell
+          you to wait. The right deal in the right project beats any deal.
         </p>
       </div>
     ),

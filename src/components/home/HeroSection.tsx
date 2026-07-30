@@ -3,11 +3,11 @@ import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
-  subheadline: "Presale advice before you sign.",
-  body: "Buyer-side guidance for first-time buyers and investors across Surrey, Langley, Delta, South Surrey, Abbotsford and the Fraser Valley. Uzair represents buyers only, never developers, and works in Punjabi, Hindi, Urdu and English.",
-  proof: "450+ units sold · $200M+ sales volume · Buyer-side only",
-  cta: "Book a Buyer Strategy Call"
+  headline: "FRASER VALLEY'S LEADING PRESALE AGENT",
+  subheadline: "From finding the right project to keys in hand — we're with you the whole way.",
+  body: "We represent buyers, not developers. New condos, townhomes and presales across Surrey, Langley, Abbotsford, Delta, Coquitlam and the Fraser Valley — exclusive VIP access and pricing, the right home at the right price, and support through every step: deposits, mortgage, walkthrough, and moving day. In English, Punjabi, Hindi or Urdu. And it costs you $0 — the developer pays the buyer-agent fee.",
+  proof: "450+ families helped · $200M+ in new homes · 4.9★ on Google",
+  cta: "Book a Free 15-Minute Call"
 };
 
 export const HeroSection = () => {

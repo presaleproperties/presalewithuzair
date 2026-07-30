@@ -160,7 +160,7 @@ const Services = () => {
                 Expert guidance. No sales pressure.
               </h1>
               <p className="mt-6 lede animate-fade-up delay-200">
-                Whether you are buying your first presale, assigning a contract, or looking for an investment property, you get honest, buyer-first advice designed to protect your capital.
+                Whether you are buying your first presale, assigning a contract, or building a portfolio, we're with you from finding the right project to keys in hand — honest, buyer-first advice at $0 cost to you.
               </p>
             </div>
           </div>

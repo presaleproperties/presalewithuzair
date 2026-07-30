@@ -50,7 +50,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     metaDescription: "Looking for presale condos in Surrey, BC? Get VIP access to new construction projects, exclusive developer incentives, and expert buyer representation.",
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Get VIP Access to Surrey's Best Presale Condos.",
-    heroSubheadline: "New Construction. Early Pricing. Full Contract Protection.",
+    heroSubheadline: "New Construction. VIP Pricing. With You to Keys.",
     heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey — I help you buy smart with expert guidance.",
     heroCta: "Get Surrey VIP Access",
     whyBuyTitle: "Why Invest in Surrey New Construction?",

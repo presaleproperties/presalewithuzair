@@ -225,7 +225,7 @@ const Services = () => {
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Book a Buyer Strategy Call
+                  Book a Free 15-Minute Call
                 </Button>
               </div>
             </div>

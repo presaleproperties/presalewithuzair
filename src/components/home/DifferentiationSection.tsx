@@ -56,19 +56,18 @@ const blocks: Block[] = [
     body: (
       <div className="space-y-4">
         <p>
-          BC gives buyers 7 days to cancel for any reason. Most buyers spend that window doing
-          nothing. I use it to read the full disclosure statement: deposit schedule, assignment
-          rights, completion dates, and what happens if the developer changes the plans.
+          I translate the disclosure statement into plain language so you understand what you're
+          actually committing to: the deposit schedule, completion date, assignment rights, and
+          what happens if the developer is late or changes the plans.
         </p>
         <p>
-          The sticker price isn't the final price. I model GST, PTT, rebates, deposit dates, and
-          the mortgage at completion — including first-time buyer rebates that can save five
-          figures at closing.
+          I model the real cost of ownership — deposits, mortgage at completion, and closing
+          costs — so you know the full number before you sign, not after.
         </p>
         <p>
-          If the location, price per square foot, floor plan, or builder track record doesn't
-          make sense for your goal, I'll tell you to sit this one out. The right deal in the right
-          project beats any deal.
+          I compare projects on location, price per square foot, builder track record, floor plan,
+          and fit for your goal. If the numbers don't work or the project is wrong for you, I'll
+          tell you to wait. The right deal in the right project beats any deal.
         </p>
       </div>
     ),

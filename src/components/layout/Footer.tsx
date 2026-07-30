@@ -94,7 +94,7 @@ export const Footer = () => {
                 <img src={logo} alt="Presale with Uzair" className="h-14 w-auto" />
               </Link>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                Uzair Muhammad PREC* (Real Broker) — Fraser Valley's leading presale agent. We represent buyers, not developers, across Surrey, Langley, Abbotsford and the Fraser Valley.
+                Uzair Muhammad PREC* (Real Broker) — Fraser Valley's leading presale agent.
               </p>
               <p className="text-white/60 text-xs leading-relaxed mb-5">
                 450+ families helped · $200M+ · English, Punjabi, Hindi & Urdu

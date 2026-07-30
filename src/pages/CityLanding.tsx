@@ -131,7 +131,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     metaDescription: "VIP access to presale condos and townhomes in Chilliwack, BC. A buyer-only presale specialist helps you find quality new construction.",
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Chilliwack Presales: Maximum Value, Zero Hype.",
-    heroSubheadline: "VIP Access to the Fraser Valley's Most Affordable New Construction.",
+    heroSubheadline: "VIP Access to the Fraser Valley's Most Attainable New Construction.",
     heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. Navigate the presale market with confidence and buy into quality projects.",
     heroCta: "Get Chilliwack VIP Access",
     whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",

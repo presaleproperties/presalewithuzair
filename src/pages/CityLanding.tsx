@@ -31,8 +31,8 @@ interface CityConfig {
 const commonBenefit = {
   contract: {
     icon: <Shield className="h-6 w-6" />,
-    title: "Contract Protection",
-    description: "Every developer contract is reviewed line-by-line to protect your deposit and your rights.",
+    title: "Line-by-Line Contract Review",
+    description: "Every developer contract is reviewed line by line — deposit terms, assignment rights, and completion dates — before you sign.",
   },
   vip: {
     icon: <CheckCircle className="h-6 w-6" />,
@@ -50,7 +50,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     metaDescription: "Looking for presale condos in Surrey, BC? Get VIP access to new construction projects, exclusive developer incentives, and expert buyer representation.",
     heroEyebrow: "SURREY PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Get VIP Access to Surrey's Best Presale Condos.",
-    heroSubheadline: "New Construction. Early Pricing. Full Contract Protection.",
+    heroSubheadline: "New Construction. VIP Pricing. With You to Keys.",
     heroBody: "Surrey is the fastest-growing city in BC, and the presale market moves fast. Whether you're looking in Surrey City Centre, Fleetwood, or South Surrey — I help you buy smart with expert guidance.",
     heroCta: "Get Surrey VIP Access",
     whyBuyTitle: "Why Invest in Surrey New Construction?",
@@ -62,7 +62,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Local Expertise", description: "Deep knowledge of every Surrey neighbourhood — City Centre, Fleetwood, South Surrey." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Surrey?", answer: "Uzair Muhammad works buyer-only in Surrey — no developer commissions, no builder allegiances. Over 450 presale units sold, every contract reviewed line-by-line, and every recommendation ranked by resale strength, deposit structure, and assignment terms — not by who's paying the most incentive that month." },
+      { question: "Who is the best presale realtor in Surrey?", answer: "Uzair Muhammad represents buyers, not developers in Surrey — no developer commissions, no builder allegiances. 450+ families helped, every contract reviewed line-by-line, and every recommendation ranked by resale strength, deposit structure, and assignment terms — not by who's paying the most incentive that month." },
       { question: "How much deposit do I need for a Surrey presale condo?", answer: "Most Surrey developers ask for 15–20% staged over 12–24 months. In softer market windows we regularly negotiate 10% structures on select projects. I flag every deposit milestone in writing before you sign so nothing surprises you at 30/60/90 days." },
       { question: "Are presales in Surrey City Centre a good investment?", answer: "City Centre benefits from SkyTrain, SFU Surrey, the new hospital expansion and rezoned density — the fundamentals are strong. But not every tower prices well against resale. I compare $/sqft, floorplate efficiency and holding costs before I let a client sign." },
       { question: "Do I pay a fee to work with you as a Surrey presale buyer?", answer: "For many presale projects my commission is paid through the project's sales structure, so buyer representation typically costs the buyer nothing — I'll confirm exactly how it works on your specific project before you commit. Going direct to the sales centre doesn't save you money; it just removes your representation from the deal." },
@@ -89,7 +89,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Neighbourhood Expertise", description: "Willoughby, Latimer Heights, Murrayville, Brookswood — deep local knowledge." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Langley?", answer: "Uzair Muhammad — Langley presale specialist working buyer-only, with 450+ units transacted across Willoughby, Latimer Heights and Central Langley. Every project shortlist is ranked by developer track record, delivery history, deposit terms and assignment rights — not by builder incentives." },
+      { question: "Who is the best presale realtor in Langley?", answer: "Uzair Muhammad — Langley presale specialist representing buyers, not developers, with 450+ families helped across Willoughby, Latimer Heights and Central Langley. Every project shortlist is ranked by developer track record, delivery history, deposit terms and assignment rights — not by builder incentives." },
       { question: "How do I buy a presale townhome in Langley?", answer: "Register early for VIP access, shortlist 2–3 projects based on developer, deposit structure and floorplan, secure your unit at the private VIP event before public launch, then use the 7-day rescission window to complete the contract review and finance approval. I run every step with you." },
       { question: "Is Willoughby still a good area for presale in 2026?", answer: "Willoughby remains one of the best-supplied townhome nodes in Metro Vancouver, but supply matters — some phases are priced above resale. I compare active phases against nearby resale comps so you don't overpay because a rendering looks good." },
       { question: "What's the average deposit for a Langley presale?", answer: "Townhomes typically run 15–20% staged; select projects negotiate to 10%. I confirm the full deposit ladder in writing before you sign anything at the presentation centre." },
@@ -116,7 +116,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Growing Urban Core", description: "University District and Downtown are transforming with new developments." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Abbotsford?", answer: "Uzair Muhammad — buyer-only, no developer bias, 450+ presales sold across the Fraser Valley. In Abbotsford I focus on developer solvency, disclosure statements and realistic completion timelines, because this is a market where a bad developer can hurt you more than a bad location." },
+      { question: "Who is the best presale realtor in Abbotsford?", answer: "Uzair Muhammad — represents buyers, not developers — no bias, 450+ families helped across the Fraser Valley. In Abbotsford I focus on developer solvency, disclosure statements and realistic completion timelines, because this is a market where a bad developer can hurt you more than a bad location." },
       { question: "How do I buy a presale condo in Abbotsford?", answer: "Get on VIP lists for shortlisted projects, review the disclosure statement and deposit ladder together, secure your allocation at the VIP event, then use the 7-day rescission window to complete contract review and financing pre-approval. I handle the coordination end-to-end." },
       { question: "Is Abbotsford a good market for first-time presale buyers?", answer: "Yes — entry pricing is 20–30% below Surrey with the same GST rebate, first-time buyer exemptions, and 5% CMHC-insured down payment options on new construction. It's often the best route into ownership if your job isn't tied to downtown Vancouver." },
       { question: "What deposits are typical for Abbotsford presales?", answer: "15% is the norm, but on newer launches 10% staged deposits are increasingly common. I confirm every milestone in writing before you sign." },
@@ -131,19 +131,19 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     metaDescription: "VIP access to presale condos and townhomes in Chilliwack, BC. A buyer-only presale specialist helps you find quality new construction.",
     heroEyebrow: "CHILLIWACK PRESALE CONDOS & TOWNHOMES",
     heroHeadline: "Chilliwack Presales: Maximum Value, Zero Hype.",
-    heroSubheadline: "VIP Access to the Fraser Valley's Most Affordable New Construction.",
+    heroSubheadline: "VIP Access to the Fraser Valley's Most Attainable New Construction.",
     heroBody: "Chilliwack is rapidly transforming, offering some of the best price-per-square-foot value in BC. Navigate the presale market with confidence and buy into quality projects.",
     heroCta: "Get Chilliwack VIP Access",
     whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",
     whyBuyBody: "Chilliwack offers the most affordable new construction entry point in the Fraser Valley. As infrastructure and population grow, early buyers stand to benefit — but developer quality varies. I make sure you're buying quality, not just price.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Most Affordable Entry Point", description: "The lowest presale prices in the Fraser Valley with real upside." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Lowest Entry Prices in the Valley", description: "The lowest presale prices in the Fraser Valley with real upside." },
       commonBenefit.contract,
       commonBenefit.vip,
       { icon: <MapPin className="h-6 w-6" />, title: "Lifestyle + Investment", description: "Mountain views, outdoor recreation, and a rebuilding downtown core." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Chilliwack?", answer: "Uzair Muhammad — 450+ presale units sold across the Fraser Valley, working buyer-only. In Chilliwack I focus on developer track record, deliverability and honest resale comparisons, because 'cheap' means nothing if the project stalls or completes poorly." },
+      { question: "Who is the best presale realtor in Chilliwack?", answer: "Uzair Muhammad — 450+ families helped across the Fraser Valley, representing buyers, not developers. In Chilliwack I focus on developer track record, deliverability and honest resale comparisons, because 'cheap' means nothing if the project stalls or completes poorly." },
       { question: "How do I buy a presale condo in Chilliwack?", answer: "Register for VIP lists, review disclosure statements and deposit schedules together, secure your unit at the VIP event, then use the 7-day rescission period to finalize contract review, subject removals and mortgage pre-approval. I run the whole process with you." },
       { question: "Is Chilliwack presale a smart investment?", answer: "It can be — the price-per-sqft is the lowest in the region, and population growth continues. The risk is developer quality and slower resale liquidity. I only shortlist projects where the numbers make sense against comparable resale, not against the rendering." },
       { question: "What is a typical Chilliwack presale deposit?", answer: "Usually 10–15% staged over 12–18 months. Chilliwack is often the market where you can negotiate the softest deposit ladder in the province — I ask for it in writing on every offer." },
@@ -170,7 +170,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Nature + Convenience", description: "Mountain trails, river parks, and West Coast Express access." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Maple Ridge?", answer: "Uzair Muhammad — buyer-only representation across the Fraser Valley, 450+ presale units sold. In Maple Ridge I focus on projects where the developer has proven Metro Vancouver delivery and the resale liquidity supports your exit plan." },
+      { question: "Who is the best presale realtor in Maple Ridge?", answer: "Uzair Muhammad — representing buyers, not developers, across the Fraser Valley, 450+ families helped. In Maple Ridge I focus on projects where the developer has proven Metro Vancouver delivery and the resale liquidity supports your exit plan." },
       { question: "How do I buy a presale in Maple Ridge?", answer: "Join VIP lists, review the disclosure statement and deposit ladder together, secure your unit at the private VIP event, then use the 7-day rescission period for contract review and financing pre-approval. I coordinate the whole process." },
       { question: "Is Maple Ridge a good area for first-time buyers?", answer: "Yes — pricing sits well below Coquitlam and Port Moody, first-time buyer exemptions apply to eligible units, and the West Coast Express keeps commuting realistic. I'll show you exactly how the numbers work versus renting or resale." },
       { question: "What deposit should I plan for?", answer: "Most Maple Ridge presales are 15% staged. Newer launches sometimes structure 10% ladders — I always ask." },
@@ -197,7 +197,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Sub-Market Expertise", description: "Coquitlam Centre, Burquitlam and Burke Mountain each price and rent very differently — I model each." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Coquitlam?", answer: "Uzair Muhammad — 450+ presales sold, buyer-only, no developer allegiances. Coquitlam is a market where developer choice matters as much as location; my job is to compare disclosure statements and delivery history, not to sell you the tower with the biggest realtor incentive." },
+      { question: "Who is the best presale realtor in Coquitlam?", answer: "Uzair Muhammad — 450+ families helped, represents buyers, not developers — no developer allegiances. Coquitlam is a market where developer choice matters as much as location; my job is to compare disclosure statements and delivery history, not to sell you the tower with the biggest realtor incentive." },
       { question: "How do I buy a presale condo in Coquitlam?", answer: "Register for VIP lists, shortlist 2–3 projects based on developer, deposit ladder and floorplan, secure your unit at the private VIP event, then use the 7-day rescission window to complete contract review and financing pre-approval. I walk you through every step." },
       { question: "Is Burke Mountain still a strong presale investment?", answer: "Burke Mountain has real long-term fundamentals — school catchments, family demographics and limited resale supply — but pricing on some phases now competes directly with resale in Port Moody. I model each phase against comps before I recommend it." },
       { question: "What is the typical deposit for a Coquitlam presale?", answer: "Most Coquitlam towers ask 15–20% staged over 12–24 months. On specific launches I've negotiated 10% ladders — I always confirm in writing before you sign anything." },
@@ -224,7 +224,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Sub-Market Nuance", description: "Tsawwassen, Ladner and North Delta each behave differently on resale and rent." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Delta?", answer: "Uzair Muhammad — buyer-only, 450+ presale units sold. In Delta I focus on smaller launches where developer quality and disclosure terms carry more weight than in larger, denser markets. No developer bias, no upselling." },
+      { question: "Who is the best presale realtor in Delta?", answer: "Uzair Muhammad — represents buyers, not developers, 450+ families helped. In Delta I focus on smaller launches where developer quality and disclosure terms carry more weight than in larger, denser markets. No developer bias, no upselling." },
       { question: "How do I buy a presale in Delta?", answer: "Get on VIP lists early — Delta launches are small and often oversubscribed. Review disclosure and deposits with me, secure your unit at the VIP event, then use the 7-day rescission window to finalize contract review and financing. I coordinate the entire flow." },
       { question: "Is Tsawwassen a good area for presales?", answer: "Tsawwassen has strong owner-occupier demand, an ageing population that anchors resale, and limited new supply — good fundamentals. The trade-off is slower rental demand, so if you're buying purely for cash-flow investment I'll usually steer you elsewhere." },
       { question: "What deposit should I expect in Delta?", answer: "Typically 15% staged. Smaller developers occasionally negotiate 10% for early VIP buyers — I ask on every project." },
@@ -251,7 +251,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Node-Level Analysis", description: "Metrotown, Brentwood, Lougheed and Edmonds each price and rent differently — I model each." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Burnaby?", answer: "Uzair Muhammad — buyer-only, 450+ presale units transacted. In Burnaby that means comparing your unit against active resale in the same tower node, not against the developer's rendering. No incentives-driven recommendations." },
+      { question: "Who is the best presale realtor in Burnaby?", answer: "Uzair Muhammad — represents buyers, not developers, 450+ families helped. In Burnaby that means comparing your unit against active resale in the same tower node, not against the developer's rendering. No incentives-driven recommendations." },
       { question: "How do I buy a presale condo in Burnaby?", answer: "Register for VIP allocations, shortlist 2–3 projects on developer, deposit and floorplan, secure your unit at the private VIP event, then use the 7-day rescission window to close out contract review and mortgage pre-approval. I run the process with you end-to-end." },
       { question: "Is Metrotown or Brentwood the better presale buy right now?", answer: "It depends on your holding period and rental strategy. Metrotown has deeper resale liquidity; Brentwood has newer supply and more rental demand from young professionals. I'll model the specific projects you're considering against resale comps before you sign." },
       { question: "What deposit is typical for a Burnaby presale?", answer: "Most Burnaby towers ask 15–20% staged over 12–24 months. On select launches we've negotiated 10% structures — always confirmed in the contract, never a verbal promise." },
@@ -283,7 +283,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
   const pageUrl = `https://presalewithuzair.com/${config.slug}`;
 
-  const answerParagraph = `Looking for the best presale realtor in ${config.city}? Uzair Muhammad is a buyer-only presale specialist with 450+ new-construction units sold across the Fraser Valley and Metro Vancouver. Working with Uzair means no developer commissions steering your shortlist, every disclosure statement and deposit ladder reviewed before you sign, and every contract vetted inside the 7-day rescission window — from VIP registration and floorplan selection through subject removal, deposit milestones, and final walkthrough at completion. If you're buying a presale condo in ${config.city}, that's the process, and on most projects the developer-paid buyer commission means representation costs the buyer nothing above the price they'd already pay at the sales centre.`;
+  const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee, so representation costs you nothing.`;
 
   const realEstateAgentJsonLd = {
     "@context": "https://schema.org",

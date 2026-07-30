@@ -306,7 +306,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
     description: "I'm Uzair — presale specialist who represents buyers, not developers. The Fraser Valley presale mistakes I see most: registering with developers first, skipping disclosure, bad floor plans, no exit plan.",
     h1: "Presale Mistakes I See Fraser Valley Buyers Make",
     breadcrumbName: "Presale Mistakes Fraser Valley",
-    intro: "I'm Uzair Muhammad, and I've helped 450+ buyers close on presales in the Fraser Valley. The same mistakes come up over and over — and they cost real money. Here they are: registering with the developer first, trusting the sales-centre rep, skipping the disclosure statement, ignoring assignment/rescission, choosing bad floor plans, mismanaging GST and deposit timing, and buying without an exit plan.",
+    intro: "I'm Uzair Muhammad, and I've helped 450+ families close on presales in the Fraser Valley. The same mistakes come up over and over — and they cost real money. Here they are: registering with the developer first, trusting the sales-centre rep, skipping the disclosure statement, ignoring assignment/rescission, choosing bad floor plans, mismanaging GST and deposit timing, and buying without an exit plan.",
     sections: [
       { h: "Mistake 1 — Registering with the developer first", p: "The single most expensive presale mistake. The moment you register, their in-house rep is credited as your representative. You just gave away independent representation for free." },
       { h: "Mistake 2 — Trusting the sales-centre rep", p: "Licensed, professional, pleasant — and paid by the developer. Their job is to sell what the developer needs, not tell you a competing project is better priced." },

@@ -60,7 +60,7 @@ export const Footer = () => {
             <Link to="/services" className="text-white/75 hover:text-primary transition-colors">Services</Link>
             <Link to="/blog" className="text-white/75 hover:text-primary transition-colors">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-primary transition-colors">Contact</Link>
-            <Link to="/book" className="text-white font-medium hover:text-primary transition-colors">Book a Buyer Strategy Call</Link>
+            <Link to="/book" className="text-white font-medium hover:text-primary transition-colors">Book a Free 15-Minute Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -94,7 +94,7 @@ export const Footer = () => {
                 <img src={logo} alt="Presale with Uzair" className="h-14 w-auto" />
               </Link>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                Before you walk into a developer sales centre, talk to someone who works for you. Buyer-side presale and new-construction guidance across Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley.
+                Uzair Muhammad PREC* (Real Broker) — Fraser Valley's leading presale agent. We represent buyers, not developers. New condos, townhomes and presales across Surrey, Langley, Abbotsford and the Fraser Valley — from finding the right project to keys in hand. 450+ families helped · $200M+ · English, Punjabi, Hindi & Urdu.
               </p>
               <div className="flex items-center gap-2 mb-5">
                 <span className="text-white text-xs">Brokered by</span>
@@ -130,7 +130,7 @@ export const Footer = () => {
                   { href: "/services", label: "Services" },
                   { href: "/blog", label: "Blog" },
                   { href: "/contact", label: "Contact" },
-                  { href: "/book", label: "Book a Buyer Strategy Call", highlight: true },
+                  { href: "/book", label: "Book a Free 15-Minute Call", highlight: true },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
@@ -152,7 +152,7 @@ export const Footer = () => {
                     rel="noopener noreferrer"
                     className="text-white/75 hover:text-white transition-colors text-sm"
                   >
-                    Get My Presale Shortlist ↗
+                    Browse 140+ Active Projects ↗
                   </a>
                 </li>
               </ul>
@@ -248,7 +248,7 @@ export const Footer = () => {
               © {new Date().getFullYear()} Uzair Muhammad PREC | Brokered by Real Broker. All rights reserved.
             </p>
             <p className="text-xs text-white/70">
-              Fraser Valley's Premier Presale Expert
+              Fraser Valley's Leading Presale Agent
             </p>
           </div>
         </div>

@@ -283,7 +283,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
   const pageUrl = `https://presalewithuzair.com/${config.slug}`;
 
-  const answerParagraph = `Looking for the best presale realtor in ${config.city}? Uzair Muhammad is a buyer-only presale specialist with 450+ new-construction units sold across the Fraser Valley and Metro Vancouver. Working with Uzair means no developer commissions steering your shortlist, every disclosure statement and deposit ladder reviewed before you sign, and every contract vetted inside the 7-day rescission window — from VIP registration and floorplan selection through subject removal, deposit milestones, and final walkthrough at completion. If you're buying a presale condo in ${config.city}, that's the process, and on most projects the developer-paid buyer commission means representation costs the buyer nothing above the price they'd already pay at the sales centre.`;
+  const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee, so representation costs you nothing.`;
 
   const realEstateAgentJsonLd = {
     "@context": "https://schema.org",

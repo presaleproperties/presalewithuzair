@@ -31,8 +31,8 @@ interface CityConfig {
 const commonBenefit = {
   contract: {
     icon: <Shield className="h-6 w-6" />,
-    title: "Contract Protection",
-    description: "Every developer contract is reviewed line-by-line to protect your deposit and your rights.",
+    title: "Line-by-Line Contract Review",
+    description: "Every developer contract is reviewed line by line — deposit terms, assignment rights, and completion dates — before you sign.",
   },
   vip: {
     icon: <CheckCircle className="h-6 w-6" />,

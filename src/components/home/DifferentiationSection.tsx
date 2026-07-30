@@ -90,8 +90,8 @@ export const DifferentiationSection = () => {
             I represent your side of the deal.
           </h2>
           <p className="lede mt-5 max-w-2xl">
-            Eight things every Fraser Valley presale buyer should know before signing — from someone
-            who gets paid to protect the buyer, not to sell the project.
+            Three things every Fraser Valley presale buyer should know before signing — from
+            someone who gets paid to protect the buyer, not to sell the project.
           </p>
         </div>
 

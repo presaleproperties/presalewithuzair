@@ -19,27 +19,16 @@ const blocks: Block[] = [
     feature: true,
   },
   {
-    heading: "Talk to me before you register at the sales centre.",
-    body: "Once you register directly with a project, your representation options can become more limited depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you've already registered, tell me — I'll explain what options may still be open.",
-    cta: { to: "/contact", label: "Talk To Uzair First" },
-    wide: true,
-  },
-  {
-    heading: "The person showing you the floor plans is paid by the developer.",
-    body: "At a presale sales centre, every person in the room is paid by the developer. That's normal, but it means a buyer who walks in alone has no one representing their side of the contract. I only represent buyers. I don't promote or hype projects, and I don't work for developers. Most realtors push every new launch to build relationships with developers; that may help their pipeline, but it does a disservice to buyers. My job is to protect your side of the deal, not to move inventory. For many presale projects my fee is paid through the project's sales structure, so representation is usually paid through the project's sales structure — I'll confirm exactly how it works on your project before you commit.",
-    wide: true,
-  },
-  {
-    heading: "Track record",
+    heading: "I represent buyers, not developers.",
     body: (
       <div className="space-y-4">
         <p>
-          I've sold 450+ presale units and more than $200M in new construction. Presale and new
-          construction is 80%+ of my business, and I've worked in the presale market for 5 years.
-          I hold 4.9 stars from 36 Google reviews.
+          At the sales centre, everyone in the room is paid by the developer. That leaves the buyer
+          without anyone on their side of the contract. I only represent buyers. I don't hype
+          projects and I don't chase developer relationships at your expense.
         </p>
         <p>
-          I lead{" "}
+          I've sold 450+ presale units and more than $200M in new construction. I lead{" "}
           <a
             href={PPG_URL}
             target="_blank"
@@ -47,33 +36,43 @@ const blocks: Block[] = [
             className="text-primary underline underline-offset-4 hover:text-primary/80"
           >
             The Presale Properties Group
-          </a>
-          , a team of agents working the Fraser Valley presale market, and I founded the Vancouver
-          Presale Expo. I'm a licensed BC REALTOR® under Real Broker and regulated by the BC
-          Financial Services Authority.
+          </a>{" "}
+          and founded the Vancouver Presale Expo. I'm a licensed BC REALTOR® under Real Broker.
+          Before real estate, I spent 10 years with the City of Surrey in planning and bylaws. I
+          also work in Punjabi, Hindi, and Urdu, so the people writing the cheque can understand
+          the contract in their own language.
         </p>
         <p>
-          Before real estate, I spent 10 years with the City of Surrey in planning and bylaws.
+          Talk to me before you register at a sales centre — once you register directly, your
+          representation options can become more limited.
+        </p>
+      </div>
+    ),
+    cta: { to: "/contact", label: "Talk To Uzair First" },
+    wide: true,
+  },
+  {
+    heading: "I read the contract, run the real numbers, and tell you if you should wait.",
+    body: (
+      <div className="space-y-4">
+        <p>
+          BC gives buyers 7 days to cancel for any reason. Most buyers spend that window doing
+          nothing. I use it to read the full disclosure statement: deposit schedule, assignment
+          rights, completion dates, and what happens if the developer changes the plans.
+        </p>
+        <p>
+          The sticker price isn't the final price. I model GST, PTT, rebates, deposit dates, and
+          the mortgage at completion — including first-time buyer rebates that can save five
+          figures at closing.
+        </p>
+        <p>
+          If the location, price per square foot, floor plan, or builder track record doesn't
+          make sense for your goal, I'll tell you to sit this one out. The right deal in the right
+          project beats any deal.
         </p>
       </div>
     ),
     wide: true,
-  },
-  {
-    heading: "The contract is explained in Punjabi, Hindi, and Urdu — not just English.",
-    body: "The buyer usually speaks English. The parents helping with the deposit often don't. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi, Hindi, or Urdu. I work in all four languages. I sit down with the people actually writing the cheque and walk through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. I was born in Pakistan and raised in Surrey.",
-  },
-  {
-    heading: "BC gives buyers 7 days to cancel. Most buyers spend it doing nothing.",
-    body: "The disclosure statement runs over a hundred pages and arrives at the same time as the deposit cheque. During those 7 days you can cancel for any reason. After that, you can't. I read the whole document inside that window: deposit schedule, assignment rights, completion dates, and what happens if the developer is late or changes the plans. I spent 10 years at the City of Surrey in planning and bylaws, so I read the approved plans, not the marketing renderings.",
-  },
-  {
-    heading: "The sticker price isn't the final price.",
-    body: "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption removes property transfer tax on qualifying homes up to $1.1M. Together that's a five-figure difference at closing, and most first-time buyers never find out they qualified. I work out the real number before you commit: GST, PTT, rebates, deposit dates, and what the mortgage will look like at completion in 12 to 36 months.",
-  },
-  {
-    heading: "Sometimes the right move is to wait.",
-    body: "Not every presale project is worth buying into. I look at the location, the price per square foot, the floor plan and layout, the builder's track record, and whether the project actually makes sense for your goal. If the numbers don't work, the layout is wrong, the location is weak, or the builder is a risk, I tell buyers to sit this one out. Sitting on the sideline is often how you get the better deal — when the right project launches at the right time. For me it's not about doing a deal. It's about getting the right deal, in the right project, at the right time.",
   },
 ];
 

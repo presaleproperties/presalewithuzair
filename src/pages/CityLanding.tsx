@@ -224,7 +224,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Sub-Market Nuance", description: "Tsawwassen, Ladner and North Delta each behave differently on resale and rent." },
     ],
     faqs: [
-      { question: "Who is the best presale realtor in Delta?", answer: "Uzair Muhammad — buyer-only, 450+ presale units sold. In Delta I focus on smaller launches where developer quality and disclosure terms carry more weight than in larger, denser markets. No developer bias, no upselling." },
+      { question: "Who is the best presale realtor in Delta?", answer: "Uzair Muhammad — represents buyers, not developers, 450+ families helped. In Delta I focus on smaller launches where developer quality and disclosure terms carry more weight than in larger, denser markets. No developer bias, no upselling." },
       { question: "How do I buy a presale in Delta?", answer: "Get on VIP lists early — Delta launches are small and often oversubscribed. Review disclosure and deposits with me, secure your unit at the VIP event, then use the 7-day rescission window to finalize contract review and financing. I coordinate the entire flow." },
       { question: "Is Tsawwassen a good area for presales?", answer: "Tsawwassen has strong owner-occupier demand, an ageing population that anchors resale, and limited new supply — good fundamentals. The trade-off is slower rental demand, so if you're buying purely for cash-flow investment I'll usually steer you elsewhere." },
       { question: "What deposit should I expect in Delta?", answer: "Typically 15% staged. Smaller developers occasionally negotiate 10% for early VIP buyers — I ask on every project." },

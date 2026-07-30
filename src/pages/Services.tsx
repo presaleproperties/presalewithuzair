@@ -47,6 +47,19 @@ const services = [
       "Fierce negotiation on your behalf",
     ],
   },
+  {
+    id: "completion",
+    title: "Completion, Walkthrough & After-Key Support",
+    subtitle: "From Contract to Keys — and Beyond",
+    description: "Most agents disappear after you sign. We stay. As completion approaches we walk you through financing, closing costs and the statement of adjustments, do the deficiency walkthrough with you room by room, and make sure you know how your 2-5-10 new-home warranty works before the first year runs out.",
+    image: clientMeetingImage,
+    benefits: [
+      "Completion cost estimate before closing day",
+      "Room-by-room deficiency walkthrough",
+      "2-5-10 warranty guidance",
+      "First-year check-in",
+    ],
+  },
 ];
 
 const Services = () => {

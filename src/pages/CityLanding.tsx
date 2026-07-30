@@ -137,7 +137,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     whyBuyTitle: "Why Chilliwack Presales Are Worth Watching",
     whyBuyBody: "Chilliwack offers the most affordable new construction entry point in the Fraser Valley. As infrastructure and population grow, early buyers stand to benefit — but developer quality varies. I make sure you're buying quality, not just price.",
     benefits: [
-      { icon: <TrendingUp className="h-6 w-6" />, title: "Most Affordable Entry Point", description: "The lowest presale prices in the Fraser Valley with real upside." },
+      { icon: <TrendingUp className="h-6 w-6" />, title: "Lowest Entry Prices in the Valley", description: "The lowest presale prices in the Fraser Valley with real upside." },
       commonBenefit.contract,
       commonBenefit.vip,
       { icon: <MapPin className="h-6 w-6" />, title: "Lifestyle + Investment", description: "Mountain views, outdoor recreation, and a rebuilding downtown core." },

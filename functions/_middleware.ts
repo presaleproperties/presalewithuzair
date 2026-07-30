@@ -247,7 +247,7 @@ function funnelImage(path: string): string {
 }
 
 const TRACK_RECORD_LINE =
-  "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9 stars from 36 Google reviews · Buyer-first representation.";
+  "450+ Families Helped · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9 stars from 36 Google reviews · Representing buyers, not developers.";
 
 export const FUNNEL: Record<string, FunnelPage> = {
   "/new-to-presale-start-here": {

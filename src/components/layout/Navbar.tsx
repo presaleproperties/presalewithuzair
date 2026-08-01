@@ -140,15 +140,15 @@ export const Navbar = () => {
               </button>
               {isPresalesOpen && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 min-w-[220px]">
-                  <div className="bg-background border border-border shadow-xl rounded-xl py-2">
+                  <div className="bg-background border border-border shadow-card rounded-sm py-1.5">
                     {cityLinks.map((c) => (
                       <Link
                         key={c.href}
                         to={c.href}
-                        className={`block px-4 py-2 text-sm transition-colors ${
+                        className={`block px-4 py-2.5 text-sm transition-colors duration-300 ${
                           location.pathname === c.href
-                            ? "text-primary font-semibold bg-primary/5"
-                            : "text-foreground/80 hover:text-foreground hover:bg-muted"
+                            ? "text-foreground font-semibold bg-muted"
+                            : "text-foreground/70 hover:text-foreground hover:bg-muted/60"
                         }`}
                       >
                         {c.label} Presales
@@ -175,7 +175,7 @@ export const Navbar = () => {
             <Button
               variant="hero"
               size="lg"
-              className="rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300 gap-2"
+              className="gap-2"
               onClick={handleFormCTA}
             >
               <Phone className="h-4 w-4" />
@@ -250,11 +250,11 @@ export const Navbar = () => {
           ))}
 
           <div className="pt-4 space-y-3">
-            <Button variant="hero" size="lg" className="w-full rounded-full gap-2" onClick={handleFormCTA}>
+            <Button variant="hero" size="lg" className="w-full gap-2" onClick={handleFormCTA}>
               <Phone className="h-4 w-4" />
               Book Strategy Call
             </Button>
-            <Button variant="outline" size="lg" className="w-full rounded-full" onClick={handleGuideClick}>
+            <Button variant="outline" size="lg" className="w-full" onClick={handleGuideClick}>
               Get Presale Guide
             </Button>
           </div>

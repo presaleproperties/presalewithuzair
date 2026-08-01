@@ -334,7 +334,7 @@ export const UnifiedLeadForm = ({
         </div>
 
 
-        <div>
+        <div className={compact ? "col-span-2" : undefined}>
           <label htmlFor="ulc-email" className={labelClasses}>Email *</label>
           <Input
             id="ulc-email"

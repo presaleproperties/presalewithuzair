@@ -62,26 +62,21 @@ export const FAQSchema = ({
       {/* ── Visual accordion ── */}
       <div className="mt-12">
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-8 sm:mb-10">
           <p
-            className="text-xs font-bold tracking-[0.2em] uppercase mb-2"
+            className="text-[0.6875rem] sm:text-xs font-bold tracking-[0.18em] uppercase mb-3"
             style={{ color: "hsl(var(--primary))" }}
           >
             Quick Answers
           </p>
           <h2
-            className="font-display text-2xl md:text-3xl"
+            className="font-display text-2xl md:text-3xl leading-tight tracking-tight"
             style={{ color: "hsl(var(--foreground))" }}
           >
             {heading}
           </h2>
         </div>
 
-        {/* Gold divider */}
-        <div
-          className="h-[2px] w-12 mb-8 rounded-full"
-          style={{ background: "hsl(var(--primary))" }}
-        />
 
         {/* FAQ items */}
         <div className="flex flex-col divide-y" style={{ borderColor: "hsl(var(--border))" }}>

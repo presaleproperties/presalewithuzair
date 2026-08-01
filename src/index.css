@@ -544,17 +544,15 @@
 .blog-content hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.3) 20%, hsl(var(--primary) / 0.3) 80%, transparent 100%);
+  background: hsl(var(--border));
   margin: 3rem 0;
 }
 
-/* Images inside content */
 .blog-content img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.75rem;
+  border-radius: 0.25rem;
   margin: 2rem 0;
-  box-shadow: 0 8px 32px -12px hsl(var(--foreground) / 0.1);
 }
 
 /* Strong text — premium emphasis */

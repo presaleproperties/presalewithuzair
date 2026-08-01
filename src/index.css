@@ -41,6 +41,11 @@
     --input: 220 15% 85%;
     --ring: 225 70% 45%;
 
+    /* ── Single divider token set — every section rule uses these ── */
+    --divider: 220 15% 82%;
+    --divider-opacity: 0.7;
+    --divider-width: 1px;
+
     /* Editorial geometry — near-square corners read as considered, not templated */
     --radius: 0.25rem;
 

@@ -237,7 +237,7 @@ export const UnifiedLeadForm = ({
   if (isSuccess) {
     return (
       <div className={`text-center py-12 ${className}`}>
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-sm border border-border bg-muted flex items-center justify-center">
           <CheckCircle className="h-8 w-8 text-primary" />
         </div>
         <h3 className="font-display text-2xl font-bold text-foreground mb-2">All Set!</h3>

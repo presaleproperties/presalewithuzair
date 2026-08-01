@@ -17,11 +17,11 @@ const proofPoints = [
 ];
 
 const ProofRow = ({ className = "" }: { className?: string }) => (
-  <dl className={`grid grid-cols-3 border-y border-foreground/12 ${className}`}>
+  <dl className={`grid grid-cols-3 gap-x-6 border-t border-foreground/12 pt-5 ${className}`}>
     {proofPoints.map((point, i) => (
       <div
         key={point.label}
-        className={`py-4 pr-4 ${i > 0 ? "pl-4 sm:pl-6 border-l border-foreground/12" : ""}`}
+        className="pr-4"
       >
         <dt className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground">
           {point.value}
@@ -76,7 +76,7 @@ export const HeroSection = () => {
           <ProofRow className="mt-8 animate-fade-up delay-400" />
 
           <div className="relative mt-8 animate-fade-up delay-400">
-            <div className="relative overflow-hidden rounded-sm border border-foreground/12">
+            <div className="relative overflow-hidden rounded-sm">
               <OptimizedImage
                 src={heroImage}
                 alt="Uzair Muhammad — Fraser Valley presale specialist"

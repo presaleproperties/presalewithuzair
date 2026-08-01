@@ -429,7 +429,7 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor="ulc-timeline" className={labelClasses}>When are you looking to buy? *</label>
+          <label htmlFor="ulc-timeline" className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
           <Select
             value={formData.timeline}
             onValueChange={(value) => updateField("timeline", value)}

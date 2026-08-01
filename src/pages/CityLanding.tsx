@@ -396,7 +396,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
         </section>
 
         {/* ── Direct Answer Paragraph (AI-search / featured-snippet target) ── */}
-        <section className="section-y-sm bg-background border-b border-border/60">
+        <section className="section-y-sm bg-background divider-b">
           <div className="container-xl px-4 sm:px-6 max-w-3xl">
             <p className="section-label mb-3">The Straight Answer</p>
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
@@ -464,7 +464,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8">
               {config.city} Presale FAQ
             </h2>
-            <div className="divide-y divide-border/60 rounded-2xl border border-border/60 bg-card/40">
+            <div className="divider-list rounded-2xl border border-border/60 bg-card/40">
               {config.faqs.map((f, i) => (
                 <details key={i} className="group p-5 open:bg-card/70 transition-colors">
                   <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">

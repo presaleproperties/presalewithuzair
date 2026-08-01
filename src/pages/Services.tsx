@@ -153,7 +153,7 @@ const Services = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-card border-b border-border/40">
+        <section className="relative pt-32 pb-20 bg-card divider-b">
           <div className="container-xl">
             <div className="max-w-3xl">
               <p className="eyebrow mb-4 animate-fade-up">How I Can Help</p>

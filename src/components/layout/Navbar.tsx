@@ -70,9 +70,9 @@ export const Navbar = () => {
   };
 
   const navBg = isScrolled
-    ? "bg-background/95 backdrop-blur-lg border-b border-border shadow-lg"
+    ? "bg-background/95 backdrop-blur-lg divider-b shadow-lg"
     : isLightPage
-    ? "bg-background border-b border-border/60"
+    ? "bg-background divider-b"
     : isDarkHeroPage
     ? "bg-[hsl(var(--sidebar-background))]"
     : "bg-transparent";
@@ -187,7 +187,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-white backdrop-blur-lg border-b border-border transition-all duration-300 ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white backdrop-blur-lg divider-b transition-all duration-300 ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"

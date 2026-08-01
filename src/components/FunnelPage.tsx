@@ -114,7 +114,7 @@ export const FunnelPage = ({
 
       <main>
         {/* HERO */}
-        <section className="pt-28 sm:pt-32 pb-10 sm:pb-14 border-b border-border">
+        <section className="pt-28 sm:pt-32 pb-10 sm:pb-14 divider-b">
           <div className="container-xl px-4 sm:px-6 max-w-4xl">
             <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground mb-4">
               <Link to="/" className="hover:text-primary">Home</Link>
@@ -160,7 +160,7 @@ export const FunnelPage = ({
         </section>
 
         {/* FAQ */}
-        <section className="section-y-sm bg-muted/20 border-t border-border">
+        <section className="section-y-sm bg-muted/20 divider-t">
           <div className="container-xl px-4 sm:px-6 max-w-4xl">
             <p className="section-label mb-3">FAQ</p>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground uppercase tracking-tight">

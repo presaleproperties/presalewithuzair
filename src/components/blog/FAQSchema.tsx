@@ -79,7 +79,7 @@ export const FAQSchema = ({
 
 
         {/* FAQ items */}
-        <div className="flex flex-col divide-y" style={{ borderColor: "hsl(var(--border))" }}>
+        <div className="flex flex-col divider-list">
           {faqs.map((item, i) => {
             const isOpen = openIndex === i;
             return (

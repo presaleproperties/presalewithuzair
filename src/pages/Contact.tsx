@@ -60,7 +60,7 @@ const Contact = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-card border-b border-border/40">
+        <section className="relative pt-32 pb-20 bg-card divider-b">
           <div className="container-xl">
             <div className="max-w-3xl">
               <p className="eyebrow mb-4 animate-fade-up">Get In Touch</p>
@@ -197,7 +197,7 @@ const Contact = () => {
                 </Button>
 
                 {/* Trust Signals */}
-                <div className="mt-8 pt-6 border-t border-border">
+                <div className="mt-8 pt-6 divider-t">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
                       <p className="text-xl font-display font-bold text-foreground">450+</p>

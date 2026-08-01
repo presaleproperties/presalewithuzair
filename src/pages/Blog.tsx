@@ -33,7 +33,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="group grid md:grid-cols-2 rounded-xl overflow-hidden border border-border bg-card transition-all duration-400 hover:-translate-y-0.5"
+      className="group grid md:grid-cols-2 rounded-sm overflow-hidden border border-border bg-card transition-colors duration-300 hover:border-foreground/25"
     >
       <div className="relative h-56 md:h-full overflow-hidden bg-muted">
         <img
@@ -76,7 +76,7 @@ function PostCard({ post }: { post: BlogPost }) {
   return (
     <Link
       to={`/blog/${post.slug}`}
-      className="group rounded-xl overflow-hidden flex flex-col border border-border bg-card transition-all duration-400 hover:-translate-y-0.5"
+      className="group rounded-sm overflow-hidden flex flex-col border border-border bg-card transition-colors duration-300 hover:border-foreground/25"
     >
       <div className="relative aspect-[16/9] overflow-hidden bg-muted">
         <img
@@ -96,7 +96,7 @@ function PostCard({ post }: { post: BlogPost }) {
             {post.excerpt}
           </p>
         )}
-        <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
+        <div className="flex items-center justify-between mt-auto pt-4">
           <span className="text-xs text-muted-foreground flex items-center gap-1">
             <Calendar className="h-3 w-3" />{formatDate(post.published_at)}
           </span>
@@ -243,7 +243,7 @@ const Blog = () => {
             </p>
             <Link
               to="/?scroll=book-section"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg font-bold text-sm bg-primary text-primary-foreground hover:-translate-y-0.5 transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-sm font-bold text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Book a Buyer Strategy Call
               <ArrowRight className="h-4 w-4" />

@@ -41,7 +41,15 @@
     --input: 220 15% 85%;
     --ring: 225 70% 45%;
 
-    --radius: 0.5rem;
+    /* Editorial geometry — near-square corners read as considered, not templated */
+    --radius: 0.25rem;
+
+    /* Motion — one easing language across the whole site */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --dur-fast: 200ms;
+    --dur-base: 400ms;
+    --dur-slow: 700ms;
 
     /* Custom tokens */
     --hero-gradient: linear-gradient(180deg, hsl(222 25% 6%) 0%, hsl(222 20% 12%) 100%);
@@ -50,13 +58,11 @@
     --overlay-dark: linear-gradient(180deg, hsla(222, 25%, 6%, 0.85) 0%, hsla(222, 25%, 6%, 0.95) 100%);
     --overlay-hero: linear-gradient(90deg, hsla(222, 25%, 6%, 0.92) 0%, hsla(222, 25%, 6%, 0.55) 50%, transparent 100%);
 
-    /* Blue shimmer */
-    --gold-shimmer: linear-gradient(90deg, hsl(225 70% 45%) 0%, hsl(225 65% 55%) 50%, hsl(225 70% 45%) 100%);
+    /* Restrained, print-like elevation — hairline first, shadow second */
+    --shadow-soft: 0 1px 1px hsla(222, 20%, 10%, 0.03);
+    --shadow-glow: 0 12px 32px -18px hsla(222, 24%, 10%, 0.28);
+    --shadow-card: 0 1px 2px hsla(222, 20%, 10%, 0.04), 0 12px 28px -20px hsla(222, 20%, 10%, 0.16);
 
-    /* Cleaner, more present shadows so cards lift off muted bands */
-    --shadow-soft: 0 1px 2px hsla(222, 20%, 10%, 0.04), 0 4px 16px -6px hsla(222, 20%, 10%, 0.08);
-    --shadow-glow: 0 0 40px hsla(225, 70%, 45%, 0.12);
-    --shadow-card: 0 1px 2px hsla(222, 20%, 10%, 0.05), 0 8px 24px -10px hsla(222, 20%, 10%, 0.10);
 
 
     --sidebar-background: 222 25% 6%;

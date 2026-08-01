@@ -80,6 +80,8 @@ interface UnifiedLeadFormProps {
   className?: string;
   /** Render select fields in two columns on sm+ */
   twoColumn?: boolean;
+  /** Tighter density so the whole form fits on a mobile screen */
+  compact?: boolean;
 }
 
 export const UnifiedLeadForm = ({
@@ -92,6 +94,7 @@ export const UnifiedLeadForm = ({
   defaultBuyerType = "",
   className = "",
   twoColumn = false,
+  compact = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -253,13 +256,15 @@ export const UnifiedLeadForm = ({
     ? `bg-card/60 backdrop-blur-sm rounded-2xl border border-border shadow-sm p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
+  const heightClasses = compact ? "h-10 text-sm" : "h-12 text-base";
+
   const inputClasses = isDark
-    ? "h-12 text-base bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-primary touch-manipulation"
-    : "h-12 text-base bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation";
+    ? `${heightClasses} bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-primary touch-manipulation`
+    : `${heightClasses} bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation`;
 
   const labelClasses = isDark
-    ? "block text-xs sm:text-sm font-medium text-white/90 mb-1"
-    : "block text-xs sm:text-sm font-medium text-foreground mb-1";
+    ? `block font-medium text-white/90 ${compact ? "text-[11px] mb-0.5" : "text-xs sm:text-sm mb-1"}`
+    : `block font-medium text-foreground ${compact ? "text-[11px] mb-0.5" : "text-xs sm:text-sm mb-1"}`;
 
   return (
     <div className={wrapperClasses}>
@@ -279,8 +284,9 @@ export const UnifiedLeadForm = ({
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4" autoComplete="on">
-        <div className={twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
+      <form onSubmit={handleSubmit} className={compact ? "space-y-2.5" : "space-y-4"} autoComplete="on">
+        <div className={compact ? "grid grid-cols-2 gap-x-3 gap-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
+
         <div>
           <label htmlFor="ulc-firstName" className={labelClasses}>First name *</label>
           <Input
@@ -328,7 +334,7 @@ export const UnifiedLeadForm = ({
         </div>
 
 
-        <div>
+        <div className={compact ? "col-span-2" : undefined}>
           <label htmlFor="ulc-email" className={labelClasses}>Email *</label>
           <Input
             id="ulc-email"
@@ -423,7 +429,7 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor="ulc-timeline" className={labelClasses}>When are you looking to buy? *</label>
+          <label htmlFor="ulc-timeline" className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
           <Select
             value={formData.timeline}
             onValueChange={(value) => updateField("timeline", value)}
@@ -482,7 +488,7 @@ export const UnifiedLeadForm = ({
           type="submit"
           variant="hero"
           size="xl"
-          className="w-full h-14 text-base font-semibold rounded-lg mt-4"
+          className={`w-full font-semibold rounded-lg ${compact ? "h-12 text-sm mt-1" : "h-14 text-base mt-4"}`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -512,9 +518,12 @@ export const UnifiedLeadForm = ({
           </div>
         )}
 
-        <p className={`text-xs text-center mt-3 ${isDark ? "text-white/50" : "text-muted-foreground"}`}>
-          By submitting, you agree to receive communications from us. We respect your privacy.
+        <p className={`text-center ${compact ? "text-[10px] leading-snug mt-1.5" : "text-xs mt-3"} ${isDark ? "text-white/50" : "text-muted-foreground"}`}>
+          {compact
+            ? "By submitting, you agree to receive communications. We respect your privacy."
+            : "By submitting, you agree to receive communications from us. We respect your privacy."}
         </p>
+
       </form>
     </div>
   );

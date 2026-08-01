@@ -22,10 +22,10 @@ function ReadingProgressBar() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent pointer-events-none">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent pointer-events-none">
       <div
         className="h-full transition-all duration-100 ease-out"
-        style={{ width: `${progress}%`, background: "var(--text-gradient)" }}
+        style={{ width: `${progress}%`, background: "hsl(var(--primary))" }}
       />
     </div>
   );
@@ -136,8 +136,6 @@ const BlogPost = () => {
 
         {/* ── Premium editorial hero ── */}
         <section className="w-full pb-0 bg-background">
-          {/* Blue accent bar at very top */}
-          <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
 
           <div className="container-xl max-w-4xl pt-28 pb-0">
             {/* Back link */}
@@ -162,24 +160,21 @@ const BlogPost = () => {
 
             {/* Meta row */}
             <div
-              className="flex flex-wrap items-center gap-5 text-sm pb-8"
-              style={{ color: "hsl(var(--muted-foreground))", borderBottom: "1px solid hsl(var(--border))" }}
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm pb-8"
+              style={{ color: "hsl(var(--muted-foreground))" }}
             >
               <div className="flex items-center gap-2.5">
                 <img
                   src="/favicon.jpeg"
                   alt="Uzair Muhammad"
                   className="h-8 w-8 rounded-full object-cover"
-                  style={{ border: "2px solid hsl(var(--primary) / 0.35)" }}
                 />
                 <span className="font-semibold" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</span>
               </div>
-              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
                 {formatDate(post.published_at)}
               </div>
-              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 {mins} min read
@@ -191,8 +186,7 @@ const BlogPost = () => {
           {post.image_url && (
             <div className="container-xl max-w-4xl mt-10">
               <div
-                className="w-full h-[360px] md:h-[480px] rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 16px 64px -16px hsla(222,20%,12%,0.18)" }}
+                className="w-full h-[360px] md:h-[480px] rounded-sm overflow-hidden"
               >
                 <img
                   src={post.image_url}

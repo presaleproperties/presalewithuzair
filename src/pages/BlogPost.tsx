@@ -238,25 +238,22 @@ const BlogPost = () => {
 
                 {/* Author bio */}
                 <div
-                  className="mt-16 p-8 rounded-2xl flex gap-6 items-start"
+                  className="mt-16 p-8 rounded-sm flex gap-6 items-start"
                   style={{
                     background: "hsl(var(--background))",
                     border: "1px solid hsl(var(--border))",
-                    boxShadow: "var(--shadow-card)",
                   }}
                 >
                   <img
                     src="/favicon.jpeg"
                     alt="Uzair Muhammad"
                     className="h-20 w-20 rounded-full object-cover flex-shrink-0"
-                    style={{ border: "3px solid hsl(var(--primary) / 0.35)" }}
                   />
                   <div>
                     <p className="text-xs font-black tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--primary))" }}>
                       Written by
                     </p>
-                    <h3 className="font-display text-xl mb-2" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
-                    <div className="w-8 h-[2px] rounded-full mb-3" style={{ background: "var(--text-gradient)" }} />
+                    <h3 className="font-display text-xl mb-3" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                       Vancouver's presale specialist with 450+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>

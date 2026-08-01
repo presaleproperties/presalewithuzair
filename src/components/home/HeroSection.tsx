@@ -114,14 +114,11 @@ export const HeroSection = () => {
             <ProofRow className="mt-12 max-w-xl animate-fade-up delay-400" />
           </div>
 
-          {/* Portrait — framed, not floating */}
+          {/* Portrait */}
           <div className="relative animate-fade-up delay-200">
             <div className="relative w-full max-w-[26rem] mx-auto">
-              <div
-                aria-hidden
-                className="absolute -inset-x-5 -inset-y-5 border border-foreground/12 rounded-sm"
-              />
               <div className="relative overflow-hidden rounded-sm">
+
                 <OptimizedImage
                   src={heroImage}
                   alt="Uzair Muhammad — Fraser Valley presale specialist"

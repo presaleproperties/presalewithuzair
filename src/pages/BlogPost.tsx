@@ -380,13 +380,11 @@ const BlogPost = () => {
 
                     {/* Sidebar CTA card */}
                     <div
-                      className="p-5 rounded-xl relative overflow-hidden"
+                      className="p-5 rounded-sm relative overflow-hidden"
                       style={{
                         background: "hsl(222 25% 6%)",
-                        border: "1px solid hsl(222 14% 18%)",
                       }}
                     >
-                      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
                       <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                         Free Call
                       </p>
@@ -397,8 +395,8 @@ const BlogPost = () => {
                         href="https://wa.me/17782313592"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full text-center py-2.5 rounded-lg text-xs font-bold transition-all hover:opacity-90"
-                        style={{ background: "var(--text-gradient)", color: "hsl(222 25% 6%)" }}
+                        className="block w-full text-center py-2.5 rounded-sm text-xs font-bold transition-opacity hover:opacity-90"
+                        style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                       >
                         Book Free Consultation
                       </a>
@@ -413,7 +411,6 @@ const BlogPost = () => {
         {/* ── Related posts ── */}
         {relatedPosts.length > 0 && (
           <section className="pb-20" style={{ background: "hsl(222 25% 6%)" }}>
-            <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">
                 <div>
@@ -421,7 +418,7 @@ const BlogPost = () => {
                     Keep Reading
                   </p>
                   <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>
-                    More <span className="text-gradient">Articles</span>
+                    More Articles
                   </h2>
                 </div>
                 <Link

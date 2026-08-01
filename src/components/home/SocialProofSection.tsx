@@ -432,16 +432,16 @@ export const SocialProofSection = () => {
             </h2>
           </div>
 
-          <div className="flex items-center gap-4 sm:gap-5 bg-card border border-border rounded-sm px-5 py-4">
-            <div className="text-center">
+          <div className="flex items-center gap-6 sm:gap-8 bg-card border border-border rounded-sm px-5 py-4">
+            <div>
               <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-none">
                 {liveData?.overallRating ?? 4.9}
               </p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">
                 from {liveData?.totalReviews ?? 36} reviews
               </p>
             </div>
-            <div className="w-px h-10 bg-border" />
+
             <div>
               <StarRating rating={liveData?.overallRating ?? 4.9} size="md" />
               <a

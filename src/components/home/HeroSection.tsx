@@ -49,16 +49,6 @@ export const HeroSection = () => {
             "radial-gradient(120% 90% at 78% 18%, hsl(0 0% 100% / 0.07) 0%, transparent 60%)",
         }}
       />
-      {/* Architectural hairline grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.18] hidden lg:block"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, hsl(0 0% 100% / 0.6) 1px, transparent 1px)",
-          backgroundSize: "25% 100%",
-        }}
-      />
 
       <div className="relative z-10 container-xl px-4 sm:px-6">
         {/* Mobile & tablet */}

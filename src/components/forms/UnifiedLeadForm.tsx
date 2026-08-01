@@ -179,9 +179,8 @@ export const UnifiedLeadForm = ({
     try {
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-
+          firstName: formData.name,
+          lastName: "",
           email: formData.email,
           phone: formData.phone,
           buyerType: formData.buyerType,

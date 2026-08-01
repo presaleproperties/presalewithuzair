@@ -12,8 +12,8 @@ export const Footer = () => {
       {/* Deep navy gradient background — matches hero aesthetic */}
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(222_25%_8%)] via-[hsl(222_25%_6%)] to-[hsl(222_25%_4%)]" />
 
-      {/* Hairline rule at top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-white/12" />
+
+
 
       <div className="container-xl relative z-10 py-10 md:py-16 px-5 sm:px-8 lg:px-16">
 

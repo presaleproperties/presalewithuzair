@@ -24,37 +24,38 @@ export const LeadFormDialog = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-xl w-[calc(100%-1.5rem)] p-0 gap-0 overflow-y-auto max-h-[92vh] rounded-2xl">
-        <div className="px-5 sm:px-7 pt-6 pb-2">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+      <DialogContent className="max-w-xl w-[calc(100%-1.5rem)] p-0 gap-0 overflow-y-auto max-h-[90vh] rounded-2xl">
+        <div className="px-4 sm:px-7 pt-5 sm:pt-6 pb-1">
+          <h2 className="font-display text-lg sm:text-2xl font-bold tracking-tight text-foreground pr-6">
             Book a Buyer Strategy Call
           </h2>
-          <p className="mt-2 text-sm text-foreground/70">
+          <p className="mt-1 text-xs sm:text-sm text-foreground/70">
             Takes under a minute. I'll personally reply within 24 hours.
           </p>
-          <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-foreground/70">
-            <li className="flex items-center gap-1.5">
-              <Shield className="h-3.5 w-3.5 text-primary" /> Buyer-side only
+          <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] sm:text-xs text-foreground/70">
+            <li className="flex items-center gap-1">
+              <Shield className="h-3 w-3 text-primary" /> Buyer-side only
             </li>
-            <li className="flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5 text-primary" /> 24-hour response
+            <li className="flex items-center gap-1">
+              <Clock className="h-3 w-3 text-primary" /> 24-hour response
             </li>
-            <li className="flex items-center gap-1.5">
-              <Languages className="h-3.5 w-3.5 text-primary" /> English, Punjabi, Hindi &amp; Urdu
+            <li className="flex items-center gap-1">
+              <Languages className="h-3 w-3 text-primary" /> English, Punjabi, Hindi &amp; Urdu
             </li>
           </ul>
         </div>
-        <div className="px-5 sm:px-7 pb-6 pt-2">
+        <div className="px-4 sm:px-7 pb-5 pt-3">
           <UnifiedLeadForm
             eyebrow=""
             heading=""
             subheading=""
             buttonText="Book a Buyer Strategy Call"
             showTrust={false}
-            twoColumn
+            compact
           />
         </div>
       </DialogContent>
     </Dialog>
+
   );
 };

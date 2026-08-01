@@ -94,6 +94,7 @@ export const UnifiedLeadForm = ({
   defaultBuyerType = "",
   className = "",
   twoColumn = false,
+  compact = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",

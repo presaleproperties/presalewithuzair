@@ -337,22 +337,20 @@ const BlogPost = () => {
                 <aside className="hidden lg:block w-[260px] flex-shrink-0">
                   <div className="sticky top-24 space-y-8">
                     <div>
-                      <div className="flex items-center gap-3 mb-5">
-                        <div className="w-6 h-[2px] rounded-full" style={{ background: "var(--text-gradient)" }} />
+                      <div className="mb-5">
                         <p className="text-xs font-black tracking-[0.2em] uppercase" style={{ color: "hsl(var(--primary))" }}>
                           More Articles
                         </p>
                       </div>
-                      <div className="flex flex-col divide-y" style={{ borderColor: "hsl(var(--border))" }}>
+                      <div className="flex flex-col gap-5">
                         {relatedPosts.slice(0, 5).map((rp) => (
                           <Link
                             key={rp.slug}
                             to={`/blog/${rp.slug}`}
-                            className="group flex gap-3 items-start py-4 first:pt-0"
+                            className="group flex gap-3 items-start"
                           >
                             <div
-                              className="w-14 h-14 flex-shrink-0 rounded-xl overflow-hidden"
-                              style={{ border: "1px solid hsl(var(--border))" }}
+                              className="w-14 h-14 flex-shrink-0 rounded-sm overflow-hidden"
                             >
                               {rp.image_url ? (
                                 <img

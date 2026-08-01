@@ -39,7 +39,7 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Image */}
-          <div className="order-1 lg:order-2 relative rounded-sm overflow-hidden border border-white/10">
+          <div className="order-1 lg:order-2 relative rounded-sm overflow-hidden">
             <img
               src={expoImage}
               alt="Uzair Muhammad speaking at Vancouver Presale Expo"

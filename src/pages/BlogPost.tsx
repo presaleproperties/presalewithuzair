@@ -271,18 +271,11 @@ const BlogPost = () => {
 
                 {/* Inline CTA */}
                 <div
-                  className="mt-8 p-10 rounded-2xl text-center relative overflow-hidden"
+                  className="mt-8 p-10 rounded-sm text-center relative overflow-hidden"
                   style={{
                     background: "hsl(222 25% 6%)",
-                    border: "1px solid hsl(222 14% 18%)",
-                    boxShadow: "0 16px 48px -12px hsla(222,25%,6%,0.4)",
                   }}
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(230 80% 28% / 0.09) 0%, transparent 65%)" }}
-                  />
                   <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(230 70% 60%)" }}>
                     Free Consultation
                   </p>
@@ -296,11 +289,10 @@ const BlogPost = () => {
                     href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                    className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-sm font-bold text-sm transition-colors duration-300 hover:opacity-90"
                     style={{
-                      background: "var(--text-gradient)",
-                      color: "hsl(222 25% 6%)",
-                      boxShadow: "0 8px 32px -8px hsl(230 80% 28% / 0.4)",
+                      background: "hsl(var(--primary))",
+                      color: "hsl(var(--primary-foreground))",
                     }}
                   >
                     <Phone className="h-4 w-4" />
@@ -309,7 +301,7 @@ const BlogPost = () => {
                 </div>
 
                 {/* Explore presales by city — internal links */}
-                <div className="mt-10 pt-8 border-t" style={{ borderColor: "hsl(var(--border))" }}>
+                <div className="mt-12">
                   <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
                     Explore Presales By City
                   </p>
@@ -327,7 +319,7 @@ const BlogPost = () => {
                       <Link
                         key={c.href}
                         to={c.href}
-                        className="px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors hover:bg-primary hover:text-white hover:border-primary"
+                        className="px-3.5 py-1.5 rounded-sm text-sm font-medium border transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
                         style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))" }}
                       >
                         {c.label} Presales

@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
+import { LeadFormDialog } from "@/components/forms/LeadFormDialog";
 
 // Lazy load all non-critical pages to reduce initial bundle size
 const About = lazy(() => import("./pages/About"));
@@ -100,6 +101,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
             </Suspense>
+            <LeadFormDialog />
           </BrowserRouter>
         </TooltipProvider>
       </AuthProvider>

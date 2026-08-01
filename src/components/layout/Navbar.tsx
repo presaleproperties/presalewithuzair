@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { openLeadDialog } from "@/components/forms/LeadFormDialog";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -54,12 +55,8 @@ export const Navbar = () => {
   }, [location]);
 
   const handleFormCTA = () => {
-    trackBookCall("navbar_mobile");
-    if (location.pathname === '/') {
-      document.getElementById('book-section')?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      navigate('/?scroll=book-section');
-    }
+    trackBookCall("navbar");
+    openLeadDialog("navbar");
     setIsMobileMenuOpen(false);
   };
 

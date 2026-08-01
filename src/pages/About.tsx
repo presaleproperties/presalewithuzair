@@ -1,3 +1,4 @@
+import { openLeadDialog } from "@/components/forms/LeadFormDialog";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -29,7 +30,7 @@ const buyerQuestions = [
 
 const About = () => {
   const navigate = useNavigate();
-  const handleCTA = () => navigate('/?scroll=book-section');
+  const handleCTA = () => openLeadDialog('about');
 
   return (
     <>

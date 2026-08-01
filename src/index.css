@@ -380,20 +380,6 @@
   margin-bottom: 1.25rem;
   letter-spacing: -0.02em;
   font-weight: 700;
-  padding-top: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid hsl(var(--primary) / 0.2);
-  position: relative;
-}
-
-.blog-content .blog-h2::before {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 48px;
-  height: 2px;
-  background: hsl(var(--primary));
 }
 
 .blog-content .blog-h3 {
@@ -411,47 +397,22 @@
   margin-bottom: 1.75rem;
 }
 
-/* Drop cap on first paragraph */
-.blog-content .blog-dropcap::first-letter {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4.5rem;
-  line-height: 0.8;
-  float: left;
-  margin-right: 0.12em;
-  margin-top: 0.08em;
-  color: hsl(var(--primary));
-  font-weight: 800;
-}
-
 /* Pull-quote / blockquote */
 .blog-content .blog-pullquote,
 .blog-content blockquote {
   position: relative;
   margin: 2.5rem 0;
-  padding: 2rem 2rem 2rem 2.25rem;
-  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.5) 100%);
+  padding: 0.25rem 0 0.25rem 1.75rem;
+  background: transparent;
   border: none;
-  border-left: 4px solid hsl(var(--primary));
-  border-radius: 0 0.75rem 0.75rem 0;
+  border-left: 2px solid hsl(var(--primary));
+  border-radius: 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   line-height: 1.5;
   font-style: italic;
   color: hsl(var(--foreground) / 0.9);
-  box-shadow: 0 4px 24px -8px hsl(var(--foreground) / 0.04);
-}
-
-.blog-content .blog-pullquote::before,
-.blog-content blockquote::before {
-  content: '\201C';
-  position: absolute;
-  top: -0.15em;
-  left: 0.6rem;
-  font-size: 4rem;
-  line-height: 1;
-  color: hsl(var(--primary) / 0.25);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
+  box-shadow: none;
 }
 
 /* Lists — premium spacing */
@@ -583,17 +544,15 @@
 .blog-content hr {
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, hsl(var(--primary) / 0.3) 20%, hsl(var(--primary) / 0.3) 80%, transparent 100%);
+  background: hsl(var(--border));
   margin: 3rem 0;
 }
 
-/* Images inside content */
 .blog-content img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.75rem;
+  border-radius: 0.25rem;
   margin: 2rem 0;
-  box-shadow: 0 8px 32px -12px hsl(var(--foreground) / 0.1);
 }
 
 /* Strong text — premium emphasis */

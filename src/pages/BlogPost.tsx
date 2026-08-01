@@ -22,10 +22,10 @@ function ReadingProgressBar() {
     return () => window.removeEventListener("scroll", update);
   }, []);
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] h-[3px] bg-transparent pointer-events-none">
+    <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent pointer-events-none">
       <div
         className="h-full transition-all duration-100 ease-out"
-        style={{ width: `${progress}%`, background: "var(--text-gradient)" }}
+        style={{ width: `${progress}%`, background: "hsl(var(--primary))" }}
       />
     </div>
   );
@@ -136,8 +136,6 @@ const BlogPost = () => {
 
         {/* ── Premium editorial hero ── */}
         <section className="w-full pb-0 bg-background">
-          {/* Blue accent bar at very top */}
-          <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
 
           <div className="container-xl max-w-4xl pt-28 pb-0">
             {/* Back link */}
@@ -162,24 +160,21 @@ const BlogPost = () => {
 
             {/* Meta row */}
             <div
-              className="flex flex-wrap items-center gap-5 text-sm pb-8"
-              style={{ color: "hsl(var(--muted-foreground))", borderBottom: "1px solid hsl(var(--border))" }}
+              className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm pb-8"
+              style={{ color: "hsl(var(--muted-foreground))" }}
             >
               <div className="flex items-center gap-2.5">
                 <img
                   src="/favicon.jpeg"
                   alt="Uzair Muhammad"
                   className="h-8 w-8 rounded-full object-cover"
-                  style={{ border: "2px solid hsl(var(--primary) / 0.35)" }}
                 />
                 <span className="font-semibold" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</span>
               </div>
-              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
                 {formatDate(post.published_at)}
               </div>
-              <span className="hidden sm:block w-px h-4" style={{ background: "hsl(var(--border))" }} />
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 {mins} min read
@@ -191,8 +186,7 @@ const BlogPost = () => {
           {post.image_url && (
             <div className="container-xl max-w-4xl mt-10">
               <div
-                className="w-full h-[360px] md:h-[480px] rounded-2xl overflow-hidden"
-                style={{ boxShadow: "0 16px 64px -16px hsla(222,20%,12%,0.18)" }}
+                className="w-full h-[360px] md:h-[480px] rounded-sm overflow-hidden"
               >
                 <img
                   src={post.image_url}
@@ -244,25 +238,22 @@ const BlogPost = () => {
 
                 {/* Author bio */}
                 <div
-                  className="mt-16 p-8 rounded-2xl flex gap-6 items-start"
+                  className="mt-16 p-8 rounded-sm flex gap-6 items-start"
                   style={{
                     background: "hsl(var(--background))",
                     border: "1px solid hsl(var(--border))",
-                    boxShadow: "var(--shadow-card)",
                   }}
                 >
                   <img
                     src="/favicon.jpeg"
                     alt="Uzair Muhammad"
                     className="h-20 w-20 rounded-full object-cover flex-shrink-0"
-                    style={{ border: "3px solid hsl(var(--primary) / 0.35)" }}
                   />
                   <div>
                     <p className="text-xs font-black tracking-[0.2em] uppercase mb-1" style={{ color: "hsl(var(--primary))" }}>
                       Written by
                     </p>
-                    <h3 className="font-display text-xl mb-2" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
-                    <div className="w-8 h-[2px] rounded-full mb-3" style={{ background: "var(--text-gradient)" }} />
+                    <h3 className="font-display text-xl mb-3" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                       Vancouver's presale specialist with 450+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
@@ -280,18 +271,11 @@ const BlogPost = () => {
 
                 {/* Inline CTA */}
                 <div
-                  className="mt-8 p-10 rounded-2xl text-center relative overflow-hidden"
+                  className="mt-8 p-10 rounded-sm text-center relative overflow-hidden"
                   style={{
                     background: "hsl(222 25% 6%)",
-                    border: "1px solid hsl(222 14% 18%)",
-                    boxShadow: "0 16px 48px -12px hsla(222,25%,6%,0.4)",
                   }}
                 >
-                  <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: "var(--text-gradient)" }} />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(230 80% 28% / 0.09) 0%, transparent 65%)" }}
-                  />
                   <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(230 70% 60%)" }}>
                     Free Consultation
                   </p>
@@ -305,11 +289,10 @@ const BlogPost = () => {
                     href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                    className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-sm font-bold text-sm transition-colors duration-300 hover:opacity-90"
                     style={{
-                      background: "var(--text-gradient)",
-                      color: "hsl(222 25% 6%)",
-                      boxShadow: "0 8px 32px -8px hsl(230 80% 28% / 0.4)",
+                      background: "hsl(var(--primary))",
+                      color: "hsl(var(--primary-foreground))",
                     }}
                   >
                     <Phone className="h-4 w-4" />
@@ -318,7 +301,7 @@ const BlogPost = () => {
                 </div>
 
                 {/* Explore presales by city — internal links */}
-                <div className="mt-10 pt-8 border-t" style={{ borderColor: "hsl(var(--border))" }}>
+                <div className="mt-12">
                   <p className="text-xs font-black tracking-[0.2em] uppercase mb-4" style={{ color: "hsl(var(--primary))" }}>
                     Explore Presales By City
                   </p>
@@ -336,7 +319,7 @@ const BlogPost = () => {
                       <Link
                         key={c.href}
                         to={c.href}
-                        className="px-3.5 py-1.5 rounded-full text-sm font-medium border transition-colors hover:bg-primary hover:text-white hover:border-primary"
+                        className="px-3.5 py-1.5 rounded-sm text-sm font-medium border transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
                         style={{ borderColor: "hsl(var(--border))", color: "hsl(var(--foreground))" }}
                       >
                         {c.label} Presales
@@ -354,22 +337,20 @@ const BlogPost = () => {
                 <aside className="hidden lg:block w-[260px] flex-shrink-0">
                   <div className="sticky top-24 space-y-8">
                     <div>
-                      <div className="flex items-center gap-3 mb-5">
-                        <div className="w-6 h-[2px] rounded-full" style={{ background: "var(--text-gradient)" }} />
+                      <div className="mb-5">
                         <p className="text-xs font-black tracking-[0.2em] uppercase" style={{ color: "hsl(var(--primary))" }}>
                           More Articles
                         </p>
                       </div>
-                      <div className="flex flex-col divide-y" style={{ borderColor: "hsl(var(--border))" }}>
+                      <div className="flex flex-col gap-5">
                         {relatedPosts.slice(0, 5).map((rp) => (
                           <Link
                             key={rp.slug}
                             to={`/blog/${rp.slug}`}
-                            className="group flex gap-3 items-start py-4 first:pt-0"
+                            className="group flex gap-3 items-start"
                           >
                             <div
-                              className="w-14 h-14 flex-shrink-0 rounded-xl overflow-hidden"
-                              style={{ border: "1px solid hsl(var(--border))" }}
+                              className="w-14 h-14 flex-shrink-0 rounded-sm overflow-hidden"
                             >
                               {rp.image_url ? (
                                 <img
@@ -399,13 +380,11 @@ const BlogPost = () => {
 
                     {/* Sidebar CTA card */}
                     <div
-                      className="p-5 rounded-xl relative overflow-hidden"
+                      className="p-5 rounded-sm relative overflow-hidden"
                       style={{
                         background: "hsl(222 25% 6%)",
-                        border: "1px solid hsl(222 14% 18%)",
                       }}
                     >
-                      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "var(--text-gradient)" }} />
                       <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
                         Free Call
                       </p>
@@ -416,8 +395,8 @@ const BlogPost = () => {
                         href="https://wa.me/17782313592"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full text-center py-2.5 rounded-lg text-xs font-bold transition-all hover:opacity-90"
-                        style={{ background: "var(--text-gradient)", color: "hsl(222 25% 6%)" }}
+                        className="block w-full text-center py-2.5 rounded-sm text-xs font-bold transition-opacity hover:opacity-90"
+                        style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                       >
                         Book Free Consultation
                       </a>
@@ -432,7 +411,6 @@ const BlogPost = () => {
         {/* ── Related posts ── */}
         {relatedPosts.length > 0 && (
           <section className="pb-20" style={{ background: "hsl(222 25% 6%)" }}>
-            <div className="h-[3px] w-full" style={{ background: "var(--text-gradient)" }} />
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">
                 <div>
@@ -440,7 +418,7 @@ const BlogPost = () => {
                     Keep Reading
                   </p>
                   <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>
-                    More <span className="text-gradient">Articles</span>
+                    More Articles
                   </h2>
                 </div>
                 <Link
@@ -457,11 +435,10 @@ const BlogPost = () => {
                   <Link
                     key={rp.slug}
                     to={`/blog/${rp.slug}`}
-                    className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    className="group rounded-sm overflow-hidden transition-colors duration-300 hover:border-white/25"
                     style={{
                       background: "hsl(222 20% 10%)",
                       border: "1px solid hsl(222 14% 18%)",
-                      boxShadow: "0 4px 24px -8px hsla(0,0%,0%,0.3)",
                     }}
                   >
                     <div className="h-48 overflow-hidden">
@@ -488,7 +465,7 @@ const BlogPost = () => {
                           {rp.excerpt}
                         </p>
                       )}
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(222 14% 22%)" }}>
+                      <div className="flex items-center justify-between pt-4">
                         <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(220 15% 72%)" }}>
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}

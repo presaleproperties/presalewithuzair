@@ -69,7 +69,7 @@ export const ProcessSection = () => {
               className="group reveal"
               style={{ transitionDelay: `${(index % 3) * 90}ms` }}
             >
-              <div className="image-reveal relative overflow-hidden rounded-sm border border-border">
+              <div className="image-reveal relative overflow-hidden rounded-sm">
                 <OptimizedImage
                   src={item.image}
                   alt={item.title}

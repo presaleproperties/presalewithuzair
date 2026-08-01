@@ -11,7 +11,7 @@ export const LeadCaptureSection = () => {
           
           {/* Left - Image (hidden on mobile) */}
           <div className="hidden lg:block relative">
-            <div className="relative rounded-sm overflow-hidden border border-border">
+            <div className="relative rounded-sm overflow-hidden">
               <img
                 src={uzairImage}
                 alt="Uzair Muhammad - Presale Expert"

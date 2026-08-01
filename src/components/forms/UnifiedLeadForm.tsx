@@ -80,6 +80,8 @@ interface UnifiedLeadFormProps {
   className?: string;
   /** Render select fields in two columns on sm+ */
   twoColumn?: boolean;
+  /** Tighter density so the whole form fits on a mobile screen */
+  compact?: boolean;
 }
 
 export const UnifiedLeadForm = ({

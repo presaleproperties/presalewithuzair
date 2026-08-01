@@ -96,10 +96,9 @@ export const UnifiedLeadForm = ({
   compact = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
+    name: "",
     phone: "",
+    email: "",
     buyerType: defaultBuyerType,
     budget: "",
     timeline: "",

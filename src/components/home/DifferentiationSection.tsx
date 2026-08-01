@@ -96,11 +96,11 @@ export const DifferentiationSection = () => {
   const rest = blocks.filter((b) => !b.feature);
 
   return (
-    <section className="section-y bg-muted/40 border-y border-border">
+    <section className="section-y bg-muted/40">
       <div className="container-xl px-4 sm:px-6">
         {/* Section header */}
         <div className="max-w-3xl mb-12 sm:mb-16 reveal">
-          <p className="section-label rule-label mb-5">Why Uzair</p>
+          <p className="section-label mb-5">Why Uzair</p>
           <h2 className="h-section text-foreground">
             I represent your side of the deal.
           </h2>
@@ -115,8 +115,6 @@ export const DifferentiationSection = () => {
           <div className="relative grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 p-8 sm:p-12 lg:p-16">
             <div className="flex lg:flex-col items-center gap-3">
               <span className="text-[0.6875rem] font-semibold tracking-[0.22em] uppercase text-background/45">01</span>
-              <span className="hidden lg:block h-16 w-px bg-background/20" />
-              <span className="lg:hidden h-px w-16 bg-background/20 self-center" />
             </div>
             <div>
               <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-bold tracking-tight leading-[1.1] text-background">
@@ -142,7 +140,7 @@ export const DifferentiationSection = () => {
               >
                 <div className="flex items-center gap-4 mb-4 sm:mb-5">
                   <span className="text-[0.6875rem] font-semibold tracking-[0.22em] uppercase text-foreground/40">{number}</span>
-                  <span className="h-px flex-1 bg-border transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/30" />
+                  
                 </div>
                 <h3 className="h-card text-foreground mb-4">
                   {block.heading}

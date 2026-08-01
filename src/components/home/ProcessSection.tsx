@@ -53,7 +53,7 @@ export const ProcessSection = () => {
     <section className="section-y bg-card">
       <div className="container-xl px-4 sm:px-6">
         <div className="max-w-3xl mb-14 sm:mb-20 reveal">
-          <p className="section-label rule-label mb-5">The Process</p>
+          <p className="section-label mb-5">The Process</p>
           <h2 className="h-section text-foreground">
             Clear advice before you commit.
           </h2>
@@ -81,7 +81,7 @@ export const ProcessSection = () => {
                 <span className="font-display text-sm font-semibold tabular-nums text-foreground/35 tracking-[0.08em]">
                   {item.step}
                 </span>
-                <span className="h-px flex-1 bg-border transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/35" />
+                
               </div>
 
               <h3 className="mt-3 font-display text-lg sm:text-xl font-bold tracking-[-0.02em] text-foreground">

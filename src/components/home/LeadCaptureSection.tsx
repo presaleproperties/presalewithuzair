@@ -5,7 +5,6 @@ export const LeadCaptureSection = () => {
   return (
     <section id="lead-form" className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute inset-x-0 top-0 h-px bg-border" aria-hidden />
 
       <div className="relative z-10 container-xl px-4 sm:px-6 min-h-screen flex items-center py-16 sm:py-24">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">

@@ -17,11 +17,11 @@ const proofPoints = [
 ];
 
 const ProofRow = ({ className = "" }: { className?: string }) => (
-  <dl className={`grid grid-cols-3 border-y border-foreground/12 ${className}`}>
+  <dl className={`grid grid-cols-3 gap-x-6 border-t border-foreground/12 pt-5 ${className}`}>
     {proofPoints.map((point, i) => (
       <div
         key={point.label}
-        className={`py-4 pr-4 ${i > 0 ? "pl-4 sm:pl-6 border-l border-foreground/12" : ""}`}
+        className="pr-4"
       >
         <dt className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground">
           {point.value}
@@ -47,16 +47,6 @@ export const HeroSection = () => {
         style={{
           background:
             "radial-gradient(120% 90% at 78% 18%, hsl(0 0% 100% / 0.07) 0%, transparent 60%)",
-        }}
-      />
-      {/* Architectural hairline grid */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.18] hidden lg:block"
-        style={{
-          backgroundImage:
-            "linear-gradient(90deg, hsl(0 0% 100% / 0.6) 1px, transparent 1px)",
-          backgroundSize: "25% 100%",
         }}
       />
 
@@ -86,7 +76,7 @@ export const HeroSection = () => {
           <ProofRow className="mt-8 animate-fade-up delay-400" />
 
           <div className="relative mt-8 animate-fade-up delay-400">
-            <div className="relative overflow-hidden rounded-sm border border-foreground/12">
+            <div className="relative overflow-hidden rounded-sm">
               <OptimizedImage
                 src={heroImage}
                 alt="Uzair Muhammad — Fraser Valley presale specialist"
@@ -124,14 +114,11 @@ export const HeroSection = () => {
             <ProofRow className="mt-12 max-w-xl animate-fade-up delay-400" />
           </div>
 
-          {/* Portrait — framed, not floating */}
+          {/* Portrait */}
           <div className="relative animate-fade-up delay-200">
             <div className="relative w-full max-w-[26rem] mx-auto">
-              <div
-                aria-hidden
-                className="absolute -inset-x-5 -inset-y-5 border border-foreground/12 rounded-sm"
-              />
               <div className="relative overflow-hidden rounded-sm">
+
                 <OptimizedImage
                   src={heroImage}
                   alt="Uzair Muhammad — Fraser Valley presale specialist"

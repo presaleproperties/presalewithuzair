@@ -3,7 +3,7 @@ import { Clock, Shield, Languages } from "lucide-react";
 
 export const BookingContextSection = () => {
   return (
-    <section id="book-section" className="section-y bg-muted/30 border-y border-border/60">
+    <section id="book-section" className="section-y bg-muted/30">
       <div className="container-xl px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 lg:gap-16 items-start">
           {/* Left — context */}

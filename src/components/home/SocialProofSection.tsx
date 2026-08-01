@@ -190,11 +190,12 @@ function highlightKeywords(text: string): ReactNode[] {
         next.push(
           <mark
             key={`kw-${kIdx}-${pIdx}-${match.index}`}
-            className="bg-primary/10 text-primary font-semibold rounded-sm px-0.5"
+            className="bg-transparent text-foreground font-semibold decoration-foreground/25 underline underline-offset-[3px] decoration-1"
           >
             {match[0]}
           </mark>,
         );
+
         lastIndex = match.index + match[0].length;
         if (match[0].length === 0) re.lastIndex++;
       }

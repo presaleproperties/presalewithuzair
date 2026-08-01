@@ -24,7 +24,7 @@ export const LeadFormDialog = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-xl w-[calc(100%-1.5rem)] p-0 gap-0 overflow-y-auto max-h-[90vh] rounded-2xl">
+      <DialogContent className="max-w-xl w-[calc(100%-1.5rem)] p-0 gap-0 overflow-y-auto max-h-[90vh] rounded-sm">
         <div className="px-4 sm:px-7 pt-5 sm:pt-6 pb-1">
           <h2 className="font-display text-lg sm:text-2xl font-bold tracking-tight text-foreground pr-6">
             Book a Buyer Strategy Call

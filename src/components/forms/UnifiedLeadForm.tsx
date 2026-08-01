@@ -250,7 +250,7 @@ export const UnifiedLeadForm = ({
   const isCard = variant === "card";
 
   const wrapperClasses = isCard
-    ? `bg-card/60 backdrop-blur-sm rounded-2xl border border-border shadow-sm p-5 sm:p-8 lg:p-9 ${className}`
+    ? `bg-card rounded-sm border border-border p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
   const heightClasses = compact ? "h-10 text-sm" : "h-12 text-base";

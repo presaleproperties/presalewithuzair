@@ -9,13 +9,12 @@ export const FinalCTASection = () => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Content */}
           <div className="order-2 lg:order-1">
-            <p className="text-primary font-bold tracking-[0.2em] text-xs sm:text-sm mb-3 uppercase">
+            <p className="text-white/50 font-semibold tracking-[0.22em] text-[0.6875rem] mb-5 uppercase">
               Community Leader
             </p>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-5">
-              Founder, Vancouver{" "}
-              <span className="text-primary">Presale Expo</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-[3rem] font-bold text-white tracking-tight leading-[1.08] mb-6">
+              Founder, Vancouver Presale Expo
             </h2>
 
             <p className="text-base sm:text-lg text-white/70 mb-4 leading-relaxed">
@@ -31,7 +30,7 @@ export const FinalCTASection = () => {
                 href="https://vancouverpresaleexpo.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center gap-2 border-b border-white/25 pb-1 text-sm font-semibold text-white/75 transition-colors duration-300 hover:border-white hover:text-white"
               >
                 vancouverpresaleexpo.com ↗
               </a>
@@ -40,14 +39,14 @@ export const FinalCTASection = () => {
           </div>
 
           {/* Image */}
-          <div className="order-1 lg:order-2 relative rounded-2xl overflow-hidden">
+          <div className="order-1 lg:order-2 relative rounded-sm overflow-hidden border border-white/10">
             <img
               src={expoImage}
               alt="Uzair Muhammad speaking at Vancouver Presale Expo"
-              className="w-full h-[300px] sm:h-[380px] lg:h-[420px] object-cover object-center rounded-2xl"
+              className="w-full h-[300px] sm:h-[380px] lg:h-[420px] object-cover object-center"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(222,20%,8%)]/40 via-transparent to-transparent rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(222,20%,8%)]/45 via-transparent to-transparent" />
           </div>
         </div>
       </div>

@@ -41,6 +41,11 @@
     --input: 220 15% 85%;
     --ring: 225 70% 45%;
 
+    /* ── Single divider token set — every section rule uses these ── */
+    --divider: 220 15% 82%;
+    --divider-opacity: 0.7;
+    --divider-width: 1px;
+
     /* Editorial geometry — near-square corners read as considered, not templated */
     --radius: 0.25rem;
 
@@ -92,6 +97,8 @@
     --card-gradient: linear-gradient(180deg, hsl(222 20% 12%) 0%, hsl(222 20% 8%) 100%);
     --shadow-soft: 0 4px 24px -8px hsla(225, 70%, 45%, 0.15);
     --shadow-glow: 0 0 40px hsla(225, 70%, 45%, 0.18);
+    --divider: 220 12% 82%;
+    --divider-opacity: 0.16;
     --shadow-card: 0 8px 32px -12px hsla(0, 0%, 0%, 0.4);
   }
 }
@@ -165,6 +172,24 @@
   .section-label {
     @apply text-[0.6875rem] font-semibold tracking-[0.22em] uppercase;
     color: hsl(var(--foreground) / 0.45);
+  }
+
+  /* ── Divider system: one token, four utilities ── */
+  .divider-t {
+    border-top: var(--divider-width) solid hsl(var(--divider) / var(--divider-opacity));
+  }
+
+  .divider-b {
+    border-bottom: var(--divider-width) solid hsl(var(--divider) / var(--divider-opacity));
+  }
+
+  .divider-y {
+    border-top: var(--divider-width) solid hsl(var(--divider) / var(--divider-opacity));
+    border-bottom: var(--divider-width) solid hsl(var(--divider) / var(--divider-opacity));
+  }
+
+  .divider-list > * + * {
+    border-top: var(--divider-width) solid hsl(var(--divider) / var(--divider-opacity));
   }
 
   /* ── Editorial detail: hairline rule that precedes a label ── */

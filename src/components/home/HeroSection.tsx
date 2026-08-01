@@ -17,7 +17,7 @@ const proofPoints = [
 ];
 
 const ProofRow = ({ className = "" }: { className?: string }) => (
-  <dl className={`grid grid-cols-3 gap-x-6 border-t border-foreground/12 pt-5 ${className}`}>
+  <dl className={`grid grid-cols-3 gap-x-6 divider-t pt-5 ${className}`}>
     {proofPoints.map((point, i) => (
       <div
         key={point.label}

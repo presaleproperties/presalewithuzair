@@ -216,7 +216,7 @@ const Agents = () => {
         </section>
 
         {/* Proof Stats */}
-        <section className="section-y-sm bg-card border-y border-border">
+        <section className="section-y-sm bg-card divider-y">
           <div className="container-xl px-4 sm:px-6">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
               <div>

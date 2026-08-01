@@ -63,7 +63,7 @@ export const BuyerRepTable = ({
           {rows.map((r, i) => (
             <div
               key={r.label}
-              className={`grid grid-cols-3 border-t border-border ${
+              className={`grid grid-cols-3 divider-t ${
                 i % 2 === 0 ? "bg-background" : "bg-muted/10"
               }`}
             >

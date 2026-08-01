@@ -186,7 +186,7 @@ const Developers = () => {
         </section>
 
         {/* Trust Stats Section */}
-        <section className="section-y bg-card border-y border-border">
+        <section className="section-y bg-card divider-y">
           <div className="container-xl px-4 sm:px-6">
             <div className="text-center mb-10 md:mb-14">
               <p className="section-label mb-3">Track Record</p>
@@ -364,7 +364,7 @@ const Developers = () => {
                   ))}
                 </ul>
                 
-                <div className="pt-6 border-t border-border">
+                <div className="pt-6 divider-t">
                   <p className="text-muted-foreground mb-2">
                     If you want polished opinions, I'm not the right fit.
                   </p>

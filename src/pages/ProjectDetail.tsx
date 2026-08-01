@@ -174,7 +174,7 @@ const ProjectGallery = ({ images, name }: { images: string[]; name: string }) =>
 
 /* ── Detail row ── */
 const DetailRow = ({ icon: Icon, label, value }: { icon: any; label: string; value: string }) => (
-  <div className="flex items-start gap-3 py-3 border-b border-border/50 last:border-0">
+  <div className="flex items-start gap-3 py-3 divider-b last:border-0">
     <div className="w-8 h-8 rounded-lg bg-primary/8 flex items-center justify-center shrink-0 mt-0.5">
       <Icon className="h-3.5 w-3.5 text-primary" />
     </div>
@@ -481,7 +481,7 @@ const ProjectDetail = () => {
 
         {/* ── Quick stats bar ── */}
         {(project.strata_fees || project.incentives_available || project.project_type) && (
-          <section className="border-y border-border/70 bg-gradient-to-r from-card/80 to-card/40">
+          <section className="divider-y bg-gradient-to-r from-card/80 to-card/40">
             <div className="container-xl px-5 sm:px-8 lg:px-16 py-6">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
                 {project.developer_name && (
@@ -592,7 +592,7 @@ const ProjectDetail = () => {
               {faqItems.length > 0 && (
                 <div>
                   <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-5">Frequently Asked Questions</h2>
-                  <div className="divide-y divide-border/60 rounded-2xl border border-border/60 bg-card/40">
+                  <div className="divider-list rounded-2xl border border-border/60 bg-card/40">
                     {faqItems.map((f, i) => (
                       <details key={i} className="group p-5 open:bg-card/70 transition-colors">
                         <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
@@ -655,7 +655,7 @@ const ProjectDetail = () => {
         <RelatedProjects city={project.city} currentSlug={project.slug} />
 
         {/* ── Browse marketplace ── */}
-        <section className="section-y-sm border-t border-border/40 bg-muted/20">
+        <section className="section-y-sm divider-t bg-muted/20">
           <div className="container-xl px-5 sm:px-8 lg:px-16 text-center">
             <p className="text-sm uppercase tracking-[0.2em] text-foreground/50 mb-2">Explore more</p>
             <h3 className="font-display text-2xl md:text-3xl text-foreground mb-3">
@@ -702,7 +702,7 @@ const RelatedProjects = ({ city, currentSlug }: { city: string | null; currentSl
   if (related.length === 0) return null;
 
   return (
-    <section className="section-y border-t border-border/70 bg-gradient-to-b from-background to-card/30">
+    <section className="section-y divider-t bg-gradient-to-b from-background to-card/30">
       <div className="container-xl px-5 sm:px-8 lg:px-16">
         <div className="flex items-end justify-between mb-8">
           <div>

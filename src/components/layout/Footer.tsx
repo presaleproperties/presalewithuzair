@@ -241,7 +241,7 @@ export const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="mt-12 pt-6 divider-t flex flex-col md:flex-row justify-between items-center gap-3">
             <p className="text-xs text-white/70">
               © {new Date().getFullYear()} Uzair Muhammad PREC | Brokered by Real Broker. All rights reserved.
             </p>

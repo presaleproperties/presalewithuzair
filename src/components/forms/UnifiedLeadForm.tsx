@@ -488,7 +488,7 @@ export const UnifiedLeadForm = ({
           type="submit"
           variant="hero"
           size="xl"
-          className="w-full h-14 text-base font-semibold rounded-lg mt-4"
+          className={`w-full font-semibold rounded-lg ${compact ? "h-12 text-sm mt-1" : "h-14 text-base mt-4"}`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
@@ -518,9 +518,12 @@ export const UnifiedLeadForm = ({
           </div>
         )}
 
-        <p className={`text-xs text-center mt-3 ${isDark ? "text-white/50" : "text-muted-foreground"}`}>
-          By submitting, you agree to receive communications from us. We respect your privacy.
+        <p className={`text-center ${compact ? "text-[10px] leading-snug mt-1.5" : "text-xs mt-3"} ${isDark ? "text-white/50" : "text-muted-foreground"}`}>
+          {compact
+            ? "By submitting, you agree to receive communications. We respect your privacy."
+            : "By submitting, you agree to receive communications from us. We respect your privacy."}
         </p>
+
       </form>
     </div>
   );

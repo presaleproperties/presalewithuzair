@@ -414,33 +414,6 @@
   color: hsl(var(--foreground) / 0.9);
   box-shadow: none;
 }
-  position: relative;
-  margin: 2.5rem 0;
-  padding: 2rem 2rem 2rem 2.25rem;
-  background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--muted) / 0.5) 100%);
-  border: none;
-  border-left: 4px solid hsl(var(--primary));
-  border-radius: 0 0.75rem 0.75rem 0;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  font-style: italic;
-  color: hsl(var(--foreground) / 0.9);
-  box-shadow: 0 4px 24px -8px hsl(var(--foreground) / 0.04);
-}
-
-.blog-content .blog-pullquote::before,
-.blog-content blockquote::before {
-  content: '\201C';
-  position: absolute;
-  top: -0.15em;
-  left: 0.6rem;
-  font-size: 4rem;
-  line-height: 1;
-  color: hsl(var(--primary) / 0.25);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-}
 
 /* Lists — premium spacing */
 .blog-content .blog-ul,

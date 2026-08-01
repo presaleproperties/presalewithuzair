@@ -263,10 +263,10 @@ const ReviewCard = ({
   mobile?: boolean;
 }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col"
-    : "rounded-xl p-6 h-[380px] transition-all hover:shadow-lg cursor-pointer flex flex-col";
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-sm p-5 snap-center cursor-pointer flex flex-col"
+    : "rounded-sm p-6 h-[380px] cursor-pointer flex flex-col";
 
-  const themeClass = "bg-card border border-border hover:border-primary/30";
+  const themeClass = "bg-card border border-border hover-lift";
 
   return (
     <a
@@ -274,7 +274,7 @@ const ReviewCard = ({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Read ${testimonial.name}'s review on Google`}
-      className={`${className} ${themeClass}`}
+      className={`group ${className} ${themeClass}`}
     >
       <div className="flex items-center gap-3 mb-4">
         <img
@@ -294,13 +294,16 @@ const ReviewCard = ({
 
       <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
-      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-2">
+      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-3">
         “{highlightKeywords(testimonial.quote)}”
       </p>
-      <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
+      <p className="text-[0.6875rem] uppercase tracking-[0.14em] text-foreground/45 mt-4 font-semibold shrink-0 transition-colors duration-300 group-hover:text-foreground">
+        View on Google
+      </p>
     </a>
   );
 };
+
 
 const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
   const className = mobile

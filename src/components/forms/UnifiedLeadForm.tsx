@@ -9,8 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { readFunctionError } from "@/lib/functionError";
 
 const formSchema = z.object({
-  firstName: z.string().trim().min(1, "First name is required").max(60),
-  lastName: z.string().trim().min(1, "Last name is required").max(60),
+  name: z.string().trim().min(1, "Name is required").max(120),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(10, "Please enter a valid phone number").max(20),
   buyerType: z.string().min(1, "Please select an option"),
@@ -97,10 +96,9 @@ export const UnifiedLeadForm = ({
   compact = false,
 }: UnifiedLeadFormProps) => {
   const [formData, setFormData] = useState<FormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
+    name: "",
     phone: "",
+    email: "",
     buyerType: defaultBuyerType,
     budget: "",
     timeline: "",
@@ -181,9 +179,8 @@ export const UnifiedLeadForm = ({
     try {
       const { error } = await supabase.functions.invoke("capture-lead", {
         body: {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-
+          firstName: formData.name,
+          lastName: "",
           email: formData.email,
           phone: formData.phone,
           buyerType: formData.buyerType,
@@ -231,7 +228,7 @@ export const UnifiedLeadForm = ({
     if (isSuccess) {
       const timer = setTimeout(() => {
         setIsSuccess(false);
-        setFormData({ firstName: "", lastName: "", email: "", phone: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
+        setFormData({ name: "", phone: "", email: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
       }, 4000);
       return () => clearTimeout(timer);
     }
@@ -285,78 +282,32 @@ export const UnifiedLeadForm = ({
       )}
 
       <form onSubmit={handleSubmit} className={compact ? "space-y-2.5" : "space-y-4"} autoComplete="on">
-        <div className={compact ? "grid grid-cols-2 gap-x-3 gap-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
+        <div className={compact ? "space-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
 
-        <div>
-          <label htmlFor="ulc-firstName" className={labelClasses}>First name *</label>
+        <div className="col-span-2">
+          <label htmlFor="ulc-name" className={labelClasses}>Name *</label>
           <Input
-            id="ulc-firstName"
-            name="given-name"
+            id="ulc-name"
+            name="name"
             type="text"
-            placeholder="First name"
-            value={formData.firstName}
-            onChange={(e) => updateField("firstName", e.target.value)}
+            placeholder="Your name"
+            value={formData.name}
+            onChange={(e) => updateField("name", e.target.value)}
             onFocus={scrollFieldIntoView}
-            className={`${inputClasses} ${fieldErrors.firstName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
-            autoComplete="given-name"
+            className={`${inputClasses} ${fieldErrors.name ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
+            autoComplete="name"
             autoCapitalize="words"
             enterKeyHint="next"
-            aria-invalid={!!fieldErrors.firstName}
-            aria-describedby={fieldErrors.firstName ? "ulc-firstName-error" : undefined}
+            aria-invalid={!!fieldErrors.name}
+            aria-describedby={fieldErrors.name ? "ulc-name-error" : undefined}
             required
           />
-          {fieldErrors.firstName && (
-            <p id="ulc-firstName-error" className="mt-1 text-xs text-destructive">{fieldErrors.firstName}</p>
+          {fieldErrors.name && (
+            <p id="ulc-name-error" className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>
           )}
         </div>
 
-        <div>
-          <label htmlFor="ulc-lastName" className={labelClasses}>Last name *</label>
-          <Input
-            id="ulc-lastName"
-            name="family-name"
-            type="text"
-            placeholder="Last name"
-            value={formData.lastName}
-            onChange={(e) => updateField("lastName", e.target.value)}
-            onFocus={scrollFieldIntoView}
-            className={`${inputClasses} ${fieldErrors.lastName ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
-            autoComplete="family-name"
-            autoCapitalize="words"
-            enterKeyHint="next"
-            aria-invalid={!!fieldErrors.lastName}
-            aria-describedby={fieldErrors.lastName ? "ulc-lastName-error" : undefined}
-            required
-          />
-          {fieldErrors.lastName && (
-            <p id="ulc-lastName-error" className="mt-1 text-xs text-destructive">{fieldErrors.lastName}</p>
-          )}
-        </div>
-
-
-        <div className={compact ? "col-span-2" : undefined}>
-          <label htmlFor="ulc-email" className={labelClasses}>Email *</label>
-          <Input
-            id="ulc-email"
-            name="email"
-            type="email"
-            inputMode="email"
-            placeholder="you@email.com"
-            value={formData.email}
-            onChange={(e) => updateField("email", e.target.value)}
-            onFocus={scrollFieldIntoView}
-            className={`${inputClasses} ${fieldErrors.email ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
-            autoComplete="email"
-            aria-invalid={!!fieldErrors.email}
-            aria-describedby={fieldErrors.email ? "ulc-email-error" : undefined}
-            required
-          />
-          {fieldErrors.email && (
-            <p id="ulc-email-error" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
-          )}
-        </div>
-
-        <div>
+        <div className="col-span-2">
           <label htmlFor="ulc-phone" className={labelClasses}>Phone *</label>
           <Input
             id="ulc-phone"
@@ -375,6 +326,28 @@ export const UnifiedLeadForm = ({
           />
           {fieldErrors.phone && (
             <p id="ulc-phone-error" className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
+          )}
+        </div>
+
+        <div className="col-span-2">
+          <label htmlFor="ulc-email" className={labelClasses}>Email *</label>
+          <Input
+            id="ulc-email"
+            name="email"
+            type="email"
+            inputMode="email"
+            placeholder="you@email.com"
+            value={formData.email}
+            onChange={(e) => updateField("email", e.target.value)}
+            onFocus={scrollFieldIntoView}
+            className={`${inputClasses} ${fieldErrors.email ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
+            autoComplete="email"
+            aria-invalid={!!fieldErrors.email}
+            aria-describedby={fieldErrors.email ? "ulc-email-error" : undefined}
+            required
+          />
+          {fieldErrors.email && (
+            <p id="ulc-email-error" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
           )}
         </div>
 
@@ -505,7 +478,7 @@ export const UnifiedLeadForm = ({
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mt-5 pt-4 border-t border-border/30">
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <CheckCircle className="h-3.5 w-3.5 text-primary" />
-              <span>450+ units sold</span>
+              <span>450+ families helped</span>
             </div>
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <CheckCircle className="h-3.5 w-3.5 text-primary" />

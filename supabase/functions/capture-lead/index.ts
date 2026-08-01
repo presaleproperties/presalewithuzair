@@ -137,7 +137,7 @@ function isValidPhone(phone: string): boolean {
   return phoneRegex.test(phone);
 }
 function isValidName(name: string): boolean {
-  const nameRegex = /^[a-zA-Z\s'-]{1,100}$/;
+  const nameRegex = /^[a-zA-Z\s'-]{1,120}$/;
   return nameRegex.test(name);
 }
 function isValidBuyerType(buyerType: string): boolean {

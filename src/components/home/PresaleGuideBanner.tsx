@@ -80,7 +80,7 @@ export const PresaleGuideBanner = () => {
   return (
     <section className="section-y-sm bg-card">
       <div className="container-xl px-4 sm:px-6">
-        <div className="rounded-2xl bg-background border border-border p-6 sm:p-10 lg:p-14">
+        <div className="rounded-sm bg-background border border-border p-6 sm:p-10 lg:p-14">
           <div className="flex flex-col md:flex-row items-center gap-8 lg:gap-14">
             {/* Text + Form */}
             <div className="flex-1 text-center md:text-left">
@@ -134,7 +134,7 @@ export const PresaleGuideBanner = () => {
                   <Button
                     type="submit"
                     variant="hero"
-                    className="h-12 px-6 rounded-xl font-semibold whitespace-nowrap"
+                    className="h-12 px-6 font-semibold whitespace-nowrap"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
@@ -152,7 +152,7 @@ export const PresaleGuideBanner = () => {
               <img
                 src={guideCover}
                 alt="7 Costly Mistakes Presale Buyers Make — Free Guide"
-                className="w-full h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300 rounded-lg"
+                className="w-full h-auto rounded-sm shadow-card transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1"
                 loading="lazy"
                 width={960}
                 height={1280}

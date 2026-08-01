@@ -393,7 +393,6 @@ export const SocialProofSection = () => {
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: liveData?.overallRating ?? 4.9,
-      reviewCount: liveData?.totalReviews ?? 36,
       bestRating: 5,
     },
     review: displayed.map((r) => ({
@@ -438,7 +437,7 @@ export const SocialProofSection = () => {
                 {liveData?.overallRating ?? 4.9}
               </p>
               <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">
-                from {liveData?.totalReviews ?? 36} reviews
+                Google rating
               </p>
             </div>
 

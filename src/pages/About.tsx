@@ -410,7 +410,7 @@ const About = () => {
         <section className="py-10 bg-background divider-y">
           <div className="container-xl">
             <p className="text-center font-display text-lg lg:text-xl font-semibold text-foreground">
-              4.9★ on Google · 36 reviews · 450+ families helped
+              4.9★ on Google · 450+ families helped
             </p>
           </div>
         </section>

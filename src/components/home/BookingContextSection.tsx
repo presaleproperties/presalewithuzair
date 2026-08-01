@@ -29,7 +29,7 @@ export const BookingContextSection = () => {
               ))}
             </ul>
 
-            <div className="hidden lg:flex items-center gap-3 mt-6 pt-5 border-t border-border/60 text-sm text-foreground/70">
+            <div className="hidden lg:flex items-center gap-3 mt-8 text-sm text-foreground/70">
               <span className="font-semibold text-foreground">450+ families helped</span>
               <span className="text-foreground/30">·</span>
               <span className="font-semibold text-foreground">$200M+ volume</span>

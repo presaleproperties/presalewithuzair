@@ -435,11 +435,10 @@ const BlogPost = () => {
                   <Link
                     key={rp.slug}
                     to={`/blog/${rp.slug}`}
-                    className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                    className="group rounded-sm overflow-hidden transition-colors duration-300 hover:border-white/25"
                     style={{
                       background: "hsl(222 20% 10%)",
                       border: "1px solid hsl(222 14% 18%)",
-                      boxShadow: "0 4px 24px -8px hsla(0,0%,0%,0.3)",
                     }}
                   >
                     <div className="h-48 overflow-hidden">
@@ -466,7 +465,7 @@ const BlogPost = () => {
                           {rp.excerpt}
                         </p>
                       )}
-                      <div className="flex items-center justify-between pt-3" style={{ borderTop: "1px solid hsl(222 14% 22%)" }}>
+                      <div className="flex items-center justify-between pt-4">
                         <span className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(220 15% 72%)" }}>
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}

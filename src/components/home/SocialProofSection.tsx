@@ -190,11 +190,12 @@ function highlightKeywords(text: string): ReactNode[] {
         next.push(
           <mark
             key={`kw-${kIdx}-${pIdx}-${match.index}`}
-            className="bg-primary/10 text-primary font-semibold rounded-sm px-0.5"
+            className="bg-transparent text-foreground font-semibold decoration-foreground/25 underline underline-offset-[3px] decoration-1"
           >
             {match[0]}
           </mark>,
         );
+
         lastIndex = match.index + match[0].length;
         if (match[0].length === 0) re.lastIndex++;
       }
@@ -262,10 +263,10 @@ const ReviewCard = ({
   mobile?: boolean;
 }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col"
-    : "rounded-xl p-6 h-[380px] transition-all hover:shadow-lg cursor-pointer flex flex-col";
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-sm p-5 snap-center cursor-pointer flex flex-col"
+    : "rounded-sm p-6 h-[380px] cursor-pointer flex flex-col";
 
-  const themeClass = "bg-card border border-border hover:border-primary/30";
+  const themeClass = "bg-card border border-border hover-lift";
 
   return (
     <a
@@ -273,7 +274,7 @@ const ReviewCard = ({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Read ${testimonial.name}'s review on Google`}
-      className={`${className} ${themeClass}`}
+      className={`group ${className} ${themeClass}`}
     >
       <div className="flex items-center gap-3 mb-4">
         <img
@@ -293,18 +294,21 @@ const ReviewCard = ({
 
       <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
-      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-2">
+      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-3">
         “{highlightKeywords(testimonial.quote)}”
       </p>
-      <p className="text-xs text-primary mt-3 font-medium shrink-0">View on Google →</p>
+      <p className="text-[0.6875rem] uppercase tracking-[0.14em] text-foreground/45 mt-4 font-semibold shrink-0 transition-colors duration-300 group-hover:text-foreground">
+        View on Google
+      </p>
     </a>
   );
 };
 
+
 const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-xl p-5 snap-center flex flex-col bg-card border border-border"
-    : "rounded-xl p-6 h-[380px] flex flex-col bg-card border border-border";
+    ? "flex-shrink-0 w-[300px] h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
+    : "rounded-sm p-6 h-[380px] flex flex-col bg-card border border-border";
   return (
     <div className={className}>
       <div className="flex items-center gap-3 mb-4">
@@ -336,11 +340,11 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
-    className={`group rounded-xl snap-center cursor-pointer transition-all hover:shadow-lg flex flex-col items-center justify-center text-center border border-border bg-card hover:border-primary/30 ${
+    className={`group rounded-sm snap-center cursor-pointer hover-lift flex flex-col items-center justify-center text-center border border-border bg-card ${
       mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
     }`}
   >
-    <div className="w-14 h-14 rounded-full bg-background border border-border flex items-center justify-center mb-5 shadow-sm group-hover:border-primary/40 transition-colors">
+    <div className="w-14 h-14 rounded-sm bg-background border border-border flex items-center justify-center mb-5 transition-colors duration-500 group-hover:border-foreground/30">
       <GoogleLogo className="h-4 object-contain" />
     </div>
     <div className="flex items-center gap-1.5 mb-3">
@@ -353,9 +357,9 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     <p className="text-sm text-muted-foreground mb-5 max-w-[220px]">
       Read every verified client review on Google.
     </p>
-    <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-primary/80 transition-colors">
+    <span className="inline-flex items-center gap-2 text-[0.6875rem] uppercase tracking-[0.14em] font-semibold text-foreground/55 transition-colors duration-300 group-hover:text-foreground">
       View on Google
-      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+      <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1" />
     </span>
   </a>
 );
@@ -415,22 +419,22 @@ export const SocialProofSection = () => {
       </Helmet>
       <div className="container-xl px-4 sm:px-6">
         {/* Google Reviews Widget Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 sm:mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 sm:mb-14">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <GoogleLogo className="h-4 md:h-5" />
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            <div className="flex items-center gap-2.5 mb-4">
+              <GoogleLogo className="h-4 md:h-[1.125rem]" />
+              <span className="text-[0.6875rem] font-semibold text-foreground/45 uppercase tracking-[0.22em]">
                 Google Reviews
               </span>
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-foreground tracking-tight">
+            <h2 className="h-section text-foreground">
               What Uzair's clients say
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 sm:gap-4 bg-card border border-border rounded-xl px-4 py-3 shadow-sm">
+          <div className="flex items-center gap-4 sm:gap-5 bg-card border border-border rounded-sm px-5 py-4">
             <div className="text-center">
-              <p className="font-display text-3xl sm:text-4xl font-black text-foreground leading-none">
+              <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-none">
                 {liveData?.overallRating ?? 4.9}
               </p>
               <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5">
@@ -444,7 +448,7 @@ export const SocialProofSection = () => {
                 href={GOOGLE_BUSINESS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors mt-1 underline underline-offset-2"
+                className="inline-flex items-center gap-1 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 mt-1 underline underline-offset-2"
               >
                 See all on Google
                 <ExternalLink className="h-3 w-3" />
@@ -475,7 +479,7 @@ export const SocialProofSection = () => {
 
         {/* Error State */}
         {!isLoading && error && (
-          <div className="mb-10 sm:mb-14 rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-center">
+          <div className="mb-10 sm:mb-14 rounded-sm border border-destructive/20 bg-destructive/5 p-4 text-center">
             <p className="text-sm text-muted-foreground">
               Unable to load the latest Google reviews right now. Showing verified client reviews instead.
             </p>

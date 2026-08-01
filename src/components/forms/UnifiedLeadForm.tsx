@@ -237,7 +237,7 @@ export const UnifiedLeadForm = ({
   if (isSuccess) {
     return (
       <div className={`text-center py-12 ${className}`}>
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center">
+        <div className="w-16 h-16 mx-auto mb-6 rounded-sm border border-border bg-muted flex items-center justify-center">
           <CheckCircle className="h-8 w-8 text-primary" />
         </div>
         <h3 className="font-display text-2xl font-bold text-foreground mb-2">All Set!</h3>
@@ -250,7 +250,7 @@ export const UnifiedLeadForm = ({
   const isCard = variant === "card";
 
   const wrapperClasses = isCard
-    ? `bg-card/60 backdrop-blur-sm rounded-2xl border border-border shadow-sm p-5 sm:p-8 lg:p-9 ${className}`
+    ? `bg-card rounded-sm border border-border p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
   const heightClasses = compact ? "h-10 text-sm" : "h-12 text-base";

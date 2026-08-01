@@ -41,7 +41,15 @@
     --input: 220 15% 85%;
     --ring: 225 70% 45%;
 
-    --radius: 0.5rem;
+    /* Editorial geometry — near-square corners read as considered, not templated */
+    --radius: 0.25rem;
+
+    /* Motion — one easing language across the whole site */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+    --dur-fast: 200ms;
+    --dur-base: 400ms;
+    --dur-slow: 700ms;
 
     /* Custom tokens */
     --hero-gradient: linear-gradient(180deg, hsl(222 25% 6%) 0%, hsl(222 20% 12%) 100%);
@@ -50,13 +58,11 @@
     --overlay-dark: linear-gradient(180deg, hsla(222, 25%, 6%, 0.85) 0%, hsla(222, 25%, 6%, 0.95) 100%);
     --overlay-hero: linear-gradient(90deg, hsla(222, 25%, 6%, 0.92) 0%, hsla(222, 25%, 6%, 0.55) 50%, transparent 100%);
 
-    /* Blue shimmer */
-    --gold-shimmer: linear-gradient(90deg, hsl(225 70% 45%) 0%, hsl(225 65% 55%) 50%, hsl(225 70% 45%) 100%);
+    /* Restrained, print-like elevation — hairline first, shadow second */
+    --shadow-soft: 0 1px 1px hsla(222, 20%, 10%, 0.03);
+    --shadow-glow: 0 12px 32px -18px hsla(222, 24%, 10%, 0.28);
+    --shadow-card: 0 1px 2px hsla(222, 20%, 10%, 0.04), 0 12px 28px -20px hsla(222, 20%, 10%, 0.16);
 
-    /* Cleaner, more present shadows so cards lift off muted bands */
-    --shadow-soft: 0 1px 2px hsla(222, 20%, 10%, 0.04), 0 4px 16px -6px hsla(222, 20%, 10%, 0.08);
-    --shadow-glow: 0 0 40px hsla(225, 70%, 45%, 0.12);
-    --shadow-card: 0 1px 2px hsla(222, 20%, 10%, 0.05), 0 8px 24px -10px hsla(222, 20%, 10%, 0.10);
 
 
     --sidebar-background: 222 25% 6%;
@@ -125,15 +131,15 @@
   }
 
   /* Unified section rhythm */
-  .section-y   { @apply py-20 sm:py-24 lg:py-28; }
-  .section-y-sm { @apply py-14 sm:py-20; }
-  .section-y-lg { @apply py-24 sm:py-32; }
+  .section-y   { @apply py-16 sm:py-20 lg:py-24; }
+  .section-y-sm { @apply py-12 sm:py-16; }
+  .section-y-lg { @apply py-20 sm:py-28; }
 
   /* Typography scale — one canonical set */
-  .h-display   { @apply font-display font-bold tracking-tight leading-[1.08] text-4xl sm:text-5xl lg:text-[3.25rem]; }
-  .h-section   { @apply font-display font-bold tracking-tight leading-[1.1] text-3xl sm:text-4xl lg:text-[2.5rem]; }
-  .h-card      { @apply font-display font-bold tracking-tight leading-snug text-xl sm:text-2xl; }
-  .eyebrow     { @apply text-xs font-bold tracking-[0.18em] uppercase text-primary; }
+  .h-display   { @apply font-display font-bold tracking-[-0.03em] leading-[1.05] text-4xl sm:text-5xl lg:text-[3.25rem]; }
+  .h-section   { @apply font-display font-bold tracking-[-0.025em] leading-[1.08] text-3xl sm:text-4xl lg:text-[2.5rem]; }
+  .h-card      { @apply font-display font-bold tracking-[-0.02em] leading-snug text-xl sm:text-2xl; }
+  .eyebrow     { @apply text-[0.6875rem] font-semibold tracking-[0.22em] uppercase text-foreground/45; }
   .lede        { @apply text-base sm:text-lg text-foreground/70 leading-relaxed; }
 
   /* Section divider */
@@ -143,17 +149,9 @@
 }
 
 @layer components {
+  /* Gradient text reads as generated — solid ink accent instead */
   .text-gradient {
-    background: var(--text-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .gold-shimmer {
-    background: var(--gold-shimmer);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
+    color: hsl(var(--primary));
   }
 
   .hero-overlay {
@@ -165,22 +163,35 @@
   }
 
   .section-label {
-    @apply text-sm font-bold tracking-[0.2em] uppercase;
-    color: hsl(var(--primary));
+    @apply text-[0.6875rem] font-semibold tracking-[0.22em] uppercase;
+    color: hsl(var(--foreground) / 0.45);
+  }
+
+  /* ── Editorial detail: hairline rule that precedes a label ── */
+  .rule-label {
+    @apply flex items-center gap-3;
+  }
+
+  .rule-label::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: hsl(var(--foreground) / 0.25);
+    flex: none;
   }
 
   .animate-fade-up {
-    animation: fadeUp 0.8s ease-out forwards;
+    animation: fadeUp var(--dur-slow) var(--ease-out-expo) forwards;
     opacity: 0;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn var(--dur-base) var(--ease-out-expo) forwards;
     opacity: 0;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+    animation: scaleIn var(--dur-base) var(--ease-out-expo) forwards;
     opacity: 0;
   }
 
@@ -191,31 +202,41 @@
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
 
+  /* ── Scroll reveal — the one motion primitive used site-wide ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity var(--dur-slow) var(--ease-out-expo),
+      transform var(--dur-slow) var(--ease-out-expo);
+    will-change: opacity, transform;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Restrained lift: border darkens, page stays calm */
   .hover-lift {
-    @apply transition-all duration-300;
+    transition:
+      border-color var(--dur-base) var(--ease-out-expo),
+      box-shadow var(--dur-base) var(--ease-out-expo),
+      transform var(--dur-base) var(--ease-out-expo);
   }
 
   .hover-lift:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    border-color: hsl(var(--foreground) / 0.28);
     box-shadow: var(--shadow-glow);
   }
 
   .stat-card {
-    @apply relative overflow-hidden rounded-xl p-6;
-    background: var(--card-gradient);
+    @apply relative overflow-hidden p-6;
+    background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--gold-shimmer);
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
+    border-top: 2px solid hsl(var(--foreground) / 0.85);
+    border-radius: var(--radius);
   }
 
   .image-reveal {
@@ -223,13 +244,38 @@
   }
 
   .image-reveal img {
-    @apply transition-transform duration-700 ease-out;
+    transition: transform 900ms var(--ease-out-expo);
   }
 
   .image-reveal:hover img {
-    transform: scale(1.05);
+    transform: scale(1.04);
+  }
+
+  /* Underline that draws in on hover — editorial link treatment */
+  .link-sweep {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-sweep::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur-base) var(--ease-out-expo);
+  }
+
+  .link-sweep:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 }
+
 
 @layer utilities {
   .container-lg {
@@ -287,14 +333,20 @@
   }
 }
 
-@keyframes shimmer {
-  0%, 100% {
-    background-position: -200% 0;
-  }
-  50% {
-    background-position: 200% 0;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .reveal,
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
+
 
 /* ─── Blog article typography — Premium editorial ─── */
 .blog-content {
@@ -664,11 +716,6 @@
   }
 }
 
-@keyframes bounce-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
+/* Idle looping motion reads as templated — kept as a no-op for legacy markup */
+.animate-bounce-subtle { animation: none; }
 
-.animate-bounce-subtle {
-  animation: bounce-subtle 3s ease-in-out infinite;
-}

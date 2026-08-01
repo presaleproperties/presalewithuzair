@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useReveal } from "@/hooks/useReveal";
 
 const PPG_URL = "https://presaleproperties.com";
 
@@ -43,7 +44,7 @@ const blocks: Block[] = [
             href={PPG_URL}
             target="_blank"
             rel="noopener"
-            className="text-primary underline underline-offset-4 hover:text-primary/80"
+            className="text-foreground underline underline-offset-4 decoration-foreground/30 transition-colors duration-300 hover:decoration-foreground"
           >
             The Presale Properties Group
           </a>{" "}
@@ -90,6 +91,7 @@ const blocks: Block[] = [
 ];
 
 export const DifferentiationSection = () => {
+  useReveal();
   const feature = blocks.find((b) => b.feature)!;
   const rest = blocks.filter((b) => !b.feature);
 
@@ -97,8 +99,8 @@ export const DifferentiationSection = () => {
     <section className="section-y bg-muted/40 border-y border-border">
       <div className="container-xl px-4 sm:px-6">
         {/* Section header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <p className="section-label mb-3 sm:mb-4">Why Uzair</p>
+        <div className="max-w-3xl mb-12 sm:mb-16 reveal">
+          <p className="section-label rule-label mb-5">Why Uzair</p>
           <h2 className="h-section text-foreground">
             I represent your side of the deal.
           </h2>
@@ -109,13 +111,10 @@ export const DifferentiationSection = () => {
         </div>
 
         {/* Featured statement — asymmetric quote-style card */}
-        <article className="relative mb-6 sm:mb-8 rounded-2xl bg-foreground text-background overflow-hidden shadow-card transition-all duration-300 hover:shadow-glow focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background">
-          <div className="absolute inset-0 opacity-[0.04]" aria-hidden>
-            <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary blur-3xl" />
-          </div>
+        <article className="reveal relative mb-5 sm:mb-6 rounded-sm bg-foreground text-background overflow-hidden focus-within:ring-2 focus-within:ring-foreground/40 focus-within:ring-offset-2 focus-within:ring-offset-background">
           <div className="relative grid lg:grid-cols-[auto_1fr] gap-6 lg:gap-12 p-8 sm:p-12 lg:p-16">
             <div className="flex lg:flex-col items-center gap-3">
-              <span className="eyebrow text-primary-foreground/60">01</span>
+              <span className="text-[0.6875rem] font-semibold tracking-[0.22em] uppercase text-background/45">01</span>
               <span className="hidden lg:block h-16 w-px bg-background/20" />
               <span className="lg:hidden h-px w-16 bg-background/20 self-center" />
             </div>
@@ -131,19 +130,19 @@ export const DifferentiationSection = () => {
         </article>
 
         {/* Bento grid of remaining blocks */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
           {rest.map((block, i) => {
             const number = String(i + 2).padStart(2, "0");
             return (
               <article
                 key={number}
-                className={`group relative rounded-2xl bg-card border border-border p-7 sm:p-9 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-primary/40 focus-within:ring-2 focus-within:ring-primary/50 focus-within:ring-offset-2 focus-within:ring-offset-background focus-within:border-primary/40 ${
+                className={`group reveal relative rounded-sm bg-card border border-border p-7 sm:p-9 hover-lift focus-within:ring-2 focus-within:ring-foreground/30 focus-within:ring-offset-2 focus-within:ring-offset-background ${
                   block.wide ? "lg:col-span-2" : ""
                 }`}
               >
                 <div className="flex items-center gap-4 mb-4 sm:mb-5">
-                  <span className="eyebrow">{number}</span>
-                  <span className="h-px flex-1 bg-border" />
+                  <span className="text-[0.6875rem] font-semibold tracking-[0.22em] uppercase text-foreground/40">{number}</span>
+                  <span className="h-px flex-1 bg-border transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/30" />
                 </div>
                 <h3 className="h-card text-foreground mb-4">
                   {block.heading}
@@ -161,10 +160,10 @@ export const DifferentiationSection = () => {
                   <div className="mt-6">
                     <Link
                       to={block.cta.to}
-                      className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="group/cta inline-flex items-center gap-2.5 rounded-sm bg-foreground px-6 py-3 text-sm font-semibold text-background transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       {block.cta.label}
-                      <span aria-hidden>→</span>
+                      <span aria-hidden className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/cta:translate-x-1">→</span>
                     </Link>
                   </div>
                 )}

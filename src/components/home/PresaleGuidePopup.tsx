@@ -102,12 +102,12 @@ export const PresaleGuidePopup = () => {
     <>
       <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
 
-        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-2xl max-h-[85vh] overflow-y-auto fixed top-[5vh] sm:top-[50%] translate-y-0 sm:-translate-y-1/2 [&>button]:top-3 [&>button]:right-3">
+        <DialogContent className="sm:max-w-md p-0 gap-0 overflow-hidden border-border/50 bg-background rounded-sm max-h-[85vh] overflow-y-auto fixed top-[5vh] sm:top-[50%] translate-y-0 sm:-translate-y-1/2 [&>button]:top-3 [&>button]:right-3">
           <DialogTitle className="sr-only">Download Free Presale Guide</DialogTitle>
 
           {isSuccess ? (
             <div className="p-8 text-center">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/20 flex items-center justify-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-sm border border-border bg-muted flex items-center justify-center">
                 <CheckCircle className="h-7 w-7 text-primary" />
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground mb-2">
@@ -119,13 +119,13 @@ export const PresaleGuidePopup = () => {
               <a
                 href="/downloads/The-7-Costly-Mistakes-Presale-Buyers-Make.pdf"
                 download="7-Costly-Mistakes-Presale-Buyers-Make.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity mb-3"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-sm bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity mb-3"
               >
                 <Download className="h-4 w-4" />
                 Download Guide
               </a>
               <br />
-              <Button variant="ghost" onClick={handleClose} className="rounded-xl text-muted-foreground">
+              <Button variant="ghost" onClick={handleClose} className="text-muted-foreground">
                 Close
               </Button>
             </div>
@@ -174,7 +174,7 @@ export const PresaleGuidePopup = () => {
                 <Button
                   type="submit"
                   variant="hero"
-                  className="w-full h-12 text-base font-semibold rounded-xl"
+                  className="w-full h-12 text-base font-semibold"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

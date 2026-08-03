@@ -208,8 +208,7 @@ const LandingPage = () => {
                 y: 0
               }} transition={{
                 duration: 0.5
-               }} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" style={{
-              }}>
+               }} className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-3">
                   Work With <span className="text-primary">Uzair.</span>
                 </motion.h1>
 
@@ -244,8 +243,7 @@ const LandingPage = () => {
         <section className="px-4 section-y-sm border-t border-white/5">
           <div className="max-w-5xl mx-auto">
             <div className="text-left mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
-            }}>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
                 What Our Clients Say
               </h2>
               <div className="flex items-center justify-start gap-2">
@@ -304,8 +302,7 @@ const LandingPage = () => {
         <section className="px-4 section-y-sm bg-slate-900/50 border-y border-white/5">
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
-             <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{
-          }}>
+             <h2 className="font-display text-2xl md:text-3xl font-bold text-left text-white mb-3">
               Why Buyers Work With Uzair?
             </h2>
             <p className="text-slate-400 text-sm text-left max-w-xl mb-10">
@@ -415,9 +412,8 @@ const LandingPage = () => {
                     <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-primary" />
                     </div>
-                     <h3 className="text-2xl font-bold text-white mb-2" style={{
-              }}>
-                      You're In! 🎉
+                     <h3 className="font-display text-2xl font-bold text-white mb-2">
+                      You're In.
                     </h3>
                     <p className="text-slate-300 mb-2">Uzair will call you at your preferred time.</p>
                     <p className="text-slate-400 text-sm mb-6">Check your email for confirmation.</p>
@@ -426,8 +422,7 @@ const LandingPage = () => {
                     </a>
                   </div> : <div>
                     <div className="text-center mb-4">
-                       <h2 className="text-xl md:text-2xl font-bold text-white" style={{
-                }}>
+                       <h2 className="font-display text-xl md:text-2xl font-bold text-white">
                         Request A <span className="text-primary">Call</span>
                       </h2>
                       <p className="text-slate-400 text-xs mt-1">Same day call back.</p>

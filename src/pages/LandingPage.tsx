@@ -148,11 +148,12 @@ const LandingPage = () => {
                     <div className="flex gap-0.5">
                       {[...Array(t.rating)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
                     </div>
-                    <span className={`px-2 py-0.5 rounded-sm text-[10px] font-semibold ${clientTypeColors[t.clientType]}`}>
-                      {t.clientType}
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-foreground/45">
+                      Verified Google review
                     </span>
                   </div>
-                  <p className="text-foreground/75 text-sm mb-3">"{t.text}"</p>
+                  <p className="text-foreground/75 text-sm mb-3 whitespace-pre-line">"{t.text}"</p>
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <img src={t.photo} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-primary/30" />

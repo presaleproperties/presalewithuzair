@@ -210,7 +210,7 @@ const LandingPage = () => {
               }} transition={{
                 duration: 0.5
                }} className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-3">
-                  Work With <span className="text-primary">Uzair.</span>
+                  Work With <span className="text-foreground/65">Uzair.</span>
                 </motion.h1>
 
                 <motion.p initial={{

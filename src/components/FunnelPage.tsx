@@ -182,17 +182,17 @@ export const FunnelPage = ({
         </section>
 
         {/* CTA */}
-        <section className="section-y-sm bg-foreground text-background">
+        <section className="section-y-sm dark-section bg-background text-foreground">
           <div className="container-xl px-4 sm:px-6 max-w-3xl text-center">
             <p className="section-label mb-3 !text-primary">Next Step</p>
             <h2 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight">
               Talk to Uzair before you talk to any developer.
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-background/70 leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-foreground/65 leading-relaxed">
               Buyer-only, no developer bias — my fee comes from the developer's marketing budget. I'll review the project,
               the contract, and the deposit structure before you sign anything.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-background/70">
+            <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-foreground/65">
               <CheckCircle2 className="h-4 w-4 text-primary" />
               {TRACK_RECORD}
             </div>
@@ -206,7 +206,7 @@ export const FunnelPage = ({
               </Link>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-sm border border-background/30 px-6 py-3 text-sm font-semibold text-background hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 rounded-sm border border-foreground/25 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" />
                 {PHONE}

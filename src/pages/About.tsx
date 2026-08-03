@@ -88,7 +88,7 @@ const About = () => {
                     I help families buy new condos, townhomes and presales the right way — from finding the right project to keys in hand. Before you sign, we compare the project, price, floor plan, deposit structure and resale potential, without the sales centre pressure. After you sign, I stay: deposits, mortgage, walkthrough, warranty, move-in day.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I represent buyers, not developers. The person showing you the floor plans works for the project — I work for you. And on most projects the developer pays the buyer-agent fee, so my help costs you nothing.
+                    I represent buyers, not developers. The person showing you the floor plans works for the project — I work for you. And on most projects the developer pays the buyer-agent fee out of their marketing budget.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
                     I've helped 450+ families purchase more than $200M in new homes across the Fraser Valley and Metro Vancouver. I'm licensed with Real Broker B.C. Ltd. (Uzair Muhammad PREC*) and regulated by the BC Financial Services Authority.

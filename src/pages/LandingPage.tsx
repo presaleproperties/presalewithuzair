@@ -185,7 +185,7 @@ const LandingPage = () => {
             }} animate={{
               opacity: 1,
               scale: 1
-            }} className="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border-2 border-primary/30 shadow-xl shadow-primary/10 flex-shrink-0" />
+            }} className="w-28 h-28 md:w-36 md:h-36 rounded-sm object-cover flex-shrink-0" />
 
               <div className="text-left">
                 <motion.div initial={{

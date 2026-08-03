@@ -44,11 +44,11 @@ const LandingPage = () => {
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
     "First-Time Buyer": "bg-primary/20 text-primary",
-    "Investor": "bg-sky-500/20 text-sky-600",
-    "Repeat Client": "bg-emerald-500/20 text-emerald-400",
-    "Presale Buyer": "bg-purple-500/20 text-purple-400",
-    "Seller & Buyer": "bg-blue-500/20 text-blue-400",
-    "Buyer": "bg-rose-500/20 text-rose-400"
+    "Investor": "bg-primary/15 text-primary",
+    "Repeat Client": "bg-primary/15 text-primary",
+    "Presale Buyer": "bg-primary/15 text-primary",
+    "Seller & Buyer": "bg-primary/15 text-primary",
+    "Buyer": "bg-primary/15 text-primary"
   };
   const testimonials = [{
     name: "Anish",
@@ -165,10 +165,10 @@ const LandingPage = () => {
         <link rel="canonical" href="https://presalewithuzair.com/call" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pb-32">
+      <div className="dark-section min-h-screen bg-background text-foreground pb-32">
 
         {/* Minimal Header */}
-        <header className="py-4 px-4 border-b border-white/5">
+        <header className="py-4 px-4 border-b border-border/70">
           <div className="max-w-6xl mx-auto flex justify-start">
             <img src={logoImage} alt="Uzair Presales" className="h-8" />
           </div>
@@ -208,7 +208,7 @@ const LandingPage = () => {
                 y: 0
               }} transition={{
                 duration: 0.5
-               }} className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-3">
+               }} className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-3">
                   Work With <span className="text-primary">Uzair.</span>
                 </motion.h1>
 
@@ -218,7 +218,7 @@ const LandingPage = () => {
                 opacity: 1
               }} transition={{
                 delay: 0.1
-              }} className="text-base md:text-lg text-slate-300 mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.</motion.p>
+              }} className="text-base md:text-lg text-foreground/75 mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.</motion.p>
 
                 <motion.div initial={{
                 opacity: 0,
@@ -228,11 +228,11 @@ const LandingPage = () => {
                 y: 0
               }} transition={{
                 delay: 0.2
-              }} className="flex flex-wrap justify-start gap-2 text-slate-400 text-xs">
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 450+ Families Helped</span>
+              }} className="flex flex-wrap justify-start gap-2 text-foreground/60 text-xs">
+                  <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">✓ 450+ Families Helped</span>
                   
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">English · Punjabi · Urdu · Hindi</span>
+                  <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">✓ No Pressure, Just Guidance</span>
+                  <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">English · Punjabi · Urdu · Hindi</span>
                 </motion.div>
               </div>
             </div>
@@ -240,10 +240,10 @@ const LandingPage = () => {
         </section>
 
         {/* Social Proof */}
-        <section className="px-4 section-y-sm border-t border-white/5">
+        <section className="px-4 section-y-sm border-t border-border/70">
           <div className="max-w-5xl mx-auto">
             <div className="text-left mb-8">
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
                 What Our Clients Say
               </h2>
               <div className="flex items-center justify-start gap-2">
@@ -251,7 +251,7 @@ const LandingPage = () => {
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
-                <span className="text-slate-400 text-xs">4.9 rating</span>
+                <span className="text-foreground/60 text-xs">4.9 rating</span>
               </div>
             </div>
 
@@ -264,22 +264,22 @@ const LandingPage = () => {
               y: 0
             }} transition={{
               delay: i * 0.05
-            }} className="bg-slate-800/50 rounded-sm p-5 border border-white/10">
+            }} className="bg-card rounded-sm p-5 border border-border">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex gap-0.5">
                       {[...Array(t.rating)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
                     </div>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${clientTypeColors[t.clientType]}`}>
+                    <span className={`px-2 py-0.5 rounded-sm text-[10px] font-semibold ${clientTypeColors[t.clientType]}`}>
                       {t.clientType}
                     </span>
                   </div>
-                  <p className="text-slate-300 text-sm mb-3">"{t.text}"</p>
+                  <p className="text-foreground/75 text-sm mb-3">"{t.text}"</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <img src={t.photo} alt={t.name} className="w-8 h-8 rounded-full object-cover border border-primary/30" />
-                      <span className="text-white font-medium text-sm">{t.name}</span>
+                      <span className="text-foreground font-medium text-sm">{t.name}</span>
                     </div>
-                    <span className="text-slate-500 text-xs">{t.timeAgo}</span>
+                    <span className="text-foreground/45 text-xs">{t.timeAgo}</span>
                   </div>
                 </motion.div>)}
             </div>
@@ -299,13 +299,13 @@ const LandingPage = () => {
         </section>
 
         {/* Why Buyers Work With Uzair */}
-        <section className="px-4 section-y-sm bg-slate-900/50 border-y border-white/5">
+        <section className="px-4 section-y-sm bg-secondary/40 border-y border-border/70">
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
-             <h2 className="font-display text-2xl md:text-3xl font-bold text-left text-white mb-3">
+             <h2 className="font-display text-2xl md:text-3xl font-bold text-left text-foreground mb-3">
               Why Buyers Work With Uzair?
             </h2>
-            <p className="text-slate-400 text-sm text-left max-w-xl mb-10">
+            <p className="text-foreground/60 text-sm text-left max-w-xl mb-10">
               Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
             </p>
             <div className="grid sm:grid-cols-2 gap-5">
@@ -335,13 +335,13 @@ const LandingPage = () => {
               once: true
             }} transition={{
               delay: i * 0.08
-            }} className="bg-slate-800/50 rounded-sm p-6 border border-white/10 flex gap-4">
-                  <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+            }} className="bg-card rounded-sm p-6 border border-border flex gap-4">
+                  <div className="w-11 h-11 bg-primary/15 rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
                     <b.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-white mb-1.5">{b.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
+                    <h3 className="text-base font-semibold text-foreground mb-1.5">{b.title}</h3>
+                    <p className="text-foreground/60 text-sm leading-relaxed">{b.desc}</p>
                   </div>
                 </motion.div>)}
             </div>
@@ -349,15 +349,15 @@ const LandingPage = () => {
         </section>
 
         {/* Footer text */}
-        <footer className="py-6 px-4 bg-slate-950 border-t border-white/5 text-left">
-          <p className="text-slate-500 text-sm">
+        <footer className="py-6 px-4 bg-background border-t border-border/70 text-left">
+          <p className="text-foreground/45 text-sm">
             © {new Date().getFullYear()} Uzair Presales • Vancouver's Presale Expert
           </p>
         </footer>
       </div>
 
       {/* Sticky Footer CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-slate-950 backdrop-blur-md border-t border-white/10 px-4 pt-3 pb-3" style={{
+      <div className="dark-section fixed bottom-0 left-0 right-0 z-40 bg-background backdrop-blur-md border-t border-border px-4 pt-3 pb-3" style={{
       paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))'
     }}>
         <div className="max-w-md mx-auto">
@@ -365,11 +365,11 @@ const LandingPage = () => {
           setIsFormOpen(true);
           setIsSubmitted(false);
         }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
-            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-sm" />
+            <span className="absolute inset-0 bg-foreground/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-sm" />
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">{ctaText}</span>
           </button>
-          <p className="text-center text-slate-400 text-xs mt-1.5">Same day call back</p>
+          <p className="text-center text-foreground/60 text-xs mt-1.5">Same day call back</p>
         </div>
       </div>
 
@@ -383,7 +383,7 @@ const LandingPage = () => {
           opacity: 1
         }} exit={{
           opacity: 0
-        }} onClick={() => setIsFormOpen(false)} className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" />
+        }} onClick={() => setIsFormOpen(false)} className="fixed inset-0 z-50 bg-foreground/40 backdrop-blur-sm" />
 
             {/* Sheet */}
             <motion.div initial={{
@@ -396,14 +396,14 @@ const LandingPage = () => {
           type: "spring",
           damping: 30,
           stiffness: 300
-        }} className="fixed bottom-0 left-0 right-0 z-50 bg-slate-900 border-t border-white/10 rounded-t-3xl max-h-[90dvh] overflow-y-auto">
+        }} className="dark-section fixed bottom-0 left-0 right-0 z-50 bg-background text-foreground border-t border-border rounded-t-sm max-h-[90dvh] overflow-y-auto">
               {/* Drag handle */}
               <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 rounded-full bg-white/20" />
+                <div className="w-10 h-1 rounded-full bg-foreground/20" />
               </div>
 
               {/* Close button */}
-              <button onClick={() => setIsFormOpen(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors p-1" aria-label="Close form">
+              <button onClick={() => setIsFormOpen(false)} className="absolute top-4 right-4 text-foreground/60 hover:text-foreground transition-colors p-1" aria-label="Close form">
                 <X className="w-6 h-6" />
               </button>
 
@@ -412,20 +412,20 @@ const LandingPage = () => {
                     <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-primary" />
                     </div>
-                     <h3 className="font-display text-2xl font-bold text-white mb-2">
+                     <h3 className="font-display text-2xl font-bold text-foreground mb-2">
                       You're In.
                     </h3>
-                    <p className="text-slate-300 mb-2">Uzair will call you at your preferred time.</p>
-                    <p className="text-slate-400 text-sm mb-6">Check your email for confirmation.</p>
+                    <p className="text-foreground/75 mb-2">Uzair will call you at your preferred time.</p>
+                    <p className="text-foreground/60 text-sm mb-6">Check your email for confirmation.</p>
                     <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
                       Visit Our Website →
                     </a>
                   </div> : <div>
                     <div className="text-center mb-4">
-                       <h2 className="font-display text-xl md:text-2xl font-bold text-white">
+                       <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
                         Request A <span className="text-primary">Call</span>
                       </h2>
-                      <p className="text-slate-400 text-xs mt-1">Same day call back.</p>
+                      <p className="text-foreground/60 text-xs mt-1">Same day call back.</p>
                     </div>
                     <UnifiedLeadForm
                       variant="dark"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
+import { staticReviews } from "@/data/googleReviews";
 import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
@@ -7,21 +8,6 @@ import { Button } from "@/components/ui/button";
 
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
-import michellePhoto from "@/assets/testimonials/michelle.jpg";
-import anishPhoto from "@/assets/testimonials/anish.jpg";
-import rayPhoto from "@/assets/testimonials/ray.jpg";
-import sonaliPhoto from "@/assets/testimonials/sonali.jpg";
-import hissanPhoto from "@/assets/testimonials/hissan.jpg";
-import andresPhoto from "@/assets/testimonials/andres.jpg";
-import adamPhoto from "@/assets/testimonials/adam.jpg";
-import miwaPhoto from "@/assets/testimonials/miwa.jpg";
-import mehreenPhoto from "@/assets/testimonials/mehreen.jpg";
-import baldeepPhoto from "@/assets/testimonials/baldeep.jpg";
-import jamilaPhoto from "@/assets/testimonials/jamila.jpg";
-import monaPhoto from "@/assets/testimonials/mona.jpg";
-import akhiPhoto from "@/assets/testimonials/akhi.jpg";
-import bryantPhoto from "@/assets/testimonials/bryant.jpg";
-import rehmanPhoto from "@/assets/testimonials/rehman.jpg";
 
 const LandingPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -41,121 +27,13 @@ const LandingPage = () => {
       document.body.style.overflow = "";
     };
   }, [isFormOpen]);
-  type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
-  const clientTypeColors: Record<ClientType, string> = {
-    "First-Time Buyer": "bg-foreground/10 text-foreground/80",
-    "Investor": "bg-foreground/10 text-foreground/80",
-    "Repeat Client": "bg-foreground/10 text-foreground/80",
-    "Presale Buyer": "bg-foreground/10 text-foreground/80",
-    "Seller & Buyer": "bg-foreground/10 text-foreground/80",
-    "Buyer": "bg-foreground/10 text-foreground/80"
-  };
-  const testimonials = [{
-    name: "Anish",
-    text: "As first-time buyers, we were nervous, but Uzair made everything clear, manageable, and stress-free. He helped us find the perfect home for our family.",
-    rating: 5,
-    photo: anishPhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 day ago"
-  }, {
-    name: "Michelle",
-    text: "Uzair was very knowledgeable when I first approached him about purchasing my first home. He answered my questions honestly and made sure I was informed the entire way through.",
-    rating: 5,
-    photo: michellePhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 month ago"
-  }, {
-    name: "Andres",
-    text: "Uzair turned what could have been a difficult first home purchase into an easy and enjoyable experience. He guided us from search to completion.",
-    rating: 5,
-    photo: andresPhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 month ago"
-  }, {
-    name: "Bryant",
-    text: "From presale to closing, Uzair was extremely helpful throughout the entire process. He's talented, reliable, and someone I would recommend anytime.",
-    rating: 5,
-    photo: bryantPhoto,
-    clientType: "Presale Buyer" as ClientType,
-    timeAgo: "7 months ago"
-  }, {
-    name: "Adam",
-    text: "Uzair helped me with my investment property and made sure I got the best deal. No fluff, no hype — just honesty and expertise.",
-    rating: 5,
-    photo: adamPhoto,
-    clientType: "Investor" as ClientType,
-    timeAgo: "8 months ago"
-  }, {
-    name: "Jamila",
-    text: "Uzair was professional, knowledgeable, and always had my best interests at heart. He made the buying and selling process smooth.",
-    rating: 5,
-    photo: jamilaPhoto,
-    clientType: "Buyer" as ClientType,
-    timeAgo: "9 months ago"
-  }, {
-    name: "Mona",
-    text: "Uzair is a very honest realtor who always puts his clients first. We've been working with him for years. I would advise anyone to work with him.",
-    rating: 5,
-    photo: monaPhoto,
-    clientType: "Repeat Client" as ClientType,
-    timeAgo: "10 months ago"
-  }, {
-    name: "Ray",
-    text: "Now I see why he's called the presale expert. His transparency and guidance helped our family find our first home in just two weeks.",
-    rating: 5,
-    photo: rayPhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Sonali",
-    text: "Uzair's knowledge and expertise made the entire process smooth and easy to understand. We are extremely grateful for his efforts.",
-    rating: 5,
-    photo: sonaliPhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "M Hissan",
-    text: "Uzair guided me through my first home purchase. Even after getting the house, he continued to help with upgrades and advice.",
-    rating: 5,
-    photo: hissanPhoto,
-    clientType: "First-Time Buyer" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Miwa",
-    text: "Uzair's knowledge of presales is incredible. Whenever we find a project, he already knows about it and provides detailed insights.",
-    rating: 5,
-    photo: miwaPhoto,
-    clientType: "Investor" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Mehreen",
-    text: "Uzair is an expert when it comes to presales in Vancouver. His personalized approach and deep market knowledge make the process very easy.",
-    rating: 5,
-    photo: mehreenPhoto,
-    clientType: "Presale Buyer" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Baldeep",
-    text: "Uzair made our home-selling process seamless. His professionalism and market expertise are unmatched.",
-    rating: 5,
-    photo: baldeepPhoto,
-    clientType: "Seller & Buyer" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Akhi",
-    text: "I've been working with Uzair for nearly three years and would highly recommend him for any property purchase or sale.",
-    rating: 5,
-    photo: akhiPhoto,
-    clientType: "Repeat Client" as ClientType,
-    timeAgo: "1 year ago"
-  }, {
-    name: "Rehman",
-    text: "Very blunt, honest, and straight to the point. He doesn't beat around the bush. I truly respect his work ethic.",
-    rating: 5,
-    photo: rehmanPhoto,
-    clientType: "Buyer" as ClientType,
-    timeAgo: "4 years ago"
-  }];
+  const testimonials = staticReviews.map((r) => ({
+    name: r.name,
+    text: r.quote,
+    rating: r.rating ?? 5,
+    photo: r.photo,
+    timeAgo: r.timeAgo,
+  }));
   const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 6);
   return <>
       <Helmet>

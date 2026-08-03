@@ -209,7 +209,6 @@ const LandingPage = () => {
               }} transition={{
                 duration: 0.5
                }} className="text-3xl md:text-5xl font-bold text-white leading-tight mb-3" style={{
-                fontFamily: "'DM Serif Display', serif"
               }}>
                   Work With <span className="text-primary">Uzair.</span>
                 </motion.h1>
@@ -234,7 +233,7 @@ const LandingPage = () => {
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ 450+ Families Helped</span>
                   
                   <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">✓ No Pressure, Just Guidance</span>
-                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">🗣 English · Punjabi · Urdu · Hindi</span>
+                  <span className="bg-slate-800/60 px-3 py-1.5 rounded-full border border-white/5">English · Punjabi · Urdu · Hindi</span>
                 </motion.div>
               </div>
             </div>
@@ -246,16 +245,15 @@ const LandingPage = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-left mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{
-              fontFamily: "'DM Serif Display', serif"
             }}>
-                What Our Clients Say 💬
+                What Our Clients Say
               </h2>
               <div className="flex items-center justify-start gap-2">
                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
-                <span className="text-slate-400 text-xs">5.0 rating</span>
+                <span className="text-slate-400 text-xs">4.9 rating</span>
               </div>
             </div>
 
@@ -268,7 +266,7 @@ const LandingPage = () => {
               y: 0
             }} transition={{
               delay: i * 0.05
-            }} className="bg-slate-800/50 rounded-xl p-5 border border-white/10">
+            }} className="bg-slate-800/50 rounded-sm p-5 border border-white/10">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="flex gap-0.5">
                       {[...Array(t.rating)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
@@ -307,7 +305,6 @@ const LandingPage = () => {
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
              <h2 className="text-2xl md:text-3xl font-bold text-left text-white mb-3" style={{
-            fontFamily: "'DM Serif Display', serif"
           }}>
               Why Buyers Work With Uzair?
             </h2>
@@ -341,7 +338,7 @@ const LandingPage = () => {
               once: true
             }} transition={{
               delay: i * 0.08
-            }} className="bg-slate-800/50 rounded-xl p-6 border border-white/10 flex gap-4">
+            }} className="bg-slate-800/50 rounded-sm p-6 border border-white/10 flex gap-4">
                   <div className="w-11 h-11 bg-primary/15 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
                     <b.icon className="w-5 h-5 text-primary" />
                   </div>
@@ -370,8 +367,8 @@ const LandingPage = () => {
           <button onClick={() => {
           setIsFormOpen(true);
           setIsSubmitted(false);
-        }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
-            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-xl" />
+        }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
+            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-sm" />
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">{ctaText}</span>
           </button>
@@ -419,7 +416,6 @@ const LandingPage = () => {
                       <CheckCircle className="h-8 w-8 text-primary" />
                     </div>
                      <h3 className="text-2xl font-bold text-white mb-2" style={{
-                fontFamily: "'DM Serif Display', serif"
               }}>
                       You're In! 🎉
                     </h3>
@@ -431,7 +427,6 @@ const LandingPage = () => {
                   </div> : <div>
                     <div className="text-center mb-4">
                        <h2 className="text-xl md:text-2xl font-bold text-white" style={{
-                  fontFamily: "'DM Serif Display', serif"
                 }}>
                         Request A <span className="text-primary">Call</span>
                       </h2>

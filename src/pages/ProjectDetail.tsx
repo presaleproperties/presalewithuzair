@@ -113,7 +113,7 @@ const ProjectGallery = ({ images, name }: { images: string[]; name: string }) =>
         {/* Main image */}
         <button
           onClick={() => setLightboxIndex(activeIndex)}
-          className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-muted cursor-pointer focus:outline-none group shadow-lg shadow-black/10"
+          className="relative w-full aspect-[16/10] rounded-sm overflow-hidden bg-muted cursor-pointer focus:outline-none group"
         >
           <img
             src={images[activeIndex]}
@@ -448,7 +448,7 @@ const ProjectDetail = () => {
                     href={project.floorplan_files![0]}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-sm text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300"
                   >
                     <Download className="h-4 w-4" />
                     Floor Plans
@@ -468,7 +468,7 @@ const ProjectDetail = () => {
                 {!hasFloorplans && !hasBrochures && (
                   <button
                     onClick={() => document.querySelector('#project-lead-form')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold bg-primary text-primary-foreground hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 transition-all duration-300"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-sm text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300"
                   >
                     <Download className="h-4 w-4" />
                     Request Floor Plans
@@ -577,7 +577,7 @@ const ProjectDetail = () => {
               {project.video_url && (
                 <div>
                   <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-5">Video Tour</h2>
-                  <div className="aspect-video rounded-2xl overflow-hidden shadow-lg shadow-black/10">
+                  <div className="aspect-video rounded-sm overflow-hidden">
                     <iframe
                       src={project.video_url}
                       className="w-full h-full"
@@ -613,7 +613,7 @@ const ProjectDetail = () => {
 
             {/* Right — Sticky lead form */}
             <div id="project-lead-form" className="lg:sticky lg:top-24 lg:self-start">
-              <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-2xl shadow-primary/5">
+              <div className="rounded-sm border border-border bg-card overflow-hidden">
                 {/* Premium header */}
                 <div className="relative bg-primary px-6 py-6 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-primary/80" />

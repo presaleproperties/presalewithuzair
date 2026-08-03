@@ -73,7 +73,7 @@ const Services = () => {
         <title>Presale Buyer Services | VIP Access, Contract Review & Completion Support | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. $0 cost to buyers."
+          content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee."
         />
         <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver, Fraser Valley presale services" />
         <link rel="canonical" href="https://presalewithuzair.com/services" />
@@ -82,13 +82,13 @@ const Services = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/services" />
         <meta property="og:title" content="Presale Buyer Services | VIP Access, Contract Review & Completion Support | Uzair Muhammad" />
-        <meta property="og:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. $0 cost to buyers." />
+        <meta property="og:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Presale Buyer Services | Uzair Muhammad" />
-        <meta name="twitter:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. $0 cost to buyers." />
+        <meta name="twitter:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
@@ -161,7 +161,7 @@ const Services = () => {
                 Expert guidance. No sales pressure.
               </h1>
               <p className="mt-6 lede animate-fade-up delay-200">
-                Whether you are buying your first presale, assigning a contract, or building a portfolio, we're with you from finding the right project to keys in hand — honest, buyer-first advice at $0 cost to you.
+                Whether you are buying your first presale, assigning a contract, or building a portfolio, I'm with you from finding the right project to keys in hand — honest, buyer-first advice, paid by the developer, never by you.
               </p>
             </div>
           </div>

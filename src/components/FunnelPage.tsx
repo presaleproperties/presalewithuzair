@@ -134,14 +134,14 @@ export const FunnelPage = ({
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 to="/call"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
                 Book a free strategy call
               </Link>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 rounded-sm border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" />
                 {PHONE}
@@ -168,7 +168,7 @@ export const FunnelPage = ({
             </h2>
             <div className="mt-8 space-y-6">
               {faqs.map((f) => (
-                <div key={f.question} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
+                <div key={f.question} className="rounded-sm border border-border bg-background p-5 sm:p-6">
                   <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground">
                     {f.question}
                   </h3>
@@ -182,31 +182,31 @@ export const FunnelPage = ({
         </section>
 
         {/* CTA */}
-        <section className="section-y-sm bg-foreground text-background">
+        <section className="section-y-sm dark-section bg-background text-foreground">
           <div className="container-xl px-4 sm:px-6 max-w-3xl text-center">
             <p className="section-label mb-3 !text-primary">Next Step</p>
             <h2 className="font-display text-2xl sm:text-4xl font-bold uppercase tracking-tight">
               Talk to Uzair before you talk to any developer.
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-background/70 leading-relaxed">
+            <p className="mt-4 text-sm sm:text-base text-foreground/65 leading-relaxed">
               Buyer-only, no developer bias — my fee comes from the developer's marketing budget. I'll review the project,
               the contract, and the deposit structure before you sign anything.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-background/70">
+            <div className="mt-4 inline-flex items-center gap-2 text-xs sm:text-sm text-foreground/65">
               <CheckCircle2 className="h-4 w-4 text-primary" />
               {TRACK_RECORD}
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 to="/call"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
                 Book a free strategy call
               </Link>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-full border border-background/30 px-6 py-3 text-sm font-semibold text-background hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 rounded-sm border border-foreground/25 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" />
                 {PHONE}
@@ -227,7 +227,7 @@ export const RelatedLinks = ({
 }: {
   links: { to: string; label: string }[];
 }) => (
-  <div className="rounded-2xl border border-border bg-muted/20 p-5 sm:p-6 not-prose">
+  <div className="rounded-sm border border-border bg-muted/20 p-5 sm:p-6 not-prose">
     <p className="section-label mb-3">Keep Reading</p>
     <ul className="grid sm:grid-cols-2 gap-2">
       {links.map((l) => (

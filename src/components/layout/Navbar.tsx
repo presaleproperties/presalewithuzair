@@ -36,10 +36,15 @@ export const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isLightPage = ["/blog", "/about", "/services", "/contact", "/book"].some(
-    (p) => location.pathname === p || location.pathname.startsWith("/blog/")
-  ) || location.pathname.startsWith("/projects/");
-  const isDarkHeroPage = location.pathname === "/" || location.pathname === "/call";
+  // Pages that open with a full-bleed dark hero behind the nav
+  const darkHeroPaths = [
+    "/", "/call", "/surrey", "/langley", "/abbotsford", "/chilliwack",
+    "/maple-ridge", "/coquitlam", "/delta", "/burnaby",
+  ];
+  const isDarkHeroPage = darkHeroPaths.includes(location.pathname);
+  // Everything else is a light page — nav must stay legible on white
+  const isLightPage = !isDarkHeroPage;
+
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);

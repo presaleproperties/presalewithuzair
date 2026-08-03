@@ -195,9 +195,10 @@ const LandingPage = () => {
                 opacity: 1,
                 y: 0
               }} className="mb-3">
-                  <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
+                  <span className="inline-flex items-center gap-1.5 text-foreground/55 text-xs font-semibold tracking-[0.18em] uppercase">
                     Fraser Valley Buyer-Only Presale Specialist
                   </span>
+
                 </motion.div>
 
                 <motion.h1 initial={{

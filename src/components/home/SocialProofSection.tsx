@@ -9,13 +9,8 @@ import { staticReviews, type StaticReview } from "@/data/googleReviews";
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
 const MAX_VISIBLE_REVIEWS = 5;
 
-const fallbackPhotos = [
-  anishPhoto,
-  michellePhoto,
-  rayPhoto,
-  hissanPhoto,
-  andresPhoto,
-];
+const fallbackPhotos = staticReviews.slice(0, 5).map((r) => r.photo);
+
 
 const KEYWORD_PATTERNS: RegExp[] = [
   /first[- ]time home buyer/gi,

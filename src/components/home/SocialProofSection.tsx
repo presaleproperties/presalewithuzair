@@ -154,7 +154,7 @@ const ReviewCard = ({
 
       <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
-      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line line-clamp-6 flex-1 mt-3">
+      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line flex-1 mt-3">
         “{highlightKeywords(testimonial.quote)}”
       </p>
       <p className="text-[0.6875rem] uppercase tracking-[0.14em] text-foreground/45 mt-4 font-semibold shrink-0 transition-colors duration-300 group-hover:text-foreground">

@@ -276,7 +276,7 @@ const BlogPost = () => {
                     background: "hsl(222 25% 6%)",
                   }}
                 >
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(230 70% 60%)" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-3 relative z-10" style={{ color: "hsl(var(--primary))" }}>
                     Free Consultation
                   </p>
                   <h3 className="font-display text-2xl md:text-3xl text-white mb-3 relative z-10" style={{ letterSpacing: "-0.02em" }}>
@@ -385,7 +385,7 @@ const BlogPost = () => {
                         background: "hsl(222 25% 6%)",
                       }}
                     >
-                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
+                      <p className="text-xs font-black tracking-[0.2em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
                         Free Call
                       </p>
                       <p className="font-display text-base text-white leading-tight mb-3">
@@ -414,7 +414,7 @@ const BlogPost = () => {
             <div className="container-xl pt-14">
               <div className="flex items-end justify-between mb-10">
                 <div>
-                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(230 70% 60%)" }}>
+                  <p className="text-xs font-black tracking-[0.25em] uppercase mb-2" style={{ color: "hsl(var(--primary))" }}>
                     Keep Reading
                   </p>
                   <h2 className="font-display text-3xl text-white" style={{ letterSpacing: "-0.02em" }}>
@@ -424,7 +424,7 @@ const BlogPost = () => {
                 <Link
                   to="/blog"
                   className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold transition-all hover:gap-3"
-                  style={{ color: "hsl(230 70% 60%)" }}
+                  style={{ color: "hsl(var(--primary))" }}
                 >
                   View all <ChevronRight className="h-4 w-4" />
                 </Link>
@@ -470,7 +470,7 @@ const BlogPost = () => {
                           <Calendar className="h-3 w-3" />
                           {formatDate(rp.published_at)}
                         </span>
-                        <span className="text-xs font-bold group-hover:underline" style={{ color: "hsl(230 70% 65%)" }}>
+                        <span className="text-xs font-bold group-hover:underline" style={{ color: "hsl(var(--primary))" }}>
                           Read →
                         </span>
                       </div>

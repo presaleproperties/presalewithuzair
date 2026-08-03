@@ -43,12 +43,12 @@ const LandingPage = () => {
   }, [isFormOpen]);
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
-    "First-Time Buyer": "bg-primary/20 text-primary",
-    "Investor": "bg-primary/15 text-primary",
-    "Repeat Client": "bg-primary/15 text-primary",
-    "Presale Buyer": "bg-primary/15 text-primary",
-    "Seller & Buyer": "bg-primary/15 text-primary",
-    "Buyer": "bg-primary/15 text-primary"
+    "First-Time Buyer": "bg-foreground/10 text-foreground/80",
+    "Investor": "bg-foreground/10 text-foreground/80",
+    "Repeat Client": "bg-foreground/10 text-foreground/80",
+    "Presale Buyer": "bg-foreground/10 text-foreground/80",
+    "Seller & Buyer": "bg-foreground/10 text-foreground/80",
+    "Buyer": "bg-foreground/10 text-foreground/80"
   };
   const testimonials = [{
     name: "Anish",
@@ -195,9 +195,10 @@ const LandingPage = () => {
                 opacity: 1,
                 y: 0
               }} className="mb-3">
-                  <span className="inline-flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
+                  <span className="inline-flex items-center gap-1.5 text-foreground/55 text-xs font-semibold tracking-[0.18em] uppercase">
                     Fraser Valley Buyer-Only Presale Specialist
                   </span>
+
                 </motion.div>
 
                 <motion.h1 initial={{
@@ -209,7 +210,7 @@ const LandingPage = () => {
               }} transition={{
                 duration: 0.5
                }} className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-3">
-                  Work With <span className="text-primary">Uzair.</span>
+                  Work With <span className="text-foreground/65">Uzair.</span>
                 </motion.h1>
 
                 <motion.p initial={{

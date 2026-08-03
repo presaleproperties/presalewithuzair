@@ -283,7 +283,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
   const pageUrl = `https://presalewithuzair.com/${config.slug}`;
 
-  const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee, so representation costs you nothing.`;
+  const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee out of the project's marketing budget.`;
 
   const realEstateAgentJsonLd = {
     "@context": "https://schema.org",
@@ -380,13 +380,13 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">
                 {config.heroSubheadline}
               </h2>
-              <div className="w-14 h-[2px] rounded-full mb-6 animate-fade-up" style={{ background: "var(--text-gradient)" }} />
+              <div className="w-14 h-px bg-foreground/25 mb-6 animate-fade-up" />
               <p className="text-lg text-white/80 max-w-xl leading-relaxed mb-8 animate-fade-up">
                 {config.heroBody}
               </p>
               <button
                 onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base shadow-lg shadow-primary/30 transition-all duration-300 animate-fade-up"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base transition-colors duration-300 animate-fade-up"
               >
                 {config.heroCta}
               </button>

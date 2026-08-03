@@ -43,12 +43,12 @@ const LandingPage = () => {
   }, [isFormOpen]);
   type ClientType = "First-Time Buyer" | "Investor" | "Repeat Client" | "Presale Buyer" | "Seller & Buyer" | "Buyer";
   const clientTypeColors: Record<ClientType, string> = {
-    "First-Time Buyer": "bg-primary/20 text-primary",
-    "Investor": "bg-primary/15 text-primary",
-    "Repeat Client": "bg-primary/15 text-primary",
-    "Presale Buyer": "bg-primary/15 text-primary",
-    "Seller & Buyer": "bg-primary/15 text-primary",
-    "Buyer": "bg-primary/15 text-primary"
+    "First-Time Buyer": "bg-foreground/10 text-foreground/80",
+    "Investor": "bg-foreground/10 text-foreground/80",
+    "Repeat Client": "bg-foreground/10 text-foreground/80",
+    "Presale Buyer": "bg-foreground/10 text-foreground/80",
+    "Seller & Buyer": "bg-foreground/10 text-foreground/80",
+    "Buyer": "bg-foreground/10 text-foreground/80"
   };
   const testimonials = [{
     name: "Anish",

@@ -112,7 +112,7 @@ const HowIHelp = () => (
 
     <div className="not-prose grid gap-4 sm:grid-cols-2">
       {scenarios.map((s) => (
-        <div key={s.h} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
+        <div key={s.h} className="rounded-sm border border-border bg-background p-5 sm:p-6">
           <h3 className="font-display text-lg font-semibold text-foreground">{s.h}</h3>
           <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.p}</p>
           <Link

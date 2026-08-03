@@ -134,14 +134,14 @@ export const FunnelPage = ({
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
                 to="/call"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
                 Book a free strategy call
               </Link>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 rounded-sm border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" />
                 {PHONE}
@@ -168,7 +168,7 @@ export const FunnelPage = ({
             </h2>
             <div className="mt-8 space-y-6">
               {faqs.map((f) => (
-                <div key={f.question} className="rounded-2xl border border-border bg-background p-5 sm:p-6">
+                <div key={f.question} className="rounded-sm border border-border bg-background p-5 sm:p-6">
                   <h3 className="font-display text-lg sm:text-xl font-semibold text-foreground">
                     {f.question}
                   </h3>
@@ -199,14 +199,14 @@ export const FunnelPage = ({
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 to="/call"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
                 Book a free strategy call
               </Link>
               <a
                 href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-full border border-background/30 px-6 py-3 text-sm font-semibold text-background hover:border-primary hover:text-primary transition"
+                className="inline-flex items-center gap-2 rounded-sm border border-background/30 px-6 py-3 text-sm font-semibold text-background hover:border-primary hover:text-primary transition"
               >
                 <Phone className="h-4 w-4" />
                 {PHONE}
@@ -227,7 +227,7 @@ export const RelatedLinks = ({
 }: {
   links: { to: string; label: string }[];
 }) => (
-  <div className="rounded-2xl border border-border bg-muted/20 p-5 sm:p-6 not-prose">
+  <div className="rounded-sm border border-border bg-muted/20 p-5 sm:p-6 not-prose">
     <p className="section-label mb-3">Keep Reading</p>
     <ul className="grid sm:grid-cols-2 gap-2">
       {links.map((l) => (

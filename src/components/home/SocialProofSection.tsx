@@ -1,6 +1,6 @@
 import { ArrowRight, ExternalLink, Loader2, Quote, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -190,7 +190,7 @@ const ReviewCard = ({
 const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
   const className = mobile
     ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
-    : "rounded-sm p-6 h-full min-h-[320px] flex flex-col bg-card border border-border";
+    : "rounded-sm p-6 h-full flex flex-col bg-card border border-border";
   return (
     <div className={className}>
       <div className="flex items-center gap-3 mb-4">
@@ -223,7 +223,7 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
     className={`group rounded-sm snap-center cursor-pointer hover-lift flex flex-col items-center justify-center text-center border border-border bg-card ${
-      mobile ? "flex-shrink-0 w-[300px] min-h-[360px] p-5" : "h-full min-h-[320px] p-6"
+      mobile ? "flex-shrink-0 w-[300px] p-5" : "h-full p-6"
     }`}
   >
     <div className="w-14 h-14 rounded-sm bg-background border border-border flex items-center justify-center mb-5 transition-colors duration-500 group-hover:border-foreground/30">

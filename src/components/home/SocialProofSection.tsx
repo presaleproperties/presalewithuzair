@@ -1,6 +1,6 @@
 import { ArrowRight, ExternalLink, Loader2, Quote, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -122,20 +122,18 @@ const ReviewCard = ({
   testimonial: StaticReview;
   mobile?: boolean;
 }) => {
-  const className = mobile
-    ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center cursor-pointer flex flex-col"
-    : "rounded-sm p-6 h-full min-h-[320px] cursor-pointer flex flex-col";
+  const [expanded, setExpanded] = useState(false);
 
-  const themeClass = "bg-card border border-border hover-lift";
+  const className = mobile
+    ? "flex-shrink-0 w-[300px] rounded-sm p-5 snap-center flex flex-col"
+    : "rounded-sm p-6 h-full flex flex-col";
+
+  const themeClass = "bg-card border border-border";
+
+  const isLong = testimonial.quote.length > 260;
 
   return (
-    <a
-      href={GOOGLE_BUSINESS_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`Read ${testimonial.name}'s review on Google`}
-      className={`group ${className} ${themeClass}`}
-    >
+    <div className={`group ${className} ${themeClass}`}>
       <div className="flex items-center gap-3 mb-4">
         <img
           src={testimonial.photo}
@@ -154,21 +152,45 @@ const ReviewCard = ({
 
       <StarRating rating={testimonial.rating ?? 5} size="sm" />
 
-      <p className="text-sm text-foreground/85 leading-relaxed whitespace-pre-line flex-1 mt-3">
+      <p
+        className={`text-sm text-foreground/85 leading-relaxed whitespace-pre-line mt-3 ${
+          expanded || !isLong ? "" : "line-clamp-6"
+        }`}
+      >
         “{highlightKeywords(testimonial.quote)}”
       </p>
-      <p className="text-[0.6875rem] uppercase tracking-[0.14em] text-foreground/45 mt-4 font-semibold shrink-0 transition-colors duration-300 group-hover:text-foreground">
+
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="self-start mt-2 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
+        >
+          {expanded ? "Show less" : "… Read full review"}
+        </button>
+      )}
+
+      <div className="flex-1" />
+
+      <a
+        href={GOOGLE_BUSINESS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Read ${testimonial.name}'s review on Google`}
+        className="text-[0.6875rem] uppercase tracking-[0.14em] text-foreground/45 mt-4 font-semibold shrink-0 transition-colors duration-300 hover:text-foreground"
+      >
         View on Google
-      </p>
-    </a>
+      </a>
+    </div>
   );
 };
+
 
 
 const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
   const className = mobile
     ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
-    : "rounded-sm p-6 h-full min-h-[320px] flex flex-col bg-card border border-border";
+    : "rounded-sm p-6 h-full flex flex-col bg-card border border-border";
   return (
     <div className={className}>
       <div className="flex items-center gap-3 mb-4">
@@ -201,7 +223,7 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
     className={`group rounded-sm snap-center cursor-pointer hover-lift flex flex-col items-center justify-center text-center border border-border bg-card ${
-      mobile ? "flex-shrink-0 w-[300px] min-h-[360px] p-5" : "h-full min-h-[320px] p-6"
+      mobile ? "flex-shrink-0 w-[300px] p-5" : "h-full p-6"
     }`}
   >
     <div className="w-14 h-14 rounded-sm bg-background border border-border flex items-center justify-center mb-5 transition-colors duration-500 group-hover:border-foreground/30">

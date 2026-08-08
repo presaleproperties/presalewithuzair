@@ -123,8 +123,8 @@ const ReviewCard = ({
   mobile?: boolean;
 }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-sm p-5 snap-center cursor-pointer flex flex-col"
-    : "rounded-sm p-6 h-[380px] cursor-pointer flex flex-col";
+    ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center cursor-pointer flex flex-col"
+    : "rounded-sm p-6 h-full min-h-[320px] cursor-pointer flex flex-col";
 
   const themeClass = "bg-card border border-border hover-lift";
 
@@ -167,8 +167,8 @@ const ReviewCard = ({
 
 const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
   const className = mobile
-    ? "flex-shrink-0 w-[300px] h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
-    : "rounded-sm p-6 h-[380px] flex flex-col bg-card border border-border";
+    ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
+    : "rounded-sm p-6 h-full min-h-[320px] flex flex-col bg-card border border-border";
   return (
     <div className={className}>
       <div className="flex items-center gap-3 mb-4">
@@ -201,7 +201,7 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
     rel="noopener noreferrer"
     aria-label="See all reviews on Google"
     className={`group rounded-sm snap-center cursor-pointer hover-lift flex flex-col items-center justify-center text-center border border-border bg-card ${
-      mobile ? "flex-shrink-0 w-[300px] h-[360px] p-5" : "h-[380px] p-6"
+      mobile ? "flex-shrink-0 w-[300px] min-h-[360px] p-5" : "h-full min-h-[320px] p-6"
     }`}
   >
     <div className="w-14 h-14 rounded-sm bg-background border border-border flex items-center justify-center mb-5 transition-colors duration-500 group-hover:border-foreground/30">
@@ -320,7 +320,7 @@ export const SocialProofSection = () => {
         {isLoading && (
           <div className="mb-10 sm:mb-14">
             <div className="sm:hidden">
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
+              <div className="flex items-stretch gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
                 {Array.from({ length: 3 }).map((_, i) => (
                   <ReviewSkeletonCard key={i} mobile />
                 ))}
@@ -349,7 +349,7 @@ export const SocialProofSection = () => {
         {!isLoading && displayed.length > 0 && (
           <div className="mb-10 sm:mb-14">
             <div className="sm:hidden">
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
+              <div className="flex items-stretch gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
                 {displayed.map((testimonial, index) => (
                   <ReviewCard key={index} testimonial={testimonial} mobile />
                 ))}

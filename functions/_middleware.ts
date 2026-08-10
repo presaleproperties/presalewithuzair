@@ -14,10 +14,30 @@
  */
 
 export const SITE = "https://presalewithuzair.com";
-export const DEFAULT_IMAGE =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
+export const DEFAULT_IMAGE = "https://presalewithuzair.com/og/default.png";
 const SUPABASE_URL = "https://ubbogklasownognviobh.supabase.co";
 export const SUPABASE_REST_URL = SUPABASE_URL;
+
+/**
+ * Legacy URL 301 map (old Framer site + retired routes).
+ * Applied to EVERY request (humans and crawlers) before any other logic so
+ * search engines receive a real 301 instead of a soft client-side redirect.
+ */
+const REDIRECT_EXACT: Record<string, string> = {
+  "/en/blog/who-is-the-best-presale-condo-realtor-in-surrey": "/best-presale-realtor-fraser-valley",
+  "/en/assigments": "/",
+  "/webinar-registeration-page": "/call",
+  "/agents": "/",
+  "/en": "/",
+};
+
+export function legacyRedirect(pathname: string): string | null {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
+  if (path.startsWith("/en/")) return "/";
+  return null;
+}
+
 
 
 const BOT_RE =
@@ -57,7 +77,7 @@ export const STATIC_META: Record<string, Meta> = {
   "/services": { title: "Buyer-Only Presale Services" + SUFFIX, description: "VIP developer access, contract review, and no developer bias. How Uzair Muhammad protects first-time buyers and investors buying presale & new-construction homes in BC.", image: DEFAULT_IMAGE },
   "/contact": { title: "Contact Uzair Muhammad — Free Presale Strategy Call", description: "Book a free, no-pressure presale strategy call with Uzair Muhammad. Buyer-first advice for first-time buyers and investors. English, Punjabi, Hindi & Urdu.", image: DEFAULT_IMAGE },
   "/call": { title: "Book a Free Presale Strategy Call" + SUFFIX, description: "Schedule a free 15-minute presale strategy call with Uzair Muhammad — buyer-first guidance for first-time buyers and investors in the Fraser Valley.", image: DEFAULT_IMAGE },
-  "/agents": { title: "The Team Behind Presale With Uzair", description: "Meet the buyer-first presale team led by Uzair Muhammad — helping first-time buyers and investors secure new construction across Metro Vancouver & the Fraser Valley.", image: DEFAULT_IMAGE },
+  "/book": { title: "Book a Free Presale Consultation | Uzair Muhammad", description: "Book a free presale consultation with Uzair Muhammad — buyer-only presale and new-construction guidance across Surrey, Langley, Abbotsford and the Fraser Valley.", image: DEFAULT_IMAGE },
   "/presale-guide": { title: "Free Presale Buyer's Guide — 7 Costly Mistakes" + SUFFIX, description: "Download Uzair Muhammad's free presale guide: spot contract traps, hidden closing costs, and developer red flags before you sign your deposit.", image: DEFAULT_IMAGE },
   "/blog": { title: "Presale Buying Guides & BC Market Insights" + SUFFIX, description: "Expert presale and new-construction guides for BC buyers and investors — deposits, GST, assignments, neighbourhoods, and market timing from Uzair Muhammad.", image: DEFAULT_IMAGE },
   "/punjabi-speaking-realtor": { title: "Punjabi Speaking Realtor — Presale & New Construction, Surrey & Fraser Valley", description: "Punjabi speaking buyer-side presale advisor in Surrey, Langley and the Fraser Valley. Uzair Muhammad represents buyers, never developers, and explains the contract to your family in Punjabi.", image: DEFAULT_IMAGE },
@@ -72,7 +92,7 @@ const STATIC_BODY: Record<string, string> = {
   "/services": `<h1>Buyer-Only Presale &amp; New-Construction Services</h1><p>Uzair represents buyers only. Services include VIP early access to new-construction projects, line-by-line contract and disclosure-statement review, deposit-structure and assignment guidance, and independent advice for first-time buyers and investors — with no developer bias.</p>`,
   "/contact": `<h1>Contact Uzair Muhammad</h1><p>Book a free, no-pressure presale strategy call. Buyer-first advice for first-time buyers and investors buying new construction in the Fraser Valley, in English, Punjabi, Hindi and Urdu. <a href="${SITE}/call">Book a call</a>.</p>`,
   "/call": `<h1>Book a Free Presale Strategy Call</h1><p>Schedule a free 15-minute presale strategy call with Uzair Muhammad — buyer-first guidance for first-time buyers and investors across the Fraser Valley.</p>`,
-  "/agents": `<h1>The Team Behind Presale With Uzair</h1><p>A buyer-first presale team led by Uzair Muhammad, helping first-time buyers and investors secure new construction across Metro Vancouver and the Fraser Valley.</p>`,
+  "/book": `<h1>Book a Free Presale Consultation</h1><p>Book a free consultation with Uzair Muhammad — buyer-only presale and new-construction guidance for first-time buyers and investors across Surrey, Langley, Abbotsford and the Fraser Valley, in English, Punjabi, Hindi and Urdu.</p>`,
   "/presale-guide": `<h1>Free Presale Buyer's Guide — 7 Costly Mistakes to Avoid</h1><p>Download Uzair Muhammad's free presale buyer's guide and learn how to spot contract traps, hidden closing costs, GST surprises, and developer red flags before you sign your deposit.</p>`,
   "/blog": `<h1>Presale Buying Guides &amp; BC Market Insights</h1><p>Expert, buyer-first guides on presale and new construction in British Columbia — deposits, GST and rebates, assignment sales, the BC flipping tax, neighbourhood breakdowns, developer risk, and market timing.</p>`,
   "/punjabi-speaking-realtor": languagePageBody("Punjabi", "A Punjabi speaking realtor who works for the buyer, not the developer.", "Is there a Punjabi speaking realtor for presales in Surrey? Yes.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
@@ -627,9 +647,21 @@ class HeadAppender { html: string; constructor(h: string) { this.html = h; } ele
 
 export const onRequest: any = async (context: any) => {
   const { request, next, env } = context;
+  if (request.method !== "GET" && request.method !== "HEAD") return next();
+
+  // Legacy 301s — applied for humans AND crawlers, before any rewriting.
+  const reqUrl = new URL(request.url);
+  const target = legacyRedirect(reqUrl.pathname);
+  if (target) {
+    const dest = new URL(target, reqUrl.origin);
+    dest.search = reqUrl.search;
+    return Response.redirect(dest.toString(), 301);
+  }
+
   if (request.method !== "GET") return next();
   const ua = request.headers.get("user-agent") || "";
   if (!BOT_RE.test(ua)) return next();
+
 
   const url = new URL(request.url);
   if (ASSET_RE.test(url.pathname)) return next();

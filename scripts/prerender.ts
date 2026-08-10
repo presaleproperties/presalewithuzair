@@ -106,18 +106,26 @@ async function writeRoute(path: string): Promise<void> {
   writeFileSync(file, html);
 }
 
-async function fetchBlogSlugs(): Promise<string[]> {
+interface BlogRow { slug: string; lastmod?: string }
+
+async function fetchBlogPosts(): Promise<BlogRow[]> {
   try {
-    const url = `${SUPABASE_REST_URL}/rest/v1/blog_posts?published=eq.true&select=slug&limit=1000`;
+    const url = `${SUPABASE_REST_URL}/rest/v1/blog_posts?published=eq.true&select=slug,updated_at,published_at&limit=1000`;
     const r = await fetch(url, { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } });
     if (!r.ok) return [];
-    const rows = (await r.json()) as Array<{ slug: string }>;
-    return rows.map((r) => r.slug).filter(Boolean);
+    const rows = (await r.json()) as Array<{ slug: string; updated_at?: string; published_at?: string }>;
+    return rows
+      .filter((row) => row.slug)
+      .map((row) => {
+        const stamp = row.updated_at || row.published_at;
+        return { slug: row.slug, lastmod: stamp ? new Date(stamp).toISOString().split("T")[0] : undefined };
+      });
   } catch (e) {
     console.warn("[prerender] blog fetch failed:", (e as Error).message);
     return [];
   }
 }
+
 
 async function fetchProjectSlugs(): Promise<string[]> {
   try {

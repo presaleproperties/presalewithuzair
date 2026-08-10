@@ -647,9 +647,21 @@ class HeadAppender { html: string; constructor(h: string) { this.html = h; } ele
 
 export const onRequest: any = async (context: any) => {
   const { request, next, env } = context;
+  if (request.method !== "GET" && request.method !== "HEAD") return next();
+
+  // Legacy 301s — applied for humans AND crawlers, before any rewriting.
+  const reqUrl = new URL(request.url);
+  const target = legacyRedirect(reqUrl.pathname);
+  if (target) {
+    const dest = new URL(target, reqUrl.origin);
+    dest.search = reqUrl.search;
+    return Response.redirect(dest.toString(), 301);
+  }
+
   if (request.method !== "GET") return next();
   const ua = request.headers.get("user-agent") || "";
   if (!BOT_RE.test(ua)) return next();
+
 
   const url = new URL(request.url);
   if (ASSET_RE.test(url.pathname)) return next();

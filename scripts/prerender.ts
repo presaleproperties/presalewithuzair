@@ -140,13 +140,67 @@ async function fetchProjectSlugs(): Promise<string[]> {
   }
 }
 
+/**
+ * Sitemap generation — runs in the same post-build step as the prerender so
+ * blog lastmod values come from each post's real updated timestamp instead of
+ * being hand-frozen. Static/city/funnel routes fall back to the build date.
+ * /projects/* pages are noindex and excluded; /agents 301s to / and is excluded.
+ */
+const BUILD_DATE = new Date().toISOString().split("T")[0];
+
+const STATIC_PRIORITY: Record<string, { priority: string; changefreq: string }> = {
+  "/": { priority: "1.0", changefreq: "weekly" },
+  "/blog": { priority: "0.9", changefreq: "daily" },
+  "/about": { priority: "0.8", changefreq: "monthly" },
+  "/services": { priority: "0.8", changefreq: "monthly" },
+  "/contact": { priority: "0.8", changefreq: "monthly" },
+  "/call": { priority: "0.6", changefreq: "monthly" },
+  "/book": { priority: "0.6", changefreq: "monthly" },
+  "/presale-guide": { priority: "0.7", changefreq: "monthly" },
+};
+
+function urlNode(path: string, lastmod: string, changefreq: string, priority: string): string {
+  return `  <url><loc>${SITE}${path === "/" ? "/" : path}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+}
+
+function writeSitemap(blogPosts: BlogRow[]) {
+  const lines: string[] = [];
+  for (const p of Object.keys(STATIC_META)) {
+    const cfg = STATIC_PRIORITY[p] || { priority: "0.8", changefreq: "monthly" };
+    lines.push(urlNode(p, BUILD_DATE, cfg.changefreq, cfg.priority));
+  }
+  for (const p of Object.keys(FUNNEL)) {
+    lines.push(urlNode(p, BUILD_DATE, "monthly", "0.9"));
+  }
+  for (const p of Object.keys(CITY_META)) {
+    lines.push(urlNode(p, BUILD_DATE, "weekly", "0.9"));
+  }
+  for (const post of blogPosts) {
+    lines.push(urlNode(`/blog/${post.slug}`, post.lastmod || BUILD_DATE, "monthly", "0.7"));
+  }
+  const xml = [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ...lines,
+    `</urlset>`,
+    ``,
+  ].join("\n");
+  writeFileSync(join(DIST, "sitemap.xml"), xml);
+  try {
+    writeFileSync(pathResolve(process.cwd(), "public/sitemap.xml"), xml);
+  } catch {
+    /* public/ may be read-only in some build sandboxes */
+  }
+  console.log(`[prerender] sitemap.xml written (${lines.length} urls)`);
+}
+
 async function main() {
   const paths = new Set<string>();
   Object.keys(STATIC_META).forEach((p) => paths.add(p));
   Object.keys(CITY_META).forEach((p) => paths.add(p));
   Object.keys(FUNNEL).forEach((p) => paths.add(p));
-  const blogSlugs = await fetchBlogSlugs();
-  blogSlugs.forEach((s) => paths.add(`/blog/${s}`));
+  const blogPosts = await fetchBlogPosts();
+  blogPosts.forEach((p) => paths.add(`/blog/${p.slug}`));
   const projectSlugs = await fetchProjectSlugs();
   projectSlugs.forEach((s) => paths.add(`/projects/${s}`));
 
@@ -161,8 +215,10 @@ async function main() {
       console.warn(`[prerender] ${p} failed:`, (e as Error).message);
     }
   }
-  console.log(`[prerender] wrote ${ok} routes (${blogSlugs.length} blog posts, ${projectSlugs.length} projects), ${fail} failed`);
+  writeSitemap(blogPosts);
+  console.log(`[prerender] wrote ${ok} routes (${blogPosts.length} blog posts, ${projectSlugs.length} projects), ${fail} failed`);
 }
+
 
 main();
 

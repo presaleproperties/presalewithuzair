@@ -14,10 +14,30 @@
  */
 
 export const SITE = "https://presalewithuzair.com";
-export const DEFAULT_IMAGE =
-  "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
+export const DEFAULT_IMAGE = "https://presalewithuzair.com/og/default.png";
 const SUPABASE_URL = "https://ubbogklasownognviobh.supabase.co";
 export const SUPABASE_REST_URL = SUPABASE_URL;
+
+/**
+ * Legacy URL 301 map (old Framer site + retired routes).
+ * Applied to EVERY request (humans and crawlers) before any other logic so
+ * search engines receive a real 301 instead of a soft client-side redirect.
+ */
+const REDIRECT_EXACT: Record<string, string> = {
+  "/en/blog/who-is-the-best-presale-condo-realtor-in-surrey": "/best-presale-realtor-fraser-valley",
+  "/en/assigments": "/",
+  "/webinar-registeration-page": "/call",
+  "/agents": "/",
+  "/en": "/",
+};
+
+export function legacyRedirect(pathname: string): string | null {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
+  if (path.startsWith("/en/")) return "/";
+  return null;
+}
+
 
 
 const BOT_RE =

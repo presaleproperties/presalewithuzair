@@ -60,7 +60,7 @@ const blocks: Block[] = [
         </p>
       </div>
     ),
-    cta: { to: "/contact", label: "Talk To Uzair First" },
+    cta: { to: "/call", label: "Talk To Uzair First" },
     wide: true,
   },
   {

@@ -23,7 +23,6 @@ const AdminPostEditor = lazy(() => import("./pages/AdminPostEditor"));
 const AdminLeads = lazy(() => import("./pages/AdminLeads"));
 const AdminTrafficAnalytics = lazy(() => import("./pages/AdminTrafficAnalytics"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const Book = lazy(() => import("./pages/Book"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
@@ -70,7 +69,7 @@ const App = () => (
               <Route path="/admin/leads" element={<AdminLeads />} />
               <Route path="/admin/post/:id" element={<AdminPostEditor />} />
               <Route path="/admin/analytics" element={<AdminTrafficAnalytics />} />
-              <Route path="/book" element={<Book />} />
+              <Route path="/book" element={<Navigate to="/call" replace />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/call" element={<LandingPage />} />
               <Route path="/presale-guide" element={<PresaleGuide />} />

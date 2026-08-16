@@ -265,6 +265,12 @@ const STATIC_BODY: Record<string, string> = {
   "/south-asian-buyers": southAsianBuyersBody(),
 };
 
+const NATIVE_INTRO: Record<string, { code: string; dir?: string; text: string }> = {
+  Punjabi: { code: "pa", text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਉਜ਼ੈਰ ਮੁਹੰਮਦ ਹਾਂ। ਮੈਂ ਸਰੀ, ਲੈਂਗਲੀ ਅਤੇ ਫਰੇਜ਼ਰ ਵੈਲੀ ਵਿੱਚ ਪਰਿਵਾਰਾਂ ਦੀ ਉਹਨਾਂ ਦਾ ਪਹਿਲਾ ਪ੍ਰੀਸੇਲ ਘਰ ਖਰੀਦਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ। ਡਿਪਾਜ਼ਿਟ ਦੀਆਂ ਤਰੀਕਾਂ, ਕੰਟਰੈਕਟ ਦੀਆਂ ਸ਼ਰਤਾਂ ਅਤੇ ਅਸਲ ਲਾਗਤ ਮੈਂ ਤੁਹਾਡੇ ਮਾਤਾ-ਪਿਤਾ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਸਮਝਾਉਂਦਾ ਹਾਂ, ਤਾਂ ਜੋ ਸਾਈਨ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਪੂਰੇ ਪਰਿਵਾਰ ਨੂੰ ਸਭ ਕੁਝ ਸਾਫ਼ ਹੋਵੇ। ਮੈਂ ਸਿਰਫ਼ ਖਰੀਦਦਾਰਾਂ ਦਾ ਪੱਖ ਰੱਖਦਾ ਹਾਂ — ਡਿਵੈਲਪਰ ਦਾ ਕਦੇ ਨਹੀਂ।" },
+  Hindi: { code: "hi", text: "नमस्ते, मैं उज़ैर मुहम्मद हूँ। मैं सरे, लैंगली और फ्रेज़र वैली में परिवारों को उनका पहला प्रीसेल घर खरीदने में मदद करता हूँ। डिपॉज़िट की तारीखें, कॉन्ट्रैक्ट की शर्तें और असली लागत मैं आपके माता-पिता को हिंदी में समझाता हूँ, ताकि साइन करने से पहले पूरे परिवार को सब कुछ साफ़ हो। मैं सिर्फ़ खरीदारों की तरफ़ से काम करता हूँ — डेवलपर की तरफ़ से कभी नहीं।" },
+  Urdu: { code: "ur", dir: "rtl", text: "السلام علیکم، میں عذیر محمد ہوں۔ میں سرے، لینگلی اور فریزر ویلی میں خاندانوں کی ان کا پہلا پری سیل گھر خریدنے میں مدد کرتا ہوں۔ ڈپازٹ کی تاریخیں، کنٹریکٹ کی شرائط اور اصل لاگت میں آپ کے والدین کو اردو میں سمجھاتا ہوں، تاکہ دستخط کرنے سے پہلے پورے خاندان کو سب کچھ واضح ہو۔ میں صرف خریداروں کی نمائندگی کرتا ہوں — ڈویلپر کی کبھی نہیں۔" },
+};
+
 function languagePageBody(lang: string, h1: string, leadSentence: string, path: string, crumb: string): string {
   const faqs = [
     { q: `Does Uzair speak ${lang}?`, a: `Yes. Uzair Muhammad works in ${lang === "Urdu" ? "Urdu, Punjabi, Hindi" : lang === "Hindi" ? "Hindi, Punjabi, Urdu" : "Punjabi, Hindi, Urdu"} and English, and regularly explains presale contracts and deposit schedules to buyers' parents in ${lang}.` },
@@ -274,6 +280,9 @@ function languagePageBody(lang: string, h1: string, leadSentence: string, path: 
   return (
     `<h1>${esc(h1)}</h1>` +
     `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has helped 450+ families and holds a 4.9-star rating on Google.</p>` +
+    (NATIVE_INTRO[lang]
+      ? `<p lang="${NATIVE_INTRO[lang].code}"${NATIVE_INTRO[lang].dir ? ` dir="${NATIVE_INTRO[lang].dir}"` : ""}>${esc(NATIVE_INTRO[lang].text)}</p>`
+      : "") +
     `<h2>The deposit is usually a family decision. The contract is usually only in English.</h2>` +
     `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in ${esc(lang)}. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.</p>` +
     `<h2>What Uzair does for ${esc(lang)} speaking buyers</h2>` +

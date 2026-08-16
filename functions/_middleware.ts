@@ -690,6 +690,25 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
 };
 
+const OFFICIAL_SOURCES: { label: string; href: string }[] = [
+  { label: "CRA — GST/HST new housing rebate", href: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/rebate-gst-hst-new-housing.html" },
+  { label: "CRA — Residential property flipping rule", href: "https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/federal-government-budgets/residential-property-flipping-rule.html" },
+  { label: "Government of BC — Property transfer tax", href: "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax" },
+  { label: "Government of BC — BC home flipping tax", href: "https://www2.gov.bc.ca/gov/content/taxes/income-taxes/bc-home-flipping-tax" },
+  { label: "BC Financial Services Authority (BCFSA)", href: "https://www.bcfsa.ca/" },
+  { label: "BC Laws — Real Estate Development Marketing Act (REDMA)", href: "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/04041_01" },
+];
+
+const TAX_LEGAL_RE = /gst|rebate|ptt|property-transfer|property transfer|flipping|tax|rescission|assignment|assign|deposit|disclosure|redma|warranty|legal/i;
+
+function officialSourcesBlock(): string {
+  return (
+    `<section><h2>Official sources</h2><ul>` +
+    OFFICIAL_SOURCES.map((x) => `<li><a href="${x.href}" rel="noopener nofollow">${esc(x.label)}</a></li>`).join("") +
+    `</ul><p>This is general information, not tax or legal advice. Rules change and eligibility depends on your situation — confirm with a tax professional or a BC real estate lawyer before you sign.</p></section>`
+  );
+}
+
 function funnelBody(path: string): string {
   const p = FUNNEL[path];
   if (!p) return "";
@@ -759,15 +778,25 @@ export async function resolve(pathname: string, env: Record<string, string | und
     const key = anonKey(env);
     if (!key) return { meta: fallback, body: "" };
     try {
-      const url = `${SUPABASE_URL}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=title,excerpt,image_url,content,updated_at&limit=1`;
+      const url = `${SUPABASE_URL}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=title,excerpt,image_url,content,updated_at,published_at,slug&limit=1`;
       const r = await fetch(url, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
       if (!r.ok) return { meta: fallback, body: "" };
-      const rows = (await r.json()) as Array<{ title?: string; excerpt?: string; image_url?: string; content?: string; updated_at?: string }>;
+      const rows = (await r.json()) as Array<{ title?: string; excerpt?: string; image_url?: string; content?: string; updated_at?: string; published_at?: string }>;
       const p = rows && rows[0];
       if (!p || !p.title) return { meta: fallback, body: "" };
       const meta: Meta = { title: `${p.title}${SUFFIX}`, description: (p.excerpt || fallback.description).slice(0, 300), image: p.image_url || DEFAULT_IMAGE };
-      const article = `<article><h1>${esc(p.title)}</h1>` + (p.excerpt ? `<p>${esc(p.excerpt)}</p>` : "") + `<div>${p.content || ""}</div></article>`;
-      const ld = jsonLd({ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt || meta.description, image: p.image_url || DEFAULT_IMAGE, dateModified: p.updated_at || undefined, author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" }, mainEntityOfPage: SITE + path });
+      const pub = p.published_at ? String(p.published_at).slice(0, 10) : "";
+      const upd = p.updated_at ? String(p.updated_at).slice(0, 10) : "";
+      const dateLine =
+        `<p>By <a href="${SITE}/about">Uzair Muhammad</a>` +
+        (pub ? ` &middot; Published <time datetime="${pub}">${pub}</time>` : "") +
+        (upd && upd !== pub ? ` &middot; Updated <time datetime="${upd}">${upd}</time>` : "") +
+        `</p>`;
+      const sources = TAX_LEGAL_RE.test(slug) || TAX_LEGAL_RE.test(p.title || "") ? officialSourcesBlock() : "";
+      const article =
+        `<article><h1>${esc(p.title)}</h1>` + dateLine + (p.excerpt ? `<p>${esc(p.excerpt)}</p>` : "") +
+        `<div>${p.content || ""}</div>` + sources + `</article>`;
+      const ld = jsonLd({ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt || meta.description, image: p.image_url || DEFAULT_IMAGE, datePublished: p.published_at || undefined, dateModified: p.updated_at || p.published_at || undefined, author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" }, mainEntityOfPage: SITE + path });
       return { meta, body: article + ABOUT_BLOCK + ld };
     } catch { return { meta: fallback, body: "" }; }
   }

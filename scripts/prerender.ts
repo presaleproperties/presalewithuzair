@@ -94,31 +94,66 @@ function pathToFile(p: string): string {
   return join(DIST, clean.replace(/^\//, ""), "index.html");
 }
 
-async function writeRoute(path: string): Promise<void> {
+function blogIndexBody(posts: BlogRow[]): string {
+  if (!posts.length) return "";
+  const items = posts
+    .map((p) => {
+      const title = escText(p.title || p.slug.replace(/-/g, " "));
+      const url = `${SITE}/blog/${p.slug}`;
+      const date = p.date || p.lastmod || "";
+      const excerpt = p.excerpt ? `<p>${escText(p.excerpt.slice(0, 200))}</p>` : "";
+      return `<li><article><h3><a href="${url}">${title}</a></h3>${date ? `<time datetime="${date}">${date}</time>` : ""}${excerpt}</article></li>`;
+    })
+    .join("");
+  const ld = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Blog", "@id": `${SITE}/blog`, name: "Presale Buying Guides & BC Market Insights", url: `${SITE}/blog` },
+      {
+        "@type": "ItemList",
+        itemListElement: posts.map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE}/blog/${p.slug}`,
+          name: p.title || p.slug,
+        })),
+      },
+    ],
+  };
+  return `<section><h2>All presale guides (${posts.length})</h2><ul>${items}</ul></section><script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>`;
+}
+
+async function writeRoute(path: string, extraBody = ""): Promise<void> {
   const env: Record<string, string | undefined> = {
     VITE_SUPABASE_PUBLISHABLE_KEY: anonKey,
   };
   const resolved = await resolveMeta(path, env);
   const canonical = resolved.canonical || `${SITE}${path === "/" ? "/" : path.replace(/\/+$/, "")}`;
-  const html = applyMeta(TEMPLATE, resolved.meta, canonical, resolved.body || "", resolved.robots);
+  const html = applyMeta(TEMPLATE, resolved.meta, canonical, (resolved.body || "") + extraBody, resolved.robots);
   const file = pathToFile(path);
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, html);
 }
 
-interface BlogRow { slug: string; lastmod?: string }
+interface BlogRow { slug: string; lastmod?: string; title?: string; excerpt?: string; date?: string }
 
 async function fetchBlogPosts(): Promise<BlogRow[]> {
   try {
-    const url = `${SUPABASE_REST_URL}/rest/v1/blog_posts?published=eq.true&select=slug,updated_at,published_at&limit=1000`;
+    const url = `${SUPABASE_REST_URL}/rest/v1/blog_posts?published=eq.true&select=slug,title,excerpt,updated_at,published_at&order=published_at.desc&limit=1000`;
     const r = await fetch(url, { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } });
     if (!r.ok) return [];
-    const rows = (await r.json()) as Array<{ slug: string; updated_at?: string; published_at?: string }>;
+    const rows = (await r.json()) as Array<{ slug: string; title?: string; excerpt?: string; updated_at?: string; published_at?: string }>;
     return rows
       .filter((row) => row.slug)
       .map((row) => {
         const stamp = row.updated_at || row.published_at;
-        return { slug: row.slug, lastmod: stamp ? new Date(stamp).toISOString().split("T")[0] : undefined };
+        return {
+          slug: row.slug,
+          title: row.title,
+          excerpt: row.excerpt || undefined,
+          date: row.published_at ? new Date(row.published_at).toISOString().split("T")[0] : undefined,
+          lastmod: stamp ? new Date(stamp).toISOString().split("T")[0] : undefined,
+        };
       });
   } catch (e) {
     console.warn("[prerender] blog fetch failed:", (e as Error).message);
@@ -155,7 +190,6 @@ const STATIC_PRIORITY: Record<string, { priority: string; changefreq: string }> 
   "/services": { priority: "0.8", changefreq: "monthly" },
   "/contact": { priority: "0.8", changefreq: "monthly" },
   "/call": { priority: "0.6", changefreq: "monthly" },
-  "/book": { priority: "0.6", changefreq: "monthly" },
   "/presale-guide": { priority: "0.7", changefreq: "monthly" },
 };
 
@@ -208,7 +242,7 @@ async function main() {
   let fail = 0;
   for (const p of paths) {
     try {
-      await writeRoute(p);
+      await writeRoute(p, p === "/blog" ? blogIndexBody(blogPosts) : "");
       ok++;
     } catch (e) {
       fail++;

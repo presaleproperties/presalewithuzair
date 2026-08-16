@@ -30,6 +30,45 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/agents": "/",
   "/book": "/call",
   "/en": "/",
+
+  // --- Blog consolidation (Aug 2026): retired duplicate posts → cluster winner ---
+  // GST / first-time-buyer rebate
+  "/blog/fthb-gst-rebate-save-50000-bc-presales-2026": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  "/blog/gst-rebate-first-time-buyers-bc-presale-condos": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  "/blog/gst-rebate-presale-condos-bc-2026": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  // Assignments — process
+  "/blog/presale-assignment-condos-bc-how-to-buy-2026": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/selling-before-completion-assignment-sales-presale-profits": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/surrey-assignment-flip-sell-presale-contract-before-completion": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/surrey-presale-assignment-flip-how-to-sell-contract": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/selling-a-presale-condo-assignment-in-fraser-valley-what-you-need-to-know": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/why-developer-blocking-presale-assignment-bc": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  // Assignments — tax / pricing
+  "/blog/gst-on-presale-assignment-sales-bc-rules": "/blog/assignment-sales-gst-cra-anti-flipping-2026",
+  "/blog/presale-assignment-sales-exit-strategy-bc": "/blog/how-to-price-presale-assignment-bc",
+  // How to buy
+  "/blog/how-to-buy-presale-condo-bc": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/how-buying-presale-condo-bc-works": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/how-buying-presale-condo-bc-works-complete-guide": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/complete-guide-buying-presale-condos-vancouver-2026": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/buy-presale-fraser-valley": "/blog/how-to-buy-a-presale-in-bc-2026",
+  // Deposits / financing
+  "/blog/presale-condo-deposit-structure-bc": "/blog/understanding-presale-deposit-structure-bc-2026",
+  "/blog/presale-deposit-protection-bc": "/blog/understanding-presale-deposit-structure-bc-2026",
+  "/blog/presale-condo-financials-deposits-mortgages-hidden-costs": "/blog/how-much-cash-to-buy-presale-bc-2026",
+  "/blog/presale-condo-bc-deposits-hidden-costs-gst": "/blog/how-much-cash-to-buy-presale-bc-2026",
+  // 7-day rescission
+  "/blog/7-day-rescission-period-bc-presale": "/blog/bc-presale-7-day-rescission-period-2026",
+  // Completion delays / value at completion
+  "/blog/presale-completion-delayed-6-24-months-bc-rights": "/blog/presale-delayed-bc-rights-outside-date-2026",
+  "/blog/what-happens-if-your-presale-condo-is-worth-less-at-completion": "/blog/presale-appraisal-gap-completion-bc-2026",
+  // BC home flipping tax
+  "/blog/bc-s-new-20-flipping-tax-what-it-means-for-pre-sale-buyers-and-investors": "/blog/bc-home-flipping-tax-presale-2026",
+  "/blog/does-the-bc-home-flipping-tax-apply-to-presale-condos-what-buyers-need-to-know-in-2026": "/blog/bc-home-flipping-tax-presale-2026",
+  "/blog/the-bc-home-flipping-tax-and-your-presale-condo-what-surrey-buyers-and-investors-must-know-in-2026": "/blog/bc-home-flipping-tax-presale-2026",
+  // Presale risk
+  "/blog/presale-risks-developer-bankruptcy-cancellations-bc": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
+  "/blog/5-presale-condo-risks-bc-buyers-must-know": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
 };
 
 /**
@@ -38,15 +77,15 @@ const REDIRECT_EXACT: Record<string, string> = {
  */
 const LEGACY_BLOG_MAP: Record<string, string> = {
   "how-to-buy-a-presale-condo-in-bc-vancouver-beginner-s-guide-to-purchasing-a-presale-condo":
-    "how-to-buy-presale-condo-bc",
+    "how-to-buy-a-presale-in-bc-2026",
   "who-is-the-best-presale-condo-realtor-in-surrey": "best-presale-realtor-fraser-valley",
 };
 
 /** Topic keywords → current slug, for fuzzy matching unknown legacy blog URLs. */
 const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
-  { keywords: ["gst", "rebate"], slug: "gst-rebate-presale-condos-bc-2026" },
+  { keywords: ["gst", "rebate"], slug: "first-time-buyer-gst-rebate-bc-presale-2026" },
   { keywords: ["assignment"], slug: "assignment-sales-bc-2026-process-fees-taxes" },
-  { keywords: ["deposit"], slug: "presale-condo-deposit-structure-bc" },
+  { keywords: ["deposit"], slug: "understanding-presale-deposit-structure-bc-2026" },
   { keywords: ["rescission"], slug: "bc-presale-7-day-rescission-period-2026" },
   { keywords: ["7", "day"], slug: "bc-presale-7-day-rescission-period-2026" },
   { keywords: ["resale"], slug: "move-in-ready-vs-presale-comparison" },
@@ -56,8 +95,9 @@ const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
   { keywords: ["first", "time"], slug: "first-time-home-buyer-presale-guide-bc-2026" },
   { keywords: ["invest"], slug: "investor-guide-fraser-valley-presales-2026" },
   { keywords: ["floor", "plan"], slug: "how-to-read-presale-floor-plan-bc-2026" },
-  { keywords: ["how", "buy"], slug: "how-to-buy-presale-condo-bc" },
+  { keywords: ["how", "buy"], slug: "how-to-buy-a-presale-in-bc-2026" },
 ];
+
 
 export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
@@ -144,6 +184,59 @@ const ABOUT_BLOCK = `
     <a href="${SITE}/maple-ridge">Maple Ridge presales</a>
   </nav>`;
 
+/**
+ * Three verbatim Google reviews, mirrored from src/data/googleReviews.ts.
+ * Rendered on /about so the sitewide aggregateRating in index.html is
+ * accompanied by individual Review objects on the page where reviews appear.
+ */
+const ABOUT_REVIEWS: { name: string; quote: string; when: string }[] = [
+  {
+    name: "Ray M",
+    quote:
+      "Now I see why he's called the \"presale expert.\" Uzair's expertise in the presale market is exceptional. His strong relationships with developers enabled us to secure the best unit in the building at an incredible price. It was an outstanding experience.",
+    when: "a year ago",
+  },
+  {
+    name: "Mehreen Chaudry",
+    quote:
+      "I have been working with Uzair for a number of years he is an expert in his knowledge about presale in Vancouver. His personalized approach for his client is what makes it very easy to work with him.",
+    when: "a year ago",
+  },
+  {
+    name: "Adam Lai",
+    quote:
+      "Uzair helped me with my investment property, and I couldn't be more grateful. He's focused on making sure you get the best deal and guiding you through every step of the process. If a deal or project isn't right, he'll tell you exactly that, no fluff, no hype.",
+    when: "a year ago",
+  },
+];
+
+function aboutReviewsBlock(): string {
+  const cards = ABOUT_REVIEWS.map(
+    (r) =>
+      `<figure><p>&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>${esc(r.quote)}</blockquote><figcaption>${esc(r.name)} — Google review, ${esc(r.when)}</figcaption></figure>`,
+  ).join("");
+  const ld = jsonLd({
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": SITE + "/#agent",
+    name: "Uzair Muhammad — Presale With Uzair",
+    url: SITE,
+    aggregateRating: { "@type": "AggregateRating", ratingValue: 4.9, reviewCount: 36, bestRating: 5 },
+    review: ABOUT_REVIEWS.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.name.split(" ")[0] },
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      reviewBody: r.quote,
+      itemReviewed: { "@id": SITE + "/#agent" },
+    })),
+  });
+  return (
+    `<section><h2>Reviews from families Uzair has represented</h2>${cards}` +
+    `<p><a href="https://share.google/qgUTcQF2kOnjBBPr7" rel="noopener">4.9&#9733; &middot; 36 Google reviews</a></p></section>` +
+    ld
+  );
+}
+
 export const STATIC_META: Record<string, Meta> = {
   "/": { title: "Presale & New Condos Fraser Valley | Uzair Muhammad", description: "Fraser Valley's leading presale agent. VIP access to new condos & townhomes — with you from project to keys. The developer pays my fee. English · Punjabi · Hindi · Urdu.", image: DEFAULT_IMAGE },
   "/about": { title: "About Uzair Muhammad | Fraser Valley's Leading Presale Agent", description: "Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu.", image: DEFAULT_IMAGE },
@@ -156,6 +249,12 @@ export const STATIC_META: Record<string, Meta> = {
   "/hindi-speaking-realtor": { title: "Hindi Speaking Realtor — Presale & New Construction, Surrey & Fraser Valley", description: "Hindi speaking buyer-side presale advisor in Surrey, Langley and the Fraser Valley. Uzair Muhammad represents buyers, never developers, and explains the contract to your family in Hindi.", image: DEFAULT_IMAGE },
   "/urdu-speaking-realtor": { title: "Urdu Speaking Realtor — Presale & New Construction, Surrey & Fraser Valley", description: "Urdu speaking buyer-side presale advisor in Surrey, Langley and the Fraser Valley. Uzair Muhammad represents buyers, never developers, and explains the contract to your family in Urdu.", image: DEFAULT_IMAGE },
   "/south-asian-buyers": { title: "Buying a Presale as a First-Generation Buyer | Surrey & Fraser Valley", description: "Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. Buyer-side presale guidance in Punjabi, Hindi, Urdu and English.", image: DEFAULT_IMAGE },
+};
+
+const NATIVE_INTRO: Record<string, { code: string; dir?: string; text: string }> = {
+  Punjabi: { code: "pa", text: "ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਉਜ਼ੈਰ ਮੁਹੰਮਦ ਹਾਂ। ਮੈਂ ਸਰੀ, ਲੈਂਗਲੀ ਅਤੇ ਫਰੇਜ਼ਰ ਵੈਲੀ ਵਿੱਚ ਪਰਿਵਾਰਾਂ ਦੀ ਉਹਨਾਂ ਦਾ ਪਹਿਲਾ ਪ੍ਰੀਸੇਲ ਘਰ ਖਰੀਦਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ। ਡਿਪਾਜ਼ਿਟ ਦੀਆਂ ਤਰੀਕਾਂ, ਕੰਟਰੈਕਟ ਦੀਆਂ ਸ਼ਰਤਾਂ ਅਤੇ ਅਸਲ ਲਾਗਤ ਮੈਂ ਤੁਹਾਡੇ ਮਾਤਾ-ਪਿਤਾ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਸਮਝਾਉਂਦਾ ਹਾਂ, ਤਾਂ ਜੋ ਸਾਈਨ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਪੂਰੇ ਪਰਿਵਾਰ ਨੂੰ ਸਭ ਕੁਝ ਸਾਫ਼ ਹੋਵੇ। ਮੈਂ ਸਿਰਫ਼ ਖਰੀਦਦਾਰਾਂ ਦਾ ਪੱਖ ਰੱਖਦਾ ਹਾਂ — ਡਿਵੈਲਪਰ ਦਾ ਕਦੇ ਨਹੀਂ।" },
+  Hindi: { code: "hi", text: "नमस्ते, मैं उज़ैर मुहम्मद हूँ। मैं सरे, लैंगली और फ्रेज़र वैली में परिवारों को उनका पहला प्रीसेल घर खरीदने में मदद करता हूँ। डिपॉज़िट की तारीखें, कॉन्ट्रैक्ट की शर्तें और असली लागत मैं आपके माता-पिता को हिंदी में समझाता हूँ, ताकि साइन करने से पहले पूरे परिवार को सब कुछ साफ़ हो। मैं सिर्फ़ खरीदारों की तरफ़ से काम करता हूँ — डेवलपर की तरफ़ से कभी नहीं।" },
+  Urdu: { code: "ur", dir: "rtl", text: "السلام علیکم، میں عذیر محمد ہوں۔ میں سرے، لینگلی اور فریزر ویلی میں خاندانوں کی ان کا پہلا پری سیل گھر خریدنے میں مدد کرتا ہوں۔ ڈپازٹ کی تاریخیں، کنٹریکٹ کی شرائط اور اصل لاگت میں آپ کے والدین کو اردو میں سمجھاتا ہوں، تاکہ دستخط کرنے سے پہلے پورے خاندان کو سب کچھ واضح ہو۔ میں صرف خریداروں کی نمائندگی کرتا ہوں — ڈویلپر کی کبھی نہیں۔" },
 };
 
 const STATIC_BODY: Record<string, string> = {
@@ -181,6 +280,9 @@ function languagePageBody(lang: string, h1: string, leadSentence: string, path: 
   return (
     `<h1>${esc(h1)}</h1>` +
     `<p>${esc(leadSentence)} Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has helped 450+ families and holds a 4.9-star rating on Google.</p>` +
+    (NATIVE_INTRO[lang]
+      ? `<p lang="${NATIVE_INTRO[lang].code}"${NATIVE_INTRO[lang].dir ? ` dir="${NATIVE_INTRO[lang].dir}"` : ""}>${esc(NATIVE_INTRO[lang].text)}</p>`
+      : "") +
     `<h2>The deposit is usually a family decision. The contract is usually only in English.</h2>` +
     `<p>In most Fraser Valley presale purchases, parents help with the deposit. The buyer speaks English. The parents putting up the money often do not. Nobody at the sales centre is going to slow down and explain a disclosure statement in ${esc(lang)}. Uzair sits down with the whole family, not just the buyer, and goes through the deposit schedule, the completion date and what the contract actually commits them to — with the people writing the cheque. He was born in Pakistan and raised in Surrey.</p>` +
     `<h2>What Uzair does for ${esc(lang)} speaking buyers</h2>` +
@@ -254,6 +356,8 @@ export const CITY_META: Record<string, Meta> = {
   "/burnaby": { title: "Burnaby Presale Condos & New Construction" + SUFFIX, description: "Buyer-first Burnaby presale expert. VIP access to Metrotown, Brentwood and Lougheed highrise new construction — SkyTrain-connected, strong rental demand, no developer bias.", image: DEFAULT_IMAGE },
 };
 
+import { CITY_DEPTH } from "../src/data/cityDepth";
+
 interface CityContent { name: string; intro: string; why: string; faqs: { q: string; a: string }[]; }
 
 const CITY_CONTENT: Record<string, CityContent> = {
@@ -298,6 +402,9 @@ function cityBody(path: string): string {
     `<h1>${esc(c.name)} Presale Condos &amp; New Construction — Buyer-Only Expert Uzair Muhammad</h1>` +
     `<p>${esc(c.intro)}</p>` +
     `<h2>Why buy a presale in ${esc(c.name)}?</h2><p>${esc(c.why)}</p>` +
+    (CITY_DEPTH[path.slice(1)] || [])
+      .map((sec) => `<h2>${esc(sec.heading)}</h2>` + sec.body.map((b) => `<p>${esc(b)}</p>`).join(""))
+      .join("") +
     `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml}` +
     ABOUT_BLOCK +
     jsonLd(breadcrumb(c.name + " Presales", path)) +
@@ -588,6 +695,25 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
 };
 
+const OFFICIAL_SOURCES: { label: string; href: string }[] = [
+  { label: "CRA — GST/HST new housing rebate", href: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate/rebate-gst-hst-new-housing.html" },
+  { label: "CRA — Residential property flipping rule", href: "https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/federal-government-budgets/residential-property-flipping-rule.html" },
+  { label: "Government of BC — Property transfer tax", href: "https://www2.gov.bc.ca/gov/content/taxes/property-taxes/property-transfer-tax" },
+  { label: "Government of BC — BC home flipping tax", href: "https://www2.gov.bc.ca/gov/content/taxes/income-taxes/bc-home-flipping-tax" },
+  { label: "BC Financial Services Authority (BCFSA)", href: "https://www.bcfsa.ca/" },
+  { label: "BC Laws — Real Estate Development Marketing Act (REDMA)", href: "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/04041_01" },
+];
+
+const TAX_LEGAL_RE = /gst|rebate|ptt|property-transfer|property transfer|flipping|tax|rescission|assignment|assign|deposit|disclosure|redma|warranty|legal/i;
+
+function officialSourcesBlock(): string {
+  return (
+    `<section><h2>Official sources</h2><ul>` +
+    OFFICIAL_SOURCES.map((x) => `<li><a href="${x.href}" rel="noopener nofollow">${esc(x.label)}</a></li>`).join("") +
+    `</ul><p>This is general information, not tax or legal advice. Rules change and eligibility depends on your situation — confirm with a tax professional or a BC real estate lawyer before you sign.</p></section>`
+  );
+}
+
 function funnelBody(path: string): string {
   const p = FUNNEL[path];
   if (!p) return "";
@@ -641,7 +767,10 @@ export async function resolve(pathname: string, env: Record<string, string | und
     const f = FUNNEL[path];
     return { meta: { title: f.title, description: f.description, image: funnelImage(path) }, body: funnelBody(path) + ABOUT_BLOCK };
   }
-  if (STATIC_META[path]) return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + ABOUT_BLOCK };
+  if (STATIC_META[path]) {
+    const extra = path === "/about" ? aboutReviewsBlock() : "";
+    return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + extra + ABOUT_BLOCK };
+  }
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");
     const cityImage = `${SITE}/images/heroes/${citySlug}-hero.jpg`;
@@ -654,15 +783,25 @@ export async function resolve(pathname: string, env: Record<string, string | und
     const key = anonKey(env);
     if (!key) return { meta: fallback, body: "" };
     try {
-      const url = `${SUPABASE_URL}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=title,excerpt,image_url,content,updated_at&limit=1`;
+      const url = `${SUPABASE_URL}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&published=eq.true&select=title,excerpt,image_url,content,updated_at,published_at,slug&limit=1`;
       const r = await fetch(url, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
       if (!r.ok) return { meta: fallback, body: "" };
-      const rows = (await r.json()) as Array<{ title?: string; excerpt?: string; image_url?: string; content?: string; updated_at?: string }>;
+      const rows = (await r.json()) as Array<{ title?: string; excerpt?: string; image_url?: string; content?: string; updated_at?: string; published_at?: string }>;
       const p = rows && rows[0];
       if (!p || !p.title) return { meta: fallback, body: "" };
       const meta: Meta = { title: `${p.title}${SUFFIX}`, description: (p.excerpt || fallback.description).slice(0, 300), image: p.image_url || DEFAULT_IMAGE };
-      const article = `<article><h1>${esc(p.title)}</h1>` + (p.excerpt ? `<p>${esc(p.excerpt)}</p>` : "") + `<div>${p.content || ""}</div></article>`;
-      const ld = jsonLd({ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt || meta.description, image: p.image_url || DEFAULT_IMAGE, dateModified: p.updated_at || undefined, author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" }, mainEntityOfPage: SITE + path });
+      const pub = p.published_at ? String(p.published_at).slice(0, 10) : "";
+      const upd = p.updated_at ? String(p.updated_at).slice(0, 10) : "";
+      const dateLine =
+        `<p>By <a href="${SITE}/about">Uzair Muhammad</a>` +
+        (pub ? ` &middot; Published <time datetime="${pub}">${pub}</time>` : "") +
+        (upd && upd !== pub ? ` &middot; Updated <time datetime="${upd}">${upd}</time>` : "") +
+        `</p>`;
+      const sources = TAX_LEGAL_RE.test(slug) || TAX_LEGAL_RE.test(p.title || "") ? officialSourcesBlock() : "";
+      const article =
+        `<article><h1>${esc(p.title)}</h1>` + dateLine + (p.excerpt ? `<p>${esc(p.excerpt)}</p>` : "") +
+        `<div>${p.content || ""}</div>` + sources + `</article>`;
+      const ld = jsonLd({ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt || meta.description, image: p.image_url || DEFAULT_IMAGE, datePublished: p.published_at || undefined, dateModified: p.updated_at || p.published_at || undefined, author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" }, mainEntityOfPage: SITE + path });
       return { meta, body: article + ABOUT_BLOCK + ld };
     } catch { return { meta: fallback, body: "" }; }
   }

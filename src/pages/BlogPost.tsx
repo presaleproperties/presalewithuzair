@@ -8,6 +8,7 @@ import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
+import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 
 /* ─── Reading progress bar ─── */
 function ReadingProgressBar() {
@@ -173,8 +174,20 @@ const BlogPost = () => {
               </div>
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
-                {formatDate(post.published_at)}
+                <span>
+                  Published{" "}
+                  <time dateTime={post.published_at || undefined}>{formatDate(post.published_at)}</time>
+                </span>
               </div>
+              {post.updated_at &&
+                post.updated_at.slice(0, 10) !== (post.published_at || "").slice(0, 10) && (
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="h-3.5 w-3.5" />
+                    <span>
+                      Updated <time dateTime={post.updated_at}>{formatDate(post.updated_at)}</time>
+                    </span>
+                  </div>
+                )}
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 {mins} min read
@@ -232,6 +245,8 @@ const BlogPost = () => {
                     }),
                   }}
                 />
+
+                {isTaxLegalPost(post.slug, post.title) && <OfficialSources />}
 
                 {/* FAQ */}
                 <FAQSchema />

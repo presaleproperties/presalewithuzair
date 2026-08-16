@@ -31,6 +31,10 @@ const PunjabiSpeakingRealtor = () => (
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
+    <p lang="pa" className="not-prose rounded-sm border-l-2 border-primary bg-card px-6 py-5 text-lg leading-loose text-foreground/85">
+      ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਉਜ਼ੈਰ ਮੁਹੰਮਦ ਹਾਂ। ਮੈਂ ਸਰੀ, ਲੈਂਗਲੀ ਅਤੇ ਫਰੇਜ਼ਰ ਵੈਲੀ ਵਿੱਚ ਪਰਿਵਾਰਾਂ ਦੀ ਉਹਨਾਂ ਦਾ ਪਹਿਲਾ ਪ੍ਰੀਸੇਲ ਘਰ ਖਰੀਦਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ। ਡਿਪਾਜ਼ਿਟ ਦੀਆਂ ਤਰੀਕਾਂ, ਕੰਟਰੈਕਟ ਦੀਆਂ ਸ਼ਰਤਾਂ ਅਤੇ ਅਸਲ ਲਾਗਤ ਮੈਂ ਤੁਹਾਡੇ ਮਾਤਾ-ਪਿਤਾ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਸਮਝਾਉਂਦਾ ਹਾਂ, ਤਾਂ ਜੋ ਸਾਈਨ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਪੂਰੇ ਪਰਿਵਾਰ ਨੂੰ ਸਭ ਕੁਝ ਸਾਫ਼ ਹੋਵੇ। ਮੈਂ ਸਿਰਫ਼ ਖਰੀਦਦਾਰਾਂ ਦਾ ਪੱਖ ਰੱਖਦਾ ਹਾਂ — ਡਿਵੈਲਪਰ ਦਾ ਕਦੇ ਨਹੀਂ।
+    </p>
+
     <h2>The contract is explained in Punjabi — not just English.</h2>
     <p>
       The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi. Uzair works in Punjabi, Hindi, Urdu, and English. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.

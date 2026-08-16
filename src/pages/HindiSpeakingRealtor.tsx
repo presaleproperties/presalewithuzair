@@ -31,6 +31,10 @@ const HindiSpeakingRealtor = () => (
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
+    <p lang="hi" className="not-prose rounded-sm border-l-2 border-primary bg-card px-6 py-5 text-lg leading-loose text-foreground/85">
+      नमस्ते, मैं उज़ैर मुहम्मद हूँ। मैं सरे, लैंगली और फ्रेज़र वैली में परिवारों को उनका पहला प्रीसेल घर खरीदने में मदद करता हूँ। डिपॉज़िट की तारीखें, कॉन्ट्रैक्ट की शर्तें और असली लागत मैं आपके माता-पिता को हिंदी में समझाता हूँ, ताकि साइन करने से पहले पूरे परिवार को सब कुछ साफ़ हो। मैं सिर्फ़ खरीदारों की तरफ़ से काम करता हूँ — डेवलपर की तरफ़ से कभी नहीं।
+    </p>
+
     <h2>The contract is explained in Hindi — not just English.</h2>
     <p>
       The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Hindi. Uzair works in Hindi, Punjabi, Urdu, and English. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.

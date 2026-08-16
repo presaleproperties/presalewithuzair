@@ -356,6 +356,8 @@ export const CITY_META: Record<string, Meta> = {
   "/burnaby": { title: "Burnaby Presale Condos & New Construction" + SUFFIX, description: "Buyer-first Burnaby presale expert. VIP access to Metrotown, Brentwood and Lougheed highrise new construction — SkyTrain-connected, strong rental demand, no developer bias.", image: DEFAULT_IMAGE },
 };
 
+import { CITY_DEPTH } from "../src/data/cityDepth";
+
 interface CityContent { name: string; intro: string; why: string; faqs: { q: string; a: string }[]; }
 
 const CITY_CONTENT: Record<string, CityContent> = {
@@ -400,6 +402,9 @@ function cityBody(path: string): string {
     `<h1>${esc(c.name)} Presale Condos &amp; New Construction — Buyer-Only Expert Uzair Muhammad</h1>` +
     `<p>${esc(c.intro)}</p>` +
     `<h2>Why buy a presale in ${esc(c.name)}?</h2><p>${esc(c.why)}</p>` +
+    (CITY_DEPTH[path.slice(1)] || [])
+      .map((sec) => `<h2>${esc(sec.heading)}</h2>` + sec.body.map((b) => `<p>${esc(b)}</p>`).join(""))
+      .join("") +
     `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml}` +
     ABOUT_BLOCK +
     jsonLd(breadcrumb(c.name + " Presales", path)) +

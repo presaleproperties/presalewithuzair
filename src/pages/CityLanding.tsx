@@ -5,6 +5,7 @@ import { ProjectGrid } from "@/components/ProjectGrid";
 import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
+import { CITY_DEPTH } from "@/data/cityDepth";
 
 interface CityFAQ {
   question: string;
@@ -456,6 +457,29 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
             </div>
           </div>
         </section>
+
+        {/* ── City depth (top markets) ── */}
+        {CITY_DEPTH[config.slug] && (
+          <section className="section-y bg-background">
+            <div className="container-xl px-4 sm:px-6 max-w-3xl">
+              <p className="section-label mb-3">Buyer representation in {config.city}</p>
+              <div className="space-y-12">
+                {CITY_DEPTH[config.slug].map((sec) => (
+                  <div key={sec.heading}>
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
+                      {sec.heading}
+                    </h2>
+                    {sec.body.map((para, i) => (
+                      <p key={i} className="text-[17px] leading-relaxed text-foreground/75 mb-4">
+                        {para}
+                      </p>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── FAQ Section ── */}
         <section className="section-y bg-background">

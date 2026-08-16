@@ -7,6 +7,7 @@ import { CheckCircle, Phone, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import heroImage from "@/assets/uzair-walking.jpg";
+import { AboutReviews } from "@/components/about/AboutReviews";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import brochureReviewImage from "@/assets/uzair-brochure-review.jpg";
@@ -405,6 +406,8 @@ const About = () => {
             </div>
           </div>
         </section>
+
+        <AboutReviews />
 
         {/* Proof strip */}
         <section className="py-10 bg-background divider-y">

@@ -28,15 +28,88 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/en/assigments": "/",
   "/webinar-registeration-page": "/call",
   "/agents": "/",
+  "/book": "/call",
   "/en": "/",
 };
+
+/**
+ * Hand-built map of known legacy Framer blog URLs (after "/en/blog/") to the
+ * current post slug. Used before the dynamic slug lookup.
+ */
+const LEGACY_BLOG_MAP: Record<string, string> = {
+  "how-to-buy-a-presale-condo-in-bc-vancouver-beginner-s-guide-to-purchasing-a-presale-condo":
+    "how-to-buy-presale-condo-bc",
+  "who-is-the-best-presale-condo-realtor-in-surrey": "best-presale-realtor-fraser-valley",
+};
+
+/** Topic keywords → current slug, for fuzzy matching unknown legacy blog URLs. */
+const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
+  { keywords: ["gst", "rebate"], slug: "gst-rebate-presale-condos-bc-2026" },
+  { keywords: ["assignment"], slug: "assignment-sales-bc-2026-process-fees-taxes" },
+  { keywords: ["deposit"], slug: "presale-condo-deposit-structure-bc" },
+  { keywords: ["rescission"], slug: "bc-presale-7-day-rescission-period-2026" },
+  { keywords: ["7", "day"], slug: "bc-presale-7-day-rescission-period-2026" },
+  { keywords: ["resale"], slug: "move-in-ready-vs-presale-comparison" },
+  { keywords: ["best", "realtor"], slug: "best-presale-realtor-fraser-valley" },
+  { keywords: ["best", "agent"], slug: "best-presale-realtor-fraser-valley" },
+  { keywords: ["flipping", "tax"], slug: "bc-home-flipping-tax-presale-2026" },
+  { keywords: ["first", "time"], slug: "first-time-home-buyer-presale-guide-bc-2026" },
+  { keywords: ["invest"], slug: "investor-guide-fraser-valley-presales-2026" },
+  { keywords: ["floor", "plan"], slug: "how-to-read-presale-floor-plan-bc-2026" },
+  { keywords: ["how", "buy"], slug: "how-to-buy-presale-condo-bc" },
+];
 
 export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
+  if (path.startsWith("/en/blog/")) return null; // resolved asynchronously
   if (path.startsWith("/en/")) return "/";
   return null;
 }
+
+/**
+ * Resolve a legacy /en/blog/{slug} URL to the closest live post.
+ * Order: hand map → exact slug match → keyword-overlap match → /blog.
+ */
+export async function legacyBlogRedirect(
+  pathname: string,
+  env: Record<string, string | undefined>,
+): Promise<string> {
+  const oldSlug = pathname.replace(/\/+$/, "").slice("/en/blog/".length).toLowerCase();
+  if (!oldSlug) return "/blog";
+  if (LEGACY_BLOG_MAP[oldSlug]) return `/blog/${LEGACY_BLOG_MAP[oldSlug]}`;
+
+  const key = env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY;
+  let slugs: string[] = [];
+  if (key) {
+    try {
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/blog_posts?published=eq.true&select=slug&limit=1000`,
+        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+      );
+      if (r.ok) slugs = ((await r.json()) as Array<{ slug: string }>).map((x) => x.slug).filter(Boolean);
+    } catch { /* fall through */ }
+  }
+
+  if (slugs.includes(oldSlug)) return `/blog/${oldSlug}`;
+
+  const words = oldSlug.split("-").filter((w) => w.length > 2);
+  let best: { slug: string; score: number } | null = null;
+  for (const s of slugs) {
+    const parts = new Set(s.split("-"));
+    const score = words.filter((w) => parts.has(w)).length;
+    if (score >= 3 && (!best || score > best.score)) best = { slug: s, score };
+  }
+  if (best) return `/blog/${best.slug}`;
+
+  for (const t of LEGACY_BLOG_TOPICS) {
+    if (t.keywords.every((k) => words.includes(k))) {
+      if (!slugs.length || slugs.includes(t.slug)) return `/blog/${t.slug}`;
+    }
+  }
+  return "/blog";
+}
+
 
 
 
@@ -77,7 +150,6 @@ export const STATIC_META: Record<string, Meta> = {
   "/services": { title: "Buyer-Only Presale Services" + SUFFIX, description: "VIP developer access, contract review, and no developer bias. How Uzair Muhammad protects first-time buyers and investors buying presale & new-construction homes in BC.", image: DEFAULT_IMAGE },
   "/contact": { title: "Contact Uzair Muhammad — Free Presale Strategy Call", description: "Book a free, no-pressure presale strategy call with Uzair Muhammad. Buyer-first advice for first-time buyers and investors. English, Punjabi, Hindi & Urdu.", image: DEFAULT_IMAGE },
   "/call": { title: "Book a Free Presale Strategy Call" + SUFFIX, description: "Schedule a free 15-minute presale strategy call with Uzair Muhammad — buyer-first guidance for first-time buyers and investors in the Fraser Valley.", image: DEFAULT_IMAGE },
-  "/book": { title: "Book a Free Presale Consultation | Uzair Muhammad", description: "Book a free presale consultation with Uzair Muhammad — buyer-only presale and new-construction guidance across Surrey, Langley, Abbotsford and the Fraser Valley.", image: DEFAULT_IMAGE },
   "/presale-guide": { title: "Free Presale Buyer's Guide — 7 Costly Mistakes" + SUFFIX, description: "Download Uzair Muhammad's free presale guide: spot contract traps, hidden closing costs, and developer red flags before you sign your deposit.", image: DEFAULT_IMAGE },
   "/blog": { title: "Presale Buying Guides & BC Market Insights" + SUFFIX, description: "Expert presale and new-construction guides for BC buyers and investors — deposits, GST, assignments, neighbourhoods, and market timing from Uzair Muhammad.", image: DEFAULT_IMAGE },
   "/punjabi-speaking-realtor": { title: "Punjabi Speaking Realtor — Presale & New Construction, Surrey & Fraser Valley", description: "Punjabi speaking buyer-side presale advisor in Surrey, Langley and the Fraser Valley. Uzair Muhammad represents buyers, never developers, and explains the contract to your family in Punjabi.", image: DEFAULT_IMAGE },
@@ -92,7 +164,6 @@ const STATIC_BODY: Record<string, string> = {
   "/services": `<h1>Buyer-Only Presale &amp; New-Construction Services</h1><p>Uzair represents buyers only. Services include VIP early access to new-construction projects, line-by-line contract and disclosure-statement review, deposit-structure and assignment guidance, and independent advice for first-time buyers and investors — with no developer bias.</p>`,
   "/contact": `<h1>Contact Uzair Muhammad</h1><p>Book a free, no-pressure presale strategy call. Buyer-first advice for first-time buyers and investors buying new construction in the Fraser Valley, in English, Punjabi, Hindi and Urdu. <a href="${SITE}/call">Book a call</a>.</p>`,
   "/call": `<h1>Book a Free Presale Strategy Call</h1><p>Schedule a free 15-minute presale strategy call with Uzair Muhammad — buyer-first guidance for first-time buyers and investors across the Fraser Valley.</p>`,
-  "/book": `<h1>Book a Free Presale Consultation</h1><p>Book a free consultation with Uzair Muhammad — buyer-only presale and new-construction guidance for first-time buyers and investors across Surrey, Langley, Abbotsford and the Fraser Valley, in English, Punjabi, Hindi and Urdu.</p>`,
   "/presale-guide": `<h1>Free Presale Buyer's Guide — 7 Costly Mistakes to Avoid</h1><p>Download Uzair Muhammad's free presale buyer's guide and learn how to spot contract traps, hidden closing costs, GST surprises, and developer red flags before you sign your deposit.</p>`,
   "/blog": `<h1>Presale Buying Guides &amp; BC Market Insights</h1><p>Expert, buyer-first guides on presale and new construction in British Columbia — deposits, GST and rebates, assignment sales, the BC flipping tax, neighbourhood breakdowns, developer risk, and market timing.</p>`,
   "/punjabi-speaking-realtor": languagePageBody("Punjabi", "A Punjabi speaking realtor who works for the buyer, not the developer.", "Is there a Punjabi speaking realtor for presales in Surrey? Yes.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
@@ -651,7 +722,10 @@ export const onRequest: any = async (context: any) => {
 
   // Legacy 301s — applied for humans AND crawlers, before any rewriting.
   const reqUrl = new URL(request.url);
-  const target = legacyRedirect(reqUrl.pathname);
+  let target = legacyRedirect(reqUrl.pathname);
+  if (!target && reqUrl.pathname.replace(/\/+$/, "").startsWith("/en/blog/")) {
+    try { target = await legacyBlogRedirect(reqUrl.pathname, env); } catch { target = "/blog"; }
+  }
   if (target) {
     const dest = new URL(target, reqUrl.origin);
     dest.search = reqUrl.search;

@@ -118,6 +118,45 @@ const LandingPage = () => {
           </div>
         </section>
 
+        {/* What happens on the call */}
+        <section className="px-4 pb-12 md:pb-16">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+              What happens on the call
+            </h2>
+            <p className="text-sm text-foreground/60 mb-6">15 minutes. No obligation.</p>
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {[
+                { icon: Users, text: "I ask about your goals, timeline and budget — nothing is pitched." },
+                { icon: FileSearch, text: "I shortlist the projects that actually match what you told me." },
+                { icon: BadgeDollarSign, text: "You get VIP pricing and early access on the projects I represent buyers for." },
+                { icon: Shield, text: "No obligation. If presale is the wrong move right now, I'll say so." },
+              ].map(({ icon: Icon, text }) => (
+                <li key={text} className="flex items-start gap-3 bg-card border border-border/70 rounded-sm p-4">
+                  <Icon className="h-4 w-4 text-primary mt-0.5 shrink-0" strokeWidth={2.25} />
+                  <span className="text-sm text-foreground/80">{text}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {testimonials.slice(0, 2).map((t) => (
+                <figure key={t.name} className="bg-card border border-border/70 rounded-sm p-5">
+                  <div className="flex gap-0.5 mb-2">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-3.5 w-3.5 fill-[#F5B72F] text-[#F5B72F]" />
+                    ))}
+                  </div>
+                  <blockquote className="text-sm text-foreground/80 line-clamp-5">{t.text}</blockquote>
+                  <figcaption className="mt-3 text-xs font-semibold text-foreground/60">{t.name} · Google review</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+
         {/* Social Proof */}
         <section className="px-4 section-y-sm border-t border-border/70">
           <div className="max-w-5xl mx-auto">

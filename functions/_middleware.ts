@@ -184,6 +184,59 @@ const ABOUT_BLOCK = `
     <a href="${SITE}/maple-ridge">Maple Ridge presales</a>
   </nav>`;
 
+/**
+ * Three verbatim Google reviews, mirrored from src/data/googleReviews.ts.
+ * Rendered on /about so the sitewide aggregateRating in index.html is
+ * accompanied by individual Review objects on the page where reviews appear.
+ */
+const ABOUT_REVIEWS: { name: string; quote: string; when: string }[] = [
+  {
+    name: "Ray M",
+    quote:
+      "Now I see why he's called the \"presale expert.\" Uzair's expertise in the presale market is exceptional. His strong relationships with developers enabled us to secure the best unit in the building at an incredible price. It was an outstanding experience.",
+    when: "a year ago",
+  },
+  {
+    name: "Mehreen Chaudry",
+    quote:
+      "I have been working with Uzair for a number of years he is an expert in his knowledge about presale in Vancouver. His personalized approach for his client is what makes it very easy to work with him.",
+    when: "a year ago",
+  },
+  {
+    name: "Adam Lai",
+    quote:
+      "Uzair helped me with my investment property, and I couldn't be more grateful. He's focused on making sure you get the best deal and guiding you through every step of the process. If a deal or project isn't right, he'll tell you exactly that, no fluff, no hype.",
+    when: "a year ago",
+  },
+];
+
+function aboutReviewsBlock(): string {
+  const cards = ABOUT_REVIEWS.map(
+    (r) =>
+      `<figure><p>&#9733;&#9733;&#9733;&#9733;&#9733;</p><blockquote>${esc(r.quote)}</blockquote><figcaption>${esc(r.name)} — Google review, ${esc(r.when)}</figcaption></figure>`,
+  ).join("");
+  const ld = jsonLd({
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "@id": SITE + "/#agent",
+    name: "Uzair Muhammad — Presale With Uzair",
+    url: SITE,
+    aggregateRating: { "@type": "AggregateRating", ratingValue: 4.9, reviewCount: 36, bestRating: 5 },
+    review: ABOUT_REVIEWS.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.name.split(" ")[0] },
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      reviewBody: r.quote,
+      itemReviewed: { "@id": SITE + "/#agent" },
+    })),
+  });
+  return (
+    `<section><h2>Reviews from families Uzair has represented</h2>${cards}` +
+    `<p><a href="https://share.google/qgUTcQF2kOnjBBPr7" rel="noopener">4.9&#9733; &middot; 36 Google reviews</a></p></section>` +
+    ld
+  );
+}
+
 export const STATIC_META: Record<string, Meta> = {
   "/": { title: "Presale & New Condos Fraser Valley | Uzair Muhammad", description: "Fraser Valley's leading presale agent. VIP access to new condos & townhomes — with you from project to keys. The developer pays my fee. English · Punjabi · Hindi · Urdu.", image: DEFAULT_IMAGE },
   "/about": { title: "About Uzair Muhammad | Fraser Valley's Leading Presale Agent", description: "Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu.", image: DEFAULT_IMAGE },

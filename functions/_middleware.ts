@@ -30,6 +30,45 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/agents": "/",
   "/book": "/call",
   "/en": "/",
+
+  // --- Blog consolidation (Aug 2026): retired duplicate posts → cluster winner ---
+  // GST / first-time-buyer rebate
+  "/blog/fthb-gst-rebate-save-50000-bc-presales-2026": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  "/blog/gst-rebate-first-time-buyers-bc-presale-condos": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  "/blog/gst-rebate-presale-condos-bc-2026": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",
+  // Assignments — process
+  "/blog/presale-assignment-condos-bc-how-to-buy-2026": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/selling-before-completion-assignment-sales-presale-profits": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/surrey-assignment-flip-sell-presale-contract-before-completion": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/surrey-presale-assignment-flip-how-to-sell-contract": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/selling-a-presale-condo-assignment-in-fraser-valley-what-you-need-to-know": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/why-developer-blocking-presale-assignment-bc": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  // Assignments — tax / pricing
+  "/blog/gst-on-presale-assignment-sales-bc-rules": "/blog/assignment-sales-gst-cra-anti-flipping-2026",
+  "/blog/presale-assignment-sales-exit-strategy-bc": "/blog/how-to-price-presale-assignment-bc",
+  // How to buy
+  "/blog/how-to-buy-presale-condo-bc": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/how-buying-presale-condo-bc-works": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/how-buying-presale-condo-bc-works-complete-guide": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/complete-guide-buying-presale-condos-vancouver-2026": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/buy-presale-fraser-valley": "/blog/how-to-buy-a-presale-in-bc-2026",
+  // Deposits / financing
+  "/blog/presale-condo-deposit-structure-bc": "/blog/understanding-presale-deposit-structure-bc-2026",
+  "/blog/presale-deposit-protection-bc": "/blog/understanding-presale-deposit-structure-bc-2026",
+  "/blog/presale-condo-financials-deposits-mortgages-hidden-costs": "/blog/how-much-cash-to-buy-presale-bc-2026",
+  "/blog/presale-condo-bc-deposits-hidden-costs-gst": "/blog/how-much-cash-to-buy-presale-bc-2026",
+  // 7-day rescission
+  "/blog/7-day-rescission-period-bc-presale": "/blog/bc-presale-7-day-rescission-period-2026",
+  // Completion delays / value at completion
+  "/blog/presale-completion-delayed-6-24-months-bc-rights": "/blog/presale-delayed-bc-rights-outside-date-2026",
+  "/blog/what-happens-if-your-presale-condo-is-worth-less-at-completion": "/blog/presale-appraisal-gap-completion-bc-2026",
+  // BC home flipping tax
+  "/blog/bc-s-new-20-flipping-tax-what-it-means-for-pre-sale-buyers-and-investors": "/blog/bc-home-flipping-tax-presale-2026",
+  "/blog/does-the-bc-home-flipping-tax-apply-to-presale-condos-what-buyers-need-to-know-in-2026": "/blog/bc-home-flipping-tax-presale-2026",
+  "/blog/the-bc-home-flipping-tax-and-your-presale-condo-what-surrey-buyers-and-investors-must-know-in-2026": "/blog/bc-home-flipping-tax-presale-2026",
+  // Presale risk
+  "/blog/presale-risks-developer-bankruptcy-cancellations-bc": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
+  "/blog/5-presale-condo-risks-bc-buyers-must-know": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
 };
 
 /**
@@ -38,15 +77,15 @@ const REDIRECT_EXACT: Record<string, string> = {
  */
 const LEGACY_BLOG_MAP: Record<string, string> = {
   "how-to-buy-a-presale-condo-in-bc-vancouver-beginner-s-guide-to-purchasing-a-presale-condo":
-    "how-to-buy-presale-condo-bc",
+    "how-to-buy-a-presale-in-bc-2026",
   "who-is-the-best-presale-condo-realtor-in-surrey": "best-presale-realtor-fraser-valley",
 };
 
 /** Topic keywords → current slug, for fuzzy matching unknown legacy blog URLs. */
 const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
-  { keywords: ["gst", "rebate"], slug: "gst-rebate-presale-condos-bc-2026" },
+  { keywords: ["gst", "rebate"], slug: "first-time-buyer-gst-rebate-bc-presale-2026" },
   { keywords: ["assignment"], slug: "assignment-sales-bc-2026-process-fees-taxes" },
-  { keywords: ["deposit"], slug: "presale-condo-deposit-structure-bc" },
+  { keywords: ["deposit"], slug: "understanding-presale-deposit-structure-bc-2026" },
   { keywords: ["rescission"], slug: "bc-presale-7-day-rescission-period-2026" },
   { keywords: ["7", "day"], slug: "bc-presale-7-day-rescission-period-2026" },
   { keywords: ["resale"], slug: "move-in-ready-vs-presale-comparison" },
@@ -56,8 +95,9 @@ const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
   { keywords: ["first", "time"], slug: "first-time-home-buyer-presale-guide-bc-2026" },
   { keywords: ["invest"], slug: "investor-guide-fraser-valley-presales-2026" },
   { keywords: ["floor", "plan"], slug: "how-to-read-presale-floor-plan-bc-2026" },
-  { keywords: ["how", "buy"], slug: "how-to-buy-presale-condo-bc" },
+  { keywords: ["how", "buy"], slug: "how-to-buy-a-presale-in-bc-2026" },
 ];
+
 
 export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";

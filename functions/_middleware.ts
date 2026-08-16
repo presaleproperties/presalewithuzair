@@ -28,15 +28,88 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/en/assigments": "/",
   "/webinar-registeration-page": "/call",
   "/agents": "/",
+  "/book": "/call",
   "/en": "/",
 };
+
+/**
+ * Hand-built map of known legacy Framer blog URLs (after "/en/blog/") to the
+ * current post slug. Used before the dynamic slug lookup.
+ */
+const LEGACY_BLOG_MAP: Record<string, string> = {
+  "how-to-buy-a-presale-condo-in-bc-vancouver-beginner-s-guide-to-purchasing-a-presale-condo":
+    "how-to-buy-presale-condo-bc",
+  "who-is-the-best-presale-condo-realtor-in-surrey": "best-presale-realtor-fraser-valley",
+};
+
+/** Topic keywords → current slug, for fuzzy matching unknown legacy blog URLs. */
+const LEGACY_BLOG_TOPICS: Array<{ keywords: string[]; slug: string }> = [
+  { keywords: ["gst", "rebate"], slug: "gst-rebate-presale-condos-bc-2026" },
+  { keywords: ["assignment"], slug: "assignment-sales-bc-2026-process-fees-taxes" },
+  { keywords: ["deposit"], slug: "presale-condo-deposit-structure-bc" },
+  { keywords: ["rescission"], slug: "bc-presale-7-day-rescission-period-2026" },
+  { keywords: ["7", "day"], slug: "bc-presale-7-day-rescission-period-2026" },
+  { keywords: ["resale"], slug: "move-in-ready-vs-presale-comparison" },
+  { keywords: ["best", "realtor"], slug: "best-presale-realtor-fraser-valley" },
+  { keywords: ["best", "agent"], slug: "best-presale-realtor-fraser-valley" },
+  { keywords: ["flipping", "tax"], slug: "bc-home-flipping-tax-presale-2026" },
+  { keywords: ["first", "time"], slug: "first-time-home-buyer-presale-guide-bc-2026" },
+  { keywords: ["invest"], slug: "investor-guide-fraser-valley-presales-2026" },
+  { keywords: ["floor", "plan"], slug: "how-to-read-presale-floor-plan-bc-2026" },
+  { keywords: ["how", "buy"], slug: "how-to-buy-presale-condo-bc" },
+];
 
 export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
+  if (path.startsWith("/en/blog/")) return null; // resolved asynchronously
   if (path.startsWith("/en/")) return "/";
   return null;
 }
+
+/**
+ * Resolve a legacy /en/blog/{slug} URL to the closest live post.
+ * Order: hand map → exact slug match → keyword-overlap match → /blog.
+ */
+export async function legacyBlogRedirect(
+  pathname: string,
+  env: Record<string, string | undefined>,
+): Promise<string> {
+  const oldSlug = pathname.replace(/\/+$/, "").slice("/en/blog/".length).toLowerCase();
+  if (!oldSlug) return "/blog";
+  if (LEGACY_BLOG_MAP[oldSlug]) return `/blog/${LEGACY_BLOG_MAP[oldSlug]}`;
+
+  const key = env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY;
+  let slugs: string[] = [];
+  if (key) {
+    try {
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/blog_posts?published=eq.true&select=slug&limit=1000`,
+        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+      );
+      if (r.ok) slugs = ((await r.json()) as Array<{ slug: string }>).map((x) => x.slug).filter(Boolean);
+    } catch { /* fall through */ }
+  }
+
+  if (slugs.includes(oldSlug)) return `/blog/${oldSlug}`;
+
+  const words = oldSlug.split("-").filter((w) => w.length > 2);
+  let best: { slug: string; score: number } | null = null;
+  for (const s of slugs) {
+    const parts = new Set(s.split("-"));
+    const score = words.filter((w) => parts.has(w)).length;
+    if (score >= 3 && (!best || score > best.score)) best = { slug: s, score };
+  }
+  if (best) return `/blog/${best.slug}`;
+
+  for (const t of LEGACY_BLOG_TOPICS) {
+    if (t.keywords.every((k) => words.includes(k))) {
+      if (!slugs.length || slugs.includes(t.slug)) return `/blog/${t.slug}`;
+    }
+  }
+  return "/blog";
+}
+
 
 
 

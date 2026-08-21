@@ -180,6 +180,9 @@ async function fetchProjectSlugs(): Promise<string[]> {
  * blog lastmod values come from each post's real updated timestamp instead of
  * being hand-frozen. Static/city/funnel routes fall back to the build date.
  * /projects/* pages are noindex and excluded; /agents 301s to / and is excluded.
+ * The homepage "/" is ALSO excluded — it permanently 301s to
+ * presaleproperties.com, and a redirecting URL must not be sitemapped
+ * (mixed-signal flag from the Aug 2 + Aug 20 SEO audits).
  */
 const BUILD_DATE = new Date().toISOString().split("T")[0];
 
@@ -200,6 +203,7 @@ function urlNode(path: string, lastmod: string, changefreq: string, priority: st
 function writeSitemap(blogPosts: BlogRow[]) {
   const lines: string[] = [];
   for (const p of Object.keys(STATIC_META)) {
+    if (p === "/") continue; // homepage 301s to presaleproperties.com — never sitemap a redirecting URL
     const cfg = STATIC_PRIORITY[p] || { priority: "0.8", changefreq: "monthly" };
     lines.push(urlNode(p, BUILD_DATE, cfg.changefreq, cfg.priority));
   }
@@ -255,4 +259,3 @@ async function main() {
 
 
 main();
-

@@ -17,7 +17,9 @@ import {
   CITY_META,
   FUNNEL,
   resolve as resolveMeta,
+  legacyRedirect,
   SUPABASE_REST_URL,
+
 } from "../functions/_middleware.js";
 
 const DIST = pathResolve(process.cwd(), "dist");

@@ -29,20 +29,21 @@ const proofPoints = [
 
 const MetaRow = ({ className = "" }: { className?: string }) => (
   <div className={`flex flex-col gap-3 ${className}`}>
-    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-      <span className="eyebrow text-foreground/40 shrink-0">Serving</span>
-      <span className="text-sm font-medium text-foreground/75">
-        {serviceAreas.join(" · ")}
-      </span>
+    <div className="flex flex-wrap items-center gap-y-1">
+      <span className="eyebrow text-foreground/45 shrink-0 mr-2">Serving</span>
+      {serviceAreas.map((area, i) => (
+        <span key={area} className="text-sm font-medium text-foreground/75 flex items-center">
+          {i > 0 && <span className="text-foreground/30 mr-2" aria-hidden="true">·</span>}
+          {area}
+        </span>
+      ))}
     </div>
-    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-      <span className="eyebrow text-foreground/40 shrink-0">Languages</span>
+    <div className="flex flex-wrap items-center gap-y-1">
+      <span className="eyebrow text-foreground/45 shrink-0 mr-2">Languages</span>
       {languages.map((lang, i) => (
-        <span key={lang} className="text-sm font-medium text-foreground/75">
+        <span key={lang} className="text-sm font-medium text-foreground/75 flex items-center">
+          {i > 0 && <span className="text-foreground/30 mr-2" aria-hidden="true">·</span>}
           {lang}
-          {i < languages.length - 1 && (
-            <span className="text-foreground/30 ml-2">·</span>
-          )}
         </span>
       ))}
     </div>

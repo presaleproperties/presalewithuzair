@@ -91,8 +91,11 @@ export type Database = {
           buyer_type: string
           city: string | null
           created_at: string
+          crm_contact_id: string | null
           email: string
           first_name: string
+          forward_error: string | null
+          forward_status: string | null
           has_agent: string | null
           id: string
           is_paid: boolean | null
@@ -119,8 +122,11 @@ export type Database = {
           buyer_type: string
           city?: string | null
           created_at?: string
+          crm_contact_id?: string | null
           email: string
           first_name: string
+          forward_error?: string | null
+          forward_status?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null
@@ -147,8 +153,11 @@ export type Database = {
           buyer_type?: string
           city?: string | null
           created_at?: string
+          crm_contact_id?: string | null
           email?: string
           first_name?: string
+          forward_error?: string | null
+          forward_status?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null

@@ -6,9 +6,11 @@ const corsHeaders = {
 };
 
 // ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
+// Slug is env-overridable: flip DEALZFLOW_SOURCE_SLUG to "presale_with_uzair"
+// once that source is registered in DealzFlow (it currently 401s).
+const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "website_form";
 const DEALZFLOW_INTAKE_URL =
-  "https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=website_form";
-const DEALZFLOW_SOURCE_SLUG = "website_form";
+  `https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=${DEALZFLOW_SOURCE_SLUG}`;
 const DEALZFLOW_INTAKE_TOKEN = Deno.env.get("DEALZFLOW_INTAKE_TOKEN") ?? "";
 
 // buyer-type → DealzFlow Lead Type label
@@ -164,7 +166,10 @@ interface CrmContext {
 
 // Forward a captured lead to DealzFlow lead-intake with a rich summary note
 // AND structured fields (city, budget range, lead type, tags). Best-effort.
-async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): Promise<void> {
+async function forwardToDealzFlow(
+  lead: Record<string, any>,
+  ctx: CrmContext,
+): Promise<{ status: string; error: string | null; contactId: string | null }> {
   try {
     const bt = lead.buyer_type as string | null;
     const buyerLabel = bt ? (BUYER_TYPE_LABELS[bt] || bt) : null;
@@ -202,6 +207,7 @@ async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): P
 
     const crmBody: Record<string, any> = {
       source_slug: DEALZFLOW_SOURCE_SLUG,
+      event_id: lead.id || crypto.randomUUID(),
       first_name: lead.first_name || undefined,
       last_name: lead.last_name || undefined,
       email: lead.email || undefined,
@@ -259,8 +265,16 @@ async function forwardToDealzFlow(lead: Record<string, any>, ctx: CrmContext): P
     });
     const text = await res.text();
     console.log("DealzFlow lead-intake status:", res.status, text.slice(0, 300));
+    let contactId: string | null = null;
+    try { contactId = JSON.parse(text)?.contact_id ?? null; } catch { /* non-JSON body */ }
+    if (!res.ok) {
+      return { status: "failed", error: `HTTP ${res.status}: ${text.slice(0, 300)}`, contactId };
+    }
+    return { status: "sent", error: null, contactId };
   } catch (crmErr) {
-    console.error("DealzFlow forward error:", crmErr instanceof Error ? crmErr.message : crmErr);
+    const msg = crmErr instanceof Error ? crmErr.message : String(crmErr);
+    console.error("DealzFlow forward error:", msg);
+    return { status: "failed", error: msg.slice(0, 300), contactId: null };
   }
 }
 
@@ -391,7 +405,7 @@ Deno.serve(async (req) => {
     ].filter((t): t is string => !!t)));
 
     // ─── Forward to DealzFlow CRM (primary destination) ──────────────────
-    await forwardToDealzFlow(lead, {
+    const forward = await forwardToDealzFlow(lead, {
       userAgent: req.headers.get("user-agent"),
       clientIP,
       city,
@@ -404,6 +418,21 @@ Deno.serve(async (req) => {
       extraMessage: message,
       neighbourhood,
     });
+
+    // Persist the CRM handoff outcome so silent delivery failures are visible.
+    const { error: forwardLogError } = await supabase
+      .from("leads")
+      .update({
+        forward_status: forward.status,
+        forward_error: forward.error,
+        crm_contact_id: forward.contactId,
+      })
+      .eq("id", lead.id);
+    if (forwardLogError) {
+      console.error("Failed to record forward status:", forwardLogError.message);
+    }
+
+
 
 
     return new Response(

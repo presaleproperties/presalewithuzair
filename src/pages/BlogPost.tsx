@@ -100,6 +100,17 @@ const BlogPost = () => {
     ? `https://presalewithuzair.com/${slug}/`
     : `https://presalewithuzair.com/blog/${slug}/`;
 
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://presalewithuzair.com/" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://presalewithuzair.com/blog/" },
+      { "@type": "ListItem", position: 3, name: post.title, item: canonicalUrl },
+    ],
+  };
+
+
   return (
     <>
       <Helmet>
@@ -128,6 +139,8 @@ const BlogPost = () => {
         {post.image_url && <meta name="twitter:image" content={post.image_url} />}
         {post.image_url && <meta name="twitter:image:alt" content={post.title} />}
         <script type="application/ld+json">{JSON.stringify(articleStructuredData)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbStructuredData)}</script>
+
       </Helmet>
 
       <ReadingProgressBar />

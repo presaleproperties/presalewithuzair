@@ -846,8 +846,10 @@ export async function resolve(pathname: string, env: Record<string, string | und
   }
   if (STATIC_META[path]) {
     const extra = path === "/about" ? aboutReviewsBlock() : "";
-    return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + extra + ABOUT_BLOCK };
+    const schema = path === "/" ? jsonLd(faqPage(HOME_FAQS)) : "";
+    return { meta: STATIC_META[path], body: (STATIC_BODY[path] || "") + extra + ABOUT_BLOCK + schema };
   }
+
   if (CITY_META[path]) {
     const citySlug = path.replace(/^\//, "");
     const cityImage = `${SITE}/images/heroes/${citySlug}-hero.jpg`;

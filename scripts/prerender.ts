@@ -125,12 +125,23 @@ function blogIndexBody(posts: BlogRow[]): string {
   return `<section><h2>All presale guides (${posts.length})</h2><ul>${items}</ul></section><script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>`;
 }
 
+/**
+ * The host (Cloudflare Pages) serves directory-style prerendered files: /about
+ * 308s to /about/. The trailing-slash form is the one that answers 200, so it
+ * is the authoritative form for canonical, og:url and every sitemap <loc>.
+ * The root stays exactly "/".
+ */
+export function canonicalPath(path: string): string {
+  const p = path.replace(/\/+$/, "");
+  return p === "" ? "/" : `${p}/`;
+}
+
 async function writeRoute(path: string, extraBody = ""): Promise<void> {
   const env: Record<string, string | undefined> = {
     VITE_SUPABASE_PUBLISHABLE_KEY: anonKey,
   };
   const resolved = await resolveMeta(path, env);
-  const canonical = resolved.canonical || `${SITE}${path === "/" ? "/" : path.replace(/\/+$/, "")}`;
+  const canonical = resolved.canonical || SITE + canonicalPath(path);
   const html = applyMeta(TEMPLATE, resolved.meta, canonical, (resolved.body || "") + extraBody, resolved.robots);
   const file = pathToFile(path);
   mkdirSync(dirname(file), { recursive: true });
@@ -199,7 +210,7 @@ const STATIC_PRIORITY: Record<string, { priority: string; changefreq: string }> 
 
 function urlNode(path: string, lastmod: string | undefined, changefreq: string, priority: string): string {
   const mod = lastmod ? `<lastmod>${lastmod}</lastmod>` : "";
-  return `  <url><loc>${SITE}${path === "/" ? "/" : path}</loc>${mod}<changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+  return `  <url><loc>${SITE}${canonicalPath(path)}</loc>${mod}<changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
 }
 
 function writeSitemap(blogPosts: BlogRow[]) {

@@ -6,7 +6,7 @@ const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
   subheadline: "Specializing in New Construction homes.",
-  body: "I help buyers cut through the developer's sales pitch, understand what really matters, and decide whether the presale project is actually right for them. From project selection to keys in hand, I guide you every step of the way.",
+  body: "I help buyers cut through the developer's sales pitch, understand what really matters, and decide whether the presale project is actually right for them. From project selection to keys in hand, I guide you every step of the way. I don't work for the developer. ",
   cta: "Ask Uzair About a Project",
 };
 

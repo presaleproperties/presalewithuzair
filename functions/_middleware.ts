@@ -398,10 +398,13 @@ function cityBody(path: string): string {
   const c = CITY_CONTENT[path];
   if (!c) return "";
   const faqHtml = c.faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("");
+  const dot = c.intro.indexOf(". ");
+  const headline = dot > 0 ? c.intro.slice(0, dot) : `${c.name} Presale Condos & New Homes`;
+  const introRest = dot > 0 ? c.intro.slice(dot + 2) : c.intro;
   return (
-    `<h1>${esc(c.name)} Presale Condos &amp; New Construction — Buyer-Only Expert Uzair Muhammad</h1>` +
-    `<p>${esc(c.intro)}</p>` +
-    `<h2>Why buy a presale in ${esc(c.name)}?</h2><p>${esc(c.why)}</p>` +
+    `<h1>${esc(headline)}</h1>` +
+    `<p>${esc(introRest)}</p>` +
+    `<h2>How should you choose a ${esc(c.name)} presale?</h2><p>${esc(c.why)}</p>` +
     (CITY_DEPTH[path.slice(1)] || [])
       .map((sec) => `<h2>${esc(sec.heading)}</h2>` + sec.body.map((b) => `<p>${esc(b)}</p>`).join(""))
       .join("") +

@@ -827,7 +827,7 @@ export async function resolve(pathname: string, env: Record<string, string | und
       const title = String(baseTitle).includes("Uzair") ? String(baseTitle) : String(baseTitle) + SUFFIX;
       const description = String(p.seo_description || p.short_description || `${p.name}${p.developer_name ? " by " + p.developer_name : ""} — presale new construction${p.city ? " in " + p.city : ""}. Get floor plans and pricing.`).slice(0, 300);
       const image = p.og_image || p.featured_image || DEFAULT_IMAGE;
-      const canonical = p.source_url || (SITE + path);
+      const canonical = p.source_url || (SITE + path.replace(/\/+$/, "") + "/");
       const price = Number(p.starting_price);
       const showPrice = Number.isFinite(price) && price >= 200000;
       const faqs = Array.isArray(p.faq) ? (p.faq as any[]).map((f) => ({ q: String(f?.question ?? f?.q ?? "").trim(), a: String(f?.answer ?? f?.a ?? "").trim() })).filter((f) => f.q && f.a) : [];

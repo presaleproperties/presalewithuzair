@@ -4,8 +4,8 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "PRESALE ADVICE FROM THE BUYER'S SIDE.",
-  subheadline: "The sales centre knows how to sell the project.",
+  headline: "FRASER VALLEY'S LEASING PRESALE AGENT.",
+  subheadline: "Specializing in Newly built Condos, Townhomes, Duplex and more.",
   body: "I help you decide whether it's actually right for you. I represent presale and new-construction buyers across Surrey, Langley, Abbotsford and the Fraser Valley — helping you compare projects, understand the numbers and make a confident decision before you commit. English · Punjabi · Hindi · Urdu.",
   cta: "Ask Uzair About a Project",
 };

@@ -240,8 +240,14 @@ async function main() {
   Object.keys(STATIC_META).forEach((p) => paths.add(p));
   Object.keys(CITY_META).forEach((p) => paths.add(p));
   Object.keys(FUNNEL).forEach((p) => paths.add(p));
-  const blogPosts = await fetchBlogPosts();
+  // Drop any post whose slug 301s to a consolidation winner — the nightly sync
+  // can re-publish a retired duplicate, and a redirecting URL must never be
+  // prerendered or sitemapped.
+  const blogPosts = (await fetchBlogPosts()).filter(
+    (p) => !legacyRedirect(`/blog/${p.slug}`),
+  );
   blogPosts.forEach((p) => paths.add(`/blog/${p.slug}`));
+
   const projectSlugs = await fetchProjectSlugs();
   projectSlugs.forEach((s) => paths.add(`/projects/${s}`));
 

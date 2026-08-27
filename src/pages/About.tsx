@@ -81,7 +81,7 @@ const About = () => {
               {/* Detailed bio */}
               <div className="lg:col-span-7">
                 <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
-                <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-[1.05]">
+                <h1 className="h-display text-foreground animate-fade-up delay-100">
                   I help buyers see past the brochure.
                 </h1>
                 <div className="mt-8 space-y-5 text-foreground/80 animate-fade-up delay-200">
@@ -125,7 +125,7 @@ const About = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">Buyer-side, not developer-side</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   The development already has people selling it. You deserve someone evaluating it from your side.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
@@ -148,7 +148,7 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
                 <p className="section-label mb-4">The questions that matter</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   What I help buyers understand
                 </h2>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-4">
@@ -193,7 +193,7 @@ const About = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">After you sign</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   With you from decision to keys.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
@@ -223,7 +223,7 @@ const About = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">A planner's background</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   I look at developments differently.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
@@ -246,12 +246,12 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
                 <p className="section-label mb-4">Who I work with</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8 leading-tight">
+                <h2 className="h-section text-foreground mb-8">
                   Who I help
                 </h2>
                 <div className="space-y-8 text-foreground/80 leading-relaxed text-lg">
                   <div className="border-l-2 border-primary/40 pl-5">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
+                    <h3 className="h-card text-foreground mb-2">First-time buyers</h3>
                     <p>
                       Buying your first home comes with enough uncertainty already.
                     </p>
@@ -260,7 +260,7 @@ const About = () => {
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
+                    <h3 className="h-card text-foreground mb-2">Investors</h3>
                     <p>
                       I help investors look past the marketing story and evaluate the fundamentals.
                     </p>
@@ -269,13 +269,13 @@ const About = () => {
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
+                    <h3 className="h-card text-foreground mb-2">Move-up buyers</h3>
                     <p>
                       If you're moving from a condo into a townhome or planning several years ahead, presale can help create time. But timing your existing home, deposits, mortgage and eventual completion matters. I help you see the whole sequence.
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">First-generation &amp; newcomer buyers</h3>
+                    <h3 className="h-card text-foreground mb-2">First-generation &amp; newcomer buyers</h3>
                     <p>
                       Sometimes the buyer understands the process in English but the parents helping with the deposit don't. I work in English, Punjabi, Hindi and Urdu so the people involved in the decision can understand it together.
                     </p>
@@ -307,7 +307,7 @@ const About = () => {
               </div>
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">Fraser Valley &amp; Metro Vancouver</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   Local market focus
                 </h2>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-4">
@@ -336,7 +336,7 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
                 <p className="section-label mb-4">Our team</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   The Presale Properties Group
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
@@ -367,7 +367,7 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
               <div>
                 <p className="section-label mb-4">Industry leadership</p>
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
+                <h2 className="h-section text-foreground mb-6">
                   Vancouver Presale Expo
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
@@ -417,7 +417,7 @@ const About = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <p className="section-label mb-4">Before you choose a project, choose your advisor.</p>
-              <h2 className="font-display text-4xl font-bold text-foreground mb-6">
+              <h2 className="h-section text-foreground mb-6">
                 Considering a presale? Start with a <span className="text-gradient">conversation, not a showroom.</span>
               </h2>
               <p className="text-foreground/80 mb-8">

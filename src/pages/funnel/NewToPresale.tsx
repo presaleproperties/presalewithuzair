@@ -32,7 +32,7 @@ const NewToPresale = () => (
   <FunnelPage
     path="/new-to-presale-start-here"
     title="New to Presale? Start Here — Uzair's Plain-English Guide"
-    description="New to presale condos in BC? I'm Uzair — buyer-only presale specialist. Learn what a presale is, how it differs from resale, and whether it's right for your first home."
+    description="New to presale in BC? Learn what a presale is, how it differs from resale, and whether it fits your first home — from an advisor who represents buyers."
     h1="New to Presale? Start Here — Uzair's Plain-English Guide"
     eyebrow="Start Here"
     breadcrumbName="New to Presale — Start Here"

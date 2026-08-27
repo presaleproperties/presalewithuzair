@@ -394,6 +394,80 @@ function faqPage(faqs: { q: string; a: string }[]): unknown {
   return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 }
 
+/** Homepage FAQs — text is identical to the visible copy in STATIC_BODY["/"]
+ *  and src/components/home/HomeFAQSection.tsx. Never add a question here that
+ *  is not rendered on the page. */
+const HOME_FAQS: { q: string; a: string }[] = [
+  {
+    q: "Do I need my own Realtor to buy a presale?",
+    a: "You can purchase directly from a developer, but the sales team is there to sell that development. Having your own Realtor gives you someone evaluating the project from your side. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm the arrangement for the specific project before you move forward.",
+  },
+  {
+    q: "How much deposit do I need?",
+    a: "Presale deposit schedules vary by project. Many developments use staged deposits rather than requiring the full amount upfront. Before you commit, I map out every deposit date so you know exactly how much cash is required and when.",
+  },
+  {
+    q: "What happens if a project is delayed or cancelled?",
+    a: "Your rights depend on the purchase agreement, disclosure statement and applicable BC legislation. Delays and cancellations can work differently from project to project, which is why I help you identify the relevant terms and the questions that should be confirmed with your lawyer before you commit.",
+  },
+  {
+    q: "Can I sell my presale before completion?",
+    a: "Potentially. This is called an assignment, and the rules vary significantly between projects. Developer approval, fees, marketing restrictions and tax considerations can all affect your options. I look at the assignment provisions early so your exit strategy is based on the contract, not an assumption.",
+  },
+  {
+    q: "Is presale better than resale?",
+    a: "Sometimes. Sometimes resale is the better decision. Presale can offer staged deposits, new-home warranty coverage, newer construction and project incentives. Resale gives you certainty about the finished home and today's market value. I compare both when that's what the decision requires.",
+  },
+];
+
+/** Blog breadcrumb: Home → Blog → Post. Trailing-slash URLs only. */
+function blogBreadcrumb(slug: string, title: string): unknown {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE + "/" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: SITE + "/blog/" },
+      { "@type": "ListItem", position: 3, name: title, item: `${SITE}/blog/${slug}/` },
+    ],
+  };
+}
+
+function stripTags(s: string): string {
+  return String(s)
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Extract a genuine Q&A section from post content: a heading that is a question
+ * followed by visible answer text. Returns [] when the post has no real FAQ —
+ * we never fabricate answers that a visitor can't see on the page.
+ */
+function extractFaqsFromContent(content: string): { q: string; a: string }[] {
+  if (!content) return [];
+  const out: { q: string; a: string }[] = [];
+  const re = /<h([2-4])[^>]*>([\s\S]*?)<\/h\1>([\s\S]*?)(?=<h[2-4][^>]*>|$)/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(content))) {
+    const q = stripTags(m[2]);
+    if (!q.endsWith("?") || q.length < 12 || q.length > 300) continue;
+    const a = stripTags(m[3]);
+    if (a.length < 40) continue;
+    out.push({ q, a: a.length > 1200 ? a.slice(0, 1200).replace(/\s\S*$/, "") : a });
+  }
+  return out.slice(0, 10);
+}
+
+
+
 function cityBody(path: string): string {
   const c = CITY_CONTENT[path];
   if (!c) return "";

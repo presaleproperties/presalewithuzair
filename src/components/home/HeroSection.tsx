@@ -15,7 +15,7 @@ const serviceAreas = [
   "Langley",
   "Abbotsford",
   "Coquitlam",
-  "Vancouver",
+  "Delta",
   "Fraser Valley",
 ];
 

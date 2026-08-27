@@ -881,7 +881,11 @@ export async function resolve(pathname: string, env: Record<string, string | und
         `<article><h1>${esc(p.title)}</h1>` + dateLine + (p.excerpt ? `<p>${esc(p.excerpt)}</p>` : "") +
         `<div>${p.content || ""}</div>` + sources + `</article>`;
       const ld = jsonLd({ "@context": "https://schema.org", "@type": "Article", headline: p.title, description: p.excerpt || meta.description, image: p.image_url || DEFAULT_IMAGE, datePublished: p.published_at || undefined, dateModified: p.updated_at || p.published_at || undefined, author: { "@type": "Person", name: "Uzair Muhammad", url: SITE + "/about" }, mainEntityOfPage: SITE + path });
-      return { meta, body: article + ABOUT_BLOCK + ld };
+      const bcLd = jsonLd(blogBreadcrumb(slug, p.title));
+      const postFaqs = extractFaqsFromContent(p.content || "");
+      const faqLd = postFaqs.length >= 2 ? jsonLd(faqPage(postFaqs)) : "";
+      return { meta, body: article + ABOUT_BLOCK + ld + bcLd + faqLd };
+
     } catch { return { meta: fallback, body: "" }; }
   }
 

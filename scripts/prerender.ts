@@ -17,7 +17,9 @@ import {
   CITY_META,
   FUNNEL,
   resolve as resolveMeta,
+  legacyRedirect,
   SUPABASE_REST_URL,
+
 } from "../functions/_middleware.js";
 
 const DIST = pathResolve(process.cwd(), "dist");
@@ -178,14 +180,13 @@ async function fetchProjectSlugs(): Promise<string[]> {
 /**
  * Sitemap generation — runs in the same post-build step as the prerender so
  * blog lastmod values come from each post's real updated timestamp instead of
- * being hand-frozen. Static/city/funnel routes fall back to the build date.
+ * being hand-frozen. Static/city/funnel routes carry NO <lastmod>: there is no
+ * page-specific timestamp for them, and stamping the build date would tell
+ * Google every page changed on every deploy.
  * /projects/* pages are noindex and excluded; /agents 301s to / and is excluded.
- * The homepage "/" is ALSO excluded — it permanently 301s to
- * presaleproperties.com, and a redirecting URL must not be sitemapped
- * (mixed-signal flag from the Aug 2 + Aug 20 SEO audits).
+ * The homepage "/" IS included — it is prerendered and self-canonical; it does
+ * not redirect anywhere (an older comment here claimed otherwise).
  */
-const BUILD_DATE = new Date().toISOString().split("T")[0];
-
 const STATIC_PRIORITY: Record<string, { priority: string; changefreq: string }> = {
   "/": { priority: "1.0", changefreq: "weekly" },
   "/blog": { priority: "0.9", changefreq: "daily" },
@@ -196,26 +197,28 @@ const STATIC_PRIORITY: Record<string, { priority: string; changefreq: string }> 
   "/presale-guide": { priority: "0.7", changefreq: "monthly" },
 };
 
-function urlNode(path: string, lastmod: string, changefreq: string, priority: string): string {
-  return `  <url><loc>${SITE}${path === "/" ? "/" : path}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
+function urlNode(path: string, lastmod: string | undefined, changefreq: string, priority: string): string {
+  const mod = lastmod ? `<lastmod>${lastmod}</lastmod>` : "";
+  return `  <url><loc>${SITE}${path === "/" ? "/" : path}</loc>${mod}<changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
 }
 
 function writeSitemap(blogPosts: BlogRow[]) {
   const lines: string[] = [];
   for (const p of Object.keys(STATIC_META)) {
-    if (p === "/") continue; // homepage 301s to presaleproperties.com — never sitemap a redirecting URL
+    if (legacyRedirect(p)) continue; // never sitemap a URL that 301s
     const cfg = STATIC_PRIORITY[p] || { priority: "0.8", changefreq: "monthly" };
-    lines.push(urlNode(p, BUILD_DATE, cfg.changefreq, cfg.priority));
+    lines.push(urlNode(p, undefined, cfg.changefreq, cfg.priority));
   }
   for (const p of Object.keys(FUNNEL)) {
-    lines.push(urlNode(p, BUILD_DATE, "monthly", "0.9"));
+    lines.push(urlNode(p, undefined, "monthly", "0.9"));
   }
   for (const p of Object.keys(CITY_META)) {
-    lines.push(urlNode(p, BUILD_DATE, "weekly", "0.9"));
+    lines.push(urlNode(p, undefined, "weekly", "0.9"));
   }
   for (const post of blogPosts) {
-    lines.push(urlNode(`/blog/${post.slug}`, post.lastmod || BUILD_DATE, "monthly", "0.7"));
+    lines.push(urlNode(`/blog/${post.slug}`, post.lastmod, "monthly", "0.7"));
   }
+
   const xml = [
     `<?xml version="1.0" encoding="UTF-8"?>`,
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
@@ -237,8 +240,14 @@ async function main() {
   Object.keys(STATIC_META).forEach((p) => paths.add(p));
   Object.keys(CITY_META).forEach((p) => paths.add(p));
   Object.keys(FUNNEL).forEach((p) => paths.add(p));
-  const blogPosts = await fetchBlogPosts();
+  // Drop any post whose slug 301s to a consolidation winner — the nightly sync
+  // can re-publish a retired duplicate, and a redirecting URL must never be
+  // prerendered or sitemapped.
+  const blogPosts = (await fetchBlogPosts()).filter(
+    (p) => !legacyRedirect(`/blog/${p.slug}`),
+  );
   blogPosts.forEach((p) => paths.add(`/blog/${p.slug}`));
+
   const projectSlugs = await fetchProjectSlugs();
   projectSlugs.forEach((s) => paths.add(`/projects/${s}`));
 

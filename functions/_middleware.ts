@@ -453,7 +453,7 @@ const TRACK_RECORD_LINE =
 export const FUNNEL: Record<string, FunnelPage> = {
   "/new-to-presale-start-here": {
     title: "New to Presale? Start Here — Uzair's Plain-English Guide",
-    description: "New to presale condos in BC? I'm Uzair — presale specialist who represents buyers, not developers. Learn what a presale is, how it differs from resale, and whether it's right for your first home.",
+    description: "New to presale in BC? Learn what a presale is, how it differs from resale, and whether it fits your first home — from an advisor who represents buyers.",
     h1: "New to Presale? Start Here — Uzair's Plain-English Guide",
     breadcrumbName: "New to Presale — Start Here",
     intro: "I'm Uzair Muhammad, a presale specialist who represents buyers, not developers in the Fraser Valley. If you've never bought a presale condo before, this page is your plain-English starting point — what a presale actually is, how it differs from resale, whether it makes sense for your first home, and how I help buyers avoid the traps developers won't warn you about.",
@@ -478,7 +478,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/buy-presale-fraser-valley": {
     title: "How to Buy a Presale in the Fraser Valley (With Uzair)",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. Step-by-step guide to buying a presale condo in Surrey, Langley, Abbotsford and the Fraser Valley: deposits, rescission, GST and timing.",
+    description: "How to buy a presale condo in Surrey, Langley, Abbotsford and the Fraser Valley: deposits, rescission, GST and timing, explained from the buyer\'s side.",
     h1: "How to Buy a Presale in the Fraser Valley (With Uzair)",
     breadcrumbName: "How to Buy a Presale in the Fraser Valley",
     intro: "I'm Uzair Muhammad, presale specialist who represents buyers, not developers for the Fraser Valley. Buying a presale isn't like buying resale — the deposit ladder, rescission window, GST rules and disclosure statement all move on the developer's schedule. Here's the step-by-step I run with every buyer, and exactly when in the process you should call me — before you set foot in a presentation centre.",
@@ -504,7 +504,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/presale-mistakes-fraser-valley": {
     title: "Presale Mistakes I See Fraser Valley Buyers Make",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. The Fraser Valley presale mistakes I see most: registering with developers first, skipping disclosure, bad floor plans, no exit plan.",
+    description: "The Fraser Valley presale mistakes I see most: registering with developers first, skipping disclosure, weak floor plans and having no exit plan.",
     h1: "Presale Mistakes I See Fraser Valley Buyers Make",
     breadcrumbName: "Presale Mistakes Fraser Valley",
     intro: "I'm Uzair Muhammad, and I've helped 450+ families close on presales in the Fraser Valley. The same mistakes come up over and over — and they cost real money. Here they are: registering with the developer first, trusting the sales-centre rep, skipping the disclosure statement, ignoring assignment/rescission, choosing bad floor plans, mismanaging GST and deposit timing, and buying without an exit plan.",
@@ -532,7 +532,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/fraser-valley-presale-investment-advice": {
     title: "Fraser Valley Presale Investment Advice (2026)",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. Honest Fraser Valley presale investment advice: which cities, rental demand, assignment strategy, and when NOT to buy. No hype.",
+    description: "Honest Fraser Valley presale investment advice: which cities, rental demand, assignment strategy and when not to buy. Buyer-side guidance, no hype.",
     h1: "Fraser Valley Presale Investment Advice",
     breadcrumbName: "Fraser Valley Presale Investment Advice",
     intro: "I'm Uzair Muhammad, and I invest in the same presales I recommend — so my advice comes from real skin in the game, not a brochure. Here's my honest take on the Fraser Valley presale market: which cities and unit types actually pencil out, what rental demand looks like, how assignment and exit strategy work, and — most importantly — when I tell buyers not to buy. Projected numbers only; no guaranteed returns.",
@@ -557,7 +557,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/best-presale-realtor-fraser-valley": {
     title: "Best Presale Realtor Fraser Valley — Talk to Uzair First",
-    description: "I'm Uzair Muhammad — presale specialist who represents buyers, not developers for the Fraser Valley. 450+ families helped, 4.9 stars on Google. Talk to me before any developer sales centre.",
+    description: "Uzair Muhammad represents presale buyers, not developers. 450+ families helped, 4.9 stars on Google. Talk to me before any developer sales centre.",
     h1: "Best Presale Realtor in the Fraser Valley — Talk to Uzair Before Any Developer",
     breadcrumbName: "Best Presale Realtor Fraser Valley",
     intro: "I'm Uzair Muhammad — Fraser Valley's presale specialist who represents buyers, not developers. 450+ families helped, $200M+ in sales volume, 5 years focused on presale, 4.9 stars on Google. I don't represent developers, ever — only buyers. If you're thinking about a presale condo or townhome anywhere in the Fraser Valley, talk to me before you set foot in a developer's sales centre.",
@@ -583,7 +583,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/buyer-representation-presale-fraser-valley": {
     title: "Do You Need a Realtor for a BC Presale? Yes — Here's Why",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. who the sales-centre rep really works for, and why you need your own realtor on every BC presale.",
+    description: "Who the sales-centre rep really works for, and why you need your own realtor on every BC presale. Buyer-side representation from search to completion.",
     h1: "Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)",
     breadcrumbName: "Buyer Representation for Presale",
     intro: "I'm Uzair Muhammad, presale specialist who represents buyers, not developers for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, why the developer pays your agent's commission anyway, and what you lose by skipping representation.",
@@ -608,7 +608,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/first-time-buyers-fraser-valley": {
     title: "First-Time Buyers: Buy New Construction in the Fraser Valley",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. How first-time buyers use presale + new construction to lock today's price, stage deposits, and stack the GST rebate and PTT newly-built exemption.",
+    description: "How first-time buyers use presale to lock today\'s price, stage deposits and stack the GST rebate and PTT newly-built exemption. Buyer-side advice.",
     h1: "First-Time Buyers: How I Help You Buy New Construction in the Fraser Valley",
     breadcrumbName: "First-Time Buyers Fraser Valley",
     intro: "I'm Uzair Muhammad, presale specialist who represents buyers, not developers for the Fraser Valley. First-time buyers are half of who I represent — because presale and new construction are built for you. Lock today's price with a brand-new home, stage deposits over 12–24 months while you save, stack the up-to-$50,000 First-Time Buyer GST rebate and BC's Newly-Built Home PTT exemption, and get a full new-home warranty. For many presale projects, buyer representation is paid through the project's sales structure. Uzair will explain exactly how it works before you move forward, and tell you upfront if anything is different.",
@@ -635,7 +635,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/investors-fraser-valley": {
     title: "Investors: Buy Presale & New Construction in Fraser Valley",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. How I pick Fraser Valley presales for investors: cash-flow vs appreciation, Abbotsford + Surrey-Langley SkyTrain corridor, assignments, 2025 BC flipping tax.",
+    description: "How I pick Fraser Valley presales for investors: cash flow vs appreciation, the SkyTrain corridor, assignments and the BC flipping tax.",
     h1: "Investors: How I Help You Buy Presale & New Construction in the Fraser Valley",
     breadcrumbName: "Investors Fraser Valley",
     intro: "I'm Uzair Muhammad, presale specialist who represents buyers, not developers for the Fraser Valley — and I invest in the same presales I recommend. Investors get honest picks, not brochure hype: which submarkets watch for cash flow (Abbotsford) versus appreciation (Surrey-Langley SkyTrain corridor: Willoughby, Latimer, ~2028/29), how to structure assignments around BC's 2025 flipping tax, and how to use deposit leverage to build a portfolio without over-extending.",
@@ -665,7 +665,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
   },
   "/how-i-help": {
     title: "How I Help — Every Presale & New-Construction Scenario",
-    description: "I'm Uzair — presale specialist who represents buyers, not developers. Every scenario I handle: first-time buyer, investor, upsizing, new detached, move-in-ready, assignments (buy or sell), VIP access, contract review.",
+    description: "Every scenario I handle: first-time buyer, investor, upsizing, new detached, move-in-ready, assignments, VIP access and contract review.",
     h1: "How I Help — Every Presale & New-Construction Scenario, One Advisor",
     breadcrumbName: "How I Help",
     intro: "I'm Uzair Muhammad, presale and new-construction specialist who represents buyers, not developers for the Fraser Valley and Metro Vancouver. Whatever your situation — first home, first investment, upsizing, multigenerational, move-in-ready, or buying/selling an assignment — I'm the one advisor who handles all of it. Buyer-first, in English, Hindi, Urdu and Punjabi. 450+ families helped, $200M+ in sales volume, 4.9 stars on Google.",

@@ -46,7 +46,7 @@ export const FunnelPage = ({
   image,
   children,
 }: FunnelPageProps) => {
-  const canonical = `${SITE}${path}`;
+  const canonical = `${SITE}${path}/`; // trailing slash: the host serves directory-style files, /x 308s to /x/
   const ogImage = image || `${SITE}/og${path}.png`;
 
   const faqLd = {

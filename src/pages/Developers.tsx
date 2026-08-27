@@ -79,11 +79,11 @@ const Developers = () => {
           content="Independent strategic advisory for real estate developers in BC. Pre-launch strategy, pricing guidance, and sales momentum — built from real buyer intelligence."
         />
         <meta name="keywords" content="developer advisory Vancouver, presale consulting BC, condo launch strategy, real estate developer consultant, presale pricing strategy, developer sales advisory" />
-        <link rel="canonical" href="https://presalewithuzair.com/developers" />
+        <link rel="canonical" href="https://presalewithuzair.com/developers/" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/developers" />
+        <meta property="og:url" content="https://presalewithuzair.com/developers/" />
         <meta property="og:title" content="Developer Advisory | Presale Strategy Consulting" />
         <meta property="og:description" content="Independent strategic advisory for real estate developers. Pre-launch strategy and sales momentum." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
@@ -104,7 +104,7 @@ const Developers = () => {
               "url": "https://presalewithuzair.com"
             },
             "description": "Independent strategic advisory for real estate developers. Pre-launch strategy, pricing guidance, and ongoing sales advisory.",
-            "url": "https://presalewithuzair.com/developers",
+            "url": "https://presalewithuzair.com/developers/",
             "areaServed": [
               { "@type": "AdministrativeArea", "name": "British Columbia" },
               { "@type": "City", "name": "Vancouver" },

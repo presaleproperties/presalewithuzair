@@ -40,7 +40,7 @@ const LandingPage = () => {
         <title>Book a Buyer Strategy Call | Uzair Muhammad</title>
         <meta name="description" content="Book a no-pressure presale strategy call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
         <meta name="robots" content="noindex, nofollow" />
-        <link rel="canonical" href="https://presalewithuzair.com/call" />
+        <link rel="canonical" href="https://presalewithuzair.com/call/" />
       </Helmet>
 
       <div className="dark-section min-h-screen bg-background text-foreground pb-32">

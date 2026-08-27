@@ -126,7 +126,7 @@ const Blog = () => {
     "@type": "Blog",
     name: "Presale With Uzair Blog",
     description: "Expert insights on presale condos, assignments, and real estate investment in Vancouver and Fraser Valley.",
-    url: "https://presalewithuzair.com/blog",
+    url: "https://presalewithuzair.com/blog/",
     author: { "@type": "Person", name: "Uzair Muhammad", url: "https://presalewithuzair.com" },
     publisher: { "@type": "Organization", name: "Presale With Uzair", url: "https://presalewithuzair.com" },
   };
@@ -137,9 +137,9 @@ const Blog = () => {
         <title>BC Presale Insights & Buyer Guides | Uzair Muhammad</title>
         <meta name="description" content="Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver." />
         <meta name="keywords" content="presale blog Vancouver, condo investment tips, presale condo advice, Vancouver real estate blog, assignment sale guide, Fraser Valley presale blog" />
-        <link rel="canonical" href="https://presalewithuzair.com/blog" />
+        <link rel="canonical" href="https://presalewithuzair.com/blog/" />
         <meta property="og:type" content="blog" />
-        <meta property="og:url" content="https://presalewithuzair.com/blog" />
+        <meta property="og:url" content="https://presalewithuzair.com/blog/" />
         <meta property="og:title" content="BC Presale Insights & Buyer Guides | Uzair Muhammad" />
         <meta property="og:description" content="Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />

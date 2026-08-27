@@ -83,11 +83,11 @@ const Services = () => {
           content="Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley."
         />
         <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver, Fraser Valley presale services" />
-        <link rel="canonical" href="https://presalewithuzair.com/services" />
+        <link rel="canonical" href="https://presalewithuzair.com/services/" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/services" />
+        <meta property="og:url" content="https://presalewithuzair.com/services/" />
         <meta property="og:title" content="Presale Buyer Services | Uzair Muhammad" />
         <meta property="og:description" content="Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />

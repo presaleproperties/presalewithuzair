@@ -42,10 +42,10 @@ const About = () => {
           content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Surrey presale specialist, Fraser Valley buyer's agent, buyer-side presale advisor, new construction Surrey" />
-        <link rel="canonical" href="https://presalewithuzair.com/about" />
+        <link rel="canonical" href="https://presalewithuzair.com/about/" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/about" />
+        <meta property="og:url" content="https://presalewithuzair.com/about/" />
         <meta property="og:title" content="About Uzair Muhammad | Presale Buyer Advisor Fraser Valley" />
         <meta property="og:description" content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />

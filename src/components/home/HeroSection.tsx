@@ -6,15 +6,47 @@ const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
   subheadline: "Specializing in New Construction homes.",
-  body: "I help buyers cut through the sales pitch, understand what really matters, and decide whether the presale project is actually right for them. From project selection to keys in hand, I guide you every step of the way. English Punjabi · Hindi · Urdu.",
+  body: "I help buyers cut through the sales pitch, understand what really matters, and decide whether the presale project is actually right for them. From project selection to keys in hand, I guide you every step of the way.",
   cta: "Ask Uzair About a Project",
 };
+
+const serviceAreas = [
+  "Surrey",
+  "Langley",
+  "Abbotsford",
+  "Coquitlam",
+  "Vancouver",
+  "Fraser Valley",
+];
+
+const languages = ["English", "Punjabi", "Hindi", "Urdu"];
 
 const proofPoints = [
   { value: "450+", label: "Families helped" },
   { value: "$200M+", label: "In new homes" },
   { value: "4.9★", label: "Rated on Google" },
 ];
+
+const MetaRow = ({ className = "" }: { className?: string }) => (
+  <div className={`flex flex-col gap-3 ${className}`}>
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+      <span className="eyebrow text-foreground/45 shrink-0">Serving</span>
+      {serviceAreas.map((area) => (
+        <span key={area} className="text-sm font-medium text-foreground/75">
+          {area}
+        </span>
+      ))}
+    </div>
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+      <span className="eyebrow text-foreground/45 shrink-0">Languages</span>
+      {languages.map((lang) => (
+        <span key={lang} className="text-sm font-medium text-foreground/75">
+          {lang}
+        </span>
+      ))}
+    </div>
+  </div>
+);
 
 const ProofRow = ({ className = "" }: { className?: string }) => (
   <dl className={`grid grid-cols-3 gap-x-6 divider-t pt-5 ${className}`}>
@@ -63,9 +95,11 @@ export const HeroSection = () => {
             {heroContent.subheadline}
           </p>
 
-          <p className="text-[0.9375rem] md:text-base text-foreground/55 mb-7 animate-fade-up delay-300 leading-relaxed">
+          <p className="text-[0.9375rem] md:text-base text-foreground/55 mb-5 animate-fade-up delay-300 leading-relaxed">
             {heroContent.body}
           </p>
+
+          <MetaRow className="mb-7 animate-fade-up delay-300" />
 
           <div className="animate-fade-up delay-300">
             <Button variant="navSolid" size="lg" className="w-full sm:w-auto" onClick={handleBookClick}>
@@ -104,6 +138,8 @@ export const HeroSection = () => {
             <p className="mt-5 text-base xl:text-[1.0625rem] text-foreground/55 max-w-xl animate-fade-up delay-300 leading-relaxed">
               {heroContent.body}
             </p>
+
+            <MetaRow className="mt-5 max-w-xl animate-fade-up delay-300" />
 
             <div className="mt-9 animate-fade-up delay-300">
               <Button variant="navSolid" size="xl" onClick={handleBookClick}>

@@ -265,17 +265,17 @@ const STATIC_BODY: Record<string, string> = {
   "/call": `<h1>Before You Buy a Presale, Get a Second Perspective.</h1><p>15 minutes. No sales-centre pressure. Just a conversation about what you're considering and whether it makes sense.</p><p>450+ families helped. Buyer-side guidance. English · Punjabi · Urdu · Hindi.</p><h2>What happens on the call</h2><p>15 minutes, no obligation. You tell me what you're trying to accomplish. We talk through your budget, timeline and preferred areas. I'll tell you what I'd compare next. If you already have a project in mind, we'll start there. If I don't think presale is the right move, I'll tell you.</p><h2>What I help buyers evaluate</h2><p>Buying a new condo or townhome is a big decision. My job is to help make the decision clearer.</p><p><strong>Understand what you're signing.</strong> I'll walk you through the major business terms, deposit schedule and disclosure information in plain language and identify anything that should be confirmed with your lawyer.</p><p><strong>Compare projects, not just marketing.</strong> Early access can be useful, but the bigger advantage is having someone compare the project against competing presales and nearby resale before you commit.</p><p><strong>Pressure-test the decision.</strong> Not every presale deserves your deposit. We look at the developer, location, pricing, floor plan, terms and your own financial situation before deciding.</p><p><strong>Stay supported through completion.</strong> Presale can take years. I stay connected through deposits, completion preparation, walkthrough timing and possession.</p>`,
   "/presale-guide": `<h1>Presale Guide</h1><p>A practical guide to buying presale from the buyer's side. Coming soon.</p>`,
   "/blog": `<h1>Presale Insights</h1><p>Market updates, practical buyer guides and independent perspective on presale and new construction across BC.</p><p>Not every project is a good project. Not every market headline applies to every buyer. These articles are here to help you understand the difference.</p>`,
-  "/punjabi-speaking-realtor": languagePageBody("Punjabi", "Presale Explained Clearly — In Punjabi or English.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
-  "/hindi-speaking-realtor": languagePageBody("Hindi", "Presale Guidance in Hindi or English.", "/hindi-speaking-realtor", "Hindi Speaking Realtor"),
-  "/urdu-speaking-realtor": languagePageBody("Urdu", "Presale Guidance in Urdu — For You and Your Family.", "/urdu-speaking-realtor", "Urdu Speaking Realtor"),
+  "/punjabi-speaking-realtor": languagePageBody("Punjabi", "Presale Explained Clearly — In Punjabi or English.", "Buying a home is often a family decision. Sometimes the buyer is comfortable in English while parents or other family members contributing money would rather discuss the details in Punjabi.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
+  "/hindi-speaking-realtor": languagePageBody("Hindi", "Presale Guidance in Hindi or English.", "A home purchase can involve the entire family. I work in Hindi, Punjabi, Urdu and English so buyers and the family members helping them can understand the project, deposit schedule and purchase process together.", "/hindi-speaking-realtor", "Hindi Speaking Realtor"),
+  "/urdu-speaking-realtor": languagePageBody("Urdu", "Presale Guidance in Urdu — For You and Your Family.", "Urdu is my first language. I was born in Pakistan and raised in Surrey, and today I help families across the Fraser Valley navigate presale and new construction in Urdu, Punjabi, Hindi and English. For many families, buying a home is not an individual decision — parents may be helping with the deposit, and several generations may be discussing the purchase.", "/urdu-speaking-realtor", "Urdu Speaking Realtor"),
   "/south-asian-buyers": southAsianBuyersBody(),
 };
 
 function languagePageBody(lang: string, h1: string, leadSentence: string, path: string, crumb: string): string {
   const faqs = [
-    { q: `Does Uzair speak ${lang}?`, a: `Yes. Uzair Muhammad works in ${lang === "Urdu" ? "Urdu, Punjabi, Hindi" : lang === "Hindi" ? "Hindi, Punjabi, Urdu" : "Punjabi, Hindi, Urdu"} and English, and regularly explains presale contracts and deposit schedules to buyers' parents in ${lang}.` },
-    { q: `Is there a ${lang} realtor for presale condos in Surrey?`, a: `Yes. Uzair Muhammad is a buyer-side presale specialist covering Surrey, Langley, Abbotsford, Delta and the Fraser Valley, working in ${lang}, and other South Asian languages plus English.` },
-    { q: `Does it cost extra to work with a ${lang} speaking realtor?`, a: `No. For many presale projects, buyer representation is paid through the project's sales structure. Uzair explains exactly how it works before you move forward.` },
+    { q: `Does Uzair speak ${lang}?`, a: `Yes. I work in ${lang === "Urdu" ? "Urdu, Punjabi, Hindi" : lang === "Hindi" ? "Hindi, Punjabi, Urdu" : "Punjabi, Hindi, Urdu"} and English and regularly speak with buyers and their families in ${lang}.` },
+    { q: `Do you work outside Surrey?`, a: `Yes. I help presale and new-construction buyers across the Fraser Valley and Metro Vancouver.` },
+    { q: `Does it cost extra to work with you?`, a: `Compensation arrangements vary by transaction. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll explain exactly how it works for the specific project before you proceed.` },
   ];
   return (
     `<h1>${esc(h1)}</h1>` +
@@ -465,7 +465,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { q: "Is buying presale a good idea for a first-time buyer?", a: "It can be — you lock in today's price and control a new home with a smaller upfront deposit. It's only smart if the project, contract and location pencil out. I only recommend presales that make sense for a first-time buyer's timeline." },
       { q: "What's the difference between presale and resale?", a: "Resale is built — tour, finance, move in weeks. Presale is on paper — deposits now, keys later, warranty, GST applies. Presale can mean better pricing and no bidding war but carries construction and market risk." },
       { q: "How much money do I actually need to start?", a: "Most Fraser Valley developers ask 15–20% staged over 12–24 months; softer windows allow 10% ladders. On a $600,000 home that's often $30,000–$60,000 at signing." },
-      { q: "How do I actually get started with you?", a: "Book a free 15-minute strategy call. I'll ask your budget and timeline, then either shortlist presales or tell you honestly if presale isn't right for you now. Buyer-first, no cost, no pressure." },
+      { q: "How do I actually get started with you?", a: "Book a Buyer Strategy Call. I'll ask your budget and timeline, then either shortlist presales or tell you honestly if presale isn't right for you now. Buyer-first, no cost, no pressure." },
     ],
     related: [
       { href: "/buy-presale-fraser-valley", label: "How to Buy a Presale in the Fraser Valley" },
@@ -562,7 +562,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { h: "Why me — and why buyer-first?", p: "Almost every realtor sells presales occasionally. I've built a full-time practice on it. For many presale projects my commission is paid through the project's sales structure, and I represent you — never the builder. I'll explain exactly how it works on your project before you move forward." },
       { h: "Track record", p: TRACK_RECORD_LINE },
       { h: "Languages and service area", p: "English, Punjabi, Hindi, Urdu — across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge, New Westminster." },
-      { h: "What working with me looks like", p: "Free 15-minute strategy call. Shortlist of 2–3 projects that actually fit, with VIP access to pre-public allocations. Line-by-line contract review before you sign." },
+      { h: "What working with me looks like", p: "A Buyer Strategy Call. Shortlist of 2–3 projects that actually fit, with VIP access to pre-public allocations. Line-by-line contract review before you sign." },
       { h: "See the full platform + live projects", p: "For live inventory and the full brokerage platform, visit presaleproperties.com — the full platform + live projects." },
     ],
     faqs: [
@@ -570,7 +570,7 @@ export const FUNNEL: Record<string, FunnelPage> = {
       { q: "Why work with a presale specialist who represents buyers, not developers?", a: "Because the person at the sales centre is paid by the developer. A buyer-first realtor represents you instead. For many presale projects that representation is paid through the project's sales structure, so it typically costs the buyer nothing — I'll confirm exactly how it works on your specific project." },
       { q: "What languages do you work in?", a: "English, Punjabi, Hindi and Urdu. About a third of my buyers prefer to run through the contract in one of those languages." },
       { q: "What area do you actually cover?", a: "The Fraser Valley and much of Metro Vancouver — Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge, New Westminster." },
-      { q: "How do I hire you?", a: "Book a free 15-minute strategy call — no cost, no pressure. If we're a fit, I add you to my VIP list and we shortlist projects." },
+      { q: "How do I hire you?", a: "Book a Buyer Strategy Call — no cost, no pressure. If we're a fit, I add you to my VIP list and we shortlist projects." },
     ],
     related: [
       { href: "/buyer-representation-presale-fraser-valley", label: "Do You Need Your Own Realtor for a Presale?" },
@@ -745,7 +745,7 @@ function funnelBody(path: string): string {
     sections +
     `<h2>Frequently Asked Questions</h2>${faqHtml}` +
     relHtml +
-    `<p><a href="${SITE}/call">Book a free strategy call with Uzair</a> · <a href="tel:+17782313592">+1 778-231-3592</a></p>` +
+    `<p><a href="${SITE}/call">Book a Buyer Strategy Call</a> · <a href="tel:+17782313592">+1 778-231-3592</a></p>` +
     `</article>` +
     articleLd +
     bcLd +

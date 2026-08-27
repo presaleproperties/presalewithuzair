@@ -3,57 +3,61 @@ import { FunnelPage, RelatedLinks, DEFAULT_SOCIAL_IMAGE, type FunnelFAQ } from "
 
 const faqs: FunnelFAQ[] = [
   {
-    question: "Is Uzair used to working with first-generation South Asian buyers?",
+    question: "Do you work with first-generation buyers?",
     answer:
-      "Yes. Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. He works in Punjabi, Hindi, Urdu and English, and regularly sits down with the people writing the cheque to walk through the contract and deposit schedule in their own language.",
+      "Yes. Many of the buyers I work with are purchasing their first home in Canada and making the decision with their families.",
   },
   {
-    question: "What government programs can first-time buyers stack on a new home?",
-    answer:
-      "Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap. BC's Newly-Built Home PTT exemption can remove property transfer tax on qualifying homes up to $1.1M. Eligibility depends on the buyer's situation and the rules change — Uzair models whether it is likely to apply, and buyers should confirm with a tax professional or lawyer.",
+    question: "Can you explain the process to my parents?",
+    answer: "Yes. I work in Punjabi, Hindi, Urdu and English.",
   },
   {
-    question: "Does it cost extra to have Uzair represent the buyer?",
+    question: "Can you tell me which first-time buyer programs I qualify for?",
     answer:
-      "No. For many presale projects, buyer representation is paid through the project's sales structure. Uzair explains exactly how it works before you move forward.",
+      "I can help identify programs that may be relevant, but eligibility and tax/legal advice should be confirmed with the appropriate professional or government source.",
+  },
+  {
+    question: "Does it cost extra to have you represent me?",
+    answer:
+      "Compensation arrangements vary. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll explain the specific arrangement before you move forward.",
   },
 ];
 
 const SouthAsianBuyers = () => (
   <FunnelPage
     path="/south-asian-buyers"
-    title="Buying a Presale as a First-Generation Buyer | Surrey & Fraser Valley"
-    description="Most of Uzair Muhammad's clients are South Asian and many are the first in their family to buy a home in Canada. Buyer-side presale guidance in Punjabi, Hindi, Urdu and English."
-    h1="Buying a presale when nobody in the family has done it in Canada before."
+    title="First-Generation Home Buyers | Surrey & Fraser Valley"
+    description="Presale guidance for first-generation and South Asian home buyers across Surrey and the Fraser Valley, in English, Punjabi, Hindi and Urdu."
+    h1="When the whole family is buying, the whole family should understand."
     eyebrow="First-Generation Buyers"
     breadcrumbName="South Asian Buyers"
-    intro="Most of Uzair Muhammad's clients are South Asian, and many are the first in their family to buy a home in Canada. Uzair works in Punjabi, Hindi, Urdu and English, represents buyers only, and sits down with the whole family — including the parents funding the deposit — to walk through the contract."
+    intro="Many of the families I work with are buying their first home in Canada. Sometimes parents are helping with the deposit. Sometimes the buyer is translating the process back to the family. Sometimes everyone has an opinion — because everyone has something at stake. I work in English, Punjabi, Hindi and Urdu so we can slow the process down and make sure the people involved understand the decision."
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
-    <h2>There is no family playbook.</h2>
+    <h2>There may not be a family playbook for buying in Canada.</h2>
     <p>
-      Most of Uzair's clients are South Asian, and many are the first in their family to buy a home in Canada. There is no parent who has already done this here to ask. Every step is new, and the sales centre is not going to slow down and explain it.
+      If you're the first person in your family navigating Canadian real estate, there can be a lot to learn quickly. Presale adds another layer: staged deposits, completion years in the future, disclosure documents, financing at completion and closing costs. My role is to make the process understandable.
     </p>
 
-    <h2>The contract is explained in Punjabi, Hindi, and Urdu — not just English.</h2>
+    <h2>Explain the decision in the language that works for your family.</h2>
     <p>
-      The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi, Hindi, or Urdu. Uzair works in all four languages. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.
+      I work in Punjabi, Hindi, Urdu and English. That means parents contributing to the purchase don't need to rely entirely on a translated summary from their children. We can discuss the project and purchase process together.
     </p>
 
-    <h2>The people writing the cheque get the contract in their language.</h2>
+    <h2>The cheque shouldn't be clearer than the contract.</h2>
     <p>
-      Uzair explains the deposit schedule, the completion timeline, and the contract terms directly to them, in Punjabi, Hindi, or Urdu. Most of his business comes from referrals by families he has already sat down with.
+      If family money is going into the purchase, everyone should understand the major commitments behind it. That's not just good communication. It's good decision-making.
     </p>
 
-    <h2>The money most first-time buyers miss.</h2>
+    <h2>Understand the financial programs — without building the decision around them.</h2>
     <p>
-      Canada's enhanced First-Time Buyer GST rebate can save up to $50,000 on qualifying new homes under the cap, and BC's Newly-Built Home PTT exemption can remove property transfer tax on qualifying homes up to $1.1M. Eligibility depends on the buyer's situation and the rules change — Uzair models whether it is likely to apply, and buyers should confirm with a tax professional or lawyer.
+      First-time buyers may qualify for federal or provincial programs related to new-home purchases. Eligibility can change and depends on your circumstances. I'll help you identify the programs worth investigating and what should be confirmed with your accountant, lawyer, lender or government source before relying on them.
     </p>
 
     <h2>Talk to Uzair before registering at the sales centre.</h2>
     <p>
-      Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.
+      Representation rules vary between projects. If you already have a project in mind, send it to me first.
     </p>
     <p className="not-prose">
       <Link

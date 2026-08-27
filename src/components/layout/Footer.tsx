@@ -54,7 +54,7 @@ export const Footer = () => {
             <Link to="/services" className="text-white/75 hover:text-white transition-colors duration-300">Services</Link>
             <Link to="/blog" className="text-white/75 hover:text-white transition-colors duration-300">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-white transition-colors duration-300">Contact</Link>
-            <Link to="/call" className="text-white font-medium hover:text-white transition-colors duration-300">Book a Free 15-Minute Call</Link>
+            <Link to="/call" className="text-white font-medium hover:text-white transition-colors duration-300">Book a Buyer Strategy Call</Link>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -88,10 +88,10 @@ export const Footer = () => {
                 <img src={logo} alt="Presale with Uzair" className="h-14 w-auto" />
               </Link>
               <p className="text-white/75 text-sm leading-relaxed mb-5">
-                Uzair Muhammad PREC* (Real Broker) — Fraser Valley's leading presale agent.
+                Uzair Muhammad PREC* (Real Broker) — Buyer-side presale advice across the Fraser Valley & Metro Vancouver.
               </p>
               <p className="text-white/60 text-xs leading-relaxed mb-5">
-                450+ families helped · $200M+ · English, Punjabi, Hindi & Urdu
+                450+ families helped · $200M+ in new homes · English, Punjabi, Hindi & Urdu
               </p>
 
               <div className="flex items-center gap-2 mb-5">
@@ -128,7 +128,7 @@ export const Footer = () => {
                   { href: "/services", label: "Services" },
                   { href: "/blog", label: "Blog" },
                   { href: "/contact", label: "Contact" },
-                  { href: "/call", label: "Book a Free 15-Minute Call", highlight: true },
+                  { href: "/call", label: "Book a Buyer Strategy Call", highlight: true },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
@@ -246,7 +246,7 @@ export const Footer = () => {
               © {new Date().getFullYear()} Uzair Muhammad PREC | Brokered by Real Broker. All rights reserved.
             </p>
             <p className="text-xs text-white/70">
-              Fraser Valley's Leading Presale Agent
+              Presale advice from the buyer's side.
             </p>
           </div>
         </div>

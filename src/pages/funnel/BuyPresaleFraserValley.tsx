@@ -2,66 +2,69 @@ import { FunnelPage, RelatedLinks, type FunnelFAQ } from "@/components/FunnelPag
 
 const faqs: FunnelFAQ[] = [
   {
-    question: "What are the actual steps to buy a Fraser Valley presale?",
-    answer:
-      "Register early with me for VIP access, shortlist 2–3 projects that match your budget, secure your unit at the private VIP event before public launch, then use the 7-day rescission window to complete contract review, disclosure statement review and financing pre-qualification. I run every step with you.",
+    question: "What is the first step?",
+    answer: "Know what you're trying to accomplish before looking at projects.",
   },
   {
-    question: "When should I actually call you?",
-    answer:
-      "Before you talk to any presentation centre. Once you register with a developer, that developer's sales rep gets credited as your representative and I can't step in without a fight. Call me first — even if you don't buy through me, you'll know the questions to ask.",
+    question: "How do deposits work?",
+    answer: "Every project is different. I'll map out the actual deposit schedule before you commit.",
   },
   {
-    question: "How do deposits work on a Fraser Valley presale?",
+    question: "What should I do during the statutory rescission period?",
     answer:
-      "Most developers ask for 15–20% staged over 12–24 months. In softer windows we negotiate 10% ladders on select projects. You'll typically pay 5% at signing, another 5% at 30–90 days, and the rest at pre-set milestones. I confirm the full deposit ladder in writing before you sign.",
+      "Use the time to review the disclosure information, financing and purchase carefully and obtain professional legal advice where appropriate.",
   },
   {
-    question: "What is the 7-day rescission window?",
+    question: "Do new homes have GST?",
     answer:
-      "BC law gives you seven days after signing to walk away with no penalty. Use it. That's the window I use to review the disclosure statement, run financing, and pressure-test the contract. If anything looks wrong, we cancel — clean — no penalty.",
-  },
-  {
-    question: "Do I have to pay GST on a presale?",
-    answer:
-      "Yes — new construction is subject to 5% GST. There's a partial GST New Housing Rebate for homes under certain price thresholds if the home will be your principal residence. I'll walk you through whether you qualify and how the rebate is applied to your closing.",
+      "New-home tax treatment can depend on the transaction and buyer. We identify the potential costs and you should confirm your specific tax position with the appropriate professional.",
   },
 ];
 
 const BuyPresaleFraserValley = () => (
   <FunnelPage
     path="/buy-presale-fraser-valley"
-    title="How to Buy a Presale in the Fraser Valley (With Uzair)"
-    description="I'm Uzair — buyer-only presale specialist. Step-by-step guide to buying a presale condo in Surrey, Langley, Abbotsford and the Fraser Valley: deposits, rescission, GST and timing."
-    h1="How to Buy a Presale in the Fraser Valley (With Uzair)"
+    title="How to Buy a Presale in the Fraser Valley"
+    description="A step-by-step buyer-side guide to purchasing presale condos and townhomes in the Fraser Valley."
+    h1="How to Buy a Presale Without Letting the Sales Process Make the Decision for You."
     eyebrow="How To Buy"
     breadcrumbName="How to Buy a Presale in the Fraser Valley"
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. Buying a presale isn't like buying resale — the deposit ladder, rescission window, GST rules and disclosure statement all move on the developer's schedule, not yours. Here's the step-by-step I run with every buyer, and exactly when in the process you should call me — before you set foot in a presentation centre."
+    intro="Buying presale is different from buying an existing home. You may be committing years before completion. Deposits are staged. Financing happens later. The home isn't finished. And the developer controls the sales process. Here's the buyer-side process I use to make the decision clearer."
     faqs={faqs}
   >
-    <h2>My step-by-step for buying a Fraser Valley presale</h2>
+    <h2>Step 1 — Define the goal.</h2>
     <p>
-      Step one: we talk before you register anywhere. Step two: I build you a shortlist of 2–3 projects that actually fit your budget, timeline and exit plan. Step three: VIP allocation event — you pick your unit at pre-public pricing with incentives that don't reach the public launch. Step four: 7-day rescission — contract review, disclosure statement, financing. Step five: staged deposits and completion.
+      First home? Investment? Move-up? Family home? The answer changes which cities, buildings and units should even be on the list.
     </p>
 
-    <h2>Deposits — what to expect</h2>
+    <h2>Step 2 — Compare markets.</h2>
     <p>
-      Fraser Valley developers typically ask for 15–20% staged over 12–24 months. On a $600,000 condo, that's often 5% at signing, another 5% within 30–90 days, and the balance at construction milestones. I flag every deposit date in writing so nothing surprises you at 30, 60 or 90 days.
+      We look at the locations that fit your budget and goal before getting attached to a specific launch.
     </p>
 
-    <h2>Rescission — the 7-day window that matters</h2>
+    <h2>Step 3 — Build a shortlist.</h2>
     <p>
-      BC law gives you seven days after signing to walk away without penalty. That window exists for a reason: it's when your realtor and lawyer review the contract, the disclosure statement and the deposit protection. If I spot something ugly, we cancel — clean — no penalty. Buyers who skip this step are the ones who call me a year later with problems.
+      Usually two or three strong candidates are more useful than dozens of listings.
     </p>
 
-    <h2>GST and the New Housing Rebate</h2>
+    <h2>Step 4 — Compare the units and numbers.</h2>
     <p>
-      Presales are new construction, so 5% GST applies on top of the purchase price. If the home will be your principal residence and it's under the current price cap, you may qualify for the partial GST New Housing Rebate. I walk you through the calculation before you commit.
+      Price. Floor plan. Deposit schedule. Incentives. Completion. Nearby resale. Developer. Future buyer or renter.
     </p>
 
-    <h2>When to call me — before the sales centre</h2>
+    <h2>Step 5 — Understand the purchase before committing.</h2>
     <p>
-      Once you register with a developer, their sales rep is credited as your representative. That's the single biggest mistake I see. Call me first — even a five-minute call protects your right to independent buyer-only representation on any presale in the Fraser Valley.
+      If you decide to proceed, we walk through the important purchase terms and identify anything that should be confirmed with your lawyer, lender or accountant.
+    </p>
+
+    <h2>Step 6 — Stay prepared through completion.</h2>
+    <p>
+      Presale isn't finished when the contract is signed. I stay involved through deposits, updates, completion preparation, walkthrough timing and possession.
+    </p>
+
+    <h2>When should you call me?</h2>
+    <p>
+      Ideally before registering directly with the development. Representation policies vary by project, so understanding your options first is useful.
     </p>
 
     <RelatedLinks

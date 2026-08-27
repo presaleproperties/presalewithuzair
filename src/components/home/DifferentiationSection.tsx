@@ -15,31 +15,32 @@ type Block = {
 const blocks: Block[] = [
   {
     heading:
-      "The sales centre is built to sell the project. I'm here to help you decide if it's actually right for you.",
+      "A beautiful presentation centre doesn't tell you whether a project is a good buy.",
     body: (
       <>
-        Presale can be a smart move. It can also be an expensive mistake if you buy the wrong{" "}
-        <strong>floor plan</strong>, <strong>building</strong>, <strong>location</strong>, or{" "}
-        <strong>contract</strong> without understanding the risks. My job is to slow the decision
-        down, compare the options, and help you understand what you're really buying — not the
-        polished sales-centre version.
+        Presale can be a great fit for the right buyer. But the decision should be based on more
+        than renderings, incentives and a floor plan that looks good on paper. I help you compare
+        the project against your budget, timeline and goals — including the location, developer,
+        deposit schedule, completion timing, floor plan and nearby alternatives. The goal isn't to
+        find a project to buy. It's to find a project worth buying.
       </>
     ),
     feature: true,
   },
   {
-    heading: "I represent buyers, not developers.",
+    heading: "I represent the buyer's interests.",
     body: (
       <div className="space-y-4">
         <p>
-          At the sales centre, everyone in the room is paid by the <strong>developer</strong>. That
-          leaves the buyer without anyone on their side of the <strong>contract</strong>. I only
-          represent <strong>buyers</strong>. I don't hype projects and I don't chase{" "}
-          <strong>developer relationships</strong> at your expense.
+          The people selling a development have one job: sell that development. My job is
+          different. I help you evaluate the options from your side and tell you what I actually
+          think.
         </p>
         <p>
-          I've sold <strong>450+ presale units</strong> and more than{" "}
-          <strong>$200M in new construction</strong>. I lead{" "}
+          I've helped <strong>450+ families</strong> purchase more than{" "}
+          <strong>$200M in new homes</strong>. Before real estate, I spent{" "}
+          <strong>10 years</strong> working with the <strong>City of Surrey</strong> in planning
+          and bylaws. Today I lead{" "}
           <a
             href={PPG_URL}
             target="_blank"
@@ -48,15 +49,15 @@ const blocks: Block[] = [
           >
             The Presale Properties Group
           </a>{" "}
-          and founded the <strong>Vancouver Presale Expo</strong>. I'm a licensed{" "}
-          <strong>BC REALTOR®</strong> under <strong>Real Broker</strong>. Before real estate, I spent{" "}
-          <strong>10 years</strong> with the <strong>City of Surrey</strong> in planning and bylaws. I
-          also work in <strong>Punjabi, Hindi, and Urdu</strong>, so the people writing the cheque
-          can understand the contract in their own language.
+          and founded the <strong>Vancouver Presale Expo</strong>.
         </p>
         <p>
-          Talk to me before you <strong>register</strong> at a sales centre — once you register
-          directly, your representation options can become more limited.
+          I also work in <strong>English, Punjabi, Hindi and Urdu</strong>, so everyone involved in
+          the decision can understand what they're committing to.
+        </p>
+        <p>
+          If you're considering a project, talk to me before registering directly with the sales
+          centre. Representation rules can vary by development.
         </p>
       </div>
     ),
@@ -65,24 +66,24 @@ const blocks: Block[] = [
   },
   {
     heading:
-      "I help you understand the contract, the real numbers, and whether a project is worth waiting for.",
+      "Understand the project, the terms and the real numbers before you commit.",
     body: (
       <div className="space-y-4">
         <p>
-          I help you understand the <strong>disclosure statement</strong> in plain language: what
-          the <strong>deposit schedule</strong>, <strong>completion date</strong>,{" "}
-          <strong>assignment rights</strong>, and <strong>developer delays</strong> actually mean for
-          you.
+          A presale decision has more moving parts than the advertised purchase price. I help
+          buyers work through the <strong>deposit schedule</strong>,{" "}
+          <strong>completion timing</strong>, <strong>assignment provisions</strong>,{" "}
+          <strong>incentives</strong> and other important purchase terms in plain language.
         </p>
         <p>
-          I walk you through the <strong>real cost of ownership</strong> — deposits, mortgage at
-          completion, and closing costs — so you see the full picture before you decide.
+          We also look at the full financial picture: deposits, potential GST, closing costs,
+          financing at completion and whether the purchase still makes sense if circumstances
+          change.
         </p>
         <p>
-          I compare projects on <strong>location</strong>, <strong>price per square foot</strong>,{" "}
-          <strong>builder track record</strong>, <strong>floor plan</strong>, and fit for your{" "}
-          <strong>goal</strong>. If the numbers don't work or the project is wrong for you, I'll tell
-          you to wait. The right deal in the right project beats any deal.
+          When professional legal, tax or lending advice is needed, I make sure you know which
+          questions to take to your lawyer, accountant or lender. And if I don't think a project
+          fits your goal, I'll tell you.
         </p>
       </div>
     ),
@@ -102,11 +103,10 @@ export const DifferentiationSection = () => {
         <div className="max-w-3xl mb-12 sm:mb-16 reveal">
           <p className="section-label mb-5">Why Uzair</p>
           <h2 className="h-section text-foreground">
-            I represent your side of the deal.
+            The project has a sales team. You should have someone looking at it from your side.
           </h2>
           <p className="lede mt-5 max-w-2xl">
-            Three things every Fraser Valley presale buyer should know before signing — from
-            someone who gets paid to protect the buyer, not to sell the project.
+            Three things I want every presale buyer to understand before making a decision.
           </p>
         </div>
 

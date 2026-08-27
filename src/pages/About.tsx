@@ -17,16 +17,16 @@ import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
 
 const buyerQuestions = [
-  "Is this project priced fairly?",
-  "Is this floor plan good for living, renting, or resale?",
-  "What does the deposit structure really mean?",
-  "What costs may show up at completion?",
-  "Is this incentive actually valuable?",
-  "What happens if the market changes before completion?",
-  "Is this city right for my goal?",
-  "Should I buy now, wait, or compare another project?",
-  "What happens at the deficiency walkthrough?",
-  "How does the 2-5-10 warranty actually work?",
+  "Is this project fairly priced relative to the alternatives?",
+  "Does this floor plan actually work?",
+  "Does the deposit schedule fit my cash flow?",
+  "What purchase terms deserve closer attention?",
+  "What costs should I prepare for at completion?",
+  "Is the incentive meaningful or mostly marketing?",
+  "How does this neighbourhood fit my goal?",
+  "What happens if my circumstances change before completion?",
+  "Should I buy now, wait or compare something else?",
+  "What should I prepare for at the deficiency walkthrough?",
 ];
 
 const About = () => {
@@ -36,23 +36,23 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Uzair Muhammad | Fraser Valley's Leading Presale Agent</title>
+        <title>About Uzair Muhammad | Presale Buyer Advisor Fraser Valley</title>
         <meta
           name="description"
-          content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu."
+          content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver."
         />
         <meta name="keywords" content="Uzair Muhammad realtor, Surrey presale specialist, Fraser Valley buyer's agent, buyer-side presale advisor, new construction Surrey" />
         <link rel="canonical" href="https://presalewithuzair.com/about" />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/about" />
-        <meta property="og:title" content="About Uzair Muhammad | Fraser Valley's Leading Presale Agent" />
-        <meta property="og:description" content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu." />
+        <meta property="og:title" content="About Uzair Muhammad | Presale Buyer Advisor Fraser Valley" />
+        <meta property="og:description" content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Uzair Muhammad | Fraser Valley's Leading Presale Agent" />
-        <meta name="twitter:description" content="Uzair Muhammad PREC*, Real Broker — Fraser Valley's leading presale agent. 450+ families helped, $200M+ in new homes. With buyers from project search to keys, in English, Punjabi, Hindi & Urdu." />
+        <meta name="twitter:title" content="About Uzair Muhammad | Presale Buyer Advisor Fraser Valley" />
+        <meta name="twitter:description" content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
       </Helmet>
 
@@ -82,29 +82,29 @@ const About = () => {
               <div className="lg:col-span-7">
                 <p className="section-label mb-4 animate-fade-up">About Uzair Muhammad</p>
                 <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground animate-fade-up delay-100 leading-[1.05]">
-                  Fraser Valley's Leading Presale Agent
+                  I help buyers see past the brochure.
                 </h1>
                 <div className="mt-8 space-y-5 text-foreground/80 animate-fade-up delay-200">
                   <p className="text-xl leading-relaxed">
-                    I help families buy new condos, townhomes and presales the right way — from finding the right project to keys in hand. Before you sign, we compare the project, price, floor plan, deposit structure and resale potential, without the sales centre pressure. After you sign, I stay: deposits, mortgage, walkthrough, warranty, move-in day.
+                    Buying presale means making a major financial decision about a home that may not exist yet. That's why my job isn't simply to find you a project. It's to help you understand what you're buying before you commit.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I represent buyers, not developers. The person showing you the floor plans works for the project — I work for you. And on most projects the developer pays the buyer-agent fee out of their marketing budget.
+                    I help families compare new condos, townhomes and presales across the Fraser Valley and Metro Vancouver — looking at the project, location, price, floor plan, deposit structure, completion timing and long-term fit. And after you sign, I stay involved through the path to completion and keys.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I've helped 450+ families purchase more than $200M in new homes across the Fraser Valley and Metro Vancouver. I'm licensed with Real Broker B.C. Ltd. (Uzair Muhammad PREC*) and regulated by the BC Financial Services Authority.
+                    I've helped more than 450 families purchase over $200M in new homes.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I was raised in Surrey and spent 10 years inside City Hall in planning and bylaws before real estate — so I read a development the way the city reads it, not the way the brochure sells it. Today I lead The Presale Properties Group, a multilingual team serving buyers in English, Punjabi, Hindi and Urdu, and I founded the Vancouver Presale Expo to raise the standard of presale education in BC.
+                    Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. That experience changed how I look at development. I naturally ask questions about how a project fits the neighbourhood, what's happening around it and what may matter years from now — not just what looks good on launch day. Today I lead The Presale Properties Group and founded the Vancouver Presale Expo. I work in English, Punjabi, Hindi and Urdu.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground font-medium">
-                    My job is simple: find you the right project, steer you past the wrong ones, and stay until the keys are in your hand.
+                    My role is simple: help you understand the options, avoid the wrong ones and make the right decision with confidence.
                   </p>
                 </div>
                 <div className="mt-10 animate-fade-up delay-300">
                   <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
                     <Phone className="h-4 w-4" />
-                    Book a Free 15-Minute Call
+                    Book a Buyer Strategy Call
                   </Button>
                 </div>
               </div>
@@ -126,19 +126,16 @@ const About = () => {
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">Buyer-side, not developer-side</p>
                 <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                  Buyer-side advice, not developer-side pressure.
+                  The development already has people selling it. You deserve someone evaluating it from your side.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
-                  <p>When you walk into a developer sales centre, the project already has representation.</p>
-                  <p>You should too.</p>
+                  <p>The sales team knows its project better than almost anyone. That's valuable. But its job is to sell that development.</p>
+                  <p>My job is to help you decide whether that development makes sense for <strong>you</strong>.</p>
                   <p>
-                    The sales team knows the project, the pricing, the incentives, and the urgency. But their job is to sell the development.
+                    That means comparing it with alternatives, questioning the numbers, looking critically at the floor plan and helping you understand the purchase terms.
                   </p>
-                  <p>My job is different.</p>
-                  <p>
-                    I will never promote or hype a project because I don't work for developers. I represent buyers, not developers. Many agents promote every launch to stay close to developers. I can't work that way — independence is the entire point of hiring me. If a project makes sense, I'll explain why. If the floor plan is weak, the deposit is aggressive, the location is risky, or the numbers do not support the story, I'll tell you before you move forward.
-                  </p>
-                  <p className="font-semibold text-foreground">Good advice should protect the buyer, not just close the deal.</p>
+                  <p>If I think the project makes sense, I'll explain why. If I think another project is stronger, I'll say so. If I think you should wait, I'll say that too.</p>
+                  <p className="font-semibold text-foreground">Good advice isn't measured by how quickly you buy. It's measured by whether you still feel good about the decision when you get the keys.</p>
                 </div>
               </div>
             </div>
@@ -155,10 +152,10 @@ const About = () => {
                   What I help buyers understand
                 </h2>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-4">
-                  Most buyers do not need more listings. They need someone who can help them understand what they are actually buying.
+                  Most buyers don't need more listings. They need better context.
                 </p>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                  I help buyers answer questions like:
+                  I help buyers think through questions like:
                 </p>
                 <ul className="grid sm:grid-cols-2 gap-3 text-foreground/80">
                   {buyerQuestions.map((item) => (
@@ -169,7 +166,7 @@ const About = () => {
                   ))}
                 </ul>
                 <p className="mt-6 text-foreground/80 leading-relaxed text-lg">
-                  Presale can be a smart move, but only when the project, timing, budget, and risk all make sense together.
+                  Presale can be a strong option. But only when the project, timing, finances and buyer all fit together.
                 </p>
               </div>
               <div className="image-reveal rounded-2xl overflow-hidden">
@@ -197,15 +194,15 @@ const About = () => {
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">After you sign</p>
                 <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                  With you to keys — and after.
+                  With you from decision to keys.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
-                  <p>Most agents disappear once the contract is signed. The presale journey is just starting.</p>
+                  <p>Signing the contract isn't the end of a presale purchase. In many cases, it's the beginning of a multi-year timeline.</p>
                   <p>
-                    Over the one to four years between signing and completion, I stay on: deposit milestones, mortgage strategy as rates move, completion cost planning, the room-by-room deficiency walkthrough, and how to use your 2-5-10 warranty in the first year.
+                    I stay connected through deposit milestones, construction updates, completion preparation, financing conversations, walkthrough timing and possession.
                   </p>
                   <p className="font-semibold text-foreground">
-                    Only 2 of my 450+ families have ever failed to complete — because the work happens at every step, not just at the signature.
+                    When a question requires a lawyer, accountant, lender or other specialist, I help make sure you're asking the right person the right question.
                   </p>
                 </div>
               </div>
@@ -227,19 +224,16 @@ const About = () => {
               <div className="order-1 lg:order-2">
                 <p className="section-label mb-4">A planner's background</p>
                 <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-6 leading-tight">
-                  A different lens on development.
+                  I look at developments differently.
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                   <p>
-                    Before real estate, I spent 10 years with the City of Surrey in planning and bylaws.
+                    Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. That doesn't make me a city planner today. But it gave me a useful lens.
                   </p>
                   <p>
-                    That background gives me a different way of looking at presale and new construction. I am not only looking at renderings, brochures, or launch incentives. I am looking at how the project fits the area, what has been approved, how the floor plan works, and what questions a buyer should ask before signing.
+                    When I look at a project, I'm not just looking at finishes and incentives. I'm thinking about location, surrounding development, approvals, land use, neighbourhood change and how the home may function when it's actually completed.
                   </p>
-                  <p>
-                    That experience matters because presale is not just about what looks good today.
-                  </p>
-                  <p className="font-semibold text-foreground">I read a development the way the city reads it, not the way the brochure sells it — because presale is about what still makes sense at completion.</p>
+                  <p className="font-semibold text-foreground">Presale isn't only about what looks exciting today. It's about what still makes sense years from now.</p>
                 </div>
               </div>
             </div>
@@ -259,33 +253,33 @@ const About = () => {
                   <div className="border-l-2 border-primary/40 pl-5">
                     <h3 className="font-display text-xl font-bold text-foreground mb-2">First-time buyers</h3>
                     <p>
-                      If you are buying your first home, I help you slow the decision down and understand what you are actually buying.
+                      Buying your first home comes with enough uncertainty already.
                     </p>
                     <p className="mt-2">
-                      We look at affordability, deposit timing, completion costs, floor plan, location, and whether presale is the right move for your life right now.
+                      I help you understand the timeline, deposits, purchase terms, completion costs, location and whether presale is actually the right way for you to enter the market.
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
                     <h3 className="font-display text-xl font-bold text-foreground mb-2">Investors</h3>
                     <p>
-                      If you are buying as an investment, I help you look past the brochure.
+                      I help investors look past the marketing story and evaluate the fundamentals.
                     </p>
                     <p className="mt-2">
-                      We compare rental demand, resale potential, price per square foot, incentives, assignment options, completion risk, and exit strategy.
+                      That includes price, nearby resale, rent potential, deposit leverage, assignment provisions, completion risk and the eventual exit strategy. No guaranteed returns. Just better questions and clearer numbers.
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
                     <h3 className="font-display text-xl font-bold text-foreground mb-2">Move-up buyers</h3>
                     <p>
-                      If you are moving from a condo to a townhome, or from resale into new construction, I help you think through timing, financing, completion, and whether the new home fits your long-term plan.
+                      If you're moving from a condo into a townhome or planning several years ahead, presale can help create time. But timing your existing home, deposits, mortgage and eventual completion matters. I help you see the whole sequence.
                     </p>
                   </div>
                   <div className="border-l-2 border-primary/40 pl-5">
                     <h3 className="font-display text-xl font-bold text-foreground mb-2">First-generation &amp; newcomer buyers</h3>
                     <p>
-                      If you're buying your first home in Canada — maybe with parents contributing, maybe with a short credit history — I explain everything in English, Punjabi, Hindi or Urdu, to you and the family members helping you decide.
+                      Sometimes the buyer understands the process in English but the parents helping with the deposit don't. I work in English, Punjabi, Hindi and Urdu so the people involved in the decision can understand it together.
                     </p>
-                    <p className="mt-2">No one in your family signs confused.</p>
+                    <p className="mt-2">No family member should be writing a cheque for something they don't understand.</p>
                   </div>
                 </div>
               </div>
@@ -317,19 +311,19 @@ const About = () => {
                   Local market focus
                 </h2>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-4">
-                  I focus on presale and new construction across the Fraser Valley and Metro Vancouver, with a strong focus on:
+                  My core focus is presale and new construction across:
                 </p>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-6">
-                  Surrey, Langley, South Surrey, White Rock, Delta, Abbotsford, Coquitlam, Burnaby, Maple Ridge, Chilliwack, and surrounding communities.
+                  Surrey, Langley, South Surrey, White Rock, Delta, Abbotsford, Coquitlam, Burnaby, Maple Ridge, Chilliwack and surrounding communities.
                 </p>
                 <p className="text-foreground/80 leading-relaxed text-lg mb-4">
-                  Each city attracts different buyers, different renters, and different long-term demand.
+                  These aren't interchangeable markets. A project that's right for an investor may be wrong for a first-time buyer.
                 </p>
                 <p className="text-foreground/80 leading-relaxed text-lg">
-                  A good presale in Surrey may not be the same as a good presale in Langley. A strong investor unit may not be the best first home. A townhome that works for a family may not work as a rental.
+                  A great family townhome may be a mediocre rental. A strong building doesn't automatically make every floor plan a good buy.
                 </p>
                 <p className="mt-4 text-foreground/80 leading-relaxed text-lg font-medium">
-                  My job is to help you understand those differences before choosing a project.
+                  Context matters.
                 </p>
               </div>
             </div>
@@ -347,12 +341,12 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                   <p>
-                    I lead The Presale Properties Group, a multilingual team focused on helping buyers compare presale condos, townhomes, and new homes across the Fraser Valley and Metro Vancouver.
+                    I lead The Presale Properties Group, a multilingual real estate team helping buyers navigate presale and new construction across the Fraser Valley and Metro Vancouver.
                   </p>
-                  <p>Our team works in English, Punjabi, Hindi, and Urdu.</p>
+                  <p>Our team works in English, Punjabi, Hindi and Urdu.</p>
                   <p>Alongside me you'll work with Ravish Passy and Sarb Grewal — agents who live and work in the communities we serve.</p>
                   <p>
-                    We help buyers understand projects before they commit, including pricing, layouts, deposits, incentives, completion timelines, and buyer-side representation.
+                    Our shared approach is simple: help the buyer understand the decision before asking them to make it.
                   </p>
                 </div>
               </div>
@@ -378,13 +372,13 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-foreground/80 leading-relaxed text-lg">
                   <p>
-                    I founded the Vancouver Presale Expo to help raise the standard of presale education in BC.
+                    I founded the Vancouver Presale Expo to help raise the level of education and conversation around BC's presale industry.
                   </p>
                   <p>
-                    The Expo brings together agents, developers, and industry professionals to improve how presale projects are explained, understood, and represented.
+                    The event brings together agents, developers and industry professionals.
                   </p>
                   <p>
-                    For buyers, this matters because better education leads to better advice, better questions, and better decisions.
+                    For me, that work matters because a more informed industry should create more informed buyers.
                   </p>
                 </div>
                 <div className="mt-8">
@@ -424,10 +418,10 @@ const About = () => {
             <div className="max-w-2xl mx-auto text-center">
               <p className="section-label mb-4">Before you choose a project, choose your advisor.</p>
               <h2 className="font-display text-4xl font-bold text-foreground mb-6">
-                Let's talk before the sales centre starts <span className="text-gradient">selling to you.</span>
+                Considering a presale? Start with a <span className="text-gradient">conversation, not a showroom.</span>
               </h2>
               <p className="text-foreground/80 mb-8">
-                If you are thinking about buying presale, I can help you understand the market, compare projects, and pressure-test the numbers before you commit.
+                Tell me what you're considering. I'll help you understand the market, compare the options and identify the questions worth asking before you commit.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -437,7 +431,7 @@ const About = () => {
                   onClick={handleCTA}
                 >
                   <Phone className="h-5 w-5" />
-                  Book a Free 15-Minute Call
+                  Book a Buyer Strategy Call
                 </Button>
               </div>
             </div>

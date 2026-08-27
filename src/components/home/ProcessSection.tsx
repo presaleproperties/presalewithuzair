@@ -11,37 +11,37 @@ const steps = [
   {
     step: "01",
     title: "Buyer Strategy Call",
-    description: "We start with your goal, budget, timeline, and comfort level. First home, investment, move-up, condo, townhome, or new-construction home — the right project depends on what you actually need it to do. No pressure. No sales-centre urgency. Just a clear conversation about whether presale makes sense for you right now.",
+    description: "We start with your goal, budget and timeline. First home, investment, move-up purchase, condo or townhome — the right project depends on what you need the property to do for you. No pitch. Just a clear conversation about whether presale makes sense.",
     image: officeWideImage,
   },
   {
     step: "02",
     title: "Market Fit",
-    description: "I help you compare the right city and property type before choosing a project. Surrey, Langley, Delta, South Surrey, Abbotsford, and the Fraser Valley all attract different buyers, renters, and long-term demand. The goal is to understand where your money makes the most sense.",
+    description: "Before choosing a project, we look at where your money makes the most sense. Surrey, Langley, Abbotsford, Delta, Coquitlam and the rest of the Fraser Valley attract different buyers, renters and long-term demand. The city comes before the building.",
     image: presaleBuilding,
   },
   {
     step: "03",
     title: "Project Shortlist",
-    description: "I narrow the options based on price, floor plan, deposit structure, developer, location, incentives, completion timeline, and resale potential. You do not need every listing. You need the right shortlist.",
+    description: "You don't need 140 listings. You need the right two or three options. I narrow the field using price, location, developer, floor plan, deposit structure, incentives, completion timing and your intended use.",
     image: showroomTourImage,
   },
   {
     step: "04",
-    title: "Floor Plan and Numbers Review",
-    description: "We look at how the unit actually works. Is the layout practical? Is there wasted space? Will it rent or resell well? Does the deposit structure fit your cash flow? Are the incentives real, or just marketing? This is where we separate good-looking projects from good decisions.",
+    title: "Floor Plan & Numbers Review",
+    description: "Then we pressure-test the unit itself. Does the layout use space well? Does the deposit schedule work for your cash flow? How does the price compare with nearby resale and competing new construction? Are the incentives genuinely valuable? This is where a good-looking project either becomes a good decision — or doesn't.",
     image: brochureReviewImage,
   },
   {
     step: "05",
     title: "The Walk-Away Rule",
-    description: "If the project does not fit your goal, I will tell you. If the floor plan is weak, the price is stretched, the deposit is aggressive, or the risk is too high, we pause or walk away. A missed bad deal is still a win.",
+    description: "Not every opportunity deserves a yes. If the price is stretched, the floor plan is weak, the deposit schedule doesn't fit or the project simply isn't right for you, I'll tell you. Sometimes the best presale decision is the one you don't make.",
     image: showroomEntranceImage,
   },
   {
     step: "06",
-    title: "Contract and Completion Guidance",
-    description: "Before you sign, we review the key business terms together and make sure you know what to confirm with your lawyer, lender, and accountant. That includes deposit dates, GST, completion costs, assignment rules, incentives, closing adjustments, and important contract questions. My support continues after signing: construction updates, completion preparation, walkthrough timing, assignment strategy if needed, and possession day.",
+    title: "Purchase & Completion Guidance",
+    description: "If you decide to move forward, I stay involved beyond the signing. We'll keep track of deposit milestones, construction updates, financing preparation, closing costs, walkthrough timing and possession. For contract, legal, lending or tax questions outside my role as your Realtor, I'll help you identify what needs to be confirmed with the appropriate professional.",
     image: clientsImage,
   },
 ];
@@ -58,7 +58,7 @@ export const ProcessSection = () => {
             Clear advice before you commit.
           </h2>
           <p className="mt-5 lede max-w-2xl">
-            A simple buyer-side process built to help you understand the project, compare the risks, and avoid signing under pressure.
+            A buyer-side process designed to replace sales-centre pressure with clarity.
           </p>
         </div>
 

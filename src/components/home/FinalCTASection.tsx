@@ -18,11 +18,11 @@ export const FinalCTASection = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-white/70 mb-4 leading-relaxed">
-              The largest annual gathering for real estate agents and developers in the presale space — training 1,000+ realtors and launching groundbreaking projects.
+              I founded the Vancouver Presale Expo to bring agents, developers and industry professionals together around better presale education.
             </p>
 
             <p className="text-sm text-white/50 mb-8 italic">
-              Get guidance from the same expert who educates the industry.
+              For buyers, that industry perspective translates into better questions, stronger comparisons and a clearer understanding of how new construction is actually sold.
             </p>
 
             <div>

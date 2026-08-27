@@ -417,6 +417,21 @@ Deno.serve(async (req) => {
       neighbourhood,
     });
 
+    // Persist the CRM handoff outcome so silent delivery failures are visible.
+    const { error: forwardLogError } = await supabase
+      .from("leads")
+      .update({
+        forward_status: forward.status,
+        forward_error: forward.error,
+        crm_contact_id: forward.contactId,
+      })
+      .eq("id", lead.id);
+    if (forwardLogError) {
+      console.error("Failed to record forward status:", forwardLogError.message);
+    }
+
+
+
 
     return new Response(
       JSON.stringify({ success: true, leadId: lead.id }),

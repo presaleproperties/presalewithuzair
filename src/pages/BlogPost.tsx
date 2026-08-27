@@ -139,6 +139,8 @@ const BlogPost = () => {
         {post.image_url && <meta name="twitter:image" content={post.image_url} />}
         {post.image_url && <meta name="twitter:image:alt" content={post.title} />}
         <script type="application/ld+json">{JSON.stringify(articleStructuredData)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbStructuredData)}</script>
+
       </Helmet>
 
       <ReadingProgressBar />

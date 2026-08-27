@@ -75,3 +75,4 @@ Disallow: /admin/*
 Disallow: /payment-success
 
 Sitemap: https://presalewithuzair.com/sitemap.xml
+Sitemap: https://presalewithuzair.com/sitemap-assignments.xml

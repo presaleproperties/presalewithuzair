@@ -41,6 +41,9 @@ const PunjabiSpeakingRealtor = lazy(() => import("./pages/PunjabiSpeakingRealtor
 const HindiSpeakingRealtor = lazy(() => import("./pages/HindiSpeakingRealtor"));
 const UrduSpeakingRealtor = lazy(() => import("./pages/UrduSpeakingRealtor"));
 const SouthAsianBuyers = lazy(() => import("./pages/SouthAsianBuyers"));
+const SwitchingAgents = lazy(() => import("./pages/assignments/SwitchingAgents"));
+const SellMyAssignment = lazy(() => import("./pages/assignments/SellMyAssignment"));
+const BuyingAnAssignment = lazy(() => import("./pages/assignments/BuyingAnAssignment"));
 
 const queryClient = new QueryClient();
 
@@ -95,6 +98,9 @@ const App = () => (
               <Route path="/hindi-speaking-realtor" element={<HindiSpeakingRealtor />} />
               <Route path="/urdu-speaking-realtor" element={<UrduSpeakingRealtor />} />
               <Route path="/south-asian-buyers" element={<SouthAsianBuyers />} />
+              <Route path="/switching-presale-agents" element={<SwitchingAgents />} />
+              <Route path="/sell-my-presale-assignment" element={<SellMyAssignment />} />
+              <Route path="/buying-a-presale-assignment" element={<BuyingAnAssignment />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
               <Route path="*" element={<NotFound />} />

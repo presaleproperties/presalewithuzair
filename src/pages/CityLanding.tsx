@@ -283,7 +283,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   const countPhrase = projectCount > 0 ? ` — ${projectCount} Active Development${projectCount === 1 ? "" : "s"}${lowestPrice ? ` from ${formatPrice(lowestPrice)}` : ""}` : "";
   const dynamicH1 = `${config.city} Presale Condos${countPhrase}`;
 
-  const pageUrl = `https://presalewithuzair.com/${config.slug}`;
+  const pageUrl = `https://presalewithuzair.com/${config.slug}/`;
 
   const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee out of the project's marketing budget.`;
 

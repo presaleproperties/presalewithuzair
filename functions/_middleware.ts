@@ -812,7 +812,7 @@ export async function resolve(pathname: string, env: Record<string, string | und
   if (path.startsWith("/projects/")) {
     const slug = path.slice("/projects/".length);
     const genericBody = `<h1>Presale Project — Buyer-Only Access with Uzair Muhammad</h1>` + ABOUT_BLOCK;
-    const fallback: Resolved = { meta: { title: humanizeSlug(slug) + " — Presale" + SUFFIX, description: "Presale new-construction project — floor plans, pricing and buyer-first representation with Uzair Muhammad.", image: DEFAULT_IMAGE }, body: genericBody, canonical: SITE + path, robots: "noindex, follow" };
+    const fallback: Resolved = { meta: { title: humanizeSlug(slug) + " — Presale" + SUFFIX, description: "Presale new-construction project — floor plans, pricing and buyer-first representation with Uzair Muhammad.", image: DEFAULT_IMAGE }, body: genericBody, canonical: SITE + path.replace(/\/+$/, "") + "/", robots: "noindex, follow" };
     const key = anonKey(env);
     if (!key) return fallback;
     try {
@@ -827,7 +827,7 @@ export async function resolve(pathname: string, env: Record<string, string | und
       const title = String(baseTitle).includes("Uzair") ? String(baseTitle) : String(baseTitle) + SUFFIX;
       const description = String(p.seo_description || p.short_description || `${p.name}${p.developer_name ? " by " + p.developer_name : ""} — presale new construction${p.city ? " in " + p.city : ""}. Get floor plans and pricing.`).slice(0, 300);
       const image = p.og_image || p.featured_image || DEFAULT_IMAGE;
-      const canonical = p.source_url || (SITE + path);
+      const canonical = p.source_url || (SITE + path.replace(/\/+$/, "") + "/");
       const price = Number(p.starting_price);
       const showPrice = Number.isFinite(price) && price >= 200000;
       const faqs = Array.isArray(p.faq) ? (p.faq as any[]).map((f) => ({ q: String(f?.question ?? f?.q ?? "").trim(), a: String(f?.answer ?? f?.a ?? "").trim() })).filter((f) => f.q && f.a) : [];
@@ -886,7 +886,10 @@ export const onRequest: any = async (context: any) => {
   try {
     const resolved = await resolve(url.pathname, env);
     const { meta, body } = resolved;
-    const canonical = resolved.canonical || `${SITE}${url.pathname === "/" ? "/" : url.pathname.replace(/\/+$/, "")}`;
+    // Host serves directory-style files (/about 308s to /about/), so the
+    // trailing-slash form is the URL that answers 200 and the one we canonicalise to.
+    const canonicalSlug = url.pathname.replace(/\/+$/, "");
+    const canonical = resolved.canonical || `${SITE}${canonicalSlug === "" ? "/" : canonicalSlug + "/"}`;
     const res = await next();
     const ct = res.headers.get("content-type") || "";
     if (!ct.includes("text/html")) return res;

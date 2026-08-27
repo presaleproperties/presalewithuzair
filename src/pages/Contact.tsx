@@ -20,11 +20,11 @@ const Contact = () => {
           content="Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley."
         />
         <meta name="keywords" content="contact presale expert, Vancouver presale agent contact, book presale consultation, presale advisor Vancouver, Fraser Valley presale agent" />
-        <link rel="canonical" href="https://presalewithuzair.com/contact" />
+        <link rel="canonical" href="https://presalewithuzair.com/contact/" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/contact" />
+        <meta property="og:url" content="https://presalewithuzair.com/contact/" />
         <meta property="og:title" content="Contact Uzair Muhammad | Presale Buyer Advisor" />
         <meta property="og:description" content="Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />

@@ -103,11 +103,11 @@ const Agents = () => {
           content="Learn presale contracts, assignments, lead generation, and negotiation from Fraser Valley's leading presale specialist. Training for real estate agents."
         />
         <meta name="keywords" content="presale training realtors, presale education BC, presale mentor agents, Vancouver Presale Academy, presale course agents, assignment training, real estate agent training Vancouver" />
-        <link rel="canonical" href="https://presalewithuzair.com/agents" />
+        <link rel="canonical" href="https://presalewithuzair.com/agents/" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://presalewithuzair.com/agents" />
+        <meta property="og:url" content="https://presalewithuzair.com/agents/" />
         <meta property="og:title" content="Vancouver Presale Academy | Agent Training | Uzair Muhammad" />
         <meta property="og:description" content="Learn presale contracts, assignments, lead generation, and negotiation from Fraser Valley's leading presale specialist. Training for real estate agents." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
@@ -124,7 +124,7 @@ const Agents = () => {
             "@type": "Course",
             "name": "Vancouver Presale Academy",
             "description": "Presale immersion program for real estate agents in Vancouver. Learn contracts, assignments, lead generation, and negotiation strategies.",
-            "url": "https://presalewithuzair.com/agents",
+            "url": "https://presalewithuzair.com/agents/",
             "provider": {
               "@type": "Person",
               "name": "Uzair Muhammad",

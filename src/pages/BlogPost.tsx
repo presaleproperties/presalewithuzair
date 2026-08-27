@@ -97,8 +97,8 @@ const BlogPost = () => {
     "fraser-valley-presale-investment-advice",
   ]);
   const canonicalUrl = slug && FUNNEL_CANONICAL_SLUGS.has(slug)
-    ? `https://presalewithuzair.com/${slug}`
-    : `https://presalewithuzair.com/blog/${slug}`;
+    ? `https://presalewithuzair.com/${slug}/`
+    : `https://presalewithuzair.com/blog/${slug}/`;
 
   return (
     <>

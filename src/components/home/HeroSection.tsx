@@ -5,8 +5,8 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
   headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
-  subheadline: "The sales centre knows how to sell the project.",
-  body: "I help you decide whether it’s actually right for you.\n\nI guide buyers across Surrey, Langley, Abbotsford and the Fraser Valley through the numbers, risks and options before they commit.· Punjabi · Hindi · Urdu.",
+  subheadline: "Specializing in New Construction homes.",
+  body: "I help buyers cut through the sales pitch, understand what really matters, and decide whether the Presale Project is actually right for them. English Punjabi · Hindi · Urdu.",
   cta: "Ask Uzair About a Project",
 };
 

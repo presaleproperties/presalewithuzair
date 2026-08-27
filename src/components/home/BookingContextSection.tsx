@@ -10,17 +10,17 @@ export const BookingContextSection = () => {
           <div className="lg:sticky lg:top-28">
             <p className="section-label mb-3">Ready to get started?</p>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.05]">
-              Let's talk strategy.
+              Have a project in mind? Ask me about it before you commit.
             </h2>
             <p className="mt-4 text-base text-foreground/70 max-w-md leading-relaxed">
-              I'll personally get back to you within 24 hours.
+              I'll personally review your inquiry and help you understand what deserves a closer look.
             </p>
 
             <ul className="mt-6 space-y-3">
               {[
-                { icon: Shield, text: "Buyer-side only — I represent buyers, never developers." },
-                { icon: Clock, text: "24-hour personal reply, not an auto-responder." },
-                { icon: Languages, text: "Contract walkthroughs in English, Punjabi, Hindi & Urdu." },
+                { icon: Shield, text: "Buyer-side presale guidance." },
+                { icon: Languages, text: "English, Punjabi, Hindi & Urdu." },
+                { icon: Clock, text: "450+ families helped." },
               ].map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-3">
                   <Icon className="h-4 w-4 text-primary mt-1 shrink-0" strokeWidth={2.25} />
@@ -32,7 +32,7 @@ export const BookingContextSection = () => {
             <div className="hidden lg:flex items-center gap-3 mt-8 text-sm text-foreground/70">
               <span className="font-semibold text-foreground">450+ families helped</span>
               <span className="text-foreground/30">·</span>
-              <span className="font-semibold text-foreground">$200M+ volume</span>
+              <span className="font-semibold text-foreground">$200M+ in new-home purchases</span>
             </div>
           </div>
 
@@ -44,7 +44,7 @@ export const BookingContextSection = () => {
               eyebrow=""
               heading=""
               subheading=""
-              buttonText="Book a Buyer Strategy Call"
+              buttonText="Ask Uzair About a Project"
               showTrust={false}
               twoColumn
             />

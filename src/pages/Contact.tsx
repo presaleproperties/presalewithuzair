@@ -14,10 +14,10 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Uzair Muhammad | Fraser Valley Presale Expert</title>
+        <title>Contact Uzair Muhammad | Presale Buyer Advisor</title>
         <meta
           name="description"
-          content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent. Available in English, Punjabi, Hindi, and Urdu."
+          content="Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley."
         />
         <meta name="keywords" content="contact presale expert, Vancouver presale agent contact, book presale consultation, presale advisor Vancouver, Fraser Valley presale agent" />
         <link rel="canonical" href="https://presalewithuzair.com/contact" />
@@ -25,14 +25,14 @@ const Contact = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/contact" />
-        <meta property="og:title" content="Contact Uzair Muhammad | Fraser Valley Presale Expert" />
-        <meta property="og:description" content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent. Available in English, Punjabi, Hindi, and Urdu." />
+        <meta property="og:title" content="Contact Uzair Muhammad | Presale Buyer Advisor" />
+        <meta property="og:description" content="Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Uzair Muhammad | Fraser Valley Presale Expert" />
-        <meta name="twitter:description" content="Book a free presale strategy call with Uzair Muhammad — Fraser Valley's leading new construction buyer's agent." />
+        <meta name="twitter:title" content="Contact Uzair Muhammad | Presale Buyer Advisor" />
+        <meta name="twitter:description" content="Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
@@ -65,10 +65,10 @@ const Contact = () => {
             <div className="max-w-3xl">
               <p className="eyebrow mb-4 animate-fade-up">Get In Touch</p>
               <h1 className="h-display text-foreground animate-fade-up delay-100">
-                Let's find the right presale before you commit.
+                Have a presale project in mind? Send it to me.
               </h1>
               <p className="mt-6 lede animate-fade-up delay-200">
-                If you're thinking about a presale condo, townhome, or new-construction home, start here. Send me your budget, preferred cities, timeline, and whether you're buying to live in or invest. I'll help you understand what's worth looking at — and what's worth avoiding.
+                You don't need to know exactly what you want before reaching out. Tell me what you're considering, your approximate budget and what you're trying to accomplish. I'll help you figure out which questions matter next.
               </p>
             </div>
           </div>
@@ -97,7 +97,7 @@ const Contact = () => {
                     </div>
                     <div>
                      <p className="font-semibold text-foreground mb-1">WhatsApp (Preferred)</p>
-                      <p className="text-muted-foreground text-sm mb-1">Fastest response time for quick questions.</p>
+                      <p className="text-muted-foreground text-sm mb-1">Best for a quick project question.</p>
                       <p className="text-primary font-medium text-sm">Chat on WhatsApp</p>
                     </div>
                   </a>
@@ -127,7 +127,7 @@ const Contact = () => {
                     </div>
                     <div>
                      <p className="font-semibold text-foreground mb-1">Email</p>
-                      <p className="text-muted-foreground text-sm mb-1">Send a detailed inquiry or project question.</p>
+                      <p className="text-muted-foreground text-sm mb-1">Send a project, floor plan or detailed question.</p>
                       <p className="text-primary font-medium text-sm">info@meetuzair.com</p>
                     </div>
                   </a>
@@ -163,26 +163,26 @@ const Contact = () => {
                   What to include when you reach out
                 </h3>
                 <p className="text-foreground/70 mb-5 text-sm">
-                  A few details help me give you a useful answer instead of a generic one:
+                  A few details help me give you a useful answer:
                 </p>
                 <ul className="text-foreground/80 space-y-1.5 mb-8 list-disc pl-5 text-sm">
-                  <li>Your budget</li>
+                  <li>Your approximate budget</li>
                   <li>Preferred city or cities</li>
-                  <li>Condo, townhome, or detached</li>
-                  <li>First-time buyer, investor, or move-up</li>
+                  <li>Condo, townhome or detached</li>
+                  <li>Buying to live in or invest</li>
                   <li>Ideal move-in timeline</li>
                   <li>Any projects you're already considering</li>
-                  <li>Whether you've registered with a sales centre</li>
+                  <li>Whether you've already registered with a sales centre</li>
                 </ul>
 
                 <div className="space-y-3 mb-8 text-sm">
                   <div className="flex items-center gap-3 text-foreground/80">
                     <Clock className="h-4 w-4 text-primary" />
-                    <span>Typically responds within 2 hours.</span>
+                    <span>No obligation.</span>
                   </div>
                   <div className="flex items-center gap-3 text-foreground/80">
                     <MessageCircle className="h-4 w-4 text-primary" />
-                    <span>Zero obligation — just an honest conversation.</span>
+                    <span>Start with a conversation.</span>
                   </div>
                 </div>
 
@@ -193,7 +193,7 @@ const Contact = () => {
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Book a Buyer Strategy Call
+                  Ask Uzair About a Project
                 </Button>
 
                 {/* Trust Signals */}

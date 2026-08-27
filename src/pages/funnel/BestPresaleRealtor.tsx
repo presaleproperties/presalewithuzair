@@ -1,31 +1,25 @@
 import { Helmet } from "react-helmet-async";
-import { FunnelPage, RelatedLinks, TRACK_RECORD, type FunnelFAQ } from "@/components/FunnelPage";
+import { FunnelPage, RelatedLinks, type FunnelFAQ } from "@/components/FunnelPage";
 
 const faqs: FunnelFAQ[] = [
   {
-    question: "Who is the best presale realtor in the Fraser Valley?",
+    question: "What should I ask a presale Realtor before hiring them?",
     answer:
-      "I'm Uzair Muhammad — buyer-only presale specialist covering Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack and Maple Ridge. 450+ units sold, $200M+ in sales volume, 4.9 stars on Google. I don't represent developers — only buyers.",
+      "Ask how they evaluate projects, how they compare new construction with resale, how they handle the completion process and how they're compensated.",
   },
   {
-    question: "Why work with a buyer-only presale specialist?",
+    question: "Is presale specialization important?",
     answer:
-      "Because the person at the sales centre is paid by the developer. A buyer-only realtor represents you instead. For many presale projects that representation is paid through the project's sales structure, so it typically costs the buyer nothing — I'll confirm exactly how it works on your specific project.",
+      "Presale has a different timeline, documentation and risk profile from resale, so experience with that process can be valuable.",
   },
   {
-    question: "What languages do you work in?",
+    question: "Do you represent developers?",
     answer:
-      "English, Punjabi, Hindi and Urdu. Roughly a third of the buyers I represent prefer to run through the contract in one of those languages, and I make sure nothing is lost in translation.",
+      "My positioning and practice are focused on advising buyers rather than promoting projects on behalf of developers.",
   },
   {
-    question: "What area do you actually cover?",
-    answer:
-      "The entire Fraser Valley and much of Metro Vancouver — Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge and New Westminster. If a project is presale in the region, I can represent you on it.",
-  },
-  {
-    question: "How do I hire you?",
-    answer:
-      "Book a free 15-minute strategy call — no pressure. If we're a fit, I add you to my VIP list and we start shortlisting projects. If we're not, you'll still leave with better questions to ask any realtor you interview.",
+    question: "How do I start?",
+    answer: "Send me a project or book a strategy call.",
   },
 ];
 
@@ -65,44 +59,39 @@ const BestPresaleRealtor = () => {
       </Helmet>
       <FunnelPage
         path="/best-presale-realtor-fraser-valley"
-        title="Best Presale Realtor Fraser Valley — Talk to Uzair First"
-        description="I'm Uzair Muhammad — buyer-only presale specialist for the Fraser Valley. 450+ units sold, 4.9 stars on Google. Talk to me before any developer sales centre."
-        h1="Best Presale Realtor in the Fraser Valley — Talk to Uzair Before Any Developer"
-        eyebrow="Talk to Uzair"
+        title="How to Choose a Presale Realtor in the Fraser Valley"
+        description="Five things to look for when choosing a Realtor to help you evaluate presales in the Fraser Valley."
+        h1="Don't Ask Who Calls Themselves the Best. Ask How They Think."
+        eyebrow="Choosing Your Advisor"
         breadcrumbName="Best Presale Realtor Fraser Valley"
-        intro="I'm Uzair Muhammad — Fraser Valley's buyer-only presale specialist. 450+ units sold, $200M+ in sales volume, 5 years focused on presale, 4.9 stars on Google. I don't represent developers, ever — only buyers. If you're thinking about a presale condo or townhome anywhere in the Fraser Valley, talk to me before you set foot in a developer's sales centre."
+        intro="If you're looking for a presale Realtor in the Fraser Valley, there are plenty of people who can show you a project. The more useful question is: who will help you decide whether the project is worth buying? I'm Uzair Muhammad. Presale and new construction are the focus of my practice, and I've helped 450+ families purchase more than $200M in new homes. But instead of asking you to take the words “presale expert” at face value, here are the questions I think you should ask any Realtor you're considering."
         faqs={faqs}
       >
-        <h2>Why me — and why buyer-only?</h2>
+        <h2>1. Will they tell you not to buy?</h2>
         <p>
-          Almost every realtor sells presales occasionally. I've built a full-time practice on it. For many presale projects my commission is paid through the project's sales structure, and I represent you — never the builder. I'll explain exactly how it works on your project before you move forward. I don't promote or hype projects; I don't work for developers. Most realtors push every launch to build leverage with developers, but that turns them into a marketing channel instead of an advisor. I represent buyers only. That means I lose deals when a project doesn't pencil out. That's the job.
+          An advisor should be able to lose a transaction to protect the client. Ask them about the last project they told someone to walk away from.
         </p>
 
-        <h2>Track record</h2>
-        <p className="font-semibold">{TRACK_RECORD}</p>
+        <h2>2. Do they compare projects or only promote launches?</h2>
+        <p>You want context. Not another marketing channel.</p>
 
-        <h2>Languages and service area</h2>
+        <h2>3. Can they explain the full presale timeline?</h2>
+        <p>Deposits, completion, financing preparation, walkthrough and possession all matter.</p>
+
+        <h2>4. Do they understand your specific buyer profile?</h2>
+        <p>The right project for an investor can be wrong for a first-time buyer.</p>
+
+        <h2>5. Can they explain their compensation clearly?</h2>
+        <p>You should understand how your Realtor is paid before moving forward.</p>
+
+        <h2>Why buyers work with me</h2>
         <p>
-          I work in English, Punjabi, Hindi and Urdu across Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby South, White Rock, Cloverdale, Chilliwack, Maple Ridge and New Westminster. If it's presale in the Fraser Valley or Metro Vancouver, I can represent you on it.
+          Presale-focused practice. 450+ families helped. $200M+ in new-home purchases. 10 years of prior City of Surrey planning/bylaws experience. English, Punjabi, Hindi and Urdu. Founder of the Vancouver Presale Expo. Willingness to recommend waiting or walking away.
         </p>
 
-        <h2>What working with me looks like</h2>
+        <h2>Service area</h2>
         <p>
-          Free 15-minute strategy call. I ask what you're looking for, your budget, and your timeline. If presale makes sense, I build a shortlist of 2–3 projects that actually fit — with VIP access to pre-public allocations. If it doesn't, I say so. Every contract gets line-by-line review before you sign anything.
-        </p>
-
-        <h2>See the full platform + live projects</h2>
-        <p>
-          For live inventory and the full brokerage platform, visit{" "}
-          <a
-            href="https://presaleproperties.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:underline font-semibold"
-          >
-            See the full platform + live projects
-          </a>
-          .
+          Surrey, Langley, Abbotsford, Coquitlam, Delta, Burnaby, Chilliwack, Maple Ridge, White Rock and surrounding Metro Vancouver and Fraser Valley markets.
         </p>
 
         <RelatedLinks

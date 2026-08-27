@@ -137,7 +137,7 @@ export const FunnelPage = ({
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Book a free strategy call
+                Book a Buyer Strategy Call
               </Link>
               <a
                 href={PHONE_HREF}
@@ -202,7 +202,7 @@ export const FunnelPage = ({
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Book a free strategy call
+                Ask Uzair About a Project
               </Link>
               <a
                 href={PHONE_HREF}

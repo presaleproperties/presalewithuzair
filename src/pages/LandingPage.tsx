@@ -14,7 +14,7 @@ const LandingPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
-  const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book Your Free Call';
+  const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book a Buyer Strategy Call';
 
   // Lock body scroll when form is open
   useEffect(() => {
@@ -37,8 +37,8 @@ const LandingPage = () => {
   const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 6);
   return <>
       <Helmet>
-        <title>Book A Call With Uzair | BC's Presale Expert</title>
-        <meta name="description" content="Book a call with Uzair, BC's trusted presale expert. Get guidance on Vancouver presale condos and townhomes." />
+        <title>Book a Buyer Strategy Call | Uzair Muhammad</title>
+        <meta name="description" content="Book a no-pressure presale strategy call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://presalewithuzair.com/call" />
       </Helmet>
@@ -74,7 +74,7 @@ const LandingPage = () => {
                 y: 0
               }} className="mb-3">
                   <span className="inline-flex items-center gap-1.5 text-foreground/55 text-xs font-semibold tracking-[0.18em] uppercase">
-                    Fraser Valley Buyer-Only Presale Specialist
+                    Fraser Valley Presale Buyer Advisor
                   </span>
 
                 </motion.div>
@@ -88,7 +88,7 @@ const LandingPage = () => {
               }} transition={{
                 duration: 0.5
                }} className="font-display text-3xl md:text-5xl font-bold text-foreground leading-tight mb-3">
-                  Work With <span className="text-foreground/65">Uzair.</span>
+                  Before you buy a presale, get a <span className="text-foreground/65">second perspective.</span>
                 </motion.h1>
 
                 <motion.p initial={{
@@ -97,7 +97,7 @@ const LandingPage = () => {
                 opacity: 1
               }} transition={{
                 delay: 0.1
-              }} className="text-base md:text-lg text-foreground/75 mb-5 max-w-lg">Trusted guidance for New Condo & Townhome buyers across Metro Vancouver. No fluff — just honest, expert advice.</motion.p>
+              }} className="text-base md:text-lg text-foreground/75 mb-5 max-w-lg">15 minutes. No sales-centre pressure. Just a conversation about what you're considering and whether it makes sense.</motion.p>
 
                 <motion.div initial={{
                 opacity: 0,
@@ -110,7 +110,7 @@ const LandingPage = () => {
               }} className="flex flex-wrap justify-start gap-2 text-foreground/60 text-xs">
                   <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">✓ 450+ Families Helped</span>
                   
-                  <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">✓ No Pressure, Just Guidance</span>
+                  <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">✓ Buyer-Side Guidance</span>
                   <span className="bg-card px-3 py-1.5 rounded-sm border border-border/70">English · Punjabi · Urdu · Hindi</span>
                 </motion.div>
               </div>
@@ -127,10 +127,10 @@ const LandingPage = () => {
             <p className="text-sm text-foreground/60 mb-6">15 minutes. No obligation.</p>
             <ul className="grid gap-3 sm:grid-cols-2">
               {[
-                { icon: Users, text: "I ask about your goals, timeline and budget — nothing is pitched." },
-                { icon: FileSearch, text: "I shortlist the projects that actually match what you told me." },
-                { icon: BadgeDollarSign, text: "You get VIP pricing and early access on the projects I represent buyers for." },
-                { icon: Shield, text: "No obligation. If presale is the wrong move right now, I'll say so." },
+                { icon: Users, text: "You tell me what you're trying to accomplish." },
+                { icon: FileSearch, text: "We talk through your budget, timeline and preferred areas." },
+                { icon: BadgeDollarSign, text: "I'll tell you what I'd compare next. If you already have a project in mind, we'll start there." },
+                { icon: Shield, text: "If I don't think presale is the right move, I'll tell you." },
               ].map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-3 bg-card border border-border/70 rounded-sm p-4">
                   <Icon className="h-4 w-4 text-primary mt-0.5 shrink-0" strokeWidth={2.25} />
@@ -222,28 +222,28 @@ const LandingPage = () => {
           <div className="max-w-4xl mx-auto">
             <p className="text-primary text-xs font-semibold tracking-wider uppercase text-left mb-2">For First-Time Buyers & Investors</p>
              <h2 className="font-display text-2xl md:text-3xl font-bold text-left text-foreground mb-3">
-              Why Buyers Work With Uzair?
+              What I help buyers evaluate
             </h2>
             <p className="text-foreground/60 text-sm text-left max-w-xl mb-10">
-              Buying a new condo or townhome is a big decision. Here's how Uzair makes it easier.
+              Buying a new condo or townhome is a big decision. My job is to help make the decision clearer.
             </p>
             <div className="grid sm:grid-cols-2 gap-5">
               {[{
               icon: FileSearch,
-              title: "Every Contract, Reviewed",
-              desc: "Presale contracts are complex. Uzair breaks down every clause so you know exactly what you're signing — no surprises at completion."
+              title: "Understand What You're Signing",
+              desc: "I'll walk you through the major business terms, deposit schedule and disclosure information in plain language and identify anything that should be confirmed with your lawyer."
             }, {
               icon: Home,
-              title: "Early Access to Best Units",
-              desc: "Get priority access to new condo & townhome launches before they go public. The best floorplans and pricing go first."
+              title: "Compare Projects, Not Just Marketing",
+              desc: "Early access can be useful. But the bigger advantage is having someone compare the project against competing presales and nearby resale before you commit."
             }, {
               icon: BadgeDollarSign,
-              title: "Protect Your Investment",
-              desc: "Not every presale is worth buying. Uzair evaluates the developer, location, and pricing — and will tell you when to walk away."
+              title: "Pressure-Test the Decision",
+              desc: "Not every presale deserves your deposit. We look at the developer, location, pricing, floor plan, terms and your own financial situation before deciding."
             }, {
               icon: Handshake,
-              title: "With You From Start to Finish",
-              desc: "From choosing the right project to completion day — Uzair guides you through deposits, milestones, inspections, and beyond."
+              title: "Stay Supported Through Completion",
+              desc: "Presale can take years. I stay connected through deposits, completion preparation, walkthrough timing and possession."
             }].map((b, i) => <motion.div key={b.title} initial={{
               opacity: 0,
               y: 15
@@ -270,7 +270,7 @@ const LandingPage = () => {
         {/* Footer text */}
         <footer className="py-6 px-4 bg-background border-t border-border/70 text-left">
           <p className="text-foreground/45 text-sm">
-            © {new Date().getFullYear()} Uzair Presales • Vancouver's Presale Expert
+            © {new Date().getFullYear()} Uzair Presales • Presale advice from the buyer's side.
           </p>
         </footer>
       </div>

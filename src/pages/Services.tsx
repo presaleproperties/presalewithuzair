@@ -12,53 +12,60 @@ import { useNavigate } from "react-router-dom";
 const services = [
   {
     id: "presales",
-    title: "Presale Purchasing & VIP Access",
+    title: "Presale Purchasing & Early Access",
     subtitle: "Presale Acquisitions",
-    description: "Stop waiting in line at public launches. I get my clients front-of-the-line access to the best floor plans and pricing across the Fraser Valley. But more importantly, I act as your filter — the unfiltered truth on whether to buy or walk away. I don't promote or hype projects; I don't work for developers. My only job is to help you decide if the project is actually right for you.",
+    description: "I'll help you find and compare presale opportunities across the Fraser Valley and Metro Vancouver, including early-access opportunities when they're available. But access isn't the point. Judgment is. My job is to help you determine whether the project deserves your money in the first place.",
     image: showroomTourImage,
     benefits: [
-      "VIP pricing and early floor plan access",
-      "Line-by-line disclosure and contract review",
-      "Developer track-record analysis",
-      "Strict ROI and cash-flow math",
+      "Project and location comparison",
+      "Floor plan and pricing analysis",
+      "Deposit schedule review",
+      "Developer and competing-project research",
+      "Incentive comparison",
+      "Purchase-term walkthrough and questions to confirm with your lawyer",
+      "Early-access opportunities when available",
     ],
   },
   {
     id: "assignments",
     title: "Presale Assignment Strategy",
     subtitle: "Contract Assignments",
-    description: "Need to exit your presale contract before completion? Assignments are complex and highly regulated. I provide clear, realistic valuations and manage the entire exit strategy.",
+    description: "Life can change between signing a presale contract and completion. If you need to explore assigning your contract, I help you understand the market value, developer requirements and practical steps involved in bringing the assignment to market. Because assignments can involve legal and tax considerations, I also make sure those issues are directed to the appropriate professionals.",
     image: floorplanImage,
     benefits: [
-      "Honest, data-backed contract valuation",
-      "Navigation of developer assignment restrictions",
-      "Tax implication overview",
-      "Targeted marketing to qualified assignment buyers",
+      "Market-based assignment pricing",
+      "Developer process and restrictions",
+      "Marketing strategy",
+      "Buyer outreach",
+      "Coordination with legal and tax professionals where required",
     ],
   },
   {
     id: "resale",
-    title: "Resale & Portfolio Building",
+    title: "Resale & Portfolio Decisions",
     subtitle: "Resale & Investment Properties",
-    description: "My investor clients don't just buy presales. When the math makes sense on a resale property, we execute. You get the same analytical, no-nonsense approach applied to the resale market.",
+    description: "Presale isn't automatically the right answer. For investors and homebuyers, sometimes the better opportunity is already built. I can help you compare presale and resale through the same lens: price, location, financing, rent potential, long-term demand and your exit strategy. The goal is not to make presale win. The goal is to make the right option obvious.",
     image: clientMeetingImage,
     benefits: [
-      "Cash-flow analysis and cap-rate breakdowns",
-      "Strategic portfolio planning",
-      "Fierce negotiation on your behalf",
+      "Presale vs. resale comparison",
+      "Price, location and financing analysis",
+      "Rent potential and long-term demand review",
+      "Exit-strategy planning",
     ],
   },
   {
     id: "completion",
     title: "Completion, Walkthrough & After-Key Support",
     subtitle: "From Contract to Keys — and Beyond",
-    description: "Most agents disappear after you sign. We stay. As completion approaches we walk you through financing, closing costs and the statement of adjustments, do the deficiency walkthrough with you room by room, and make sure you know how your 2-5-10 new-home warranty works before the first year runs out.",
+    description: "Presale purchases can take years to complete. I stay involved. As completion approaches, I help you prepare for financing conversations, closing costs, the deficiency walkthrough and possession. I can also help you understand the basics of your new-home warranty and point you toward the right professional resources when something requires legal, financing, tax or warranty expertise.",
     image: clientMeetingImage,
     benefits: [
-      "Completion cost estimate before closing day",
-      "Room-by-room deficiency walkthrough",
-      "2-5-10 warranty guidance",
-      "First-year check-in",
+      "Completion preparation",
+      "Closing-cost planning",
+      "Deficiency walkthrough support",
+      "Possession-day coordination",
+      "New-home warranty orientation",
+      "Post-completion check-in",
     ],
   },
 ];
@@ -70,10 +77,10 @@ const Services = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Buyer Services | VIP Access, Contract Review & Completion Support | Uzair Muhammad</title>
+        <title>Presale Buyer Services | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee."
+          content="Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley."
         />
         <meta name="keywords" content="presale services Vancouver, presale condo advisory, assignment sale help, presale contract review, new construction guidance Vancouver, Fraser Valley presale services" />
         <link rel="canonical" href="https://presalewithuzair.com/services" />
@@ -81,14 +88,14 @@ const Services = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/services" />
-        <meta property="og:title" content="Presale Buyer Services | VIP Access, Contract Review & Completion Support | Uzair Muhammad" />
-        <meta property="og:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee." />
+        <meta property="og:title" content="Presale Buyer Services | Uzair Muhammad" />
+        <meta property="og:description" content="Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Presale Buyer Services | Uzair Muhammad" />
-        <meta name="twitter:description" content="Buyer representation for presale condos & townhomes in the Fraser Valley — VIP access and pricing, contract review, assignments, and support through completion to keys. The developer pays my fee." />
+        <meta name="twitter:description" content="Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         
         <script type="application/ld+json">
@@ -158,10 +165,10 @@ const Services = () => {
             <div className="max-w-3xl">
               <p className="eyebrow mb-4 animate-fade-up">How I Can Help</p>
               <h1 className="h-display text-foreground animate-fade-up delay-100">
-                Expert guidance. No sales pressure.
+                One advisor from the first question to the keys.
               </h1>
               <p className="mt-6 lede animate-fade-up delay-200">
-                Whether you are buying your first presale, assigning a contract, or building a portfolio, I'm with you from finding the right project to keys in hand — honest, buyer-first advice, paid by the developer, never by you.
+                Buying a presale isn't one decision. It's a series of decisions about the market, project, floor plan, deposit structure, purchase terms, financing and eventual completion. I help you connect those decisions so you're not evaluating each one in isolation.
               </p>
             </div>
           </div>
@@ -213,10 +220,10 @@ const Services = () => {
           <div className="container-xl">
             <div className="max-w-2xl mx-auto text-center">
               <h2 className="h-section text-foreground mb-6">
-                Before you walk into a developer sales centre, talk to someone who works for you.
+                Have a project in mind?
               </h2>
               <p className="lede mb-8">
-                No pressure. No pitch. Just a clear conversation about your goals, budget, and the projects worth comparing.
+                Send it to me before you commit. No pressure. No pitch. Just a clear conversation about whether it makes sense for you.
               </p>
               <div className="flex justify-center">
                 <Button
@@ -226,7 +233,7 @@ const Services = () => {
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Book a Free 15-Minute Call
+                  Ask Uzair About a Project
                 </Button>
               </div>
             </div>

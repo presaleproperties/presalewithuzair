@@ -3,68 +3,63 @@ import { BuyerRepTable } from "@/components/BuyerRepTable";
 
 const faqs: FunnelFAQ[] = [
   {
-    question: "Do I need my own realtor to buy a presale?",
+    question: "Do I legally need a Realtor to buy a presale?",
     answer:
-      "Yes. The rep at the developer's sales centre works for the developer — that's their client, that's who pays them. Your own buyer's agent represents you. For many presale projects, buyer representation is paid through the project's sales structure. Uzair confirms exactly how it works on your specific project before you commit.",
+      "No. The question is whether you want independent representation and advice while evaluating the purchase.",
   },
   {
-    question: "Does hiring a buyer's agent cost me anything?",
+    question: "Who represents the developer?",
     answer:
-      "For many presale projects, buyer representation is paid through the project's sales structure, so it typically costs the buyer nothing. Uzair confirms exactly how it works on your specific project before you commit — and tells you upfront if anything is different.",
+      "The developer's sales team represents the development's interests.",
   },
   {
-    question: "Who does the sales-centre rep actually represent?",
+    question: "What does my own Realtor do?",
     answer:
-      "The developer. Their job title is 'developer sales representative' for a reason. They're licensed, they're friendly, they're knowledgeable — and their duty is to the developer's profit, not to your outcome. That's not a criticism, it's simply the structure.",
+      "Helps you compare projects, evaluate the unit, understand the purchase process and advocate for your interests within the Realtor's professional role.",
   },
   {
-    question: "What does a buyer's agent actually do differently?",
+    question: "Can I call after I've already visited the sales centre?",
     answer:
-      "Reviews your contract line by line. Negotiates deposit structure and incentives. Compares the project against other active presales and resale comps. Tells you when a deal is bad. Uses the 7-day rescission window to protect you. Represents your interests, not the developer's quota.",
-  },
-  {
-    question: "Can I still hire you if I've already visited a sales centre?",
-    answer:
-      "Sometimes — depends on whether you've registered. If you registered but haven't signed anything, we may still be able to transfer representation. If you've signed, it's usually too late for that project but we can plan the rescission review and any future presales. Call me first, always.",
+      "Yes. Tell me exactly what you've done so far and I'll help you understand what options may still be available.",
   },
 ];
 
 const BuyerRepresentation = () => (
   <FunnelPage
     path="/buyer-representation-presale-fraser-valley"
-    title="Do You Need a Realtor for a BC Presale? Yes — Here's Why"
-    description="I'm Uzair — buyer-only presale specialist. Who the sales-centre rep really works for, and why you need your own realtor on every BC presale."
-    h1="Do You Need Your Own Realtor for a Presale? (Yes — Here's Why)"
+    title="Do You Need Your Own Realtor for a BC Presale?"
+    description="Understand what buyer representation means when purchasing a BC presale and why it helps to speak with your own Realtor before registering."
+    h1="The Project Has Representation. You Should Understand Yours."
     eyebrow="Buyer Representation"
     breadcrumbName="Buyer Representation for Presale"
-    intro="I'm Uzair Muhammad, buyer-only presale specialist for the Fraser Valley. The most common question I get is: do I really need my own realtor if I'm buying a presale? Short answer: yes — because for many presale projects it costs the buyer nothing and gives you someone on your side. Here's the full picture: who the sales-centre rep actually works for, how the developer's sales structure works, and what you lose by skipping representation."
+    intro="I'm Uzair Muhammad, a presale and new-construction Realtor serving the Fraser Valley and Metro Vancouver. One of the most common questions buyers ask is whether they really need their own Realtor when purchasing directly from a developer. You don't have to use one. But you should understand the difference between the person selling the development and someone advising you from the buyer's side."
     faqs={faqs}
   >
-    <h2>The thesis, in one line</h2>
+    <h2>The idea in one line</h2>
     <p>
-      For many presale projects, buyer representation is paid through the project's sales structure — so it typically costs the buyer nothing to have someone on their side of the table. Skipping your own realtor doesn't put money back in your pocket; it just removes your representation.
+      The sales centre's job is to sell the project. Your advisor's job should be to help you decide whether to buy it.
     </p>
 
-    <h2>Who does the sales-centre rep actually represent?</h2>
+    <h2>Who does the sales-centre team work for?</h2>
     <p>
-      Not you. Their client is the developer. That doesn't make them dishonest — it makes them exactly what their job title says: developer sales representatives. They're paid to move the developer's inventory, not to warn you when a floor plan is inefficient or a competing project is a better deal.
-    </p>
-
-    <h2>Why I don't promote or hype projects</h2>
-    <p>
-      I don't work for developers, and I never will. Most realtors promote every new launch that hits the market because that builds their relationship with developers and brings more deals later. But you can't push inventory and protect the buyer at the same time. I represent buyers only. If a project is overpriced, poorly laid out, or from a builder I don't trust, I'll tell you to walk away — even if it means losing the commission.
+      The development. That doesn't make them bad people or unreliable professionals. It simply means their role is different from yours. They're there to explain and sell their project. A buyer-side Realtor can compare that project with other options, question the price and layout, discuss your own goals and tell you when another choice may be stronger.
     </p>
 
     <BuyerRepTable />
 
-    <h2>What a buyer's agent actually does</h2>
+    <h2>What does buyer-side representation actually add?</h2>
     <p>
-      Reviews the contract and Disclosure Statement line by line. Negotiates deposit ladders and incentives that don't reach public buyers. Compares your shortlisted project against other active presales and resale comps. Tells you when a deal is bad. Uses the 7-day rescission window to protect your deposit. Represents your interests, not a sales quota.
+      Comparison with competing projects. Nearby resale context. Floor plan analysis. Deposit schedule planning. Incentive comparison. Purchase-term walkthrough. Completion planning. And someone who can say, "I don't think you should buy this."
     </p>
 
-    <h2>What representation costs you</h2>
+    <h2>What does it cost?</h2>
     <p>
-      For many presale projects, buyer representation is paid through the project's sales structure. Uzair will explain exactly how it works before you move forward, and tell you upfront if anything is different.
+      Compensation arrangements vary between transactions. On many presale developments, buyer-agent compensation is paid through the project's sales structure. I'll tell you exactly how compensation works on the specific development before you decide whether to work with me.
+    </p>
+
+    <h2>When should you call?</h2>
+    <p>
+      Before registering directly with the project whenever possible. Developer policies around representation vary. A five-minute conversation before visiting the sales centre can give you clarity about your options.
     </p>
 
     <RelatedLinks

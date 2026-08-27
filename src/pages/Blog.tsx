@@ -134,18 +134,18 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad</title>
-        <meta name="description" content="Straight-talk advice on presale condos, new construction, and real estate investment in Surrey, Langley, Abbotsford, and the Fraser Valley. No hype. No developer bias." />
+        <title>BC Presale Insights & Buyer Guides | Uzair Muhammad</title>
+        <meta name="description" content="Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver." />
         <meta name="keywords" content="presale blog Vancouver, condo investment tips, presale condo advice, Vancouver real estate blog, assignment sale guide, Fraser Valley presale blog" />
         <link rel="canonical" href="https://presalewithuzair.com/blog" />
         <meta property="og:type" content="blog" />
         <meta property="og:url" content="https://presalewithuzair.com/blog" />
-        <meta property="og:title" content="Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad" />
-        <meta property="og:description" content="Straight-talk advice on presale condos, new construction, and real estate investment in Surrey, Langley, Abbotsford, and the Fraser Valley. No hype. No developer bias." />
+        <meta property="og:title" content="BC Presale Insights & Buyer Guides | Uzair Muhammad" />
+        <meta property="og:description" content="Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver." />
         <meta property="og:image" content="https://presalewithuzair.com/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Presale Condo Investment Blog | Fraser Valley | Uzair Muhammad" />
-        <meta name="twitter:description" content="Straight-talk advice on presale condos, new construction, and real estate investment in the Fraser Valley." />
+        <meta name="twitter:title" content="BC Presale Insights & Buyer Guides | Uzair Muhammad" />
+        <meta name="twitter:description" content="Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver." />
         <meta name="twitter:image" content="https://presalewithuzair.com/og-image.jpg" />
         <script type="application/ld+json">{JSON.stringify(blogStructuredData)}</script>
       </Helmet>
@@ -171,7 +171,7 @@ const Blog = () => {
               Presale Insights
             </h1>
             <p className="text-white/60 text-sm md:text-base max-w-lg">
-              Expert guides, market intelligence, and investment insights for Metro Vancouver presales.
+              Market updates, practical buyer guides and independent perspective on presale and new construction across BC. Not every project is a good project. Not every market headline applies to every buyer. These articles are here to help you understand the difference.
             </p>
           </div>
         </section>
@@ -236,16 +236,16 @@ const Blog = () => {
               Free Strategy Call
             </span>
             <h2 className="font-display text-3xl md:text-4xl text-white mb-3">
-              Ready to Buy Smart?
+              Reading about a project you're considering?
             </h2>
             <p className="max-w-lg mx-auto mb-7 text-sm text-white/60">
-              Get unfiltered, no-BS presale advice from a buyer-only presale specialist — my fee comes from the developer's marketing budget.
+              Send it to me. I'll help you think through the project, numbers and questions worth asking before you make a decision.
             </p>
             <Link
               to="/?scroll=book-section"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-sm font-bold text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              Book a Buyer Strategy Call
+              Ask Uzair About a Project
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

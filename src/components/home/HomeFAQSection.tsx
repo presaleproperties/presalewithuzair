@@ -2,29 +2,29 @@ import { FAQSchema, type FAQItem } from "@/components/blog/FAQSchema";
 
 const HOMEPAGE_FAQS: FAQItem[] = [
   {
-    question: "Do I really need a realtor to buy a presale, or can I just walk into the presentation centre?",
+    question: "Do I need my own Realtor to buy a presale?",
     answer:
-      "You can walk in — but the sales reps at the presentation centre work for the developer, not for you. For many presale projects the developer pays the buyer commission, so a buyer-side specialist typically costs the buyer nothing and unlocks VIP pricing, hidden incentives, decorating allowances, and assignment fee waivers that aren't offered to walk-in buyers. Going direct almost always means paying more for fewer perks.",
+      "You can purchase directly from a developer, but the sales team is there to sell that development. Having your own Realtor gives you someone evaluating the project from your side. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm the arrangement for the specific project before you move forward.",
   },
   {
-    question: "How much deposit do I actually need for a presale condo in BC?",
+    question: "How much deposit do I need?",
     answer:
-      "Most Fraser Valley presales require 15–20% staged over 12–24 months — typically 5% at signing, 5% at 90–180 days, and the balance before completion. In the current market, 10% deposit structures are negotiable on select projects. Your deposit is held in trust and becomes part of your down payment at completion.",
+      "Presale deposit schedules vary by project. Many developments use staged deposits rather than requiring the full amount upfront. Before you commit, I map out every deposit date so you know exactly how much cash is required and when.",
   },
   {
-    question: "What happens to my deposit if the project gets delayed or cancelled?",
+    question: "What happens if a project is delayed or cancelled?",
     answer:
-      "Your deposits are legally protected under BC's Real Estate Development Marketing Act (REDMA) and held in a lawyer's or developer's trust account — not spent on construction. If the developer cancels, your full deposit is returned with interest. If the project is delayed past the outside completion date in your contract, you have the right to walk away and get your deposit back.",
+      "Your rights depend on the purchase agreement, disclosure statement and applicable BC legislation. Delays and cancellations can work differently from project to project, which is why I help you identify the relevant terms and the questions that should be confirmed with your lawyer before you commit.",
   },
   {
-    question: "Can I sell my presale condo before it completes?",
+    question: "Can I sell my presale before completion?",
     answer:
-      "Yes — it's called an assignment sale. But you need to account for developer assignment fees (typically 1–3% of the original purchase price), CRA tax implications (the profit may be taxed as business income, not capital gains), and lifting clauses that restrict when you can publicly list the assignment on MLS. A specialist structures your contract upfront to keep assignment flexibility open.",
+      "Potentially. This is called an assignment, and the rules vary significantly between projects. Developer approval, fees, marketing restrictions and tax considerations can all affect your options. I look at the assignment provisions early so your exit strategy is based on the contract, not an assumption.",
   },
   {
-    question: "Is presale actually cheaper than buying resale right now?",
+    question: "Is presale better than resale?",
     answer:
-      "When you factor in developer incentives — decorating allowances, capped strata fees, mortgage rate buy-downs, GST rebates, and free upgrades — presale often wins on total cost in the Fraser Valley. You're also locking in today's price for a unit completing in 2–4 years, giving you built-in appreciation runway. But it only works on the right project; roughly 80% of presales in market are overpriced.",
+      "Sometimes. Sometimes resale is the better decision. Presale can offer staged deposits, new-home warranty coverage, newer construction and project incentives. Resale gives you certainty about the finished home and today's market value. I compare both when that's what the decision requires.",
   },
 ];
 
@@ -35,7 +35,7 @@ export const HomeFAQSection = () => {
         <div className="max-w-3xl mx-auto">
           <FAQSchema
             faqs={HOMEPAGE_FAQS}
-            heading="The questions buyers ask before they sign."
+            heading="The questions buyers ask before they commit."
           />
         </div>
       </div>

@@ -92,7 +92,7 @@ export const PresaleGuideBanner = () => {
                 7 Costly Mistakes Presale Buyers Make
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base mb-6 max-w-lg mx-auto md:mx-0">
-                Most buyers don't find out they made a mistake until it's too late. Download my checklist to spot contract traps, hidden closing costs, and developer red flags before you sign away your deposit.
+                Presale mistakes often happen before the contract is signed. Download my guide to the questions I think buyers should ask about the project, floor plan, deposit schedule, purchase terms and completion costs before committing.
               </p>
 
               {isSuccess ? (

@@ -12,13 +12,20 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found | Presale with Uzair</title>
+        <title>Page Not Found | Presale With Uzair</title>
+        <meta
+          name="description"
+          content="The page you're looking for couldn't be found. Return to Presale With Uzair to browse projects or ask Uzair a question."
+        />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <div className="flex min-h-screen items-center justify-center bg-muted">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+          <p className="mb-2 text-xl text-muted-foreground">This page didn't complete.</p>
+          <p className="mb-4 text-sm text-muted-foreground">
+            The good news: you can still find the project you're looking for.
+          </p>
           <a href="/" className="text-primary underline hover:text-primary/90">
             Return to Home
           </a>

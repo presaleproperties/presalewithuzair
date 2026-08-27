@@ -5,29 +5,29 @@ const faqs: FunnelFAQ[] = [
   {
     question: "Does Uzair speak Punjabi?",
     answer:
-      "Yes. Uzair Muhammad works in Punjabi, Hindi, Urdu and English, and regularly explains presale contracts and deposit schedules to buyers' parents in Punjabi.",
+      "Yes. I work in Punjabi, Hindi, Urdu and English and regularly speak with buyers and their families in Punjabi.",
   },
   {
-    question: "Is there a Punjabi realtor for presale condos in Surrey?",
+    question: "Do you work outside Surrey?",
     answer:
-      "Yes. Uzair Muhammad is a buyer-side presale specialist covering Surrey, Langley, Abbotsford, Delta and the Fraser Valley, working in Punjabi, Hindi, Urdu and English.",
+      "Yes. I help presale and new-construction buyers across the Fraser Valley and Metro Vancouver.",
   },
   {
-    question: "Does it cost extra to work with a Punjabi speaking realtor?",
+    question: "Does it cost extra to work with you?",
     answer:
-      "No. For many presale projects, buyer representation is paid through the project's sales structure. Uzair explains exactly how it works before you move forward.",
+      "Compensation arrangements vary by transaction. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll explain exactly how it works for the specific project before you proceed.",
   },
 ];
 
 const PunjabiSpeakingRealtor = () => (
   <FunnelPage
     path="/punjabi-speaking-realtor"
-    title="Punjabi Speaking Realtor — Presale & New Construction, Surrey & Fraser Valley"
-    description="Punjabi speaking buyer-side presale advisor in Surrey, Langley and the Fraser Valley. Uzair Muhammad represents buyers, never developers, and explains the contract to your family in Punjabi."
-    h1="A Punjabi speaking realtor who works for the buyer, not the developer."
+    title="Punjabi Speaking Presale Realtor | Surrey & Fraser Valley"
+    description="Work with a Punjabi-speaking Realtor for presale and new construction across Surrey and the Fraser Valley."
+    h1="Presale explained clearly — in Punjabi or English."
     eyebrow="Punjabi Speaking Realtor"
     breadcrumbName="Punjabi Speaking Realtor"
-    intro="Yes — there is a Punjabi speaking realtor for presales in Surrey. Uzair Muhammad is a buyer-side presale and new-construction advisor who works in Punjabi, Hindi, Urdu and English across Surrey, Langley, Abbotsford, Delta and the Fraser Valley. He represents buyers, never developers. He has sold 450+ units and holds a 4.9-star rating on Google."
+    intro="Buying a home is often a family decision. Sometimes the buyer is comfortable in English while parents or other family members contributing money would rather discuss the details in Punjabi. I work in Punjabi, Hindi, Urdu and English so the whole family can understand the decision together. I'm Uzair Muhammad, a presale and new-construction Realtor serving buyers across Surrey, Langley, Abbotsford, Delta and the Fraser Valley."
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
@@ -35,22 +35,28 @@ const PunjabiSpeakingRealtor = () => (
       ਸਤ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਉਜ਼ੈਰ ਮੁਹੰਮਦ ਹਾਂ। ਮੈਂ ਸਰੀ, ਲੈਂਗਲੀ ਅਤੇ ਫਰੇਜ਼ਰ ਵੈਲੀ ਵਿੱਚ ਪਰਿਵਾਰਾਂ ਦੀ ਉਹਨਾਂ ਦਾ ਪਹਿਲਾ ਪ੍ਰੀਸੇਲ ਘਰ ਖਰੀਦਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹਾਂ। ਡਿਪਾਜ਼ਿਟ ਦੀਆਂ ਤਰੀਕਾਂ, ਕੰਟਰੈਕਟ ਦੀਆਂ ਸ਼ਰਤਾਂ ਅਤੇ ਅਸਲ ਲਾਗਤ ਮੈਂ ਤੁਹਾਡੇ ਮਾਤਾ-ਪਿਤਾ ਨੂੰ ਪੰਜਾਬੀ ਵਿੱਚ ਸਮਝਾਉਂਦਾ ਹਾਂ, ਤਾਂ ਜੋ ਸਾਈਨ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਪੂਰੇ ਪਰਿਵਾਰ ਨੂੰ ਸਭ ਕੁਝ ਸਾਫ਼ ਹੋਵੇ। ਮੈਂ ਸਿਰਫ਼ ਖਰੀਦਦਾਰਾਂ ਦਾ ਪੱਖ ਰੱਖਦਾ ਹਾਂ — ਡਿਵੈਲਪਰ ਦਾ ਕਦੇ ਨਹੀਂ।
     </p>
 
-    <h2>The contract is explained in Punjabi — not just English.</h2>
+    <h2>The whole family should understand the purchase.</h2>
     <p>
-      The buyer usually speaks English. The parents helping with the deposit often do not. And nobody at the sales centre is going to stop and explain a hundred-page disclosure statement in Punjabi. Uzair works in Punjabi, Hindi, Urdu, and English. He sits down with the people actually writing the cheque and walks through the deposit schedule, the completion date, and what the contract really commits them to — in their own language. He was born in Pakistan and raised in Surrey.
+      I can explain the project, deposit schedule, completion timeline and major purchase terms in Punjabi so the people involved in the decision understand what they're contributing toward.
+    </p>
+    <p>
+      When something requires legal, tax or lending advice, I also help identify what should be confirmed with the appropriate professional.
     </p>
 
-    <h2>What Uzair does for Punjabi speaking buyers</h2>
+    <h2>What I help Punjabi-speaking buyers understand</h2>
     <ul>
-      <li>Explains the contract and disclosure statement in Punjabi, to the buyer and their parents.</li>
-      <li>Reads the whole document inside BC's 7-day rescission window, before it is binding.</li>
-      <li>Works out the real cost: GST, property transfer tax, rebates, deposit dates, and the mortgage at completion.</li>
-      <li>Represents buyers only. He has never represented a developer.</li>
+      <li>The project and competing options</li>
+      <li>Deposit amounts and timing</li>
+      <li>Floor plan and pricing</li>
+      <li>Completion timeline</li>
+      <li>Major purchase terms</li>
+      <li>Potential closing costs</li>
+      <li>Questions to take to your lawyer, lender or accountant</li>
     </ul>
 
-    <h2>Talk to Uzair before registering at the sales centre.</h2>
+    <h2>Talk to me before registering directly with a sales centre.</h2>
     <p>
-      Once a buyer registers directly with a project, their representation options can become more limited, depending on that developer's rules. Asking first costs nothing. Undoing it later is harder. If you have already registered, tell Uzair — he will explain what options may still be open.
+      Representation rules vary between projects. If you're considering a development, it's easier to understand your options before you register than after.
     </p>
     <p className="not-prose">
       <Link

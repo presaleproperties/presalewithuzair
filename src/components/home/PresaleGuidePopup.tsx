@@ -140,7 +140,7 @@ export const PresaleGuidePopup = () => {
                   7 Costly Mistakes Presale Buyers Make
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Avoid contract traps, hidden costs & developer red flags — get the checklist before you sign.
+                  Presale mistakes often happen before the contract is signed. Get the questions I think buyers should ask before committing.
                 </p>
               </div>
 
@@ -183,7 +183,7 @@ export const PresaleGuidePopup = () => {
                       Sending...
                     </>
                   ) : (
-                    "Send Me the Guide"
+                    "Send Me The Free Guide"
                   )}
                 </Button>
 

@@ -131,20 +131,14 @@ export const FunnelPage = ({
               {TRACK_RECORD}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/call"
+              <button
+                type="button"
+                onClick={() => openCalendlyPopup("funnel-hero")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Book a Buyer Strategy Call
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-sm border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
-              >
-                <Phone className="h-4 w-4" />
-                {PHONE}
-              </a>
+                {BOOK_CALL_LABEL}
+              </button>
             </div>
           </div>
         </section>
@@ -196,20 +190,14 @@ export const FunnelPage = ({
               {TRACK_RECORD}
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link
-                to="/call"
+              <button
+                type="button"
+                onClick={() => openCalendlyPopup("funnel-bottom")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Ask Uzair About a Project
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-sm border border-foreground/25 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
-              >
-                <Phone className="h-4 w-4" />
-                {PHONE}
-              </a>
+                {BOOK_CALL_LABEL}
+              </button>
             </div>
           </div>
         </section>

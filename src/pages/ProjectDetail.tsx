@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { usePresaleProject, usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { openCalendlyPopup } from "@/hooks/useCalendly";
 import {
+  CheckCircle2,
   Building2,
   ArrowLeft,
   ArrowUp,

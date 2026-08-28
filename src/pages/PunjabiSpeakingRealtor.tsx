@@ -63,7 +63,7 @@ const PunjabiSpeakingRealtor = () => (
         to="/call"
         className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
       >
-        Talk To Uzair First
+        Book a 15-Minute Call
       </Link>
     </p>
 

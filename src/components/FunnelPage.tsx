@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Phone, Calendar, CheckCircle2 } from "lucide-react";
+import { Calendar, CheckCircle2 } from "lucide-react";
+import { openCalendlyPopup, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
 
 export interface FunnelFAQ {
   question: string;
@@ -30,8 +31,6 @@ export const DEFAULT_SOCIAL_IMAGE =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
 export const TRACK_RECORD =
   "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9 stars on Google · Buyer-only representation.";
-const PHONE = "+1 778-231-3592";
-const PHONE_HREF = "tel:+17782313592";
 
 export const FunnelPage = ({
   path,
@@ -132,20 +131,14 @@ export const FunnelPage = ({
               {TRACK_RECORD}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/call"
+              <button
+                type="button"
+                onClick={() => openCalendlyPopup("funnel-hero")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Book a Buyer Strategy Call
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-sm border border-foreground/20 px-5 py-2.5 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
-              >
-                <Phone className="h-4 w-4" />
-                {PHONE}
-              </a>
+                {BOOK_CALL_LABEL}
+              </button>
             </div>
           </div>
         </section>
@@ -197,20 +190,14 @@ export const FunnelPage = ({
               {TRACK_RECORD}
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link
-                to="/call"
+              <button
+                type="button"
+                onClick={() => openCalendlyPopup("funnel-bottom")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
-                Ask Uzair About a Project
-              </Link>
-              <a
-                href={PHONE_HREF}
-                className="inline-flex items-center gap-2 rounded-sm border border-foreground/25 px-6 py-3 text-sm font-semibold text-foreground hover:border-primary hover:text-primary transition"
-              >
-                <Phone className="h-4 w-4" />
-                {PHONE}
-              </a>
+                {BOOK_CALL_LABEL}
+              </button>
             </div>
           </div>
         </section>

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
+import { useCalendly, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 
 const heroContent = {
@@ -7,7 +8,7 @@ const heroContent = {
   headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
   subheadline: "Specializing in New Construction homes.",
   body: "I help buyers cut through the developer’s sales pitch, understand what really matters, and decide whether a presale is actually right for them. From choosing the right project to getting the keys, I guide you every step of the way. I don’t work for the developer. I represent you.",
-  cta: "Ask Uzair About a Project",
+  cta: BOOK_CALL_LABEL,
 };
 
 const serviceAreas = [
@@ -67,9 +68,8 @@ const ProofRow = ({ className = "" }: { className?: string }) => (
 );
 
 export const HeroSection = () => {
-  const handleBookClick = () => {
-    document.getElementById("book-section")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const { openCalendly } = useCalendly();
+  const handleBookClick = () => openCalendly("hero");
 
   return (
     <section className="dark-section relative overflow-hidden bg-background">

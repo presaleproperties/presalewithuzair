@@ -1,32 +1,20 @@
-import { useState, useEffect } from "react";
-import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
+import { useState } from "react";
+import { CalendlyInline } from "@/components/CalendlyInline";
 import { staticReviews } from "@/data/googleReviews";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
-import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Shield, Users, Star, Phone, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
 
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
 
 const LandingPage = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
-  const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
-  const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book a Buyer Strategy Call';
+  const ctaText = 'Book a 15-Minute Call';
 
-  // Lock body scroll when form is open
-  useEffect(() => {
-    if (isFormOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isFormOpen]);
+  const scrollToBooking = () => {
+    document.getElementById("calendly-book")?.scrollIntoView({ behavior: "smooth" });
+  };
   const testimonials = staticReviews.map((r) => ({
     name: r.name,
     text: r.quote,
@@ -37,8 +25,8 @@ const LandingPage = () => {
   const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 6);
   return <>
       <Helmet>
-        <title>Book a Buyer Strategy Call | Uzair Muhammad</title>
-        <meta name="description" content="Book a no-pressure presale strategy call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
+        <title>Book a 15-Minute Call | Uzair Muhammad</title>
+        <meta name="description" content="Book a no-pressure 15-minute call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://presalewithuzair.com/call/" />
       </Helmet>
@@ -151,6 +139,19 @@ const LandingPage = () => {
                   <figcaption className="mt-3 text-xs font-semibold text-foreground/60">{t.name} · Google review</figcaption>
                 </figure>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Book a 15-minute call — Calendly */}
+        <section id="calendly-book" className="px-4 pb-12 md:pb-16 scroll-mt-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Book your 15-minute call
+            </h2>
+            <p className="text-sm text-foreground/60 mb-6">Pick a time that works. Confirmation is instant.</p>
+            <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
+              <CalendlyInline minHeight={620} />
             </div>
           </div>
         </section>
@@ -280,85 +281,14 @@ const LandingPage = () => {
       paddingBottom: 'calc(0.75rem + env(safe-area-inset-bottom, 0px))'
     }}>
         <div className="max-w-md mx-auto">
-          <button onClick={() => {
-          setIsFormOpen(true);
-          setIsSubmitted(false);
-        }} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
+          <button onClick={scrollToBooking} className="w-full group relative overflow-hidden bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-4 rounded-sm shadow-lg hover:shadow-xl transition-all duration-300 font-bold inline-flex items-center justify-center gap-2.5">
             <span className="absolute inset-0 bg-foreground/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 rounded-sm" />
             <Phone className="w-5 h-5 relative z-10" />
             <span className="relative z-10">{ctaText}</span>
           </button>
-          <p className="text-center text-foreground/60 text-xs mt-1.5">Same day call back</p>
+          <p className="text-center text-foreground/60 text-xs mt-1.5">Pick a time — confirmation is instant</p>
         </div>
       </div>
-
-      {/* Bottom Sheet Form Overlay */}
-      <AnimatePresence>
-        {isFormOpen && <>
-            {/* Backdrop */}
-            <motion.div initial={{
-          opacity: 0
-        }} animate={{
-          opacity: 1
-        }} exit={{
-          opacity: 0
-        }} onClick={() => setIsFormOpen(false)} className="fixed inset-0 z-50 bg-foreground/40 backdrop-blur-sm" />
-
-            {/* Sheet */}
-            <motion.div initial={{
-          y: "100%"
-        }} animate={{
-          y: 0
-        }} exit={{
-          y: "100%"
-        }} transition={{
-          type: "spring",
-          damping: 30,
-          stiffness: 300
-        }} className="dark-section fixed bottom-0 left-0 right-0 z-50 bg-background text-foreground border-t border-border rounded-t-sm max-h-[90dvh] overflow-y-auto">
-              {/* Drag handle */}
-              <div className="flex justify-center pt-3 pb-1">
-                <div className="w-10 h-1 rounded-full bg-foreground/20" />
-              </div>
-
-              {/* Close button */}
-              <button onClick={() => setIsFormOpen(false)} className="absolute top-4 right-4 text-foreground/60 hover:text-foreground transition-colors p-1" aria-label="Close form">
-                <X className="w-6 h-6" />
-              </button>
-
-              <div className="px-5 pb-8 pt-2 max-w-md mx-auto">
-                {isSubmitted ? <div className="text-center py-8">
-                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="h-8 w-8 text-primary" />
-                    </div>
-                     <h3 className="font-display text-2xl font-bold text-foreground mb-2">
-                      You're In.
-                    </h3>
-                    <p className="text-foreground/75 mb-2">Uzair will call you at your preferred time.</p>
-                    <p className="text-foreground/60 text-sm mb-6">Check your email for confirmation.</p>
-                    <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors">
-                      Visit Our Website →
-                    </a>
-                  </div> : <div>
-                    <div className="text-center mb-4">
-                       <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                        Request A <span className="text-primary">Call</span>
-                      </h2>
-                      <p className="text-foreground/60 text-xs mt-1">Same day call back.</p>
-                    </div>
-                    <UnifiedLeadForm
-                      variant="dark"
-                      eyebrow=""
-                      heading=""
-                      subheading=""
-                      buttonText="Request A Call"
-                      showTrust={false}
-                    />
-                  </div>}
-              </div>
-            </motion.div>
-          </>}
-      </AnimatePresence>
     </>;
 };
 export default LandingPage;

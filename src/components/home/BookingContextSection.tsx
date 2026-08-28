@@ -1,4 +1,4 @@
-import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
+import { CalendlyInline } from "@/components/CalendlyInline";
 import { Clock, Shield, Languages } from "lucide-react";
 
 export const BookingContextSection = () => {
@@ -10,10 +10,10 @@ export const BookingContextSection = () => {
           <div className="lg:sticky lg:top-28">
             <p className="section-label mb-3">Ready to get started?</p>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight leading-[1.05]">
-              Have a project in mind? Ask me about it before you commit.
+              Book a 15-minute call before you commit to anything.
             </h2>
             <p className="mt-4 text-base text-foreground/70 max-w-md leading-relaxed">
-              I'll personally review your inquiry and help you understand what deserves a closer look.
+              Pick a time that works for you. I'll personally review what you're considering and help you understand what deserves a closer look.
             </p>
 
             <ul className="mt-6 space-y-3">
@@ -36,18 +36,9 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-
-          {/* Right — form */}
-          <div>
-            <UnifiedLeadForm
-              variant="card"
-              eyebrow=""
-              heading=""
-              subheading=""
-              buttonText="Ask Uzair About a Project"
-              showTrust={false}
-              twoColumn
-            />
+          {/* Right — Calendly booking */}
+          <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
+            <CalendlyInline minHeight={660} />
           </div>
         </div>
       </div>

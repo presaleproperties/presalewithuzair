@@ -1,4 +1,4 @@
-import { openLeadDialog } from "@/components/forms/LeadFormDialog";
+import { openCalendlyPopup } from "@/hooks/useCalendly";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -72,7 +72,7 @@ const services = [
 
 const Services = () => {
   const navigate = useNavigate();
-  const handleCTA = () => openLeadDialog('services');
+  const handleCTA = () => openCalendlyPopup('services');
 
   return (
     <>
@@ -233,7 +233,7 @@ const Services = () => {
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Ask Uzair About a Project
+                  Book a 15-Minute Call
                 </Button>
               </div>
             </div>

@@ -8,6 +8,7 @@ import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
+import { CALENDLY_URL } from "@/hooks/useCalendly";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 
 /* ─── Reading progress bar ─── */
@@ -286,13 +287,13 @@ const BlogPost = () => {
                       Vancouver's presale specialist with 450+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
                     <a
-                      href="https://wa.me/17782313592"
+                      href={CALENDLY_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 mt-4 text-sm font-bold transition-all hover:gap-3"
                       style={{ color: "hsl(var(--primary))" }}
                     >
-                      Chat with Uzair <ChevronRight className="h-3.5 w-3.5" />
+                      Book a 15-Minute Call <ChevronRight className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 </div>
@@ -314,7 +315,7 @@ const BlogPost = () => {
                     Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
                   </p>
                   <a
-                    href="https://wa.me/17782313592?text=Hi%20Uzair%2C%20I%27m%20interested%20in%20presale%20and%20would%20like%20to%20discuss%20further..."
+                    href={CALENDLY_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-sm font-bold text-sm transition-colors duration-300 hover:opacity-90"
@@ -324,7 +325,7 @@ const BlogPost = () => {
                     }}
                   >
                     <Phone className="h-4 w-4" />
-                    Chat with Uzair on WhatsApp
+                    Book a 15-Minute Call
                   </a>
                 </div>
 
@@ -420,13 +421,13 @@ const BlogPost = () => {
                         Talk strategy with Uzair
                       </p>
                       <a
-                        href="https://wa.me/17782313592"
+                        href={CALENDLY_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full text-center py-2.5 rounded-sm text-xs font-bold transition-opacity hover:opacity-90"
                         style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                       >
-                        Book Free Consultation
+                        Book a 15-Minute Call
                       </a>
                     </div>
                   </div>

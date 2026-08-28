@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { usePresaleProjects } from "@/hooks/usePresaleProjects";
+import { openCalendlyPopup } from "@/hooks/useCalendly";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
 import { CITY_DEPTH } from "@/data/cityDepth";
 
@@ -53,7 +54,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Surrey Presale Condos — 35 Active Developments from $299,900",
     heroSubheadline: "Compare the project before you buy the project.",
     heroBody: "Surrey has one of the Fraser Valley's deepest new-construction markets. That creates opportunity — and a lot to compare. From Surrey City Centre and Fleetwood to South Surrey, I help buyers evaluate projects on pricing, floor plans, deposit structures, location, developer and long-term fit before committing.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Surrey presales",
     whyBuyBody: "Start with your goal, not the building. A first-time buyer, investor and growing family can look at the same project and reach three different conclusions. I help you compare the active options from your side — not rank them by whichever development is launching this weekend.",
     benefits: [
@@ -80,7 +81,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Langley Presale Condos — 23 Active Developments from $299,000",
     heroSubheadline: "More space. More growth. More projects to compare.",
     heroBody: "Langley has become one of the Fraser Valley's most active new-home markets, especially for buyers looking for townhomes and family-oriented communities. Willoughby, Latimer Heights and Central Langley each offer something different. I help you figure out which one actually fits your goal.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Langley presales",
     whyBuyBody: "Don't start with the incentive. Start with the life you expect to have when the home completes. We compare the area, property type, layout, price, deposit schedule and future market before choosing the project.",
     benefits: [
@@ -107,7 +108,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Abbotsford Presale Condos — 21 Active Developments from $279,900",
     heroSubheadline: "Lower entry price doesn't remove the need for scrutiny.",
     heroBody: "Abbotsford can offer a more attainable entry point into new construction than many Metro Vancouver markets. That doesn't make every project a good buy. I help first-time buyers and investors compare the University District, Historic Downtown and other Abbotsford projects on price, layout, demand, developer and long-term fit.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Abbotsford projects",
     whyBuyBody: "Affordability is only one part of the decision. We look at what you're getting for the price, who the eventual buyer or tenant may be, how nearby resale compares and whether the project makes sense for your timeline.",
     benefits: [
@@ -134,7 +135,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Chilliwack Presales: More Attainable Doesn't Mean Automatic.",
     heroSubheadline: "Compare quality, not just price.",
     heroBody: "Chilliwack can offer some of the Fraser Valley's most attainable new construction. For buyers willing to look farther east, that can create interesting options. But affordability is only useful when the project itself makes sense.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "Why Chilliwack deserves a closer look",
     whyBuyBody: "Treat the lower entry price as the beginning of the analysis, not the conclusion. Compare the developer, neighbourhood, floor plan, purchase terms and future buyer pool.",
     benefits: [
@@ -161,7 +162,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Maple Ridge Presale Condos — 3 Active Developments from $749,900",
     heroSubheadline: "Lifestyle first. Investment thesis second.",
     heroBody: "Maple Ridge can offer a compelling combination of space, outdoor access and connection to Metro Vancouver. For some buyers, that's exactly the point. I help you compare new projects based on how they fit your actual life and long-term plans — not just a projected appreciation story.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Maple Ridge presales",
     whyBuyBody: "Make sure you would still like the purchase even if the market doesn't do anything dramatic. Strong real estate decisions should work before appreciation enters the conversation.",
     benefits: [
@@ -188,7 +189,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Coquitlam Presale Condos — 27 Active Developments from $399,900",
     heroSubheadline: "Burquitlam, Coquitlam Centre and Burke Mountain are three very different decisions.",
     heroBody: "Coquitlam has a deep new-construction market. The challenge isn't finding a project. It's understanding which location, building and unit make sense for your goal. I compare active presales against nearby resale and competing projects before recommending anything.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Coquitlam projects",
     whyBuyBody: "Compare the submarket first. Then the project. Then the unit. A strong neighbourhood doesn't automatically make every development or floor plan a strong purchase.",
     benefits: [
@@ -215,7 +216,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Delta Presale Condos — 4 Active Developments from $469,900",
     heroSubheadline: "Fewer projects makes choosing the right one more important.",
     heroBody: "Delta's new-construction market is smaller than Surrey or Burnaby. Tsawwassen, Ladner and North Delta also behave very differently. I help buyers evaluate the local market, project, price, floor plan and purchase terms before making a decision.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Delta presales",
     whyBuyBody: "Start by deciding which part of Delta actually fits your lifestyle or investment goal. Then compare the project within that context.",
     benefits: [
@@ -242,7 +243,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
     heroHeadline: "Burnaby Presale Condos — 10 Active Developments from $399,900",
     heroSubheadline: "In a market with this much new supply, comparison matters.",
     heroBody: "Metrotown. Brentwood. Lougheed. Edmonds. Burnaby offers a large number of new-construction choices — often at very different price points relative to nearby resale. I help buyers compare the premium they're paying for new construction and decide whether the specific project and unit justify it.",
-    heroCta: "Ask Uzair About a Project",
+    heroCta: "Book a 15-Minute Call",
     whyBuyTitle: "What matters when comparing Burnaby presales",
     whyBuyBody: "Don't ask only, \"Is this a good project?\" Ask, \"Is this a good project at this price?\" That's the comparison that matters.",
     benefits: [
@@ -387,7 +388,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
                 {config.heroBody}
               </p>
               <button
-                onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => openCalendlyPopup(`city-${config.slug}`)}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base transition-colors duration-300 animate-fade-up"
               >
                 {config.heroCta}

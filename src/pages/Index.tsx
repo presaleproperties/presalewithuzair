@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
 
 // Lazy load below-fold sections to reduce initial bundle
 const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
@@ -17,7 +16,6 @@ const BookingContextSection = lazy(() => import("@/components/home/BookingContex
 
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
 const HomeFAQSection = lazy(() => import("@/components/home/HomeFAQSection").then(m => ({ default: m.HomeFAQSection })));
-const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 
 const SectionFallback = () => <div className="min-h-[200px]" />;
 
@@ -32,16 +30,6 @@ const Index = () => {
       const timer = setTimeout(() => {
         document.getElementById(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
       }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [location.search]);
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get('open-guide') === '1') {
-      const timer = setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('open-presale-guide'));
-      }, 300);
       return () => clearTimeout(timer);
     }
   }, [location.search]);
@@ -98,17 +86,12 @@ const Index = () => {
           <HomeFAQSection />
         </Suspense>
 
-        {/* 5. Free lead magnet */}
-        <Suspense fallback={<SectionFallback />}>
-          <PresaleGuideBanner />
-        </Suspense>
-
-        {/* 6. Book a call */}
+        {/* 5. Book a 15-minute call (Calendly) */}
         <Suspense fallback={<SectionFallback />}>
           <BookingContextSection />
         </Suspense>
 
-        {/* 7. Final CTA */}
+        {/* 6. Final CTA */}
         <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
@@ -116,7 +99,6 @@ const Index = () => {
       </main>
 
       <Footer />
-      <PresaleGuidePopup />
     </>
   );
 };

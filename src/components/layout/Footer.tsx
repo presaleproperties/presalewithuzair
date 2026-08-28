@@ -93,7 +93,7 @@ export const Footer = () => {
                 Uzair Muhammad PREC* (Real Broker) — Buyer-side presale advice across the Fraser Valley & Metro Vancouver.
               </p>
               <p className="text-white/60 text-xs leading-relaxed mb-5">
-                450+ families helped · $200M+ in new homes · English, Punjabi, Hindi & Urdu
+                450+ families helped · $250M+ in new homes · English, Punjabi, Hindi & Urdu
               </p>
 
               <div className="flex items-center gap-2 mb-5">

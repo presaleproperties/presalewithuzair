@@ -387,7 +387,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
                 {config.heroBody}
               </p>
               <button
-                onClick={() => document.getElementById("lead-form")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => openCalendlyPopup(`city-${config.slug}`)}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 font-semibold text-base transition-colors duration-300 animate-fade-up"
               >
                 {config.heroCta}

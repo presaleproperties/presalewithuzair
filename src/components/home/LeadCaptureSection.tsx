@@ -1,14 +1,11 @@
-import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
+import { CalendlyInline } from "@/components/CalendlyInline";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
 export const LeadCaptureSection = () => {
   return (
-    <section id="lead-form" className="relative min-h-screen overflow-hidden">
-      <div className="absolute inset-0 bg-background" />
-
-      <div className="relative z-10 container-xl px-4 sm:px-6 min-h-screen flex items-center py-16 sm:py-24">
+    <section id="book-section" className="relative overflow-hidden bg-background section-y">
+      <div className="container-xl px-4 sm:px-6">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
-          
           {/* Left - Image (hidden on mobile) */}
           <div className="hidden lg:block relative">
             <div className="relative rounded-sm overflow-hidden">
@@ -21,15 +18,18 @@ export const LeadCaptureSection = () => {
             </div>
           </div>
 
-          {/* Right - Form */}
-          <div className="max-w-md mx-auto lg:mx-0 w-full">
-            <UnifiedLeadForm
-              eyebrow="START HERE"
-              heading="Get Clear Guidance Before You Buy"
-              subheading="Independent, buyer-first advice. A quick conversation to understand your goals — and ensure you don't make a costly mistake."
-              buttonText="Let's Chat"
-              showTrust={true}
-            />
+          {/* Right - Calendly booking */}
+          <div className="w-full">
+            <p className="section-label mb-3">Start Here</p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight leading-[1.05] mb-3">
+              Book a 15-minute call.
+            </h2>
+            <p className="text-base text-foreground/70 leading-relaxed mb-6 max-w-md">
+              Independent, buyer-first advice. A quick conversation to understand your goals — before you commit to anything.
+            </p>
+            <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
+              <CalendlyInline minHeight={620} />
+            </div>
           </div>
         </div>
       </div>

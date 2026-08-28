@@ -28,7 +28,7 @@ export const LeadCaptureSection = () => {
               Independent, buyer-first advice. A quick conversation to understand your goals — before you commit to anything.
             </p>
             <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-              <CalendlyInline minHeight={620} />
+              <CalendlyInline />
             </div>
           </div>
         </div>

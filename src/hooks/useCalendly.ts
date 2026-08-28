@@ -42,12 +42,6 @@ export const loadCalendly = (): Promise<void> => {
   return loader;
 };
 
-const trackBookCall = (source: string) => {
-  try {
-    (window as any).gtag?.("event", "book_call", { location: source });
-  } catch {}
-};
-
 /** Opens the Calendly popup; falls back to a new tab if the widget can't load. */
 export const openCalendlyPopup = (source = "unknown") => {
   trackBookCall(source);

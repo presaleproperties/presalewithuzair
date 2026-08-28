@@ -9,6 +9,7 @@ import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
 import { CALENDLY_URL } from "@/hooks/useCalendly";
+import { trackBookCall } from "@/lib/analytics";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 
 /* ─── Reading progress bar ─── */
@@ -288,6 +289,7 @@ const BlogPost = () => {
                     </p>
                     <a
                       href={CALENDLY_URL}
+                      onClick={() => trackBookCall("blog-author-box")}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 mt-4 text-sm font-bold transition-all hover:gap-3"
@@ -316,6 +318,7 @@ const BlogPost = () => {
                   </p>
                   <a
                     href={CALENDLY_URL}
+                      onClick={() => trackBookCall("blog-inline-cta")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-sm font-bold text-sm transition-colors duration-300 hover:opacity-90"
@@ -422,6 +425,7 @@ const BlogPost = () => {
                       </p>
                       <a
                         href={CALENDLY_URL}
+                      onClick={() => trackBookCall("blog-sidebar")}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full text-center py-2.5 rounded-sm text-xs font-bold transition-opacity hover:opacity-90"

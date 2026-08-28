@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { trackBookCall } from "@/lib/analytics";
 
 /** Single booking endpoint used sitewide. */
 export const CALENDLY_URL = "https://calendly.com/meetuzair/quick-call";
@@ -39,12 +40,6 @@ export const loadCalendly = (): Promise<void> => {
     document.body.appendChild(script);
   });
   return loader;
-};
-
-const trackBookCall = (source: string) => {
-  try {
-    (window as any).gtag?.("event", "book_call", { location: source });
-  } catch {}
 };
 
 /** Opens the Calendly popup; falls back to a new tab if the widget can't load. */

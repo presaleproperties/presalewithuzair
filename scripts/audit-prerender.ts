@@ -11,7 +11,7 @@
  * silently ship.
  */
 
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { resolve as pathResolve, join } from "node:path";
 import { SITE, STATIC_META, CITY_META, FUNNEL } from "../functions/_middleware.js";
 
@@ -101,7 +101,16 @@ function main() {
     ...Object.keys(FUNNEL),
   ].filter((p, i, a) => a.indexOf(p) === i);
 
-  const sampled = [...sitemapPaths("/blog/", SAMPLE), ...sitemapPaths("/projects/", SAMPLE)];
+  // Project pages are noindex (canonical points to presaleproperties.com) so
+  // they never appear in the sitemap — sample them straight from dist/.
+  const projectDir = join(DIST, "projects");
+  const projects = existsSync(projectDir)
+    ? readdirSync(projectDir, { withFileTypes: true })
+        .filter((d) => d.isDirectory())
+        .slice(0, SAMPLE)
+        .map((d) => `/projects/${d.name}`)
+    : [];
+  const sampled = [...sitemapPaths("/blog/", SAMPLE), ...projects];
 
   const groups: Array<[string, string[]]> = [
     ["required", required],

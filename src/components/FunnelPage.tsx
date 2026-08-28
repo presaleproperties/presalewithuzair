@@ -30,7 +30,7 @@ const SITE = "https://presalewithuzair.com";
 export const DEFAULT_SOCIAL_IMAGE =
   "https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp";
 export const TRACK_RECORD =
-  "450+ Units Sold · $200M+ in Sales Volume · 5 Years in the Presale Market · 4.9 stars on Google · Buyer-only representation.";
+  "450+ Units Sold · $250M+ in Sales Volume · 5 Years in the Presale Market · 4.9 stars on Google · Buyer-only representation.";
 
 export const FunnelPage = ({
   path,

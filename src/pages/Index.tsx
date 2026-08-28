@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/home/HeroSection";
-import { PresaleGuidePopup } from "@/components/home/PresaleGuidePopup";
 
 // Lazy load below-fold sections to reduce initial bundle
 const SocialProofSection = lazy(() => import("@/components/home/SocialProofSection").then(m => ({ default: m.SocialProofSection })));
@@ -17,7 +16,6 @@ const BookingContextSection = lazy(() => import("@/components/home/BookingContex
 
 const FinalCTASection = lazy(() => import("@/components/home/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
 const HomeFAQSection = lazy(() => import("@/components/home/HomeFAQSection").then(m => ({ default: m.HomeFAQSection })));
-const PresaleGuideBanner = lazy(() => import("@/components/home/PresaleGuideBanner").then(m => ({ default: m.PresaleGuideBanner })));
 
 const SectionFallback = () => <div className="min-h-[200px]" />;
 

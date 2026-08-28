@@ -31,6 +31,12 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/book": "/call",
   "/en": "/",
 
+  // --- Legacy listing/assignment URLs (no matching page on this site) ---
+  "/presale-projects": "/surrey",
+  "/properties": "/surrey",
+  "/assignments": "/buying-a-presale-assignment",
+  "/buying-an-assignment": "/buying-a-presale-assignment",
+
   // --- Blog consolidation (Aug 2026): retired duplicate posts → cluster winner ---
   // GST / first-time-buyer rebate
   "/blog/fthb-gst-rebate-save-50000-bc-presales-2026": "/blog/first-time-buyer-gst-rebate-bc-presale-2026",

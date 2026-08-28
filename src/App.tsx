@@ -106,6 +106,10 @@ const App = () => (
               <Route path="/buying-a-presale-assignment" element={<BuyingAnAssignment />} />
               <Route path="/requestacall" element={<Navigate to="/call" replace />} />
               <Route path="/lp" element={<Navigate to="/call" replace />} />
+              <Route path="/presale-projects" element={<Navigate to="/surrey" replace />} />
+              <Route path="/properties" element={<Navigate to="/surrey" replace />} />
+              <Route path="/assignments" element={<Navigate to="/buying-a-presale-assignment" replace />} />
+              <Route path="/buying-an-assignment" element={<Navigate to="/buying-a-presale-assignment" replace />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             </Suspense>

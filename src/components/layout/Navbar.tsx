@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { openLeadDialog } from "@/components/forms/LeadFormDialog";
+import { Link, useLocation } from "react-router-dom";
+import { openCalendlyPopup, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -24,17 +24,12 @@ const cityLinks = [
   { href: "/maple-ridge", label: "Maple Ridge" },
 ];
 
-const trackBookCall = (loc: string) => {
-  try { (window as any).gtag?.("event", "book_call", { location: loc }); } catch {}
-};
-
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isPresalesOpen, setIsPresalesOpen] = useState(false);
   const [isMobilePresalesOpen, setIsMobilePresalesOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Pages that open with a full-bleed dark hero behind the nav
   const darkHeroPaths = [
@@ -60,18 +55,8 @@ export const Navbar = () => {
   }, [location]);
 
   const handleFormCTA = () => {
-    trackBookCall("navbar");
-    openLeadDialog("navbar");
+    openCalendlyPopup("navbar");
     setIsMobileMenuOpen(false);
-  };
-
-  const handleGuideClick = () => {
-    setIsMobileMenuOpen(false);
-    if (location.pathname === '/') {
-      window.dispatchEvent(new CustomEvent('open-presale-guide'));
-    } else {
-      navigate('/?open-guide=1');
-    }
   };
 
   const navBg = isScrolled

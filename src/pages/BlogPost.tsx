@@ -8,6 +8,7 @@ import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
+import { CALENDLY_URL } from "@/hooks/useCalendly";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 
 /* ─── Reading progress bar ─── */

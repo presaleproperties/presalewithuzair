@@ -38,7 +38,7 @@ export const BookingContextSection = () => {
 
           {/* Right — Calendly booking */}
           <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-            <CalendlyInline minHeight={660} />
+            <CalendlyInline minHeight={700} />
           </div>
         </div>
       </div>

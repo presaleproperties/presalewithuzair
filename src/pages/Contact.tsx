@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, MessageCircle, Clock, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import uzairImage from "@/assets/uzair-expo-profile.jpg";
+import { AGENT_ID, agentRef, personRef } from "@/lib/structuredData";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -39,11 +40,19 @@ const Contact = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
+            "url": "https://presalewithuzair.com/contact/",
+            "about": agentRef,
             "mainEntity": {
-              "@type": "Person",
-              "name": "Uzair Muhammad",
+              "@type": ["RealEstateAgent", "LocalBusiness"],
+              "@id": AGENT_ID,
+              "name": "Uzair Muhammad — Presale With Uzair",
+              "url": "https://presalewithuzair.com",
               "telephone": "+1-778-231-3592",
               "email": "info@meetuzair.com",
+              "priceRange": "$400,000 - $3,000,000",
+              "currenciesAccepted": "CAD",
+              "founder": personRef,
+              "employee": personRef,
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "3211 152 St, Building C",
@@ -51,6 +60,18 @@ const Contact = () => {
                 "addressRegion": "BC",
                 "postalCode": "V3Z 1H8",
                 "addressCountry": "CA"
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "09:00",
+                "closes": "20:00"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 4.9,
+                "reviewCount": 36,
+                "bestRating": 5
               }
             }
           })}

@@ -11,6 +11,7 @@ import { renderMarkdown } from "@/lib/renderMarkdown";
 import { buildCalendlyUrl } from "@/hooks/useCalendly";
 import { trackBookCall } from "@/lib/analytics";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
+import { authorRef, publisherRef } from "@/lib/structuredData";
 
 /* ─── Reading progress bar ─── */
 function ReadingProgressBar() {
@@ -77,13 +78,8 @@ const BlogPost = () => {
     image: post.image_url || "https://presalewithuzair.com/og-image.jpg",
     datePublished: post.published_at,
     dateModified: post.updated_at || post.published_at,
-    author: { "@type": "Person", name: "Uzair Muhammad", url: "https://presalewithuzair.com/about" },
-    publisher: {
-      "@type": "Organization",
-      name: "Presale With Uzair",
-      url: "https://presalewithuzair.com",
-      logo: { "@type": "ImageObject", url: "https://presalewithuzair.com/og-image.jpg" },
-    },
+    author: authorRef,
+    publisher: publisherRef,
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://presalewithuzair.com/blog/${slug}` },
   };
 

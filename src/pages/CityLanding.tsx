@@ -7,6 +7,7 @@ import { usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { openCalendlyPopup } from "@/hooks/useCalendly";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
 import { CITY_DEPTH } from "@/data/cityDepth";
+import { localBusinessBranch } from "@/lib/structuredData";
 
 interface CityFAQ {
   question: string;
@@ -288,17 +289,11 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
 
   const answerParagraph = `Uzair Muhammad is a presale specialist who represents buyers, not developers — 450+ families helped across the Fraser Valley and Metro Vancouver. In ${config.city}, that means a shortlist ranked for you, never by developer incentives. Every disclosure statement and deposit schedule is reviewed before you sign, inside BC's 7-day review window. And Uzair stays with you through every step — VIP registration, floor plans, deposits, completion, and the final walkthrough. On most projects the developer pays the buyer-agent fee out of the project's marketing budget.`;
 
-  const realEstateAgentJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: "Uzair Muhammad",
-    description: config.metaDescription,
+  const realEstateAgentJsonLd = localBusinessBranch({
     url: pageUrl,
-    areaServed: { "@type": "City", name: config.city, containedInPlace: { "@type": "AdministrativeArea", name: "British Columbia" } },
-    priceRange: "$$",
-    telephone: "+1-778-231-3592",
-    address: { "@type": "PostalAddress", addressLocality: config.city, addressRegion: "BC", addressCountry: "CA" },
-  };
+    city: config.city,
+    description: config.metaDescription,
+  });
 
   const faqJsonLd = {
     "@context": "https://schema.org",

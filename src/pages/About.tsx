@@ -15,6 +15,7 @@ import officeWideImage from "@/assets/uzair-office-wide.jpg";
 import showroomEntranceImage from "@/assets/uzair-showroom-entrance.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import expoImage from "@/assets/uzair-expo-wide.jpg";
+import { agentRef, personRef, publisherRef } from "@/lib/structuredData";
 
 const buyerQuestions = [
   "Is this project fairly priced relative to the alternatives?",
@@ -54,6 +55,18 @@ const About = () => {
         <meta name="twitter:title" content="About Uzair Muhammad | Presale Buyer Advisor Fraser Valley" />
         <meta name="twitter:description" content="Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "url": "https://presalewithuzair.com/about/",
+            "name": "About Uzair Muhammad | Presale Buyer Advisor Fraser Valley",
+            "mainEntity": personRef,
+            "about": agentRef,
+            "publisher": publisherRef,
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

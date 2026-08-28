@@ -191,7 +191,7 @@ const Developers = () => {
             <div className="text-center mb-10 md:mb-14">
               <p className="section-label mb-3">Track Record</p>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">
-                Sold Over <span className="text-gradient">$200M+ in Presales</span> Since 2022
+                Sold Over <span className="text-gradient">$250M+ in Presales</span> Since 2022
               </h2>
             </div>
             

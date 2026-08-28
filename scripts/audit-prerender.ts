@@ -66,11 +66,18 @@ function auditRoute(path: string, homeHtml: string | null): Result {
 
   if (!title || title.length < 10) issues.push("missing/short <title>");
   if (!desc || desc.length < 50) issues.push("missing/short meta description");
+  // Project pages intentionally canonical back to presaleproperties.com and
+  // must stay noindex,follow — that is the mirror contract, not a failure.
+  const isProject = path.startsWith("/projects/");
   if (!canonical) issues.push("missing canonical");
-  else if (!canonical.startsWith(SITE)) issues.push(`canonical not on ${SITE}`);
+  else if (isProject) {
+    if (!canonical.includes("presaleproperties.com")) issues.push("project canonical must point to presaleproperties.com");
+    if (!/<meta\s+name="robots"[^>]*content="[^"]*noindex/i.test(html)) issues.push("project page missing noindex");
+  } else if (!canonical.startsWith(SITE)) issues.push(`canonical not on ${SITE}`);
   if (h1s.length === 0) issues.push("no <h1> in raw HTML");
   if (h1s.length > 1) issues.push(`${h1s.length} <h1> tags`);
-  if (text.length < MIN_TEXT) issues.push(`only ${text.length} chars of text (min ${MIN_TEXT})`);
+  const minText = isProject ? 400 : MIN_TEXT;
+  if (text.length < minText) issues.push(`only ${text.length} chars of text (min ${minText})`);
   if (path !== "/" && homeHtml) {
     const homeTitle = pick(/<title>([\s\S]*?)<\/title>/i, homeHtml);
     if (title && homeTitle && title === homeTitle) issues.push("serves homepage shell (duplicate title)");

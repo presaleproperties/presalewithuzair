@@ -643,7 +643,7 @@ const ProjectDetail = () => {
                   </p>
                   <button
                     type="button"
-                    onClick={() => openCalendlyPopup(`project-${project.slug}`)}
+                    onClick={() => openCalendlyPopup(`project-${project.slug}`, { project: project.name, city: project.city ?? undefined })}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
                   >
                     <Calendar className="h-4 w-4" />

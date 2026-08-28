@@ -8,7 +8,7 @@ import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
-import { CALENDLY_URL } from "@/hooks/useCalendly";
+import { buildCalendlyUrl } from "@/hooks/useCalendly";
 import { trackBookCall } from "@/lib/analytics";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 
@@ -288,7 +288,7 @@ const BlogPost = () => {
                       Vancouver's presale specialist with 450+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
                     <a
-                      href={CALENDLY_URL}
+                      href={buildCalendlyUrl()}
                       onClick={() => trackBookCall("blog-author-box")}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -317,7 +317,7 @@ const BlogPost = () => {
                     Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
                   </p>
                   <a
-                    href={CALENDLY_URL}
+                    href={buildCalendlyUrl()}
                       onClick={() => trackBookCall("blog-inline-cta")}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -424,7 +424,7 @@ const BlogPost = () => {
                         Talk strategy with Uzair
                       </p>
                       <a
-                        href={CALENDLY_URL}
+                        href={buildCalendlyUrl()}
                       onClick={() => trackBookCall("blog-sidebar")}
                         target="_blank"
                         rel="noopener noreferrer"

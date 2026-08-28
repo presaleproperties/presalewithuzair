@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
-import { CALENDLY_URL } from "@/hooks/useCalendly";
+import { buildCalendlyUrl } from "@/hooks/useCalendly";
 import { trackBookCall } from "@/lib/analytics";
 import logo from "@/assets/logo.png";
 import realBrokerLogo from "@/assets/real-broker-logo.avif";
@@ -56,7 +56,7 @@ export const Footer = () => {
             <Link to="/services" className="text-white/75 hover:text-white transition-colors duration-300">Services</Link>
             <Link to="/blog" className="text-white/75 hover:text-white transition-colors duration-300">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-white transition-colors duration-300">Contact</Link>
-            <a href={CALENDLY_URL} onClick={() => trackBookCall("footer-nav")} target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</a>
+            <a href={buildCalendlyUrl()} onClick={() => trackBookCall("footer-nav")} target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</a>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -142,7 +142,7 @@ export const Footer = () => {
                 ))}
                 <li>
                   <a
-                    href={CALENDLY_URL} onClick={() => trackBookCall("footer-links")}
+                    href={buildCalendlyUrl()} onClick={() => trackBookCall("footer-links")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="transition-colors text-sm text-primary font-medium hover:text-primary/80"

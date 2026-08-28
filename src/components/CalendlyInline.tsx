@@ -1,29 +1,32 @@
 import { useEffect, useRef } from "react";
-import { CALENDLY_URL, loadCalendly } from "@/hooks/useCalendly";
+import { buildCalendlyUrl, loadCalendly, type CalendlyContext } from "@/hooks/useCalendly";
 
 interface CalendlyInlineProps {
   minHeight?: number;
+  /** Optional page context (city/project) prefilled into the booking. */
+  context?: CalendlyContext;
 }
 
 /** Inline Calendly booking widget — the single booking surface across the site. */
-export const CalendlyInline = ({ minHeight = 660 }: CalendlyInlineProps) => {
+export const CalendlyInline = ({ minHeight = 660, context }: CalendlyInlineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
+    const url = buildCalendlyUrl({ source: "inline-embed", ...context });
     loadCalendly().then(() => {
       if (cancelled || !containerRef.current) return;
       const calendly = (window as any).Calendly;
       if (calendly?.initInlineWidget) {
         calendly.initInlineWidget({
-          url: CALENDLY_URL,
+          url,
           parentElement: containerRef.current,
         });
       } else if (containerRef.current) {
         // Fallback: plain iframe embed
         containerRef.current.innerHTML = "";
         const iframe = document.createElement("iframe");
-        iframe.src = CALENDLY_URL;
+        iframe.src = url;
         iframe.title = "Book a 15-minute call with Uzair Muhammad";
         iframe.style.width = "100%";
         iframe.style.height = `${minHeight}px`;
@@ -34,7 +37,7 @@ export const CalendlyInline = ({ minHeight = 660 }: CalendlyInlineProps) => {
     return () => {
       cancelled = true;
     };
-  }, [minHeight]);
+  }, [minHeight, context?.city, context?.project, context?.source]);
 
   return (
     <div

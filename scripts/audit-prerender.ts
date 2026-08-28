@@ -56,8 +56,12 @@ function auditRoute(path: string, homeHtml: string | null): Result {
   const text = visibleText(html);
 
   const title = pick(/<title>([\s\S]*?)<\/title>/i, html);
-  const desc = pick(/<meta\s+name=["']description["'][^>]*content=["']([^"']*)["']/i, html);
-  const canonical = pick(/<link\s+rel=["']canonical["'][^>]*href=["']([^"']*)["']/i, html);
+  const desc =
+    pick(/<meta\s+name="description"[^>]*content="([^"]*)"/i, html) ||
+    pick(/<meta\s+name='description'[^>]*content='([^']*)'/i, html);
+  const canonical =
+    pick(/<link\s+rel="canonical"[^>]*href="([^"]*)"/i, html) ||
+    pick(/<link\s+rel='canonical'[^>]*href='([^']*)'/i, html);
   const h1s = html.match(/<h1[\s>]/gi) || [];
 
   if (!title || title.length < 10) issues.push("missing/short <title>");

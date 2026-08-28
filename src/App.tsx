@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
+import { CalendlyBookingRedirect } from "@/components/CalendlyBookingRedirect";
 
 // Lazy load all non-critical pages to reduce initial bundle size
 const About = lazy(() => import("./pages/About"));
@@ -25,6 +26,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
+const BookingConfirmed = lazy(() => import("./pages/BookingConfirmed"));
 const CityLanding = lazy(() => import("./pages/CityLanding"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
 const NewToPresale = lazy(() => import("./pages/funnel/NewToPresale"));
@@ -54,6 +56,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <CalendlyBookingRedirect />
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -75,6 +78,7 @@ const App = () => (
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/call" element={<LandingPage />} />
               <Route path="/presale-guide" element={<PresaleGuide />} />
+              <Route path="/booking-confirmed" element={<BookingConfirmed />} />
               <Route path="/surrey" element={<CityLanding citySlug="surrey" />} />
               <Route path="/langley" element={<CityLanding citySlug="langley" />} />
               <Route path="/abbotsford" element={<CityLanding citySlug="abbotsford" />} />

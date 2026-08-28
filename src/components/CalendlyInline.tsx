@@ -18,7 +18,7 @@ const BRAND = {
 const MOBILE_HEIGHT = 1000;
 
 /** Inline Calendly booking widget — the single booking surface across the site. */
-export const CalendlyInline = ({ minHeight = 700, context }: CalendlyInlineProps) => {
+export const CalendlyInline = ({ minHeight = 780, context }: CalendlyInlineProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(
     typeof window !== "undefined" ? window.innerWidth < 768 : false,

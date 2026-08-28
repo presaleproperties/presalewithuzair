@@ -151,7 +151,7 @@ const LandingPage = () => {
             </h2>
             <p className="text-sm text-foreground/60 mb-6">Pick a time that works. Confirmation is instant.</p>
             <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-              <CalendlyInline minHeight={700} />
+              <CalendlyInline />
             </div>
           </div>
         </section>

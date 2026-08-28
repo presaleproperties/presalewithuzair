@@ -32,7 +32,7 @@ export const BookingContextSection = () => {
             <div className="hidden lg:flex items-center gap-3 mt-8 text-sm text-foreground/70">
               <span className="font-semibold text-foreground">450+ families helped</span>
               <span className="text-foreground/30">·</span>
-              <span className="font-semibold text-foreground">$250M+ in new-home purchases</span>
+              <span className="font-semibold text-foreground">$200M+ in new-home purchases</span>
             </div>
           </div>
 

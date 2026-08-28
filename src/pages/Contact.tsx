@@ -204,7 +204,7 @@ const Contact = () => {
                       <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">Units Sold</p>
                     </div>
                     <div>
-                      <p className="text-xl font-display font-bold text-foreground">$250M+</p>
+                      <p className="text-xl font-display font-bold text-foreground">$200M+</p>
                       <p className="text-[11px] text-muted-foreground mt-1 uppercase tracking-wider">Volume</p>
                     </div>
                     <div>

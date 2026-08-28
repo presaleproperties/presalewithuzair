@@ -54,7 +54,7 @@ const SwitchingAgents = () => (
     </p>
     <p>
       I have not. Presale contracts are the only thing I do. I have helped 450+ families buy more than
-      $250M in new homes over five years, with only 2 defaults.
+      $200M in new homes over five years, with only 2 defaults.
     </p>
 
     <h2>What you actually owe your original agent</h2>

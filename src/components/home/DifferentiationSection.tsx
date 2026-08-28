@@ -38,7 +38,7 @@ const blocks: Block[] = [
         </p>
         <p>
           I've helped <strong>450+ families</strong> purchase more than{" "}
-          <strong>$250M in new homes</strong>. Before real estate, I spent{" "}
+          <strong>$200M in new homes</strong>. Before real estate, I spent{" "}
           <strong>10 years</strong> working with the <strong>City of Surrey</strong> in planning
           and bylaws. Today I lead{" "}
           <a

@@ -68,7 +68,7 @@ const SellMyAssignment = () => (
       If the market has moved against you, assigning at a loss is one option, but holding through
       completion and renting is another, and completing then selling as a resale is a third. Each has
       a different tax outcome and a different cash requirement. I will model all three rather than push
-      you toward the one that generates a commission. I have helped 450+ families buy more than $250M
+      you toward the one that generates a commission. I have helped 450+ families buy more than $200M
       in new homes over five years, with only 2 defaults, and protecting that record matters more to me
       than one listing.
     </p>

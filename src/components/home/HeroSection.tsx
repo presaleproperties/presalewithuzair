@@ -5,9 +5,9 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "New construction or resale — which one is actually worth it?",
-  subheadline: "I help you compare both before you decide.",
-  body: "From choosing the right project to getting the keys, I guide you step-by-step — whether you land on new construction or resale. I don’t work for the developer. I represent you.",
+  headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
+  subheadline: "Specializing in New Construction homes.",
+  body: "I help buyers cut through the developer’s sales pitch, understand what really matters, and decide whether a presale is actually right for them. From choosing the right project to getting the keys, I guide you every step of the way. I don’t work for the developer. I represent you.",
   cta: BOOK_CALL_LABEL,
 };
 
@@ -24,7 +24,7 @@ const languages = ["English", "Punjabi", "Hindi", "Urdu"];
 
 const proofPoints = [
   { value: "450+", label: "Families helped" },
-  { value: "$250M+", label: "In new homes" },
+  { value: "$200M+", label: "In new homes" },
   { value: "4.9★", label: "Rated on Google" },
 ];
 

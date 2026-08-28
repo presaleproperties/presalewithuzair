@@ -74,7 +74,7 @@ const About = () => {
                 </div>
                 <div className="hidden lg:block absolute -bottom-6 -right-6 bg-card rounded-xl px-6 py-5 border border-border shadow-xl">
                   <p className="text-3xl font-display font-bold text-gradient leading-none">450+</p>
-                  <p className="text-xs text-muted-foreground mt-1.5 uppercase tracking-wider">families helped · $250M+ in new homes</p>
+                  <p className="text-xs text-muted-foreground mt-1.5 uppercase tracking-wider">families helped · $200M+ in new homes</p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@ const About = () => {
                     I help families compare new condos, townhomes and presales across the Fraser Valley and Metro Vancouver — looking at the project, location, price, floor plan, deposit structure, completion timing and long-term fit. And after you sign, I stay involved through the path to completion and keys.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
-                    I've helped more than 450 families purchase over $250M in new homes.
+                    I've helped more than 450 families purchase over $200M in new homes.
                   </p>
                   <p className="text-lg leading-relaxed text-foreground/70">
                     Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. That experience changed how I look at development. I naturally ask questions about how a project fits the neighbourhood, what's happening around it and what may matter years from now — not just what looks good on launch day. Today I lead The Presale Properties Group and founded the Vancouver Presale Expo. I work in English, Punjabi, Hindi and Urdu.

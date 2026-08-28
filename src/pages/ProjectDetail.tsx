@@ -637,14 +637,27 @@ const ProjectDetail = () => {
                 </div>
 
                 <div className="p-5 sm:p-6">
-                  <UnifiedLeadForm
-                    heading=""
-                    subheading=""
-                    eyebrow=""
-                    buttonText="Get Floor Plans & Pricing"
-                    variant="default"
-                    showTrust={true}
-                  />
+                  <p className="text-sm text-foreground/70 leading-relaxed mb-5">
+                    Get floor plans, pricing and an honest read on this project — in one quick call.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => openCalendlyPopup(`project-${project.slug}`)}
+                    className="w-full inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-5 py-3.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    Book a 15-Minute Call
+                  </button>
+                  <ul className="mt-4 space-y-2 text-xs text-foreground/60">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                      Buyer-side only — I don't work for the developer
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-primary shrink-0" />
+                      No obligation, instant confirmation
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

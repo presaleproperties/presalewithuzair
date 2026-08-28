@@ -1,15 +1,12 @@
-import { ArrowRight, ExternalLink, Loader2, Quote, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Star } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { useState, type ReactNode } from "react";
-import { useGoogleReviews, type GoogleReview } from "@/hooks/useGoogleReviews";
-import { Skeleton } from "@/components/ui/skeleton";
 
 import { staticReviews, type StaticReview } from "@/data/googleReviews";
 
 const GOOGLE_BUSINESS_URL = "https://share.google/qgUTcQF2kOnjBBPr7";
-const MAX_VISIBLE_REVIEWS = 5;
-
-const fallbackPhotos = staticReviews.slice(0, 5).map((r) => r.photo);
+const OVERALL_RATING = 4.9;
+const MAX_VISIBLE_REVIEWS = 15;
 
 
 const KEYWORD_PATTERNS: RegExp[] = [
@@ -146,7 +143,7 @@ const ReviewCard = ({
           <p className="font-semibold text-sm text-foreground">
             {testimonial.name}
           </p>
-          <span className="text-xs text-muted-foreground">{testimonial.timeAgo}</span>
+          <span className="text-xs text-muted-foreground">{testimonial.date ?? testimonial.timeAgo}</span>
         </div>
       </div>
 
@@ -187,35 +184,6 @@ const ReviewCard = ({
 
 
 
-const ReviewSkeletonCard = ({ mobile = false }: { mobile?: boolean }) => {
-  const className = mobile
-    ? "flex-shrink-0 w-[300px] min-h-[360px] rounded-sm p-5 snap-center flex flex-col bg-card border border-border"
-    : "rounded-sm p-6 h-full flex flex-col bg-card border border-border";
-  return (
-    <div className={className}>
-      <div className="flex items-center gap-3 mb-4">
-        <Skeleton className="w-12 h-12 rounded-full" />
-        <div className="flex-1 space-y-2">
-          <Skeleton className="h-4 w-24" />
-          <Skeleton className="h-3 w-16" />
-        </div>
-      </div>
-      <div className="flex gap-0.5 mb-3">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Skeleton key={i} className="h-3.5 w-3.5 rounded-full" />
-        ))}
-      </div>
-      <div className="flex-1 space-y-2">
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-5/6" />
-        <Skeleton className="h-4 w-4/6" />
-        <Skeleton className="h-4 w-3/6" />
-      </div>
-    </div>
-  );
-};
-
 const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
   <a
     href={GOOGLE_BUSINESS_URL}
@@ -247,26 +215,8 @@ const SeeAllReviewsCard = ({ mobile = false }: { mobile?: boolean }) => (
 );
 
 export const SocialProofSection = () => {
-  const { data: liveData, isLoading, error } = useGoogleReviews();
-
-  const liveReviews: StaticReview[] =
-    liveData?.reviews?.map((r: GoogleReview, i: number) => ({
-      name: r.authorName,
-      quote: r.text,
-      timeAgo: r.relativeTime,
-      photo: r.authorPhoto || fallbackPhotos[i % fallbackPhotos.length],
-      rating: r.rating,
-      highlight: i === 0,
-    })) ?? [];
-
-  const liveNames = new Set(liveReviews.map((r) => r.name.toLowerCase().split(" ")[0]));
-  const merged: StaticReview[] = [
-    ...liveReviews,
-    ...staticReviews.filter((r) => !liveNames.has(r.name.toLowerCase().split(" ")[0])),
-  ];
-
-  // Keep the widget layout clean: 5 reviews + 1 "See all" card.
-  const displayed = merged.slice(0, MAX_VISIBLE_REVIEWS);
+  // Hardcoded, crawler-readable reviews — no Google widget, iframe or JS embed.
+  const displayed = staticReviews.slice(0, MAX_VISIBLE_REVIEWS);
 
   const reviewSchema = {
     "@context": "https://schema.org",
@@ -274,12 +224,14 @@ export const SocialProofSection = () => {
     name: "Uzair Muhammad | Vancouver Presale Expert",
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: liveData?.overallRating ?? 4.9,
+      ratingValue: OVERALL_RATING,
       bestRating: 5,
+      reviewCount: displayed.length,
     },
     review: displayed.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.name },
+      datePublished: r.date,
       reviewRating: {
         "@type": "Rating",
         ratingValue: r.rating ?? 5,
@@ -299,7 +251,6 @@ export const SocialProofSection = () => {
         <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       </Helmet>
       <div className="container-xl px-4 sm:px-6">
-        {/* Google Reviews Widget Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10 sm:mb-14">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
@@ -309,14 +260,14 @@ export const SocialProofSection = () => {
               </span>
             </div>
             <h2 className="h-section text-foreground">
-              What Uzair's clients say
+              What clients say
             </h2>
           </div>
 
           <div className="flex items-center gap-6 sm:gap-8 bg-card border border-border rounded-sm px-5 py-4">
             <div>
               <p className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-foreground leading-none">
-                {liveData?.overallRating ?? 4.9}
+                {OVERALL_RATING}
               </p>
               <p className="text-[10px] sm:text-xs text-muted-foreground mt-1">
                 Google rating
@@ -324,7 +275,7 @@ export const SocialProofSection = () => {
             </div>
 
             <div>
-              <StarRating rating={liveData?.overallRating ?? 4.9} size="md" />
+              <StarRating rating={OVERALL_RATING} size="md" />
               <a
                 href={GOOGLE_BUSINESS_URL}
                 target="_blank"
@@ -338,55 +289,23 @@ export const SocialProofSection = () => {
           </div>
         </div>
 
-        {/* Loading State */}
-        {isLoading && (
-          <div className="mb-10 sm:mb-14">
-            <div className="sm:hidden">
-              <div className="flex items-stretch gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
-                {Array.from({ length: 3 }).map((_, i) => (
-                  <ReviewSkeletonCard key={i} mobile />
-                ))}
-                <SeeAllReviewsCard mobile />
-              </div>
-            </div>
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <ReviewSkeletonCard key={i} />
-              ))}
-              <SeeAllReviewsCard />
-            </div>
-          </div>
-        )}
-
-        {/* Error State */}
-        {!isLoading && error && (
-          <div className="mb-10 sm:mb-14 rounded-sm border border-destructive/20 bg-destructive/5 p-4 text-center">
-            <p className="text-sm text-muted-foreground">
-              Unable to load the latest Google reviews right now. Showing verified client reviews instead.
-            </p>
-          </div>
-        )}
-
-        {/* Reviews Grid */}
-        {!isLoading && displayed.length > 0 && (
-          <div className="mb-10 sm:mb-14">
-            <div className="sm:hidden">
-              <div className="flex items-stretch gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
-                {displayed.map((testimonial, index) => (
-                  <ReviewCard key={index} testimonial={testimonial} mobile />
-                ))}
-                <SeeAllReviewsCard mobile />
-              </div>
-            </div>
-
-            <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
+        <div className="mb-10 sm:mb-14">
+          <div className="sm:hidden">
+            <div className="flex items-stretch gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
               {displayed.map((testimonial, index) => (
-                <ReviewCard key={index} testimonial={testimonial} />
+                <ReviewCard key={index} testimonial={testimonial} mobile />
               ))}
-              <SeeAllReviewsCard />
+              <SeeAllReviewsCard mobile />
             </div>
           </div>
-        )}
+
+          <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 auto-rows-fr">
+            {displayed.map((testimonial, index) => (
+              <ReviewCard key={index} testimonial={testimonial} />
+            ))}
+            <SeeAllReviewsCard />
+          </div>
+        </div>
       </div>
     </section>
   );

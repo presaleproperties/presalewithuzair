@@ -220,7 +220,7 @@ const Agents = () => {
           <div className="container-xl px-4 sm:px-6">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8 text-center">
               <div>
-                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$200M+</p>
+                <p className="text-2xl sm:text-3xl font-display font-bold text-gradient">$250M+</p>
                 <p className="text-xs sm:text-sm text-muted-foreground">in Sales Volume</p>
               </div>
               <div>
@@ -326,7 +326,7 @@ const Agents = () => {
               
               <div className="bg-card rounded-xl sm:rounded-2xl border border-border p-5 sm:p-6 md:p-8">
                 <p className="text-sm sm:text-base text-foreground/80 mb-4 sm:mb-6">
-                  As a leading Presale Expert in Vancouver, Uzair has achieved remarkable success — selling over $200M in presales as a solo agent.
+                  As a leading Presale Expert in Vancouver, Uzair has achieved remarkable success — selling over $250M in presales as a solo agent.
                 </p>
                 <p className="text-sm sm:text-base text-foreground/80 mb-4 sm:mb-6">
                   In less than 3 years, Uzair built his business from the ground up — serving 450+ clients without a team, generating over $2M in GCI. The secret? His systems, processes, automations, and tailored marketing strategy.

@@ -285,7 +285,7 @@ const BlogPost = () => {
                     </p>
                     <h3 className="font-display text-xl mb-3" style={{ color: "hsl(var(--foreground))" }}>Uzair Muhammad</h3>
                     <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
-                      Vancouver's presale specialist with 450+ units sold and $200M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
+                      Vancouver's presale specialist with 450+ units sold and $250M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
                     <a
                       href={buildCalendlyUrl()}

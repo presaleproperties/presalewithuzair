@@ -24,7 +24,7 @@ const languages = ["English", "Punjabi", "Hindi", "Urdu"];
 
 const proofPoints = [
   { value: "450+", label: "Families helped" },
-  { value: "$200M+", label: "In new homes" },
+  { value: "$250M+", label: "In new homes" },
   { value: "4.9★", label: "Rated on Google" },
 ];
 

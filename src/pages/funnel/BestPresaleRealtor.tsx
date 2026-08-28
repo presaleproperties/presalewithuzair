@@ -64,7 +64,7 @@ const BestPresaleRealtor = () => {
         h1="Don't Ask Who Calls Themselves the Best. Ask How They Think."
         eyebrow="Choosing Your Advisor"
         breadcrumbName="Best Presale Realtor Fraser Valley"
-        intro="If you're looking for a presale Realtor in the Fraser Valley, there are plenty of people who can show you a project. The more useful question is: who will help you decide whether the project is worth buying? I'm Uzair Muhammad. Presale and new construction are the focus of my practice, and I've helped 450+ families purchase more than $200M in new homes. But instead of asking you to take the words “presale expert” at face value, here are the questions I think you should ask any Realtor you're considering."
+        intro="If you're looking for a presale Realtor in the Fraser Valley, there are plenty of people who can show you a project. The more useful question is: who will help you decide whether the project is worth buying? I'm Uzair Muhammad. Presale and new construction are the focus of my practice, and I've helped 450+ families purchase more than $250M in new homes. But instead of asking you to take the words “presale expert” at face value, here are the questions I think you should ask any Realtor you're considering."
         faqs={faqs}
       >
         <h2>1. Will they tell you not to buy?</h2>
@@ -86,7 +86,7 @@ const BestPresaleRealtor = () => {
 
         <h2>Why buyers work with me</h2>
         <p>
-          Presale-focused practice. 450+ families helped. $200M+ in new-home purchases. 10 years of prior City of Surrey planning/bylaws experience. English, Punjabi, Hindi and Urdu. Founder of the Vancouver Presale Expo. Willingness to recommend waiting or walking away.
+          Presale-focused practice. 450+ families helped. $250M+ in new-home purchases. 10 years of prior City of Surrey planning/bylaws experience. English, Punjabi, Hindi and Urdu. Founder of the Vancouver Presale Expo. Willingness to recommend waiting or walking away.
         </p>
 
         <h2>Service area</h2>

@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run prerender && (node scripts/prerender-pwu-assignments.mjs || echo \"assignment pages skipped\")",
+    "build": "vite build && npm run prerender && (node scripts/prerender-pwu-assignments.mjs || echo \"assignment pages skipped\") && npm run audit:prerender",
     "build:dev": "vite build --mode development",
     "prerender": "tsx scripts/prerender.ts",
+    "audit:prerender": "tsx scripts/audit-prerender.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },

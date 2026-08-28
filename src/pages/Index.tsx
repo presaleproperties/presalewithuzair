@@ -34,16 +34,6 @@ const Index = () => {
     }
   }, [location.search]);
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get('open-guide') === '1') {
-      const timer = setTimeout(() => {
-        window.dispatchEvent(new CustomEvent('open-presale-guide'));
-      }, 300);
-      return () => clearTimeout(timer);
-    }
-  }, [location.search]);
-
   return (
     <>
       <Helmet>
@@ -96,17 +86,12 @@ const Index = () => {
           <HomeFAQSection />
         </Suspense>
 
-        {/* 5. Free lead magnet */}
-        <Suspense fallback={<SectionFallback />}>
-          <PresaleGuideBanner />
-        </Suspense>
-
-        {/* 6. Book a call */}
+        {/* 5. Book a 15-minute call (Calendly) */}
         <Suspense fallback={<SectionFallback />}>
           <BookingContextSection />
         </Suspense>
 
-        {/* 7. Final CTA */}
+        {/* 6. Final CTA */}
         <Suspense fallback={<SectionFallback />}>
           <FinalCTASection />
         </Suspense>
@@ -114,7 +99,6 @@ const Index = () => {
       </main>
 
       <Footer />
-      <PresaleGuidePopup />
     </>
   );
 };

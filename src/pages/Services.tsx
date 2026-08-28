@@ -8,6 +8,7 @@ import showroomTourImage from "@/assets/uzair-showroom-tour.jpg";
 import floorplanImage from "@/assets/uzair-floorplan-consultation.jpg";
 import clientMeetingImage from "@/assets/uzair-client-meeting.jpg";
 import { useNavigate } from "react-router-dom";
+import { agentRef } from "@/lib/structuredData";
 
 const services = [
   {
@@ -103,11 +104,8 @@ const Services = () => {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Real Estate Advisory",
-            "provider": {
-              "@type": "Person",
-              "name": "Uzair Muhammad",
-              "url": "https://presalewithuzair.com"
-            },
+            "provider": agentRef,
+            "url": "https://presalewithuzair.com/services/",
             "areaServed": [
               { "@type": "City", "name": "Vancouver" },
               { "@type": "City", "name": "Surrey" },

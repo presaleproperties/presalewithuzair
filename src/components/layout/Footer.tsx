@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { CALENDLY_URL } from "@/hooks/useCalendly";
 import logo from "@/assets/logo.png";
 import realBrokerLogo from "@/assets/real-broker-logo.avif";
 

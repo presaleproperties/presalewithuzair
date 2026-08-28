@@ -25,8 +25,8 @@ const LandingPage = () => {
   const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 6);
   return <>
       <Helmet>
-        <title>Book a Buyer Strategy Call | Uzair Muhammad</title>
-        <meta name="description" content="Book a no-pressure presale strategy call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
+        <title>Book a 15-Minute Call | Uzair Muhammad</title>
+        <meta name="description" content="Book a no-pressure 15-minute call with Uzair Muhammad. Buyer-side advice for new condos and townhomes across the Fraser Valley." />
         <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://presalewithuzair.com/call/" />
       </Helmet>

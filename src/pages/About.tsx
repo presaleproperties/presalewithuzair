@@ -31,7 +31,7 @@ const buyerQuestions = [
 
 const About = () => {
   const navigate = useNavigate();
-  const handleCTA = () => openLeadDialog('about');
+  const handleCTA = () => openCalendlyPopup('about');
 
   return (
     <>
@@ -104,7 +104,7 @@ const About = () => {
                 <div className="mt-10 animate-fade-up delay-300">
                   <Button variant="hero" size="lg" className="gap-2" onClick={handleCTA}>
                     <Phone className="h-4 w-4" />
-                    Book a Buyer Strategy Call
+                    Book a 15-Minute Call
                   </Button>
                 </div>
               </div>
@@ -431,7 +431,7 @@ const About = () => {
                   onClick={handleCTA}
                 >
                   <Phone className="h-5 w-5" />
-                  Book a Buyer Strategy Call
+                  Book a 15-Minute Call
                 </Button>
               </div>
             </div>

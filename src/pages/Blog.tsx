@@ -245,7 +245,7 @@ const Blog = () => {
               to="/?scroll=book-section"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-sm font-bold text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              Ask Uzair About a Project
+              Book a 15-Minute Call
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

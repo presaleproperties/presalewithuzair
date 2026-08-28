@@ -72,7 +72,7 @@ const services = [
 
 const Services = () => {
   const navigate = useNavigate();
-  const handleCTA = () => openLeadDialog('services');
+  const handleCTA = () => openCalendlyPopup('services');
 
   return (
     <>
@@ -233,7 +233,7 @@ const Services = () => {
                   onClick={handleCTA}
                 >
                   <Mail className="h-5 w-5" />
-                  Ask Uzair About a Project
+                  Book a 15-Minute Call
                 </Button>
               </div>
             </div>

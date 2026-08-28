@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useBlogPosts, BlogPost } from "@/hooks/useBlogPosts";
 import blogHero from "@/assets/blog/blog-hero.jpg";
+import { authorRef, publisherRef } from "@/lib/structuredData";
 
 /* ── Helpers ── */
 const CATEGORIES = [
@@ -127,8 +128,8 @@ const Blog = () => {
     name: "Presale With Uzair Blog",
     description: "Expert insights on presale condos, assignments, and real estate investment in Vancouver and Fraser Valley.",
     url: "https://presalewithuzair.com/blog/",
-    author: { "@type": "Person", name: "Uzair Muhammad", url: "https://presalewithuzair.com" },
-    publisher: { "@type": "Organization", name: "Presale With Uzair", url: "https://presalewithuzair.com" },
+    author: authorRef,
+    publisher: publisherRef,
   };
 
   return (

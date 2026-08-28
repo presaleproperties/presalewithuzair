@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Calendar, CheckCircle2 } from "lucide-react";
 import { openCalendlyPopup, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
+import { authorRef, publisherRef } from "@/lib/structuredData";
 
 export interface FunnelFAQ {
   question: string;
@@ -74,16 +75,8 @@ export const FunnelPage = ({
     description,
     datePublished: articleDatePublished,
     dateModified: "2026-07-09",
-    author: {
-      "@type": "Person",
-      name: "Uzair Muhammad",
-      url: `${SITE}/about`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Presale With Uzair",
-      url: SITE,
-    },
+    author: authorRef,
+    publisher: publisherRef,
     mainEntityOfPage: canonical,
   };
 

@@ -169,7 +169,7 @@ export const Navbar = () => {
               onClick={handleFormCTA}
             >
               <Phone className="h-4 w-4" />
-              Book Strategy Call
+              {BOOK_CALL_LABEL}
             </Button>
           </div>
         </div>
@@ -239,13 +239,10 @@ export const Navbar = () => {
             </Link>
           ))}
 
-          <div className="pt-4 space-y-3">
+          <div className="pt-4">
             <Button variant="hero" size="lg" className="w-full gap-2" onClick={handleFormCTA}>
               <Phone className="h-4 w-4" />
-              Book Strategy Call
-            </Button>
-            <Button variant="outline" size="lg" className="w-full" onClick={handleGuideClick}>
-              Get Presale Guide
+              {BOOK_CALL_LABEL}
             </Button>
           </div>
         </div>

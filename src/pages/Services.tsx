@@ -1,4 +1,4 @@
-import { openLeadDialog } from "@/components/forms/LeadFormDialog";
+import { openCalendlyPopup } from "@/hooks/useCalendly";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";

@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { trackBookCall } from "@/lib/analytics";
 
 /** Single booking endpoint used sitewide. */
 export const CALENDLY_URL = "https://calendly.com/meetuzair/quick-call";

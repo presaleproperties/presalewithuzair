@@ -54,7 +54,7 @@ export const Footer = () => {
             <Link to="/services" className="text-white/75 hover:text-white transition-colors duration-300">Services</Link>
             <Link to="/blog" className="text-white/75 hover:text-white transition-colors duration-300">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-white transition-colors duration-300">Contact</Link>
-            <Link to="/call" className="text-white font-medium hover:text-white transition-colors duration-300">Book a Buyer Strategy Call</Link>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</a>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -128,21 +128,26 @@ export const Footer = () => {
                   { href: "/services", label: "Services" },
                   { href: "/blog", label: "Blog" },
                   { href: "/contact", label: "Contact" },
-                  { href: "/call", label: "Book a Buyer Strategy Call", highlight: true },
                 ].map((link) => (
                   <li key={link.href}>
                     <Link
                       to={link.href}
-                      className={`transition-colors text-sm ${
-                        'highlight' in link && link.highlight
-                          ? "text-primary font-medium hover:text-primary/80"
-                          : "text-white/75 hover:text-white transition-colors"
-                      }`}
+                      className="transition-colors text-sm text-white/75 hover:text-white"
                     >
                       {link.label}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href={CALENDLY_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors text-sm text-primary font-medium hover:text-primary/80"
+                  >
+                    Book a 15-Minute Call
+                  </a>
+                </li>
                 <li>
                   <a
                     href="https://presaleproperties.com"

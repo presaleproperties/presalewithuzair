@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { LeadCaptureSection } from "@/components/home/LeadCaptureSection";
 import { usePresaleProjects } from "@/hooks/usePresaleProjects";
+import { openCalendlyPopup } from "@/hooks/useCalendly";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
 import { CITY_DEPTH } from "@/data/cityDepth";
 

@@ -1,32 +1,20 @@
-import { useState, useEffect } from "react";
-import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
+import { useState } from "react";
+import { CalendlyInline } from "@/components/CalendlyInline";
 import { staticReviews } from "@/data/googleReviews";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "framer-motion";
-import { Shield, TrendingUp, Users, Star, Phone, CheckCircle, X, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Shield, Users, Star, Phone, ChevronDown, Home, BadgeDollarSign, FileSearch, Handshake } from "lucide-react";
 
 import logoImage from "@/assets/logo.png";
 import headshotImage from "@/assets/uzair-headshot.jpeg";
 
 const LandingPage = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
-  const [ctaVariant] = useState<'A' | 'B'>(() => Math.random() < 0.5 ? 'A' : 'B');
-  const ctaText = ctaVariant === 'A' ? 'Talk To Uzair' : 'Book a Buyer Strategy Call';
+  const ctaText = 'Book a 15-Minute Call';
 
-  // Lock body scroll when form is open
-  useEffect(() => {
-    if (isFormOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isFormOpen]);
+  const scrollToBooking = () => {
+    document.getElementById("calendly-book")?.scrollIntoView({ behavior: "smooth" });
+  };
   const testimonials = staticReviews.map((r) => ({
     name: r.name,
     text: r.quote,

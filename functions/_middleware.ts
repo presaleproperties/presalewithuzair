@@ -170,31 +170,34 @@ async function isKnownRoute(
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (isKnownStaticPath(path)) return true;
 
-  const key = anonKey(env);
-  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
-
   const dynamic: Array<{ prefix: string; table: string; filter: string }> = [
     { prefix: "/blog/", table: "blog_posts", filter: "published=eq.true" },
     { prefix: "/projects/", table: "presale_projects", filter: "is_published=eq.true" },
   ];
-  for (const d of dynamic) {
-    if (!path.startsWith(d.prefix)) continue;
-    const slug = path.slice(d.prefix.length);
-    if (!slug || slug.includes("/")) return false;
-    try {
-      const r = await fetch(
-        `${SUPABASE_URL}/rest/v1/${d.table}?slug=eq.${encodeURIComponent(slug)}&${d.filter}&select=slug&limit=1`,
-        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
-      );
-      if (!r.ok) return null;
-      const rows = (await r.json()) as unknown[];
-      return Array.isArray(rows) && rows.length > 0;
-    } catch {
-      return null;
-    }
+  const match = dynamic.find((d) => path.startsWith(d.prefix));
+
+  // Non-dynamic path that matched no known static route: genuinely unknown.
+  // No database lookup needed, so this must never fail open.
+  if (!match) return false;
+
+  const key = anonKey(env);
+  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
+
+  const slug = path.slice(match.prefix.length);
+  if (!slug || slug.includes("/")) return false;
+  try {
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/${match.table}?slug=eq.${encodeURIComponent(slug)}&${match.filter}&select=slug&limit=1`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+    );
+    if (!r.ok) return null;
+    const rows = (await r.json()) as unknown[];
+    return Array.isArray(rows) && rows.length > 0;
+  } catch {
+    return null;
   }
-  return false;
 }
+
 
 const NOT_FOUND_BODY = `<h1>Page not found</h1><p>This page doesn't exist. <a href="${SITE}/">Return to the homepage</a> or <a href="${SITE}/blog/">browse the presale guides</a>.</p>`;
 
@@ -924,9 +927,21 @@ function funnelBody(path: string): string {
 
 interface Resolved { meta: Meta; body: string; canonical?: string; robots?: string; }
 
+// Publishable (anon) key — already shipped in the browser bundle, safe here.
+// Used as a fallback because Cloudflare Pages Functions do not inherit the
+// build-time VITE_* vars unless they are also set as runtime env vars.
+const FALLBACK_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InViYm9na2xhc293bm9nbnZpb2JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3MjE4MTcsImV4cCI6MjA4MjI5NzgxN30.k_kpjmELjMLrYIu74Op94VDb2bEK_5Kzno5DBaPbSy4";
+
 function anonKey(env: Record<string, string | undefined>): string | undefined {
-  return env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY;
+  return (
+    env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+    env.VITE_SUPABASE_ANON_KEY ||
+    env.SUPABASE_ANON_KEY ||
+    FALLBACK_ANON_KEY
+  );
 }
+
 
 export async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
@@ -1077,6 +1092,8 @@ export const onRequest: any = async (context: any) => {
       } catch { /* fall through to normal handling */ }
     }
   }
+
+
 
   if (!BOT_RE.test(ua)) return next();
 

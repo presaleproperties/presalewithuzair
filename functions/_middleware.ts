@@ -117,9 +117,86 @@ export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
   if (path.startsWith("/en/blog/")) return null; // resolved asynchronously
-  if (path.startsWith("/en/")) return "/";
+  if (path.startsWith("/en/")) {
+    // Strip the /en prefix and keep the visitor on the equivalent live page
+    // when one exists; otherwise fall back to the homepage.
+    const stripped = path.slice(3) || "/";
+    if (REDIRECT_EXACT[stripped]) return REDIRECT_EXACT[stripped];
+    if (isKnownStaticPath(stripped)) return stripped;
+    return "/";
+  }
   return null;
 }
+
+/**
+ * Every non-dynamic route this site actually serves.
+ * Sources checked: src/App.tsx <Route> list, STATIC_META, CITY_META, FUNNEL,
+ * scripts/prerender.ts route enumeration and scripts/prerender-pwu-assignments.mjs.
+ * Dynamic routes (/blog/{slug}, /projects/{slug}) are verified against the
+ * database instead — see isKnownRoute().
+ */
+const EXTRA_KNOWN_PATHS = new Set<string>([
+  "/switching-presale-agents",
+  "/sell-my-presale-assignment",
+  "/buying-a-presale-assignment",
+  "/booking-confirmed",
+  "/payment-success",
+  "/developers",
+  "/requestacall",
+  "/lp",
+  "/admin",
+  "/admin/login",
+  "/admin/leads",
+  "/admin/analytics",
+]);
+
+export function isKnownStaticPath(pathname: string): boolean {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (path === "/" || path === "") return true;
+  if (STATIC_META[path] || CITY_META[path] || FUNNEL[path]) return true;
+  if (EXTRA_KNOWN_PATHS.has(path)) return true;
+  if (path.startsWith("/admin/")) return true;
+  return false;
+}
+
+/**
+ * true = real route, false = genuinely unknown (404),
+ * null = could not verify (fail open, serve as today).
+ */
+async function isKnownRoute(
+  pathname: string,
+  env: Record<string, string | undefined>,
+): Promise<boolean | null> {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (isKnownStaticPath(path)) return true;
+
+  const key = anonKey(env);
+  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
+
+  const dynamic: Array<{ prefix: string; table: string; filter: string }> = [
+    { prefix: "/blog/", table: "blog_posts", filter: "published=eq.true" },
+    { prefix: "/projects/", table: "presale_projects", filter: "is_published=eq.true" },
+  ];
+  for (const d of dynamic) {
+    if (!path.startsWith(d.prefix)) continue;
+    const slug = path.slice(d.prefix.length);
+    if (!slug || slug.includes("/")) return false;
+    try {
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/${d.table}?slug=eq.${encodeURIComponent(slug)}&${d.filter}&select=slug&limit=1`,
+        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+      );
+      if (!r.ok) return null;
+      const rows = (await r.json()) as unknown[];
+      return Array.isArray(rows) && rows.length > 0;
+    } catch {
+      return null;
+    }
+  }
+  return false;
+}
+
+const NOT_FOUND_BODY = `<h1>Page not found</h1><p>This page doesn't exist. <a href="${SITE}/">Return to the homepage</a> or <a href="${SITE}/blog/">browse the presale guides</a>.</p>`;
 
 /**
  * Resolve a legacy /en/blog/{slug} URL to the closest live post.

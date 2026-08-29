@@ -26,6 +26,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 const PresaleGuide = lazy(() => import("./pages/PresaleGuide"));
+const FaqPresaleAgent = lazy(() => import("./pages/FaqPresaleAgent"));
 const BookingConfirmed = lazy(() => import("./pages/BookingConfirmed"));
 const CityLanding = lazy(() => import("./pages/CityLanding"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
@@ -78,6 +79,7 @@ const App = () => (
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/call" element={<LandingPage />} />
               <Route path="/presale-guide" element={<PresaleGuide />} />
+              <Route path="/faq-presale-agent" element={<FaqPresaleAgent />} />
               <Route path="/booking-confirmed" element={<BookingConfirmed />} />
               <Route path="/surrey" element={<CityLanding citySlug="surrey" />} />
               <Route path="/langley" element={<CityLanding citySlug="langley" />} />

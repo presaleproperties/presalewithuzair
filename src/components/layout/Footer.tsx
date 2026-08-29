@@ -54,6 +54,7 @@ export const Footer = () => {
           <div className="flex flex-wrap gap-x-5 gap-y-2.5 mb-8 text-sm">
             <Link to="/about" className="text-white/75 hover:text-white transition-colors duration-300">About</Link>
             <Link to="/services" className="text-white/75 hover:text-white transition-colors duration-300">Services</Link>
+            <Link to="/faq-presale-agent" className="text-white/75 hover:text-white transition-colors duration-300">FAQ</Link>
             <Link to="/blog" className="text-white/75 hover:text-white transition-colors duration-300">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-white transition-colors duration-300">Contact</Link>
             <a href={buildCalendlyUrl()} onClick={() => trackBookCall("footer-nav")} target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</a>
@@ -128,6 +129,7 @@ export const Footer = () => {
                 {[
                   { href: "/about", label: "About Uzair" },
                   { href: "/services", label: "Services" },
+                  { href: "/faq-presale-agent", label: "Presale Agent FAQ" },
                   { href: "/blog", label: "Blog" },
                   { href: "/contact", label: "Contact" },
                 ].map((link) => (

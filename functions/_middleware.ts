@@ -31,6 +31,14 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/book": "/call",
   "/en": "/",
 
+  // --- Framer-era URLs still indexed with the dead "My Framer Site" title ---
+  "/en/blog/what-is-presale-assignments-in-vancouver-real-estate": "/buying-a-presale-assignment",
+  "/en/blog/presale-condo-assignment-sale-faq": "/buying-a-presale-assignment",
+  "/en/blog/three-things-to-know-before-buying-a-presale-in-vancouver":
+    "/blog/do-you-need-a-realtor-to-buy-presale-bc-2026",
+  "/blog/why-hire-a-presale-agent-vs-a-traditional-agent-when-buying-a-presale-condo-or-townhome":
+    "/blog/do-you-need-a-realtor-to-buy-presale-bc-2026",
+
   // --- Legacy listing/assignment URLs (no matching page on this site) ---
   "/presale-projects": "/surrey",
   "/properties": "/surrey",

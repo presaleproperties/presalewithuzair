@@ -1091,14 +1091,8 @@ export const onRequest: any = async (context: any) => {
         return new Response(base.body, { status: 404, statusText: "Not Found", headers: base.headers });
       } catch { /* fall through to normal handling */ }
     }
-    if (known === null) {
-      // Fail open: serve as normal, but flag it so the fallback is diagnosable.
-      const base = await next();
-      const headers = new Headers(base.headers);
-      headers.set("x-route-check", "unverified");
-      return new Response(base.body, { status: base.status, statusText: base.statusText, headers });
-    }
   }
+
 
 
   if (!BOT_RE.test(ua)) return next();

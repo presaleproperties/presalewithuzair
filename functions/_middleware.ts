@@ -31,6 +31,14 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/book": "/call",
   "/en": "/",
 
+  // --- Framer-era URLs still indexed with the dead "My Framer Site" title ---
+  "/en/blog/what-is-presale-assignments-in-vancouver-real-estate": "/buying-a-presale-assignment",
+  "/en/blog/presale-condo-assignment-sale-faq": "/buying-a-presale-assignment",
+  "/en/blog/three-things-to-know-before-buying-a-presale-in-vancouver":
+    "/blog/do-you-need-a-realtor-to-buy-presale-bc-2026",
+  "/blog/why-hire-a-presale-agent-vs-a-traditional-agent-when-buying-a-presale-condo-or-townhome":
+    "/blog/do-you-need-a-realtor-to-buy-presale-bc-2026",
+
   // --- Legacy listing/assignment URLs (no matching page on this site) ---
   "/presale-projects": "/surrey",
   "/properties": "/surrey",
@@ -109,9 +117,86 @@ export function legacyRedirect(pathname: string): string | null {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (REDIRECT_EXACT[path]) return REDIRECT_EXACT[path];
   if (path.startsWith("/en/blog/")) return null; // resolved asynchronously
-  if (path.startsWith("/en/")) return "/";
+  if (path.startsWith("/en/")) {
+    // Strip the /en prefix and keep the visitor on the equivalent live page
+    // when one exists; otherwise fall back to the homepage.
+    const stripped = path.slice(3) || "/";
+    if (REDIRECT_EXACT[stripped]) return REDIRECT_EXACT[stripped];
+    if (isKnownStaticPath(stripped)) return stripped;
+    return "/";
+  }
   return null;
 }
+
+/**
+ * Every non-dynamic route this site actually serves.
+ * Sources checked: src/App.tsx <Route> list, STATIC_META, CITY_META, FUNNEL,
+ * scripts/prerender.ts route enumeration and scripts/prerender-pwu-assignments.mjs.
+ * Dynamic routes (/blog/{slug}, /projects/{slug}) are verified against the
+ * database instead — see isKnownRoute().
+ */
+const EXTRA_KNOWN_PATHS = new Set<string>([
+  "/switching-presale-agents",
+  "/sell-my-presale-assignment",
+  "/buying-a-presale-assignment",
+  "/booking-confirmed",
+  "/payment-success",
+  "/developers",
+  "/requestacall",
+  "/lp",
+  "/admin",
+  "/admin/login",
+  "/admin/leads",
+  "/admin/analytics",
+]);
+
+export function isKnownStaticPath(pathname: string): boolean {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (path === "/" || path === "") return true;
+  if (STATIC_META[path] || CITY_META[path] || FUNNEL[path]) return true;
+  if (EXTRA_KNOWN_PATHS.has(path)) return true;
+  if (path.startsWith("/admin/")) return true;
+  return false;
+}
+
+/**
+ * true = real route, false = genuinely unknown (404),
+ * null = could not verify (fail open, serve as today).
+ */
+async function isKnownRoute(
+  pathname: string,
+  env: Record<string, string | undefined>,
+): Promise<boolean | null> {
+  const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
+  if (isKnownStaticPath(path)) return true;
+
+  const key = anonKey(env);
+  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
+
+  const dynamic: Array<{ prefix: string; table: string; filter: string }> = [
+    { prefix: "/blog/", table: "blog_posts", filter: "published=eq.true" },
+    { prefix: "/projects/", table: "presale_projects", filter: "is_published=eq.true" },
+  ];
+  for (const d of dynamic) {
+    if (!path.startsWith(d.prefix)) continue;
+    const slug = path.slice(d.prefix.length);
+    if (!slug || slug.includes("/")) return false;
+    try {
+      const r = await fetch(
+        `${SUPABASE_URL}/rest/v1/${d.table}?slug=eq.${encodeURIComponent(slug)}&${d.filter}&select=slug&limit=1`,
+        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+      );
+      if (!r.ok) return null;
+      const rows = (await r.json()) as unknown[];
+      return Array.isArray(rows) && rows.length > 0;
+    } catch {
+      return null;
+    }
+  }
+  return false;
+}
+
+const NOT_FOUND_BODY = `<h1>Page not found</h1><p>This page doesn't exist. <a href="${SITE}/">Return to the homepage</a> or <a href="${SITE}/blog/">browse the presale guides</a>.</p>`;
 
 /**
  * Resolve a legacy /en/blog/{slug} URL to the closest live post.
@@ -244,7 +329,7 @@ function aboutReviewsBlock(): string {
 }
 
 export const STATIC_META: Record<string, Meta> = {
-  "/": { title: "Presale Condos & New Homes Fraser Valley | Uzair Muhammad", description: "Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist. Compare new construction and resale before you commit.", image: DEFAULT_IMAGE },
+  "/": { title: "Presale Homes Metro Vancouver & Fraser Valley | Uzair Muhammad", description: "Metro Vancouver and Fraser Valley's leading presale expert and top new construction specialist. Compare new construction and resale before you commit.", image: DEFAULT_IMAGE },
   "/about": { title: "About Uzair Muhammad | Presale Buyer Advisor Fraser Valley", description: "Meet Uzair Muhammad, a buyer-side presale Realtor helping families evaluate new condos and townhomes across the Fraser Valley and Metro Vancouver.", image: DEFAULT_IMAGE },
   "/services": { title: "Presale Buyer Services | Uzair Muhammad", description: "Buyer-side presale services including project comparison, purchase guidance, assignments, resale and completion support across the Fraser Valley.", image: DEFAULT_IMAGE },
   "/contact": { title: "Contact Uzair Muhammad | Presale Buyer Advisor", description: "Ask Uzair about a presale condo, townhome or new-construction project in Surrey, Langley, Abbotsford or the Fraser Valley.", image: DEFAULT_IMAGE },
@@ -264,7 +349,7 @@ const NATIVE_INTRO: Record<string, { code: string; dir?: string; text: string }>
 };
 
 const STATIC_BODY: Record<string, string> = {
-  "/": `<h1>FRASER VALLEY'S LEADING PRESALE EXPERT</h1><p>The sales centre knows how to sell the project. Uzair Muhammad is Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist.</p><p>I help buyers cut through the developer's sales pitch, understand what really matters, and decide whether a presale is actually right for them. From choosing the right project to getting the keys, I guide you every step of the way. I don't work for the developer. I represent you. I represent presale and new-construction buyers across Surrey, Langley, Abbotsford and the Fraser Valley.</p><p>English · Punjabi · Hindi · Urdu</p><p>On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm exactly how it works before you move forward.</p><h2>The project has a sales team. You should have someone looking at it from your side.</h2><p>A beautiful presentation centre doesn't tell you whether a project is a good buy. Presale can be a great fit for the right buyer, but the decision should be based on more than renderings, incentives and a floor plan that looks good on paper. I help you compare the project against your budget, timeline and goals — including the location, developer, deposit schedule, completion timing, floor plan and nearby alternatives. The goal isn't to find a project to buy. It's to find a project worth buying.</p><p>The people selling a development have one job: sell that development. My job is different — I help you evaluate the options from your side and tell you what I actually think. I've helped 450+ families purchase more than \$250M in new homes. Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. Today I lead The Presale Properties Group and founded the Vancouver Presale Expo. I also work in English, Punjabi, Hindi and Urdu, so everyone involved in the decision can understand what they're committing to. If you're considering a project, talk to me before registering directly with the sales centre — representation rules can vary by development.</p><p>A presale decision has more moving parts than the advertised purchase price. I help buyers work through the deposit schedule, completion timing, assignment provisions, incentives and other important purchase terms in plain language. We also look at the full financial picture: deposits, potential GST, closing costs, financing at completion and whether the purchase still makes sense if circumstances change. When professional legal, tax or lending advice is needed, I make sure you know which questions to take to your lawyer, accountant or lender. And if I don't think a project fits your goal, I'll tell you.</p><h2>Clear advice before you commit.</h2><p>A buyer-side process designed to replace sales-centre pressure with clarity: a Buyer Strategy Call about your goal, budget and timeline; a look at Market Fit across Surrey, Langley, Abbotsford, Delta, Coquitlam and the rest of the Fraser Valley; a Project Shortlist of the right two or three options instead of 140 listings; a Floor Plan &amp; Numbers Review that pressure-tests the unit, the deposit schedule and the incentives; the Walk-Away Rule — sometimes the best presale decision is the one you don't make; and Purchase &amp; Completion Guidance that keeps track of deposit milestones, construction updates, financing preparation, closing costs, walkthrough timing and possession.</p><h2>The questions buyers ask before they commit.</h2><div><h3>Do I need my own Realtor to buy a presale?</h3><p>You can purchase directly from a developer, but the sales team is there to sell that development. Having your own Realtor gives you someone evaluating the project from your side. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm the arrangement for the specific project before you move forward.</p></div><div><h3>How much deposit do I need?</h3><p>Presale deposit schedules vary by project. Many developments use staged deposits rather than requiring the full amount upfront. Before you commit, I map out every deposit date so you know exactly how much cash is required and when.</p></div><div><h3>What happens if a project is delayed or cancelled?</h3><p>Your rights depend on the purchase agreement, disclosure statement and applicable BC legislation. Delays and cancellations can work differently from project to project, which is why I help you identify the relevant terms and the questions that should be confirmed with your lawyer before you commit.</p></div><div><h3>Can I sell my presale before completion?</h3><p>Potentially. This is called an assignment, and the rules vary significantly between projects. Developer approval, fees, marketing restrictions and tax considerations can all affect your options. I look at the assignment provisions early so your exit strategy is based on the contract, not an assumption.</p></div><div><h3>Is presale better than resale?</h3><p>Sometimes. Sometimes resale is the better decision. Presale can offer staged deposits, new-home warranty coverage, newer construction and project incentives. Resale gives you certainty about the finished home and today's market value. I compare both when that's what the decision requires.</p></div><h2>7 Costly Mistakes Presale Buyers Make</h2><p>Presale mistakes often happen before the contract is signed. Download my guide to the questions I think buyers should ask about the project, floor plan, deposit schedule, purchase terms and completion costs before committing.</p><h2>Have a project in mind? Ask me about it before you commit.</h2><p>I'll personally review your inquiry and help you understand what deserves a closer look. Buyer-side presale guidance. English, Punjabi, Hindi &amp; Urdu. 450+ families helped. \$250M+ in new-home purchases.</p>`,
+  "/": `<h1>METRO VANCOUVER &amp; FRASER VALLEY'S PRESALE EXPERT</h1><p>The sales centre knows how to sell the project. Uzair Muhammad is Metro Vancouver and Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist.</p><p>I help buyers cut through the developer's sales pitch, understand what really matters, and decide whether a presale is actually right for them. From choosing the right project to getting the keys, I guide you every step of the way. I don't work for the developer. I represent you. I represent presale and new-construction buyers across Surrey, Langley, Abbotsford and the Fraser Valley.</p><p>English · Punjabi · Hindi · Urdu · Tamil · Telugu</p><p>On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm exactly how it works before you move forward.</p><h2>The project has a sales team. You should have someone looking at it from your side.</h2><p>A beautiful presentation centre doesn't tell you whether a project is a good buy. Presale can be a great fit for the right buyer, but the decision should be based on more than renderings, incentives and a floor plan that looks good on paper. I help you compare the project against your budget, timeline and goals — including the location, developer, deposit schedule, completion timing, floor plan and nearby alternatives. The goal isn't to find a project to buy. It's to find a project worth buying.</p><p>The people selling a development have one job: sell that development. My job is different — I help you evaluate the options from your side and tell you what I actually think. I've helped 450+ families purchase more than \$250M in new homes. Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. Today I lead The Presale Properties Group and founded the Vancouver Presale Expo. I also work in English, Punjabi, Hindi and Urdu, so everyone involved in the decision can understand what they're committing to. If you're considering a project, talk to me before registering directly with the sales centre — representation rules can vary by development.</p><p>A presale decision has more moving parts than the advertised purchase price. I help buyers work through the deposit schedule, completion timing, assignment provisions, incentives and other important purchase terms in plain language. We also look at the full financial picture: deposits, potential GST, closing costs, financing at completion and whether the purchase still makes sense if circumstances change. When professional legal, tax or lending advice is needed, I make sure you know which questions to take to your lawyer, accountant or lender. And if I don't think a project fits your goal, I'll tell you.</p><h2>Clear advice before you commit.</h2><p>A buyer-side process designed to replace sales-centre pressure with clarity: a Buyer Strategy Call about your goal, budget and timeline; a look at Market Fit across Surrey, Langley, Abbotsford, Delta, Coquitlam and the rest of the Fraser Valley; a Project Shortlist of the right two or three options instead of 140 listings; a Floor Plan &amp; Numbers Review that pressure-tests the unit, the deposit schedule and the incentives; the Walk-Away Rule — sometimes the best presale decision is the one you don't make; and Purchase &amp; Completion Guidance that keeps track of deposit milestones, construction updates, financing preparation, closing costs, walkthrough timing and possession.</p><h2>The questions buyers ask before they commit.</h2><div><h3>Do I need my own Realtor to buy a presale?</h3><p>You can purchase directly from a developer, but the sales team is there to sell that development. Having your own Realtor gives you someone evaluating the project from your side. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll confirm the arrangement for the specific project before you move forward.</p></div><div><h3>How much deposit do I need?</h3><p>Presale deposit schedules vary by project. Many developments use staged deposits rather than requiring the full amount upfront. Before you commit, I map out every deposit date so you know exactly how much cash is required and when.</p></div><div><h3>What happens if a project is delayed or cancelled?</h3><p>Your rights depend on the purchase agreement, disclosure statement and applicable BC legislation. Delays and cancellations can work differently from project to project, which is why I help you identify the relevant terms and the questions that should be confirmed with your lawyer before you commit.</p></div><div><h3>Can I sell my presale before completion?</h3><p>Potentially. This is called an assignment, and the rules vary significantly between projects. Developer approval, fees, marketing restrictions and tax considerations can all affect your options. I look at the assignment provisions early so your exit strategy is based on the contract, not an assumption.</p></div><div><h3>Is presale better than resale?</h3><p>Sometimes. Sometimes resale is the better decision. Presale can offer staged deposits, new-home warranty coverage, newer construction and project incentives. Resale gives you certainty about the finished home and today's market value. I compare both when that's what the decision requires.</p></div><h2>7 Costly Mistakes Presale Buyers Make</h2><p>Presale mistakes often happen before the contract is signed. Download my guide to the questions I think buyers should ask about the project, floor plan, deposit schedule, purchase terms and completion costs before committing.</p><h2>Have a project in mind? Ask me about it before you commit.</h2><p>I'll personally review your inquiry and help you understand what deserves a closer look. Buyer-side presale guidance. English, Punjabi, Hindi &amp; Urdu. 450+ families helped. \$250M+ in new-home purchases.</p>`,
   "/about": `<h1>About Uzair Muhammad — I Help Buyers See Past the Brochure.</h1><p>Buying presale means making a major financial decision about a home that may not exist yet. That's why my job isn't simply to find you a project. It's to help you understand what you're buying before you commit.</p><p>I help families compare new condos, townhomes and presales across the Fraser Valley and Metro Vancouver — looking at the project, location, price, floor plan, deposit structure, completion timing and long-term fit. And after you sign, I stay involved through the path to completion and keys.</p><p>I've helped more than 450 families purchase over \$250M in new homes. Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. That experience changed how I look at development — I naturally ask questions about how a project fits the neighbourhood, what's happening around it and what may matter years from now, not just what looks good on launch day.</p><p>Today I lead The Presale Properties Group and founded the Vancouver Presale Expo. I work in English, Punjabi, Hindi and Urdu. My role is simple: help you understand the options, avoid the wrong ones and make the right decision with confidence.</p><h2>The development already has people selling it. You deserve someone evaluating it from your side.</h2><p>The sales team knows its project better than almost anyone. That's valuable. But its job is to sell that development. My job is to help you decide whether that development makes sense for you — comparing it with alternatives, questioning the numbers, looking critically at the floor plan and helping you understand the purchase terms. If I think the project makes sense, I'll explain why. If I think another project is stronger, I'll say so. If I think you should wait, I'll say that too. Good advice isn't measured by how quickly you buy — it's measured by whether you still feel good about the decision when you get the keys.</p><h2>What I help buyers understand</h2><p>Most buyers don't need more listings. They need better context. I help buyers think through questions like: Is this project fairly priced relative to the alternatives? Does this floor plan actually work? Does the deposit schedule fit my cash flow? What purchase terms deserve closer attention? What costs should I prepare for at completion? Is the incentive meaningful or mostly marketing? How does this neighbourhood fit my goal? What happens if my circumstances change before completion? Should I buy now, wait or compare something else? What should I prepare for at the deficiency walkthrough? Presale can be a strong option, but only when the project, timing, finances and buyer all fit together.</p><h2>With you from decision to keys.</h2><p>Signing the contract isn't the end of a presale purchase — in many cases, it's the beginning of a multi-year timeline. I stay connected through deposit milestones, construction updates, completion preparation, financing conversations, walkthrough timing and possession. When a question requires a lawyer, accountant, lender or other specialist, I help make sure you're asking the right person the right question.</p><h2>I look at developments differently.</h2><p>Before real estate, I spent 10 years working with the City of Surrey in planning and bylaws. That doesn't make me a city planner today, but it gave me a useful lens. When I look at a project, I'm not just looking at finishes and incentives — I'm thinking about location, surrounding development, approvals, land use, neighbourhood change and how the home may function when it's actually completed. Presale isn't only about what looks exciting today. It's about what still makes sense years from now.</p><h2>Who I help</h2><p><strong>First-time buyers.</strong> Buying your first home comes with enough uncertainty already. I help you understand the timeline, deposits, purchase terms, completion costs, location and whether presale is actually the right way for you to enter the market.</p><p><strong>Investors.</strong> I help investors look past the marketing story and evaluate the fundamentals — price, nearby resale, rent potential, deposit leverage, assignment provisions, completion risk and the eventual exit strategy. No guaranteed returns. Just better questions and clearer numbers.</p><p><strong>Move-up buyers.</strong> If you're moving from a condo into a townhome or planning several years ahead, presale can help create time. But timing your existing home, deposits, mortgage and eventual completion matters. I help you see the whole sequence.</p><p><strong>First-generation &amp; newcomer buyers.</strong> Sometimes the buyer understands the process in English but the parents helping with the deposit don't. I work in English, Punjabi, Hindi and Urdu so the people involved in the decision can understand it together. No family member should be writing a cheque for something they don't understand.</p><h2>Local market focus</h2><p>My core focus is presale and new construction across Surrey, Langley, South Surrey, White Rock, Delta, Abbotsford, Coquitlam, Burnaby, Maple Ridge, Chilliwack and surrounding communities. These aren't interchangeable markets. A project that's right for an investor may be wrong for a first-time buyer. A great family townhome may be a mediocre rental. A strong building doesn't automatically make every floor plan a good buy. Context matters.</p><h2>The Presale Properties Group</h2><p>I lead The Presale Properties Group, a multilingual real estate team helping buyers navigate presale and new construction across the Fraser Valley and Metro Vancouver. Our team works in English, Punjabi, Hindi and Urdu. Alongside me you'll work with Ravish Passy and Sarb Grewal — agents who live and work in the communities we serve. Our shared approach is simple: help the buyer understand the decision before asking them to make it.</p><h2>Vancouver Presale Expo</h2><p>I founded the Vancouver Presale Expo to help raise the level of education and conversation around BC's presale industry. The event brings together agents, developers and industry professionals. For me, that work matters because a more informed industry should create more informed buyers.</p><h2>Before you choose a project, choose your advisor.</h2><p>Considering a presale? Start with a conversation, not a showroom. Tell me what you're considering. I'll help you understand the market, compare the options and identify the questions worth asking before you commit. <a href="${SITE}/call">Book a Buyer Strategy Call</a>.</p>`,
   "/services": `<h1>One Advisor From the First Question to the Keys.</h1><p>Buying a presale isn't one decision. It's a series of decisions about the market, project, floor plan, deposit structure, purchase terms, financing and eventual completion. I help you connect those decisions so you're not evaluating each one in isolation.</p><h2>Presale Purchasing &amp; Early Access</h2><p>I'll help you find and compare presale opportunities across the Fraser Valley and Metro Vancouver, including early-access opportunities when they're available. But access isn't the point. Judgment is. My job is to help you determine whether the project deserves your money in the first place — project and location comparison, floor plan and pricing analysis, deposit schedule review, developer and competing-project research, incentive comparison, and a purchase-term walkthrough with the questions to confirm with your lawyer.</p><h2>Presale Assignment Strategy</h2><p>Life can change between signing a presale contract and completion. If you need to explore assigning your contract, I help you understand the market value, developer requirements and practical steps involved in bringing the assignment to market — market-based pricing, developer process and restrictions, marketing strategy and buyer outreach. Because assignments can involve legal and tax considerations, I also make sure those issues are directed to the appropriate professionals.</p><h2>Resale &amp; Portfolio Decisions</h2><p>Presale isn't automatically the right answer. For investors and homebuyers, sometimes the better opportunity is already built. I can help you compare presale and resale through the same lens: price, location, financing, rent potential, long-term demand and your exit strategy. The goal is not to make presale win. The goal is to make the right option obvious.</p><h2>Completion, Walkthrough &amp; After-Key Support</h2><p>Presale purchases can take years to complete. I stay involved — helping you prepare for financing conversations, closing costs, the deficiency walkthrough and possession, and pointing you toward the right professional resources for anything that requires legal, financing, tax or warranty expertise. Completion preparation, closing-cost planning, deficiency walkthrough support, possession-day coordination, new-home warranty orientation and a post-completion check-in.</p><h2>Have a project in mind?</h2><p>Send it to me before you commit. No pressure. No pitch. Just a clear conversation about whether it makes sense for you.</p>`,
   "/contact": `<h1>Have a Presale Project in Mind? Send It to Me.</h1><p>You don't need to know exactly what you want before reaching out. Tell me what you're considering, your approximate budget and what you're trying to accomplish. I'll help you figure out which questions matter next.</p><p>WhatsApp (preferred) is best for a quick project question. Call me directly at <a href="tel:+17782313592">+1 (778) 231-3592</a>, or email <a href="mailto:info@meetuzair.com">info@meetuzair.com</a> with a project, floor plan or detailed question. Office: Real Broker, 3211 152 St, Building C, Surrey, BC V3Z 1H8.</p><p>A few details help me give you a useful answer: your approximate budget, preferred city or cities, condo/townhome/detached, buying to live in or invest, ideal move-in timeline, any projects you're already considering, and whether you've already registered with a sales centre. No obligation — start with a conversation.</p><p>450+ families helped. \$250M+ in new-home purchases. 5 years of presale focus.</p>`,
@@ -962,6 +1047,37 @@ export const onRequest: any = async (context: any) => {
 
   if (request.method !== "GET") return next();
   const ua = request.headers.get("user-agent") || "";
+
+  // Unknown paths used to fall through to the SPA shell and answer 200 with the
+  // homepage HTML — a soft-duplicate surface. Answer a real 404 instead.
+  if (
+    !ASSET_RE.test(reqUrl.pathname) &&
+    !reqUrl.pathname.startsWith("/assets/") &&
+    !reqUrl.pathname.startsWith("/api/") &&
+    !reqUrl.pathname.startsWith("/functions/")
+  ) {
+    let known: boolean | null = null;
+    try { known = await isKnownRoute(reqUrl.pathname, env); } catch { known = null; }
+    if (known === false) {
+      try {
+        const base = await next();
+        const ct = base.headers.get("content-type") || "";
+        if (ct.includes("text/html")) {
+          const transformed = new HTMLRewriter()
+            .on("title", new TextSetter("Page Not Found | Presale With Uzair"))
+            .on('meta[name="robots"]', new AttrSetter("content", "noindex, follow"))
+            .on('meta[name="description"]', new AttrSetter("content", "This page doesn't exist. Browse presale projects and buyer guides with Uzair Muhammad."))
+            .on("#root", new RootInjector(NOT_FOUND_BODY))
+            .transform(base);
+          const headers = new Headers(transformed.headers);
+          headers.set("x-robots-tag", "noindex, follow");
+          return new Response(transformed.body, { status: 404, statusText: "Not Found", headers });
+        }
+        return new Response(base.body, { status: 404, statusText: "Not Found", headers: base.headers });
+      } catch { /* fall through to normal handling */ }
+    }
+  }
+
   if (!BOT_RE.test(ua)) return next();
 
 

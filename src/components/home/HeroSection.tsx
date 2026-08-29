@@ -5,7 +5,7 @@ import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 
 const heroContent = {
   eyebrow: "UZAIR MUHAMMAD",
-  headline: "FRASER VALLEY'S LEADING PRESALE EXPERT",
+  headline: "METRO VANCOUVER & FRASER VALLEY'S PRESALE EXPERT",
   subheadline: "The sales centre knows how to sell the project.",
   body: "I help buyers cut through the developer's sales pitch, understand what really matters, and decide whether a presale is actually right for them. From choosing the right project to getting the keys, I guide you every step of the way. I don't work for the developer. I represent you.",
   cta: BOOK_CALL_LABEL,
@@ -20,7 +20,7 @@ const serviceAreas = [
   "Fraser Valley",
 ];
 
-const languages = ["English", "Punjabi", "Hindi", "Urdu"];
+const languages = ["English", "Punjabi", "Hindi", "Urdu", "Tamil", "Telugu"];
 
 const proofPoints = [
   { value: "450+", label: "Families helped" },

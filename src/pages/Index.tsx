@@ -37,10 +37,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Presale Condos & New Homes Fraser Valley | Uzair Muhammad</title>
+        <title>Presale Homes Metro Vancouver & Fraser Valley | Uzair Muhammad</title>
         <meta
           name="description"
-          content="Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist. Compare new construction and resale before you commit."
+          content="Metro Vancouver and Fraser Valley's leading presale expert and top new construction specialist. Compare new construction and resale before you commit."
         />
         <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />
@@ -48,14 +48,14 @@ const Index = () => {
         {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://presalewithuzair.com/" />
-        <meta property="og:title" content="Presale Condos & New Homes Fraser Valley | Uzair Muhammad" />
-        <meta property="og:description" content="Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist. Compare new construction and resale before you commit." />
+        <meta property="og:title" content="Presale Homes Metro Vancouver & Fraser Valley | Uzair Muhammad" />
+        <meta property="og:description" content="Metro Vancouver and Fraser Valley's leading presale expert and top new construction specialist. Compare new construction and resale before you commit." />
         <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Presale Condos & New Homes Fraser Valley | Uzair Muhammad" />
-        <meta name="twitter:description" content="Fraser Valley's leading presale expert and Metro Vancouver's top new construction specialist. Compare new construction and resale before you commit." />
+        <meta name="twitter:title" content="Presale Homes Metro Vancouver & Fraser Valley | Uzair Muhammad" />
+        <meta name="twitter:description" content="Metro Vancouver and Fraser Valley's leading presale expert and top new construction specialist. Compare new construction and resale before you commit." />
         <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/5CBz3t8hJXQlE60NLFmYURMrWQu2/social-images/social-1775073854345-Screenshot_2026-03-03_at_2.54.42_PM.webp" />
         {/* Canonical Person + RealEstateAgent JSON-LD lives in index.html — do not duplicate here */}
       </Helmet>

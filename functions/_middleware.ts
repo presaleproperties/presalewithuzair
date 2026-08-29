@@ -1047,6 +1047,37 @@ export const onRequest: any = async (context: any) => {
 
   if (request.method !== "GET") return next();
   const ua = request.headers.get("user-agent") || "";
+
+  // Unknown paths used to fall through to the SPA shell and answer 200 with the
+  // homepage HTML — a soft-duplicate surface. Answer a real 404 instead.
+  if (
+    !ASSET_RE.test(reqUrl.pathname) &&
+    !reqUrl.pathname.startsWith("/assets/") &&
+    !reqUrl.pathname.startsWith("/api/") &&
+    !reqUrl.pathname.startsWith("/functions/")
+  ) {
+    let known: boolean | null = null;
+    try { known = await isKnownRoute(reqUrl.pathname, env); } catch { known = null; }
+    if (known === false) {
+      try {
+        const base = await next();
+        const ct = base.headers.get("content-type") || "";
+        if (ct.includes("text/html")) {
+          const transformed = new HTMLRewriter()
+            .on("title", new TextSetter("Page Not Found | Presale With Uzair"))
+            .on('meta[name="robots"]', new AttrSetter("content", "noindex, follow"))
+            .on('meta[name="description"]', new AttrSetter("content", "This page doesn't exist. Browse presale projects and buyer guides with Uzair Muhammad."))
+            .on("#root", new RootInjector(NOT_FOUND_BODY))
+            .transform(base);
+          const headers = new Headers(transformed.headers);
+          headers.set("x-robots-tag", "noindex, follow");
+          return new Response(transformed.body, { status: 404, statusText: "Not Found", headers });
+        }
+        return new Response(base.body, { status: 404, statusText: "Not Found", headers: base.headers });
+      } catch { /* fall through to normal handling */ }
+    }
+  }
+
   if (!BOT_RE.test(ua)) return next();
 
 

@@ -927,9 +927,21 @@ function funnelBody(path: string): string {
 
 interface Resolved { meta: Meta; body: string; canonical?: string; robots?: string; }
 
+// Publishable (anon) key — already shipped in the browser bundle, safe here.
+// Used as a fallback because Cloudflare Pages Functions do not inherit the
+// build-time VITE_* vars unless they are also set as runtime env vars.
+const FALLBACK_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InViYm9na2xhc293bm9nbnZpb2JoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3MjE4MTcsImV4cCI6MjA4MjI5NzgxN30.k_kpjmELjMLrYIu74Op94VDb2bEK_5Kzno5DBaPbSy4";
+
 function anonKey(env: Record<string, string | undefined>): string | undefined {
-  return env.VITE_SUPABASE_PUBLISHABLE_KEY || env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY;
+  return (
+    env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+    env.VITE_SUPABASE_ANON_KEY ||
+    env.SUPABASE_ANON_KEY ||
+    FALLBACK_ANON_KEY
+  );
 }
+
 
 export async function resolve(pathname: string, env: Record<string, string | undefined>): Promise<Resolved> {
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";

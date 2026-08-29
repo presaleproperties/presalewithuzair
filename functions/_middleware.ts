@@ -170,31 +170,34 @@ async function isKnownRoute(
   const path = pathname !== "/" ? pathname.replace(/\/+$/, "") : "/";
   if (isKnownStaticPath(path)) return true;
 
-  const key = anonKey(env);
-  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
-
   const dynamic: Array<{ prefix: string; table: string; filter: string }> = [
     { prefix: "/blog/", table: "blog_posts", filter: "published=eq.true" },
     { prefix: "/projects/", table: "presale_projects", filter: "is_published=eq.true" },
   ];
-  for (const d of dynamic) {
-    if (!path.startsWith(d.prefix)) continue;
-    const slug = path.slice(d.prefix.length);
-    if (!slug || slug.includes("/")) return false;
-    try {
-      const r = await fetch(
-        `${SUPABASE_URL}/rest/v1/${d.table}?slug=eq.${encodeURIComponent(slug)}&${d.filter}&select=slug&limit=1`,
-        { headers: { apikey: key, Authorization: `Bearer ${key}` } },
-      );
-      if (!r.ok) return null;
-      const rows = (await r.json()) as unknown[];
-      return Array.isArray(rows) && rows.length > 0;
-    } catch {
-      return null;
-    }
+  const match = dynamic.find((d) => path.startsWith(d.prefix));
+
+  // Non-dynamic path that matched no known static route: genuinely unknown.
+  // No database lookup needed, so this must never fail open.
+  if (!match) return false;
+
+  const key = anonKey(env);
+  if (!key) return null; // cannot verify dynamic slugs — never 404 blindly
+
+  const slug = path.slice(match.prefix.length);
+  if (!slug || slug.includes("/")) return false;
+  try {
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/${match.table}?slug=eq.${encodeURIComponent(slug)}&${match.filter}&select=slug&limit=1`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+    );
+    if (!r.ok) return null;
+    const rows = (await r.json()) as unknown[];
+    return Array.isArray(rows) && rows.length > 0;
+  } catch {
+    return null;
   }
-  return false;
 }
+
 
 const NOT_FOUND_BODY = `<h1>Page not found</h1><p>This page doesn't exist. <a href="${SITE}/">Return to the homepage</a> or <a href="${SITE}/blog/">browse the presale guides</a>.</p>`;
 

@@ -60,6 +60,35 @@ const getTrackingData = () => {
   };
 };
 
+const STORAGE_KEY = "pwu-lead-autofill";
+
+/** Reads previously entered contact details so any form opens prefilled. */
+const readSavedLead = (): Partial<FormData> => {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Partial<FormData>;
+    const clean: Partial<FormData> = {};
+    (["name", "email", "phone", "buyerType", "budget", "timeline", "leadSource"] as const).forEach(
+      (k) => {
+        if (typeof parsed[k] === "string" && parsed[k]) clean[k] = parsed[k] as string;
+      },
+    );
+    return clean;
+  } catch {
+    return {};
+  }
+};
+
+const saveLead = (data: Partial<FormData>) => {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    /* storage blocked — autofill is best-effort */
+  }
+};
+
 interface UnifiedLeadFormProps {
   /** Heading above the form */
   heading?: string;

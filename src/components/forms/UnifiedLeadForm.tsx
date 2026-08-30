@@ -334,15 +334,15 @@ export const UnifiedLeadForm = ({
     ? `bg-card rounded-sm border border-border p-5 sm:p-8 lg:p-9 ${className}`
     : className;
 
-  const heightClasses = compact ? "h-10 text-sm" : "h-12 text-base";
+  const heightClasses = compact ? "h-11 text-sm" : "h-12 text-base";
 
   const inputClasses = isDark
     ? `${heightClasses} bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-primary touch-manipulation`
     : `${heightClasses} bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation`;
 
   const labelClasses = isDark
-    ? `block font-medium text-white/90 ${compact ? "text-[11px] mb-0.5" : "text-xs sm:text-sm mb-1"}`
-    : `block font-medium text-foreground ${compact ? "text-[11px] mb-0.5" : "text-xs sm:text-sm mb-1"}`;
+    ? `block font-medium text-white/90 ${compact ? "text-xs mb-1.5" : "text-xs sm:text-sm mb-1"}`
+    : `block font-medium ${compact ? "text-xs mb-1.5 text-foreground/70" : "text-xs sm:text-sm mb-1 text-foreground"}`;
 
   return (
     <div className={wrapperClasses}>
@@ -362,8 +362,8 @@ export const UnifiedLeadForm = ({
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className={compact ? "space-y-2.5" : "space-y-4"} autoComplete="on">
-        <div className={compact ? "space-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
+      <form onSubmit={handleSubmit} className={compact ? "space-y-4" : "space-y-4"} autoComplete="on">
+        <div className={compact ? "grid grid-cols-1 sm:grid-cols-2 gap-3" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
 
         <div className="col-span-2">
           <label htmlFor={fid("name")} className={labelClasses}>Name *</label>

@@ -87,7 +87,7 @@ const SwitchingAgents = () => (
     <p>
       The single thing that costs people money here is waiting. Every month closer to completion narrows
       the pool of buyers who can take on your contract and shortens the runway for developer consent. If
-      you are unhappy with your current representation, the cheapest move is to deal with it now.
+      you are unhappy with your current representation, the simplest move is to address it now.
     </p>
 
     <RelatedLinks

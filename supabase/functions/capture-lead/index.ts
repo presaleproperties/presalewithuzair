@@ -165,6 +165,8 @@ interface CrmContext {
   tags: string[];
   extraMessage?: string | null;
   neighbourhood?: string | null;
+  projectName?: string | null;
+  ctaSource?: string | null;
 }
 
 // Forward a captured lead to DealzFlow lead-intake with a rich summary note
@@ -188,6 +190,8 @@ async function forwardToDealzFlow(
     lines.push(`🔗 Page: ${pageUrl}`);
     if (ctx.city) lines.push(`📍 City interest: ${ctx.city}`);
     if (ctx.neighbourhood) lines.push(`📍 Neighbourhood: ${ctx.neighbourhood}`);
+    if (ctx.projectName) lines.push(`🏗️ Project of interest: ${ctx.projectName}`);
+    if (ctx.ctaSource) lines.push(`🖱️ CTA clicked: ${ctx.ctaSource}`);
     if (buyerLabel) lines.push(`👤 Buyer type: ${buyerLabel}`);
     if (srcLabel) lines.push(`📣 How they found us: ${srcLabel}`);
     if (ctx.budgetLabel) lines.push(`💰 Budget: ${ctx.budgetLabel}`);
@@ -235,6 +239,8 @@ async function forwardToDealzFlow(
         local_lead_id: lead.id,
         city_interest: ctx.city,
         neighbourhood: ctx.neighbourhood || null,
+        project_name: ctx.projectName || null,
+        cta_source: ctx.ctaSource || null,
         buyer_type: lead.buyer_type,
         buyer_type_label: buyerLabel,
         lead_type: ctx.leadTypeLabel,

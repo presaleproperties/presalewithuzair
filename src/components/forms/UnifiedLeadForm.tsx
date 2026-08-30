@@ -96,16 +96,20 @@ export const UnifiedLeadForm = ({
   className = "",
   twoColumn = false,
   compact = false,
+  context,
 }: UnifiedLeadFormProps) => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    email: "",
-    buyerType: defaultBuyerType,
-    budget: "",
-    timeline: "",
-    leadSource: "",
-  });
+  const [formData, setFormData] = useState<FormData>(() => ({
+    ...{
+      name: "",
+      phone: "",
+      email: "",
+      buyerType: defaultBuyerType,
+      budget: "",
+      timeline: "",
+      leadSource: "",
+    },
+    ...readSavedLead(),
+  }));
 
   const [trackingData, setTrackingData] = useState(getTrackingData());
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -115,6 +119,17 @@ export const UnifiedLeadForm = ({
 
   useEffect(() => {
     setTrackingData(getTrackingData());
+
+    // Autofill from a previous submission or from ?name=&email=&phone= links.
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl: Partial<FormData> = {};
+    const name = params.get("name") || params.get("full_name");
+    const email = params.get("email");
+    const phone = params.get("phone");
+    if (name) fromUrl.name = name;
+    if (email) fromUrl.email = email;
+    if (phone) fromUrl.phone = phone;
+    if (Object.keys(fromUrl).length) setFormData((prev) => ({ ...prev, ...fromUrl }));
 
     const checkHash = () => {
       const hash = window.location.hash;
@@ -128,6 +143,13 @@ export const UnifiedLeadForm = ({
     window.addEventListener("hashchange", checkHash);
     return () => window.removeEventListener("hashchange", checkHash);
   }, []);
+
+  // Remember what the visitor typed so any other CTA opens prefilled.
+  useEffect(() => {
+    const t = window.setTimeout(() => saveLead(formData), 400);
+    return () => window.clearTimeout(t);
+  }, [formData]);
+
 
   const updateField = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setFormData((prev) => ({ ...prev, [key]: value }));

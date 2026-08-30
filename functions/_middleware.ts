@@ -1085,6 +1085,16 @@ class TextSetter { text: string; constructor(t: string) { this.text = t; } eleme
 class RootInjector { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.setInnerContent(this.html, { html: true }); } }
 class HeadAppender { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.append(this.html, { html: true }); } }
 
+function markMiddlewareResponse(response: Response): Response {
+  const headers = new Headers(response.headers);
+  headers.set("x-mw", "1");
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 export const onRequest: any = async (context: any) => {
   const { request, next, env } = context;
   if (request.method !== "GET" && request.method !== "HEAD") return next();
@@ -1127,6 +1137,7 @@ export const onRequest: any = async (context: any) => {
             .transform(base);
           const headers = new Headers(transformed.headers);
           headers.set("x-robots-tag", "noindex, follow");
+          headers.set("x-mw", "1");
           return new Response(transformed.body, { status: 404, statusText: "Not Found", headers });
         }
         return new Response(base.body, { status: 404, statusText: "Not Found", headers: base.headers });
@@ -1136,7 +1147,7 @@ export const onRequest: any = async (context: any) => {
 
 
 
-  if (!BOT_RE.test(ua)) return next();
+  if (!BOT_RE.test(ua)) return markMiddlewareResponse(await next());
 
 
   const url = new URL(request.url);
@@ -1167,7 +1178,7 @@ export const onRequest: any = async (context: any) => {
       .on('link[rel="canonical"]', new AttrSetter("href", canonical))
       .on("#root", new RootInjector(body));
     if (resolved.robots) rw = rw.on('meta[name="robots"]', new AttrSetter("content", resolved.robots));
-    return rw.transform(res);
+    return markMiddlewareResponse(rw.transform(res));
   } catch (e) {
     return next();
   }

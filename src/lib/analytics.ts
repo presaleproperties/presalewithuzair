@@ -26,3 +26,27 @@ export const trackBookCall = (ctaLocation: string) => {
     ...pageContext(),
   });
 };
+
+/** Fires when the booking/lead form is successfully submitted. */
+export const trackLeadFormSubmitted = (details: {
+  ctaSource?: string;
+  city?: string;
+  project?: string;
+  buyerType?: string;
+  budget?: string;
+  timeline?: string;
+  leadSource?: string;
+  landingPage?: string;
+}) => {
+  gtag("event", "lead_form_submitted", {
+    cta_source: details.ctaSource,
+    city: details.city,
+    project: details.project,
+    buyer_type: details.buyerType,
+    budget: details.budget,
+    timeline: details.timeline,
+    lead_source: details.leadSource,
+    landing_page: details.landingPage,
+    ...pageContext(),
+  });
+};

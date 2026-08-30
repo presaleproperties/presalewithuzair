@@ -8,7 +8,7 @@ const corsHeaders = {
 // ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
 // Slug is env-overridable: flip DEALZFLOW_SOURCE_SLUG to "presale_with_uzair"
 // once that source is registered in DealzFlow (it currently 401s).
-const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "presale_with_uzair";
+const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "website_form";
 const DEALZFLOW_INTAKE_URL =
   `https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=${DEALZFLOW_SOURCE_SLUG}`;
 const DEALZFLOW_INTAKE_TOKEN = Deno.env.get("DEALZFLOW_INTAKE_TOKEN") ?? "";

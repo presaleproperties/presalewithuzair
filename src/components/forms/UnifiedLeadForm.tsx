@@ -291,27 +291,39 @@ export const UnifiedLeadForm = ({
     }
   };
 
-  useEffect(() => {
-    if (isSuccess) {
-      const timer = setTimeout(() => {
-        setIsSuccess(false);
-        setFormData({ name: "", phone: "", email: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
-      }, 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [isSuccess, defaultBuyerType]);
-
   if (isSuccess) {
+    const firstName = (savedName || formData.name || "").trim().split(" ")[0];
     return (
-      <div className={`text-center py-12 ${className}`}>
-        <div className="w-16 h-16 mx-auto mb-6 rounded-sm border border-border bg-muted flex items-center justify-center">
-          <CheckCircle className="h-8 w-8 text-primary" />
+      <div className={`py-10 text-center ${className}`}>
+        <div className="w-14 h-14 mx-auto mb-5 rounded-full border border-primary/25 bg-primary/10 flex items-center justify-center">
+          <CheckCircle className="h-7 w-7 text-primary" />
         </div>
-        <h3 className="font-display text-2xl font-bold text-foreground mb-2">All Set!</h3>
-        <p className="text-muted-foreground">You will hear from us soon.</p>
+        <h3 className="font-display text-2xl font-bold text-foreground mb-2">
+          {firstName ? `Thanks, ${firstName} — request received.` : "Request received."}
+        </h3>
+        <p className="text-sm text-foreground/70 max-w-sm mx-auto">
+          I'll personally review what you're considering and reply within 24 hours to book your
+          15-minute call. Check your inbox for a confirmation.
+        </p>
+        <ul className="mt-5 space-y-2 text-left max-w-xs mx-auto text-sm text-foreground/75">
+          <li className="flex gap-2"><span className="text-primary font-semibold">1.</span> You get a confirmation email.</li>
+          <li className="flex gap-2"><span className="text-primary font-semibold">2.</span> I review your goals and shortlist.</li>
+          <li className="flex gap-2"><span className="text-primary font-semibold">3.</span> We talk — buyer-side only, no pressure.</li>
+        </ul>
+        <button
+          type="button"
+          onClick={() => {
+            setIsSuccess(false);
+            setFormData({ name: "", phone: "", email: "", buyerType: defaultBuyerType, budget: "", timeline: "", leadSource: "" });
+          }}
+          className="mt-6 text-xs font-medium text-primary underline underline-offset-4"
+        >
+          Send another request
+        </button>
       </div>
     );
   }
+
 
   const isDark = variant === "dark";
   const isCard = variant === "card";

@@ -18,7 +18,7 @@ export const LeadCaptureSection = () => {
             </div>
           </div>
 
-          {/* Right - Calendly booking */}
+          {/* Right - booking form */}
           <div className="w-full">
             <p className="section-label mb-3">Start Here</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight leading-[1.05] mb-3">

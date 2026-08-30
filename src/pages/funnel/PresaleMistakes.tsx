@@ -58,7 +58,7 @@ const PresaleMistakes = () => (
 
     <h2>Mistake 5 — Buying a bad floor plan because the price looks good</h2>
     <p>
-      Cheap wasted square footage is still wasted square footage. The home has to function after the marketing campaign ends.
+      Discounted wasted square footage is still wasted square footage. The home has to function after the marketing campaign ends.
     </p>
 
     <h2>Mistake 6 — Planning for the first deposit instead of the entire timeline</h2>

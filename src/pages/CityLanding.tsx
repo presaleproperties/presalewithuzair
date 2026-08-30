@@ -146,7 +146,7 @@ const CITY_CONFIGS: Record<string, CityConfig> = {
       { icon: <MapPin className="h-6 w-6" />, title: "Long-Term Fit", description: "Make sure the location works for your life — not just your spreadsheet." },
     ],
     faqs: [
-      { question: "How do I compare Chilliwack presales?", answer: "Uzair Muhammad — 450+ families helped across the Fraser Valley, representing buyers, not developers. In Chilliwack I focus on developer track record, deliverability and honest resale comparisons, because 'cheap' means nothing if the project stalls or completes poorly." },
+      { question: "How do I compare Chilliwack presales?", answer: "Uzair Muhammad — 450+ families helped across the Fraser Valley, representing buyers, not developers. In Chilliwack I focus on developer track record, deliverability and honest resale comparisons, because a low price means nothing if the project stalls or completes poorly." },
       { question: "Who is Chilliwack best suited for?", answer: "Buyers willing to look farther east for a lower entry price, and who value outdoor recreation and a different pace of life alongside the numbers. The price-per-sqft is the lowest in the region, and population growth continues." },
       { question: "How much deposit should I expect?", answer: "Usually 10–15% staged over 12–18 months. Chilliwack is often the market where you can negotiate the softest deposit ladder in the province — I ask for it in writing on every offer." },
       { question: "How should I evaluate a developer?", answer: "Every Chilliwack presale I recommend goes through disclosure review — deposit protection, phasing risk, marketing statements versus binding contract terms. It's part of my job as your buyer's agent, not an extra." },

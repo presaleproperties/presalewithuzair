@@ -1112,7 +1112,6 @@ export const onRequest: any = async (context: any) => {
     return Response.redirect(dest.toString(), 301);
   }
 
-  if (request.method !== "GET") return next();
   const ua = request.headers.get("user-agent") || "";
 
   // Unknown paths used to fall through to the SPA shell and answer 200 with the

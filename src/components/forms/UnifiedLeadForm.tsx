@@ -81,6 +81,8 @@ interface UnifiedLeadFormProps {
   twoColumn?: boolean;
   /** Tighter density so the whole form fits on a mobile screen */
   compact?: boolean;
+  /** Page context (city/project/CTA source) attached to the lead. */
+  context?: { city?: string; project?: string; source?: string };
 }
 
 export const UnifiedLeadForm = ({

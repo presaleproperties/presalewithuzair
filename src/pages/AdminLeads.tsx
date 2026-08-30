@@ -71,6 +71,11 @@ interface Lead {
   utm_campaign: string | null;
   preferred_call_date: string | null;
   preferred_call_time: string | null;
+  city: string | null;
+  message: string | null;
+  cta_source: string | null;
+  project_name: string | null;
+  landing_page: string | null;
 }
 
 const leadTypeLabels: Record<string, { label: string; icon: typeof Home; color: string }> = {
@@ -154,10 +159,13 @@ const AdminLeads = () => {
     }
   };
 
+  const csvCell = (value: string | null | undefined) =>
+    `"${(value || "").replace(/"/g, '""').replace(/\r?\n/g, " ")}"`;
+
   const exportLeads = () => {
     const filteredData = getFilteredLeads();
     const csv = [
-      ["Name", "Email", "Phone", "Type", "Timeline", "Budget", "Has Agent", "Status", "Source", "UTM Source", "UTM Campaign", "Date"].join(","),
+      ["Name", "Email", "Phone", "Type", "Timeline", "Budget", "Has Agent", "Status", "Source", "CTA Source", "City", "Project", "Landing Page", "Message", "UTM Source", "UTM Campaign", "Date"].join(","),
       ...filteredData.map((lead) =>
         [
           `"${lead.first_name} ${lead.last_name}"`,
@@ -168,7 +176,12 @@ const AdminLeads = () => {
           lead.budget || "",
           lead.has_agent || "",
           lead.status,
-          lead.lead_source || "",
+          csvCell(lead.lead_source),
+          csvCell(lead.cta_source),
+          csvCell(lead.city),
+          csvCell(lead.project_name),
+          csvCell(lead.landing_page),
+          csvCell(lead.message),
           lead.utm_source || "",
           lead.utm_campaign || "",
           new Date(lead.created_at).toLocaleDateString(),
@@ -191,7 +204,12 @@ const AdminLeads = () => {
         searchQuery === "" ||
         `${lead.first_name} ${lead.last_name}`.toLowerCase().includes(searchQuery.toLowerCase()) ||
         lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        lead.phone.includes(searchQuery);
+        lead.phone.includes(searchQuery) ||
+        (lead.city || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.project_name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.cta_source || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.landing_page || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.message || "").toLowerCase().includes(searchQuery.toLowerCase());
       const matchesType = typeFilter === "all" || lead.buyer_type === typeFilter;
       const matchesStatus = statusFilter === "all" || lead.status === statusFilter;
       return matchesSearch && matchesType && matchesStatus;
@@ -306,6 +324,21 @@ const AdminLeads = () => {
               {lead.lead_source && (
                 <span className="px-2 py-1 bg-muted rounded-md text-muted-foreground">
                   📍 {lead.lead_source.replace(/-/g, " ")}
+                </span>
+              )}
+              {lead.city && (
+                <span className="px-2 py-1 bg-muted rounded-md text-muted-foreground">
+                  🏙 {lead.city}
+                </span>
+              )}
+              {lead.project_name && (
+                <span className="px-2 py-1 bg-muted rounded-md text-muted-foreground">
+                  🏗 {lead.project_name}
+                </span>
+              )}
+              {lead.cta_source && (
+                <span className="px-2 py-1 bg-muted rounded-md text-muted-foreground">
+                  CTA: {lead.cta_source.replace(/-/g, " ")}
                 </span>
               )}
               {lead.utm_source && (
@@ -435,7 +468,7 @@ const AdminLeads = () => {
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search name, email, phone…"
+                placeholder="Search name, email, phone, city, project, CTA…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"

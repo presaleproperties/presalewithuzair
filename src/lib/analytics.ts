@@ -2,7 +2,8 @@
  * GA4 conversion tracking for the "Book a 15-Minute Call" funnel.
  *
  * Events:
- *  - `book_call` — fired on every booking CTA click.
+ *  - `book_call` — fired on every booking CTA click (form opened).
+ *  - `lead_form_submitted` — fired when the booking form submits successfully.
  */
 
 const gtag = (...args: unknown[]) => {

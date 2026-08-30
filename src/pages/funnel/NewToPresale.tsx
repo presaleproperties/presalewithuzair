@@ -4,7 +4,7 @@ const faqs: FunnelFAQ[] = [
   {
     question: "What is a presale condo in BC?",
     answer:
-      "A presale (or pre-construction) condo is a new home you buy directly from the developer before it's built — often 12 to 36 months before completion. You pay staged deposits, then close and move in when the building is finished. In BC you're protected by a Disclosure Statement and a 7-day rescission window.",
+      "A presale (new construction) condo is a new home you buy directly from the developer before it's built — often 12 to 36 months before completion. You pay staged deposits, then close and move in when the building is finished. In BC you're protected by a Disclosure Statement and a 7-day rescission window.",
   },
   {
     question: "Is buying presale a good idea for a first-time buyer?",

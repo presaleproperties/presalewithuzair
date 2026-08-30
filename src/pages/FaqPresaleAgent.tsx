@@ -105,7 +105,7 @@ const FaqPresaleAgent = () => (
               <p className="mt-4">
                 <button
                   type="button"
-                  onClick={() => openBooking(`faq-${f.id}`)}
+                  onClick={() => openBooking(`faq-q${i + 1}`)}
                   className="inline-flex min-h-[44px] items-center text-sm font-semibold text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
                 >
                   {f.cta}

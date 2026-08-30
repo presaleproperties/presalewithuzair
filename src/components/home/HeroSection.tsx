@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { useCalendly, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
+import { useBooking, BOOK_CALL_LABEL } from "@/hooks/useBooking";
 import heroImage from "@/assets/uzair-hero-headshot.jpeg";
 
 const heroContent = {
@@ -68,8 +68,8 @@ const ProofRow = ({ className = "" }: { className?: string }) => (
 );
 
 export const HeroSection = () => {
-  const { openCalendly } = useCalendly();
-  const handleBookClick = () => openCalendly("hero");
+  const { openBooking } = useBooking();
+  const handleBookClick = () => openBooking("hero");
 
   return (
     <section className="dark-section relative overflow-hidden bg-background">

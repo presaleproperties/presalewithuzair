@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Calendar, CheckCircle2 } from "lucide-react";
-import { openCalendlyPopup, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
+import { openBooking, BOOK_CALL_LABEL } from "@/hooks/useBooking";
 import { authorRef, publisherRef } from "@/lib/structuredData";
 
 export interface FunnelFAQ {
@@ -126,7 +126,7 @@ export const FunnelPage = ({
             <div className="mt-6 flex flex-wrap gap-3">
               <button
                 type="button"
-                onClick={() => openCalendlyPopup("funnel-hero")}
+                onClick={() => openBooking("funnel-hero")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />
@@ -185,7 +185,7 @@ export const FunnelPage = ({
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <button
                 type="button"
-                onClick={() => openCalendlyPopup("funnel-bottom")}
+                onClick={() => openBooking("funnel-bottom")}
                 className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
               >
                 <Calendar className="h-4 w-4" />

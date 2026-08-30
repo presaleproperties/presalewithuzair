@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { lazy, Suspense } from "react";
 import Index from "./pages/Index";
-import { CalendlyBookingRedirect } from "@/components/CalendlyBookingRedirect";
+import { LeadFormDialog } from "@/components/forms/LeadFormDialog";
 
 // Lazy load all non-critical pages to reduce initial bundle size
 const About = lazy(() => import("./pages/About"));
@@ -57,7 +57,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <CalendlyBookingRedirect />
+            <LeadFormDialog />
             <Suspense fallback={<div className="min-h-screen bg-background" />}>
             <Routes>
               <Route path="/" element={<Index />} />

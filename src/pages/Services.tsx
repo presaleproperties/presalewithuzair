@@ -1,4 +1,4 @@
-import { openCalendlyPopup } from "@/hooks/useCalendly";
+import { openBooking } from "@/hooks/useBooking";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -73,7 +73,7 @@ const services = [
 
 const Services = () => {
   const navigate = useNavigate();
-  const handleCTA = () => openCalendlyPopup('services');
+  const handleCTA = () => openBooking('services');
 
   return (
     <>

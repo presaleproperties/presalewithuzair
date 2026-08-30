@@ -92,6 +92,7 @@ export type Database = {
           city: string | null
           created_at: string
           crm_contact_id: string | null
+          cta_source: string | null
           email: string
           first_name: string
           forward_error: string | null
@@ -107,6 +108,7 @@ export type Database = {
           phone: string
           preferred_call_date: string | null
           preferred_call_time: string | null
+          project_name: string | null
           referrer: string | null
           status: string
           timeline: string | null
@@ -123,6 +125,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           crm_contact_id?: string | null
+          cta_source?: string | null
           email: string
           first_name: string
           forward_error?: string | null
@@ -138,6 +141,7 @@ export type Database = {
           phone: string
           preferred_call_date?: string | null
           preferred_call_time?: string | null
+          project_name?: string | null
           referrer?: string | null
           status?: string
           timeline?: string | null
@@ -154,6 +158,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           crm_contact_id?: string | null
+          cta_source?: string | null
           email?: string
           first_name?: string
           forward_error?: string | null
@@ -169,6 +174,7 @@ export type Database = {
           phone?: string
           preferred_call_date?: string | null
           preferred_call_time?: string | null
+          project_name?: string | null
           referrer?: string | null
           status?: string
           timeline?: string | null

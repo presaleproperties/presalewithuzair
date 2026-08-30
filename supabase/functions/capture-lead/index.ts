@@ -111,6 +111,9 @@ interface LeadData {
   utmContent?: string;
   referrer?: string;
   landingPage?: string;
+  city?: string;
+  project?: string;
+  ctaSource?: string;
 }
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -337,6 +340,9 @@ Deno.serve(async (req) => {
     const utmContent = leadData.utmContent?.trim() || null;
     const referrer = leadData.referrer?.trim() || null;
     const landingPage = leadData.landingPage?.trim() || null;
+    const ctaSource = leadData.ctaSource?.trim().slice(0, 120) || null;
+    const projectName = leadData.project?.trim().slice(0, 200) || null;
+    const cityInput = leadData.city?.trim().slice(0, 100) || null;
 
     if (!isValidName(firstName)) {
       return new Response(JSON.stringify({ error: "Invalid first name format" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -380,6 +386,10 @@ Deno.serve(async (req) => {
         utm_content: utmContent,
         referrer: referrer,
         landing_page: landingPage,
+        cta_source: ctaSource,
+        project_name: projectName,
+        city: cityInput,
+        message: message,
       })
       .select()
       .single();
@@ -395,7 +405,7 @@ Deno.serve(async (req) => {
     console.log("Lead saved successfully:", lead.id);
 
     // Derive structured CRM context
-    const city = cityFromPath(landingPage);
+    const city = cityInput || cityFromPath(landingPage);
     const leadTypeLabel = LEAD_TYPE_FROM_BUYER[buyerType] || null;
     const sourceLabel = LEAD_SOURCE_LABELS[leadSource] || leadSource;
     const tags = Array.from(new Set([

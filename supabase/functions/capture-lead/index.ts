@@ -433,6 +433,8 @@ Deno.serve(async (req) => {
       tags,
       extraMessage: message,
       neighbourhood,
+      projectName,
+      ctaSource,
     });
 
     // Persist the CRM handoff outcome so silent delivery failures are visible.

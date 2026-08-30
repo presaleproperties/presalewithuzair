@@ -42,7 +42,7 @@ const SellMyAssignment = () => (
     eyebrow="Assignment Sales"
     breadcrumbName="Sell My Presale Assignment"
     image={DEFAULT_SOCIAL_IMAGE}
-    intro="An assignment is when you transfer your rights and obligations under a pre-construction contract to a new buyer before the building completes. You are not selling the condo, because it does not exist yet. You are selling your contract. Three things decide whether that works: what your assignment clause allows, whether the developer will consent, and whether the price makes sense against today's developer price list."
+    intro="An assignment is when you transfer your rights and obligations under a presale contract to a new buyer before the building completes. You are not selling the condo, because it does not exist yet. You are selling your contract. Three things decide whether that works: what your assignment clause allows, whether the developer will consent, and whether the price makes sense against today's developer price list."
     faqs={faqs}
   >
     <h2>The regional split nobody tells you about</h2>

@@ -352,9 +352,9 @@ export const UnifiedLeadForm = ({
         <div className={compact ? "space-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
 
         <div className="col-span-2">
-          <label htmlFor={fid("name") className={labelClasses}>Name *</label>
+          <label htmlFor={fid("name")} className={labelClasses}>Name *</label>
           <Input
-            id={fid("name")
+            id={fid("name")}
             name="name"
             type="text"
             placeholder="Your name"
@@ -370,14 +370,14 @@ export const UnifiedLeadForm = ({
             required
           />
           {fieldErrors.name && (
-            <p id=`${fid("name")}-error` className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>
+            <p id={`${fid("name")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>
           )}
         </div>
 
         <div className="col-span-2">
-          <label htmlFor={fid("phone") className={labelClasses}>Phone *</label>
+          <label htmlFor={fid("phone")} className={labelClasses}>Phone *</label>
           <Input
-            id={fid("phone")
+            id={fid("phone")}
             name="phone"
             type="tel"
             inputMode="tel"
@@ -392,14 +392,14 @@ export const UnifiedLeadForm = ({
             required
           />
           {fieldErrors.phone && (
-            <p id=`${fid("phone")}-error` className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
+            <p id={`${fid("phone")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
           )}
         </div>
 
         <div className="col-span-2">
-          <label htmlFor={fid("email") className={labelClasses}>Email *</label>
+          <label htmlFor={fid("email")} className={labelClasses}>Email *</label>
           <Input
-            id={fid("email")
+            id={fid("email")}
             name="email"
             type="email"
             inputMode="email"
@@ -414,18 +414,18 @@ export const UnifiedLeadForm = ({
             required
           />
           {fieldErrors.email && (
-            <p id=`${fid("email")}-error` className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
+            <p id={`${fid("email")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor={fid("buyerType") className={labelClasses}>I am a... *</label>
+          <label htmlFor={fid("buyerType")} className={labelClasses}>I am a... *</label>
           <Select
             value={formData.buyerType}
             onValueChange={(value) => updateField("buyerType", value)}
           >
             <SelectTrigger
-              id={fid("buyerType")
+              id={fid("buyerType")}
               className={`${inputClasses} ${fieldErrors.buyerType ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.buyerType}
             >
@@ -443,13 +443,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor={fid("budget") className={labelClasses}>Budget *</label>
+          <label htmlFor={fid("budget")} className={labelClasses}>Budget *</label>
           <Select
             value={formData.budget}
             onValueChange={(value) => updateField("budget", value)}
           >
             <SelectTrigger
-              id={fid("budget")
+              id={fid("budget")}
               className={`${inputClasses} ${fieldErrors.budget ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.budget}
             >
@@ -469,13 +469,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor={fid("timeline") className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
+          <label htmlFor={fid("timeline")} className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
           <Select
             value={formData.timeline}
             onValueChange={(value) => updateField("timeline", value)}
           >
             <SelectTrigger
-              id={fid("timeline")
+              id={fid("timeline")}
               className={`${inputClasses} ${fieldErrors.timeline ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.timeline}
             >
@@ -495,13 +495,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor={fid("leadSource") className={labelClasses}>How did you find me? *</label>
+          <label htmlFor={fid("leadSource")} className={labelClasses}>How did you find me? *</label>
           <Select
             value={formData.leadSource}
             onValueChange={(value) => updateField("leadSource", value)}
           >
             <SelectTrigger
-              id={fid("leadSource")
+              id={fid("leadSource")}
               className={`${inputClasses} ${fieldErrors.leadSource ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.leadSource}
             >

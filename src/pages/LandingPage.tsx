@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendlyInline } from "@/components/CalendlyInline";
+import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import { staticReviews } from "@/data/googleReviews";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -151,7 +151,13 @@ const LandingPage = () => {
             </h2>
             <p className="text-sm text-foreground/60 mb-6">Pick a time that works. Confirmation is instant.</p>
             <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-              <CalendlyInline />
+              <UnifiedLeadForm
+                eyebrow=""
+                heading=""
+                subheading=""
+                buttonText="Book a 15-Minute Call"
+                context={{ source: "landing-page" }}
+              />
             </div>
           </div>
         </section>

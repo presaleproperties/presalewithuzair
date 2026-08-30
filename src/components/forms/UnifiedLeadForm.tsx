@@ -292,7 +292,7 @@ export const UnifiedLeadForm = ({
   };
 
   if (isSuccess) {
-    const firstName = (savedName || formData.name || "").trim().split(" ")[0];
+    const firstName = (formData.name || "").trim().split(" ")[0];
     return (
       <div className={`py-10 text-center ${className}`}>
         <div className="w-14 h-14 mx-auto mb-5 rounded-full border border-primary/25 bg-primary/10 flex items-center justify-center">

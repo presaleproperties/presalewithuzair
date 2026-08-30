@@ -64,7 +64,7 @@ export function localBusinessBranch(opts: {
       name: opts.city,
       containedInPlace: { "@type": "AdministrativeArea", name: "British Columbia" },
     },
-    knowsLanguage: ["en", "pa", "hi", "ur", "ta", "te"],
+    knowsLanguage: ["en", "pa", "hi", "ur"],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: 4.9,

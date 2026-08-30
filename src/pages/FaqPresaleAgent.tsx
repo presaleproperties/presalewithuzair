@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
+import { openBooking } from "@/hooks/useBooking";
 import { Footer } from "@/components/layout/Footer";
 import { agentRef, authorRef, SITE_URL } from "@/lib/structuredData";
 import {
@@ -10,7 +11,6 @@ import {
   FAQ_PRESALE_AGENT_INTRO,
   FAQ_PRESALE_AGENT_PATH,
   FAQ_PRESALE_AGENT_TITLE,
-  FAQ_CTA_URL,
   faqPlainText,
   faqSegments,
 } from "@/data/faqPresaleAgent";
@@ -103,12 +103,13 @@ const FaqPresaleAgent = () => (
                 )}
               </p>
               <p className="mt-4">
-                <a
-                  href={FAQ_CTA_URL}
+                <button
+                  type="button"
+                  onClick={() => openBooking(`faq-q${i + 1}`)}
                   className="inline-flex min-h-[44px] items-center text-sm font-semibold text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
                 >
                   {f.cta}
-                </a>
+                </button>
               </p>
             </section>
           ))}

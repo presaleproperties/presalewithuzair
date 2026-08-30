@@ -1,4 +1,4 @@
-import { CalendlyInline } from "@/components/CalendlyInline";
+import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import { Clock, Shield, Languages } from "lucide-react";
 
 export const BookingContextSection = () => {
@@ -36,9 +36,15 @@ export const BookingContextSection = () => {
             </div>
           </div>
 
-          {/* Right — Calendly booking */}
-          <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-            <CalendlyInline />
+          {/* Right — booking form */}
+          <div className="rounded-sm border border-border bg-card p-5 sm:p-7">
+            <UnifiedLeadForm
+              eyebrow=""
+              heading=""
+              subheading=""
+              buttonText="Book a 15-Minute Call"
+              context={{ source: "home-booking-section" }}
+            />
           </div>
         </div>
       </div>

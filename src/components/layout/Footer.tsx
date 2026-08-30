@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
-import { buildCalendlyUrl } from "@/hooks/useCalendly";
+import { openBooking } from "@/hooks/useBooking";
 import { trackBookCall } from "@/lib/analytics";
 import logo from "@/assets/logo.png";
 import realBrokerLogo from "@/assets/real-broker-logo.avif";
@@ -57,7 +57,7 @@ export const Footer = () => {
             <Link to="/faq-presale-agent" className="text-white/75 hover:text-white transition-colors duration-300">FAQ</Link>
             <Link to="/blog" className="text-white/75 hover:text-white transition-colors duration-300">Blog</Link>
             <Link to="/contact" className="text-white/75 hover:text-white transition-colors duration-300">Contact</Link>
-            <a href={buildCalendlyUrl()} onClick={() => trackBookCall("footer-nav")} target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</a>
+            <button type="button" onClick={() => openBooking("footer-nav")} className="text-white font-medium hover:text-white transition-colors duration-300">Book a 15-Minute Call</button>
             <a
               href="https://presaleproperties.com"
               target="_blank"
@@ -143,14 +143,13 @@ export const Footer = () => {
                   </li>
                 ))}
                 <li>
-                  <a
-                    href={buildCalendlyUrl()} onClick={() => trackBookCall("footer-links")}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => openBooking("footer-links")}
                     className="transition-colors text-sm text-primary font-medium hover:text-primary/80"
                   >
                     Book a 15-Minute Call
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a

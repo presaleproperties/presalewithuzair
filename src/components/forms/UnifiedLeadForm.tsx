@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -60,6 +60,43 @@ const getTrackingData = () => {
   };
 };
 
+const STORAGE_KEY = "pwu-lead-autofill";
+
+/** Reads previously entered contact details so any form opens prefilled. */
+const readSavedLead = (): Partial<FormData> => {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw) as Partial<FormData>;
+    const clean: Partial<FormData> = {};
+    (["name", "email", "phone", "buyerType", "budget", "timeline", "leadSource"] as const).forEach(
+      (k) => {
+        if (typeof parsed[k] === "string" && parsed[k]) clean[k] = parsed[k] as string;
+      },
+    );
+    return clean;
+  } catch {
+    return {};
+  }
+};
+
+/** Merges non-empty values so an untouched form never wipes saved details. */
+const saveLead = (data: Partial<FormData>) => {
+  const filled = Object.fromEntries(
+    Object.entries(data).filter(([, v]) => typeof v === "string" && v.trim() !== ""),
+  );
+  if (!Object.keys(filled).length) return;
+  try {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ ...readSavedLead(), ...filled }),
+    );
+  } catch {
+    /* storage blocked — autofill is best-effort */
+  }
+};
+
 interface UnifiedLeadFormProps {
   /** Heading above the form */
   heading?: string;
@@ -81,6 +118,8 @@ interface UnifiedLeadFormProps {
   twoColumn?: boolean;
   /** Tighter density so the whole form fits on a mobile screen */
   compact?: boolean;
+  /** Page context (city/project/CTA source) attached to the lead. */
+  context?: { city?: string; project?: string; source?: string };
 }
 
 export const UnifiedLeadForm = ({
@@ -94,25 +133,43 @@ export const UnifiedLeadForm = ({
   className = "",
   twoColumn = false,
   compact = false,
+  context,
 }: UnifiedLeadFormProps) => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    email: "",
-    buyerType: defaultBuyerType,
-    budget: "",
-    timeline: "",
-    leadSource: "",
-  });
+  const [formData, setFormData] = useState<FormData>(() => ({
+    ...{
+      name: "",
+      phone: "",
+      email: "",
+      buyerType: defaultBuyerType,
+      budget: "",
+      timeline: "",
+      leadSource: "",
+    },
+    ...readSavedLead(),
+  }));
 
   const [trackingData, setTrackingData] = useState(getTrackingData());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const { toast } = useToast();
+  // Unique per instance — several forms can be mounted at once (page + drawer).
+  const uid = useId();
+  const fid = (key: string) => `ulc-${key}-${uid}`;
 
   useEffect(() => {
     setTrackingData(getTrackingData());
+
+    // Autofill from a previous submission or from ?name=&email=&phone= links.
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl: Partial<FormData> = {};
+    const name = params.get("name") || params.get("full_name");
+    const email = params.get("email");
+    const phone = params.get("phone");
+    if (name) fromUrl.name = name;
+    if (email) fromUrl.email = email;
+    if (phone) fromUrl.phone = phone;
+    if (Object.keys(fromUrl).length) setFormData((prev) => ({ ...prev, ...fromUrl }));
 
     const checkHash = () => {
       const hash = window.location.hash;
@@ -126,6 +183,13 @@ export const UnifiedLeadForm = ({
     window.addEventListener("hashchange", checkHash);
     return () => window.removeEventListener("hashchange", checkHash);
   }, []);
+
+  // Remember what the visitor typed so any other CTA opens prefilled.
+  useEffect(() => {
+    const t = window.setTimeout(() => saveLead(formData), 400);
+    return () => window.clearTimeout(t);
+  }, [formData]);
+
 
   const updateField = <K extends keyof FormData>(key: K, value: FormData[K]) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
@@ -161,7 +225,7 @@ export const UnifiedLeadForm = ({
       // Focus the first invalid field so mobile users see what's wrong.
       const firstKey = Object.keys(errors)[0];
       if (firstKey) {
-        const el = document.getElementById(`ulc-${firstKey}`) as HTMLElement | null;
+        const el = document.getElementById(fid(firstKey)) as HTMLElement | null;
         el?.focus?.();
         el?.scrollIntoView?.({ behavior: "smooth", block: "center" });
       }
@@ -188,6 +252,9 @@ export const UnifiedLeadForm = ({
           timeline: formData.timeline,
           leadSource: formData.leadSource,
           ...trackingData,
+          city: context?.city,
+          project: context?.project,
+          ctaSource: context?.source,
         },
       });
 
@@ -285,9 +352,9 @@ export const UnifiedLeadForm = ({
         <div className={compact ? "space-y-2.5" : twoColumn ? "grid grid-cols-1 sm:grid-cols-2 gap-4" : "space-y-4"}>
 
         <div className="col-span-2">
-          <label htmlFor="ulc-name" className={labelClasses}>Name *</label>
+          <label htmlFor={fid("name")} className={labelClasses}>Name *</label>
           <Input
-            id="ulc-name"
+            id={fid("name")}
             name="name"
             type="text"
             placeholder="Your name"
@@ -299,18 +366,18 @@ export const UnifiedLeadForm = ({
             autoCapitalize="words"
             enterKeyHint="next"
             aria-invalid={!!fieldErrors.name}
-            aria-describedby={fieldErrors.name ? "ulc-name-error" : undefined}
+            aria-describedby={fieldErrors.name ? `${fid("name")}-error` : undefined}
             required
           />
           {fieldErrors.name && (
-            <p id="ulc-name-error" className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>
+            <p id={`${fid("name")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.name}</p>
           )}
         </div>
 
         <div className="col-span-2">
-          <label htmlFor="ulc-phone" className={labelClasses}>Phone *</label>
+          <label htmlFor={fid("phone")} className={labelClasses}>Phone *</label>
           <Input
-            id="ulc-phone"
+            id={fid("phone")}
             name="phone"
             type="tel"
             inputMode="tel"
@@ -321,18 +388,18 @@ export const UnifiedLeadForm = ({
             className={`${inputClasses} ${fieldErrors.phone ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="tel"
             aria-invalid={!!fieldErrors.phone}
-            aria-describedby={fieldErrors.phone ? "ulc-phone-error" : undefined}
+            aria-describedby={fieldErrors.phone ? `${fid("phone")}-error` : undefined}
             required
           />
           {fieldErrors.phone && (
-            <p id="ulc-phone-error" className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
+            <p id={`${fid("phone")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.phone}</p>
           )}
         </div>
 
         <div className="col-span-2">
-          <label htmlFor="ulc-email" className={labelClasses}>Email *</label>
+          <label htmlFor={fid("email")} className={labelClasses}>Email *</label>
           <Input
-            id="ulc-email"
+            id={fid("email")}
             name="email"
             type="email"
             inputMode="email"
@@ -343,22 +410,22 @@ export const UnifiedLeadForm = ({
             className={`${inputClasses} ${fieldErrors.email ? "border-destructive focus:border-destructive focus:ring-destructive/20" : ""}`}
             autoComplete="email"
             aria-invalid={!!fieldErrors.email}
-            aria-describedby={fieldErrors.email ? "ulc-email-error" : undefined}
+            aria-describedby={fieldErrors.email ? `${fid("email")}-error` : undefined}
             required
           />
           {fieldErrors.email && (
-            <p id="ulc-email-error" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
+            <p id={`${fid("email")}-error`} className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
           )}
         </div>
 
         <div>
-          <label htmlFor="ulc-buyerType" className={labelClasses}>I am a... *</label>
+          <label htmlFor={fid("buyerType")} className={labelClasses}>I am a... *</label>
           <Select
             value={formData.buyerType}
             onValueChange={(value) => updateField("buyerType", value)}
           >
             <SelectTrigger
-              id="ulc-buyerType"
+              id={fid("buyerType")}
               className={`${inputClasses} ${fieldErrors.buyerType ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.buyerType}
             >
@@ -376,13 +443,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor="ulc-budget" className={labelClasses}>Budget *</label>
+          <label htmlFor={fid("budget")} className={labelClasses}>Budget *</label>
           <Select
             value={formData.budget}
             onValueChange={(value) => updateField("budget", value)}
           >
             <SelectTrigger
-              id="ulc-budget"
+              id={fid("budget")}
               className={`${inputClasses} ${fieldErrors.budget ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.budget}
             >
@@ -402,13 +469,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor="ulc-timeline" className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
+          <label htmlFor={fid("timeline")} className={labelClasses}>{compact ? "Timeline *" : "When are you looking to buy? *"}</label>
           <Select
             value={formData.timeline}
             onValueChange={(value) => updateField("timeline", value)}
           >
             <SelectTrigger
-              id="ulc-timeline"
+              id={fid("timeline")}
               className={`${inputClasses} ${fieldErrors.timeline ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.timeline}
             >
@@ -428,13 +495,13 @@ export const UnifiedLeadForm = ({
         </div>
 
         <div>
-          <label htmlFor="ulc-leadSource" className={labelClasses}>How did you find me? *</label>
+          <label htmlFor={fid("leadSource")} className={labelClasses}>How did you find me? *</label>
           <Select
             value={formData.leadSource}
             onValueChange={(value) => updateField("leadSource", value)}
           >
             <SelectTrigger
-              id="ulc-leadSource"
+              id={fid("leadSource")}
               className={`${inputClasses} ${fieldErrors.leadSource ? "border-destructive" : ""}`}
               aria-invalid={!!fieldErrors.leadSource}
             >

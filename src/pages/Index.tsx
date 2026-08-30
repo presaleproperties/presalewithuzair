@@ -86,7 +86,7 @@ const Index = () => {
           <HomeFAQSection />
         </Suspense>
 
-        {/* 5. Book a 15-minute call (Calendly) */}
+        {/* 5. Book a 15-minute call */}
         <Suspense fallback={<SectionFallback />}>
           <BookingContextSection />
         </Suspense>

@@ -1,4 +1,4 @@
-import { CalendlyInline } from "@/components/CalendlyInline";
+import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import uzairImage from "@/assets/uzair-walking.jpg";
 
 export const LeadCaptureSection = () => {
@@ -18,7 +18,7 @@ export const LeadCaptureSection = () => {
             </div>
           </div>
 
-          {/* Right - Calendly booking */}
+          {/* Right - booking form */}
           <div className="w-full">
             <p className="section-label mb-3">Start Here</p>
             <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight leading-[1.05] mb-3">
@@ -27,8 +27,14 @@ export const LeadCaptureSection = () => {
             <p className="text-base text-foreground/70 leading-relaxed mb-6 max-w-md">
               Independent, buyer-first advice. A quick conversation to understand your goals — before you commit to anything.
             </p>
-            <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-              <CalendlyInline />
+            <div className="rounded-sm border border-border bg-card p-5 sm:p-7">
+              <UnifiedLeadForm
+                eyebrow=""
+                heading=""
+                subheading=""
+                buttonText="Book a 15-Minute Call"
+                context={{ source: "lead-capture-section" }}
+              />
             </div>
           </div>
         </div>

@@ -37,8 +37,8 @@ const REDIRECT_EXACT: Record<string, string> = {
   "/en/blog/who-is-the-best-presale-condo-realtor-in-surrey": "/best-presale-realtor-fraser-valley",
   "/en/assigments": "/",
   "/webinar-registeration-page": "/call",
-  // Booking short-link used by the /faq-presale-agent CTAs.
-  "/meetuzair/quick-call": "https://calendly.com/meetuzair/quick-call",
+  // Legacy booking short-link — now handled by the on-site booking form.
+  "/meetuzair/quick-call": "/call",
   "/agents": "/",
   "/book": "/call",
   "/en": "/",

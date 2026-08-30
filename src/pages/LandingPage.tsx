@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendlyInline } from "@/components/CalendlyInline";
+import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
 import { staticReviews } from "@/data/googleReviews";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -13,7 +13,7 @@ const LandingPage = () => {
   const ctaText = 'Book a 15-Minute Call';
 
   const scrollToBooking = () => {
-    document.getElementById("calendly-book")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("book-call")?.scrollIntoView({ behavior: "smooth" });
   };
   const testimonials = staticReviews.map((r) => ({
     name: r.name,
@@ -143,15 +143,21 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* Book a 15-minute call — Calendly */}
-        <section id="calendly-book" className="px-4 pb-12 md:pb-16 scroll-mt-6">
+        {/* Book a 15-minute call */}
+        <section id="book-call" className="px-4 pb-12 md:pb-16 scroll-mt-6">
           <div className="max-w-3xl mx-auto">
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
               Book your 15-minute call
             </h2>
             <p className="text-sm text-foreground/60 mb-6">Pick a time that works. Confirmation is instant.</p>
             <div className="rounded-sm border border-border bg-card p-2 sm:p-4">
-              <CalendlyInline />
+              <UnifiedLeadForm
+                eyebrow=""
+                heading=""
+                subheading=""
+                buttonText="Book a 15-Minute Call"
+                context={{ source: "landing-page" }}
+              />
             </div>
           </div>
         </section>

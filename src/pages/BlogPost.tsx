@@ -8,7 +8,7 @@ import { Calendar, ArrowLeft, Phone, Loader2, Clock, ChevronRight } from "lucide
 import { useBlogPost, useBlogPosts } from "@/hooks/useBlogPosts";
 import { FAQSchema } from "@/components/blog/FAQSchema";
 import { renderMarkdown } from "@/lib/renderMarkdown";
-import { buildCalendlyUrl } from "@/hooks/useCalendly";
+import { openBooking } from "@/hooks/useBooking";
 import { trackBookCall } from "@/lib/analytics";
 import { OfficialSources, isTaxLegalPost } from "@/components/blog/OfficialSources";
 import { authorRef, publisherRef } from "@/lib/structuredData";
@@ -283,16 +283,14 @@ const BlogPost = () => {
                     <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--muted-foreground))" }}>
                       Vancouver's presale specialist with 450+ units sold and $250M+ in sales volume. Uzair provides unbiased advice — even if that means advising you not to buy.
                     </p>
-                    <a
-                      href={buildCalendlyUrl()}
-                      onClick={() => trackBookCall("blog-author-box")}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
+                      onClick={() => openBooking("blog-author-box")}
                       className="inline-flex items-center gap-1.5 mt-4 text-sm font-bold transition-all hover:gap-3"
                       style={{ color: "hsl(var(--primary))" }}
                     >
                       Book a 15-Minute Call <ChevronRight className="h-3.5 w-3.5" />
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -312,11 +310,9 @@ const BlogPost = () => {
                   <p className="text-sm mb-7 max-w-sm mx-auto relative z-10" style={{ color: "hsl(220 10% 65%)" }}>
                     Connect with Uzair to discuss your investment goals and discover exclusive Metro Vancouver opportunities.
                   </p>
-                  <a
-                    href={buildCalendlyUrl()}
-                      onClick={() => trackBookCall("blog-inline-cta")}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => openBooking("blog-inline-cta")}
                     className="relative z-10 inline-flex items-center gap-2 px-8 py-3.5 rounded-sm font-bold text-sm transition-colors duration-300 hover:opacity-90"
                     style={{
                       background: "hsl(var(--primary))",
@@ -325,7 +321,7 @@ const BlogPost = () => {
                   >
                     <Phone className="h-4 w-4" />
                     Book a 15-Minute Call
-                  </a>
+                  </button>
                 </div>
 
                 {/* Explore presales by city — internal links */}
@@ -419,16 +415,14 @@ const BlogPost = () => {
                       <p className="font-display text-base text-white leading-tight mb-3">
                         Talk strategy with Uzair
                       </p>
-                      <a
-                        href={buildCalendlyUrl()}
-                      onClick={() => trackBookCall("blog-sidebar")}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button
+                        type="button"
+                        onClick={() => openBooking("blog-sidebar")}
                         className="block w-full text-center py-2.5 rounded-sm text-xs font-bold transition-opacity hover:opacity-90"
                         style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                       >
                         Book a 15-Minute Call
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </aside>

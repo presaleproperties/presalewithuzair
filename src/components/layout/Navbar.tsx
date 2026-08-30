@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { openCalendlyPopup, BOOK_CALL_LABEL } from "@/hooks/useCalendly";
+import { openBooking, BOOK_CALL_LABEL } from "@/hooks/useBooking";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
@@ -56,7 +56,7 @@ export const Navbar = () => {
   }, [location]);
 
   const handleFormCTA = () => {
-    openCalendlyPopup("navbar");
+    openBooking("navbar");
     setIsMobileMenuOpen(false);
   };
 

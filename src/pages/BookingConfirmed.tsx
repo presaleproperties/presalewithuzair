@@ -9,7 +9,7 @@ const steps = [
     icon: Mail,
     title: "Check your inbox",
     description:
-      "Calendly has sent your confirmation with the date, time and the link for our call. Add it to your calendar so it doesn't get lost.",
+      "You'll get a confirmation with the date, time and the link for our call. Add it to your calendar so it doesn't get lost.",
   },
   {
     icon: Phone,

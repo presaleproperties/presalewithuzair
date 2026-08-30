@@ -81,9 +81,17 @@ const readSavedLead = (): Partial<FormData> => {
   }
 };
 
+/** Merges non-empty values so an untouched form never wipes saved details. */
 const saveLead = (data: Partial<FormData>) => {
+  const filled = Object.fromEntries(
+    Object.entries(data).filter(([, v]) => typeof v === "string" && v.trim() !== ""),
+  );
+  if (!Object.keys(filled).length) return;
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ ...readSavedLead(), ...filled }),
+    );
   } catch {
     /* storage blocked — autofill is best-effort */
   }

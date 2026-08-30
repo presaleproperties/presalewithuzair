@@ -341,8 +341,8 @@ export const UnifiedLeadForm = ({
     : `${heightClasses} bg-background border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all touch-manipulation`;
 
   const labelClasses = isDark
-    ? `block font-medium text-white/90 ${compact ? "text-xs mb-1.5 text-foreground/70" : "text-xs sm:text-sm mb-1"}`
-    : `block font-medium text-foreground ${compact ? "text-xs mb-1.5 text-foreground/70" : "text-xs sm:text-sm mb-1"}`;
+    ? `block font-medium text-white/90 ${compact ? "text-xs mb-1.5" : "text-xs sm:text-sm mb-1"}`
+    : `block font-medium ${compact ? "text-xs mb-1.5 text-foreground/70" : "text-xs sm:text-sm mb-1 text-foreground"}`;
 
   return (
     <div className={wrapperClasses}>

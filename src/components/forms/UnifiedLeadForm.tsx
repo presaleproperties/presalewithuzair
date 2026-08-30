@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { readFunctionError } from "@/lib/functionError";
+import { trackLeadFormSubmitted } from "@/lib/analytics";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(120),
@@ -264,15 +265,16 @@ export const UnifiedLeadForm = ({
       }
 
       // GA4 conversion event
-      try {
-        (window as any).gtag?.("event", "generate_lead", {
-          landing_page: trackingData.landingPage,
-          buyer_type: formData.buyerType,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          lead_source: formData.leadSource,
-        });
-      } catch {}
+      trackLeadFormSubmitted({
+        ctaSource: context?.source,
+        city: context?.city,
+        project: context?.project,
+        buyerType: formData.buyerType,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        leadSource: formData.leadSource,
+        landingPage: trackingData.landingPage,
+      });
 
       setIsSuccess(true);
       toast({

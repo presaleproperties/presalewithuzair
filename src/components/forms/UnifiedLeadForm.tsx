@@ -264,15 +264,16 @@ export const UnifiedLeadForm = ({
       }
 
       // GA4 conversion event
-      try {
-        (window as any).gtag?.("event", "generate_lead", {
-          landing_page: trackingData.landingPage,
-          buyer_type: formData.buyerType,
-          budget: formData.budget,
-          timeline: formData.timeline,
-          lead_source: formData.leadSource,
-        });
-      } catch {}
+      trackLeadFormSubmitted({
+        ctaSource: context?.source,
+        city: context?.city,
+        project: context?.project,
+        buyerType: formData.buyerType,
+        budget: formData.budget,
+        timeline: formData.timeline,
+        leadSource: formData.leadSource,
+        landingPage: trackingData.landingPage,
+      });
 
       setIsSuccess(true);
       toast({

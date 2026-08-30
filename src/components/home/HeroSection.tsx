@@ -20,7 +20,7 @@ const serviceAreas = [
   "Fraser Valley",
 ];
 
-const languages = ["English", "Punjabi", "Hindi", "Urdu", "Tamil", "Telugu"];
+const languages = ["English", "Punjabi", "Hindi", "Urdu"];
 
 const proofPoints = [
   { value: "450+", label: "Families helped" },

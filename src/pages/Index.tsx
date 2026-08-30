@@ -42,7 +42,7 @@ const Index = () => {
           name="description"
           content="Metro Vancouver and Fraser Valley's leading presale expert and top new construction specialist. Compare new construction and resale before you commit."
         />
-        <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, pre-construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
+        <meta name="keywords" content="presale expert Vancouver, presale realtor Vancouver, presale specialist Surrey, presale agent Burnaby, presale condos Langley, new construction condos Vancouver, new construction condos BC, Fraser Valley presales, first-time buyer presale, Uzair Muhammad realtor, best presale agent Vancouver, Vancouver condo presales" />
         <link rel="canonical" href="https://presalewithuzair.com/" />
 
         {/* Open Graph */}

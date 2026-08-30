@@ -97,7 +97,7 @@ const PAGES = [
     h1: "Selling your presale before it completes.",
     breadcrumb: "Sell My Presale Assignment",
     body: [
-      "An assignment is when you transfer your rights and obligations under a pre-construction contract to a new buyer before the building completes. You are not selling the condo — it does not exist yet. You are selling your contract.",
+      "An assignment is when you transfer your rights and obligations under a presale contract to a new buyer before the building completes. You are not selling the condo — it does not exist yet. You are selling your contract.",
       "Three things decide whether it works: what your assignment clause allows, whether the developer will consent, and whether the price makes sense against today's developer price list. I check all three before you spend a dollar on marketing.",
       "The pattern across the region is worth knowing up front. In Vancouver and the inner suburbs most developers prohibit MLS listings for assignments, so the sale runs privately through buyer networks. Further out in the Fraser Valley — Surrey, Langley, Abbotsford, Coquitlam — many developers do allow MLS. That single difference changes your entire marketing plan, and it is why a general realtor's usual playbook often does not work here.",
       PROOF + " If the numbers say hold and complete instead of assign, I will tell you that.",

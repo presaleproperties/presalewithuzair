@@ -13,7 +13,7 @@ import { authorRef, publisherRef } from "@/lib/structuredData";
 /* ── Helpers ── */
 const CATEGORIES = [
   { slug: "resources", label: "Resources" },
-  { slug: "pre-sale-tips", label: "Pre-Sale Tips" },
+  { slug: "pre-sale-tips", label: "Presale Tips" },
   { slug: "investment-strategy", label: "Investment Strategy" },
   { slug: "tax-legal", label: "Tax & Legal" },
   { slug: "market-analysis", label: "Market Analysis" },

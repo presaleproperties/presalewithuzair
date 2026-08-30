@@ -290,7 +290,7 @@ const BlogPost = () => {
                       style={{ color: "hsl(var(--primary))" }}
                     >
                       Book a 15-Minute Call <ChevronRight className="h-3.5 w-3.5" />
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -321,7 +321,7 @@ const BlogPost = () => {
                   >
                     <Phone className="h-4 w-4" />
                     Book a 15-Minute Call
-                  </a>
+                  </button>
                 </div>
 
                 {/* Explore presales by city — internal links */}
@@ -422,7 +422,7 @@ const BlogPost = () => {
                         style={{ background: "hsl(var(--primary))", color: "hsl(var(--primary-foreground))" }}
                       >
                         Book a 15-Minute Call
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </aside>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Drawer, DrawerContent } from "@/components/ui/drawer";
 import { UnifiedLeadForm } from "@/components/forms/UnifiedLeadForm";
-import { Shield, Clock, Languages } from "lucide-react";
 
 const EVENT_NAME = "open-lead-dialog";
 
@@ -23,23 +22,12 @@ export const openLeadDialog = (source?: string, context: LeadDialogContext = {})
 
 const Header = () => (
   <>
-    <h2 className="font-display text-lg sm:text-2xl font-bold tracking-tight text-foreground pr-6">
+    <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-foreground pr-6">
       Book a Buyer Strategy Call
     </h2>
-    <p className="mt-1 text-xs sm:text-sm text-foreground/70">
+    <p className="mt-1.5 text-sm text-foreground/60">
       Takes under a minute. I'll personally reply within 24 hours.
     </p>
-    <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] sm:text-xs text-foreground/70">
-      <li className="flex items-center gap-1">
-        <Shield className="h-3 w-3 text-primary" /> Buyer-side only
-      </li>
-      <li className="flex items-center gap-1">
-        <Clock className="h-3 w-3 text-primary" /> 24-hour response
-      </li>
-      <li className="flex items-center gap-1">
-        <Languages className="h-3 w-3 text-primary" /> English, Punjabi, Hindi &amp; Urdu
-      </li>
-    </ul>
   </>
 );
 
@@ -84,9 +72,9 @@ export const LeadFormDialog = () => {
     return (
       <Drawer open={open} onOpenChange={setOpen}>
         <DrawerContent className="max-h-[92vh]">
-          <div className="overflow-y-auto px-4 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-1">
+          <div className="overflow-y-auto px-5 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-2">
             <Header />
-            <div className="pt-3">{form}</div>
+            <div className="pt-5">{form}</div>
           </div>
         </DrawerContent>
       </Drawer>
@@ -96,10 +84,10 @@ export const LeadFormDialog = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-xl w-[calc(100%-1.5rem)] p-0 gap-0 overflow-y-auto max-h-[90vh] rounded-sm">
-        <div className="px-4 sm:px-7 pt-5 sm:pt-6 pb-1">
+        <div className="px-6 sm:px-8 pt-7">
           <Header />
         </div>
-        <div className="px-4 sm:px-7 pb-5 pt-3">{form}</div>
+        <div className="px-6 sm:px-8 pb-7 pt-6">{form}</div>
       </DialogContent>
     </Dialog>
   );

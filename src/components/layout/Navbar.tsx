@@ -94,7 +94,20 @@ export const Navbar = () => {
           </Link>
 
           {/* Mobile menu toggle */}
-          <div className="flex lg:hidden items-center">
+          <div className="flex lg:hidden items-center gap-2">
+            <Button
+              variant="hero"
+              size="sm"
+              className={`gap-1.5 transition-all duration-300 ${
+                isScrolled
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-2 pointer-events-none w-0 px-0 overflow-hidden gap-0"
+              }`}
+              onClick={handleFormCTA}
+            >
+              <Phone className="h-3.5 w-3.5 shrink-0" />
+              <span className="whitespace-nowrap">Book a Call</span>
+            </Button>
             <button
               className={`p-2 transition-colors ${shouldUseDarkNavContent ? "text-foreground" : "text-white"}`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

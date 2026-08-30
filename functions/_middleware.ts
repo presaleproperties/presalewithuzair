@@ -1085,9 +1085,10 @@ class TextSetter { text: string; constructor(t: string) { this.text = t; } eleme
 class RootInjector { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.setInnerContent(this.html, { html: true }); } }
 class HeadAppender { html: string; constructor(h: string) { this.html = h; } element(el: any) { if (this.html) el.append(this.html, { html: true }); } }
 
-function markMiddlewareResponse(response: Response): Response {
+function markMiddlewareResponse(response: Response, routeKnown?: boolean | null): Response {
   const headers = new Headers(response.headers);
   headers.set("x-mw", "1");
+  if (routeKnown !== undefined) headers.set("x-route-known", routeKnown === null ? "null" : String(routeKnown));
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -1116,38 +1117,32 @@ export const onRequest: any = async (context: any) => {
 
   // Unknown paths used to fall through to the SPA shell and answer 200 with the
   // homepage HTML — a soft-duplicate surface. Answer a real 404 instead.
+  let routeKnown: boolean | null | undefined;
   if (
     !ASSET_RE.test(reqUrl.pathname) &&
     !reqUrl.pathname.startsWith("/assets/") &&
     !reqUrl.pathname.startsWith("/api/") &&
     !reqUrl.pathname.startsWith("/functions/")
   ) {
-    let known: boolean | null = null;
-    try { known = await isKnownRoute(reqUrl.pathname, env); } catch { known = null; }
-    if (known === false) {
-      try {
-        const base = await next();
-        const ct = base.headers.get("content-type") || "";
-        if (ct.includes("text/html")) {
-          const transformed = new HTMLRewriter()
-            .on("title", new TextSetter("Page Not Found | Presale With Uzair"))
-            .on('meta[name="robots"]', new AttrSetter("content", "noindex, follow"))
-            .on('meta[name="description"]', new AttrSetter("content", "This page doesn't exist. Browse presale projects and buyer guides with Uzair Muhammad."))
-            .on("#root", new RootInjector(NOT_FOUND_BODY))
-            .transform(base);
-          const headers = new Headers(transformed.headers);
-          headers.set("x-robots-tag", "noindex, follow");
-          headers.set("x-mw", "1");
-          return new Response(transformed.body, { status: 404, statusText: "Not Found", headers });
-        }
-        return new Response(base.body, { status: 404, statusText: "Not Found", headers: base.headers });
-      } catch { /* fall through to normal handling */ }
+    try { routeKnown = await isKnownRoute(reqUrl.pathname, env); } catch { routeKnown = null; }
+    if (routeKnown === false) {
+      const body = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Page Not Found | Presale With Uzair</title><meta name="robots" content="noindex, follow"><meta name="description" content="This page doesn't exist. Browse presale projects and buyer guides with Uzair Muhammad."></head><body><main id="root">${NOT_FOUND_BODY}</main></body></html>`;
+      return new Response(request.method === "HEAD" ? null : body, {
+        status: 404,
+        statusText: "Not Found",
+        headers: {
+          "content-type": "text/html; charset=UTF-8",
+          "x-robots-tag": "noindex, follow",
+          "x-mw": "1",
+          "x-route-known": "false",
+        },
+      });
     }
   }
 
 
 
-  if (!BOT_RE.test(ua)) return markMiddlewareResponse(await next());
+  if (!BOT_RE.test(ua)) return markMiddlewareResponse(await next(), routeKnown);
 
 
   const url = new URL(request.url);
@@ -1178,7 +1173,7 @@ export const onRequest: any = async (context: any) => {
       .on('link[rel="canonical"]', new AttrSetter("href", canonical))
       .on("#root", new RootInjector(body));
     if (resolved.robots) rw = rw.on('meta[name="robots"]', new AttrSetter("content", resolved.robots));
-    return markMiddlewareResponse(rw.transform(res));
+    return markMiddlewareResponse(rw.transform(res), routeKnown);
   } catch (e) {
     return next();
   }

@@ -8,9 +8,9 @@ const corsHeaders = {
 
 // ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
 // Server-side only. Best-effort forward — never blocks the lead response.
+const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "presale_with_uzair";
 const DEALZFLOW_INTAKE_URL =
-  "https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=website_form";
-const DEALZFLOW_SOURCE_SLUG = "website_form";
+  `https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=${DEALZFLOW_SOURCE_SLUG}`;
 const DEALZFLOW_INTAKE_TOKEN = Deno.env.get("DEALZFLOW_INTAKE_TOKEN") ?? "";
 
 // --- Rate limiting (in-memory, resets on cold start) ---

@@ -113,7 +113,7 @@ export type Database = {
           message: string | null
           page_url: string | null
           payment_intent_id: string | null
-          phone: string
+          phone: string | null
           preferred_call_date: string | null
           preferred_call_time: string | null
           project_name: string | null
@@ -154,7 +154,7 @@ export type Database = {
           message?: string | null
           page_url?: string | null
           payment_intent_id?: string | null
-          phone: string
+          phone?: string | null
           preferred_call_date?: string | null
           preferred_call_time?: string | null
           project_name?: string | null
@@ -195,7 +195,7 @@ export type Database = {
           message?: string | null
           page_url?: string | null
           payment_intent_id?: string | null
-          phone?: string
+          phone?: string | null
           preferred_call_date?: string | null
           preferred_call_time?: string | null
           project_name?: string | null

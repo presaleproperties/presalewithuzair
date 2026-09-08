@@ -119,7 +119,8 @@ export const PresaleGuideBanner = () => {
                   </a>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto md:mx-0">
+                <form onSubmit={handleSubmit} className="max-w-lg mx-auto md:mx-0 space-y-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                   <Input
                     placeholder="First name"
                     value={firstName}
@@ -151,6 +152,17 @@ export const PresaleGuideBanner = () => {
                       "Send Me The Free Guide"
                     )}
                   </Button>
+                  </div>
+                  <label className="flex items-start gap-2.5 cursor-pointer">
+                    <Checkbox
+                      checked={marketingConsent}
+                      onCheckedChange={(v) => setMarketingConsent(v === true)}
+                      className="mt-0.5"
+                    />
+                    <span className="text-[11px] leading-snug text-muted-foreground text-left">
+                      Yes, send me presale updates, pricing and floor plans by text and email. You can opt out any time.
+                    </span>
+                  </label>
                 </form>
               )}
             </div>

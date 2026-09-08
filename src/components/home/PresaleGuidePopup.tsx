@@ -195,6 +195,17 @@ export const PresaleGuidePopup = () => {
                   )}
                 </Button>
 
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <Checkbox
+                    checked={marketingConsent}
+                    onCheckedChange={(v) => setMarketingConsent(v === true)}
+                    className="mt-0.5"
+                  />
+                  <span className="text-[11px] leading-snug text-muted-foreground">
+                    Yes, send me presale updates, pricing and floor plans by text and email. You can opt out any time.
+                  </span>
+                </label>
+
                 <p className="text-[11px] text-muted-foreground text-center">
                   No spam. Unsubscribe anytime.
                 </p>

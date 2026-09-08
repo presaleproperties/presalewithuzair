@@ -90,13 +90,20 @@ export type Database = {
           budget: string | null
           buyer_type: string
           city: string | null
+          consent_at: string | null
+          consent_source: string | null
+          consent_status: string | null
           created_at: string
           crm_contact_id: string | null
           cta_source: string | null
           email: string
+          fbclid: string | null
           first_name: string
+          forward_attempts: number
           forward_error: string | null
+          forward_next_attempt_at: string | null
           forward_status: string | null
+          gclid: string | null
           has_agent: string | null
           id: string
           is_paid: boolean | null
@@ -104,6 +111,7 @@ export type Database = {
           last_name: string
           lead_source: string | null
           message: string | null
+          page_url: string | null
           payment_intent_id: string | null
           phone: string
           preferred_call_date: string | null
@@ -123,13 +131,20 @@ export type Database = {
           budget?: string | null
           buyer_type: string
           city?: string | null
+          consent_at?: string | null
+          consent_source?: string | null
+          consent_status?: string | null
           created_at?: string
           crm_contact_id?: string | null
           cta_source?: string | null
           email: string
+          fbclid?: string | null
           first_name: string
+          forward_attempts?: number
           forward_error?: string | null
+          forward_next_attempt_at?: string | null
           forward_status?: string | null
+          gclid?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null
@@ -137,6 +152,7 @@ export type Database = {
           last_name: string
           lead_source?: string | null
           message?: string | null
+          page_url?: string | null
           payment_intent_id?: string | null
           phone: string
           preferred_call_date?: string | null
@@ -156,13 +172,20 @@ export type Database = {
           budget?: string | null
           buyer_type?: string
           city?: string | null
+          consent_at?: string | null
+          consent_source?: string | null
+          consent_status?: string | null
           created_at?: string
           crm_contact_id?: string | null
           cta_source?: string | null
           email?: string
+          fbclid?: string | null
           first_name?: string
+          forward_attempts?: number
           forward_error?: string | null
+          forward_next_attempt_at?: string | null
           forward_status?: string | null
+          gclid?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null
@@ -170,6 +193,7 @@ export type Database = {
           last_name?: string
           lead_source?: string | null
           message?: string | null
+          page_url?: string | null
           payment_intent_id?: string | null
           phone?: string
           preferred_call_date?: string | null

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, CheckCircle, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -18,6 +19,7 @@ export const PresaleGuideBanner = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -41,7 +43,7 @@ export const PresaleGuideBanner = () => {
           firstName,
           lastName: "",
           email,
-          phone: "not-provided",
+          phone: null,
           buyerType: "first-time-buyer",
           leadSource: "presale-guide-banner",
           utmSource: params.get("utm_source"),
@@ -49,8 +51,14 @@ export const PresaleGuideBanner = () => {
           utmCampaign: params.get("utm_campaign"),
           utmTerm: params.get("utm_term"),
           utmContent: params.get("utm_content"),
+          fbclid: params.get("fbclid"),
+          gclid: params.get("gclid"),
           referrer: document.referrer || null,
           landingPage: window.location.pathname,
+          pageUrl: window.location.href,
+          consentStatus: marketingConsent ? "express" : "implied",
+          consentSource: "presale-guide-banner",
+          consentAt: new Date().toISOString(),
         },
       });
       if (error) {
@@ -111,7 +119,8 @@ export const PresaleGuideBanner = () => {
                   </a>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto md:mx-0">
+                <form onSubmit={handleSubmit} className="max-w-lg mx-auto md:mx-0 space-y-3">
+                  <div className="flex flex-col sm:flex-row gap-3">
                   <Input
                     placeholder="First name"
                     value={firstName}
@@ -143,6 +152,17 @@ export const PresaleGuideBanner = () => {
                       "Send Me The Free Guide"
                     )}
                   </Button>
+                  </div>
+                  <label className="flex items-start gap-2.5 cursor-pointer">
+                    <Checkbox
+                      checked={marketingConsent}
+                      onCheckedChange={(v) => setMarketingConsent(v === true)}
+                      className="mt-0.5"
+                    />
+                    <span className="text-[11px] leading-snug text-muted-foreground text-left">
+                      Yes, send me presale updates, pricing and floor plans by text and email. You can opt out any time.
+                    </span>
+                  </label>
                 </form>
               )}
             </div>

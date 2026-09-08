@@ -90,13 +90,20 @@ export type Database = {
           budget: string | null
           buyer_type: string
           city: string | null
+          consent_at: string | null
+          consent_source: string | null
+          consent_status: string | null
           created_at: string
           crm_contact_id: string | null
           cta_source: string | null
           email: string
+          fbclid: string | null
           first_name: string
+          forward_attempts: number
           forward_error: string | null
+          forward_next_attempt_at: string | null
           forward_status: string | null
+          gclid: string | null
           has_agent: string | null
           id: string
           is_paid: boolean | null
@@ -104,8 +111,9 @@ export type Database = {
           last_name: string
           lead_source: string | null
           message: string | null
+          page_url: string | null
           payment_intent_id: string | null
-          phone: string
+          phone: string | null
           preferred_call_date: string | null
           preferred_call_time: string | null
           project_name: string | null
@@ -123,13 +131,20 @@ export type Database = {
           budget?: string | null
           buyer_type: string
           city?: string | null
+          consent_at?: string | null
+          consent_source?: string | null
+          consent_status?: string | null
           created_at?: string
           crm_contact_id?: string | null
           cta_source?: string | null
           email: string
+          fbclid?: string | null
           first_name: string
+          forward_attempts?: number
           forward_error?: string | null
+          forward_next_attempt_at?: string | null
           forward_status?: string | null
+          gclid?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null
@@ -137,8 +152,9 @@ export type Database = {
           last_name: string
           lead_source?: string | null
           message?: string | null
+          page_url?: string | null
           payment_intent_id?: string | null
-          phone: string
+          phone?: string | null
           preferred_call_date?: string | null
           preferred_call_time?: string | null
           project_name?: string | null
@@ -156,13 +172,20 @@ export type Database = {
           budget?: string | null
           buyer_type?: string
           city?: string | null
+          consent_at?: string | null
+          consent_source?: string | null
+          consent_status?: string | null
           created_at?: string
           crm_contact_id?: string | null
           cta_source?: string | null
           email?: string
+          fbclid?: string | null
           first_name?: string
+          forward_attempts?: number
           forward_error?: string | null
+          forward_next_attempt_at?: string | null
           forward_status?: string | null
+          gclid?: string | null
           has_agent?: string | null
           id?: string
           is_paid?: boolean | null
@@ -170,8 +193,9 @@ export type Database = {
           last_name?: string
           lead_source?: string | null
           message?: string | null
+          page_url?: string | null
           payment_intent_id?: string | null
-          phone?: string
+          phone?: string | null
           preferred_call_date?: string | null
           preferred_call_time?: string | null
           project_name?: string | null
@@ -382,12 +406,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -411,11 +435,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -436,11 +460,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -461,11 +485,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -478,11 +502,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, CheckCircle, Download, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -23,6 +24,7 @@ export const PresaleGuidePopup = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -59,7 +61,7 @@ export const PresaleGuidePopup = () => {
           firstName: formData.firstName,
           lastName: "",
           email: formData.email,
-          phone: "not-provided",
+          phone: null,
           buyerType: "first-time-buyer",
           leadSource: "presale-guide-popup",
           utmSource: params.get("utm_source"),
@@ -67,8 +69,14 @@ export const PresaleGuidePopup = () => {
           utmCampaign: params.get("utm_campaign"),
           utmTerm: params.get("utm_term"),
           utmContent: params.get("utm_content"),
+          fbclid: params.get("fbclid"),
+          gclid: params.get("gclid"),
           referrer: document.referrer || null,
           landingPage: window.location.pathname,
+          pageUrl: window.location.href,
+          consentStatus: marketingConsent ? "express" : "implied",
+          consentSource: "presale-guide-popup",
+          consentAt: new Date().toISOString(),
         },
       });
 
@@ -186,6 +194,17 @@ export const PresaleGuidePopup = () => {
                     "Send Me The Free Guide"
                   )}
                 </Button>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <Checkbox
+                    checked={marketingConsent}
+                    onCheckedChange={(v) => setMarketingConsent(v === true)}
+                    className="mt-0.5"
+                  />
+                  <span className="text-[11px] leading-snug text-muted-foreground">
+                    Yes, send me presale updates, pricing and floor plans by text and email. You can opt out any time.
+                  </span>
+                </label>
 
                 <p className="text-[11px] text-muted-foreground text-center">
                   No spam. Unsubscribe anytime.

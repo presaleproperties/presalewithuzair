@@ -29,3 +29,6 @@ verify_jwt = false
 
 [functions.sync-presale-projects]
 verify_jwt = false
+
+[functions.retry-lead-forwards]
+verify_jwt = false

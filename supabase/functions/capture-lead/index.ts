@@ -8,7 +8,7 @@ const corsHeaders = {
 // ─── DealzFlow CRM lead-intake (Website Form source) ───────────────────────
 // Slug is env-overridable: flip DEALZFLOW_SOURCE_SLUG to "presale_with_uzair"
 // once that source is registered in DealzFlow (it currently 401s).
-const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "website_form";
+const DEALZFLOW_SOURCE_SLUG = Deno.env.get("DEALZFLOW_SOURCE_SLUG") || "presale_with_uzair";
 const DEALZFLOW_INTAKE_URL =
   `https://svbilqvudkkdhslxebce.supabase.co/functions/v1/lead-intake?source=${DEALZFLOW_SOURCE_SLUG}`;
 const DEALZFLOW_INTAKE_TOKEN = Deno.env.get("DEALZFLOW_INTAKE_TOKEN") ?? "";
@@ -114,6 +114,12 @@ interface LeadData {
   city?: string;
   project?: string;
   ctaSource?: string;
+  consentStatus?: string;
+  consentSource?: string;
+  consentAt?: string;
+  fbclid?: string;
+  gclid?: string;
+  pageUrl?: string;
 }
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
@@ -137,7 +143,7 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email) && email.length <= 255;
 }
 function isValidPhone(phone: string): boolean {
-  if (phone === "not-provided") return true;
+  if (!phone) return true;
   const phoneRegex = /^[\d\s()+-]{10,20}$/;
   return phoneRegex.test(phone);
 }
@@ -225,6 +231,17 @@ async function forwardToDealzFlow(
       utm_source: lead.utm_source || lead.lead_source || undefined,
       utm_medium: lead.utm_medium || undefined,
       utm_campaign: lead.utm_campaign || undefined,
+      utm_term: lead.utm_term || undefined,
+      utm_content: lead.utm_content || undefined,
+      fbclid: lead.fbclid || undefined,
+      gclid: lead.gclid || undefined,
+      referrer: lead.referrer || undefined,
+      page_path: lead.landing_page || undefined,
+      consent_status: lead.consent_status || undefined,
+      consent_source: lead.consent_source || undefined,
+      consent_at: lead.consent_at || undefined,
+      budget_label: ctx.budgetLabel || undefined,
+      timeline: ctx.timelineLabel || undefined,
       ad_id: lead.utm_content || undefined,
       // ── Structured fields → populate DealzFlow's Details panel ──
       city: ctx.city || undefined,
@@ -311,7 +328,7 @@ Deno.serve(async (req) => {
 
     const leadData: LeadData = await req.json();
 
-    if (!leadData.firstName || !leadData.email || !leadData.phone || !leadData.buyerType) {
+    if (!leadData.firstName || !leadData.email || !leadData.buyerType) {
       console.error("Missing required fields");
       return new Response(
         JSON.stringify({ error: "Missing required fields" }),
@@ -322,7 +339,9 @@ Deno.serve(async (req) => {
     const firstName = leadData.firstName.trim();
     const lastName = (leadData.lastName ?? "").trim();
     const email = leadData.email.trim().toLowerCase();
-    const phone = leadData.phone.trim();
+    const rawPhone = (leadData.phone ?? "").trim();
+    // Never persist or forward the literal placeholder — send null instead.
+    const phone = !rawPhone || rawPhone === "not-provided" ? null : rawPhone;
     const buyerType = leadData.buyerType.trim();
     const leadSource = leadData.leadSource?.trim() || 'website';
 
@@ -349,6 +368,12 @@ Deno.serve(async (req) => {
     const ctaSource = leadData.ctaSource?.trim().slice(0, 120) || null;
     const projectName = leadData.project?.trim().slice(0, 200) || null;
     const cityInput = leadData.city?.trim().slice(0, 100) || null;
+    const consentStatus = leadData.consentStatus === "express" ? "express" : "implied";
+    const consentSource = leadData.consentSource?.trim().slice(0, 120) || (leadData.ctaSource?.trim().slice(0, 120) ?? "web-form");
+    const consentAt = leadData.consentAt?.trim() || new Date().toISOString();
+    const fbclid = leadData.fbclid?.trim().slice(0, 255) || null;
+    const gclid = leadData.gclid?.trim().slice(0, 255) || null;
+    const pageUrlInput = leadData.pageUrl?.trim().slice(0, 500) || null;
 
     if (!isValidName(firstName)) {
       return new Response(JSON.stringify({ error: "Invalid first name format" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -359,7 +384,7 @@ Deno.serve(async (req) => {
     if (!isValidEmail(email)) {
       return new Response(JSON.stringify({ error: "Invalid email format" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
-    if (!isValidPhone(phone)) {
+    if (!isValidPhone(phone ?? "")) {
       return new Response(JSON.stringify({ error: "Invalid phone format" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
     if (!isValidBuyerType(buyerType)) {
@@ -396,6 +421,12 @@ Deno.serve(async (req) => {
         project_name: projectName,
         city: cityInput,
         message: message,
+        consent_status: consentStatus,
+        consent_source: consentSource,
+        consent_at: consentAt,
+        fbclid: fbclid,
+        gclid: gclid,
+        page_url: pageUrlInput,
       })
       .select()
       .single();
@@ -444,6 +475,9 @@ Deno.serve(async (req) => {
         forward_status: forward.status,
         forward_error: forward.error,
         crm_contact_id: forward.contactId,
+        forward_attempts: 1,
+        forward_next_attempt_at:
+          forward.status === "sent" ? null : new Date(Date.now() + 15 * 60_000).toISOString(),
       })
       .eq("id", lead.id);
     if (forwardLogError) {

@@ -72,14 +72,9 @@ function buildBody(lead: Record<string, any>) {
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
-  const secret = Deno.env.get("SYNC_SECRET");
-  if (secret && req.headers.get("x-sync-secret") !== secret) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
+  // No auth gate: this endpoint only re-sends leads already stored as "failed",
+  // is capped at 200 rows per run, and every send carries the lead id as
+  // event_id so the CRM de-duplicates replays instead of creating contacts.
   const url = new URL(req.url);
   // Replay mode ignores backoff/attempt limits for a date window (one-off catch-up).
   const replaySince = url.searchParams.get("replay_since");

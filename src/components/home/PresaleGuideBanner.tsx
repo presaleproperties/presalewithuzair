@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Loader2, CheckCircle, Download } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
@@ -18,6 +19,7 @@ export const PresaleGuideBanner = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -41,7 +43,7 @@ export const PresaleGuideBanner = () => {
           firstName,
           lastName: "",
           email,
-          phone: "not-provided",
+          phone: null,
           buyerType: "first-time-buyer",
           leadSource: "presale-guide-banner",
           utmSource: params.get("utm_source"),
@@ -49,8 +51,14 @@ export const PresaleGuideBanner = () => {
           utmCampaign: params.get("utm_campaign"),
           utmTerm: params.get("utm_term"),
           utmContent: params.get("utm_content"),
+          fbclid: params.get("fbclid"),
+          gclid: params.get("gclid"),
           referrer: document.referrer || null,
           landingPage: window.location.pathname,
+          pageUrl: window.location.href,
+          consentStatus: marketingConsent ? "express" : "implied",
+          consentSource: "presale-guide-banner",
+          consentAt: new Date().toISOString(),
         },
       });
       if (error) {

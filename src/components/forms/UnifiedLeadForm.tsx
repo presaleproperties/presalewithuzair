@@ -1,6 +1,7 @@
 import { useState, useEffect, useId } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -56,8 +57,11 @@ const getTrackingData = () => {
     utmCampaign: params.get("utm_campaign"),
     utmTerm: params.get("utm_term"),
     utmContent: params.get("utm_content"),
+    fbclid: params.get("fbclid"),
+    gclid: params.get("gclid"),
     referrer: document.referrer || null,
     landingPage: window.location.pathname,
+    pageUrl: window.location.href,
   };
 };
 
@@ -150,6 +154,8 @@ export const UnifiedLeadForm = ({
   }));
 
   const [trackingData, setTrackingData] = useState(getTrackingData());
+  // CASL express consent — unchecked by default, never required to submit.
+  const [marketingConsent, setMarketingConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -256,6 +262,9 @@ export const UnifiedLeadForm = ({
           city: context?.city,
           project: context?.project,
           ctaSource: context?.source,
+          consentStatus: marketingConsent ? "express" : "implied",
+          consentSource: context?.source || "unified-lead-form",
+          consentAt: new Date().toISOString(),
         },
       });
 
@@ -571,6 +580,18 @@ export const UnifiedLeadForm = ({
             </div>
           </div>
         )}
+
+        <label className="flex items-start gap-2.5 cursor-pointer">
+          <Checkbox
+            id={fid("consent")}
+            checked={marketingConsent}
+            onCheckedChange={(v) => setMarketingConsent(v === true)}
+            className={`mt-0.5 ${isDark ? "border-white/40 data-[state=checked]:bg-primary" : ""}`}
+          />
+          <span className={`text-[11px] leading-snug ${isDark ? "text-white/70" : "text-muted-foreground"}`}>
+            Yes, send me presale updates, pricing and floor plans by text and email. You can opt out any time.
+          </span>
+        </label>
 
         <p className={`text-center ${compact ? "text-[10px] leading-snug mt-1.5" : "text-xs mt-3"} ${isDark ? "text-white/50" : "text-muted-foreground"}`}>
           {compact

@@ -95,6 +95,35 @@ const REDIRECT_EXACT: Record<string, string> = {
   // Presale risk
   "/blog/presale-risks-developer-bankruptcy-cancellations-bc": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
   "/blog/5-presale-condo-risks-bc-buyers-must-know": "/blog/is-buying-presale-safe-developer-risks-deposit-protection",
+
+  // --- Framer-era blog URLs still indexed WITHOUT the /en prefix (Sep 2026) ---
+  "/blog/who-is-the-best-presale-condo-realtor-in-surrey": "/best-presale-realtor-fraser-valley",
+  "/blog/what-is-presale-assignments-in-vancouver-real-estate": "/blog/assignment-sales-bc-2026-process-fees-taxes",
+  "/blog/vancouver-presale-3-common-mistakes-to-avoid": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/the-hidden-cost-of-junior-two-bedroom-presale-condos-in-vancouver": "/blog/how-to-read-presale-floor-plan-bc-2026",
+  "/blog/how-to-cancel-a-pre-sale-condo-contract-4-effective-strategies": "/blog/presale-deposit-protection-cancelled-project-bc-2026",
+  "/assignmentslandingpages/thegrand36th": "/",
+
+  // --- Retired (unpublished) posts from the Aug–Sep 2026 consolidation ---
+  "/blog/april-2025-vancouver-real-estate-market-update-sales-slow-listings-surge": "/blog/bc-presale-market-roundup-july-2026",
+  "/blog/buying-a-pre-sale-dont-skip-these-3-documents": "/blog/presale-disclosure-statement-bc-what-to-check-2026",
+  "/blog/buying-pre-sale-know-what-youre-signing": "/blog/presale-disclosure-statement-bc-what-to-check-2026",
+  "/blog/dont-overpay-for-a-pre-sale-what-you-really-need-to-know-about-pricing-tiers": "/blog/presale-condo-prices-surrey-bc-2026-guide",
+  "/blog/key-factors-to-consider-before-choosing-a-presale-project": "/blog/how-to-vet-presale-developer-bc-2026",
+  "/blog/the-5-year-pre-sale-condo-strategy-every-investor-needs-to-know": "/blog/investor-guide-fraser-valley-presales-2026",
+  "/blog/want-to-win-in-real-estate-start-here": "/blog/how-to-buy-a-presale-in-bc-2026",
+  "/blog/why-2025-is-the-year-to-look-beyond-vancouver": "/blog/fraser-valley-presales-smart-buyers-2026",
+  "/blog/why-its-officially-a-buyers-market-right-now": "/blog/fraser-valley-slowdown-buyers-opportunity-2026",
+  "/blog/why-this-inflation-dip-isnt-the-full-picture": "/blog/2026-presale-crash-best-buying-window-vancouver",
+  "/blog/why-first-time-buyers-should-buy-a-presale-condo-in-willoughby-langley-2025-guide": "/blog/willoughby-langley-presale-condos-townhomes-2026",
+  "/blog/why-willoughby-langley-is-one-of-the-strongest-investment-areas-for-presales-in-2025": "/blog/willoughby-langley-presale-condos-townhomes-2026",
+
+  // --- Original hand-written post slugs (src/data/blogPosts.ts era) ---
+  "/blog/why-first-time-buyers-should-buy-presale-condo-willoughby-langley-2025": "/blog/willoughby-langley-presale-condos-townhomes-2026",
+  "/blog/why-willoughby-langley-strongest-investment-areas-presales-2025": "/blog/willoughby-langley-presale-condos-townhomes-2026",
+  "/blog/why-hire-presale-agent-vs-traditional-agent": "/blog/do-you-need-a-realtor-to-buy-presale-bc-2026",
+  "/blog/understanding-presale-deposits-vancouver": "/blog/understanding-presale-deposit-structure-bc-2026",
+  "/blog/presale-vs-resale-condos-vancouver-2025": "/blog/presale-vs-resale-condo-bc",
 };
 
 /**

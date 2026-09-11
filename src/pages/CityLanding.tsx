@@ -294,13 +294,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   const realEstateAgentJsonLd = localBusinessBranch({
     url: pageUrl,
     city: config.city,
-    description: config.metaDescription,
+    description: realtor.description,
   });
 
+  // Every question below is rendered visibly on the page.
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: config.faqs.map((f) => ({
+    mainEntity: [
+      ...realtor.faqs.map((f) => ({ question: f.q, answer: f.a })),
+      ...config.faqs.map((f) => ({ question: f.question, answer: f.answer })),
+    ].map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },

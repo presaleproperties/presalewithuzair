@@ -67,11 +67,19 @@ const PunjabiSpeakingRealtor = () => (
       </Link>
     </p>
 
+    <h2>Prefer another language?</h2>
+    <p>
+      I also work with families in <Link to="/hindi-speaking-realtor">Hindi</Link> and{" "}
+      <Link to="/urdu-speaking-realtor">Urdu</Link>.
+    </p>
+
     <RelatedLinks
       links={[
-        { to: "/surrey", label: "Surrey Presale Condos" },
-        { to: "/langley", label: "Langley Presale Townhomes" },
-        { to: "/abbotsford", label: "Abbotsford Presale Condos" },
+        { to: "/hindi-speaking-realtor", label: "Hindi Speaking Realtor" },
+        { to: "/urdu-speaking-realtor", label: "Urdu Speaking Realtor" },
+        { to: "/surrey", label: "Surrey Presale Realtor" },
+        { to: "/langley", label: "Langley Presale Realtor" },
+        { to: "/abbotsford", label: "Abbotsford Presale Realtor" },
         { to: "/south-asian-buyers", label: "South Asian Buyers — First-Generation Guide" },
         { to: "/contact", label: "Contact Uzair" },
       ]}

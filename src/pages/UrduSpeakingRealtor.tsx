@@ -4,16 +4,18 @@ import { FunnelPage, RelatedLinks, DEFAULT_SOCIAL_IMAGE, type FunnelFAQ } from "
 const faqs: FunnelFAQ[] = [
   {
     question: "Does Uzair speak Urdu?",
-    answer: "Yes. Urdu is my first language. I also work in Punjabi, Hindi and English.",
+    answer:
+      "Urdu is my first language. I was born in Pakistan and raised in Surrey, and I run full purchase conversations in Urdu — contract terms, deposit schedules, completion timing — with buyers and with the parents helping them. I also work in Punjabi, Hindi and English.",
   },
   {
     question: "Do you help Urdu-speaking buyers outside Surrey?",
-    answer: "Yes. I work across the Fraser Valley and Metro Vancouver.",
+    answer:
+      "Yes. I represent buyers across Surrey, Langley, Abbotsford, Delta, Coquitlam, Burnaby, Maple Ridge and Chilliwack. The market changes from city to city; the representation doesn't. Buyers only, full contract review, and the explanation delivered in the language your family is most comfortable in.",
   },
   {
     question: "Does it cost extra to work with you?",
     answer:
-      "Compensation arrangements vary by transaction. On many presale projects, buyer-agent compensation is paid through the project's sales structure. I'll explain the arrangement before you proceed.",
+      "On most presale projects the developer pays the buyer-agent fee from the project's marketing budget, so my representation costs you nothing at the purchase price. Arrangements vary by transaction, and I confirm the exact terms for your project in writing before you proceed.",
   },
 ];
 
@@ -21,11 +23,11 @@ const UrduSpeakingRealtor = () => (
   <FunnelPage
     path="/urdu-speaking-realtor"
     title="Urdu Speaking Presale Realtor | Surrey & Fraser Valley"
-    description="Work with an Urdu-speaking Realtor for presale and new construction across Surrey and the Fraser Valley."
-    h1="Presale guidance in Urdu — for you and your family."
+    description="Urdu-speaking presale realtor for Surrey, Langley, Abbotsford and the Fraser Valley. Buyer-side only. Contracts, deposits and costs explained in Urdu."
+    h1="Urdu-Speaking Presale Realtor in Surrey, Langley & Fraser Valley"
     eyebrow="Urdu Speaking Realtor"
     breadcrumbName="Urdu Speaking Realtor"
-    intro="Urdu is my first language. I was born in Pakistan and raised in Surrey, and today I help families across the Fraser Valley navigate presale and new construction in Urdu, Punjabi, Hindi and English. For many families, buying a home is not an individual decision — parents may be helping with the deposit, and several generations may be discussing the purchase. Everyone deserves to understand what the family is committing to."
+    intro="Urdu is my first language. I'm Uzair Muhammad, a buyer-side presale and new-construction realtor working across Surrey, Langley, Abbotsford, Delta and the Fraser Valley — and I explain contracts, deposits and completion costs in Urdu so the people funding the purchase understand exactly what the family is committing to."
     faqs={faqs}
     image={DEFAULT_SOCIAL_IMAGE}
   >
@@ -33,28 +35,36 @@ const UrduSpeakingRealtor = () => (
       السلام علیکم، میں عذیر محمد ہوں۔ میں سرے، لینگلی اور فریزر ویلی میں خاندانوں کی ان کا پہلا پری سیل گھر خریدنے میں مدد کرتا ہوں۔ ڈپازٹ کی تاریخیں، کنٹریکٹ کی شرائط اور اصل لاگت میں آپ کے والدین کو اردو میں سمجھاتا ہوں، تاکہ دستخط کرنے سے پہلے پورے خاندان کو سب کچھ واضح ہو۔ میں صرف خریداروں کی نمائندگی کرتا ہوں — ڈویلپر کی کبھی نہیں۔
     </p>
 
-    <h2>The people contributing to the purchase should understand it.</h2>
+    <h2>Born in Pakistan, raised in Surrey, working for buyers only.</h2>
     <p>
-      I can explain the project, deposit schedule, completion timeline and major purchase terms in Urdu.
+      I know how these purchases actually get made in our community, because I grew up inside them. The decision is rarely one person's. A son or daughter finds the project, a father or an uncle helps with the deposit, and a mother asks the question everyone else is too polite to ask: what happens to our money if this building never gets finished?
     </p>
     <p>
-      When something requires legal, tax or lending advice, I help identify what should be confirmed with the appropriate professional.
+      That question deserves a real answer, in Urdu, before anyone signs. Deposits in British Columbia are generally held in trust under the Real Estate Development Marketing Act, but the protection depends on the specific disclosure statement and purchase agreement in front of you — not on what the sales centre says over tea. I read those documents with the family, in Urdu, and tell you what they actually say.
     </p>
 
-    <h2>What I help Urdu-speaking buyers understand</h2>
+    <h2>What I do for Urdu-speaking buyers</h2>
     <ul>
-      <li>Project comparison</li>
-      <li>Deposit amounts and dates</li>
-      <li>Floor plan and pricing</li>
-      <li>Completion timing</li>
-      <li>Major purchase terms</li>
-      <li>Closing-cost considerations</li>
-      <li>Questions for your lawyer, accountant or lender</li>
+      <li>Compare the project against the other developments competing for the same money, and explain the comparison in Urdu.</li>
+      <li>Lay out every deposit amount and date in writing, so the cash requirement is never a surprise.</li>
+      <li>Review the disclosure statement and contract inside BC's seven-day rescission window, while you can still walk away without penalty.</li>
+      <li>Explain the full cost: GST and the New Housing Rebate, property transfer tax and the newly-built home exemption, strata fees, closing costs and the mortgage you'll have to qualify for at completion.</li>
+      <li>Check the assignment clause early, so an exit strategy is based on the contract rather than an assumption.</li>
+      <li>Look hard at the floor plan — usable space, storage, orientation, and who buys it from you later.</li>
+      <li>Stay with the file through deposit milestones, construction updates, financing, the deficiency walkthrough and possession.</li>
     </ul>
 
-    <h2>Talk to me before registering directly with a sales centre.</h2>
+    <h2>Ten years in planning changes how I read a project.</h2>
     <p>
-      Representation options can vary from one development to another. If you're interested in a project, start by asking.
+      Before real estate I spent 10 years with the City of Surrey in planning and bylaws. That background doesn't make me your lawyer or your accountant, but it does mean I look past the show suite: what's zoned nearby, what's already approved, how much competing supply is coming, and whether the neighbourhood in the rendering is the neighbourhood you'll actually get. That's the part of a presale decision most buyers never see, and it's usually the part that decides how the purchase feels in five years.
+    </p>
+    <p>
+      I've helped more than 450 families buy new homes, I represent buyers only, and I have never represented a developer. When a project doesn't fit the family in front of me, I say so — including when the honest advice is to wait or to buy resale instead.
+    </p>
+
+    <h2>Talk to me before you register at a sales centre.</h2>
+    <p>
+      Representation rules differ from one development to another. Once you register directly with a project, their representative may be credited as yours, and that is far harder to reverse than it is to avoid. Ask first — it costs nothing. If you've already registered somewhere, tell me and I'll explain what may still be possible.
     </p>
     <p className="not-prose">
       <Link
@@ -65,11 +75,21 @@ const UrduSpeakingRealtor = () => (
       </Link>
     </p>
 
+    <h2>Prefer another language?</h2>
+    <p>
+      I also work with families in <Link to="/hindi-speaking-realtor">Hindi</Link> and{" "}
+      <Link to="/punjabi-speaking-realtor">Punjabi</Link>, and I've written a separate guide for{" "}
+      <Link to="/south-asian-buyers">first-generation South Asian buyers</Link>.
+    </p>
+
     <RelatedLinks
       links={[
-        { to: "/surrey", label: "Surrey Presale Condos" },
-        { to: "/langley", label: "Langley Presale Townhomes" },
-        { to: "/abbotsford", label: "Abbotsford Presale Condos" },
+        { to: "/hindi-speaking-realtor", label: "Hindi Speaking Realtor" },
+        { to: "/punjabi-speaking-realtor", label: "Punjabi Speaking Realtor" },
+        { to: "/surrey", label: "Surrey Presale Realtor" },
+        { to: "/langley", label: "Langley Presale Realtor" },
+        { to: "/abbotsford", label: "Abbotsford Presale Realtor" },
+        { to: "/burnaby", label: "Burnaby Presale Realtor" },
         { to: "/south-asian-buyers", label: "South Asian Buyers — First-Generation Guide" },
         { to: "/contact", label: "Contact Uzair" },
       ]}

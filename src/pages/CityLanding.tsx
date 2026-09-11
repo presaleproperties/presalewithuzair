@@ -413,7 +413,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
             <div className="mb-12">
               <p className="section-label mb-3">Active Projects</p>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                {config.city} <span className="text-gradient">Presales</span>
+                {realtor.inventoryHeading}
                 {projectCount > 0 && (
                   <span className="text-foreground/50 font-normal text-xl sm:text-2xl ml-3">
                     ({projectCount})
@@ -422,8 +422,8 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               </h2>
               <p className="mt-3 text-foreground/70 max-w-xl">
                 {projectCount > 0
-                  ? `${projectCount} active presale ${projectCount === 1 ? "development" : "developments"} in ${config.city}${lowestPrice ? `, starting from ${formatPrice(lowestPrice)}` : ""}. Buyer-only representation on every one.`
-                  : `Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
+                  ? `${dynamicH1}. ${config.heroSubheadline} Buyer-only representation on every one.`
+                  : `${config.heroHeadline} Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
               </p>
             </div>
             <ProjectGrid city={config.city} />

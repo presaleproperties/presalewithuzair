@@ -371,17 +371,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-2xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
-                {config.heroEyebrow}
+                {realtor.eyebrow}
               </p>
               <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white mb-4 animate-fade-up">
-                {projectCount > 0 ? dynamicH1 : config.heroHeadline}
+                {realtor.h1}
               </h1>
               <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">
-                {config.heroSubheadline}
+                Buyer-side representation, never developer-side.
               </h2>
               <div className="w-14 h-px bg-foreground/25 mb-6 animate-fade-up" />
-              <p className="text-lg text-white/80 max-w-xl leading-relaxed mb-8 animate-fade-up">
-                {config.heroBody}
+              <p className="text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed mb-8 animate-fade-up">
+                {realtor.intro}
               </p>
               <button
                 onClick={() => openBooking(`city-${config.slug}`, { city: config.city })}

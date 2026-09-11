@@ -338,17 +338,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   return (
     <>
       <Helmet>
-        <title>{config.title}</title>
-        <meta name="description" content={config.metaDescription} />
+        <title>{realtor.title}</title>
+        <meta name="description" content={realtor.description} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.metaDescription} />
+        <meta property="og:title" content={realtor.title} />
+        <meta property="og:description" content={realtor.description} />
         <meta property="og:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.metaDescription} />
+        <meta name="twitter:title" content={realtor.title} />
+        <meta name="twitter:description" content={realtor.description} />
         <meta name="twitter:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <script type="application/ld+json">{JSON.stringify(realEstateAgentJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>

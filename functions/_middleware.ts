@@ -503,18 +503,15 @@ function southAsianBuyersBody(): string {
   );
 }
 
-export const CITY_META: Record<string, Meta> = {
-  "/surrey": { title: "Surrey Presale Condos & New Homes" + SUFFIX, description: "Compare Surrey presale condos and townhomes with buyer-side guidance on pricing, floor plans, deposits, developers and completion.", image: DEFAULT_IMAGE },
-  "/langley": { title: "Langley Presale Condos & Townhomes" + SUFFIX, description: "Compare new condos and townhomes in Langley with buyer-side guidance on projects, floor plans, deposits and long-term fit.", image: DEFAULT_IMAGE },
-  "/abbotsford": { title: "Abbotsford Presale Condos & New Homes" + SUFFIX, description: "Compare Abbotsford presale condos and townhomes with buyer-side guidance on pricing, floor plans, developers and long-term fit.", image: DEFAULT_IMAGE },
-  "/chilliwack": { title: "Chilliwack Presale Condos & Townhomes" + SUFFIX, description: "Compare Chilliwack presales with buyer-side guidance on pricing, developers, floor plans and long-term fit.", image: DEFAULT_IMAGE },
-  "/maple-ridge": { title: "Maple Ridge Presale Condos & Townhomes" + SUFFIX, description: "Buyer-side guidance for new condos and townhomes in Maple Ridge. Compare projects, pricing, layouts and long-term fit.", image: DEFAULT_IMAGE },
-  "/coquitlam": { title: "Coquitlam Presale Condos & Townhomes" + SUFFIX, description: "Compare Coquitlam presales in Burquitlam, Coquitlam Centre and Burke Mountain with buyer-side guidance.", image: DEFAULT_IMAGE },
-  "/delta": { title: "Delta Presale Condos & Townhomes" + SUFFIX, description: "Buyer-side guidance for presale condos and townhomes in Tsawwassen, Ladner and North Delta.", image: DEFAULT_IMAGE },
-  "/burnaby": { title: "Burnaby Presale Condos | Metrotown, Brentwood & Lougheed", description: "Compare Burnaby presales in Metrotown, Brentwood, Lougheed and Edmonds with buyer-side project and pricing analysis.", image: DEFAULT_IMAGE },
-};
+export const CITY_META: Record<string, Meta> = Object.fromEntries(
+  Object.entries(CITY_REALTOR).map(([slug, c]) => [
+    `/${slug}`,
+    { title: c.title, description: c.description, image: DEFAULT_IMAGE },
+  ]),
+) as Record<string, Meta>;
 
 import { CITY_DEPTH } from "../src/data/cityDepth";
+import { CITY_REALTOR } from "../src/data/cityRealtor";
 
 interface CityContent { name: string; intro: string; why: string; faqs: { q: string; a: string }[]; }
 
@@ -628,22 +625,24 @@ function extractFaqsFromContent(content: string): { q: string; a: string }[] {
 
 function cityBody(path: string): string {
   const c = CITY_CONTENT[path];
-  if (!c) return "";
-  const faqHtml = c.faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("");
-  const dot = c.intro.indexOf(". ");
-  const headline = dot > 0 ? c.intro.slice(0, dot) : `${c.name} Presale Condos & New Homes`;
-  const introRest = dot > 0 ? c.intro.slice(dot + 2) : c.intro;
+  const r = CITY_REALTOR[path.slice(1)];
+  if (!c || !r) return "";
+  const allFaqs = [...r.faqs, ...c.faqs];
+  const faqHtml = (f: { q: string; a: string }[]) =>
+    f.map((x) => `<div><h3>${esc(x.q)}</h3><p>${esc(x.a)}</p></div>`).join("");
   return (
-    `<h1>${esc(headline)}</h1>` +
-    `<p>${esc(introRest)}</p>` +
+    `<h1>${esc(r.h1)}</h1>` +
+    `<p>${esc(r.intro)}</p>` +
+    `<h2>Using a presale realtor in ${esc(c.name)}</h2>${faqHtml(r.faqs)}` +
+    `<h2>${esc(r.inventoryHeading)}</h2><p>${esc(c.intro)}</p>` +
     `<h2>How should you choose a ${esc(c.name)} presale?</h2><p>${esc(c.why)}</p>` +
     (CITY_DEPTH[path.slice(1)] || [])
       .map((sec) => `<h2>${esc(sec.heading)}</h2>` + sec.body.map((b) => `<p>${esc(b)}</p>`).join(""))
       .join("") +
-    `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml}` +
+    `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml(c.faqs)}` +
     ABOUT_BLOCK +
     jsonLd(breadcrumb(c.name + " Presales", path)) +
-    jsonLd(faqPage(c.faqs))
+    jsonLd(faqPage(allFaqs))
   );
 }
 

@@ -7,6 +7,7 @@ import { usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { openBooking } from "@/hooks/useBooking";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
 import { CITY_DEPTH } from "@/data/cityDepth";
+import { CITY_REALTOR } from "@/data/cityRealtor";
 import { localBusinessBranch } from "@/lib/structuredData";
 
 interface CityFAQ {

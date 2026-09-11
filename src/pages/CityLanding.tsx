@@ -271,9 +271,10 @@ interface CityLandingProps {
 
 const CityLanding = ({ citySlug }: CityLandingProps) => {
   const config = CITY_CONFIGS[citySlug];
+  const realtor = CITY_REALTOR[citySlug];
   const { data: projects } = usePresaleProjects(config?.city);
 
-  if (!config) return null;
+  if (!config || !realtor) return null;
 
   const activeProjects = (projects || []).filter((p) => p.status === "active");
   const projectCount = activeProjects.length;

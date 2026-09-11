@@ -150,24 +150,44 @@ async function writeRoute(path: string, extraBody = ""): Promise<void> {
 
 interface BlogRow { slug: string; lastmod?: string; title?: string; excerpt?: string; date?: string }
 
+const day = (s?: string): string | undefined =>
+  s ? new Date(s).toISOString().split("T")[0] : undefined;
+
+/**
+ * The nightly content sync rewrites updated_at on every mirrored post, so a
+ * date shared by a large block of posts is a bulk machine touch, not a real
+ * content change. Those posts fall back to their published_at date; if that is
+ * missing too, the entry carries no <lastmod> rather than a fake one.
+ */
+const BULK_TOUCH_THRESHOLD = 5;
+
 async function fetchBlogPosts(): Promise<BlogRow[]> {
   try {
     const url = `${SUPABASE_REST_URL}/rest/v1/blog_posts?published=eq.true&select=slug,title,excerpt,updated_at,published_at&order=published_at.desc&limit=1000`;
     const r = await fetch(url, { headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` } });
     if (!r.ok) return [];
     const rows = (await r.json()) as Array<{ slug: string; title?: string; excerpt?: string; updated_at?: string; published_at?: string }>;
-    return rows
-      .filter((row) => row.slug)
-      .map((row) => {
-        const stamp = row.updated_at || row.published_at;
-        return {
-          slug: row.slug,
-          title: row.title,
-          excerpt: row.excerpt || undefined,
-          date: row.published_at ? new Date(row.published_at).toISOString().split("T")[0] : undefined,
-          lastmod: stamp ? new Date(stamp).toISOString().split("T")[0] : undefined,
-        };
-      });
+    const valid = rows.filter((row) => row.slug);
+
+    const updatedCounts = new Map<string, number>();
+    for (const row of valid) {
+      const d = day(row.updated_at);
+      if (d) updatedCounts.set(d, (updatedCounts.get(d) || 0) + 1);
+    }
+
+    return valid.map((row) => {
+      const published = day(row.published_at);
+      const updated = day(row.updated_at);
+      const bulk = updated ? (updatedCounts.get(updated) || 0) >= BULK_TOUCH_THRESHOLD : false;
+      const realUpdated = updated && !bulk ? updated : undefined;
+      return {
+        slug: row.slug,
+        title: row.title,
+        excerpt: row.excerpt || undefined,
+        date: published,
+        lastmod: realUpdated || published,
+      };
+    });
   } catch (e) {
     console.warn("[prerender] blog fetch failed:", (e as Error).message);
     return [];
@@ -227,7 +247,9 @@ function writeSitemap(blogPosts: BlogRow[]) {
     lines.push(urlNode(p, undefined, "weekly", "0.9"));
   }
   for (const post of blogPosts) {
-    lines.push(urlNode(`/blog/${post.slug}`, post.lastmod, "monthly", "0.7"));
+    const path = `/blog/${post.slug}`;
+    if (legacyRedirect(path)) continue; // never sitemap a URL that 301s
+    lines.push(urlNode(path, post.lastmod, "monthly", "0.7"));
   }
 
   const xml = [

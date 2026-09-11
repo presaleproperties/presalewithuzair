@@ -382,8 +382,8 @@ export const STATIC_META: Record<string, Meta> = {
   "/presale-guide": { title: "BC Presale Buyer Guide | Uzair Muhammad", description: "A practical guide to evaluating BC presales, including projects, deposits, purchase terms, closing costs and completion.", image: DEFAULT_IMAGE },
   "/blog": { title: "BC Presale Insights & Buyer Guides | Uzair Muhammad", description: "Practical presale guides, market updates and buyer-side analysis for new homes across the Fraser Valley and Metro Vancouver.", image: DEFAULT_IMAGE },
   "/punjabi-speaking-realtor": { title: "Punjabi Speaking Presale Realtor | Surrey & Fraser Valley", description: "Work with a Punjabi-speaking Realtor for presale and new construction across Surrey and the Fraser Valley.", image: DEFAULT_IMAGE },
-  "/hindi-speaking-realtor": { title: "Hindi Speaking Presale Realtor | Surrey & Fraser Valley", description: "Hindi-speaking Realtor helping presale and new-construction buyers across Surrey and the Fraser Valley.", image: DEFAULT_IMAGE },
-  "/urdu-speaking-realtor": { title: "Urdu Speaking Presale Realtor | Surrey & Fraser Valley", description: "Work with an Urdu-speaking Realtor for presale and new construction across Surrey and the Fraser Valley.", image: DEFAULT_IMAGE },
+  "/hindi-speaking-realtor": { title: "Hindi Speaking Presale Realtor | Surrey & Fraser Valley", description: "Hindi-speaking presale realtor for Surrey, Langley, Abbotsford and the Fraser Valley. Buyer-side only. Contracts and deposits explained in Hindi.", image: DEFAULT_IMAGE },
+  "/urdu-speaking-realtor": { title: "Urdu Speaking Presale Realtor | Surrey & Fraser Valley", description: "Urdu-speaking presale realtor for Surrey, Langley, Abbotsford and the Fraser Valley. Buyer-side only. Contracts, deposits and costs explained in Urdu.", image: DEFAULT_IMAGE },
   "/south-asian-buyers": { title: "First-Generation Home Buyers | Surrey & Fraser Valley", description: "Presale guidance for first-generation and South Asian home buyers across Surrey and the Fraser Valley, in English, Punjabi, Hindi and Urdu.", image: DEFAULT_IMAGE },
 };
 
@@ -424,8 +424,8 @@ const STATIC_BODY: Record<string, string> = {
   "/presale-guide": `<h1>Presale Guide</h1><p>A practical guide to buying presale from the buyer's side. Coming soon.</p>`,
   "/blog": `<h1>Presale Insights</h1><p>Market updates, practical buyer guides and independent perspective on presale and new construction across BC.</p><p>Not every project is a good project. Not every market headline applies to every buyer. These articles are here to help you understand the difference.</p>`,
   "/punjabi-speaking-realtor": languagePageBody("Punjabi", "Presale Explained Clearly — In Punjabi or English.", "Buying a home is often a family decision. Sometimes the buyer is comfortable in English while parents or other family members contributing money would rather discuss the details in Punjabi.", "/punjabi-speaking-realtor", "Punjabi Speaking Realtor"),
-  "/hindi-speaking-realtor": languagePageBody("Hindi", "Presale Guidance in Hindi or English.", "A home purchase can involve the entire family. I work in Hindi, Punjabi, Urdu and English so buyers and the family members helping them can understand the project, deposit schedule and purchase process together.", "/hindi-speaking-realtor", "Hindi Speaking Realtor"),
-  "/urdu-speaking-realtor": languagePageBody("Urdu", "Presale Guidance in Urdu — For You and Your Family.", "Urdu is my first language. I was born in Pakistan and raised in Surrey, and today I help families across the Fraser Valley navigate presale and new construction in Urdu, Punjabi, Hindi and English. For many families, buying a home is not an individual decision — parents may be helping with the deposit, and several generations may be discussing the purchase.", "/urdu-speaking-realtor", "Urdu Speaking Realtor"),
+  "/hindi-speaking-realtor": languagePageBody("Hindi", "Hindi-Speaking Presale Realtor in Surrey, Langley & Fraser Valley", "A home purchase can involve the entire family. I work in Hindi, Punjabi, Urdu and English so buyers and the family members helping them can understand the project, deposit schedule and purchase process together.", "/hindi-speaking-realtor", "Hindi Speaking Realtor"),
+  "/urdu-speaking-realtor": languagePageBody("Urdu", "Urdu-Speaking Presale Realtor in Surrey, Langley & Fraser Valley", "Urdu is my first language. I was born in Pakistan and raised in Surrey, and today I help families across the Fraser Valley navigate presale and new construction in Urdu, Punjabi, Hindi and English. For many families, buying a home is not an individual decision — parents may be helping with the deposit, and several generations may be discussing the purchase.", "/urdu-speaking-realtor", "Urdu Speaking Realtor"),
   "/south-asian-buyers": southAsianBuyersBody(),
 };
 
@@ -503,18 +503,15 @@ function southAsianBuyersBody(): string {
   );
 }
 
-export const CITY_META: Record<string, Meta> = {
-  "/surrey": { title: "Surrey Presale Condos & New Homes" + SUFFIX, description: "Compare Surrey presale condos and townhomes with buyer-side guidance on pricing, floor plans, deposits, developers and completion.", image: DEFAULT_IMAGE },
-  "/langley": { title: "Langley Presale Condos & Townhomes" + SUFFIX, description: "Compare new condos and townhomes in Langley with buyer-side guidance on projects, floor plans, deposits and long-term fit.", image: DEFAULT_IMAGE },
-  "/abbotsford": { title: "Abbotsford Presale Condos & New Homes" + SUFFIX, description: "Compare Abbotsford presale condos and townhomes with buyer-side guidance on pricing, floor plans, developers and long-term fit.", image: DEFAULT_IMAGE },
-  "/chilliwack": { title: "Chilliwack Presale Condos & Townhomes" + SUFFIX, description: "Compare Chilliwack presales with buyer-side guidance on pricing, developers, floor plans and long-term fit.", image: DEFAULT_IMAGE },
-  "/maple-ridge": { title: "Maple Ridge Presale Condos & Townhomes" + SUFFIX, description: "Buyer-side guidance for new condos and townhomes in Maple Ridge. Compare projects, pricing, layouts and long-term fit.", image: DEFAULT_IMAGE },
-  "/coquitlam": { title: "Coquitlam Presale Condos & Townhomes" + SUFFIX, description: "Compare Coquitlam presales in Burquitlam, Coquitlam Centre and Burke Mountain with buyer-side guidance.", image: DEFAULT_IMAGE },
-  "/delta": { title: "Delta Presale Condos & Townhomes" + SUFFIX, description: "Buyer-side guidance for presale condos and townhomes in Tsawwassen, Ladner and North Delta.", image: DEFAULT_IMAGE },
-  "/burnaby": { title: "Burnaby Presale Condos | Metrotown, Brentwood & Lougheed", description: "Compare Burnaby presales in Metrotown, Brentwood, Lougheed and Edmonds with buyer-side project and pricing analysis.", image: DEFAULT_IMAGE },
-};
+export const CITY_META: Record<string, Meta> = Object.fromEntries(
+  Object.entries(CITY_REALTOR).map(([slug, c]) => [
+    `/${slug}`,
+    { title: c.title, description: c.description, image: DEFAULT_IMAGE },
+  ]),
+) as Record<string, Meta>;
 
 import { CITY_DEPTH } from "../src/data/cityDepth";
+import { CITY_REALTOR } from "../src/data/cityRealtor";
 
 interface CityContent { name: string; intro: string; why: string; faqs: { q: string; a: string }[]; }
 
@@ -628,22 +625,24 @@ function extractFaqsFromContent(content: string): { q: string; a: string }[] {
 
 function cityBody(path: string): string {
   const c = CITY_CONTENT[path];
-  if (!c) return "";
-  const faqHtml = c.faqs.map((f) => `<div><h3>${esc(f.q)}</h3><p>${esc(f.a)}</p></div>`).join("");
-  const dot = c.intro.indexOf(". ");
-  const headline = dot > 0 ? c.intro.slice(0, dot) : `${c.name} Presale Condos & New Homes`;
-  const introRest = dot > 0 ? c.intro.slice(dot + 2) : c.intro;
+  const r = CITY_REALTOR[path.slice(1)];
+  if (!c || !r) return "";
+  const allFaqs = [...r.faqs, ...c.faqs];
+  const faqHtml = (f: { q: string; a: string }[]) =>
+    f.map((x) => `<div><h3>${esc(x.q)}</h3><p>${esc(x.a)}</p></div>`).join("");
   return (
-    `<h1>${esc(headline)}</h1>` +
-    `<p>${esc(introRest)}</p>` +
+    `<h1>${esc(r.h1)}</h1>` +
+    `<p>${esc(r.intro)}</p>` +
+    `<h2>Using a presale realtor in ${esc(c.name)}</h2>${faqHtml(r.faqs)}` +
+    `<h2>${esc(r.inventoryHeading)}</h2><p>${esc(c.intro)}</p>` +
     `<h2>How should you choose a ${esc(c.name)} presale?</h2><p>${esc(c.why)}</p>` +
     (CITY_DEPTH[path.slice(1)] || [])
       .map((sec) => `<h2>${esc(sec.heading)}</h2>` + sec.body.map((b) => `<p>${esc(b)}</p>`).join(""))
       .join("") +
-    `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml}` +
+    `<h2>${esc(c.name)} presale FAQ</h2>${faqHtml(c.faqs)}` +
     ABOUT_BLOCK +
     jsonLd(breadcrumb(c.name + " Presales", path)) +
-    jsonLd(faqPage(c.faqs))
+    jsonLd(faqPage(allFaqs))
   );
 }
 

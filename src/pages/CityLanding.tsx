@@ -7,6 +7,7 @@ import { usePresaleProjects } from "@/hooks/usePresaleProjects";
 import { openBooking } from "@/hooks/useBooking";
 import { CheckCircle, TrendingUp, Shield, MapPin, ChevronRight } from "lucide-react";
 import { CITY_DEPTH } from "@/data/cityDepth";
+import { CITY_REALTOR } from "@/data/cityRealtor";
 import { localBusinessBranch } from "@/lib/structuredData";
 
 interface CityFAQ {
@@ -270,9 +271,10 @@ interface CityLandingProps {
 
 const CityLanding = ({ citySlug }: CityLandingProps) => {
   const config = CITY_CONFIGS[citySlug];
+  const realtor = CITY_REALTOR[citySlug];
   const { data: projects } = usePresaleProjects(config?.city);
 
-  if (!config) return null;
+  if (!config || !realtor) return null;
 
   const activeProjects = (projects || []).filter((p) => p.status === "active");
   const projectCount = activeProjects.length;
@@ -292,13 +294,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   const realEstateAgentJsonLd = localBusinessBranch({
     url: pageUrl,
     city: config.city,
-    description: config.metaDescription,
+    description: realtor.description,
   });
 
+  // Every question below is rendered visibly on the page.
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: config.faqs.map((f) => ({
+    mainEntity: [
+      ...realtor.faqs.map((f) => ({ question: f.q, answer: f.a })),
+      ...config.faqs.map((f) => ({ question: f.question, answer: f.answer })),
+    ].map((f) => ({
       "@type": "Question",
       name: f.question,
       acceptedAnswer: { "@type": "Answer", text: f.answer },
@@ -332,17 +338,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
   return (
     <>
       <Helmet>
-        <title>{config.title}</title>
-        <meta name="description" content={config.metaDescription} />
+        <title>{realtor.title}</title>
+        <meta name="description" content={realtor.description} />
         <link rel="canonical" href={pageUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={config.title} />
-        <meta property="og:description" content={config.metaDescription} />
+        <meta property="og:title" content={realtor.title} />
+        <meta property="og:description" content={realtor.description} />
         <meta property="og:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.title} />
-        <meta name="twitter:description" content={config.metaDescription} />
+        <meta name="twitter:title" content={realtor.title} />
+        <meta name="twitter:description" content={realtor.description} />
         <meta name="twitter:image" content={`https://presalewithuzair.com/images/heroes/${config.slug}-hero.jpg`} />
         <script type="application/ld+json">{JSON.stringify(realEstateAgentJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
@@ -370,17 +376,17 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16">
             <div className="max-w-2xl">
               <p className="text-xs font-black tracking-[0.25em] uppercase mb-4 animate-fade-up text-white/90">
-                {config.heroEyebrow}
+                {realtor.eyebrow}
               </p>
               <h1 className="font-display text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] text-white mb-4 animate-fade-up">
-                {projectCount > 0 ? dynamicH1 : config.heroHeadline}
+                {realtor.h1}
               </h1>
               <h2 className="font-display text-xl md:text-2xl text-white/70 mb-4 animate-fade-up">
-                {config.heroSubheadline}
+                Buyer-side representation, never developer-side.
               </h2>
               <div className="w-14 h-px bg-foreground/25 mb-6 animate-fade-up" />
-              <p className="text-lg text-white/80 max-w-xl leading-relaxed mb-8 animate-fade-up">
-                {config.heroBody}
+              <p className="text-base sm:text-lg text-white/80 max-w-2xl leading-relaxed mb-8 animate-fade-up">
+                {realtor.intro}
               </p>
               <button
                 onClick={() => openBooking(`city-${config.slug}`, { city: config.city })}
@@ -412,7 +418,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
             <div className="mb-12">
               <p className="section-label mb-3">Active Projects</p>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
-                {config.city} <span className="text-gradient">Presales</span>
+                {realtor.inventoryHeading}
                 {projectCount > 0 && (
                   <span className="text-foreground/50 font-normal text-xl sm:text-2xl ml-3">
                     ({projectCount})
@@ -421,8 +427,8 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               </h2>
               <p className="mt-3 text-foreground/70 max-w-xl">
                 {projectCount > 0
-                  ? `${projectCount} active presale ${projectCount === 1 ? "development" : "developments"} in ${config.city}${lowestPrice ? `, starting from ${formatPrice(lowestPrice)}` : ""}. Buyer-only representation on every one.`
-                  : `Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
+                  ? `${dynamicH1}. ${config.heroSubheadline} Buyer-only representation on every one.`
+                  : `${config.heroHeadline} Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
               </p>
             </div>
             <ProjectGrid city={config.city} />
@@ -477,6 +483,31 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
             </div>
           </section>
         )}
+
+        {/* ── Presale realtor FAQ (person/trust intent) ── */}
+        <section className="section-y bg-background divider-b">
+          <div className="container-xl px-4 sm:px-6 max-w-3xl">
+            <p className="section-label mb-3">Working with Uzair</p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8">
+              Using a presale realtor in {config.city}
+            </h2>
+            <div className="divider-list rounded-2xl border border-border/60 bg-card/40">
+              {realtor.faqs.map((f, i) => (
+                <details key={i} className="group p-5 open:bg-card/70 transition-colors">
+                  <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                    <span className="font-display text-base md:text-lg text-foreground group-open:text-primary transition-colors">
+                      {f.q}
+                    </span>
+                    <ChevronRight className="h-4 w-4 shrink-0 mt-1.5 text-muted-foreground transition-transform group-open:rotate-90" />
+                  </summary>
+                  <p className="mt-3 text-[15px] leading-relaxed text-foreground/70">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* ── FAQ Section ── */}
         <section className="section-y bg-background">

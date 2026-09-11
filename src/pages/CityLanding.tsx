@@ -479,6 +479,31 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
           </section>
         )}
 
+        {/* ── Presale realtor FAQ (person/trust intent) ── */}
+        <section className="section-y bg-background divider-b">
+          <div className="container-xl px-4 sm:px-6 max-w-3xl">
+            <p className="section-label mb-3">Working with Uzair</p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8">
+              Using a presale realtor in {config.city}
+            </h2>
+            <div className="divider-list rounded-2xl border border-border/60 bg-card/40">
+              {realtor.faqs.map((f, i) => (
+                <details key={i} className="group p-5 open:bg-card/70 transition-colors">
+                  <summary className="flex items-start justify-between gap-4 cursor-pointer list-none">
+                    <span className="font-display text-base md:text-lg text-foreground group-open:text-primary transition-colors">
+                      {f.q}
+                    </span>
+                    <ChevronRight className="h-4 w-4 shrink-0 mt-1.5 text-muted-foreground transition-transform group-open:rotate-90" />
+                  </summary>
+                  <p className="mt-3 text-[15px] leading-relaxed text-foreground/70">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── FAQ Section ── */}
         <section className="section-y bg-background">
           <div className="container-xl px-4 sm:px-6 max-w-3xl">

@@ -1,0 +1,13 @@
+name = "presalewithuzair-og-router"
+main = "og-router.js"
+compatibility_date = "2024-01-01"
+
+# Live worker is "presalewithuzair-og-router" in the Marketing@meetuzair.com
+# Cloudflare account. Both routes are already bound.
+[[routes]]
+pattern = "presalewithuzair.com/*"
+zone_name = "presalewithuzair.com"
+
+[[routes]]
+pattern = "www.presalewithuzair.com/*"
+zone_name = "presalewithuzair.com"

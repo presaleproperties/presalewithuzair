@@ -3,28 +3,13 @@ project_id = "ubbogklasownognviobh"
 [functions.sync-blogs]
 verify_jwt = false
 
-[functions.create-advice-payment]
-verify_jwt = false
-
 [functions.fetch-google-reviews]
-verify_jwt = false
-
-[functions.import-blogs]
 verify_jwt = false
 
 [functions.capture-lead]
 verify_jwt = false
 
-[functions.create-calendar-event]
-verify_jwt = false
-
 [functions.generate-sitemap]
-verify_jwt = false
-
-[functions.capture-landing-lead]
-verify_jwt = false
-
-[functions.sync-projects]
 verify_jwt = false
 
 [functions.sync-presale-projects]

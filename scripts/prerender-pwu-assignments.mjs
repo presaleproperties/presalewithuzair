@@ -282,8 +282,12 @@ function applyMeta(template, page, canonical) {
   out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escText(page.title)}</title>`);
 
   const set = (attr, key, value) => {
-    const re = new RegExp(`(<meta\\s+${attr}=["']${key}["'][^>]*content=["'])[^"']*(["'][^>]*>)`, "i");
-    if (re.test(out)) out = out.replace(re, (m, g1, g2) => `${g1}${escAttr(value)}${g2}`);
+    // Match the WHOLE quoted value. dist/index.html is the prerendered homepage
+    // by the time this runs, and its description contains a literal apostrophe
+    // ("Fraser Valley's ..."); the old [^"']* stopped there and left the tail
+    // of the homepage description appended to every page description.
+    const re = new RegExp(`(<meta\\s+${attr}=["']${key}["'][^>]*?\\bcontent=)(?:"[^"]*"|'[^']*')`, "i");
+    if (re.test(out)) out = out.replace(re, (m, g1) => `${g1}"${escAttr(value)}"`);
     else out = out.replace(/<\/head>/i, `<meta ${attr}="${key}" content="${escAttr(value)}">\n</head>`);
   };
   set("name", "description", page.description);

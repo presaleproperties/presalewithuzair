@@ -53,9 +53,13 @@ function applyMeta(html: string, meta: { title: string; description: string; ima
   // <title>
   out = out.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escText(meta.title)}</title>`);
   const set = (attr: "name" | "property", key: string, value: string) => {
-    const re = new RegExp(`(<meta\\s+${attr}=["']${key}["'][^>]*content=["'])[^"']*(["'][^>]*>)`, "i");
+    // Match the WHOLE quoted value (double- or single-quoted). The old pattern
+    // used [^"']* which stopped at the first apostrophe inside a double-quoted
+    // value (e.g. "Fraser Valley's ..."), so only the text before the
+    // apostrophe was replaced and the rest of the old value was left appended.
+    const re = new RegExp(`(<meta\\s+${attr}=["']${key}["'][^>]*?\\bcontent=)(?:"[^"]*"|'[^']*')`, "i");
     if (re.test(out)) {
-      out = out.replace(re, (m, g1, g2) => `${g1}${escAttr(value)}${g2}`);
+      out = out.replace(re, (m, g1) => `${g1}"${escAttr(value)}"`);
     } else {
       out = out.replace(/<\/head>/i, `<meta ${attr}="${key}" content="${escAttr(value)}">\n</head>`);
     }

@@ -58,7 +58,7 @@ interface Lead {
   first_name: string;
   last_name: string;
   email: string;
-  phone: string;
+  phone: string | null;
   buyer_type: string;
   lead_source: string | null;
   timeline: string | null;
@@ -168,9 +168,9 @@ const AdminLeads = () => {
       ["Name", "Email", "Phone", "Type", "Timeline", "Budget", "Has Agent", "Status", "Source", "CTA Source", "City", "Project", "Landing Page", "Message", "UTM Source", "UTM Campaign", "Date"].join(","),
       ...filteredData.map((lead) =>
         [
-          `"${lead.first_name} ${lead.last_name}"`,
-          lead.email,
-          lead.phone,
+          csvCell(`${lead.first_name ?? ""} ${lead.last_name ?? ""}`.trim()),
+          csvCell(lead.email),
+          csvCell(lead.phone),
           lead.buyer_type,
           lead.timeline || "",
           lead.budget || "",
@@ -202,9 +202,9 @@ const AdminLeads = () => {
     return leads.filter((lead) => {
       const matchesSearch =
         searchQuery === "" ||
-        `${lead.first_name} ${lead.last_name}`.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        lead.phone.includes(searchQuery) ||
+        `${lead.first_name ?? ""} ${lead.last_name ?? ""}`.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.email ?? "").toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (lead.phone ?? "").includes(searchQuery) ||
         (lead.city || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
         (lead.project_name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
         (lead.cta_source || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -289,10 +289,12 @@ const AdminLeads = () => {
                 <Mail className="h-3.5 w-3.5 shrink-0" />
                 {lead.email}
               </a>
-              <a href={`tel:${lead.phone}`} className="flex items-center gap-1 hover:text-primary transition-colors">
-                <Phone className="h-3.5 w-3.5 shrink-0" />
-                {lead.phone}
-              </a>
+              {lead.phone && (
+                <a href={`tel:${lead.phone}`} className="flex items-center gap-1 hover:text-primary transition-colors">
+                  <Phone className="h-3.5 w-3.5 shrink-0" />
+                  {lead.phone}
+                </a>
+              )}
               <span className="flex items-center gap-1">
                 <Calendar className="h-3.5 w-3.5 shrink-0" />
                 {timeAgo(lead.created_at)}

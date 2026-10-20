@@ -428,7 +428,7 @@ const CityLanding = ({ citySlug }: CityLandingProps) => {
               <p className="mt-3 text-foreground/70 max-w-xl">
                 {projectCount > 0
                   ? `${dynamicH1}. ${config.heroSubheadline} Buyer-only representation on every one.`
-                  : `${config.heroHeadline} Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
+                  : `Current and upcoming presale condos and townhomes in ${config.city}. Get VIP access before the public launch.`}
               </p>
             </div>
             <ProjectGrid city={config.city} />
